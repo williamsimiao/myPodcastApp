@@ -1,5 +1,5 @@
 //
-//  comunication.swift
+//  Network.swift
 //  myPodcastApp
 //
 //  Created by William on 21/01/19.
@@ -7,6 +7,3 @@
 //
 
 import Foundation
-import Alamofire
-
-
