@@ -1,0 +1,6 @@
+module Pods_myPodcastApp {
+  umbrella header "Pods-myPodcastApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

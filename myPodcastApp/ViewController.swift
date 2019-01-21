@@ -8,16 +8,13 @@
 
 import UIKit
 import AVFoundation
+import Alamofire
 
 class ViewController: UIViewController {
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     let valor = 5
     @IBOutlet weak var play_button: UIBarButtonItem!
-    var playBtn = UIBarButtonItem()
-    var pauseBtn = UIBarButtonItem()
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +37,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func play_action(_ sender: Any) {
-        
-        if player?.rate != 0 {
+        if player?.rate == 0 {
             player?.play()
         } else {
             player?.pause()
@@ -60,19 +56,5 @@ class ViewController: UIViewController {
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
         player?.seek(to: jump)
     }
-    
-    @objc func playBtnAction(sender: UIBarButtonItem)
-    {
-        player!.play()
-        play_button = pauseBtn
-    }
-    
-    @objc func pauseBtnAction(sender: UIBarButtonItem)
-    {
-        player!.pause()
-        play_button = playBtn
-    }
-    
-
 }
 
