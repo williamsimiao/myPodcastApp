@@ -8,12 +8,17 @@
 
 import UIKit
 import AVFoundation
+import Network
+import Alamofire
+import SwiftyJSON
 
 class TableViewController: UITableViewController {
 
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     let valor = 5
+    var arrRes = [[String:AnyObject]]()
+    @IBOutlet var tblEpisodes: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,23 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        Alamofire.request("https://api.spreaker.com/v2/").responseJSON { (responseData) -> Void in
+            if((responseData.result.value) != nil) {
+                let swiftyJsonVar = JSON(responseData.result.value!)
+                
+                if let resData = swiftyJsonVar["contacts"].arrayObject {
+                    self.arrRes = resData as! [[String:AnyObject]]
+                }
+                if self.arrRes.count > 0 {
+                    self.tblEpisodes.reloadData()
+                }
+            }
+        }
+        
+//        Network.instance.download(downloadUrl: "https://jsonplaceholder.typicode.com/posts/1", saveUrl: "file.json", completion: { results in
+//            print("Success post title:", results["title"].stringValue)
+//        })
     }
 
     // MARK: - Table view data source
@@ -72,15 +94,18 @@ class TableViewController: UITableViewController {
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
         player?.seek(to: jump)
     }
-    /*
+    
+//    https://www.spreaker.com/show/2885428/episodes/feed
+//    https://api.spreaker.com/v2/shows/2885428/episodes
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        var dict = arrRes[indexPath.row]
+        cell.textLabel?.text = dict["title"] as? String
+        cell.detailTextLabel?.text = dict["published_at"] as? String
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

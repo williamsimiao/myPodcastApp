@@ -73,6 +73,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Episódios" id="rzj-Ef-TZN"/>
+                    <connections>
+                        <outlet property="tableView" destination="4iw-OW-GXi" id="QWn-Q9-SYb"/>
+                        <outlet property="tblEpisodes" destination="4iw-OW-GXi" id="Mae-0z-Btc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Slr-IT-3oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ3-c1-Qjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767.20000000000005" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-81" y="29"/>
         </scene>
     </scenes>
 </document>

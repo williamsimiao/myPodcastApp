@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
+
+class Network {
+    
+    public static let instance = Network()
+    
+}
