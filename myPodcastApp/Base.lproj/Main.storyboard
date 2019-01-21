@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="psI-hA-mnP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,6 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Dyg-1d-9ff">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="rewind" id="bN7-4l-uiC" userLabel="back">
+                                    <connections>
+                                        <action selector="back_action:" destination="bkJ-ua-cTd" id="jOB-qN-EdY"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="Axr-xi-cG7"/>
+                                <barButtonItem systemItem="fastForward" id="1dH-T2-g27" userLabel="foward">
+                                    <connections>
+                                        <action selector="foward_action:" destination="bkJ-ua-cTd" id="Pvp-nS-vrQ"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="2ev-eb-1jg"/>
+                                <barButtonItem systemItem="play" id="6bG-Y0-67Q" userLabel="play">
+                                    <connections>
+                                        <action selector="play_action:" destination="bkJ-ua-cTd" id="fZu-L9-4qZ"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Zse-RE-fVp" detailTextLabel="CdW-Dc-6pY" style="IBUITableViewCellStyleSubtitle" id="mHq-ti-55d">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -70,53 +93,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9q-xb-eqq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1862" y="30"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61J-XO-JKX">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem width="5" systemItem="rewind" id="Gsz-vn-5C5" userLabel="back">
-                                        <connections>
-                                            <action selector="back_action:" destination="BYZ-38-t0r" id="zex-kc-Eq5"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uMm-uV-Lld"/>
-                                    <barButtonItem systemItem="play" id="2u3-2D-WvU" userLabel="play">
-                                        <connections>
-                                            <action selector="play_action:" destination="BYZ-38-t0r" id="MoS-eP-RNa"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U2D-j3-gob"/>
-                                    <barButtonItem width="30" systemItem="fastForward" id="xwM-cN-3qj" userLabel="foward">
-                                        <connections>
-                                            <action selector="fowardAction:" destination="BYZ-38-t0r" id="68d-Wm-TCx"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="61J-XO-JKX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MpT-Rb-NNj"/>
-                            <constraint firstItem="61J-XO-JKX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RY8-yN-ggy"/>
-                            <constraint firstItem="61J-XO-JKX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TJ9-f4-tuy"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <connections>
-                        <outlet property="play_button" destination="2u3-2D-WvU" id="64C-Bz-tAs"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="64.799999999999997" y="26.53673163418291"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MMN-bT-9cT">
