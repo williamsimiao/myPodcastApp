@@ -12,8 +12,6 @@
 		3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C321F5EDA7004960CE /* Main.storyboard */; };
 		3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C621F5EDA9004960CE /* Assets.xcassets */; };
 		3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */; };
-		3D9514D221F5F625004960CE /* streaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9514D121F5F625004960CE /* streaming.swift */; };
-		3D9514D421F5F702004960CE /* CustomPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9514D321F5F702004960CE /* CustomPlayerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +22,6 @@
 		3D9514C621F5EDA9004960CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D9514C921F5EDA9004960CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9514CB21F5EDA9004960CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D9514D121F5F625004960CE /* streaming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = streaming.swift; sourceTree = "<group>"; };
-		3D9514D321F5F702004960CE /* CustomPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +57,6 @@
 				3D9514BF21F5EDA7004960CE /* AppDelegate.swift */,
 				3D9514C121F5EDA7004960CE /* ViewController.swift */,
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
-				3D9514D121F5F625004960CE /* streaming.swift */,
-				3D9514D321F5F702004960CE /* CustomPlayerVC.swift */,
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
 				3D9514CB21F5EDA9004960CE /* Info.plist */,
@@ -141,9 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D9514D421F5F702004960CE /* CustomPlayerVC.swift in Sources */,
 				3D9514C221F5EDA7004960CE /* ViewController.swift in Sources */,
-				3D9514D221F5F625004960CE /* streaming.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
