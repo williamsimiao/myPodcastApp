@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cxb-7t-EFn" detailTextLabel="eCb-fA-gkb" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="AMh-x0-17R">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" textLabel="cxb-7t-EFn" detailTextLabel="eCb-fA-gkb" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="AMh-x0-17R">
                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AMh-x0-17R" id="Llz-bs-eZC">
@@ -90,6 +90,7 @@
                     <navigationItem key="navigationItem" id="0gl-3A-QM9"/>
                     <connections>
                         <outlet property="tableView" destination="u0p-Ns-hfK" id="joc-tv-kRj"/>
+                        <segue destination="ZsO-z3-BSc" kind="show" identifier="toPlayingVC" id="Ylj-Nn-148"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJ0-Vj-BVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEZ-hm-3ad">
-                                <rect key="frame" x="55" y="68" width="265" height="260"/>
+                                <rect key="frame" x="55" y="112" width="265" height="216"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fBS-yH-xGc">
                                 <rect key="frame" x="43" y="364" width="289" height="128"/>

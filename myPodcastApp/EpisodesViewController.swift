@@ -13,7 +13,7 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class EpisodesViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
+class EpisodesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
@@ -61,31 +61,25 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITabBarD
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let playingVC = segue.destination as? PlayingViewController
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            
+            if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
+                playingVC?.imageUrl = imgUrl as! String
+            }
+            
+            if let episodeDescription = self.arrEpisodes[indexPath.row]["description"] {
+                playingVC?.descriptionText.text = episodeDescription as? String
+            }
+        }
+        
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let playingVC = storyboard.instantiateViewController(withIdentifier: "PlayingViewController") as! PlayingViewController
-        
-        
-        //Image Cover
-        if let imgUrl = arrEpisodes[indexPath.row]["image_url"] {
-            print(imgUrl)
-            playingVC.imageUrl = imgUrl as! String
-        }
-        
-        
-        
-        //Descritption
-        if arrEpisodes[indexPath.row]["description"] as? String != nil {
-            playingVC.descriptionText.text = arrEpisodes[indexPath.row]["description"] as? String
-        }
-        //Player
-        playingVC.player = self.player
-        self.navigationController?.pushViewController(playingVC, animated: true)
-        print(arrEpisodes[indexPath.row]["episode_id"])
-        //        print(arrEpisodes[indexPath.row]["episode_id"]?.isKind(of: ))
-        //        String()
-        //        changePlayingEpisode(episodeId: String(arrEpisodes[indexPath.row]["episode_id"] ))
-        
+        self.performSegue(withIdentifier: "toPlayingVC", sender: self)
     }
     
     @IBAction func rewind_action(_ sender: Any) {
