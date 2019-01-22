@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Episódios-->
+        <!--Table View Controller-->
         <scene sceneID="mte-Mq-E4a">
             <objects>
                 <tableViewController id="bkJ-ua-cTd" customClass="TableViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,7 +72,7 @@
                             <outlet property="delegate" destination="bkJ-ua-cTd" id="GTO-Uy-9g5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Episódios" id="rzj-Ef-TZN"/>
+                    <navigationItem key="navigationItem" id="rzj-Ef-TZN"/>
                     <connections>
                         <outlet property="tableView" destination="4iw-OW-GXi" id="QWn-Q9-SYb"/>
                         <outlet property="tblEpisodes" destination="4iw-OW-GXi" id="Mae-0z-Btc"/>
