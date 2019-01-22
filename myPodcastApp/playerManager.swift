@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import AVFoundation
+
+class playerManager {
+    var player:AVPlayer?
+    var playerItem:AVPlayerItem?
+    let valor = 5
+    
+    func foward() {
+        let currentTime = player?.currentItem?.currentTime()
+        let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
+        player?.seek(to: jump)
+    }
+}

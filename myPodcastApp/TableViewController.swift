@@ -38,9 +38,6 @@ class TableViewController: UITableViewController {
                 
                 if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
                     self.arrEpisodes = episodesData as! [[String:AnyObject]]
-//                    print(episodesData)
-//                    print("ZZZ")
-//                    print(self.arrEpisodes)
                 }
                 if self.arrEpisodes.count > 0 {
                     self.tblEpisodes.reloadData()
@@ -122,7 +119,6 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath)
         var singleEpisode = arrEpisodes[indexPath.row]
         let mTitle = singleEpisode["title"] as? String
-        print("ZZ" + mTitle!)
         cell.textLabel?.text = mTitle
         cell.detailTextLabel?.text = singleEpisode["published_at"] as? String
         return cell
