@@ -42,11 +42,11 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Zse-RE-fVp" detailTextLabel="CdW-Dc-6pY" style="IBUITableViewCellStyleSubtitle" id="mHq-ti-55d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="episodeCell" textLabel="Zse-RE-fVp" detailTextLabel="CdW-Dc-6pY" style="IBUITableViewCellStyleSubtitle" id="mHq-ti-55d">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mHq-ti-55d" id="6iN-cH-wzw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zse-RE-fVp">
@@ -65,6 +65,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZsO-z3-BSc" kind="presentation" id="F7Z-FH-RPa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -98,42 +101,69 @@
             </objects>
             <point key="canvasLocation" x="-1862" y="30"/>
         </scene>
-        <!--View Controller-->
+        <!--Playing View Controller-->
         <scene sceneID="MMN-bT-9cT">
             <objects>
-                <viewController id="ZsO-z3-BSc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZsO-z3-BSc" customClass="PlayingViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqP-FA-CB9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEZ-hm-3ad">
-                                <rect key="frame" x="55" y="194" width="265" height="260"/>
+                                <rect key="frame" x="55" y="68" width="265" height="260"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fBS-yH-xGc">
-                                <rect key="frame" x="43" y="490" width="289" height="128"/>
+                                <rect key="frame" x="43" y="364" width="289" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-F5-FO0" userLabel="play">
+                                <rect key="frame" x="172" y="560" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="play_action:" destination="ZsO-z3-BSc" eventType="touchUpInside" id="uP7-Jl-trz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-TG-EAd" userLabel="foward">
+                                <rect key="frame" x="272" y="560" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Foward"/>
+                                <connections>
+                                    <action selector="foward_action:" destination="ZsO-z3-BSc" eventType="touchUpInside" id="O64-0T-BFY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2A-A7-T9R" userLabel="back">
+                                <rect key="frame" x="61" y="560" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back_action:" destination="ZsO-z3-BSc" eventType="touchUpInside" id="OEA-qa-iRN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hEZ-hm-3ad" firstAttribute="leading" secondItem="mRy-0p-aSi" secondAttribute="leading" constant="55" id="INs-3x-n4N"/>
                             <constraint firstItem="fBS-yH-xGc" firstAttribute="top" secondItem="hEZ-hm-3ad" secondAttribute="bottom" constant="36" id="JNl-Co-gTf"/>
                             <constraint firstItem="fBS-yH-xGc" firstAttribute="leading" secondItem="mRy-0p-aSi" secondAttribute="leading" constant="43" id="Q62-wi-HEq"/>
-                            <constraint firstItem="mRy-0p-aSi" firstAttribute="bottom" secondItem="hEZ-hm-3ad" secondAttribute="bottom" constant="213" id="SF0-fx-ZXF"/>
+                            <constraint firstItem="mRy-0p-aSi" firstAttribute="bottom" secondItem="hEZ-hm-3ad" secondAttribute="bottom" constant="339" id="SF0-fx-ZXF"/>
                             <constraint firstItem="fBS-yH-xGc" firstAttribute="centerX" secondItem="hEZ-hm-3ad" secondAttribute="centerX" id="a9Q-4u-z0Q"/>
-                            <constraint firstItem="hEZ-hm-3ad" firstAttribute="top" secondItem="mRy-0p-aSi" secondAttribute="top" constant="174" id="bg5-hS-kwj"/>
+                            <constraint firstItem="hEZ-hm-3ad" firstAttribute="top" secondItem="mRy-0p-aSi" secondAttribute="top" constant="48" id="bg5-hS-kwj"/>
                             <constraint firstItem="hEZ-hm-3ad" firstAttribute="centerX" secondItem="iqP-FA-CB9" secondAttribute="centerX" id="ibw-qz-etF"/>
-                            <constraint firstItem="mRy-0p-aSi" firstAttribute="bottom" secondItem="fBS-yH-xGc" secondAttribute="bottom" constant="49" id="xhf-WI-xpy"/>
+                            <constraint firstItem="mRy-0p-aSi" firstAttribute="bottom" secondItem="fBS-yH-xGc" secondAttribute="bottom" constant="175" id="xhf-WI-xpy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mRy-0p-aSi"/>
                     </view>
+                    <connections>
+                        <outlet property="coverImg" destination="hEZ-hm-3ad" id="cE5-3M-Wfe"/>
+                        <outlet property="descriptionText" destination="fBS-yH-xGc" id="owd-Pb-aPj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ3-c1-Qjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-81" y="29"/>
+            <point key="canvasLocation" x="-82.400000000000006" y="28.335832083958024"/>
         </scene>
     </scenes>
 </document>

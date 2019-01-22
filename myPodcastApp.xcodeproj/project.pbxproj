@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BD76C165B397350E0BC0012 /* libPods-myPodcastApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */; };
+		3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79640E21F7560E00E171DC /* PlayingViewController.swift */; };
 		3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9514BF21F5EDA7004960CE /* AppDelegate.swift */; };
 		3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C321F5EDA7004960CE /* Main.storyboard */; };
 		3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C621F5EDA9004960CE /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.release.xcconfig"; sourceTree = "<group>"; };
+		3D79640E21F7560E00E171DC /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
 		3D9514BC21F5EDA7004960CE /* myPodcastApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPodcastApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9514BF21F5EDA7004960CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9514C421F5EDA7004960CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
 				3D9514CB21F5EDA9004960CE /* Info.plist */,
 				3DE9C9FD21F6579C00866256 /* Network.swift */,
+				3D79640E21F7560E00E171DC /* PlayingViewController.swift */,
 			);
 			path = myPodcastApp;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9514D621F64151004960CE /* TableViewController.swift in Sources */,
+				3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3DE9C9FE21F6579C00866256 /* Network.swift in Sources */,
 			);

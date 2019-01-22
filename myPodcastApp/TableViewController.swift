@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Network
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class TableViewController: UITableViewController {
@@ -37,7 +38,9 @@ class TableViewController: UITableViewController {
                 
                 if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
                     self.arrEpisodes = episodesData as! [[String:AnyObject]]
-                    print(self.arrEpisodes)
+//                    print(episodesData)
+//                    print("ZZZ")
+//                    print(self.arrEpisodes)
                 }
                 if self.arrEpisodes.count > 0 {
                     self.tblEpisodes.reloadData()
@@ -65,12 +68,12 @@ class TableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.arrEpisodes.count
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,10 +83,16 @@ class TableViewController: UITableViewController {
         player?.play()
     }
     
+    func changePlayingEpisode(episodeId:String) {
+        let urlString = "https://api.spreaker.com/v2/episodes/" + episodeId + "/play"
+        let audioUrl = URL(string: urlString)
+        let mPlayerItem = AVPlayerItem(url: audioUrl!)
+        player?.replaceCurrentItem(with: mPlayerItem)
+    }
+    
     func player_setup(url:URL) {
         let playerItem:AVPlayerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: playerItem)
-        
         let playerLayer=AVPlayerLayer(player: player!)
         playerLayer.frame=CGRect(x:0, y:0, width:10, height:50)
         self.view.layer.addSublayer(playerLayer)
@@ -108,13 +117,42 @@ class TableViewController: UITableViewController {
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
         player?.seek(to: jump)
     }
-        
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        var dict = arrEpisodes[indexPath.row]
-        cell.textLabel?.text = dict["title"] as? String
-        cell.detailTextLabel?.text = dict["published_at"] as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath)
+        var singleEpisode = arrEpisodes[indexPath.row]
+        let mTitle = singleEpisode["title"] as? String
+        print("ZZ" + mTitle!)
+        cell.textLabel?.text = mTitle
+        cell.detailTextLabel?.text = singleEpisode["published_at"] as? String
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let playingVC = storyboard.instantiateViewController(withIdentifier: "PlayingViewController") as! PlayingViewController
+        
+        
+        //Image Cover
+        if let imgUrl = arrEpisodes[indexPath.row]["image_url"] {
+            print(imgUrl)
+            playingVC.imageUrl = imgUrl as! String
+        }
+        
+        
+        
+        //Descritption
+        if arrEpisodes[indexPath.row]["description"] as? String != nil {
+            playingVC.descriptionText.text = arrEpisodes[indexPath.row]["description"] as? String
+        }
+        //Player
+        playingVC.player = self.player
+        self.navigationController?.pushViewController(playingVC, animated: true)
+        print(arrEpisodes[indexPath.row]["episode_id"])
+//        print(arrEpisodes[indexPath.row]["episode_id"]?.isKind(of: ))
+//        String()
+//        changePlayingEpisode(episodeId: String(arrEpisodes[indexPath.row]["episode_id"] ))
+        
     }
     
 
