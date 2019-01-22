@@ -76,19 +76,30 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let id_episode = self.arrEpisodes[indexPath.row]["episode_id"] {
+            let real_id_episode = id_episode as? NSNumber
+            let id_episode_string = real_id_episode!.stringValue
+            if playerManager.shared.getPlayerIsSet() {
+                playerManager.shared.changePlayingEpisode(episodeId: id_episode_string)
+            } else {
+                playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view)
+            }
+        }
+        
         self.performSegue(withIdentifier: "toPlayingVC", sender: self)
     }
     
     @IBAction func rewind_action(_ sender: Any) {
+        playerManager.shared.rewind()
     }
     
     @IBAction func play_action(_ sender: Any) {
+        playerManager.shared.play()
     }
     
     @IBAction func foward_action(_ sender: Any) {
+        playerManager.shared.foward()
     }
     
     /*
