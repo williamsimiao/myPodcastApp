@@ -56,9 +56,11 @@ class playerManager {
     }
     
     func foward() {
-        let currentTime = player?.currentItem?.currentTime()
-        let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
-        self.player?.seek(to: jump)
+        if playerManager.shared.getIsPlaying() {
+            let currentTime = player?.currentItem?.currentTime()
+            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
+            self.player?.seek(to: jump)
+        }
     }
     
     func play() {
@@ -71,8 +73,10 @@ class playerManager {
     }
     
     func rewind() {
-        let currentTime = self.player?.currentItem?.currentTime()
-        let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(valor), preferredTimescale: currentTime!.timescale)
-        self.player?.seek(to: jump)
+        if playerManager.shared.getIsPlaying() {
+            let currentTime = self.player?.currentItem?.currentTime()
+            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(valor), preferredTimescale: currentTime!.timescale)
+            self.player?.seek(to: jump)
+        }
     }
 }

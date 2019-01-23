@@ -191,6 +191,17 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func play_action(_ sender: Any) {
+//        switch playerManager.shared.getIsPlaying() {
+//        case true:
+//            if let pauseImg = UIImage(named: "pause_36") {
+//                tabbar_play_button.setBackgroundImage(pauseImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
+//            }
+//        default:
+//            if let playImg = UIImage(named: "play_36") {
+//                tabbar_play_button.setBackgroundImage(playImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
+//            }
+//        }
+        
         playerManager.shared.play()
     }
     

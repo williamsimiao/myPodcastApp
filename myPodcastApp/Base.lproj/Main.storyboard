@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u0p-Ns-hfK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="666"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" rowHeight="70" id="AMh-x0-17R" customClass="episodeCell" customModule="myPodcastApp" customModuleProvider="target">
@@ -70,21 +70,21 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCX-qA-swx">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="754" width="414" height="108"/>
                                 <items>
-                                    <barButtonItem systemItem="rewind" id="waK-mV-o2o">
+                                    <barButtonItem image="replay_36" id="waK-mV-o2o">
                                         <connections>
                                             <action selector="rewind_action:" destination="nRV-TF-EUh" id="cBN-FV-YD8"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="i75-ZQ-1KJ"/>
-                                    <barButtonItem systemItem="play" id="wh3-LD-wON">
+                                    <barButtonItem image="play_36" id="wh3-LD-wON">
                                         <connections>
                                             <action selector="play_action:" destination="nRV-TF-EUh" id="ptz-cg-bq2"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DIU-Af-X1j"/>
-                                    <barButtonItem systemItem="fastForward" id="fJy-cv-Iol">
+                                    <barButtonItem image="forward_36" id="fJy-cv-Iol">
                                         <connections>
                                             <action selector="foward_action:" destination="nRV-TF-EUh" id="gT2-Mm-OWk"/>
                                         </connections>
@@ -222,8 +222,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="forward_36" width="108" height="108"/>
         <image name="forward_48" width="144" height="144"/>
+        <image name="play_36" width="108" height="108"/>
         <image name="play_48" width="144" height="144"/>
+        <image name="replay_36" width="108" height="108"/>
         <image name="replay_48" width="144" height="144"/>
     </resources>
 </document>
