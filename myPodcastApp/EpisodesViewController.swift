@@ -39,6 +39,16 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
             self.tableView.rowHeight = CGFloat(70)
+            
+            if playerManager.shared.getIsPlaying() {
+                let pauseButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.pause, target: self, action: #selector(EpisodesViewController.play_action(_:)))
+                
+                self.tabbar_play_button = pauseButton
+            }
+            else {
+                let playButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.play, target: self, action: #selector(EpisodesViewController.play_action(_:)))
+                self.tabbar_play_button = playButton
+            }
         }
         
         //Show data
@@ -122,17 +132,24 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
             let audioUrl = getUrl(from: id_episode_string)
             let myAsset = AVAsset(url: audioUrl)
             let playerItem = AVPlayerItem(asset: myAsset)
-            //quando o AVPlayerItem.status mudar ira executar
-            
-            playerItem.addObserver(self,
-                                   forKeyPath: #keyPath(AVPlayerItem.status),
-                                   options: [.old, .new],
-                                   context: &self.playerItemContext)
-            
-            if playerManager.shared.getPlayerIsSet() {
-                playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
-            } else {
-                playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
+            if id_episode_string != playerManager.shared.currentEpisodeId {
+                let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! episodeCell
+                
+                selectedCell.activity_indicator.startAnimating()
+                
+                playerItem.addObserver(self,
+                                       forKeyPath: #keyPath(AVPlayerItem.status),
+                                       options: [.old, .new],
+                                       context: &self.playerItemContext)
+                
+                if playerManager.shared.getPlayerIsSet() {
+                    playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
+                } else {
+                    playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
+                }
+            }
+            else {
+                self.performSegue(withIdentifier: "toPlayingVC", sender: self)
             }
         }
     }
