@@ -30,11 +30,7 @@ class playerManager {
     }
     
     func getIsPlaying() -> Bool {
-        if self.player?.rate != 0 {
-            return true
-        } else {
-            return false
-        }
+        return playerManager.shared.player?.timeControlStatus == AVPlayer.TimeControlStatus.playing
     }
     
     func player_setup(episodeId:String, motherView:UIView, mPlayerItem:AVPlayerItem) {
@@ -66,10 +62,11 @@ class playerManager {
     }
     
     func play() {
-        if self.player?.rate == 0 {
-            self.player?.play()
-        } else {
+        if getIsPlaying() {
             self.player?.pause()
+        }
+        else {
+            self.player?.play()
         }
     }
     

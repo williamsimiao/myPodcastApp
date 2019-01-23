@@ -30,6 +30,7 @@ class PlayingViewController: UIViewController {
             }
         }
         self.descriptionText.isEditable = false
+        
         if playerManager.shared.getIsPlaying() {
             if let pauseImg = UIImage(named: "pause_48") {
                 playButton.setImage(pauseImg, for: UIControl.State.normal)
@@ -37,6 +38,14 @@ class PlayingViewController: UIViewController {
         } else {
             if let playImg = UIImage(named: "play_48") {
                 playButton.setImage(playImg, for: UIControl.State.normal)
+            }
+        }
+        DispatchQueue.global(qos: .background).async {
+            while playerManager.shared.player?.rate == 0 {}
+            DispatchQueue.main.async {
+                if let pauseImg = UIImage(named: "pause_48") {
+                    self.playButton.setImage(pauseImg, for: UIControl.State.normal)
+                }
             }
         }
 
@@ -49,12 +58,13 @@ class PlayingViewController: UIViewController {
     @IBAction func play_action(_ sender: Any) {
         switch playerManager.shared.getIsPlaying() {
         case true:
-            if let pauseImg = UIImage(named: "pause_48") {
-                playButton.setImage(pauseImg, for: UIControl.State.normal)
-            }
-        default:
             if let playImg = UIImage(named: "play_48") {
                 playButton.setImage(playImg, for: UIControl.State.normal)
+            }
+            
+        default:
+            if let pauseImg = UIImage(named: "pause_48") {
+                playButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
         playerManager.shared.play()
