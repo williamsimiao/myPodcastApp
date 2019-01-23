@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="opC-0i-T5w">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,36 +15,43 @@
             <objects>
                 <viewController storyboardIdentifier="EpisodesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nRV-TF-EUh" customClass="EpisodesViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DIB-DO-Oth">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u0p-Ns-hfK">
-                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" textLabel="cxb-7t-EFn" detailTextLabel="eCb-fA-gkb" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="AMh-x0-17R">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="55"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" textLabel="cxb-7t-EFn" detailTextLabel="eCb-fA-gkb" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="AMh-x0-17R" customClass="episodeCell" customModule="myPodcastApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AMh-x0-17R" id="Llz-bs-eZC">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="54.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cxb-7t-EFn">
-                                                    <rect key="frame" x="15" y="10" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="20.000000000000004" y="8.9999999999999982" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eCb-fA-gkb">
-                                                    <rect key="frame" x="15" y="30.5" width="44" height="14.5"/>
+                                                    <rect key="frame" x="19.999999999999996" y="30.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s8X-fQ-xX2">
+                                                    <rect key="frame" x="370" y="17" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activity_indicator" destination="s8X-fQ-xX2" id="J1h-SD-IAn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -53,7 +60,7 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCX-qA-swx">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem systemItem="rewind" id="waK-mV-o2o">
                                         <connections>
@@ -89,6 +96,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0gl-3A-QM9"/>
                     <connections>
+                        <outlet property="tabbar_play_button" destination="wh3-LD-wON" id="Xrb-As-F8c"/>
                         <outlet property="tableView" destination="u0p-Ns-hfK" id="joc-tv-kRj"/>
                         <segue destination="ZsO-z3-BSc" kind="show" identifier="toPlayingVC" id="Ylj-Nn-148"/>
                     </connections>
@@ -101,12 +109,12 @@
         <scene sceneID="MMN-bT-9cT">
             <objects>
                 <viewController storyboardIdentifier="PlayingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZsO-z3-BSc" customClass="PlayingViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="iqP-FA-CB9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <view key="view" contentMode="scaleToFill" id="iqP-FA-CB9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fBS-yH-xGc">
-                                <rect key="frame" x="43" y="567" width="234" height="0.0"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fBS-yH-xGc">
+                                <rect key="frame" x="43" y="591" width="328" height="102"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="lbM-um-fdU"/>
@@ -114,11 +122,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-F5-FO0" userLabel="play">
-                                <rect key="frame" x="124" y="407" width="72" height="72"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-F5-FO0" userLabel="play">
+                                <rect key="frame" x="171" y="701" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="XW1-7u-22R"/>
-                                    <constraint firstAttribute="width" constant="72" id="hdA-vt-PXS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="2KE-pj-YKe"/>
                                     <constraint firstAttribute="width" secondItem="wDY-F5-FO0" secondAttribute="height" multiplier="1:1" id="uU0-E6-mYD"/>
                                 </constraints>
                                 <state key="normal" title="Play" image="play_48"/>
@@ -126,8 +133,8 @@
                                     <action selector="play_action:" destination="ZsO-z3-BSc" eventType="touchUpInside" id="uP7-Jl-trz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-TG-EAd" userLabel="foward">
-                                <rect key="frame" x="205" y="407" width="72" height="72"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-TG-EAd" userLabel="foward">
+                                <rect key="frame" x="299" y="701" width="72" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="SfJ-VA-xc6"/>
                                     <constraint firstAttribute="width" secondItem="PnM-TG-EAd" secondAttribute="height" multiplier="1:1" id="aTL-0h-odE"/>
@@ -137,8 +144,8 @@
                                     <action selector="foward_action:" destination="ZsO-z3-BSc" eventType="touchUpInside" id="O64-0T-BFY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2A-A7-T9R" userLabel="back">
-                                <rect key="frame" x="43" y="407" width="72" height="72"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2A-A7-T9R" userLabel="back">
+                                <rect key="frame" x="43" y="701" width="72" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="L2A-A7-T9R" secondAttribute="height" multiplier="1:1" id="05t-mS-8K9"/>
                                     <constraint firstAttribute="height" constant="72" id="5gA-WB-XSN"/>
@@ -149,8 +156,8 @@
                                     <action selector="back_action:" destination="ZsO-z3-BSc" eventType="touchUpInside" id="OEA-qa-iRN"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEZ-hm-3ad">
-                                <rect key="frame" x="52" y="113" width="216" height="216"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEZ-hm-3ad">
+                                <rect key="frame" x="99" y="211" width="216" height="205"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hEZ-hm-3ad" secondAttribute="height" multiplier="1:1" id="Rk7-OZ-P2F"/>
                                 </constraints>
@@ -178,6 +185,7 @@
                     <connections>
                         <outlet property="coverImg" destination="hEZ-hm-3ad" id="cE5-3M-Wfe"/>
                         <outlet property="descriptionText" destination="fBS-yH-xGc" id="owd-Pb-aPj"/>
+                        <outlet property="playButton" destination="wDY-F5-FO0" id="zZU-Wh-DY9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ3-c1-Qjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,7 +198,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="opC-0i-T5w" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ke-8n-ONc">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -204,8 +212,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="forward_48" width="96" height="96"/>
-        <image name="play_48" width="96" height="96"/>
-        <image name="replay_48" width="96" height="96"/>
+        <image name="forward_48" width="144" height="144"/>
+        <image name="play_48" width="144" height="144"/>
+        <image name="replay_48" width="144" height="144"/>
     </resources>
 </document>

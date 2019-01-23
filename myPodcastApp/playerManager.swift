@@ -15,38 +15,47 @@ class playerManager {
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     let valor = 5
+    var currentEpisodeId:String?
     private var playerIsSet = false
     static let shared = playerManager()
+    let requiredAssetKeys = [
+        "playable",
+        "hasProtectedContent"
+    ]
     
     private init() {}
-    
-    func getUrl(from episodeId:String) -> URL{
-        let urlString = "https://api.spreaker.com/v2/episodes/" + episodeId + "/play"
-        print(urlString)
-//        return URL(string: "https://s3.amazonaws.com/kargopolov/kukushka.mp3")!
-        return URL(string: urlString)!
-    }
     
     func getPlayerIsSet() -> Bool{
         return self.playerIsSet
     }
     
-    func player_setup(episodeId:String, motherView:UIView) {
+    func getIsPlaying() -> Bool {
+        if self.player?.rate != 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func player_setup(episodeId:String, motherView:UIView, mPlayerItem:AVPlayerItem) {
+        self.currentEpisodeId = episodeId
         self.playerIsSet = true
-        let audioUrl = getUrl(from: episodeId)
-        let playerItem:AVPlayerItem = AVPlayerItem(url: audioUrl)
-        player = AVPlayer(playerItem: playerItem)
+        
+        self.player = AVPlayer(playerItem: mPlayerItem)
         let playerLayer=AVPlayerLayer(player: player!)
         playerLayer.frame=CGRect(x:0, y:0, width:10, height:50)
         motherView.layer.addSublayer(playerLayer)
+        
         self.player?.play()
     }
     
-    func changePlayingEpisode(episodeId:String) {
-        self.player?.pause()
-        let audioUrl = getUrl(from: episodeId)
-        let mPlayerItem = AVPlayerItem(url: audioUrl)
-        self.player?.replaceCurrentItem(with: mPlayerItem)
+    func changePlayingEpisode(episodeId:String, mPlayerItem:AVPlayerItem) {
+        if self.currentEpisodeId != episodeId {
+            self.player?.pause()
+            self.currentEpisodeId = episodeId
+            
+            self.player?.replaceCurrentItem(with: mPlayerItem)
+        }
     }
     
     func foward() {

@@ -15,11 +15,15 @@ import SwiftyJSON
 
 class EpisodesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     let valor = 5
     var arrEpisodes = [[String:AnyObject]]()
     var dictShow = [String:AnyObject]()
+    private var playerItemContext = 0
+
+    @IBOutlet weak var tabbar_play_button: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,21 +77,69 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 playingVC?.descriptionText.text = episodeDescription as? String
             }
         }
-        
+    }
+    
+    func getUrl(from episodeId:String) -> URL{
+        let urlString = "https://api.spreaker.com/v2/episodes/" + episodeId + "/play"
+        //        let urlString = "https://api.spreaker.com/download/episode/16767333/t2021_smart_money_joao_kepler.mp3"
+        print(urlString)
+        return URL(string: urlString)!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let id_episode = self.arrEpisodes[indexPath.row]["episode_id"] {
+            //Pegando o id do episode
             let real_id_episode = id_episode as? NSNumber
             let id_episode_string = real_id_episode!.stringValue
+            
+            let audioUrl = getUrl(from: id_episode_string)
+            let myAsset = AVAsset(url: audioUrl)
+            let playerItem = AVPlayerItem(asset: myAsset)
+            //quando o AVPlayerItem.status mudar ira executar
+            
+            playerItem.addObserver(self,
+                                   forKeyPath: #keyPath(AVPlayerItem.status),
+                                   options: [.old, .new],
+                                   context: &self.playerItemContext)
+            
             if playerManager.shared.getPlayerIsSet() {
-                playerManager.shared.changePlayingEpisode(episodeId: id_episode_string)
+                playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
             } else {
-                playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view)
+                playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
             }
         }
-        
-        self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard context == &playerItemContext else {
+            super.observeValue(forKeyPath: keyPath,
+                               of: object,
+                               change: change,
+                               context: context)
+            return
+        }
+        if keyPath == #keyPath(AVPlayerItem.status) {
+            let status: AVPlayerItem.Status
+            if let statusNumber = change?[.newKey] as? NSNumber {
+                status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
+            } else {
+                status = .unknown
+            }
+            
+            // Switch over status value
+            switch status {
+            case .readyToPlay:
+                
+                let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! episodeCell
+                selectedCell.activity_indicator.stopAnimating()
+                self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+            case .failed:
+                let alert = UIAlertController(title: "Erro", message: "Não foi possivel tocar o episódio", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            default: break
+            }
+        }
     }
     
     @IBAction func rewind_action(_ sender: Any) {

@@ -14,6 +14,7 @@ import AlamofireImage
 class PlayingViewController: UIViewController {
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var coverImg: UIImageView!
+    @IBOutlet weak var playButton: UIButton!
     var imageUrl = String()
     var player:AVPlayer?
     let valor = 5
@@ -28,8 +29,8 @@ class PlayingViewController: UIViewController {
                 }
             }
         }
+        self.descriptionText.isEditable = false
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func back_action(_ sender: Any) {
@@ -37,6 +38,16 @@ class PlayingViewController: UIViewController {
     }
     
     @IBAction func play_action(_ sender: Any) {
+        switch playerManager.shared.getIsPlaying() {
+        case true:
+            if let pauseImg = UIImage(named: "pause_48") {
+                playButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        default:
+            if let playImg = UIImage(named: "play_48") {
+                playButton.setImage(playImg, for: UIControl.State.normal)
+            }
+        }
         playerManager.shared.play()
     }
     
