@@ -30,6 +30,15 @@ class PlayingViewController: UIViewController {
             }
         }
         self.descriptionText.isEditable = false
+        if playerManager.shared.getIsPlaying() {
+            if let pauseImg = UIImage(named: "pause_48") {
+                playButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        } else {
+            if let playImg = UIImage(named: "play_48") {
+                playButton.setImage(playImg, for: UIControl.State.normal)
+            }
+        }
 
     }
     
