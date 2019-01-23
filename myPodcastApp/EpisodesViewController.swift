@@ -38,6 +38,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.tableView.reloadData()
                 }
             }
+            self.tableView.rowHeight = CGFloat(70)
         }
         
         //Show data
@@ -59,9 +60,35 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath)
         var singleEpisode = arrEpisodes[indexPath.row]
+        
+        //Title
         let mTitle = singleEpisode["title"] as? String
-        cell.textLabel?.text = mTitle
-        cell.detailTextLabel?.text = singleEpisode["published_at"] as? String
+        let customCell = cell as! episodeCell
+        customCell.titulo_label.text = mTitle
+        
+        //Date of publication
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+        
+        if let date = dateFormatterGet.date(from: (singleEpisode["published_at"] as? String)!) {
+            print("DD")
+            let real_date_string = dateFormatterPrint.string(from: date)
+            print(real_date_string)
+            //Month
+            let endOfmonth = real_date_string.firstIndex(of: " ")
+            customCell.mes_label.text = String(real_date_string[...endOfmonth!])
+            //Day
+            let myCalendar = Calendar(identifier: .gregorian)
+            let monthDay = myCalendar.component(.day, from: date)
+            customCell.dia_label.text = String(monthDay)
+        }
+        
+        
+//        cell.textLabel?.text = mTitle
+//        cell.detailTextLabel?.text = singleEpisode["published_at"] as? String
         return cell
     }
     

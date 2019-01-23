@@ -55,6 +55,7 @@ class playerManager {
             self.currentEpisodeId = episodeId
             
             self.player?.replaceCurrentItem(with: mPlayerItem)
+            self.player?.play()
         }
     }
     

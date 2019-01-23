@@ -10,6 +10,9 @@ import UIKit
 
 class episodeCell: UITableViewCell {
 
+    @IBOutlet weak var titulo_label: UILabel!
+    @IBOutlet weak var dia_label: UILabel!
+    @IBOutlet weak var mes_label: UILabel!
     @IBOutlet weak var activity_indicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
