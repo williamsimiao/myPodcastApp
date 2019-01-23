@@ -33,23 +33,15 @@ class PlayingViewController: UIViewController {
     }
     
     @IBAction func back_action(_ sender: Any) {
-        let currentTime = player?.currentItem?.currentTime()
-        let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(valor), preferredTimescale: currentTime!.timescale)
-        player?.seek(to: jump)
+        playerManager.shared.rewind()
     }
     
     @IBAction func play_action(_ sender: Any) {
-        if player?.rate == 0 {
-            player?.play()
-        } else {
-            player?.pause()
-        }
+        playerManager.shared.play()
     }
     
     @IBAction func foward_action(_ sender: Any) {
-        let currentTime = player?.currentItem?.currentTime()
-        let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
-        player?.seek(to: jump)
+        playerManager.shared.foward()
     }
     
 

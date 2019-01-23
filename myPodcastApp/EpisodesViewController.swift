@@ -65,7 +65,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         let playingVC = segue.destination as? PlayingViewController
         if let indexPath = self.tableView.indexPathForSelectedRow {
             
-            if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
+            if let imgUrl = self.arrEpisodes[indexPath.row]["image_original_url"] {
                 playingVC?.imageUrl = imgUrl as! String
             }
             

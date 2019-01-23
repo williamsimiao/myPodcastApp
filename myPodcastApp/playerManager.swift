@@ -43,28 +43,29 @@ class playerManager {
     }
     
     func changePlayingEpisode(episodeId:String) {
+        self.player?.pause()
         let audioUrl = getUrl(from: episodeId)
         let mPlayerItem = AVPlayerItem(url: audioUrl)
-        player?.replaceCurrentItem(with: mPlayerItem)
+        self.player?.replaceCurrentItem(with: mPlayerItem)
     }
     
     func foward() {
         let currentTime = player?.currentItem?.currentTime()
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(valor), preferredTimescale: currentTime!.timescale)
-        player?.seek(to: jump)
+        self.player?.seek(to: jump)
     }
     
     func play() {
-        if player?.rate == 0 {
-            player?.play()
+        if self.player?.rate == 0 {
+            self.player?.play()
         } else {
-            player?.pause()
+            self.player?.pause()
         }
     }
     
     func rewind() {
-        let currentTime = player?.currentItem?.currentTime()
+        let currentTime = self.player?.currentItem?.currentTime()
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(valor), preferredTimescale: currentTime!.timescale)
-        player?.seek(to: jump)
+        self.player?.seek(to: jump)
     }
 }
