@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 import SwiftyJSON
+import AVFoundation
 
 class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -31,6 +32,9 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
                     self.CollectionView.reloadData()
                 }
             }
+        }
+        if playerManager.shared.getIsPlaying() {
+            print("EXISTE")
         }
     }
     

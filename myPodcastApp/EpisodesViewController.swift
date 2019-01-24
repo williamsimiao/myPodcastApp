@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import Network
 import Alamofire
 import AlamofireImage
 import SwiftyJSON
@@ -16,7 +15,6 @@ import SwiftyJSON
 class EpisodesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    var player:AVPlayer?
     var playerItem:AVPlayerItem?
     let valor = 5
     var arrEpisodes = [[String:AnyObject]]()
@@ -139,15 +137,21 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 selectedCell.activity_indicator.startAnimating()
                 
-                playerItem.addObserver(self,
-                                       forKeyPath: #keyPath(AVPlayerItem.status),
-                                       options: [.old, .new],
-                                       context: &self.playerItemContext)
+//                playerItem.addObserver(self,
+//                                       forKeyPath: #keyPath(AVPlayerItem.status),
+//                                       options: [.old, .new],
+//                                       context: &self.playerItemContext)
                 
                 if playerManager.shared.getPlayerIsSet() {
                     playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
                 } else {
                     playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
+                }
+                DispatchQueue.global(qos: .background).async {
+                    while playerManager.shared.playerItem?.status != AVPlayerItem.Status.readyToPlay {}
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+                    }
                 }
             }
             else {
