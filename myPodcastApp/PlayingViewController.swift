@@ -21,14 +21,21 @@ class PlayingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request(imageUrl).responseImage { (response) in
-            print(response)
-            if let image = response.result.value {
-                DispatchQueue.main.async {
-                    self.coverImg.image = image
-                }
-            }
-        }
+
+        let url = URL(string:self.imageUrl)!
+        let placeholderImage = UIImage(named: "cover_placeholder")!
+        
+        let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+            size: self.coverImg.frame.size,
+            radius: 20.0
+        )
+        
+        self.coverImg.af_setImage(
+            withURL: url,
+            placeholderImage: placeholderImage,
+            filter: filter
+        )
+        
         self.descriptionText.isEditable = false
         
         if playerManager.shared.getIsPlaying() {
