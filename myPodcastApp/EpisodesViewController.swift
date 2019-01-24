@@ -27,7 +27,13 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request("https://api.spreaker.com/v2/shows/2885428/episodes").responseJSON { (responseData) -> Void in
+        let showId = self.dictShow["show_id"]
+        let real_id_show = showId as? NSNumber
+        let id_show_string = real_id_show!.stringValue
+
+        let showUrl = "https://api.spreaker.com/v2/shows/" + id_show_string + "/episodes"
+        
+        Alamofire.request(showUrl).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 
@@ -50,17 +56,17 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.tabbar_play_button = playButton
             }
         }
-        
+        self.navigationItem.title = self.dictShow["title"] as? String
+
         //Show data
-        Alamofire.request("https://api.spreaker.com/v2/shows/2885428").responseJSON { (responseData) -> Void in
-            if((responseData.result.value) != nil) {
-                let swiftyJsonVar = JSON(responseData.result.value!)
-                if let showData = swiftyJsonVar["response"]["show"].dictionaryObject {
-                    self.dictShow = showData as [String:AnyObject]
-                    self.navigationItem.title = self.dictShow["title"] as? String
-                }
-            }
-        }
+//        Alamofire.request("https://api.spreaker.com/v2/shows/2885428").responseJSON { (responseData) -> Void in
+//            if((responseData.result.value) != nil) {
+//                let swiftyJsonVar = JSON(responseData.result.value!)
+//                if let showData = swiftyJsonVar["response"]["show"].dictionaryObject {
+//                    self.dictShow = showData as [String:AnyObject]
+//                }
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,9 +90,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
         
         if let date = dateFormatterGet.date(from: (singleEpisode["published_at"] as? String)!) {
-            print("DD")
             let real_date_string = dateFormatterPrint.string(from: date)
-            print(real_date_string)
             //Month
             let endOfmonth = real_date_string.firstIndex(of: " ")
             customCell.mes_label.text = String(real_date_string[...endOfmonth!])
@@ -106,7 +110,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         let playingVC = segue.destination as? PlayingViewController
         if let indexPath = self.tableView.indexPathForSelectedRow {
             
-            if let imgUrl = self.arrEpisodes[indexPath.row]["image_original_url"] {
+            if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
                 playingVC?.imageUrl = imgUrl as! String
             }
             
@@ -118,8 +122,6 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func getUrl(from episodeId:String) -> URL{
         let urlString = "https://api.spreaker.com/v2/episodes/" + episodeId + "/play"
-        //        let urlString = "https://api.spreaker.com/download/episode/16767333/t2021_smart_money_joao_kepler.mp3"
-        print(urlString)
         return URL(string: urlString)!
     }
     
