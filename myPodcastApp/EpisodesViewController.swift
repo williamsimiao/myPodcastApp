@@ -136,21 +136,37 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! episodeCell
                 
                 selectedCell.activity_indicator.startAnimating()
-                
-//                playerItem.addObserver(self,
-//                                       forKeyPath: #keyPath(AVPlayerItem.status),
-//                                       options: [.old, .new],
-//                                       context: &self.playerItemContext)
-                
                 if playerManager.shared.getPlayerIsSet() {
                     playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
                 } else {
                     playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
                 }
                 DispatchQueue.global(qos: .background).async {
-                    while playerManager.shared.playerItem?.status != AVPlayerItem.Status.readyToPlay {}
+                    while !playerManager.shared.getIsPlaying() {}
                     DispatchQueue.main.async {
+                        selectedCell.activity_indicator.stopAnimating()
                         self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                        let playingVC = storyboard.instantiateViewController(withIdentifier: "PlayingViewController") as? PlayingViewController
+//
+//                        if let indexPath = self.tableView.indexPathForSelectedRow {
+//
+//                            if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
+//                                playingVC?.imageUrl = imgUrl as! String
+//                            }
+//
+//                            if let episodeDescription = self.arrEpisodes[indexPath.row]["description"] {
+//                                playingVC?.descriptionText.text = episodeDescription as? String
+//                            }
+//                        }
+//
+//                        self.view.addSubview((playingVC?.view)!)
+//
+//
+//                        playingVC?.view.frame = CGRect(x:75, y:0, width:self.view.frame.size.width-75, height:self.view.frame.size.height)
+//                        playingVC?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//                        playingVC?.didMove(toParent: self)
                     }
                 }
             }
