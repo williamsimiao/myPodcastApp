@@ -44,21 +44,27 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.tableView.reloadData()
                 }
             }
-            self.tableView.rowHeight = CGFloat(70)
-            
-            self.setUpButtons()
         }
+        self.tableView.rowHeight = CGFloat(70)
         self.navigationItem.title = self.dictShow["title"] as? String
     }
     
-    func setUpButtons() {
+    override func viewWillAppear(_ animated: Bool) {
+        if playerManager.shared.currentEpisodeId != nil {
+            self.setUpMiniView()
+            self.miniView.isHidden = false
+        }
+    }
+    
+    func setUpMiniView() {
+        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniCoverImg)
         if playerManager.shared.getIsPlaying() {
-            if let pauseImg = UIImage(named: "pause_36") {
+            if let pauseImg = UIImage(named: "pauseBranco_36") {
                 self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
         else {
-            if let playImg = UIImage(named: "play_36") {
+            if let playImg = UIImage(named: "playBranco_36") {
                 self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
@@ -94,10 +100,6 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
             let monthDay = myCalendar.component(.day, from: date)
             customCell.dia_label.text = String(monthDay)
         }
-        
-        
-//        cell.textLabel?.text = mTitle
-//        cell.detailTextLabel?.text = singleEpisode["published_at"] as? String
         return cell
     }
     
@@ -106,6 +108,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         if let indexPath = self.tableView.indexPathForSelectedRow {
             
             if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
+                playerManager.shared.currentShowImageUrl = (imgUrl as! String)
                 playingVC?.imageUrl = imgUrl as! String
             }
             
@@ -143,27 +146,6 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                     DispatchQueue.main.async {
                         selectedCell.activity_indicator.stopAnimating()
                         self.performSegue(withIdentifier: "toPlayingVC", sender: self)
-//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                        let playingVC = storyboard.instantiateViewController(withIdentifier: "PlayingViewController") as? PlayingViewController
-//
-//                        if let indexPath = self.tableView.indexPathForSelectedRow {
-//
-//                            if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
-//                                playingVC?.imageUrl = imgUrl as! String
-//                            }
-//
-//                            if let episodeDescription = self.arrEpisodes[indexPath.row]["description"] {
-//                                playingVC?.descriptionText.text = episodeDescription as? String
-//                            }
-//                        }
-//
-//                        self.view.addSubview((playingVC?.view)!)
-//
-//
-//                        playingVC?.view.frame = CGRect(x:75, y:0, width:self.view.frame.size.width-75, height:self.view.frame.size.height)
-//                        playingVC?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//
-//                        playingVC?.didMove(toParent: self)
                     }
                 }
             }
@@ -173,50 +155,18 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard context == &playerItemContext else {
-            super.observeValue(forKeyPath: keyPath,
-                               of: object,
-                               change: change,
-                               context: context)
-            return
-        }
-        if keyPath == #keyPath(AVPlayerItem.status) {
-            let status: AVPlayerItem.Status
-            if let statusNumber = change?[.newKey] as? NSNumber {
-                status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
-            } else {
-                status = .unknown
+    @IBAction func miniPlayAction(_ sender: Any) {
+        switch playerManager.shared.getIsPlaying() {
+        case true:
+            if let playImg = UIImage(named: "playBranco_36") {
+                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
             }
             
-            // Switch over status value
-            switch status {
-            case .readyToPlay:
-                
-                let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! episodeCell
-                selectedCell.activity_indicator.stopAnimating()
-                self.performSegue(withIdentifier: "toPlayingVC", sender: self)
-            case .failed:
-                let alert = UIAlertController(title: "Erro", message: "Não foi possivel tocar o episódio", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true)
-            default: break
+        default:
+            if let pauseImg = UIImage(named: "pauseBranco_36") {
+                miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
-    }
-    
-    @IBAction func miniPlayAction(_ sender: Any) {
-        //        switch playerManager.shared.getIsPlaying() {
-        //        case true:
-        //            if let pauseImg = UIImage(named: "pause_36") {
-        //                tabbar_play_button.setBackgroundImage(pauseImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
-        //            }
-        //        default:
-        //            if let playImg = UIImage(named: "play_36") {
-        //                tabbar_play_button.setBackgroundImage(playImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
-        //            }
-        //        }
-        
         playerManager.shared.play()
 
     }

@@ -14,14 +14,17 @@ import AVFoundation
 
 class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let arrShowsId = ["2885428", "1503678", "1530166", "1615101", "1534748"]
     var arrShows = [[String:AnyObject]]()
     @IBOutlet weak var CollectionView: UICollectionView!
+    @IBOutlet weak var miniView: UIView!
+    @IBOutlet weak var miniCoverImg: UIImageView!
+    @IBOutlet weak var miniPlayButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for showId in arrShowsId {
+        let arrShowsId = Util.getPlist(withName: "ShowsIDs")
+        print(arrShowsId as Any)
+        for showId in arrShowsId! {
             let showUrl = "https://api.spreaker.com/v2/shows/" + showId
             Alamofire.request(showUrl).responseJSON { (responseData) in
                 let swiftyJsonVar = JSON(responseData.result.value!)
@@ -33,8 +36,31 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
                 }
             }
         }
+    }
+    
+    func miniViewTap() {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if playerManager.shared.currentEpisodeId != nil {
+            self.setUpMiniView()
+            self.miniView.isHidden = false
+        }
+    }
+    
+    func setUpMiniView() {
+        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniCoverImg)
+
         if playerManager.shared.getIsPlaying() {
-            print("EXISTE")
+            if let pauseImg = UIImage(named: "pauseBranco_36") {
+                self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        }
+        else {
+            if let playImg = UIImage(named: "playBranco_36") {
+                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
+            }
         }
     }
     
@@ -57,26 +83,35 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let episodesVC = segue.destination as! EpisodesViewController
-        if let indexPath = CollectionView.indexPathsForSelectedItems?.first {
-            episodesVC.dictShow = self.arrShows[indexPath.row]
+        if(segue.identifier == "toEpisodeVC") {
+            let episodesVC = segue.destination as! EpisodesViewController
+            if let indexPath = CollectionView.indexPathsForSelectedItems?.first {
+                episodesVC.dictShow = self.arrShows[indexPath.row]
+            }
         }
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toEpisodeVC", sender: self)
-        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toEpisodeVC", sender: self)
     }
-    */
+    
+    @IBAction func miniPlayButtonAction(_ sender: Any) {
+        switch playerManager.shared.getIsPlaying() {
+        case true:
+            if let playImg = UIImage(named: "playBranco_36") {
+                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
+            }
+            
+        default:
+            if let pauseImg = UIImage(named: "pauseBranco_36") {
+                self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        }
+        playerManager.shared.play()
+
+    }
+    @IBAction func addNewShowButton(_ sender: Any) {
+        
+    }
 
 }
