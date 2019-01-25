@@ -127,6 +127,13 @@
                                             <action selector="miniPlayAction:" destination="nRV-TF-EUh" eventType="touchUpInside" id="ef2-pq-ieL"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="All-yX-198">
+                                        <rect key="frame" x="113" y="31" width="190" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -141,6 +148,7 @@
                     <navigationItem key="navigationItem" id="0gl-3A-QM9"/>
                     <connections>
                         <outlet property="miniCoverImg" destination="niA-Aq-nUK" id="e3I-oe-BAn"/>
+                        <outlet property="miniLabel" destination="All-yX-198" id="Npe-NP-X7j"/>
                         <outlet property="miniPlayButton" destination="1mn-mX-ODe" id="CFx-4b-ewl"/>
                         <outlet property="miniView" destination="KIZ-Rm-6kk" id="SkB-36-grl"/>
                         <outlet property="tableView" destination="u0p-Ns-hfK" id="joc-tv-kRj"/>
@@ -300,6 +308,13 @@
                                             <action selector="miniPlayButtonAction:" destination="lWy-Eu-rt6" eventType="touchUpInside" id="T8d-54-lrT"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNo-qd-w2o">
+                                        <rect key="frame" x="113" y="31" width="190" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -318,6 +333,7 @@
                     <connections>
                         <outlet property="CollectionView" destination="R0r-SS-ehJ" id="Vmt-MU-duy"/>
                         <outlet property="miniCoverImg" destination="SIa-vx-6sB" id="i63-5T-WfS"/>
+                        <outlet property="miniLabel" destination="CNo-qd-w2o" id="deA-Ug-jji"/>
                         <outlet property="miniPlayButton" destination="dPb-am-00E" id="Voy-g4-jbO"/>
                         <outlet property="miniView" destination="ih0-zE-tAM" id="aMi-vw-Ypw"/>
                         <segue destination="nRV-TF-EUh" kind="show" identifier="toEpisodeVC" id="nAN-IK-cKb"/>

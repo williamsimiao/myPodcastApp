@@ -17,6 +17,7 @@ class playerManager {
     let valor = 5
     var currentEpisodeId:String?
     var currentShowImageUrl:String?
+    var currentEpisodeTitle:String?
     private var playerIsSet = false
     static let shared = playerManager()
     let requiredAssetKeys = [

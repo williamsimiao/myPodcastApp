@@ -19,6 +19,7 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var miniView: UIView!
     @IBOutlet weak var miniCoverImg: UIImageView!
     @IBOutlet weak var miniPlayButton: UIButton!
+    @IBOutlet weak var miniLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,8 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func setUpMiniView() {
         Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniCoverImg)
-
+        self.miniLabel.text = playerManager.shared.currentEpisodeTitle
+        
         if playerManager.shared.getIsPlaying() {
             if let pauseImg = UIImage(named: "pauseBranco_36") {
                 self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)

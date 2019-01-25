@@ -20,9 +20,10 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     var arrEpisodes = [[String:AnyObject]]()
     var dictShow = [String:AnyObject]()
     private var playerItemContext = 0
-
+    @IBOutlet weak var miniLabel: UILabel!
     @IBOutlet weak var miniCoverImg: UIImageView!
     @IBOutlet weak var miniPlayButton: UIButton!
+    
     @IBOutlet weak var miniView: UIView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -58,6 +59,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func setUpMiniView() {
         Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniCoverImg)
+        self.miniLabel.text = playerManager.shared.currentEpisodeTitle
         if playerManager.shared.getIsPlaying() {
             if let pauseImg = UIImage(named: "pauseBranco_36") {
                 self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
@@ -111,6 +113,10 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 playerManager.shared.currentShowImageUrl = (imgUrl as! String)
                 playingVC?.imageUrl = imgUrl as! String
             }
+            if let episodeTitle = self.arrEpisodes[indexPath.row]["title"] {
+                playerManager.shared.currentEpisodeTitle = episodeTitle as! String
+            }
+
             
             if let episodeDescription = self.arrEpisodes[indexPath.row]["description"] {
                 playingVC?.descriptionText.text = episodeDescription as? String
