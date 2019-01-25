@@ -39,10 +39,6 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func miniViewTap() {
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         if playerManager.shared.currentEpisodeId != nil {
             self.setUpMiniView()

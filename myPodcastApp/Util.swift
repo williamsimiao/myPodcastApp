@@ -38,6 +38,25 @@ class Util {
         return nil
     }
     
+    func write() {
+        let docsBaseURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let customPlistURL = docsBaseURL.appendingPathComponent("custom.plist")
+        print(customPlistURL.absoluteString)
+        let dic:[String:Any] = ["key":"val"]
+        // Swift Dictionary To Data.
+        do  {
+            let data = try PropertyListSerialization.data(fromPropertyList: dic, format: PropertyListSerialization.PropertyListFormat.binary, options: 0)
+            do {
+                try data.write(to: customPlistURL, options: .atomic)
+                print("Successfully write")
+            }catch (let err){
+                print(err.localizedDescription)
+            }
+        }catch (let err){
+            print(err.localizedDescription)
+        }
+    }
+    
 //    static func writeMyShowsToPlist(to path:String, array:[String]) {
 //        let encoder = PropertyListEncoder()
 //        encoder.outputFormat = .xml
