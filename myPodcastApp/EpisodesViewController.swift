@@ -141,19 +141,22 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
             if id_episode_string != playerManager.shared.currentEpisodeId {
                 let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as! episodeCell
                 
-                selectedCell.activity_indicator.startAnimating()
+//                selectedCell.activity_indicator.startAnimating()
                 if playerManager.shared.getPlayerIsSet() {
                     playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
                 } else {
                     playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
                 }
-                DispatchQueue(label: "WaitMP3").async {
-                    while !playerManager.shared.getIsPlaying() {}
-                    DispatchQueue.main.async {
-                        selectedCell.activity_indicator.stopAnimating()
-                        self.performSegue(withIdentifier: "toPlayingVC", sender: self)
-                    }
-                }
+//                DispatchQueue(label: "WaitMP3").async {
+//                    while !playerManager.shared.getIsPlaying() {}
+//                    DispatchQueue.main.async {
+//                        selectedCell.activity_indicator.stopAnimating()
+//                        self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+//                    }
+//                }
+                selectedCell.activity_indicator.stopAnimating()
+                self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+
             }
             else {
                 self.performSegue(withIdentifier: "toPlayingVC", sender: self)

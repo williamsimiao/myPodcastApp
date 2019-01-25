@@ -15,6 +15,8 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var fowardButton: UIButton!
     var imageUrl = String()
     var player:AVPlayer?
     let valor = 5
@@ -55,6 +57,18 @@ class PlayingViewController: UIViewController {
                 }
             }
         }
+        self.playButton.isEnabled = false
+        self.fowardButton.isEnabled = false
+        self.backButton.isEnabled = false
+        DispatchQueue(label: "WaitMP3").async {
+            while !playerManager.shared.getIsPlaying() {}
+            DispatchQueue.main.async {
+                self.playButton.isEnabled = true
+                self.fowardButton.isEnabled = true
+                self.backButton.isEnabled = true
+            }
+        }
+
 
     }
     

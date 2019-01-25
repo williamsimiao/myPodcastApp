@@ -238,8 +238,10 @@
                         <viewLayoutGuide key="safeArea" id="mRy-0p-aSi"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="L2A-A7-T9R" id="lC0-1B-zec"/>
                         <outlet property="coverImg" destination="hEZ-hm-3ad" id="cE5-3M-Wfe"/>
                         <outlet property="descriptionText" destination="fBS-yH-xGc" id="owd-Pb-aPj"/>
+                        <outlet property="fowardButton" destination="PnM-TG-EAd" id="be0-CR-oz3"/>
                         <outlet property="playButton" destination="wDY-F5-FO0" id="zZU-Wh-DY9"/>
                     </connections>
                 </viewController>
