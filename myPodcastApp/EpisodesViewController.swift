@@ -147,7 +147,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 } else {
                     playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
                 }
-                DispatchQueue.global(qos: .background).async {
+                DispatchQueue(label: "WaitMP3").async {
                     while !playerManager.shared.getIsPlaying() {}
                     DispatchQueue.main.async {
                         selectedCell.activity_indicator.stopAnimating()
