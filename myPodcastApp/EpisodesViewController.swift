@@ -21,7 +21,9 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     var dictShow = [String:AnyObject]()
     private var playerItemContext = 0
 
-    @IBOutlet weak var tabbar_play_button: UIBarButtonItem!
+    @IBOutlet weak var miniCoverImg: UIImageView!
+    @IBOutlet weak var miniPlayButton: UIButton!
+    @IBOutlet weak var miniView: UIView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,27 +46,22 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             self.tableView.rowHeight = CGFloat(70)
             
-            if playerManager.shared.getIsPlaying() {
-                let pauseButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.pause, target: self, action: #selector(EpisodesViewController.play_action(_:)))
-                
-                self.tabbar_play_button = pauseButton
-            }
-            else {
-                let playButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.play, target: self, action: #selector(EpisodesViewController.play_action(_:)))
-                self.tabbar_play_button = playButton
-            }
+            self.setUpButtons()
         }
         self.navigationItem.title = self.dictShow["title"] as? String
-
-        //Show data
-//        Alamofire.request("https://api.spreaker.com/v2/shows/2885428").responseJSON { (responseData) -> Void in
-//            if((responseData.result.value) != nil) {
-//                let swiftyJsonVar = JSON(responseData.result.value!)
-//                if let showData = swiftyJsonVar["response"]["show"].dictionaryObject {
-//                    self.dictShow = showData as [String:AnyObject]
-//                }
-//            }
-//        }
+    }
+    
+    func setUpButtons() {
+        if playerManager.shared.getIsPlaying() {
+            if let pauseImg = UIImage(named: "pause_36") {
+                self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        }
+        else {
+            if let playImg = UIImage(named: "play_36") {
+                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -208,37 +205,19 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    @IBAction func rewind_action(_ sender: Any) {
-        playerManager.shared.rewind()
-    }
-    
-    @IBAction func play_action(_ sender: Any) {
-//        switch playerManager.shared.getIsPlaying() {
-//        case true:
-//            if let pauseImg = UIImage(named: "pause_36") {
-//                tabbar_play_button.setBackgroundImage(pauseImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
-//            }
-//        default:
-//            if let playImg = UIImage(named: "play_36") {
-//                tabbar_play_button.setBackgroundImage(playImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
-//            }
-//        }
+    @IBAction func miniPlayAction(_ sender: Any) {
+        //        switch playerManager.shared.getIsPlaying() {
+        //        case true:
+        //            if let pauseImg = UIImage(named: "pause_36") {
+        //                tabbar_play_button.setBackgroundImage(pauseImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
+        //            }
+        //        default:
+        //            if let playImg = UIImage(named: "play_36") {
+        //                tabbar_play_button.setBackgroundImage(playImg, for: UIControl.State.normal, barMetrics: UIBarMetrics)
+        //            }
+        //        }
         
         playerManager.shared.play()
-    }
-    
-    @IBAction func foward_action(_ sender: Any) {
-        playerManager.shared.foward()
-    }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

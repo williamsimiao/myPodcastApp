@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BD76C165B397350E0BC0012 /* libPods-myPodcastApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */; };
+		3D415D3721FB452800A8FE31 /* miniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3621FB452800A8FE31 /* miniViewController.swift */; };
 		3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79640E21F7560E00E171DC /* PlayingViewController.swift */; };
 		3D79641121F7992C00E171DC /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641021F7992C00E171DC /* EpisodesViewController.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.release.xcconfig"; sourceTree = "<group>"; };
+		3D415D3621FB452800A8FE31 /* miniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = miniViewController.swift; sourceTree = "<group>"; };
 		3D79640E21F7560E00E171DC /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
 		3D79641021F7992C00E171DC /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				3D9514BF21F5EDA7004960CE /* AppDelegate.swift */,
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
+				3D415D3621FB452800A8FE31 /* miniViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D79641421F8AE6500E171DC /* episodeCell.swift */,
 				3D79641021F7992C00E171DC /* EpisodesViewController.swift */,
@@ -207,6 +210,7 @@
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
 				3D79641D21FA2EB500E171DC /* ShowsViewController.swift in Sources */,
+				3D415D3721FB452800A8FE31 /* miniViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
