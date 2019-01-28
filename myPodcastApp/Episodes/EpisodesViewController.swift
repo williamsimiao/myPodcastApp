@@ -154,7 +154,6 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
 //                        self.performSegue(withIdentifier: "toPlayingVC", sender: self)
 //                    }
 //                }
-                selectedCell.activity_indicator.stopAnimating()
                 self.performSegue(withIdentifier: "toPlayingVC", sender: self)
 
             }

@@ -12,7 +12,7 @@ import AlamofireImage
 import SwiftyJSON
 import AVFoundation
 
-class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var arrShows = [[String:AnyObject]]()
     @IBOutlet weak var CollectionView: UICollectionView!
@@ -108,6 +108,17 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
         playerManager.shared.play()
 
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        print("largura: \((self.view.frame.width) / 3.0)")
+        print("collection width: \(collectionView.frame.width/3.0)")
+        return CGSize(width: (self.view.frame.width - 4) / 3.0 , height: (self.view.frame.width - 4) / 3.0)
+    }
+    
+    
     @IBAction func addNewShowButton(_ sender: Any) {
         
     }

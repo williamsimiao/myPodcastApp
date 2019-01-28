@@ -13,11 +13,8 @@ class episodeCell: UITableViewCell {
     @IBOutlet weak var titulo_label: UILabel!
     @IBOutlet weak var dia_label: UILabel!
     @IBOutlet weak var mes_label: UILabel!
-    @IBOutlet weak var activity_indicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.activity_indicator.stopAnimating()
-        self.activity_indicator.hidesWhenStopped = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
