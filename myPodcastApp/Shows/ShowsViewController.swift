@@ -113,8 +113,6 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        print("largura: \((self.view.frame.width) / 3.0)")
-        print("collection width: \(collectionView.frame.width/3.0)")
         return CGSize(width: (self.view.frame.width - 4) / 3.0 , height: (self.view.frame.width - 4) / 3.0)
     }
     
