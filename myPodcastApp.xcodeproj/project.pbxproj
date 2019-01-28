@@ -68,6 +68,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3D72AAEE21FF41D0000B6E40 /* Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				3D79641421F8AE6500E171DC /* episodeCell.swift */,
+				3D79641021F7992C00E171DC /* EpisodesViewController.swift */,
+			);
+			path = Episodes;
+			sourceTree = "<group>";
+		};
+		3D72AAEF21FF41E1000B6E40 /* Shows */ = {
+			isa = PBXGroup;
+			children = (
+				3D79641C21FA2EB500E171DC /* ShowsViewController.swift */,
+				3D79641E21FA393A00E171DC /* ShowCollectionCell.swift */,
+			);
+			path = Shows;
+			sourceTree = "<group>";
+		};
+		3D72AAF021FF41EC000B6E40 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3D415D3C21FB7E7200A8FE31 /* SearchViewController.swift */,
+				3D415D4221FB9A6D00A8FE31 /* SearchTableViewCell.swift */,
+				3D415D4621FBB0E100A8FE31 /* SearchCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		3D9514B321F5EDA7004960CE = {
 			isa = PBXGroup;
 			children = (
@@ -93,15 +121,11 @@
 				3D415D4021FB88B700A8FE31 /* ShowsIDs.plist */,
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
-				3D79641421F8AE6500E171DC /* episodeCell.swift */,
-				3D79641021F7992C00E171DC /* EpisodesViewController.swift */,
 				3D79640E21F7560E00E171DC /* PlayingViewController.swift */,
 				3D415D3E21FB84A500A8FE31 /* Util.swift */,
-				3D79641C21FA2EB500E171DC /* ShowsViewController.swift */,
-				3D79641E21FA393A00E171DC /* ShowCollectionCell.swift */,
-				3D415D3C21FB7E7200A8FE31 /* SearchViewController.swift */,
-				3D415D4221FB9A6D00A8FE31 /* SearchTableViewCell.swift */,
-				3D415D4621FBB0E100A8FE31 /* SearchCell.swift */,
+				3D72AAEE21FF41D0000B6E40 /* Episodes */,
+				3D72AAEF21FF41E1000B6E40 /* Shows */,
+				3D72AAF021FF41EC000B6E40 /* Search */,
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
 				3D9514CB21F5EDA9004960CE /* Info.plist */,
