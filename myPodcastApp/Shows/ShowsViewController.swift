@@ -16,10 +16,8 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var arrShows = [[String:AnyObject]]()
     @IBOutlet weak var CollectionView: UICollectionView!
-    @IBOutlet weak var miniView: UIView!
-    @IBOutlet weak var miniCoverImg: UIImageView!
-    @IBOutlet weak var miniPlayButton: UIButton!
-    @IBOutlet weak var miniLabel: UILabel!
+    @IBOutlet weak var miniView: MiniView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +45,17 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func setUpMiniView() {
-        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniCoverImg)
-        self.miniLabel.text = playerManager.shared.currentEpisodeTitle
+        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniView.coverImg)
+        self.miniView.title.text = playerManager.shared.currentEpisodeTitle
         
         if playerManager.shared.getIsPlaying() {
             if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
+                self.miniView.playButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
         else {
             if let playImg = UIImage(named: "playBranco_36") {
-                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
+                self.miniView.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
     }
@@ -91,22 +89,6 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toEpisodeVC", sender: self)
-    }
-    
-    @IBAction func miniPlayButtonAction(_ sender: Any) {
-        switch playerManager.shared.getIsPlaying() {
-        case true:
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
-            }
-            
-        default:
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
-            }
-        }
-        playerManager.shared.play()
-
     }
     
     func collectionView(_ collectionView: UICollectionView,

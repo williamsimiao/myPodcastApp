@@ -314,7 +314,7 @@
                                     <outlet property="delegate" destination="lWy-Eu-rt6" id="5rp-wt-HKJ"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-zE-tAM" userLabel="miniView" customClass="MiniView" customModule="myPodcastApp" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-zE-tAM" userLabel="miniView" customClass="MiniView" customModule="myPodcastApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="485" width="320" height="83"/>
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -344,7 +344,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CollectionView" destination="R0r-SS-ehJ" id="Vmt-MU-duy"/>
-                        <outlet property="miniView" destination="ih0-zE-tAM" id="aMi-vw-Ypw"/>
+                        <outlet property="miniView" destination="ih0-zE-tAM" id="cSz-Ft-6Kv"/>
                         <segue destination="nRV-TF-EUh" kind="show" identifier="toEpisodeVC" id="nAN-IK-cKb"/>
                     </connections>
                 </viewController>
