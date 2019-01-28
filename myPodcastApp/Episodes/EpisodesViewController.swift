@@ -20,11 +20,7 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     var arrEpisodes = [[String:AnyObject]]()
     var dictShow = [String:AnyObject]()
     private var playerItemContext = 0
-    @IBOutlet weak var miniLabel: UILabel!
-    @IBOutlet weak var miniCoverImg: UIImageView!
-    @IBOutlet weak var miniPlayButton: UIButton!
-    
-    @IBOutlet weak var miniView: UIView!
+    @IBOutlet weak var miniView: MiniView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +54,16 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func setUpMiniView() {
-        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniCoverImg)
-        self.miniLabel.text = playerManager.shared.currentEpisodeTitle
+        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniView.coverImg)
+        self.miniView.title.text = playerManager.shared.currentEpisodeTitle
         if playerManager.shared.getIsPlaying() {
             if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
+                self.miniView.playButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
         else {
             if let playImg = UIImage(named: "playBranco_36") {
-                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
+                self.miniView.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
     }
@@ -157,12 +153,12 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         switch playerManager.shared.getIsPlaying() {
         case true:
             if let playImg = UIImage(named: "playBranco_36") {
-                self.miniPlayButton.setImage(playImg, for: UIControl.State.normal)
+                self.miniView.playButton.setImage(playImg, for: UIControl.State.normal)
             }
             
         default:
             if let pauseImg = UIImage(named: "pauseBranco_36") {
-                miniPlayButton.setImage(pauseImg, for: UIControl.State.normal)
+                self.miniView.playButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
         playerManager.shared.play()

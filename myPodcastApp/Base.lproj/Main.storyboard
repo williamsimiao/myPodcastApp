@@ -152,46 +152,11 @@
                                     <outlet property="delegate" destination="nRV-TF-EUh" id="nlM-mi-EDa"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIZ-Rm-6kk" userLabel="miniView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIZ-Rm-6kk" userLabel="miniView" customClass="MiniView" customModule="myPodcastApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="485" width="320" height="83"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="niA-Aq-nUK">
-                                        <rect key="frame" x="240" y="5.5" width="72" height="72"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="72" id="XE7-Zq-89f"/>
-                                            <constraint firstAttribute="width" constant="72" id="f7U-4h-CEr"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mn-mX-ODe">
-                                        <rect key="frame" x="8" y="4" width="75" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="t90-Qj-F9D"/>
-                                            <constraint firstAttribute="width" constant="75" id="wvz-18-Rhg"/>
-                                        </constraints>
-                                        <state key="normal" image="playBranco_36"/>
-                                        <connections>
-                                            <action selector="episodePlayAction:" destination="JZC-eJ-o4O" eventType="touchUpInside" id="1u2-NH-c2W"/>
-                                            <action selector="miniPlayAction:" destination="nRV-TF-EUh" eventType="touchUpInside" id="ef2-pq-ieL"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="All-yX-198">
-                                        <rect key="frame" x="91" y="31" width="141" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="6hS-1U-6SN"/>
-                                    <constraint firstItem="niA-Aq-nUK" firstAttribute="centerY" secondItem="KIZ-Rm-6kk" secondAttribute="centerY" id="7Sd-XE-bkV"/>
-                                    <constraint firstAttribute="trailing" secondItem="niA-Aq-nUK" secondAttribute="trailing" constant="8" id="Bx4-R8-vaB"/>
-                                    <constraint firstItem="1mn-mX-ODe" firstAttribute="centerY" secondItem="KIZ-Rm-6kk" secondAttribute="centerY" id="DuN-Zw-Cvy"/>
-                                    <constraint firstItem="niA-Aq-nUK" firstAttribute="leading" secondItem="All-yX-198" secondAttribute="trailing" constant="8" id="Fnx-hM-3k3"/>
-                                    <constraint firstItem="All-yX-198" firstAttribute="centerY" secondItem="KIZ-Rm-6kk" secondAttribute="centerY" id="Lie-5F-yZZ"/>
-                                    <constraint firstItem="1mn-mX-ODe" firstAttribute="leading" secondItem="KIZ-Rm-6kk" secondAttribute="leading" constant="8" id="ae3-Ck-HBU"/>
-                                    <constraint firstItem="All-yX-198" firstAttribute="leading" secondItem="1mn-mX-ODe" secondAttribute="trailing" constant="8" id="cMC-s6-0y6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -210,16 +175,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="0gl-3A-QM9"/>
                     <connections>
-                        <outlet property="miniCoverImg" destination="niA-Aq-nUK" id="e3I-oe-BAn"/>
-                        <outlet property="miniLabel" destination="All-yX-198" id="Npe-NP-X7j"/>
-                        <outlet property="miniPlayButton" destination="1mn-mX-ODe" id="CFx-4b-ewl"/>
-                        <outlet property="miniView" destination="KIZ-Rm-6kk" id="SkB-36-grl"/>
+                        <outlet property="miniView" destination="KIZ-Rm-6kk" id="4Fh-qi-SSx"/>
                         <outlet property="tableView" destination="u0p-Ns-hfK" id="joc-tv-kRj"/>
                         <segue destination="ZsO-z3-BSc" kind="show" identifier="toPlayingVC" id="Ylj-Nn-148"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJ0-Vj-BVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="JZC-eJ-o4O" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4523.188405797102" y="30.133928571428569"/>
         </scene>
@@ -353,46 +314,11 @@
                                     <outlet property="delegate" destination="lWy-Eu-rt6" id="5rp-wt-HKJ"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-zE-tAM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-zE-tAM" userLabel="miniView" customClass="MiniView" customModule="myPodcastApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="485" width="320" height="83"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNo-qd-w2o">
-                                        <rect key="frame" x="91" y="31" width="141" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPb-am-00E">
-                                        <rect key="frame" x="8" y="4" width="75" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="6jl-Zp-c2W"/>
-                                            <constraint firstAttribute="width" constant="75" id="f29-GO-a8U"/>
-                                        </constraints>
-                                        <state key="normal" image="playBranco_36"/>
-                                        <connections>
-                                            <action selector="miniPlayButtonAction:" destination="lWy-Eu-rt6" eventType="touchUpInside" id="T8d-54-lrT"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SIa-vx-6sB">
-                                        <rect key="frame" x="240" y="5.5" width="72" height="72"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="WHz-hH-KpI"/>
-                                            <constraint firstAttribute="height" constant="72" id="owi-ip-zzQ"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="CNo-qd-w2o" firstAttribute="centerY" secondItem="ih0-zE-tAM" secondAttribute="centerY" id="8TI-xx-EpR"/>
-                                    <constraint firstAttribute="trailing" secondItem="SIa-vx-6sB" secondAttribute="trailing" constant="8" id="AL7-jS-ZzD"/>
-                                    <constraint firstItem="SIa-vx-6sB" firstAttribute="leading" secondItem="CNo-qd-w2o" secondAttribute="trailing" constant="8" id="B5V-cY-wkh"/>
-                                    <constraint firstItem="CNo-qd-w2o" firstAttribute="leading" secondItem="dPb-am-00E" secondAttribute="trailing" constant="8" id="SGY-I8-9KB"/>
-                                    <constraint firstItem="dPb-am-00E" firstAttribute="centerY" secondItem="ih0-zE-tAM" secondAttribute="centerY" id="U3j-9p-7cE"/>
                                     <constraint firstAttribute="height" constant="83" id="aJn-Dk-CLb"/>
-                                    <constraint firstItem="SIa-vx-6sB" firstAttribute="centerY" secondItem="ih0-zE-tAM" secondAttribute="centerY" id="klC-b5-QDY"/>
-                                    <constraint firstItem="CNo-qd-w2o" firstAttribute="centerY" secondItem="ih0-zE-tAM" secondAttribute="centerY" id="rPA-b0-rAe"/>
-                                    <constraint firstItem="dPb-am-00E" firstAttribute="leading" secondItem="ih0-zE-tAM" secondAttribute="leading" constant="8" id="xNR-lv-V4b"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -418,9 +344,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CollectionView" destination="R0r-SS-ehJ" id="Vmt-MU-duy"/>
-                        <outlet property="miniCoverImg" destination="SIa-vx-6sB" id="i63-5T-WfS"/>
-                        <outlet property="miniLabel" destination="CNo-qd-w2o" id="deA-Ug-jji"/>
-                        <outlet property="miniPlayButton" destination="dPb-am-00E" id="Voy-g4-jbO"/>
                         <outlet property="miniView" destination="ih0-zE-tAM" id="aMi-vw-Ypw"/>
                         <segue destination="nRV-TF-EUh" kind="show" identifier="toEpisodeVC" id="nAN-IK-cKb"/>
                     </connections>
@@ -450,7 +373,6 @@
     </scenes>
     <resources>
         <image name="forward_48" width="96" height="96"/>
-        <image name="playBranco_36" width="72" height="72"/>
         <image name="play_48" width="96" height="96"/>
         <image name="replay_48" width="96" height="96"/>
     </resources>
