@@ -18,7 +18,6 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var miniView: MiniView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let arrShowsId = Util.getPlist(withName: "ShowsIDs")

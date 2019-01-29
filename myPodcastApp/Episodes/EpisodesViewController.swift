@@ -16,10 +16,8 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     var playerItem:AVPlayerItem?
-    let valor = 5
     var arrEpisodes = [[String:AnyObject]]()
     var dictShow = [String:AnyObject]()
-    private var playerItemContext = 0
     @IBOutlet weak var miniView: MiniView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -147,21 +145,5 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.performSegue(withIdentifier: "toPlayingVC", sender: self)
             }
         }
-    }
-    
-    @IBAction func miniPlayAction(_ sender: Any) {
-        switch playerManager.shared.getIsPlaying() {
-        case true:
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.miniView.playButton.setImage(playImg, for: UIControl.State.normal)
-            }
-            
-        default:
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.miniView.playButton.setImage(pauseImg, for: UIControl.State.normal)
-            }
-        }
-        playerManager.shared.play()
-
     }
 }

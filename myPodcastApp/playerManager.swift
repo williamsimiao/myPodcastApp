@@ -11,6 +11,7 @@ import AVFoundation
 import UIKit
 
 
+
 class playerManager {
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
