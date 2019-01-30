@@ -11,20 +11,15 @@ import UIKit
 
 class Util {
     
-    static func setMiniCoverImg(with imageUrl:String, theImage:UIImageView) {
+    static func setCoverImgWithPlaceHolder(imageUrl:String, theImage:UIImageView) {
         let url = URL(string:imageUrl)!
         let placeholderImage = UIImage(named: "cover_placeholder")!
-        
-        //        let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-        //            size: self.miniCoverImg.frame.size,
-        //            radius: 20.0
-        //        )
         
         theImage.af_setImage(
             withURL: url,
             placeholderImage: placeholderImage        )
     }
-    
+        
     // MARK: Plist functions
     
     static func getPlist(withName name: String) -> [String]?

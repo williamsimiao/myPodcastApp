@@ -10,7 +10,7 @@ import UIKit
 
 class MiniViewController: UIViewController, playerUIDelegate {
     func coverChanged(imageURL: String) {
-        Util.setMiniCoverImg(with: imageURL, theImage: self.coverImg)
+        Util.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
     }
     
     func playingStateChanged(isPlaying: Bool) {

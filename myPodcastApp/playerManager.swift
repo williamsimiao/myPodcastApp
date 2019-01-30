@@ -50,7 +50,7 @@ class playerManager {
     }
 
     func getIsPlaying() -> Bool {
-        return playerManager.shared.MediaPlayer.playbackState.rawValue == MPMusicPlayerController.systemMusicPlayer.pla
+        return playerManager.shared.MediaPlayer.playbackState == .playing
     }
     
     //MARK Mudando de Episodio
@@ -69,39 +69,35 @@ class playerManager {
 //        playerLayer.frame=CGRect(x:0, y:0, width:10, height:50)
 //        motherView.layer.addSublayer(playerLayer)
         
-        self.player?.play()
+        self.MediaPlayer.play()
     }
     
     func changePlayingEpisode(episodeId:String, mPlayerItem:AVPlayerItem) {
-            self.player?.pause()
-            self.player?.replaceCurrentItem(with: mPlayerItem)
-            self.player?.play()
+        self.MediaPlayer.pause()
+        //Mudar mediaItem
+        self.MediaPlayer.play()
     }
     
     
     //MARK MODIFICADORES de tempo
     func foward() {
         if playerManager.shared.getIsPlaying() {
-            let currentTime = player?.currentItem?.currentTime()
-            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(intervalo_tempo), preferredTimescale: currentTime!.timescale)
-            self.player?.seek(to: jump)
+            self.MediaPlayer.currentPlaybackTime = self.MediaPlayer.currentPlaybackTime + Double(self.intervalo_tempo)
         }
     }
     
     func play() {
         if getIsPlaying() {
-            self.player?.pause()
+            self.MediaPlayer.pause()
         }
         else {
-            self.player?.play()
+            self.MediaPlayer.play()
         }
     }
     
     func rewind() {
         if playerManager.shared.getIsPlaying() {
-            let currentTime = self.player?.currentItem?.currentTime()
-            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(intervalo_tempo), preferredTimescale: currentTime!.timescale)
-            self.player?.seek(to: jump)
+            self.MediaPlayer.currentPlaybackTime = self.MediaPlayer.currentPlaybackTime - Double(self.intervalo_tempo)
         }
     }
 }

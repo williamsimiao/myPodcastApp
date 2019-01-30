@@ -11,7 +11,8 @@ import AVFoundation
 import Alamofire
 import AlamofireImage
 
-class PlayingViewController: UIViewController {
+class PlayingViewController: UIViewController, playerUIDelegate {
+    
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var playButton: UIButton!
@@ -23,20 +24,6 @@ class PlayingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL(string:self.imageUrl)!
-        let placeholderImage = UIImage(named: "cover_placeholder")!
-        
-        let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-            size: self.coverImg.frame.size,
-            radius: 20.0
-        )
-        
-        self.coverImg.af_setImage(
-            withURL: url,
-            placeholderImage: placeholderImage,
-            filter: filter
-        )
         
         self.descriptionText.isEditable = false
         
@@ -50,7 +37,7 @@ class PlayingViewController: UIViewController {
             }
         }
         DispatchQueue.global(qos: .background).async {
-            while playerManager.shared.player?.rate == 0 {}
+            while playerManager.shared.getIsPlaying() {}
             DispatchQueue.main.async {
                 if let pauseImg = UIImage(named: "pause_48") {
                     self.playButton.setImage(pauseImg, for: UIControl.State.normal)
@@ -68,8 +55,6 @@ class PlayingViewController: UIViewController {
                 self.backButton.isEnabled = true
             }
         }
-
-
     }
     
     @IBAction func back_action(_ sender: Any) {
@@ -95,15 +80,16 @@ class PlayingViewController: UIViewController {
         playerManager.shared.foward()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK - playerUIDelegate
+    func coverChanged(imageURL: String) {
+        Util.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
     }
-    */
-
+    
+    func playingStateChanged(isPlaying: Bool) {
+        
+    }
+    
+    func titleChanged(title: String) {
+        
+    }
 }

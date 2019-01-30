@@ -85,14 +85,10 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
             let real_id_episode = id_episode as? NSNumber
             let id_episode_string = real_id_episode!.stringValue
             
-            let audioUrl = getUrl(from: id_episode_string)
-            let myAsset = AVAsset(url: audioUrl)
-            let playerItem = AVPlayerItem(asset: myAsset)
-            
+            //Manda o id do episodio para o layerManager
             playerManager.shared.episodeDict = self.arrEpisodes[indexPath.row]
 
-
-//            self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+            self.performSegue(withIdentifier: "toPlayingVC", sender: self)
 
         }
     }
