@@ -16,7 +16,6 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var arrShows = [[String:AnyObject]]()
     @IBOutlet weak var CollectionView: UICollectionView!
-    @IBOutlet weak var miniView: MiniView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,29 +31,6 @@ class ShowsViewController: UIViewController, UICollectionViewDelegate, UICollect
                 if self.arrShows.count > 0 {
                     self.CollectionView.reloadData()
                 }
-            }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if playerManager.shared.currentEpisodeId != nil {
-            self.setUpMiniView()
-            self.miniView.isHidden = false
-        }
-    }
-    
-    func setUpMiniView() {
-        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniView.coverImg)
-        self.miniView.title.text = playerManager.shared.currentEpisodeTitle
-        
-        if playerManager.shared.getIsPlaying() {
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.miniView.playButton.setImage(pauseImg, for: UIControl.State.normal)
-            }
-        }
-        else {
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.miniView.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
     }

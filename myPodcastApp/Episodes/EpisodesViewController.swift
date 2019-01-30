@@ -7,28 +7,30 @@
 //
 
 import UIKit
-import AVFoundation
+import MediaPlayer
 import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
 class EpisodesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-    var playerItem:AVPlayerItem?
     var arrEpisodes = [[String:AnyObject]]()
     var dictShow = [String:AnyObject]()
-    @IBOutlet weak var miniView: MiniView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let showId = self.dictShow["show_id"]
-        let real_id_show = showId as? NSNumber
-        let id_show_string = real_id_show!.stringValue
-
-        let showUrl = "https://api.spreaker.com/v2/shows/" + id_show_string + "/episodes"
         
-        Alamofire.request(showUrl).responseJSON { (responseData) -> Void in
+        let showId = "2885428"
+        let showUrl = "https://api.spreaker.com/v2/shows/" + showId
+        Alamofire.request(showUrl).responseJSON { (responseData) in
+            let swiftyJsonVar = JSON(responseData.result.value!)
+            if let showData = swiftyJsonVar["response"]["show"].dictionaryObject {
+                self.dictShow = showData as [String : AnyObject]
+            }
+        }
+
+        let episodesUrl = "https://api.spreaker.com/v2/shows/" + showId + "/episodes"
+        Alamofire.request(episodesUrl).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 
@@ -42,28 +44,6 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         self.tableView.rowHeight = CGFloat(70)
         self.navigationItem.title = self.dictShow["title"] as? String
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if playerManager.shared.currentEpisodeId != nil {
-            self.setUpMiniView()
-            self.miniView.isHidden = false
-        }
-    }
-    
-    func setUpMiniView() {
-        Util.setMiniCoverImg(with: playerManager.shared.currentShowImageUrl!, theImage: self.miniView.coverImg)
-        self.miniView.title.text = playerManager.shared.currentEpisodeTitle
-        if playerManager.shared.getIsPlaying() {
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.miniView.playButton.setImage(pauseImg, for: UIControl.State.normal)
-            }
-        }
-        else {
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.miniView.playButton.setImage(playImg, for: UIControl.State.normal)
-            }
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,30 +79,6 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let playingVC = segue.destination as? PlayingViewController
-        if let indexPath = self.tableView.indexPathForSelectedRow {
-            
-            if let imgUrl = self.arrEpisodes[indexPath.row]["image_url"] {
-                playerManager.shared.currentShowImageUrl = (imgUrl as! String)
-                playingVC?.imageUrl = imgUrl as! String
-            }
-            if let episodeTitle = self.arrEpisodes[indexPath.row]["title"] {
-                playerManager.shared.currentEpisodeTitle = (episodeTitle as! String)
-            }
-
-            
-            if let episodeDescription = self.arrEpisodes[indexPath.row]["description"] {
-                playingVC?.descriptionText.text = episodeDescription as? String
-            }
-        }
-    }
-    
-    func getUrl(from episodeId:String) -> URL{
-        let urlString = "https://api.spreaker.com/v2/episodes/" + episodeId + "/play"
-        return URL(string: urlString)!
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let id_episode = self.arrEpisodes[indexPath.row]["episode_id"] {
             //Pegando o id do episode
@@ -132,18 +88,12 @@ class EpisodesViewController: UIViewController, UITableViewDataSource, UITableVi
             let audioUrl = getUrl(from: id_episode_string)
             let myAsset = AVAsset(url: audioUrl)
             let playerItem = AVPlayerItem(asset: myAsset)
-            if id_episode_string != playerManager.shared.currentEpisodeId {
-                if playerManager.shared.getPlayerIsSet() {
-                    playerManager.shared.changePlayingEpisode(episodeId: id_episode_string, mPlayerItem: playerItem)
-                } else {
-                    playerManager.shared.player_setup(episodeId: id_episode_string, motherView: self.view, mPlayerItem: playerItem)
-                }
-                self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+            
+            playerManager.shared.episodeDict = self.arrEpisodes[indexPath.row]
 
-            }
-            else {
-                self.performSegue(withIdentifier: "toPlayingVC", sender: self)
-            }
+
+//            self.performSegue(withIdentifier: "toPlayingVC", sender: self)
+
         }
     }
 }
