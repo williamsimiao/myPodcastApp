@@ -61,14 +61,6 @@ class playerManager {
         self.delegate!.coverChanged(imageURL: self.getEpisodeCoverImgUrl())
         self.delegate!.titleChanged(title: self.getEpisodeTitle())
         self.delegate!.playingStateChanged(isPlaying: getIsPlaying())
-        
-        
-        
-//        self.player = AVPlayer(playerItem: mPlayerItem)
-//        let playerLayer=AVPlayerLayer(player: player!)
-//        playerLayer.frame=CGRect(x:0, y:0, width:10, height:50)
-//        motherView.layer.addSublayer(playerLayer)
-        
         self.MediaPlayer.play()
     }
     

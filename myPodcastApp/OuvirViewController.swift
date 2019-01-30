@@ -12,8 +12,8 @@ class OuvirViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let id_episode = "16631830"
+        playerManager.shared.player_setup(episodeId: id_episode)
     }
     
 

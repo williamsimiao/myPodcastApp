@@ -82,7 +82,7 @@ class PlayingViewController: UIViewController, playerUIDelegate {
     
     //MARK - playerUIDelegate
     func coverChanged(imageURL: String) {
-        Util.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
+        Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
     }
     
     func playingStateChanged(isPlaying: Bool) {
