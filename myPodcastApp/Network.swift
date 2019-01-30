@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import AlamofireImage
+import SwiftyJSON
 
 class Network {
     
@@ -18,5 +21,31 @@ class Network {
         theImage.af_setImage(
             withURL: url,
             placeholderImage: placeholderImage        )
+    }
+    
+    static func getUIImageFor(imageUrl:String) -> UIImage{
+        let url = URL(string:imageUrl)!
+        let data = try! Data(contentsOf: url)
+        let image = UIImage(data: data, scale: UIScreen.main.scale)!
+        
+        image.af_inflate()
+        return image
+    }
+    
+    static func getEpisodes() -> [[String:AnyObject]]{
+        var arrEpisodes = [[String:AnyObject]]()
+        //ID Resumo Cast
+        let showId = "1530166"
+        let episodesUrl = "https://api.spreaker.com/v2/shows/" + showId + "/episodes"
+        Alamofire.request(episodesUrl).responseJSON { (responseData) -> Void in
+            if((responseData.result.value) != nil) {
+                let swiftyJsonVar = JSON(responseData.result.value!)
+                
+                if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
+                    arrEpisodes = episodesData as! [[String:AnyObject]]
+                }
+            }
+        }
+        return arrEpisodes
     }
 }

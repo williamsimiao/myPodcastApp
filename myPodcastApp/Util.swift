@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 class Util {
-    func getUrl(from episodeId:String) -> URL{
+    static func getUrl(from episodeId:String) -> URL{
         let urlString = "https://api.spreaker.com/v2/episodes/" + episodeId + "/play"
         return URL(string: urlString)!
     }
-        
 }
