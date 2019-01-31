@@ -87,12 +87,10 @@ class playerManager {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : episodeTitle, MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.asset.duration)!)]
 
         
-        self.MediaPlayer.play()
     }
     
     func changePlayingEpisode(episodeId:String, mPlayerItem:AVPlayerItem) {
         //Mudar mediaItem
-        self.MediaPlayer.play()
     }
     
     
@@ -107,10 +105,10 @@ class playerManager {
         self.delegate!.playingStateChanged(toPause: getIsPlaying())
 
         if getIsPlaying() {
-            self.MediaPlayer.pause()
+            self.player?.pause()
         }
         else {
-            self.MediaPlayer.play()
+            self.player?.play()
         }
     }
     
