@@ -105,12 +105,12 @@ class playerManager {
         }
     }
     
-    func play() {
-        if getIsPlaying() {
-            self.player?.pause()
+    func playPause(shouldPlay:Bool) {
+        if shouldPlay {
+            self.player?.play()
         }
         else {
-            self.player?.play()
+            self.player?.pause()
         }
     }
     

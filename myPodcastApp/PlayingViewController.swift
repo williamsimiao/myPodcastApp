@@ -66,14 +66,16 @@ class PlayingViewController: UIViewController, playerUIDelegate {
         case true:
             if let playImg = UIImage(named: "play_48") {
                 playButton.setImage(playImg, for: UIControl.State.normal)
+                playerManager.shared.playPause(shouldPlay: false)
             }
             
         default:
             if let pauseImg = UIImage(named: "pause_48") {
                 playButton.setImage(pauseImg, for: UIControl.State.normal)
+                playerManager.shared.playPause(shouldPlay: true)
             }
         }
-        playerManager.shared.play()
+        
     }
     
     @IBAction func foward_action(_ sender: Any) {

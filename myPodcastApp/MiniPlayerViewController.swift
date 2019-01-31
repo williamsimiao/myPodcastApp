@@ -23,7 +23,8 @@ class MiniPlayerViewController: UIViewController {
     // MARK: - Properties
     var currentEpisode: Episode?
     weak var delegate: MiniPlayerDelegate?
-    var currentPlayButtonState = playButtonStates.play
+    //Initial State mast match the Storyboard
+    var currentPlayButtonState = playButtonStates.pause
 
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var coverImg: UIImageView!
@@ -48,16 +49,16 @@ extension MiniPlayerViewController {
             currentPlayButtonState = playButtonStates.pause
             if let pauseImg = UIImage(named: "pauseBranco_36") {
                 self.playButton.setImage(pauseImg, for: UIControl.State.normal)
+                playerManager.shared.playPause(shouldPlay: true)
             }
         }
         else {
             currentPlayButtonState = playButtonStates.play
             if let playImg = UIImage(named: "playBranco_36") {
                 self.playButton.setImage(playImg, for: UIControl.State.normal)
+                playerManager.shared.playPause(shouldPlay: false)
             }
         }
-        
-        playerManager.shared.play()
     }
 }
 
