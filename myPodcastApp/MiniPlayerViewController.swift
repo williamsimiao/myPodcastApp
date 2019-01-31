@@ -69,6 +69,6 @@ extension MiniPlayerViewController: playerUIDelegate {
     }
     
     func titleChanged(title: String) {
-        self.title = title
+        self.titleLabel.text = title
     }
 }
