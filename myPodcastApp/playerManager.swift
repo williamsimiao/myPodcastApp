@@ -19,7 +19,7 @@ protocol playerUIDelegate {
 class playerManager {
     var player : AVPlayer?
     let intervalo_tempo = 5
-    var episodeDict = [String:AnyObject]()
+    var currentEpisodeDict = [String:AnyObject]()
     var delegate:playerUIDelegate?
     private var playerIsSet = false
     static let shared = playerManager()
@@ -36,22 +36,21 @@ class playerManager {
     }
     
     func getEpisodeTitle() -> String {
-        if let episodeTitle = self.episodeDict["title"] {
+        if let episodeTitle = self.currentEpisodeDict["title"] {
             return episodeTitle as! String
         }
         return ""
     }
     
     func getEpisodeCoverImgUrl() -> String {
-        if let episodeTitle = self.episodeDict["image_url"] {
+        if let episodeTitle = self.currentEpisodeDict["image_url"] {
             return episodeTitle as! String
         }
         return ""
     }
 
     func getIsPlaying() -> Bool {
-        let boleano = playerManager.shared.player?.rate == 0
-        print(boleano)
+        let boleano = playerManager.shared.player?.rate != 0
         return boleano
     }
     
@@ -59,50 +58,52 @@ class playerManager {
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
         self.playerIsSet = true
-        self.episodeDict = episodeDictionary
+        self.currentEpisodeDict = episodeDictionary
         
-        self.delegate!.coverChanged(imageURL: self.getEpisodeCoverImgUrl())
-        self.delegate!.titleChanged(title: self.getEpisodeTitle())
-        //Se está tocando então eh verdade que o estado mudou para Pause
-        self.delegate!.playingStateChanged(toPause: getIsPlaying())
-        
-        self.episodeDict = episodeDictionary
-        
-        let episodeIdNumber = self.episodeDict["episode_id"] as? NSNumber
-        let episodeId = episodeIdNumber!.stringValue
-        let episodeTitle = self.episodeDict["title"] as! String
-//        let episodeDuration = self.episodeDict["duration"]
-        
-        
-        let episodeUrl = Util.getUrl(from: episodeId)
-        let avItem = AVPlayerItem(url: episodeUrl)
+        let episodeIdNumber = self.currentEpisodeDict["episode_id"] as! NSNumber
+        let avItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: episodeIdNumber))
         self.player = AVPlayer(playerItem: avItem)
-        
         self.player!.play()
         
-        let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
-            return Network.getUIImageFor(imageUrl: self.episodeDict["image_url"] as! String)
-        }
-        //k(image: song.artwork)
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : episodeTitle, MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.asset.duration)!)]
-
+        //To change UI
+        self.delegate!.coverChanged(imageURL: self.getEpisodeCoverImgUrl())
+        self.delegate!.titleChanged(title: self.getEpisodeTitle())
+        self.delegate!.playingStateChanged(toPause: !getIsPlaying())
         
+        let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
+            return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["image_url"] as! String)
+        }
+        let episodeTitle = self.currentEpisodeDict["title"] as! String
+
+        //Seting ControlCenter UI
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : episodeTitle, MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.asset.duration)!)]
     }
     
-    func changePlayingEpisode(episodeId:String, mPlayerItem:AVPlayerItem) {
-        //Mudar mediaItem
+    func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {
+        let currentEpisodeId = (self.currentEpisodeDict["episode_id"] as! NSNumber)
+        let newEpisodeId = (episodeDictionary["episode_id"] as! NSNumber)
+        if currentEpisodeId != newEpisodeId {
+            self.player?.pause()
+            self.currentEpisodeDict = episodeDictionary
+            
+            let newEpisodeAVItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: newEpisodeId))
+            self.player?.replaceCurrentItem(with: newEpisodeAVItem)
+            self.player?.play()
+        }
     }
     
     
     //MARK MODIFICADORES de tempo
     func foward() {
-        if playerManager.shared.getIsPlaying() {
-            self.player?.currentTime() = self.player?.currentTime() + intervalo_tempo
+        if self.getIsPlaying() {
+            let currentTime = player?.currentItem?.currentTime()
+            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(intervalo_tempo), preferredTimescale: currentTime!.timescale)
+            self.player?.seek(to: jump)
         }
     }
     
     func play() {
-        self.delegate!.playingStateChanged(toPause: getIsPlaying())
+        self.delegate!.playingStateChanged(toPause: !getIsPlaying())
 
         if getIsPlaying() {
             self.player?.pause()
@@ -113,8 +114,10 @@ class playerManager {
     }
     
     func rewind() {
-        if playerManager.shared.getIsPlaying() {
-            self.MediaPlayer.currentPlaybackTime = self.MediaPlayer.currentPlaybackTime - Double(self.intervalo_tempo)
+        if self.getIsPlaying() {
+            let currentTime = self.player?.currentItem?.currentTime()
+            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(intervalo_tempo), preferredTimescale: currentTime!.timescale)
+            self.player?.seek(to: jump)
         }
     }
 }

@@ -26,8 +26,6 @@ class MiniPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playerManager.shared.delegate = self
-        
-        // Do any additional setup after loading the view.
     }
 }
 // MARK: - IBActions

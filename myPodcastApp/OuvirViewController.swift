@@ -21,7 +21,7 @@ class OuvirViewController: UIViewController {
         } catch {
             print(error)
         }
-        let showId = "1530166"
+        let showId = "2885428"
         let episodesUrl = "https://api.spreaker.com/v2/shows/" + showId + "/episodes"
         Alamofire.request(episodesUrl).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
