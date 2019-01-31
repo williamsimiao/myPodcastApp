@@ -12,12 +12,11 @@ import UIKit
 
 protocol playerUIDelegate {
     func coverChanged(imageURL:String)
-    func playingStateChanged(isPlaying:Bool)
+    func playingStateChanged(toPause:Bool)
     func titleChanged(title:String)
 }
 
 class playerManager {
-    var MediaPlayer = MPMusicPlayerController.systemMusicPlayer
     var player : AVPlayer?
     let intervalo_tempo = 5
     var episodeDict = [String:AnyObject]()
@@ -51,7 +50,9 @@ class playerManager {
     }
 
     func getIsPlaying() -> Bool {
-        return playerManager.shared.MediaPlayer.playbackState == .playing
+        let boleano = playerManager.shared.player?.rate == 0
+        print(boleano)
+        return boleano
     }
     
     //MARK Mudando de Episodio
@@ -62,7 +63,8 @@ class playerManager {
         
         self.delegate!.coverChanged(imageURL: self.getEpisodeCoverImgUrl())
         self.delegate!.titleChanged(title: self.getEpisodeTitle())
-        self.delegate!.playingStateChanged(isPlaying: getIsPlaying())
+        //Se está tocando então eh verdade que o estado mudou para Pause
+        self.delegate!.playingStateChanged(toPause: getIsPlaying())
         
         self.episodeDict = episodeDictionary
         
@@ -89,7 +91,6 @@ class playerManager {
     }
     
     func changePlayingEpisode(episodeId:String, mPlayerItem:AVPlayerItem) {
-        self.MediaPlayer.pause()
         //Mudar mediaItem
         self.MediaPlayer.play()
     }
@@ -98,11 +99,13 @@ class playerManager {
     //MARK MODIFICADORES de tempo
     func foward() {
         if playerManager.shared.getIsPlaying() {
-            self.MediaPlayer.currentPlaybackTime = self.MediaPlayer.currentPlaybackTime + Double(self.intervalo_tempo)
+            self.player?.currentTime() = self.player?.currentTime() + intervalo_tempo
         }
     }
     
     func play() {
+        self.delegate!.playingStateChanged(toPause: getIsPlaying())
+
         if getIsPlaying() {
             self.MediaPlayer.pause()
         }

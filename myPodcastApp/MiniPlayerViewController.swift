@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol MiniPlayerDelegate: class {
     func expandEpisode(episode: Episode)
@@ -39,6 +40,7 @@ extension MiniPlayerViewController {
     }
     
     @IBAction func playAction(_ sender: Any) {
+        print(playerManager.shared.getIsPlaying())
         playerManager.shared.play()
     }
 }
@@ -49,8 +51,8 @@ extension MiniPlayerViewController: playerUIDelegate {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
     }
     
-    func playingStateChanged(isPlaying: Bool) {
-        if isPlaying {
+    func playingStateChanged(toPause: Bool) {
+        if toPause {
             if let pauseImg = UIImage(named: "pauseBranco_36") {
                 self.playButton.setImage(pauseImg, for: UIControl.State.normal)
             }

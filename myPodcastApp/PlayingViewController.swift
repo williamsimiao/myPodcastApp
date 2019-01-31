@@ -85,7 +85,7 @@ class PlayingViewController: UIViewController, playerUIDelegate {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
     }
     
-    func playingStateChanged(isPlaying: Bool) {
+    func playingStateChanged(toPause: Bool) {
         
     }
     
