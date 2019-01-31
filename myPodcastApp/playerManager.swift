@@ -12,7 +12,6 @@ import UIKit
 
 protocol playerUIDelegate {
     func coverChanged(imageURL:String)
-    func playingStateChanged(toPause:Bool)
     func titleChanged(title:String)
 }
 
@@ -48,9 +47,13 @@ class playerManager {
         }
         return ""
     }
+    
+    func getWantsToStartPlaying() -> Bool {
+        return self.player?.rate != 0
+    }
 
     func getIsPlaying() -> Bool {
-        let boleano = playerManager.shared.player?.rate != 0
+        let boleano = playerManager.shared.player?.timeControlStatus == AVPlayer.TimeControlStatus.playing
         return boleano
     }
     
@@ -67,8 +70,8 @@ class playerManager {
         
         //To change UI
         self.delegate!.coverChanged(imageURL: self.getEpisodeCoverImgUrl())
+        print(self.getEpisodeTitle())
         self.delegate!.titleChanged(title: self.getEpisodeTitle())
-        self.delegate!.playingStateChanged(toPause: !getIsPlaying())
         
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
             return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["image_url"] as! String)
@@ -103,8 +106,6 @@ class playerManager {
     }
     
     func play() {
-        self.delegate!.playingStateChanged(toPause: !getIsPlaying())
-
         if getIsPlaying() {
             self.player?.pause()
         }

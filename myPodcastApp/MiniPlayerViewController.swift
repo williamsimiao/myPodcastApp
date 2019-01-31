@@ -13,11 +13,17 @@ protocol MiniPlayerDelegate: class {
     func expandEpisode(episode: Episode)
 }
 
+enum playButtonStates {
+    case play
+    case pause
+}
+
 class MiniPlayerViewController: UIViewController {
     
     // MARK: - Properties
     var currentEpisode: Episode?
     weak var delegate: MiniPlayerDelegate?
+    var currentPlayButtonState = playButtonStates.play
 
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var coverImg: UIImageView!
@@ -38,7 +44,19 @@ extension MiniPlayerViewController {
     }
     
     @IBAction func playAction(_ sender: Any) {
-        print(playerManager.shared.getIsPlaying())
+        if self.currentPlayButtonState == playButtonStates.play {
+            currentPlayButtonState = playButtonStates.pause
+            if let pauseImg = UIImage(named: "pauseBranco_36") {
+                self.playButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        }
+        else {
+            currentPlayButtonState = playButtonStates.play
+            if let playImg = UIImage(named: "playBranco_36") {
+                self.playButton.setImage(playImg, for: UIControl.State.normal)
+            }
+        }
+        
         playerManager.shared.play()
     }
 }
@@ -47,19 +65,6 @@ extension MiniPlayerViewController {
 extension MiniPlayerViewController: playerUIDelegate {
     func coverChanged(imageURL: String) {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
-    }
-    
-    func playingStateChanged(toPause: Bool) {
-        if toPause {
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.playButton.setImage(pauseImg, for: UIControl.State.normal)
-            }
-        }
-        else {
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.playButton.setImage(playImg, for: UIControl.State.normal)
-            }
-        }
     }
     
     func titleChanged(title: String) {

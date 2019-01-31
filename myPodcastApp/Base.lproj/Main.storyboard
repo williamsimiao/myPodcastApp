@@ -147,7 +147,7 @@
                                     <constraint firstAttribute="height" constant="75" id="5Az-9w-vEx"/>
                                     <constraint firstAttribute="width" constant="75" id="rrL-CT-YNL"/>
                                 </constraints>
-                                <state key="normal" image="playBranco_36"/>
+                                <state key="normal" image="pauseBranco_36"/>
                                 <connections>
                                     <action selector="playAction:" destination="3ii-sc-2q9" eventType="touchUpInside" id="PYj-jM-5zG"/>
                                 </connections>
@@ -334,7 +334,7 @@
         <!--Song Play Control View Controller-->
         <scene sceneID="2KS-9E-MRT">
             <objects>
-                <viewController storyboardIdentifier="SongPlayControlViewController" id="CQN-Zn-ASG" customClass="SongPlayControlViewController" customModule="RazePlayer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SongPlayControlViewController" id="CQN-Zn-ASG" customClass="SongPlayControlViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5UM-G1-Rtv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -408,8 +408,8 @@
     <resources>
         <image name="chevron" width="36" height="12"/>
         <image name="fast-forward" width="28" height="28"/>
+        <image name="pauseBranco_36" width="72" height="72"/>
         <image name="play" width="28" height="28"/>
-        <image name="playBranco_36" width="72" height="72"/>
         <image name="rewind" width="28" height="28"/>
     </resources>
 </document>
