@@ -8,12 +8,14 @@
 
 import Foundation
 
-struct Episode {
+struct Episode : Codable {
     
     // MARK: - Properties
-    let title: String
-    var duration: TimeInterval = 0
-    let artist: String
-    var mediaURL: URL?
+    let title: String?
+    var duration: TimeInterval?
+    var streamingURL: URL?
     var coverArtURL: URL?
 }
+
+
+

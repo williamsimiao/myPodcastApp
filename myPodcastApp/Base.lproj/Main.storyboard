@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="5634" y="-1086"/>
         </scene>
-        <!--View Controller-->
+        <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
             <objects>
-                <viewController id="KbZ-Y2-w5F" sceneMemberID="viewController">
+                <viewController id="KbZ-Y2-w5F" customClass="BaseViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SA9-pc-NTe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

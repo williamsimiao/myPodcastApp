@@ -20,7 +20,6 @@ class playerManager {
     let intervalo_tempo = 5
     var currentEpisodeDict = [String:AnyObject]()
     var delegate:playerUIDelegate?
-    private var playerIsSet = false
     static let shared = playerManager()
     let requiredAssetKeys = [
         "playable",
@@ -30,9 +29,6 @@ class playerManager {
     private init() {}
     
     //MARK - Getters
-    func getPlayerIsSet() -> Bool{
-        return self.playerIsSet
-    }
     
     func getEpisodeTitle() -> String {
         if let episodeTitle = self.currentEpisodeDict["title"] {
@@ -60,7 +56,6 @@ class playerManager {
     //MARK Mudando de Episodio
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
-        self.playerIsSet = true
         self.currentEpisodeDict = episodeDictionary
         
         let episodeIdNumber = self.currentEpisodeDict["episode_id"] as! NSNumber

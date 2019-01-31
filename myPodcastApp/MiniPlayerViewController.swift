@@ -9,19 +9,18 @@
 import UIKit
 import AVFoundation
 
-protocol MiniPlayerDelegate: class {
-    func expandEpisode(episode: Episode)
-}
-
 enum playButtonStates {
     case play
     case pause
 }
 
+protocol MiniPlayerDelegate: class {
+    func expandEpisode(coverImg: UIImage)
+}
+
 class MiniPlayerViewController: UIViewController {
     
     // MARK: - Properties
-    var currentEpisode: Episode?
     weak var delegate: MiniPlayerDelegate?
     //Initial State mast match the Storyboard
     var currentPlayButtonState = playButtonStates.pause
@@ -38,10 +37,7 @@ class MiniPlayerViewController: UIViewController {
 // MARK: - IBActions
 extension MiniPlayerViewController {
     @IBAction func contentViewTapAction(_ sender: Any) {
-        guard let episode = currentEpisode else {
-            return
-        }
-        delegate?.expandEpisode(episode: episode)
+        self.delegate?.expandEpisode(coverImg: self.coverImg.image!)
     }
     
     @IBAction func playAction(_ sender: Any) {
@@ -72,3 +68,17 @@ extension MiniPlayerViewController: playerUIDelegate {
         self.titleLabel.text = title
     }
 }
+
+// MARK: -
+extension MiniPlayerViewController: PlayerCardSourceProtocol {
+    var originatingFrameInWindow: CGRect {
+        let windowRect = view.convert(view.frame, to: nil)
+        return windowRect
+    }
+    
+    var originatingCoverImageView: UIImageView {
+        return self.coverImg
+    }
+}
+
+
