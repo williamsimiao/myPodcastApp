@@ -26,7 +26,6 @@ class OuvirViewController: UIViewController {
         Alamofire.request(episodesUrl).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
-                
                 if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
                     let arrEpisodes = episodesData as! [[String:AnyObject]]
                     playerManager.shared.player_setup(episodeDictionary: arrEpisodes.first!)

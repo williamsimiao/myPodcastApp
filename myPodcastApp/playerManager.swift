@@ -66,7 +66,8 @@ class playerManager {
         
         self.episodeDict = episodeDictionary
         
-        let episodeId = self.episodeDict["episode_id"] as! String
+        let episodeIdNumber = self.episodeDict["episode_id"] as? NSNumber
+        let episodeId = episodeIdNumber!.stringValue
         let episodeTitle = self.episodeDict["title"] as! String
 //        let episodeDuration = self.episodeDict["duration"]
         

@@ -11,9 +11,7 @@
 		3D05B5F72202140E0056E7B9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B5F62202140E0056E7B9 /* Network.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
 		3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79640E21F7560E00E171DC /* PlayingViewController.swift */; };
-		3D79641121F7992C00E171DC /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641021F7992C00E171DC /* EpisodesViewController.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
-		3D79641521F8AE6500E171DC /* episodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641421F8AE6500E171DC /* episodeCell.swift */; };
 		3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9514BF21F5EDA7004960CE /* AppDelegate.swift */; };
 		3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C321F5EDA7004960CE /* Main.storyboard */; };
 		3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C621F5EDA9004960CE /* Assets.xcassets */; };
@@ -31,9 +29,7 @@
 		3D05B5F62202140E0056E7B9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		3D79640E21F7560E00E171DC /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
-		3D79641021F7992C00E171DC /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
-		3D79641421F8AE6500E171DC /* episodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = episodeCell.swift; sourceTree = "<group>"; };
 		3D9514BC21F5EDA7004960CE /* myPodcastApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPodcastApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9514BF21F5EDA7004960CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9514C421F5EDA7004960CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,15 +66,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3D72AAEE21FF41D0000B6E40 /* Episodes */ = {
-			isa = PBXGroup;
-			children = (
-				3D79641421F8AE6500E171DC /* episodeCell.swift */,
-				3D79641021F7992C00E171DC /* EpisodesViewController.swift */,
-			);
-			path = Episodes;
-			sourceTree = "<group>";
-		};
 		3D9514B321F5EDA7004960CE = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +97,6 @@
 				3D415D3E21FB84A500A8FE31 /* Util.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
-				3D72AAEE21FF41D0000B6E40 /* Episodes */,
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
 				3D9514CB21F5EDA9004960CE /* Info.plist */,
@@ -243,10 +229,8 @@
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
-				3D79641521F8AE6500E171DC /* episodeCell.swift in Sources */,
 				3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */,
 				3DC1C20422020016009080EF /* Episode.swift in Sources */,
-				3D79641121F7992C00E171DC /* EpisodesViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
