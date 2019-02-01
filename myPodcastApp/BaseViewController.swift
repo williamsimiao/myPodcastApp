@@ -15,6 +15,8 @@ class BaseViewController: UIViewController {
 
     @IBOutlet weak var bigContainerView: UIView!
     @IBOutlet weak var miniContainerView: UIView!
+    
+    @IBOutlet weak var miniContainerBottonConstrain: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 

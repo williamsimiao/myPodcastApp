@@ -110,7 +110,7 @@
                                 </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMj-aK-uqp">
-                                <rect key="frame" x="0.0" y="655" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="708" width="375" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="dQt-8n-EEQ"/>
                                 </constraints>
@@ -130,12 +130,13 @@
                             <constraint firstItem="xMj-aK-uqp" firstAttribute="trailing" secondItem="cqv-3U-ikf" secondAttribute="trailing" id="Y3w-YU-gkT"/>
                             <constraint firstItem="cqv-3U-ikf" firstAttribute="bottom" secondItem="6ya-I8-fNX" secondAttribute="bottom" constant="34" id="awR-IV-aUa"/>
                             <constraint firstItem="cqv-3U-ikf" firstAttribute="leading" secondItem="6ya-I8-fNX" secondAttribute="leading" id="fUG-Th-Hcs"/>
-                            <constraint firstItem="xMj-aK-uqp" firstAttribute="bottom" secondItem="6ya-I8-fNX" secondAttribute="bottom" constant="-53" id="usK-9w-snE"/>
+                            <constraint firstItem="xMj-aK-uqp" firstAttribute="bottom" secondItem="6ya-I8-fNX" secondAttribute="bottom" id="usK-9w-snE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ya-I8-fNX"/>
                     </view>
                     <connections>
                         <outlet property="bigContainerView" destination="cqv-3U-ikf" id="4GZ-Hi-pKk"/>
+                        <outlet property="miniContainerBottonConstrain" destination="usK-9w-snE" id="qoU-yM-UCd"/>
                         <outlet property="miniContainerView" destination="xMj-aK-uqp" id="0qV-kC-bQd"/>
                     </connections>
                 </viewController>
@@ -195,7 +196,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-fF-k0X">
-                                <rect key="frame" x="90" y="24.666666666666671" width="194" height="21"/>
+                                <rect key="frame" x="90" y="25" width="194" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
