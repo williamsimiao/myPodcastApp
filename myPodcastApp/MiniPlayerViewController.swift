@@ -15,7 +15,7 @@ enum playButtonStates {
 }
 
 protocol MiniPlayerDelegate: class {
-    func expandEpisode(coverImg: UIImage)
+    func expandEpisode(miniPLayer: MiniPlayerViewController)
 }
 
 class MiniPlayerViewController: UIViewController {
@@ -37,7 +37,7 @@ class MiniPlayerViewController: UIViewController {
 // MARK: - IBActions
 extension MiniPlayerViewController {
     @IBAction func contentViewTapAction(_ sender: Any) {
-        self.delegate?.expandEpisode(coverImg: self.coverImg.image!)
+        self.delegate?.expandEpisode(miniPLayer: self)
     }
     
     @IBAction func playAction(_ sender: Any) {

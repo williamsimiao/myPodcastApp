@@ -71,6 +71,8 @@ class PlayerCardViewController: UIViewController {
         
         coverImageContainer.layer.cornerRadius = cardCornerRadius
         coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        playerManager.shared.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,11 +95,11 @@ class PlayerCardViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? EpisodeSubscriber {
-            destination.currentEpisode = currentEpisode
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? EpisodeSubscriber {
+//            destination.currentEpisode = currentEpisode
+//        }
+//    }
     
 
 }
@@ -297,5 +299,15 @@ extension PlayerCardViewController {
     
     func animateLowerModuleIn() {
         animateLowerModule(isPresenting: true)
+    }
+}
+
+extension PlayerCardViewController : playerUIDelegate {
+    func coverChanged(imageURL: String) {
+        Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverArtImage)
+    }
+    
+    func titleChanged(title: String) {
+        
     }
 }

@@ -331,10 +331,10 @@
             </objects>
             <point key="canvasLocation" x="6543" y="1012"/>
         </scene>
-        <!--Song Play Control View Controller-->
+        <!--Episode Play Control View Controller-->
         <scene sceneID="2KS-9E-MRT">
             <objects>
-                <viewController storyboardIdentifier="SongPlayControlViewController" id="CQN-Zn-ASG" customClass="SongPlayControlViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EpisodePlayControlViewController" id="CQN-Zn-ASG" customClass="EpisodePlayControlViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5UM-G1-Rtv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,7 +395,6 @@
                     </view>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
-                        <outlet property="songArtist" destination="IQa-fp-eTt" id="rze-Lb-o75"/>
                         <outlet property="songDuration" destination="uRy-Zc-HqJ" id="U57-1R-FOG"/>
                         <outlet property="songTitle" destination="55F-P9-Nrj" id="snN-KX-GRJ"/>
                     </connections>

@@ -12,7 +12,7 @@ struct Episode : Codable {
     
     // MARK: - Properties
     let title: String?
-    var duration: TimeInterval?
+    var duration: TimeInterval = 0
     var streamingURL: URL?
     var coverArtURL: URL?
 }

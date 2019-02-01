@@ -43,15 +43,24 @@ class BaseViewController: UIViewController {
 }
 
 extension BaseViewController : MiniPlayerDelegate {
-    func expandEpisode(coverImg: UIImage) {
+    func expandEpisode(miniPLayer: MiniPlayerViewController) {
         guard let playerCardVC = storyboard?.instantiateViewController(
             withIdentifier: "PlayerCardViewController")
             as? PlayerCardViewController else {
-                assertionFailure("No view controller ID MaxiSongCardViewController in storyboard")
+                assertionFailure("No view controller ID PlayerCardViewController in storyboard")
                 return
         }
         
-        playerCardVC.backingImage = coverImg
+        playerCardVC.backingImage = miniPLayer.coverImg.image
+        playerCardVC.sourceView = miniPLayer
+
+        
+        
+//        if let tabBar = tabBarController?.tabBar {
+//            playerCardVC.tabBarImage = tabBar.makeSnapshot()
+//        }
         present(playerCardVC, animated: false)
     }
+    
+    
 }

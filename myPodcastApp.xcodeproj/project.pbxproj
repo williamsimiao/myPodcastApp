@@ -23,6 +23,7 @@
 		3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */; };
 		3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20822020557009080EF /* MiniPlayerViewController.swift */; };
 		3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20A22020A88009080EF /* OuvirViewController.swift */; };
+		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSubscriber.swift; sourceTree = "<group>"; };
 		3DC1C20822020557009080EF /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		3DC1C20A22020A88009080EF /* OuvirViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuvirViewController.swift; sourceTree = "<group>"; };
+		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myPodcastApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,21 +91,22 @@
 		3D9514BE21F5EDA7004960CE /* myPodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DC1C207220200BE009080EF /* Model */,
 				3D9514BF21F5EDA7004960CE /* AppDelegate.swift */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3DC1C20822020557009080EF /* MiniPlayerViewController.swift */,
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
 				3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */,
+				3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
-				3D79640E21F7560E00E171DC /* PlayingViewController.swift */,
 				3DC1C20A22020A88009080EF /* OuvirViewController.swift */,
 				3D415D3E21FB84A500A8FE31 /* Util.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
+				3D79640E21F7560E00E171DC /* PlayingViewController.swift */,
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
 				3D9514CB21F5EDA9004960CE /* Info.plist */,
-				3DC1C207220200BE009080EF /* Model */,
 			);
 			path = myPodcastApp;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
+				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
 				3DC1C20422020016009080EF /* Episode.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */,
