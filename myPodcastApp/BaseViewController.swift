@@ -13,6 +13,7 @@ import AVFoundation
 
 class BaseViewController: UIViewController {
 
+    @IBOutlet weak var containerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,14 +52,12 @@ extension BaseViewController : MiniPlayerDelegate {
                 return
         }
         
-        playerCardVC.backingImage = miniPLayer.coverImg.image
+        playerCardVC.backingImage = self.containerView.makeSnapshot()
         playerCardVC.sourceView = miniPLayer
-
         
-        
-//        if let tabBar = tabBarController?.tabBar {
-//            playerCardVC.tabBarImage = tabBar.makeSnapshot()
-//        }
+        if let tabBar = tabBarController?.tabBar {
+            playerCardVC.tabBarImage = tabBar.makeSnapshot()
+        }
         present(playerCardVC, animated: false)
     }
     
