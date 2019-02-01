@@ -13,7 +13,8 @@ import AVFoundation
 
 class BaseViewController: UIViewController {
 
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var bigContainerView: UIView!
+    @IBOutlet weak var miniContainerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,7 +39,10 @@ class BaseViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let miniPlayer = segue.destination as? MiniPlayerViewController {
-            miniPlayer.delegate = self
+            miniPlayer.expandDelegate = self
+        }
+        if let tabBarController = segue.destination as? TabBarViewController {
+            tabBarController.miniContainerViewReference = self.miniContainerView
         }
     }
 }
@@ -52,14 +56,13 @@ extension BaseViewController : MiniPlayerDelegate {
                 return
         }
         
-        playerCardVC.backingImage = self.containerView.makeSnapshot()
+        playerCardVC.backingImage = self.bigContainerView.makeSnapshot()
         playerCardVC.sourceView = miniPLayer
         
-        if let tabBar = tabBarController?.tabBar {
-            playerCardVC.tabBarImage = tabBar.makeSnapshot()
-        }
+        //Chamar delegate para a tabviewController fazer a animacao de sumir a tab
+//        if let tabBar = tabBarController?.tabBar {
+//            playerCardVC.tabBarImage = tabBar.makeSnapshot()
+//        }
         present(playerCardVC, animated: false)
     }
-    
-    
 }

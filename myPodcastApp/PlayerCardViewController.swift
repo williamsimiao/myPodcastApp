@@ -15,7 +15,7 @@ protocol PlayerCardSourceProtocol: class {
 
 class PlayerCardViewController: UIViewController {
     // MARK: - Properties
-    let primaryDuration = 0.5
+    let primaryDuration = 0.3
     let backingImageEdgeInset: CGFloat = 15.0
     let cardCornerRadius: CGFloat = 10
     var currentEpisode: Episode?

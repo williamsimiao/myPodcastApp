@@ -9,23 +9,24 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    // MARK: - Properties
+    var miniContainerViewReference: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension TabBarViewController : ResizeViewDelegate {
+    func updateLayoutForMiniPlayer(miniViewHeight: CGFloat) {
+        //Changing the miniPlayer position to be right above the tabbar
+        miniContainerViewReference?.frame.origin.y += tabBar.frame.size.height
+        miniContainerViewReference?.layoutIfNeeded()
+        
+        //Changing the tabBar orin and size to have the height of tabbar+miniContainer
+        tabBar.frame.origin.y -= miniViewHeight
+        tabBar.frame.size.height += miniViewHeight
+        self.view.layoutIfNeeded()
     }
-    */
-
 }

@@ -7,11 +7,13 @@
 //
 
 import UIKit
-import AVFoundation
 
 enum playButtonStates {
     case play
     case pause
+}
+protocol ResizeViewDelegate: class {
+    func updateLayoutForMiniPlayer(miniViewHeight: CGFloat)
 }
 
 protocol MiniPlayerDelegate: class {
@@ -21,7 +23,8 @@ protocol MiniPlayerDelegate: class {
 class MiniPlayerViewController: UIViewController {
     
     // MARK: - Properties
-    weak var delegate: MiniPlayerDelegate?
+    weak var expandDelegate: MiniPlayerDelegate?
+    weak var resizeDelegate: ResizeViewDelegate?
     //Initial State mast match the Storyboard
     var currentPlayButtonState = playButtonStates.pause
 
@@ -32,12 +35,14 @@ class MiniPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         playerManager.shared.delegate = self
+        
+        self.resizeDelegate?.updateLayoutForMiniPlayer(miniViewHeight: self.view.frame.size.height)
     }
 }
 // MARK: - IBActions
 extension MiniPlayerViewController {
     @IBAction func contentViewTapAction(_ sender: Any) {
-        self.delegate?.expandEpisode(miniPLayer: self)
+        self.expandDelegate?.expandEpisode(miniPLayer: self)
     }
     
     @IBAction func playAction(_ sender: Any) {
