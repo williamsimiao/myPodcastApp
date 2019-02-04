@@ -33,42 +33,11 @@
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8n-zy-Krc" userLabel="resizableView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Um grande texto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs1-i2-c5Y">
-                                        <rect key="frame" x="123" y="656" width="128" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="YQ6-Or-Fbb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gs1-i2-c5Y" secondAttribute="trailing" constant="20" symbolic="YES" id="5xX-lb-vEh"/>
-                                    <constraint firstAttribute="bottom" secondItem="gs1-i2-c5Y" secondAttribute="bottom" constant="8" id="MDH-Ab-Whk"/>
-                                    <constraint firstItem="gs1-i2-c5Y" firstAttribute="leading" secondItem="K8n-zy-Krc" secondAttribute="leading" constant="123" id="tQJ-qd-Rv7"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="K8n-zy-Krc" firstAttribute="leading" secondItem="R2W-Yw-eQI" secondAttribute="leading" id="DhO-rR-hXa"/>
-                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="bottom" secondItem="K8n-zy-Krc" secondAttribute="bottom" id="EDe-37-bfz"/>
-                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="top" secondItem="K8n-zy-Krc" secondAttribute="top" constant="44" id="eNs-Z7-NmA"/>
-                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="trailing" secondItem="K8n-zy-Krc" secondAttribute="trailing" id="fG7-lc-eRW"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ouvir" id="waN-wZ-nNA"/>
                     <navigationItem key="navigationItem" id="sH1-tW-FQ6"/>
-                    <connections>
-                        <outlet property="resizableViewBottonConstrain" destination="EDe-37-bfz" id="KcR-Hp-BEF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

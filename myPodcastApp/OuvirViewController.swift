@@ -10,12 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class OuvirViewController: UIViewController {
+class OuvirViewController: InheritanceViewController {
     // MARK: - Properties
-    @IBOutlet weak var resizableViewBottonConstrain: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateContrain(constrain: resizableViewBottonConstrain)
+//        self.updateContrain(constrain: resizableViewBottonConstrain)
     }
 }
 
