@@ -11,10 +11,17 @@ import Alamofire
 import SwiftyJSON
 
 class OuvirViewController: UIViewController {
-    
+    // MARK: - Properties
+    @IBOutlet weak var resizableViewBottonConstrain: NSLayoutConstraint!
+    var miniContainerHeight : CGFloat?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateSize()
         
+    }
+    
+    func updateSize() {
+        self.resizableViewBottonConstrain.constant += miniContainerHeight!
     }
 }
 

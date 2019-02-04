@@ -12,7 +12,7 @@ import SwiftyJSON
 import AVFoundation
 
 class BaseViewController: UIViewController {
-
+    // MARK: - Properties
     @IBOutlet weak var bigContainerView: UIView!
     @IBOutlet weak var miniContainerView: UIView!
     
@@ -44,7 +44,7 @@ class BaseViewController: UIViewController {
             miniPlayer.expandDelegate = self
         }
         if let tabBarController = segue.destination as? TabBarViewController {
-            tabBarController.miniContainerViewReference = self.miniContainerView
+            tabBarController.getSizesDelegate = self
         }
     }
 }
@@ -66,5 +66,15 @@ extension BaseViewController : MiniPlayerDelegate {
 //            playerCardVC.tabBarImage = tabBar.makeSnapshot()
 //        }
         present(playerCardVC, animated: false)
+    }
+}
+
+extension BaseViewController : TabBarViewControllerDelegate {
+    func getMiniContainerBottonConstrain() -> NSLayoutConstraint {
+        return self.miniContainerBottonConstrain
+    }
+    
+    func getMiniContainerFrameHight() -> CGFloat {
+        return self.miniContainerView.frame.height
     }
 }
