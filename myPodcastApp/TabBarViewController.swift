@@ -13,10 +13,11 @@ protocol TabBarViewControllerDelegate: class {
     func getMiniContainerFrameHight() -> CGFloat
 }
 
+
+
 class TabBarViewController: UITabBarController {
     // MARK: - Properties
     weak var getSizesDelegate: TabBarViewControllerDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateLayoutForMiniPlayer()
@@ -28,18 +29,13 @@ class TabBarViewController: UITabBarController {
         
         
         //Changing the tabBar orin and size to have the height of tabbar+miniContainer
-        guard let miniViewHeight = self.getSizesDelegate?.getMiniContainerFrameHight() else {
+        guard let height = self.getSizesDelegate?.getMiniContainerFrameHight() else {
             assertionFailure("No MiniContainerFrameHight")
             return
         }
         
         for viewController in self.viewControllers! {
-            if let ouvirVC = viewController as? OuvirViewController {
-                ouvirVC.miniContainerHeight = miniViewHeight
-            }
-            else {
-                print("Erro OuvirViewController")
-            }
+            viewController.miniContainerHeight = height
         }
         self.view.layoutIfNeeded()
 
