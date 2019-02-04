@@ -13,7 +13,7 @@
         <!--Bibliteca-->
         <scene sceneID="vG7-vg-0aV">
             <objects>
-                <viewController title="Bibliteca" id="gIU-ch-xKk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BibliotecaViewController" title="Bibliteca" id="gIU-ch-xKk" customClass="BibliotecaViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ouvir" id="waN-wZ-nNA"/>
@@ -41,12 +41,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="1020.4433497536946"/>
+            <point key="canvasLocation" x="5580" y="1008"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="zcR-Rh-SC6">
             <objects>
-                <viewController title="Perfil" id="Vb9-J2-kNe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PerfilViewController" title="Perfil" id="Vb9-J2-kNe" customClass="PerfilViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PUH-Ue-gV7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
         <!--Premium-->
         <scene sceneID="I43-CD-MOC">
             <objects>
-                <viewController title="Premium" id="rGm-4e-BHL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PremiumViewController" title="Premium" id="rGm-4e-BHL" customClass="PremiumViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A8z-d2-eO5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="86v-Ve-x0Q" customClass="TabBarViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3tC-uR-x3p">
+                    <tabBar key="tabBar" opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3tC-uR-x3p">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -160,7 +160,7 @@
         <scene sceneID="bAt-vF-VM1">
             <objects>
                 <viewController id="3ii-sc-2q9" customClass="MiniPlayerViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
+                    <view key="view" alpha="0.59999999999999998" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

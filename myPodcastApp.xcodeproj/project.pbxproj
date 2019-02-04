@@ -10,6 +10,10 @@
 		2BD76C165B397350E0BC0012 /* libPods-myPodcastApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */; };
 		3D05B5F72202140E0056E7B9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B5F62202140E0056E7B9 /* Network.swift */; };
 		3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */; };
+		3D2D7B8F2208BA5C000E426A /* ouvirView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2D7B8E2208BA5C000E426A /* ouvirView.xib */; };
+		3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */; };
+		3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B932208C8BA000E426A /* PerfilViewController.swift */; };
+		3D2D7B962208C8CF000E426A /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B952208C8CF000E426A /* PremiumViewController.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
 		3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79640E21F7560E00E171DC /* PlayingViewController.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
@@ -32,6 +36,10 @@
 		35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.release.xcconfig"; sourceTree = "<group>"; };
 		3D05B5F62202140E0056E7B9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InheritanceViewController.swift; sourceTree = "<group>"; };
+		3D2D7B8E2208BA5C000E426A /* ouvirView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ouvirView.xib; sourceTree = "<group>"; };
+		3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliotecaViewController.swift; sourceTree = "<group>"; };
+		3D2D7B932208C8BA000E426A /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		3D2D7B952208C8CF000E426A /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		3D79640E21F7560E00E171DC /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
@@ -79,6 +87,9 @@
 			children = (
 				3D2D7B8D2208B668000E426A /* Hereança */,
 				3DC1C20A22020A88009080EF /* OuvirViewController.swift */,
+				3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */,
+				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
+				3D2D7B952208C8CF000E426A /* PremiumViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -90,6 +101,14 @@
 			);
 			name = "Hereança";
 			path = "Hereança";
+			sourceTree = "<group>";
+		};
+		3D2D7B902208BA66000E426A /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				3D2D7B8E2208BA5C000E426A /* ouvirView.xib */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 		3D9514B321F5EDA7004960CE = {
@@ -124,6 +143,7 @@
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
 				3D79640E21F7560E00E171DC /* PlayingViewController.swift */,
+				3D2D7B902208BA66000E426A /* Layouts */,
 				3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */,
 				3DD2346B22049FE3003C940F /* Helpers */,
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
@@ -226,6 +246,7 @@
 			files = (
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
+				3D2D7B8F2208BA5C000E426A /* ouvirView.xib in Resources */,
 				3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,12 +289,15 @@
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,
+				3D2D7B962208C8CF000E426A /* PremiumViewController.swift in Sources */,
+				3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */,
 				3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
 				3DC1C20422020016009080EF /* Episode.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */,
+				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,

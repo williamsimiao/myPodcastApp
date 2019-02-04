@@ -35,7 +35,9 @@ class TabBarViewController: UITabBarController {
         }
         
         for viewController in self.viewControllers! {
-//            viewController.miniContainerHeight = height
+            let customVC = viewController as! InheritanceViewController
+            let windowOriginToBarOrigin = self.view.frame.height - self.tabBar.frame.origin.y
+            customVC.decreaseHightBy = windowOriginToBarOrigin + self.tabBar.frame.height + height - 15
         }
         self.view.layoutIfNeeded()
     }

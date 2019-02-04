@@ -14,6 +14,9 @@ class OuvirViewController: InheritanceViewController {
     // MARK: - Properties
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.resizableView = (UINib(nibName: "ouvirView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView)
+        self.setupSubView()
+        
 //        self.updateContrain(constrain: resizableViewBottonConstrain)
     }
 }
