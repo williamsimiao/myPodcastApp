@@ -7,8 +7,14 @@
 //
 
 import UIKit
-
-extension UIViewController {
+protocol viewControllersResizeProtocol {
+    func updateContrain(constrain : NSLayoutConstraint)
+}
+extension UIViewController : viewControllersResizeProtocol {
+    func updateContrain(constrain: NSLayoutConstraint) {
+        constrain.constant += self.miniContainerHeight
+    }
+    
     private static var resizableViewHeight = CGFloat()
     var miniContainerHeight: CGFloat {
         get {

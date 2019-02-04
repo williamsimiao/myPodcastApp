@@ -15,11 +15,7 @@ class OuvirViewController: UIViewController {
     @IBOutlet weak var resizableViewBottonConstrain: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateSize()
-    }
-    
-    func updateSize() {
-        self.resizableViewBottonConstrain.constant += self.miniContainerHeight
+        self.updateContrain(constrain: resizableViewBottonConstrain)
     }
 }
 

@@ -38,8 +38,5 @@ class TabBarViewController: UITabBarController {
             viewController.miniContainerHeight = height
         }
         self.view.layoutIfNeeded()
-
-        
-        
     }
 }
