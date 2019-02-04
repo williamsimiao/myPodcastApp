@@ -14,20 +14,21 @@ class InheritanceViewController: UIViewController {
         super.viewDidLoad()
         
         //creating resizable View
-        let windowRect = view.convert(view.frame, to: nil)
         let resizableView = UIView()
         resizableView.translatesAutoresizingMaskIntoConstraints = false
         resizableView.backgroundColor = .black
         self.view.addSubview(resizableView)
 
         //adding contrains
-
-        let margins = view.layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            resizableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            resizableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
-            ])
         
+        //left and right margins
+        let leadingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+        
+        let trailingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([leadingConstraint, trailingConstraint])
+
+        
+        //top and bottom
         if #available(iOS 11, *) {
             let guide = view.safeAreaLayoutGuide
             NSLayoutConstraint.activate([
