@@ -394,19 +394,28 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="hXc-h9-Ezh">
-                                <rect key="frame" x="141" y="148.66666666666666" width="132" height="28"/>
+                                <rect key="frame" x="83" y="148.66666666666666" width="248" height="143.99999999999997"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-mT-UYA">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-mT-UYA" userLabel="rewind">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="144"/>
                                         <state key="normal" image="rewind"/>
+                                        <connections>
+                                            <action selector="rewind_action:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="PA0-gR-imP"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-6a-0am">
-                                        <rect key="frame" x="52" y="0.0" width="28" height="28"/>
-                                        <state key="normal" image="play"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-6a-0am" userLabel="play">
+                                        <rect key="frame" x="52" y="0.0" width="144" height="144"/>
+                                        <state key="normal" image="pause_48"/>
+                                        <connections>
+                                            <action selector="play_action:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="Fel-Eb-Vkv"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gc-0T-9Sn">
-                                        <rect key="frame" x="104" y="0.0" width="28" height="28"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gc-0T-9Sn" userLabel="forward">
+                                        <rect key="frame" x="220" y="0.0" width="28" height="144"/>
                                         <state key="normal" image="fast-forward"/>
+                                        <connections>
+                                            <action selector="forward_action:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="kB7-nm-Hsf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -424,6 +433,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
+                        <outlet property="playButton" destination="NkI-6a-0am" id="Ns3-rV-rZb"/>
                         <outlet property="songDuration" destination="uRy-Zc-HqJ" id="U57-1R-FOG"/>
                         <outlet property="songTitle" destination="55F-P9-Nrj" id="snN-KX-GRJ"/>
                     </connections>
@@ -437,7 +447,7 @@
         <image name="chevron" width="36" height="12"/>
         <image name="fast-forward" width="28" height="28"/>
         <image name="pauseBranco_36" width="108" height="108"/>
-        <image name="play" width="28" height="28"/>
+        <image name="pause_48" width="144" height="144"/>
         <image name="rewind" width="28" height="28"/>
     </resources>
 </document>

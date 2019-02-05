@@ -30,7 +30,37 @@ class MiniPlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         playerManager.shared.delegate = self
+    }
+    
+    @objc func onPlayingStateDidChange(_ notification: Notification) {
+        if let data = notification.userInfo as? [String: Bool] {
+            for (key, isPlaying) in data {
+                changeButtonState(isPlaying: isPlaying)
+            }
+        }
+    }
+    
+    func changeButtonState(isPlaying:Bool) {
+        if isPlaying {
+            // IF is playing then the button must be pause
+            currentPlayButtonState = playButtonStates.pause
+            if let pauseImg = UIImage(named: "pauseBranco_36") {
+                self.playButton.setImage(pauseImg, for: UIControl.State.normal)
+            }
+        }
+        //the negation is true
+        else {
+            currentPlayButtonState = playButtonStates.play
+            if let playImg = UIImage(named: "playBranco_36") {
+                self.playButton.setImage(playImg, for: UIControl.State.normal)
+            }
+        }
     }
 }
 // MARK: - IBActions
@@ -40,30 +70,19 @@ extension MiniPlayerViewController {
     }
     
     @IBAction func playAction(_ sender: Any) {
-        if self.currentPlayButtonState == playButtonStates.play {
-            currentPlayButtonState = playButtonStates.pause
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.playButton.setImage(pauseImg, for: UIControl.State.normal)
-                playerManager.shared.playPause(shouldPlay: true)
-            }
+        if self.currentPlayButtonState == .pause {
+            playerManager.shared.playPause(shouldPlay: true)
         }
         else {
-            currentPlayButtonState = playButtonStates.play
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.playButton.setImage(playImg, for: UIControl.State.normal)
-                playerManager.shared.playPause(shouldPlay: false)
-            }
+            playerManager.shared.playPause(shouldPlay: false)
         }
     }
 }
 
 // MARK: - playerUIDelegate
-extension MiniPlayerViewController: playerUIDelegate {
-    func coverChanged(imageURL: String) {
+extension MiniPlayerViewController: episodeDataSourceProtocol {
+    func episodeDataChangedTo(imageURL:String, title:String) {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
-    }
-    
-    func titleChanged(title: String) {
         self.titleLabel.text = title
     }
 }

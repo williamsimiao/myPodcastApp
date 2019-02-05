@@ -10,16 +10,21 @@ import Foundation
 import MediaPlayer
 import UIKit
 
-protocol playerUIDelegate {
-    func coverChanged(imageURL:String)
-    func titleChanged(title:String)
+extension Notification.Name {
+    static let playingStateDidChange = Notification.Name("playingStateDidChange")
+    static let episodeDidChange = Notification.Name("episodeDidChange")
+}
+
+protocol episodeDataSourceProtocol {
+    //TODO colocar uma classe da model
+    func episodeDataChangedTo(imageURL:String, title:String)
 }
 
 class playerManager {
     var player : AVPlayer?
     let intervalo_tempo = 5
     var currentEpisodeDict = [String:AnyObject]()
-    var delegate:playerUIDelegate?
+    var delegate:episodeDataSourceProtocol?
     static let shared = playerManager()
     let requiredAssetKeys = [
         "playable",
@@ -64,9 +69,7 @@ class playerManager {
         self.player!.play()
         
         //To change UI
-        self.delegate!.coverChanged(imageURL: self.getEpisodeCoverImgUrl())
-        print(self.getEpisodeTitle())
-        self.delegate!.titleChanged(title: self.getEpisodeTitle())
+        self.delegate!.episodeDataChangedTo(imageURL: self.getEpisodeCoverImgUrl(), title: self.getEpisodeTitle())
         
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
             return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["image_url"] as! String)
@@ -101,12 +104,15 @@ class playerManager {
     }
     
     func playPause(shouldPlay:Bool) {
+        //Notifing that the state changed
         if shouldPlay {
             self.player?.play()
         }
         else {
             self.player?.pause()
         }
+        NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": shouldPlay])
+
     }
     
     func rewind() {

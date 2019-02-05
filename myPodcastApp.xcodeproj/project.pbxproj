@@ -15,7 +15,6 @@
 		3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B932208C8BA000E426A /* PerfilViewController.swift */; };
 		3D2D7B962208C8CF000E426A /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B952208C8CF000E426A /* PremiumViewController.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
-		3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79640E21F7560E00E171DC /* PlayingViewController.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
 		3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9514BF21F5EDA7004960CE /* AppDelegate.swift */; };
@@ -41,7 +40,6 @@
 		3D2D7B932208C8BA000E426A /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		3D2D7B952208C8CF000E426A /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		3D79640E21F7560E00E171DC /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3D9514BC21F5EDA7004960CE /* myPodcastApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPodcastApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +104,7 @@
 		3D2D7B902208BA66000E426A /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				3D9514C321F5EDA7004960CE /* Main.storyboard */,
 				3D2D7B8E2208BA5C000E426A /* ouvirView.xib */,
 			);
 			path = Layouts;
@@ -135,14 +134,10 @@
 				3DC1C207220200BE009080EF /* Model */,
 				3D9514BF21F5EDA7004960CE /* AppDelegate.swift */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
-				3DC1C20822020557009080EF /* MiniPlayerViewController.swift */,
-				3D9514C321F5EDA7004960CE /* Main.storyboard */,
-				3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */,
-				3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
-				3D79640E21F7560E00E171DC /* PlayingViewController.swift */,
+				3DE481342209C770000431E0 /* PlayerViewControllers */,
 				3D2D7B902208BA66000E426A /* Layouts */,
 				3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */,
 				3DD2346B22049FE3003C940F /* Helpers */,
@@ -169,6 +164,16 @@
 				3DD2346922049FB1003C940F /* UIViewExtension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3DE481342209C770000431E0 /* PlayerViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DC1C20822020557009080EF /* MiniPlayerViewController.swift */,
+				3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */,
+				3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */,
+			);
+			path = PlayerViewControllers;
 			sourceTree = "<group>";
 		};
 		C9512E9ACEBDD135EE35FABD /* Pods */ = {
@@ -296,7 +301,6 @@
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
 				3DC1C20422020016009080EF /* Episode.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
-				3D79640F21F7560E00E171DC /* PlayingViewController.swift in Sources */,
 				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,

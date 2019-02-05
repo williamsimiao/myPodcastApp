@@ -302,12 +302,8 @@ extension PlayerCardViewController {
     }
 }
 
-extension PlayerCardViewController : playerUIDelegate {
-    func coverChanged(imageURL: String) {
+extension PlayerCardViewController : episodeDataSourceProtocol {
+    func episodeDataChangedTo(imageURL: String, title: String) {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverArtImage)
-    }
-    
-    func titleChanged(title: String) {
-        
     }
 }
