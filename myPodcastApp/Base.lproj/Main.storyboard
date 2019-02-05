@@ -33,7 +33,7 @@
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="waN-wZ-nNA"/>
@@ -74,38 +74,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBr-Ih-1NV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5580" y="-1084"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="lFG-cP-x6a">
-            <objects>
-                <viewController id="a4T-pw-zEf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7ic-so-4qY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Y5v-m3-Pxe"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="vlB-ke-ViS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G4d-Fb-h3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2829" y="744"/>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="uh8-CL-5My">
-            <objects>
-                <viewController id="BUG-Qu-MM3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Dx-8n-OPc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="LlC-SA-MG1"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="D3y-UI-p9x"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cUw-JO-PpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2829" y="91"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
@@ -168,13 +136,13 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="86v-Ve-x0Q" customClass="TabBarViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" id="3tC-uR-x3p">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="3tC-uR-x3p">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="rhn-kX-ULZ"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -192,7 +160,7 @@
         <scene sceneID="bAt-vF-VM1">
             <objects>
                 <viewController id="3ii-sc-2q9" customClass="MiniPlayerViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" alpha="0.65000000000000002" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
+                    <view key="view" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

@@ -18,7 +18,7 @@ class InheritanceViewController: UIViewController {
     }
     
     open func setupSubView() {
-        resizableView.backgroundColor = .red
+        resizableView.backgroundColor = .white
         resizableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(resizableView)
         
@@ -30,18 +30,12 @@ class InheritanceViewController: UIViewController {
         let trailingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
         
         
-        //top and bottom
+        //top
         let topConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-//
-//        let bottomConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: self.decreaseHightBy*(-1))
-//
-//
-//
-//        NSLayoutConstraint.activate([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
-        
+
+        //bottom
         if #available(iOS 11, *) {
             let guide = view.safeAreaLayoutGuide
-//            let topContrain = resizableView.topAnchor.constraint(equalTo: guide.topAnchor)
             
             let bottomContrain =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.decreaseHightBy)
             

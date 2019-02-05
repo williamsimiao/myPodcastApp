@@ -13,8 +13,6 @@ protocol TabBarViewControllerDelegate: class {
     func getMiniContainerFrameHight() -> CGFloat
 }
 
-
-
 class TabBarViewController: UITabBarController {
     // MARK: - Properties
     weak var getSizesDelegate: TabBarViewControllerDelegate?
@@ -24,7 +22,6 @@ class TabBarViewController: UITabBarController {
     }
     
     func updateLayoutForMiniPlayer() {
-        let parteAzul = self.view.frame.height - self.tabBar.frame.origin.y
 
         self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= self.tabBar.frame.height
         
