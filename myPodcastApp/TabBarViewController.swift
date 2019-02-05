@@ -24,8 +24,10 @@ class TabBarViewController: UITabBarController {
     }
     
     func updateLayoutForMiniPlayer() {
+        let parteAzul = self.view.frame.height - self.tabBar.frame.origin.y
+
+        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= self.tabBar.frame.height
         
-        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= self.tabBar.frame.size.height
         
         
         //Changing the tabBar orin and size to have the height of tabbar+miniContainer
@@ -36,8 +38,7 @@ class TabBarViewController: UITabBarController {
         
         for viewController in self.viewControllers! {
             let customVC = viewController as! InheritanceViewController
-            let windowOriginToBarOrigin = self.view.frame.height - self.tabBar.frame.origin.y
-            customVC.decreaseHightBy = windowOriginToBarOrigin + self.tabBar.frame.height + height - 15
+            customVC.decreaseHightBy = height
         }
         self.view.layoutIfNeeded()
     }

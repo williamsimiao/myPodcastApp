@@ -15,45 +15,45 @@
             <objects>
                 <viewController storyboardIdentifier="BibliotecaViewController" title="Bibliteca" id="gIU-ch-xKk" customClass="BibliotecaViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oIK-wd-AR1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bibliteca" id="daf-Vc-okE"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="daf-Vc-okE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lD-1e-Xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5580" y="333"/>
         </scene>
-        <!--Ouvir-->
+        <!--Ouvir View Controller-->
         <scene sceneID="lYR-DL-i7O">
             <objects>
                 <viewController id="4Qy-4E-s6P" customClass="OuvirViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ouvir" id="waN-wZ-nNA"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="waN-wZ-nNA"/>
                     <navigationItem key="navigationItem" id="sH1-tW-FQ6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="1008"/>
+            <point key="canvasLocation" x="5580" y="1007.7464788732394"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="zcR-Rh-SC6">
             <objects>
                 <viewController storyboardIdentifier="PerfilViewController" title="Perfil" id="Vb9-J2-kNe" customClass="PerfilViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PUH-Ue-gV7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Perfil" id="7JO-MM-v6S"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="7JO-MM-v6S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvi-JN-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,16 +64,48 @@
             <objects>
                 <viewController storyboardIdentifier="PremiumViewController" title="Premium" id="rGm-4e-BHL" customClass="PremiumViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A8z-d2-eO5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YmY-yi-mXr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Premium" id="izi-cG-LeL"/>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="izi-cG-LeL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBr-Ih-1NV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5580" y="-1084"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="lFG-cP-x6a">
+            <objects>
+                <viewController id="a4T-pw-zEf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ic-so-4qY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Y5v-m3-Pxe"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="vlB-ke-ViS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4d-Fb-h3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2829" y="744"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="uh8-CL-5My">
+            <objects>
+                <viewController id="BUG-Qu-MM3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Dx-8n-OPc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LlC-SA-MG1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="D3y-UI-p9x"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cUw-JO-PpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2829" y="91"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
@@ -84,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-3U-ikf">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <connections>
                                     <segue destination="86v-Ve-x0Q" kind="embed" id="OCp-D3-hdn"/>
                                 </connections>
@@ -94,7 +126,6 @@
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="6kv-RV-7al"/>
-                                    <constraint firstAttribute="width" constant="240" id="TOO-6t-Y71"/>
                                 </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMj-aK-uqp">
@@ -113,36 +144,37 @@
                             <constraint firstItem="6ya-I8-fNX" firstAttribute="trailing" secondItem="uva-da-CoC" secondAttribute="trailing" constant="68" id="9Fe-Lt-4bZ"/>
                             <constraint firstItem="uva-da-CoC" firstAttribute="leading" secondItem="6ya-I8-fNX" secondAttribute="leading" constant="67" id="BtX-bJ-qJZ"/>
                             <constraint firstItem="xMj-aK-uqp" firstAttribute="leading" secondItem="cqv-3U-ikf" secondAttribute="leading" id="E2u-6l-CuT"/>
-                            <constraint firstItem="cqv-3U-ikf" firstAttribute="top" secondItem="6ya-I8-fNX" secondAttribute="top" id="Ltl-pd-PkZ"/>
                             <constraint firstItem="uva-da-CoC" firstAttribute="top" secondItem="6ya-I8-fNX" secondAttribute="top" constant="146" id="TFC-sS-PAo"/>
                             <constraint firstItem="xMj-aK-uqp" firstAttribute="trailing" secondItem="cqv-3U-ikf" secondAttribute="trailing" id="Y3w-YU-gkT"/>
-                            <constraint firstItem="cqv-3U-ikf" firstAttribute="bottom" secondItem="6ya-I8-fNX" secondAttribute="bottom" constant="34" id="awR-IV-aUa"/>
+                            <constraint firstItem="xMj-aK-uqp" firstAttribute="bottom" secondItem="6ya-I8-fNX" secondAttribute="bottom" id="eeS-uo-7vU"/>
                             <constraint firstItem="cqv-3U-ikf" firstAttribute="leading" secondItem="6ya-I8-fNX" secondAttribute="leading" id="fUG-Th-Hcs"/>
-                            <constraint firstItem="xMj-aK-uqp" firstAttribute="bottom" secondItem="6ya-I8-fNX" secondAttribute="bottom" id="usK-9w-snE"/>
+                            <constraint firstAttribute="bottom" secondItem="cqv-3U-ikf" secondAttribute="bottom" id="kaf-pz-9Zn"/>
+                            <constraint firstItem="cqv-3U-ikf" firstAttribute="top" secondItem="SA9-pc-NTe" secondAttribute="top" id="tF8-tu-eRd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ya-I8-fNX"/>
                     </view>
                     <connections>
                         <outlet property="bigContainerView" destination="cqv-3U-ikf" id="4GZ-Hi-pKk"/>
-                        <outlet property="miniContainerBottonConstrain" destination="usK-9w-snE" id="qoU-yM-UCd"/>
+                        <outlet property="miniContainerBottonConstrain" destination="eeS-uo-7vU" id="5wE-5I-l6z"/>
                         <outlet property="miniContainerView" destination="xMj-aK-uqp" id="0qV-kC-bQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tQ-FZ-9kZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3765.5999999999999" y="1013.7931034482759"/>
+            <point key="canvasLocation" x="3765" y="1013.0281690140845"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="SXT-rQ-xUf">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="86v-Ve-x0Q" customClass="TabBarViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3tC-uR-x3p">
+                    <tabBar key="tabBar" opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" id="3tC-uR-x3p">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rhn-kX-ULZ"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -160,7 +192,7 @@
         <scene sceneID="bAt-vF-VM1">
             <objects>
                 <viewController id="3ii-sc-2q9" customClass="MiniPlayerViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" alpha="0.59999999999999998" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
+                    <view key="view" alpha="0.65000000000000002" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -184,7 +216,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-fF-k0X">
-                                <rect key="frame" x="90" y="25" width="194" height="20.333333333333329"/>
+                                <rect key="frame" x="90" y="25" width="194" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

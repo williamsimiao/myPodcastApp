@@ -32,28 +32,29 @@ class InheritanceViewController: UIViewController {
         
         //top and bottom
         let topConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-
-        let bottomConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: self.decreaseHightBy*(-1))
-
-        
-
-        NSLayoutConstraint.activate([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
-        
-//        if #available(iOS 11, *) {
-//            let guide = view.safeAreaLayoutGuide
-//            NSLayoutConstraint.activate([
-//                resizableView.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1.0),
-//                guide.bottomAnchor.constraint(equalToSystemSpacingBelow: resizableView.bottomAnchor, multiplier: 1.0)
-//                ])
 //
-//        } else {
-//            let standardSpacing: CGFloat = 8.0
-//            NSLayoutConstraint.activate([
-//                resizableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
-//                bottomLayoutGuide.topAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: standardSpacing)
-//                ])
-//        }
-//        NSLayoutConstraint.activate([leadingConstraint, trailingConstraint])
+//        let bottomConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: self.decreaseHightBy*(-1))
+//
+//
+//
+//        NSLayoutConstraint.activate([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+        
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+//            let topContrain = resizableView.topAnchor.constraint(equalTo: guide.topAnchor)
+            
+            let bottomContrain =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.decreaseHightBy)
+            
+            NSLayoutConstraint.activate([bottomContrain])
+
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                resizableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                bottomLayoutGuide.topAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: standardSpacing)
+                ])
+        }
+        NSLayoutConstraint.activate([topConstraint, leadingConstraint, trailingConstraint])
 
     }
 
