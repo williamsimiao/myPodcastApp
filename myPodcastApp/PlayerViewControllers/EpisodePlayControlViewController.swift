@@ -41,7 +41,7 @@ class EpisodePlayControlViewController: UIViewController {
             }
         }
         else if self.currentPlayButtonState == .play {
-            if let playImg = UIImage(named: "play_48") {
+            if let playImg = UIImage(named: "play-1") {
                 self.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
@@ -71,7 +71,7 @@ class EpisodePlayControlViewController: UIViewController {
             }
             else if state == .play {
                 currentPlayButtonState = playButtonStates.play
-                if let playImg = UIImage(named: "play_48") {
+                if let playImg = UIImage(named: "play-1") {
                     self.playButton.setImage(playImg, for: UIControl.State.normal)
                 }
             }
