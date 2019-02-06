@@ -22,7 +22,7 @@ class MiniPlayerViewController: UIViewController {
     // MARK: - Properties
     weak var expandDelegate: MiniPlayerDelegate?
     //Initial State mast match the Storyboard
-    var currentPlayButtonState = playButtonStates.pause
+    var currentPlayButtonState = playButtonStates.play
 
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var coverImg: UIImageView!
@@ -40,25 +40,30 @@ class MiniPlayerViewController: UIViewController {
     
     @objc func onPlayingStateDidChange(_ notification: Notification) {
         if let data = notification.userInfo as? [String: Bool] {
-            for (key, isPlaying) in data {
-                changeButtonState(isPlaying: isPlaying)
+            for (_, isPlaying) in data {
+                if isPlaying && self.currentPlayButtonState != .pause {
+                    changeButtonState(to: .pause)
+                }
+                else if !isPlaying && self.currentPlayButtonState == .pause {
+                    changeButtonState(to: .play)
+                }
             }
         }
     }
     
-    func changeButtonState(isPlaying:Bool) {
-        if isPlaying {
-            // IF is playing then the button must be pause
-            currentPlayButtonState = playButtonStates.pause
-            if let pauseImg = UIImage(named: "pauseBranco_36") {
-                self.playButton.setImage(pauseImg, for: UIControl.State.normal)
+    func changeButtonState(to state:playButtonStates) {
+        if state != self.currentPlayButtonState {
+            if state == .pause {
+                currentPlayButtonState = playButtonStates.pause
+                if let pauseImg = UIImage(named: "pauseBranco_36") {
+                    self.playButton.setImage(pauseImg, for: UIControl.State.normal)
+                }
             }
-        }
-        //the negation is true
-        else {
-            currentPlayButtonState = playButtonStates.play
-            if let playImg = UIImage(named: "playBranco_36") {
-                self.playButton.setImage(playImg, for: UIControl.State.normal)
+            else if state == .play {
+                currentPlayButtonState = playButtonStates.play
+                if let playImg = UIImage(named: "playBranco_36") {
+                    self.playButton.setImage(playImg, for: UIControl.State.normal)
+                }
             }
         }
     }
@@ -70,11 +75,15 @@ extension MiniPlayerViewController {
     }
     
     @IBAction func playAction(_ sender: Any) {
-        if self.currentPlayButtonState == .pause {
+        //User pressed PLAY
+        if self.currentPlayButtonState == .play {
             playerManager.shared.playPause(shouldPlay: true)
+            changeButtonState(to: .pause)
         }
+        //User pressed pause
         else {
             playerManager.shared.playPause(shouldPlay: false)
+            changeButtonState(to: .play)
         }
     }
 }

@@ -60,8 +60,10 @@ extension BaseViewController : MiniPlayerDelegate {
         
         playerCardVC.backingImage = self.bigContainerView.makeSnapshot()
         playerCardVC.sourceView = miniPLayer
+        playerCardVC.currentPlayButtonState = miniPLayer.currentPlayButtonState
         
         //Epidosode Data
+        
         
         
         //Chamar delegate para a tabviewController fazer a animacao de sumir a tab

@@ -20,6 +20,8 @@ class PlayerCardViewController: UIViewController {
     let cardCornerRadius: CGFloat = 10
     var currentEpisode: Episode?
     weak var sourceView: PlayerCardSourceProtocol!
+    var currentPlayButtonState : playButtonStates?
+
 
     //scroller
     @IBOutlet weak var scrollView: UIScrollView!
@@ -95,11 +97,11 @@ class PlayerCardViewController: UIViewController {
     }
     
     // MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = segue.destination as? EpisodeSubscriber {
-//            destination.currentEpisode = currentEpisode
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EpisodePlayControlViewController {
+            destination.currentPlayButtonState = self.currentPlayButtonState
+        }
+    }
     
 
 }

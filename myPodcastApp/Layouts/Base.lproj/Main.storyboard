@@ -170,7 +170,7 @@
                                     <constraint firstAttribute="width" constant="60" id="6CT-1T-vw3"/>
                                     <constraint firstAttribute="height" constant="60" id="7H7-B4-s6k"/>
                                 </constraints>
-                                <state key="normal" image="pauseBranco_36"/>
+                                <state key="normal" image="playBranco_36"/>
                                 <connections>
                                     <action selector="playAction:" destination="3ii-sc-2q9" eventType="touchUpInside" id="PYj-jM-5zG"/>
                                 </connections>
@@ -446,8 +446,8 @@
     <resources>
         <image name="chevron" width="36" height="12"/>
         <image name="fast-forward" width="28" height="28"/>
-        <image name="pauseBranco_36" width="108" height="108"/>
         <image name="pause_48" width="144" height="144"/>
+        <image name="playBranco_36" width="108" height="108"/>
         <image name="rewind" width="28" height="28"/>
     </resources>
 </document>

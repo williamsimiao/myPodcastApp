@@ -66,7 +66,6 @@ class playerManager {
         let episodeIdNumber = self.currentEpisodeDict["episode_id"] as! NSNumber
         let avItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: episodeIdNumber))
         self.player = AVPlayer(playerItem: avItem)
-        self.player!.play()
         
         //To change UI
         self.delegate!.episodeDataChangedTo(imageURL: self.getEpisodeCoverImgUrl(), title: self.getEpisodeTitle())
