@@ -15,9 +15,20 @@ protocol updateMiniPlayerDelegate : class {
 class EpisodePlayControlViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var songTitle: UILabel!
-    @IBOutlet weak var songDuration: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var remainingLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
+    
+    @IBOutlet weak var episodeTitle: UILabel!
+    @IBOutlet weak var episodeAuthor: UILabel!
+    @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
+    
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var rewindButton: UIButton!
+    @IBOutlet weak var previusButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var forwardButton: UIButton!
     
     // MARK: - Properties
     var currentPlayButtonState : playButtonStates?
@@ -36,12 +47,12 @@ class EpisodePlayControlViewController: UIViewController {
         configureFields()
         //Config button initial state
         if self.currentPlayButtonState == .pause {
-            if let pauseImg = UIImage(named: "pause_48") {
+            if let pauseImg = UIImage(named: "pause") {
                 self.playButton.setImage(pauseImg, for: UIControl.State.normal)
             }
         }
         else if self.currentPlayButtonState == .play {
-            if let playImg = UIImage(named: "play-1") {
+            if let playImg = UIImage(named: "play") {
                 self.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
@@ -65,13 +76,13 @@ class EpisodePlayControlViewController: UIViewController {
         if state != self.currentPlayButtonState {
             if state == .pause {
                 currentPlayButtonState = playButtonStates.pause
-                if let pauseImg = UIImage(named: "pause_48") {
+                if let pauseImg = UIImage(named: "pause") {
                     self.playButton.setImage(pauseImg, for: UIControl.State.normal)
                 }
             }
             else if state == .play {
                 currentPlayButtonState = playButtonStates.play
-                if let playImg = UIImage(named: "play-1") {
+                if let playImg = UIImage(named: "play") {
                     self.playButton.setImage(playImg, for: UIControl.State.normal)
                 }
             }
@@ -98,18 +109,20 @@ class EpisodePlayControlViewController: UIViewController {
     @IBAction func forward_action(_ sender: Any) {
         playerManager.shared.foward()
     }
+    
+    
+    @IBAction func slider_value_changed(_ sender: Any) {
+        
+    }
 }
 
 // MARK: - Internal
 extension EpisodePlayControlViewController {
     
     func configureFields() {
-        guard songTitle != nil else {
-            return
-        }
-        
-        songTitle.text = currentSong?.title
-        songDuration.text = "Duration \(currentSong?.presentationTime ?? "")"
+        let seconds = playerManager.shared.getEpisodeDurationFloat() as Float64
+        self.slider.maximumValue = Float(seconds)
+        self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
     }
 }
 

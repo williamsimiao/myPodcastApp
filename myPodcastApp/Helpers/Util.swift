@@ -16,4 +16,15 @@ class Util {
         return URL(string: urlString)!
     }
     
+    static func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+
+    static func convertSecondsToDateString(seconds:Float64) -> String {
+        let parts = secondsToHoursMinutesSeconds(seconds: Int(seconds))
+        return String(parts.0) + ":" + String(parts.1) + ":" + String(parts.2)
+
+    }
+
+    
 }

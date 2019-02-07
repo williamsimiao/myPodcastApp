@@ -55,13 +55,13 @@ class MiniPlayerViewController: UIViewController {
         if state != self.currentPlayButtonState {
             if state == .pause {
                 currentPlayButtonState = playButtonStates.pause
-                if let pauseImg = UIImage(named: "pauseBranco_36") {
+                if let pauseImg = UIImage(named: "miniPause") {
                     self.playButton.setImage(pauseImg, for: UIControl.State.normal)
                 }
             }
             else if state == .play {
                 currentPlayButtonState = playButtonStates.play
-                if let playImg = UIImage(named: "playBranco_36") {
+                if let playImg = UIImage(named: "miniPlay") {
                     self.playButton.setImage(playImg, for: UIControl.State.normal)
                 }
             }

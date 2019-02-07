@@ -58,6 +58,10 @@ class playerManager {
         return boleano
     }
     
+    func getEpisodeDurationFloat() -> Float64 {
+        return CMTimeGetSeconds((self.player?.currentItem?.duration)!)
+    }
+    
     //MARK Mudando de Episodio
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
