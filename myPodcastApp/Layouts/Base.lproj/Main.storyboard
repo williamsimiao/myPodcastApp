@@ -162,14 +162,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8Yt-a1-CRK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8Yt-a1-CRK" firstAttribute="top" secondItem="I2q-Bg-fyC" secondAttribute="top" id="HHC-ur-wX8"/>
+                            <constraint firstAttribute="trailing" secondItem="8Yt-a1-CRK" secondAttribute="trailing" id="KQg-DB-BGH"/>
                             <constraint firstItem="RMh-57-LlP" firstAttribute="trailing" secondItem="qyx-VU-iM0" secondAttribute="trailing" constant="16" id="Rag-t2-D84"/>
                             <constraint firstItem="qyx-VU-iM0" firstAttribute="leading" secondItem="ssT-fF-k0X" secondAttribute="trailing" constant="15" id="V8F-Xt-Lx6"/>
                             <constraint firstItem="ZiE-yz-sd5" firstAttribute="centerY" secondItem="I2q-Bg-fyC" secondAttribute="centerY" id="arl-Ry-Xun"/>
                             <constraint firstItem="ssT-fF-k0X" firstAttribute="centerY" secondItem="I2q-Bg-fyC" secondAttribute="centerY" id="b87-ns-snK"/>
+                            <constraint firstItem="8Yt-a1-CRK" firstAttribute="leading" secondItem="I2q-Bg-fyC" secondAttribute="leading" id="cSF-Do-ncU"/>
                             <constraint firstItem="ssT-fF-k0X" firstAttribute="leading" secondItem="ZiE-yz-sd5" secondAttribute="trailing" constant="14" id="dKh-hk-iVG"/>
                             <constraint firstItem="ZiE-yz-sd5" firstAttribute="leading" secondItem="RMh-57-LlP" secondAttribute="leading" constant="16" id="nu0-1r-pbC"/>
                             <constraint firstItem="qyx-VU-iM0" firstAttribute="centerY" secondItem="I2q-Bg-fyC" secondAttribute="centerY" id="uY9-Oc-43G"/>
@@ -182,6 +188,7 @@
                     <connections>
                         <outlet property="coverImg" destination="ZiE-yz-sd5" id="ADT-zn-Tb4"/>
                         <outlet property="playButton" destination="qyx-VU-iM0" id="fUr-iU-3jX"/>
+                        <outlet property="progressBar" destination="8Yt-a1-CRK" id="Ohu-sG-KbD"/>
                         <outlet property="titleLabel" destination="ssT-fF-k0X" id="V95-7M-T2a"/>
                     </connections>
                 </viewController>
@@ -192,7 +199,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3766" y="1572"/>
+            <point key="canvasLocation" x="3765.217391304348" y="1571.6517857142856"/>
         </scene>
         <!--Player Card View Controller-->
         <scene sceneID="a09-ax-eKM">

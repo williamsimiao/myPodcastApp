@@ -27,6 +27,8 @@ class MiniPlayerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

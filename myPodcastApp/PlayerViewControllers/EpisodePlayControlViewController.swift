@@ -127,7 +127,7 @@ extension EpisodePlayControlViewController {
     func configureFields() {
         let seconds = playerManager.shared.getEpisodeDurationInSeconds()
         self.slider.maximumValue = Float(seconds)
-        self.slider.value = playerManager.shared.getEpisodeCurrentTimeInSeconds()
+        self.slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
         self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
     }
 }
