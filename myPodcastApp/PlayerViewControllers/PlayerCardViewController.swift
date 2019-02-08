@@ -74,8 +74,6 @@ class PlayerCardViewController: UIViewController {
         coverImageContainer.layer.cornerRadius = cardCornerRadius
         coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        
-        
         playerManager.shared.delegate = self
     }
     
@@ -110,15 +108,6 @@ class PlayerCardViewController: UIViewController {
 
 // MARK: - IBActions
 extension PlayerCardViewController {
-    @IBAction func swipeDown(_ sender: Any) {
-        animateBackingImageOut()
-        animateCoverImageOut()
-        animateImageLayerOut() { _ in
-            self.dismiss(animated: false)
-        }
-        animateLowerModuleOut()
-        animateBottomSectionIn()
-    }
 
     @IBAction func dismissAction(_ sender: Any) {
         animateBackingImageOut()
@@ -320,3 +309,5 @@ extension PlayerCardViewController : episodeDataSourceProtocol {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverArtImage)
     }
 }
+
+

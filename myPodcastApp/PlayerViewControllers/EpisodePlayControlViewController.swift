@@ -57,6 +57,8 @@ class EpisodePlayControlViewController: UIViewController {
             }
         }
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
     }
     
     @objc func onPlayingStateDidChange(_ notification: Notification) {
@@ -94,6 +96,12 @@ class EpisodePlayControlViewController: UIViewController {
         playerManager.shared.rewind()
     }
     
+    @IBAction func sliderDidChange(_ sender: Any) {
+        let jump = self.slider.value
+        playerManager.shared.jumpTo(seconds: Double(jump))
+    }
+    
+    
     @IBAction func play_action(_ sender: Any) {
         //User pressed PLAY
         if self.currentPlayButtonState == .play {
@@ -111,9 +119,7 @@ class EpisodePlayControlViewController: UIViewController {
     }
     
     
-    @IBAction func slider_value_changed(_ sender: Any) {
-        
-    }
+    
 }
 
 // MARK: - Internal
@@ -136,3 +142,15 @@ extension Episode {
         return formatter.string(from: date)
     }
 }
+
+// MARK: - Song Extension notification Center
+extension EpisodePlayControlViewController {
+    @objc func onPlayerTimeDidProgress(_ notification: Notification) {
+        if let data = notification.userInfo as? [String: Float] {
+            for (_, value) in data {
+                self.slider.value = value
+            }
+        }
+    }
+}
+

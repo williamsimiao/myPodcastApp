@@ -13,6 +13,7 @@ import UIKit
 extension Notification.Name {
     static let playingStateDidChange = Notification.Name("playingStateDidChange")
     static let episodeDidChange = Notification.Name("episodeDidChange")
+    static let playerTimeDidProgress = Notification.Name("playerTimeDidProgress")
 }
 
 protocol episodeDataSourceProtocol {
@@ -22,7 +23,9 @@ protocol episodeDataSourceProtocol {
 
 class playerManager {
     var player : AVPlayer?
-    let intervalo_tempo = 5
+    var timeObserverToken: Any?
+    let skip_time = 5
+    let interfaceUpdateInterval = 0.5
     var currentEpisodeDict = [String:AnyObject]()
     var delegate:episodeDataSourceProtocol?
     static let shared = playerManager()
@@ -31,7 +34,29 @@ class playerManager {
         "hasProtectedContent"
     ]
     
-    private init() {}
+    private init() {
+    }
+    
+    func addPeriodicTimeObserver() {
+        // Notify every half second
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let timeInterval = CMTime(seconds: interfaceUpdateInterval, preferredTimescale: timeScale)
+        let currentTime = CMTimeGetSeconds((self.player?.currentItem?.currentTime())!)
+        
+        self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
+            print("K")
+            if self!.getIsPlaying() {
+                NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": Float(currentTime)])
+            }
+        }
+    }
+    
+    func removePeriodicTimeObserver() {
+        if let timeObserverToken = timeObserverToken {
+            self.player!.removeTimeObserver(timeObserverToken)
+            self.timeObserverToken = nil
+        }
+    }
     
     //MARK - Getters
     
@@ -62,6 +87,11 @@ class playerManager {
         return CMTimeGetSeconds((self.player?.currentItem?.duration)!)
     }
     
+    func getEpisodeCurrentTimeInSeconds() -> Float64 {
+//        CMTimeGetSeconds(((self.player?.currentTime())!)
+        return CMTimeGetSeconds((self.player?.currentItem?.currentTime())!)
+    }
+    
     //MARK Mudando de Episodio
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
@@ -70,7 +100,8 @@ class playerManager {
         let episodeIdNumber = self.currentEpisodeDict["episode_id"] as! NSNumber
         let avItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: episodeIdNumber))
         self.player = AVPlayer(playerItem: avItem)
-        
+        addPeriodicTimeObserver()
+
         //To change UI
         self.delegate!.episodeDataChangedTo(imageURL: self.getEpisodeCoverImgUrl(), title: self.getEpisodeTitle())
         
@@ -80,7 +111,7 @@ class playerManager {
         let episodeTitle = self.currentEpisodeDict["title"] as! String
 
         //Seting ControlCenter UI
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : episodeTitle, MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.asset.duration)!)]
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : episodeTitle, MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
     }
     
     func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {
@@ -99,11 +130,7 @@ class playerManager {
     
     //MARK MODIFICADORES de tempo
     func foward() {
-        if self.getIsPlaying() {
-            let currentTime = player?.currentItem?.currentTime()
-            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(intervalo_tempo), preferredTimescale: currentTime!.timescale)
-            self.player?.seek(to: jump)
-        }
+        jumpBy(seconds: Double(skip_time))
     }
     
     func playPause(shouldPlay:Bool) {
@@ -119,10 +146,18 @@ class playerManager {
     }
     
     func rewind() {
-        if self.getIsPlaying() {
-            let currentTime = self.player?.currentItem?.currentTime()
-            let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) - Double(intervalo_tempo), preferredTimescale: currentTime!.timescale)
-            self.player?.seek(to: jump)
-        }
+        jumpBy(seconds: Double(-skip_time))
+    }
+    
+    func jumpTo(seconds : Double) {
+        let currentTime = self.player?.currentItem?.currentTime()
+        let jump = CMTimeMakeWithSeconds(seconds, preferredTimescale: (currentTime?.timescale)!)
+        self.player?.seek(to: jump)
+    }
+    
+    func jumpBy(seconds:Double) {
+        let currentTime = self.player?.currentItem?.currentTime()
+        let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(seconds), preferredTimescale: currentTime!.timescale)
+        self.player?.seek(to: jump)
     }
 }
