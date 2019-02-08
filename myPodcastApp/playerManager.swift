@@ -41,12 +41,12 @@ class playerManager {
         // Notify every half second
         let timeScale = CMTimeScale(NSEC_PER_SEC)
         let timeInterval = CMTime(seconds: interfaceUpdateInterval, preferredTimescale: timeScale)
-        let currentTime = CMTimeGetSeconds((self.player?.currentItem?.currentTime())!)
         
         self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
-            print("K")
             if self!.getIsPlaying() {
-                NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": Float(currentTime)])
+                let currentTime = CMTimeGetSeconds((self!.player?.currentItem?.currentTime())!)
+
+                NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime])
             }
         }
     }
@@ -83,11 +83,11 @@ class playerManager {
         return boleano
     }
     
-    func getEpisodeDurationFloat() -> Float64 {
+    func getEpisodeDurationInSeconds() -> Double {
         return CMTimeGetSeconds((self.player?.currentItem?.duration)!)
     }
     
-    func getEpisodeCurrentTimeInSeconds() -> Float64 {
+    func getEpisodeCurrentTimeInSeconds() -> Double {
 //        CMTimeGetSeconds(((self.player?.currentTime())!)
         return CMTimeGetSeconds((self.player?.currentItem?.currentTime())!)
     }

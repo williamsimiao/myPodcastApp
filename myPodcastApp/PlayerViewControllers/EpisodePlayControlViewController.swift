@@ -95,12 +95,11 @@ class EpisodePlayControlViewController: UIViewController {
     @IBAction func rewind_action(_ sender: Any) {
         playerManager.shared.rewind()
     }
-    
-    @IBAction func sliderDidChange(_ sender: Any) {
+    @IBAction func slider_touchUp_inside(_ sender: Any) {
         let jump = self.slider.value
         playerManager.shared.jumpTo(seconds: Double(jump))
+
     }
-    
     
     @IBAction func play_action(_ sender: Any) {
         //User pressed PLAY
@@ -126,8 +125,9 @@ class EpisodePlayControlViewController: UIViewController {
 extension EpisodePlayControlViewController {
     
     func configureFields() {
-        let seconds = playerManager.shared.getEpisodeDurationFloat() as Float64
+        let seconds = playerManager.shared.getEpisodeDurationInSeconds()
         self.slider.maximumValue = Float(seconds)
+        self.slider.value = playerManager.shared.getEpisodeCurrentTimeInSeconds()
         self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
     }
 }
@@ -146,9 +146,14 @@ extension Episode {
 // MARK: - Song Extension notification Center
 extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Float] {
+        if let data = notification.userInfo as? [String: Double] {
             for (_, value) in data {
-                self.slider.value = value
+                let remainingTime = playerManager.shared.getEpisodeDurationInSeconds() - value
+                self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingTime)
+                
+                self.progressLabel.text = Util.convertSecondsToDateString(seconds: value)
+                
+                self.slider.value = Float(value)
             }
         }
     }
