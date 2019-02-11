@@ -139,6 +139,16 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		3D3868312211B4BA00E89FF4 /* Cadastro */ = {
+			isa = PBXGroup;
+			children = (
+				3D38682022119F9D00E89FF4 /* InicioViewController.swift */,
+				3D38682222119FDF00E89FF4 /* CadastroViewController.swift */,
+				3D3868242211A00E00E89FF4 /* LoginViewController.swift */,
+			);
+			path = Cadastro;
+			sourceTree = "<group>";
+		};
 		3D9514B321F5EDA7004960CE = {
 			isa = PBXGroup;
 			children = (
@@ -166,9 +176,7 @@
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
-				3D38682022119F9D00E89FF4 /* InicioViewController.swift */,
-				3D38682222119FDF00E89FF4 /* CadastroViewController.swift */,
-				3D3868242211A00E00E89FF4 /* LoginViewController.swift */,
+				3D3868312211B4BA00E89FF4 /* Cadastro */,
 				3DE481342209C770000431E0 /* PlayerViewControllers */,
 				3D2D7B902208BA66000E426A /* Layouts */,
 				3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */,

@@ -37,7 +37,6 @@ class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
         btnEntrar.layer.cornerRadius = 5
         btnEntrar.clipsToBounds = true
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -500,7 +500,7 @@
         <!--Login View Controller-->
         <scene sceneID="UYm-rR-YE7">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="lzb-Rf-PBa" customClass="LoginViewController" customModule="resumocast" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="lzb-Rf-PBa" customClass="LoginViewController" customModule="myPodcastApp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p8j-SE-hJA"/>
                         <viewControllerLayoutGuide type="bottom" id="kgo-7C-YFc"/>
@@ -644,7 +644,7 @@
         <!--Cadastro View Controller-->
         <scene sceneID="eIr-Ph-R57">
             <objects>
-                <viewController id="wyi-ex-zua" customClass="CadastroViewController" customModule="resumocast" sceneMemberID="viewController">
+                <viewController id="wyi-ex-zua" customClass="CadastroViewController" customModule="myPodcastApp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yaR-3P-7hE"/>
                         <viewControllerLayoutGuide type="bottom" id="lEH-dv-TV0"/>
@@ -792,7 +792,7 @@
         <!--Inicio View Controller-->
         <scene sceneID="qO6-Hi-PQM">
             <objects>
-                <viewController storyboardIdentifier="InicioVC" id="PIR-rI-FoS" customClass="InicioViewController" customModule="resumocast" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InicioVC" id="PIR-rI-FoS" customClass="InicioViewController" customModule="myPodcastApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJI-il-pfb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
