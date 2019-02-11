@@ -40,6 +40,11 @@ class BaseViewController: UIViewController {
                 }
             }
         }
+        
+        let result = AppService.server.send("/buscaResumos.php")
+        print("ZZ")
+        print(result)
+        print("XX")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
