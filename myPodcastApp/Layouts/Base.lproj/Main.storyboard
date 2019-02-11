@@ -569,7 +569,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-Uh-iEI">
                                                 <rect key="frame" x="16" y="812" width="382" height="30"/>
-                                                <state key="normal" title="Voltar para o login">
+                                                <state key="normal" title="Voltar para o inicio">
                                                     <color key="titleColor" red="0.9903254534" green="0.43943545210000001" blue="0.12856160950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -635,6 +635,7 @@
                         <outlet property="scrollView" destination="yDi-3d-0sN" id="6ym-4X-I1M"/>
                         <outlet property="txtEmail" destination="TYS-Fh-gkJ" id="f53-J3-JPJ"/>
                         <outlet property="txtSenha" destination="F2J-12-xNz" id="wgI-H8-UxD"/>
+                        <segue destination="wyi-ex-zua" kind="presentation" identifier="from_login_to_cadatro" id="uom-ha-S1b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJ5-Y9-Jy0" sceneMemberID="firstResponder"/>
@@ -711,7 +712,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcG-5T-fEu">
                                                 <rect key="frame" x="16" y="812" width="382" height="30"/>
-                                                <state key="normal" title="Voltar para o login">
+                                                <state key="normal" title="Voltar para o inicio">
                                                     <color key="titleColor" red="0.9903254534" green="0.43943545210000001" blue="0.12856160950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -848,7 +849,7 @@
                                 <rect key="frame" x="16" y="494" width="382" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Acessar sem cadastro">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="clickAcessar:" destination="PIR-rI-FoS" eventType="touchUpInside" id="ECB-Mp-Ixe"/>
@@ -889,11 +890,12 @@
                         <outlet property="loading" destination="N7i-e9-Np9" id="2MX-Lj-iu4"/>
                         <segue destination="lzb-Rf-PBa" kind="presentation" identifier="goto_login" id="nvL-Xg-I1S"/>
                         <segue destination="wyi-ex-zua" kind="presentation" identifier="goto_cadastro" id="mSl-zQ-c2B"/>
+                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_main" id="oYo-NV-EEj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkH-Ob-XkW" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355" y="1013"/>
+            <point key="canvasLocation" x="2317" y="1011"/>
         </scene>
     </scenes>
     <resources>
@@ -915,4 +917,7 @@
         <image name="tab_item_selected_biblioteca" width="36" height="26"/>
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mSl-zQ-c2B"/>
+    </inferredMetricsTieBreakers>
 </document>

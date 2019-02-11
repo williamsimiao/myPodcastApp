@@ -336,7 +336,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clickCadastro(_ sender: Any) {
         
         DispatchQueue.main.async(execute: {
-            self.performSegue(withIdentifier: "goto_cadastro", sender: nil)
+            self.performSegue(withIdentifier: "from_login_to_cadatro", sender: nil)
         })
         
     }
