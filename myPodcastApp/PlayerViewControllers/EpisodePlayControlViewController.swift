@@ -40,6 +40,9 @@ class EpisodePlayControlViewController: UIViewController {
         if playerManager.shared.getPlayerIsSet() {
             configureFields()
         }
+        else {
+//            setFieldsBlank()
+        }
         //Config button initial state
         if self.currentPlayButtonState == .pause {
             if let pauseImg = UIImage(named: "pause") {
@@ -55,7 +58,13 @@ class EpisodePlayControlViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onepisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(onEpisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
+    }
+    
+    func setFieldsBlank() {
+        self.episodeTitle.text = "-"
+        self.remainingLabel.text = "-"
+        self.episodeAuthor.text = "-"
     }
     
     func changeButtonState(to state:playButtonStates) {
@@ -141,11 +150,14 @@ extension EpisodePlayControlViewController {
         }
     }
     
-    @objc func onepisodeDidChange(_ notification: Notification) {
+    @objc func onEpisodeDidChange(_ notification: Notification) {
         configureFields()
     }
     
     func configureFields() {
+        self.episodeTitle.text = playerManager.shared.getEpisodeTitle()
+        self.episodeAuthor.text = playerManager.shared.getEpisodeAuthor()
+        
         let seconds = playerManager.shared.getEpisodeDurationInSeconds()
         self.slider.maximumValue = Float(seconds)
         self.slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())

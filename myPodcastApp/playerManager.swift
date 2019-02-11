@@ -67,6 +67,14 @@ class playerManager {
         return ""
     }
     
+    func getEpisodeAuthor() -> String {
+//        if let episodeTitle = self.currentEpisodeDict["title"] {
+//            return episodeTitle as! String
+//        }
+//        return ""
+        return "Author long long long Name"
+    }
+    
     func getEpisodeCoverImgUrl() -> String {
         if let episodeTitle = self.currentEpisodeDict["image_url"] {
             return episodeTitle as! String

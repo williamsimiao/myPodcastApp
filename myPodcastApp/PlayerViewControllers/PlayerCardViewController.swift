@@ -72,7 +72,9 @@ class PlayerCardViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .never //dont let Safe Area insets affect the scroll view
         
         coverImageContainer.layer.cornerRadius = cardCornerRadius
-        coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]        
+        coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onEpisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -303,10 +305,9 @@ extension PlayerCardViewController {
     }
 }
 
-extension PlayerCardViewController : episodeDataSourceProtocol {
-    func episodeDataChangedTo(imageURL: String, title: String) {
-        Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverArtImage)
-        
+extension PlayerCardViewController  {
+    @objc func onEpisodeDidChange(_ notification: Notification) {
+        Network.setCoverImgWithPlaceHolder(imageUrl: playerManager.shared.getEpisodeCoverImgUrl(), theImage: self.coverArtImage)
     }
 }
 
