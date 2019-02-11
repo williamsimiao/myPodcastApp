@@ -88,7 +88,10 @@ class playerManager {
     }
     
     func getEpisodeDurationInSeconds() -> Double {
-        return CMTimeGetSeconds((self.player?.currentItem?.duration)!)
+        if let duration = self.currentEpisodeDict["duration"] {
+            return Double(duration as! Int)
+        }
+        return 0
     }
     
     func getEpisodeCurrentTimeInSeconds() -> Double {
