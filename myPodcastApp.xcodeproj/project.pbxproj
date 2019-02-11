@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BD76C165B397350E0BC0012 /* libPods-myPodcastApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */; };
 		3D05B5F72202140E0056E7B9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B5F62202140E0056E7B9 /* Network.swift */; };
 		3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */; };
 		3D2D7B8F2208BA5C000E426A /* ouvirView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2D7B8E2208BA5C000E426A /* ouvirView.xib */; };
 		3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */; };
 		3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B932208C8BA000E426A /* PerfilViewController.swift */; };
 		3D2D7B962208C8CF000E426A /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B952208C8CF000E426A /* PremiumViewController.swift */; };
+		3D38682122119F9D00E89FF4 /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682022119F9D00E89FF4 /* InicioViewController.swift */; };
+		3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682222119FDF00E89FF4 /* CadastroViewController.swift */; };
+		3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868242211A00E00E89FF4 /* LoginViewController.swift */; };
+		3D3868282211AE8300E89FF4 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868272211AE8300E89FF4 /* AppUtil.swift */; };
+		3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868292211AEAA00E89FF4 /* AppError.swift */; };
+		3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682B2211AEC000E89FF4 /* AppServer.swift */; };
+		3D38682E2211AED600E89FF4 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682D2211AED600E89FF4 /* AppService.swift */; };
+		3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682F2211AEE900E89FF4 /* AppConfig.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
@@ -29,9 +36,11 @@
 		3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20A22020A88009080EF /* OuvirViewController.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
+		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myPodcastApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.release.xcconfig"; sourceTree = "<group>"; };
 		3D05B5F62202140E0056E7B9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InheritanceViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +48,14 @@
 		3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliotecaViewController.swift; sourceTree = "<group>"; };
 		3D2D7B932208C8BA000E426A /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		3D2D7B952208C8CF000E426A /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		3D38682022119F9D00E89FF4 /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
+		3D38682222119FDF00E89FF4 /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
+		3D3868242211A00E00E89FF4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3D3868272211AE8300E89FF4 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
+		3D3868292211AEAA00E89FF4 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		3D38682B2211AEC000E89FF4 /* AppServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServer.swift; sourceTree = "<group>"; };
+		3D38682D2211AED600E89FF4 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		3D38682F2211AEE900E89FF4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +73,6 @@
 		3DC1C20A22020A88009080EF /* OuvirViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuvirViewController.swift; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myPodcastApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BD76C165B397350E0BC0012 /* libPods-myPodcastApp.a in Frameworks */,
+				4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +91,7 @@
 		0E9ECB818A512049755120EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E8E3788FDCF0D8DA786EC61D /* libPods-myPodcastApp.a */,
+				2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +126,19 @@
 			path = Layouts;
 			sourceTree = "<group>";
 		};
+		3D3868262211AE5C00E89FF4 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				3D9514BF21F5EDA7004960CE /* AppDelegate.swift */,
+				3D3868272211AE8300E89FF4 /* AppUtil.swift */,
+				3D3868292211AEAA00E89FF4 /* AppError.swift */,
+				3D38682B2211AEC000E89FF4 /* AppServer.swift */,
+				3D38682D2211AED600E89FF4 /* AppService.swift */,
+				3D38682F2211AEE900E89FF4 /* AppConfig.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		3D9514B321F5EDA7004960CE = {
 			isa = PBXGroup;
 			children = (
@@ -132,11 +161,14 @@
 			isa = PBXGroup;
 			children = (
 				3DC1C207220200BE009080EF /* Model */,
-				3D9514BF21F5EDA7004960CE /* AppDelegate.swift */,
+				3D3868262211AE5C00E89FF4 /* core */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
+				3D38682022119F9D00E89FF4 /* InicioViewController.swift */,
+				3D38682222119FDF00E89FF4 /* CadastroViewController.swift */,
+				3D3868242211A00E00E89FF4 /* LoginViewController.swift */,
 				3DE481342209C770000431E0 /* PlayerViewControllers */,
 				3D2D7B902208BA66000E426A /* Layouts */,
 				3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */,
@@ -196,6 +228,7 @@
 				3D9514B821F5EDA7004960CE /* Sources */,
 				3D9514B921F5EDA7004960CE /* Frameworks */,
 				3D9514BA21F5EDA7004960CE /* Resources */,
+				63BDA6920C8E38AA79D4C890 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,6 +314,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		63BDA6920C8E38AA79D4C890 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -289,13 +362,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D05B5F72202140E0056E7B9 /* Network.swift in Sources */,
+				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
+				3D38682122119F9D00E89FF4 /* InicioViewController.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,
 				3D2D7B962208C8CF000E426A /* PremiumViewController.swift in Sources */,
+				3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */,
+				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
+				3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */,
+				3D3868282211AE8300E89FF4 /* AppUtil.swift in Sources */,
 				3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */,
+				3D38682E2211AED600E89FF4 /* AppService.swift in Sources */,
 				3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
@@ -305,6 +385,7 @@
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
+				3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +540,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamsimiao.myPodcastApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.dubbox.resumocast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -479,7 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamsimiao.myPodcastApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.dubbox.resumocast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
