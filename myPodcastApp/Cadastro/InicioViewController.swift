@@ -131,9 +131,9 @@ class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("dados " + dados)
         
         
-        let post = dados as NSString
+        let post = dados as String
         
-        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        let postData:Data = Data(post.utf8)
         
         let postLength:NSString = String( postData.count ) as NSString
         
