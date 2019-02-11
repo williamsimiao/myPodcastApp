@@ -21,6 +21,7 @@
 		3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682B2211AEC000E89FF4 /* AppServer.swift */; };
 		3D38682E2211AED600E89FF4 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682D2211AED600E89FF4 /* AppService.swift */; };
 		3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682F2211AEE900E89FF4 /* AppConfig.swift */; };
+		3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868322211DBEE00E89FF4 /* resumo.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
@@ -30,7 +31,6 @@
 		3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */; };
 		3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C1FF2200C175009080EF /* TabBarViewController.swift */; };
 		3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */; };
-		3DC1C20422020016009080EF /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20322020016009080EF /* Episode.swift */; };
 		3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */; };
 		3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20822020557009080EF /* MiniPlayerViewController.swift */; };
 		3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20A22020A88009080EF /* OuvirViewController.swift */; };
@@ -56,6 +56,7 @@
 		3D38682B2211AEC000E89FF4 /* AppServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServer.swift; sourceTree = "<group>"; };
 		3D38682D2211AED600E89FF4 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		3D38682F2211AEE900E89FF4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		3D3868322211DBEE00E89FF4 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		3D9514CB21F5EDA9004960CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DC1C1FF2200C175009080EF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardViewController.swift; sourceTree = "<group>"; };
-		3DC1C20322020016009080EF /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSubscriber.swift; sourceTree = "<group>"; };
 		3DC1C20822020557009080EF /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		3DC1C20A22020A88009080EF /* OuvirViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuvirViewController.swift; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		3DC1C207220200BE009080EF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3DC1C20322020016009080EF /* Episode.swift */,
 				3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */,
+				3D3868322211DBEE00E89FF4 /* resumo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,10 +387,10 @@
 				3DC1C20B22020A88009080EF /* OuvirViewController.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
-				3DC1C20422020016009080EF /* Episode.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
+				3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
 				3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */,

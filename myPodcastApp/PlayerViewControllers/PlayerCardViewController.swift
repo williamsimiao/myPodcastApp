@@ -18,7 +18,7 @@ class PlayerCardViewController: UIViewController {
     let primaryDuration = 0.3
     let backingImageEdgeInset: CGFloat = 15.0
     let cardCornerRadius: CGFloat = 10
-    var currentEpisode: Episode?
+    var currentEpisode: Resumo?
     weak var sourceView: PlayerCardSourceProtocol!
     var currentPlayButtonState : playButtonStates?
 
@@ -72,9 +72,7 @@ class PlayerCardViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .never //dont let Safe Area insets affect the scroll view
         
         coverImageContainer.layer.cornerRadius = cardCornerRadius
-        coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        
-        playerManager.shared.delegate = self
+        coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +97,7 @@ class PlayerCardViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? EpisodePlayControlViewController {
+            
             destination.currentPlayButtonState = self.currentPlayButtonState
         }
     }
@@ -307,6 +306,7 @@ extension PlayerCardViewController {
 extension PlayerCardViewController : episodeDataSourceProtocol {
     func episodeDataChangedTo(imageURL: String, title: String) {
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverArtImage)
+        
     }
 }
 

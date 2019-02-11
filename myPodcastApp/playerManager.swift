@@ -23,11 +23,11 @@ protocol episodeDataSourceProtocol {
 
 class playerManager {
     var player : AVPlayer?
+    var isSet = false
     var timeObserverToken: Any?
     let skip_time = 5
     let interfaceUpdateInterval = 0.5
     var currentEpisodeDict = [String:AnyObject]()
-    var delegate:episodeDataSourceProtocol?
     static let shared = playerManager()
     let requiredAssetKeys = [
         "playable",
@@ -83,6 +83,10 @@ class playerManager {
         return boleano
     }
     
+    func getPlayerIsSet() -> Bool {
+        return self.isSet
+    }
+    
     func getEpisodeDurationInSeconds() -> Double {
         return CMTimeGetSeconds((self.player?.currentItem?.duration)!)
     }
@@ -96,22 +100,22 @@ class playerManager {
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
         self.currentEpisodeDict = episodeDictionary
-        
         let episodeIdNumber = self.currentEpisodeDict["episode_id"] as! NSNumber
         let avItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: episodeIdNumber))
         self.player = AVPlayer(playerItem: avItem)
+        
+        self.isSet = true
         addPeriodicTimeObserver()
 
         //To change UI
-        self.delegate!.episodeDataChangedTo(imageURL: self.getEpisodeCoverImgUrl(), title: self.getEpisodeTitle())
-        
+        NotificationCenter.default.post(name: .episodeDidChange, object: self, userInfo: self.currentEpisodeDict)
+
+        //Seting ControlCenter UI
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
             return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["image_url"] as! String)
         }
-        let episodeTitle = self.currentEpisodeDict["title"] as! String
-
-        //Seting ControlCenter UI
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : episodeTitle, MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : self.getEpisodeTitle(), MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
     }
     
     func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {

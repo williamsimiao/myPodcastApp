@@ -28,6 +28,9 @@ class BaseViewController: UIViewController {
         }
         let showId = "2885428"
         let episodesUrl = "https://api.spreaker.com/v2/shows/" + showId + "/episodes"
+        
+        //TODO: tirar isso daqui
+        
         Alamofire.request(episodesUrl).responseJSON { (responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)

@@ -33,24 +33,11 @@ class MiniPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
-        playerManager.shared.delegate = self
-    }
-    
-    @objc func onPlayingStateDidChange(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Bool] {
-            for (_, isPlaying) in data {
-                if isPlaying && self.currentPlayButtonState != .pause {
-                    changeButtonState(to: .pause)
-                }
-                else if !isPlaying && self.currentPlayButtonState == .pause {
-                    changeButtonState(to: .play)
-                }
-            }
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(onEpisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
+
     }
     
     func changeButtonState(to state:playButtonStates) {
@@ -90,12 +77,36 @@ extension MiniPlayerViewController {
     }
 }
 
-// MARK: - playerUIDelegate
-extension MiniPlayerViewController: episodeDataSourceProtocol {
-    func episodeDataChangedTo(imageURL:String, title:String) {
+// MARK: - Player dataSource
+extension MiniPlayerViewController {
+    @objc func onPlayingStateDidChange(_ notification: Notification) {
+        if let data = notification.userInfo as? [String: Bool] {
+            for (_, isPlaying) in data {
+                if isPlaying && self.currentPlayButtonState != .pause {
+                    changeButtonState(to: .pause)
+                }
+                else if !isPlaying && self.currentPlayButtonState == .pause {
+                    changeButtonState(to: .play)
+                }
+            }
+        }
+    }
+    
+    @objc func onEpisodeDidChange(_ notification: Notification) {
+        let title = playerManager.shared.getEpisodeTitle()
+        let imageURL = playerManager.shared.getEpisodeCoverImgUrl()
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)
         self.titleLabel.text = title
+        
     }
+    
+    @objc func onPlayerTimeDidProgress(_ notification: Notification) {
+        let duration = playerManager.shared.getEpisodeDurationInSeconds()
+        let currentTime = playerManager.shared.getEpisodeCurrentTimeInSeconds()
+        let razao = currentTime/duration
+        self.progressBar.progress = Float(razao)
+    }
+
 }
 
 // MARK: -

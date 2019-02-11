@@ -9,5 +9,5 @@
 import Foundation
 
 protocol EpisodeSubscriber: class {
-    var currentEpisode: Episode? { get set }
+    var currentEpisode: Resumo? { get set }
 }

@@ -34,17 +34,12 @@ class EpisodePlayControlViewController: UIViewController {
     var currentPlayButtonState : playButtonStates?
     weak var delegate: updateMiniPlayerDelegate?
     
-
-    var currentSong: Episode? {
-        didSet {
-            configureFields()
-        }
-    }
-    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureFields()
+        if playerManager.shared.getPlayerIsSet() {
+            configureFields()
+        }
         //Config button initial state
         if self.currentPlayButtonState == .pause {
             if let pauseImg = UIImage(named: "pause") {
@@ -59,19 +54,8 @@ class EpisodePlayControlViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
-    }
-    
-    @objc func onPlayingStateDidChange(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Bool] {
-            for (_, isPlaying) in data {
-                if isPlaying && self.currentPlayButtonState != .pause {
-                    changeButtonState(to: .pause)
-                }
-                else if !isPlaying && self.currentPlayButtonState == .pause {
-                    changeButtonState(to: .play)
-                }
-            }
-        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onepisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
     }
     
     func changeButtonState(to state:playButtonStates) {
@@ -116,34 +100,20 @@ class EpisodePlayControlViewController: UIViewController {
     @IBAction func forward_action(_ sender: Any) {
         playerManager.shared.foward()
     }
-    
-    
-    
-}
-
-// MARK: - Internal
-extension EpisodePlayControlViewController {
-    
-    func configureFields() {
-        let seconds = playerManager.shared.getEpisodeDurationInSeconds()
-        self.slider.maximumValue = Float(seconds)
-        self.slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
-        self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
-    }
 }
 
 // MARK: - Song Extension
-extension Episode {
+extension Resumo {
     
-    var presentationTime: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "mm:ss"
-        let date = Date(timeIntervalSince1970: duration)
-        return formatter.string(from: date)
-    }
+//    var presentationTime: String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "mm:ss"
+//        let date = Date(timeIntervalSince1970: duration)
+//        return formatter.string(from: date)
+//    }
 }
 
-// MARK: - Song Extension notification Center
+// MARK: - Player dataSource
 extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
         if let data = notification.userInfo as? [String: Double] {
@@ -156,6 +126,30 @@ extension EpisodePlayControlViewController {
                 self.slider.value = Float(value)
             }
         }
+    }
+    
+    @objc func onPlayingStateDidChange(_ notification: Notification) {
+        if let data = notification.userInfo as? [String: Bool] {
+            for (_, isPlaying) in data {
+                if isPlaying && self.currentPlayButtonState != .pause {
+                    changeButtonState(to: .pause)
+                }
+                else if !isPlaying && self.currentPlayButtonState == .pause {
+                    changeButtonState(to: .play)
+                }
+            }
+        }
+    }
+    
+    @objc func onepisodeDidChange(_ notification: Notification) {
+        configureFields()
+    }
+    
+    func configureFields() {
+        let seconds = playerManager.shared.getEpisodeDurationInSeconds()
+        self.slider.maximumValue = Float(seconds)
+        self.slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
+        self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
     }
 }
 
