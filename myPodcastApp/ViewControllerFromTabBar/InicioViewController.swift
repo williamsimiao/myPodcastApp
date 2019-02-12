@@ -17,6 +17,9 @@ class InicioViewController: InheritanceViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupSubView()
+        
+        
+        
         self.view.layoutIfNeeded()
         
         //getting Data

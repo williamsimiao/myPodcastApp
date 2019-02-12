@@ -12,10 +12,6 @@
 		3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */; };
 		3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B932208C8BA000E426A /* PerfilViewController.swift */; };
 		3D34FCFC22131FDA0062DB7E /* NotificacoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */; };
-		3D34FCFE221321820062DB7E /* bibliotecaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D34FCFD221321820062DB7E /* bibliotecaView.xib */; };
-		3D34FD00221322360062DB7E /* inicioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D34FCFF221322360062DB7E /* inicioView.xib */; };
-		3D34FD042213229C0062DB7E /* perfilView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D34FD032213229C0062DB7E /* perfilView.xib */; };
-		3D34FD06221322AF0062DB7E /* notificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D34FD05221322AF0062DB7E /* notificationView.xib */; };
 		3D34FD082213244F0062DB7E /* PrimeiraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34FD072213244F0062DB7E /* PrimeiraViewController.swift */; };
 		3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34FD092213251E0062DB7E /* InicioViewController.swift */; };
 		3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682222119FDF00E89FF4 /* CadastroViewController.swift */; };
@@ -50,10 +46,6 @@
 		3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliotecaViewController.swift; sourceTree = "<group>"; };
 		3D2D7B932208C8BA000E426A /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificacoesViewController.swift; sourceTree = "<group>"; };
-		3D34FCFD221321820062DB7E /* bibliotecaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = bibliotecaView.xib; sourceTree = "<group>"; };
-		3D34FCFF221322360062DB7E /* inicioView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = inicioView.xib; sourceTree = "<group>"; };
-		3D34FD032213229C0062DB7E /* perfilView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = perfilView.xib; sourceTree = "<group>"; };
-		3D34FD05221322AF0062DB7E /* notificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = notificationView.xib; sourceTree = "<group>"; };
 		3D34FD072213244F0062DB7E /* PrimeiraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeiraViewController.swift; sourceTree = "<group>"; };
 		3D34FD092213251E0062DB7E /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
 		3D38682222119FDF00E89FF4 /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
@@ -118,10 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
-				3D34FCFF221322360062DB7E /* inicioView.xib */,
-				3D34FCFD221321820062DB7E /* bibliotecaView.xib */,
-				3D34FD032213229C0062DB7E /* perfilView.xib */,
-				3D34FD05221322AF0062DB7E /* notificationView.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -291,10 +279,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
-				3D34FD00221322360062DB7E /* inicioView.xib in Resources */,
-				3D34FD042213229C0062DB7E /* perfilView.xib in Resources */,
-				3D34FCFE221321820062DB7E /* bibliotecaView.xib in Resources */,
-				3D34FD06221322AF0062DB7E /* notificationView.xib in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
 				3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */,
 			);
