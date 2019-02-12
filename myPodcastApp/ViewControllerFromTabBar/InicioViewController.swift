@@ -16,10 +16,8 @@ class InicioViewController: InheritanceViewController, UITableViewDelegate, UITa
     var episodesArray : [String:AnyObject]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.resizableView = (UINib(nibName: "inicioView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView)
         self.setupSubView()
         self.view.layoutIfNeeded()
-        //        self.updateContrain(constrain: resizableViewBottonConstrain)
         
         //getting Data
         

@@ -105,22 +105,13 @@
 		3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				3D2D7B8D2208B668000E426A /* Hereança */,
+				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
 				3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */,
 				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
 				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
-			sourceTree = "<group>";
-		};
-		3D2D7B8D2208B668000E426A /* Hereança */ = {
-			isa = PBXGroup;
-			children = (
-				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
-			);
-			name = "Hereança";
-			path = "Hereança";
 			sourceTree = "<group>";
 		};
 		3D2D7B902208BA66000E426A /* Layouts */ = {
