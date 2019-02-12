@@ -635,12 +635,13 @@
                         <outlet property="scrollView" destination="yDi-3d-0sN" id="6ym-4X-I1M"/>
                         <outlet property="txtEmail" destination="TYS-Fh-gkJ" id="f53-J3-JPJ"/>
                         <outlet property="txtSenha" destination="F2J-12-xNz" id="wgI-H8-UxD"/>
-                        <segue destination="wyi-ex-zua" kind="presentation" identifier="from_login_to_cadatro" id="uom-ha-S1b"/>
+                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_main" id="l7N-Mb-VwJ"/>
+                        <segue destination="wyi-ex-zua" kind="presentation" identifier="from_login_to_cadatro" id="ElY-PV-xCf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJ5-Y9-Jy0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="1844"/>
+            <point key="canvasLocation" x="2633" y="1384"/>
         </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="eIr-Ph-R57">
@@ -788,7 +789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lIG-ja-Nh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2962" y="1843"/>
+            <point key="canvasLocation" x="1694" y="1398"/>
         </scene>
         <!--Inicio View Controller-->
         <scene sceneID="qO6-Hi-PQM">
@@ -895,7 +896,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkH-Ob-XkW" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317" y="1011"/>
+            <point key="canvasLocation" x="2126" y="650"/>
         </scene>
     </scenes>
     <resources>
@@ -918,6 +919,7 @@
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mSl-zQ-c2B"/>
+        <segue reference="ElY-PV-xCf"/>
+        <segue reference="l7N-Mb-VwJ"/>
     </inferredMetricsTieBreakers>
 </document>

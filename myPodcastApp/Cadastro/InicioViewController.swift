@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
+
 class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet var btnEntrar: UIButton!
@@ -104,20 +105,15 @@ class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
          num_id_ios = token
          }*/
         
-        
-        
         if !AppService.util.isConnectedToNetwork() {
             AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
             return
         }
         
-        
-        
         loading.isHidden = false
         loading.startAnimating()
         
         btnFacebook.isEnabled = false
-        
         
         var dados:String = ""
         dados = dados + "&num_facebook=" + id_facebook
@@ -151,7 +147,8 @@ class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
         request.httpBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        //request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request, completionHandler: {
             (
@@ -211,58 +208,21 @@ class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         
-        DispatchQueue.main.async(execute: montarDados)
+        DispatchQueue.main.async(execute: onResultReceived)
     }
     
-    func montarDados() {
-        
+    func onResultReceived() {
         btnFacebook.isEnabled = true
-        
         loading.isHidden = true
         loading.stopAnimating()
         
-        
-        if (success) {
-            
-            let cod_usuario = usuario.value(forKey: "id") as! String
-            let nome = usuario.value(forKey: "nome") as! String
-            let foto = usuario.value(forKey: "foto") as! String
-            let email = usuario.value(forKey: "email") as! String
-            let celular = usuario.value(forKey: "celular") as! String
-            let sexo = usuario.value(forKey: "sexo") as! String
-            let dat_nascimento = usuario.value(forKey: "dat_nascimento") as! String
-            let cidade = usuario.value(forKey: "cidade") as! String
-            
-            
-            
-            // salvar dados do usuario na session
-            let prefs:UserDefaults = UserDefaults.standard
-            
-            prefs.set(cod_usuario, forKey: "cod_usuario")
-            prefs.set(nome, forKey: "nome")
-            prefs.set(foto, forKey: "foto")
-            prefs.set(email, forKey: "email")
-            prefs.set(celular, forKey: "celular")
-            prefs.set(sexo, forKey: "sexo")
-            prefs.set(dat_nascimento, forKey: "dat_nascimento")
-            prefs.set(cidade, forKey: "cidade")
-            
-            prefs.set(1, forKey: "isLogado")
-            
-            prefs.synchronize()
-            
-            
-            // fechar login
-            //self.dismiss(animated: true, completion: nil)
-            
+        if self.success {
+            AppService.util.montarUsuario(usuario: self.usuario)
             self.performSegue(withIdentifier: "goto_main", sender: self)
-            
-        } else {
-            
-            AppService.util.alert("Erro no Login", message: error_msg as String)
-            
         }
-        
+        else {
+            AppService.util.alert("Erro no Login", message: error_msg as String)
+        }
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!)
@@ -273,7 +233,7 @@ class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
         if ((error) != nil)
         {
             // Process error
-            AppService.util.alert("Erro no Login", message: "Não foi possível fazer login")
+            AppService.util.alert("Erro no Login Facebook", message: "Não foi possível fazer login")
             
         }
         else if result.isCancelled {

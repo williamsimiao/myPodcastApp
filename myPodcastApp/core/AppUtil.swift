@@ -309,4 +309,36 @@ open class AppUtil {
         
     }
     
+    func montarUsuario(usuario:NSDictionary) {
+        let cod_usuario = usuario.value(forKey: "cod_usuario") as! String
+        let nome = usuario.value(forKey: "nome") as! String
+        let foto = usuario.value(forKey: "foto") as! String
+        let email = usuario.value(forKey: "email") as! String
+        let celular_real : String
+        if let celular = usuario.value(forKey: "celular") as? String {
+            celular_real = celular
+        } else {
+            celular_real = ""
+        }
+        
+        let sexo = usuario.value(forKey: "sexo") as! String
+        let dat_nascimento = usuario.value(forKey: "dat_nascimento") as! String
+        let validado_celular = usuario.value(forKey: "validado_celular") as! String
+        
+        // salvar dados do usuario na session
+        let prefs:UserDefaults = UserDefaults.standard
+        
+        prefs.set(cod_usuario, forKey: "cod_usuario")
+        prefs.set(nome, forKey: "nome")
+        prefs.set(foto, forKey: "foto")
+        prefs.set(email, forKey: "email")
+        prefs.set(sexo, forKey: "sexo")
+        prefs.set(celular_real, forKey: "celular")
+        prefs.set(dat_nascimento, forKey: "dat_nascimento")
+        prefs.set(validado_celular, forKey: "validado_celular")
+        
+        prefs.set(1, forKey: "isLogado")
+        prefs.synchronize()
+    }
+    
 }

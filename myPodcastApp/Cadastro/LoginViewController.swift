@@ -204,8 +204,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         request.httpBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+
         let task = session.dataTask(with: request, completionHandler: {
             (
             data, response, error) in
@@ -239,9 +239,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             
             // verificar success
-            let psuccess:Bool = json.value(forKey: "success") as! Bool
-            
-            success = psuccess
+            success = json.value(forKey: "success") as! Bool
             
             if (success) {
                 
@@ -264,58 +262,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        DispatchQueue.main.async(execute: montarDados)
+        DispatchQueue.main.async(execute: onResultReceived)
     }
     
-    func montarDados() {
-        
+    func onResultReceived() {
         btnLogin.isEnabled = true
-        
         loading.isHidden = true
         loading.stopAnimating()
         
-        
-        if (success) {
-            
-            let cod_usuario = usuario.value(forKey: "id") as! String
-            let nome = usuario.value(forKey: "nome") as! String
-            let foto = usuario.value(forKey: "foto") as! String
-            let email = usuario.value(forKey: "email") as! String
-            let celular = usuario.value(forKey: "celular") as! String
-            let sexo = usuario.value(forKey: "sexo") as! String
-            let dat_nascimento = usuario.value(forKey: "dat_nascimento") as! String
-            let cidade = usuario.value(forKey: "cidade") as! String
-            
-            
-            
-            // salvar dados do usuario na session
-            let prefs:UserDefaults = UserDefaults.standard
-            
-            prefs.set(cod_usuario, forKey: "cod_usuario")
-            prefs.set(nome, forKey: "nome")
-            prefs.set(foto, forKey: "foto")
-            prefs.set(email, forKey: "email")
-            prefs.set(celular, forKey: "celular")
-            prefs.set(sexo, forKey: "sexo")
-            prefs.set(dat_nascimento, forKey: "dat_nascimento")
-            prefs.set(cidade, forKey: "cidade")
-            
-            prefs.set(1, forKey: "isLogado")
-            
-            prefs.synchronize()
-            
-            
-            // fechar login
-            //self.dismiss(animated: true, completion: nil)
-            
+        if self.success {
+            AppService.util.montarUsuario(usuario: self.usuario)
             self.performSegue(withIdentifier: "goto_main", sender: self)
-            
-        } else {
-            
-            AppService.util.alert("Erro no Login", message: error_msg as String)
-            
         }
-        
+        else {
+            AppService.util.alert("Erro no Login", message: error_msg as String)
+        }
     }
     
     @IBAction func clickLogin(_ sender: UIButton) {

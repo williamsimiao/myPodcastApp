@@ -206,8 +206,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         
         let postLength:NSString = String( postData.count ) as NSString
         
-        
-        
         let link = AppConfig.urlBaseApi + "cadastrar.php"
         
         print(link)
@@ -222,8 +220,8 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         request.httpBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+
         let task = session.dataTask(with: request, completionHandler: {
             (
             data, response, error) in
@@ -237,6 +235,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
             
             self.extract_json_data(dataString!)
             
+            
         })
         
         task.resume()
@@ -248,62 +247,48 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         NSLog("json %@", data)
         
         let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
-        
         do
         {
             // converter pra json
             let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
-            
-            
-            // verificar success
             success = json.value(forKey: "success") as! Bool
             
             if (success) {
-                
                 NSLog("enviado SUCCESS");
-                
             } else {
-                
                 NSLog("enviado ERROR");
-                
                 error_msg = json.value(forKey: "error") as! String
             }
-            
         }
-        catch
-        {
+        catch {
             print("error")
             return
         }
-        
-        DispatchQueue.main.async(execute: montarDados)
+        DispatchQueue.main.async(execute: onResultReceived)
+    }
+    
+    func onResultReceived() {
+        btnCadastrar.isEnabled = true
+        loading.isHidden = true
+        loading.stopAnimating()
+        montarDados()
     }
     
     func montarDados() {
         
-        btnCadastrar.isEnabled = true
-        
-        loading.isHidden = true
-        loading.stopAnimating()
-        
-        
         if (success) {
             
             let refreshAlert = UIAlertController(title: "Cadastrado com sucesso", message: "Seu cadastro foi confirmado! Acesse e faça o login.", preferredStyle: UIAlertController.Style.alert)
-            
-            
+        
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.dismiss(animated: true, completion: nil)
-                
             }))
             
             present(refreshAlert, animated: true, completion: nil)
             
         } else {
-            
             AppService.util.alert("Erro no Cadastro", message: error_msg)
-            
         }
         
     }
