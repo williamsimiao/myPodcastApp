@@ -1,14 +1,14 @@
 //
-//  PremiumViewController.swift
+//  NotificacoesViewController.swift
 //  myPodcastApp
 //
-//  Created by William on 04/02/19.
+//  Created by William on 12/02/19.
 //  Copyright © 2019 William. All rights reserved.
 //
 
 import UIKit
 
-class PremiumViewController: InheritanceViewController {
+class NotificacoesViewController: InheritanceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

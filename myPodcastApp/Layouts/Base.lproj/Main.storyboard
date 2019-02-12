@@ -17,7 +17,19 @@
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bem vindo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goH-AZ-qUD">
+                                <rect key="frame" x="166.5" y="780" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="goH-AZ-qUD" firstAttribute="centerX" secondItem="hAz-WZ-NcM" secondAttribute="centerX" id="RTm-mc-vwM"/>
+                            <constraint firstItem="oIK-wd-AR1" firstAttribute="bottom" secondItem="goH-AZ-qUD" secondAttribute="bottom" constant="12" id="cdp-OI-YkZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oIK-wd-AR1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sua Biblioteca" image="tab_icon_biblioteca" selectedImage="tab_item_selected_biblioteca" id="daf-Vc-okE"/>
@@ -26,6 +38,22 @@
             </objects>
             <point key="canvasLocation" x="5580" y="333"/>
         </scene>
+        <!--Notification-->
+        <scene sceneID="naS-Te-ujt">
+            <objects>
+                <viewController id="9jR-tl-iak" customClass="NotificacoesViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FNG-Jb-j9m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dMw-xZ-BkT"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Notification" id="9e7-th-p8Z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZC-y7-rqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5581" y="-1090"/>
+        </scene>
         <!--Início-->
         <scene sceneID="lYR-DL-i7O">
             <objects>
@@ -33,7 +61,18 @@
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lh2-lG-jR1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="leading" secondItem="lh2-lG-jR1" secondAttribute="leading" id="2z3-Nm-IRo"/>
+                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="trailing" secondItem="lh2-lG-jR1" secondAttribute="trailing" id="8C1-rU-74M"/>
+                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="top" secondItem="lh2-lG-jR1" secondAttribute="top" id="YxN-eq-kRG"/>
+                            <constraint firstItem="R2W-Yw-eQI" firstAttribute="bottom" secondItem="lh2-lG-jR1" secondAttribute="bottom" id="kVx-6c-OhX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Início" image="tab_icon_inicio" selectedImage="tab_icon_selected_inicio" id="waN-wZ-nNA"/>
@@ -41,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="1007.7464788732394"/>
+            <point key="canvasLocation" x="5579.7101449275369" y="1007.1428571428571"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="zcR-Rh-SC6">
@@ -122,6 +161,7 @@
                     <connections>
                         <segue destination="4Qy-4E-s6P" kind="relationship" relationship="viewControllers" id="k5H-w7-8KD"/>
                         <segue destination="gIU-ch-xKk" kind="relationship" relationship="viewControllers" id="oXS-3g-B6S"/>
+                        <segue destination="9jR-tl-iak" kind="relationship" relationship="viewControllers" id="rAJ-q8-kKw"/>
                         <segue destination="Vb9-J2-kNe" kind="relationship" relationship="viewControllers" id="9p6-gl-OQZ"/>
                     </connections>
                 </tabBarController>
@@ -791,10 +831,10 @@
             </objects>
             <point key="canvasLocation" x="1694" y="1398"/>
         </scene>
-        <!--Inicio View Controller-->
+        <!--Primeira View Controller-->
         <scene sceneID="qO6-Hi-PQM">
             <objects>
-                <viewController storyboardIdentifier="InicioVC" id="PIR-rI-FoS" customClass="InicioViewController" customModule="myPodcastApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrimeiraVC" id="PIR-rI-FoS" customClass="PrimeiraViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJI-il-pfb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -919,7 +959,7 @@
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ElY-PV-xCf"/>
-        <segue reference="l7N-Mb-VwJ"/>
+        <segue reference="mSl-zQ-c2B"/>
+        <segue reference="oYo-NV-EEj"/>
     </inferredMetricsTieBreakers>
 </document>

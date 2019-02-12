@@ -1,5 +1,5 @@
 //
-//  InicioViewController.swift
+//  PrimeiraViewController.swift
 //  morumbicupons
 //
 //  Created by Cristiano Silva on 22/08/2018.
@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 
 
-class InicioViewController: UIViewController, FBSDKLoginButtonDelegate {
+class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet var btnEntrar: UIButton!
     @IBOutlet var btnFacebook: FBSDKLoginButton!
