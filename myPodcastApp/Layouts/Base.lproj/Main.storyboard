@@ -57,7 +57,7 @@
         <!--Início-->
         <scene sceneID="lYR-DL-i7O">
             <objects>
-                <viewController id="4Qy-4E-s6P" customClass="OuvirViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Qy-4E-s6P" customClass="InicioViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
