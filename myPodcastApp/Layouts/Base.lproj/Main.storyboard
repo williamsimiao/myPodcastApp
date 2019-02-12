@@ -960,7 +960,7 @@
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mSl-zQ-c2B"/>
-        <segue reference="oYo-NV-EEj"/>
+        <segue reference="ElY-PV-xCf"/>
+        <segue reference="l7N-Mb-VwJ"/>
     </inferredMetricsTieBreakers>
 </document>
