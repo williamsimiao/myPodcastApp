@@ -37,6 +37,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.4)
         myTableView.dataSource = self
         myTableView.delegate = self
+        myTableView.rowHeight = 70
 //        myTableView.backgroundColor = .black
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         myTableView.register(nib, forCellReuseIdentifier: "myCell")

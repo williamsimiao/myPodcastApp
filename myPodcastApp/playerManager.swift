@@ -130,6 +130,8 @@ class playerManager {
         }
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : self.getEpisodeTitle(), MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
+        
+        playPause(shouldPlay: true)
     }
     
     func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {
