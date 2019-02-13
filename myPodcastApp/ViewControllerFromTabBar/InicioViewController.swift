@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class InicioViewController: InheritanceViewController, UITableViewDataSource, UITableViewDelegate {
+class InicioViewController: InheritanceViewController {
   
     // MARK: - Properties
     var error_msg : String?
@@ -20,31 +20,22 @@ class InicioViewController: InheritanceViewController, UITableViewDataSource, UI
     var myTableView =   UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setupSubView()
-
-//        let rect = CGRect(x: 50, y: 50, width: 0, height: 0)
-//        self.customTable = tableViewWithHeader(frame: rect)
-//        setupViewOnTop(bigView: self.resizableView, subView: self.customTable!)
-//        self.view.layoutIfNeeded()
+        setupSubView()
+        setupTableView()
         
         //getting Data
         makeResquest()
-        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
+}
+// MARK: - TableView
+extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
+    func setupTableView() {
         // Get main screen bounds
         myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.4)
         myTableView.dataSource = self
         myTableView.delegate = self
-
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-
         self.resizableView.addSubview(myTableView)
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,48 +50,13 @@ class InicioViewController: InheritanceViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-        cell.textLabel?.text = resumoDict["titulo"] as! String
+        cell.textLabel?.text = (resumoDict["titulo"] as! String)
         
         return cell
-    }
-    
-    open func setupViewOnTop(bigView:UIView, subView:UIView) {
-        subView.translatesAutoresizingMaskIntoConstraints = false
-        bigView.addSubview(subView)
-        
-        //adding contrains
-        
-        //left and right margins
-        let leadingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-
-        let trailingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-
-
-        //top
-        let topConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-
-        //bottom
-        if #available(iOS 11, *) {
-            let guide = bigView.safeAreaLayoutGuide
-
-            let bottomContrain =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.decreaseHightBy)
-
-            NSLayoutConstraint.activate([bottomContrain])
-
-        } else {
-            let standardSpacing: CGFloat = 8.0
-            NSLayoutConstraint.activate([
-                subView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
-                bottomLayoutGuide.topAnchor.constraint(equalTo: subView.bottomAnchor, constant: standardSpacing)
-                ])
-        }
-        NSLayoutConstraint.activate([topConstraint, leadingConstraint, trailingConstraint])
-        
     }
 }
 
 extension InicioViewController {
-    
     func makeResquest() {
         let link = AppConfig.urlBaseApi + "buscaResumos.php"
         
