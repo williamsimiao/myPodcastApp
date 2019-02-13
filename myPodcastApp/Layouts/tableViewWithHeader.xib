@@ -28,12 +28,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zw0-Hj-NFz">
-                    <rect key="frame" x="0.0" y="49" width="502" height="425"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="4" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zw0-Hj-NFz">
+                    <rect key="frame" x="0.0" y="41" width="502" height="525"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="425" id="d8s-Iz-D7h"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="mwM-BJ-dfj"/>
                         <outlet property="delegate" destination="-1" id="8JO-Xe-bsU"/>
@@ -42,11 +39,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NcM-Nb-UW6"/>
+                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3No-43-llC"/>
                 <constraint firstItem="Bqd-Vu-9Fd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="P6f-ku-ogU"/>
-                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="PSF-z3-MRs"/>
-                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="top" secondItem="Bqd-Vu-9Fd" secondAttribute="bottom" constant="8" id="gDe-EL-dD3"/>
+                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="PQs-os-eV7"/>
+                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="top" secondItem="Bqd-Vu-9Fd" secondAttribute="bottom" id="Zca-5a-LoV"/>
                 <constraint firstItem="Bqd-Vu-9Fd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gnX-A2-bes"/>
+                <constraint firstItem="Zw0-Hj-NFz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="hiO-rD-Q3o"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

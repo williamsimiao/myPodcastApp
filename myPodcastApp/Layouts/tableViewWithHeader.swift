@@ -13,7 +13,8 @@ class tableViewWithHeader: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    var itemsToLoad: [String] = ["One", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three"]
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -24,11 +25,12 @@ class tableViewWithHeader: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     func commonInit() {
         Bundle.main.loadNibNamed("tableViewWithHeader", owner: self, options: nil)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        headerLabel.text = "Testando"
         self.addSubview(contentView)
         self.addSubview(headerLabel)
         self.addSubview(tableView)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        headerLabel.text = "Testando"
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,12 +38,12 @@ class tableViewWithHeader: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return itemsToLoad.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "Row \(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = itemsToLoad[indexPath.row]
         return cell
     }
 }
