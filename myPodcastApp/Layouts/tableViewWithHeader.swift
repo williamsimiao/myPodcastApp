@@ -10,6 +10,7 @@ import UIKit
 
 class tableViewWithHeader: UIView, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,9 +24,11 @@ class tableViewWithHeader: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     func commonInit() {
         Bundle.main.loadNibNamed("tableViewWithHeader", owner: self, options: nil)
+        self.addSubview(contentView)
         self.addSubview(headerLabel)
         self.addSubview(tableView)
-        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        headerLabel.text = "Testando"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,11 +36,11 @@ class tableViewWithHeader: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "Row \(indexPath.row)"
         return cell
     }
