@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="115"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZN-Ja-CZO" userLabel="container">
+                    <rect key="frame" x="0.0" y="0.0" width="427" height="115"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JSH-Pv-xim">
+                            <rect key="frame" x="8" y="0.0" width="115" height="115"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="JSH-Pv-xim" secondAttribute="height" multiplier="1:1" id="uXu-RQ-bbn"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZU-1Q-Z7q">
+                            <rect key="frame" x="131" y="47" width="264" height="21"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="JSH-Pv-xim" firstAttribute="top" secondItem="nZN-Ja-CZO" secondAttribute="top" id="D7B-uI-Fsg"/>
+                        <constraint firstItem="JSH-Pv-xim" firstAttribute="leading" secondItem="nZN-Ja-CZO" secondAttribute="leading" constant="8" id="QUe-kj-08F"/>
+                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="leading" secondItem="JSH-Pv-xim" secondAttribute="trailing" constant="8" id="RVH-qW-hWw"/>
+                        <constraint firstAttribute="bottom" secondItem="JSH-Pv-xim" secondAttribute="bottom" id="ZlP-I3-qT8"/>
+                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="centerY" secondItem="JSH-Pv-xim" secondAttribute="centerY" id="tld-y1-QMc"/>
+                        <constraint firstAttribute="trailing" secondItem="ZZU-1Q-Z7q" secondAttribute="trailing" constant="32" id="yRi-iQ-5I9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ADR-8H-DUe"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="EAL-p0-KRz"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="YeQ-D5-I59"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eEp-yS-GCF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="coverImg" destination="JSH-Pv-xim" id="7gk-2E-yIm"/>
+                <outlet property="titleLabel" destination="ZZU-1Q-Z7q" id="ZYw-Tf-KZ1"/>
+            </connections>
+            <point key="canvasLocation" x="180" y="-94.902548725637189"/>
+        </view>
+    </objects>
+</document>

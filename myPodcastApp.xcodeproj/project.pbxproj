@@ -16,6 +16,8 @@
 		3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34FD092213251E0062DB7E /* InicioViewController.swift */; };
 		3D34FD14221349A80062DB7E /* tableViewWithHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D34FD13221349A80062DB7E /* tableViewWithHeader.xib */; };
 		3D34FD1622134ADF0062DB7E /* tableViewWithHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34FD1522134ADF0062DB7E /* tableViewWithHeader.swift */; };
+		3D34FD1C221484EC0062DB7E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34FD1B221484EC0062DB7E /* CustomCell.swift */; };
+		3D34FD1E221485350062DB7E /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D34FD1D221485350062DB7E /* CustomCell.xib */; };
 		3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682222119FDF00E89FF4 /* CadastroViewController.swift */; };
 		3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868242211A00E00E89FF4 /* LoginViewController.swift */; };
 		3D3868282211AE8300E89FF4 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868272211AE8300E89FF4 /* AppUtil.swift */; };
@@ -52,6 +54,8 @@
 		3D34FD092213251E0062DB7E /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
 		3D34FD13221349A80062DB7E /* tableViewWithHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = tableViewWithHeader.xib; sourceTree = "<group>"; };
 		3D34FD1522134ADF0062DB7E /* tableViewWithHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableViewWithHeader.swift; sourceTree = "<group>"; };
+		3D34FD1B221484EC0062DB7E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		3D34FD1D221485350062DB7E /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		3D38682222119FDF00E89FF4 /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		3D3868242211A00E00E89FF4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3D3868272211AE8300E89FF4 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
 				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
+				3D34FD1B221484EC0062DB7E /* CustomCell.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
 				3D34FD13221349A80062DB7E /* tableViewWithHeader.xib */,
 				3D34FD1522134ADF0062DB7E /* tableViewWithHeader.swift */,
+				3D34FD1D221485350062DB7E /* CustomCell.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D34FD1E221485350062DB7E /* CustomCell.xib in Resources */,
 				3D34FD14221349A80062DB7E /* tableViewWithHeader.xib in Resources */,
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
@@ -376,6 +383,7 @@
 				3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */,
 				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
 				3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */,
+				3D34FD1C221484EC0062DB7E /* CustomCell.swift in Sources */,
 				3D3868282211AE8300E89FF4 /* AppUtil.swift in Sources */,
 				3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */,
 				3D38682E2211AED600E89FF4 /* AppService.swift in Sources */,

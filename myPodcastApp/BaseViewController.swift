@@ -36,15 +36,10 @@ class BaseViewController: UIViewController {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
                     let arrEpisodes = episodesData as! [[String:AnyObject]]
-                    playerManager.shared.player_setup(episodeDictionary: arrEpisodes.first!)
+//                    playerManager.shared.player_setup(episodeDictionary: arrEpisodes.first!)
                 }
             }
-        }
-        
-        let result = AppService.server.send("/buscaResumos.php")
-        print("ZZ")
-        print(result)
-        print("XX")
+        }        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

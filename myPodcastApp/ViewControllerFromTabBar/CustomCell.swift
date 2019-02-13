@@ -1,0 +1,31 @@
+//
+//  CustomCell.swift
+//  myPodcastApp
+//
+//  Created by William on 13/02/19.
+//  Copyright © 2019 William. All rights reserved.
+//
+
+import UIKit
+
+class CustomCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var coverImg: UIImageView!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        coverImg.layer.cornerRadius = 10
+        coverImg.clipsToBounds = true
+        coverImg.layer.borderWidth = 3
+        coverImg.layer.borderColor = UIColor.white.cgColor
+        coverImg.backgroundColor = .orange
+        
+        //
+    }
+    
+}

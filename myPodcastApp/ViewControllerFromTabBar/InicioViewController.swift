@@ -34,6 +34,8 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.4)
         myTableView.dataSource = self
         myTableView.delegate = self
+//        myTableView.backgroundColor = .black
+        let nib = UINib(nibName: "CustomCell", bundle: nil)
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
         self.resizableView.addSubview(myTableView)
     }
@@ -48,11 +50,25 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-        cell.textLabel?.text = (resumoDict["titulo"] as! String)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomCell
+//        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
+//        cell.titleLabel.text = (resumoDict["titulo"] as! String)
+//        let coverUrl = (resumoDict["url_imagem"] as! String)
+////        Network.setCoverImgWithPlaceHolder(imageUrl: <#T##String#>, theImage: cell.coverImg)
         
+        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)  as UITableViewCell
+        cell.textLabel?.text = (resumoDict["titulo"] as! String)
+
+
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
+        playerManager.shared.player_setup(episodeDictionary: resumoDict)
+
     }
 }
 

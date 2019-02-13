@@ -23,37 +23,37 @@ class Util {
         return formatter.string(from: date)
     }
     
-    func setupViewOnTop(bigView:UIView, subView:UIView) {
-        subView.translatesAutoresizingMaskIntoConstraints = false
-        bigView.addSubview(subView)
-        
-        //adding contrains
-        
-        //left and right margins
-        let leadingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-        
-        let trailingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-        
-        
-        //top
-        let topConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-        
-        //bottom
-        if #available(iOS 11, *) {
-            let guide = bigView.safeAreaLayoutGuide
-            
-            let bottomContrain =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.decreaseHightBy)
-            
-            NSLayoutConstraint.activate([bottomContrain])
-            
-        } else {
-            let standardSpacing: CGFloat = 8.0
-            NSLayoutConstraint.activate([
-                subView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
-                bottomLayoutGuide.topAnchor.constraint(equalTo: subView.bottomAnchor, constant: standardSpacing)
-                ])
-        }
-        NSLayoutConstraint.activate([topConstraint, leadingConstraint, trailingConstraint])
-    }
+//    func setupViewOnTop(bigView:UIView, subView:UIView) {
+//        subView.translatesAutoresizingMaskIntoConstraints = false
+//        bigView.addSubview(subView)
+//        
+//        //adding contrains
+//        
+//        //left and right margins
+//        let leadingConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+//        
+//        let trailingConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+//        
+//        
+//        //top
+//        let topConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bigView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+//        
+//        //bottom
+//        if #available(iOS 11, *) {
+//            let guide = bigView.safeAreaLayoutGuide
+//            
+//            let bottomContrain =  guide.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: self.decreaseHightBy)
+//            
+//            NSLayoutConstraint.activate([bottomContrain])
+//            
+//        } else {
+//            let standardSpacing: CGFloat = 8.0
+//            NSLayoutConstraint.activate([
+//                subView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
+//                bottomLayoutGuide.topAnchor.constraint(equalTo: subView.bottomAnchor, constant: standardSpacing)
+//                ])
+//        }
+//        NSLayoutConstraint.activate([topConstraint, leadingConstraint, trailingConstraint])
+//    }
 
 }

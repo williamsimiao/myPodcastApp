@@ -111,8 +111,9 @@ class playerManager {
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
         self.currentEpisodeDict = episodeDictionary
-        let episodeIdNumber = self.currentEpisodeDict["episode_id"] as! NSNumber
-        let avItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: episodeIdNumber))
+        let episode_url = self.currentEpisodeDict["url_podcast_40_f"] as! String
+
+        let avItem = AVPlayerItem(url: URL(string: episode_url)! )
         self.player = AVPlayer(playerItem: avItem)
         
         self.isSet = true
