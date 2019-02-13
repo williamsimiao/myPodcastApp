@@ -12,6 +12,7 @@ class CustomCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var coverImg: UIImageView!
+    @IBOutlet weak var authorLabel: UILabel!
     
     override func prepareForReuse() {
         super.prepareForReuse()

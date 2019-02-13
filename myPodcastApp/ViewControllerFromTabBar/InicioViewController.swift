@@ -37,7 +37,8 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.4)
         myTableView.dataSource = self
         myTableView.delegate = self
-        myTableView.rowHeight = 70
+        myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        myTableView.rowHeight = 90
 //        myTableView.backgroundColor = .black
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         myTableView.register(nib, forCellReuseIdentifier: "myCell")
@@ -57,6 +58,13 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomCell
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
         cell.titleLabel.text = (resumoDict["titulo"] as! String)
+        let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
+        var authorsNamesList : [String] = []
+        
+        for author in authorsList {
+            authorsNamesList.append(author["nome"] as! String)
+        }
+        cell.authorLabel.text = authorsNamesList.joined(separator: " & ")
         let coverUrl = (resumoDict["url_imagem"] as! String)
         Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
         

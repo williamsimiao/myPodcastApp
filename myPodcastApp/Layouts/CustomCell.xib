@@ -13,49 +13,60 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="427" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="427" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZN-Ja-CZO" userLabel="container">
-                    <rect key="frame" x="0.0" y="0.0" width="427" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="427" height="90"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JSH-Pv-xim">
-                            <rect key="frame" x="8" y="0.0" width="70" height="70"/>
+                            <rect key="frame" x="8" y="10" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="JSH-Pv-xim" secondAttribute="height" multiplier="1:1" id="uXu-RQ-bbn"/>
+                                <constraint firstAttribute="width" secondItem="JSH-Pv-xim" secondAttribute="height" multiplier="1:1" id="0gW-rm-EMw"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="eKF-ji-kuE"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZU-1Q-Z7q">
-                            <rect key="frame" x="86" y="24.5" width="309" height="21"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <rect key="frame" x="86" y="15" width="333" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-gw-RC0" userLabel="Author Label">
+                            <rect key="frame" x="86" y="54" width="333" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="JSH-Pv-xim" firstAttribute="top" secondItem="nZN-Ja-CZO" secondAttribute="top" id="D7B-uI-Fsg"/>
-                        <constraint firstItem="JSH-Pv-xim" firstAttribute="leading" secondItem="nZN-Ja-CZO" secondAttribute="leading" constant="8" id="QUe-kj-08F"/>
-                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="leading" secondItem="JSH-Pv-xim" secondAttribute="trailing" constant="8" id="RVH-qW-hWw"/>
-                        <constraint firstAttribute="bottom" secondItem="JSH-Pv-xim" secondAttribute="bottom" id="ZlP-I3-qT8"/>
-                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="centerY" secondItem="JSH-Pv-xim" secondAttribute="centerY" id="tld-y1-QMc"/>
-                        <constraint firstAttribute="trailing" secondItem="ZZU-1Q-Z7q" secondAttribute="trailing" constant="32" id="yRi-iQ-5I9"/>
+                        <constraint firstAttribute="bottom" secondItem="JSH-Pv-xim" secondAttribute="bottom" priority="250" constant="10" id="4Em-bF-I7a"/>
+                        <constraint firstItem="dKq-gw-RC0" firstAttribute="leading" secondItem="JSH-Pv-xim" secondAttribute="trailing" constant="8" id="F17-ah-vik"/>
+                        <constraint firstItem="JSH-Pv-xim" firstAttribute="leading" secondItem="nZN-Ja-CZO" secondAttribute="leading" constant="8" id="Iwr-kf-riT"/>
+                        <constraint firstItem="JSH-Pv-xim" firstAttribute="top" secondItem="nZN-Ja-CZO" secondAttribute="top" priority="250" constant="10" id="LG7-ce-QyY"/>
+                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="leading" secondItem="JSH-Pv-xim" secondAttribute="trailing" constant="8" id="PbM-Ai-CDT"/>
+                        <constraint firstAttribute="trailing" secondItem="dKq-gw-RC0" secondAttribute="trailing" constant="8" id="PfJ-yB-2s4"/>
+                        <constraint firstItem="JSH-Pv-xim" firstAttribute="centerY" secondItem="nZN-Ja-CZO" secondAttribute="centerY" id="TI5-p4-yhQ"/>
+                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="top" secondItem="JSH-Pv-xim" secondAttribute="top" constant="5" id="eYi-E5-Z7x"/>
+                        <constraint firstAttribute="trailing" secondItem="ZZU-1Q-Z7q" secondAttribute="trailing" constant="8" id="tNy-ba-7hs"/>
+                        <constraint firstItem="dKq-gw-RC0" firstAttribute="bottom" secondItem="JSH-Pv-xim" secondAttribute="bottom" constant="-5" id="uKi-Mc-EIn"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="nZN-Ja-CZO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FkM-9n-8Ah"/>
-                <constraint firstItem="nZN-Ja-CZO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NOa-lq-Qwx"/>
-                <constraint firstItem="nZN-Ja-CZO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="XBh-hE-H1U"/>
-                <constraint firstItem="nZN-Ja-CZO" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="udf-3C-b7r"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="6xn-xR-0af"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Th7-6V-eLi"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="xMD-0z-bvc"/>
+                <constraint firstItem="nZN-Ja-CZO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="yGt-mj-jek"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="authorLabel" destination="dKq-gw-RC0" id="Lc4-en-emn"/>
                 <outlet property="coverImg" destination="JSH-Pv-xim" id="7gk-2E-yIm"/>
                 <outlet property="titleLabel" destination="ZZU-1Q-Z7q" id="ZYw-Tf-KZ1"/>
             </connections>
-            <point key="canvasLocation" x="180" y="-94.902548725637189"/>
+            <point key="canvasLocation" x="184.80000000000001" y="-73.763118440779621"/>
         </view>
     </objects>
 </document>
