@@ -61,7 +61,7 @@ class playerManager {
     //MARK - Getters
     
     func getEpisodeTitle() -> String {
-        if let episodeTitle = self.currentEpisodeDict["title"] {
+        if let episodeTitle = self.currentEpisodeDict["titulo"] {
             return episodeTitle as! String
         }
         return ""
@@ -76,7 +76,7 @@ class playerManager {
     }
     
     func getEpisodeCoverImgUrl() -> String {
-        if let episodeTitle = self.currentEpisodeDict["image_url"] {
+        if let episodeTitle = self.currentEpisodeDict["url_imagem"] {
             return episodeTitle as! String
         }
         return ""
@@ -96,9 +96,11 @@ class playerManager {
     }
     
     func getEpisodeDurationInSeconds() -> Double {
-        if let duration = self.currentEpisodeDict["duration"] {
-            return Double(duration as! Int)
+        guard CMTimeGetSeconds((self.player?.currentItem?.duration)!) == nil else {
+            let duration = CMTimeGetSeconds((self.player?.currentItem?.duration)!)
+            return Double(duration)
         }
+        
         return 0
     }
     
@@ -124,15 +126,15 @@ class playerManager {
 
         //Seting ControlCenter UI
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
-            return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["image_url"] as! String)
+            return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["url_imagem"] as! String)
         }
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : self.getEpisodeTitle(), MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
     }
     
     func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {
-        let currentEpisodeId = (self.currentEpisodeDict["episode_id"] as! NSNumber)
-        let newEpisodeId = (episodeDictionary["episode_id"] as! NSNumber)
+        let currentEpisodeId = (self.currentEpisodeDict["cod_resumo"] as! NSNumber)
+        let newEpisodeId = (episodeDictionary["cod_resumo"] as! NSNumber)
         if currentEpisodeId != newEpisodeId {
             self.player?.pause()
             self.currentEpisodeDict = episodeDictionary

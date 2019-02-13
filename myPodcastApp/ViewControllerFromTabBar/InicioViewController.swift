@@ -21,11 +21,14 @@ class InicioViewController: InheritanceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubView()
-        setupTableView()
         
         //getting Data
         makeResquest()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        setupTableView()
+    }
+
 }
 // MARK: - TableView
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
@@ -36,7 +39,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         myTableView.delegate = self
 //        myTableView.backgroundColor = .black
         let nib = UINib(nibName: "CustomCell", bundle: nil)
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
+        myTableView.register(nib, forCellReuseIdentifier: "myCell")
         self.resizableView.addSubview(myTableView)
     }
     
@@ -50,15 +53,15 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomCell
-//        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-//        cell.titleLabel.text = (resumoDict["titulo"] as! String)
-//        let coverUrl = (resumoDict["url_imagem"] as! String)
-////        Network.setCoverImgWithPlaceHolder(imageUrl: <#T##String#>, theImage: cell.coverImg)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomCell
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)  as UITableViewCell
-        cell.textLabel?.text = (resumoDict["titulo"] as! String)
+        cell.titleLabel.text = (resumoDict["titulo"] as! String)
+        let coverUrl = (resumoDict["url_imagem"] as! String)
+        Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
+        
+//        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)  as UITableViewCell
+//        cell.textLabel?.text = (resumoDict["titulo"] as! String)
 
 
         return cell
