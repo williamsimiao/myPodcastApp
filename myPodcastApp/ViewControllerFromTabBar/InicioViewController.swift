@@ -10,18 +10,20 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class InicioViewController: InheritanceViewController, UITableViewDelegate, UITableViewDataSource {
+class InicioViewController: InheritanceViewController {
     
     // MARK: - Properties
     var error_msg : String?
     var success : Bool?
     var episodesArray :[[String:AnyObject]]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupSubView()
         
-        
-        let customTableView = tableViewWithHeader()
+        let retangulo = CGRect(x: 0, y: 0, width: 200, height: 200)
+        let customTableView = tableViewWithHeader.init(frame: retangulo)
+        self.resizableView.addSubview(customTableView)
         
         self.view.layoutIfNeeded()
         
@@ -32,14 +34,6 @@ class InicioViewController: InheritanceViewController, UITableViewDelegate, UITa
 }
 
 extension InicioViewController {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        return cell
-    }
     
     func makeResquest() {
         let link = AppConfig.urlBaseApi + "buscaResumos.php"
@@ -111,7 +105,8 @@ extension InicioViewController {
 
         if self.success! {
             //Salvar
-            AppService.util.alert("deu bom", message: "Obaaa" as! String)
+            print(episodesArray?.first)
+//            AppService.util.alert("deu bom", message: "Obaaa" as! String)
             
         }
         else {

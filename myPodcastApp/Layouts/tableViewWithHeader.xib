@@ -35,7 +35,6 @@
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="mwM-BJ-dfj"/>
-                        <outlet property="delegate" destination="-1" id="hs2-30-l9D"/>
                     </connections>
                 </tableView>
             </subviews>

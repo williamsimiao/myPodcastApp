@@ -18,7 +18,7 @@ class InheritanceViewController: UIViewController {
     }
     
     open func setupSubView() {
-        resizableView.backgroundColor = .white
+        resizableView.backgroundColor = .orange
         resizableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(resizableView)
         
