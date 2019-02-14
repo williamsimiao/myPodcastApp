@@ -34,7 +34,7 @@ class InicioViewController: InheritanceViewController {
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func setupTableView() {
         // Get main screen bounds
-        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height)
+        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.7)
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -43,6 +43,13 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         myTableView.register(nib, forCellReuseIdentifier: "myCell")
         self.resizableView.addSubview(myTableView)
+
+        //Contrains
+        //bottom
+        let bottomContraint = NSLayoutConstraint(item: self.myTableView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([bottomContraint])
+
+        //end Contrains
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,12 +86,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-        if playerManager.shared.getPlayerIsSet() {
-            playerManager.shared.changePlayingEpisode(episodeDictionary: resumoDict)
-        } else {
-            playerManager.shared.player_setup(episodeDictionary: resumoDict)
-        }
-
+        playerManager.shared.episodeSelected(episodeDictionary: resumoDict)
     }
 }
 

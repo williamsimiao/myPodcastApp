@@ -138,7 +138,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="86v-Ve-x0Q" customClass="TabBarViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="3tC-uR-x3p">
+                    <tabBar key="tabBar" opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" id="3tC-uR-x3p">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -162,7 +162,7 @@
         <scene sceneID="bAt-vF-VM1">
             <objects>
                 <viewController id="3ii-sc-2q9" customClass="MiniPlayerViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
+                    <view key="view" hidden="YES" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -216,6 +216,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="I2q-Bg-fyC" id="HwR-9P-wXx"/>
                         <outlet property="coverImg" destination="ZiE-yz-sd5" id="ADT-zn-Tb4"/>
                         <outlet property="playButton" destination="qyx-VU-iM0" id="fUr-iU-3jX"/>
                         <outlet property="progressBar" destination="8Yt-a1-CRK" id="Ohu-sG-KbD"/>

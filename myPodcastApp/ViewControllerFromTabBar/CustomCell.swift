@@ -23,7 +23,7 @@ class CustomCell: UITableViewCell {
         coverImg.layer.cornerRadius = 10
         coverImg.clipsToBounds = true
         coverImg.layer.borderWidth = 1
-        coverImg.layer.borderColor = UIColor.black.cgColor
+        coverImg.layer.borderColor = UIColor.white.cgColor
         coverImg.backgroundColor = .orange
         
         //

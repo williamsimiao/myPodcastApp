@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D05B5F72202140E0056E7B9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B5F62202140E0056E7B9 /* Network.swift */; };
+		3D123A152215CC9D009A8E57 /* ColorWeel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D123A142215CC9D009A8E57 /* ColorWeel.swift */; };
 		3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */; };
 		3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */; };
 		3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B932208C8BA000E426A /* PerfilViewController.swift */; };
@@ -46,6 +47,7 @@
 		2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myPodcastApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.release.xcconfig"; sourceTree = "<group>"; };
 		3D05B5F62202140E0056E7B9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		3D123A142215CC9D009A8E57 /* ColorWeel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWeel.swift; sourceTree = "<group>"; };
 		3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InheritanceViewController.swift; sourceTree = "<group>"; };
 		3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliotecaViewController.swift; sourceTree = "<group>"; };
 		3D2D7B932208C8BA000E426A /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				3D34FD13221349A80062DB7E /* tableViewWithHeader.xib */,
 				3D34FD1522134ADF0062DB7E /* tableViewWithHeader.swift */,
 				3D34FD1D221485350062DB7E /* CustomCell.xib */,
+				3D123A142215CC9D009A8E57 /* ColorWeel.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3D34FD082213244F0062DB7E /* PrimeiraViewController.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
+				3D123A152215CC9D009A8E57 /* ColorWeel.swift in Sources */,
 				3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

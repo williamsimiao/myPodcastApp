@@ -10,4 +10,7 @@ enum AppError: Error {
     case cryptError
     case networkError
     case discoverydError
+    //playerManagerErrors
+    case urlError
+    case urlKeyError
 }

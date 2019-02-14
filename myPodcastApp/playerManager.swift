@@ -103,52 +103,69 @@ class playerManager {
     }
     
     //MARK Mudando de Episodio
-    
-    func player_setup(episodeDictionary:[String:AnyObject]) {
-        self.currentEpisodeDict = episodeDictionary
-        let episode_url = self.currentEpisodeDict["url_podcast_40_f"] as! String
-
-        let avItem = AVPlayerItem(url: URL(string: episode_url)! )
-        self.player = AVPlayer(playerItem: avItem)
+    func episodeSelected(episodeDictionary: [String:AnyObject]) {
         
-        self.isSet = true
-        addPeriodicTimeObserver()
+        //Getting episode AVPlayerItem
+        let newEpisodeAVItem : AVPlayerItem
+        
+        //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
+        do {
+            newEpisodeAVItem = try getAVItem(ForEpisode: episodeDictionary)
+        } catch AppError.urlKeyError {
+            print("Erro - key for url not found")
+            return
+        } catch AppError.urlError {
+            print("Erro - not possible to convert the string to URL")
+            return
+        } catch {
+            print("Unexpected error: \(error).")
+            return
+        }
+        
+        if playerManager.shared.getPlayerIsSet() {
+            let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
+            let newEpisodeId = episodeDictionary["cod_resumo"] as! String
 
+            if currentEpisodeId != newEpisodeId {
+                self.player?.pause()
+                self.player?.replaceCurrentItem(with: newEpisodeAVItem)
+            }
+        }
+        else {
+            self.isSet = true
+            self.player = AVPlayer(playerItem: newEpisodeAVItem)
+            addPeriodicTimeObserver()
+
+        }
+        self.currentEpisodeDict = episodeDictionary
+        changeUIForEpisode()
+        playPause(shouldPlay: true)
+
+    }
+    
+    func getAVItem(ForEpisode episodeDictionary:[String:AnyObject]) throws -> AVPlayerItem{
+        guard let episodeLink = episodeDictionary["url_podcast_40_f"] else {
+            throw AppError.urlKeyError
+        }
+        guard let episodeURL = URL(string: episodeLink as! String) else {
+            throw AppError.urlError
+        }
+        return AVPlayerItem(url: episodeURL)
+    }
+    
+    func changeUIForEpisode() {
         //To change UI
         NotificationCenter.default.post(name: .episodeDidChange, object: self, userInfo: self.currentEpisodeDict)
-
+        
         //Seting ControlCenter UI
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
             return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["url_imagem"] as! String)
         }
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : self.getEpisodeTitle(), MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
-        
-        playPause(shouldPlay: true)
     }
     
-    func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {
-        let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
-        let newEpisodeId = episodeDictionary["cod_resumo"] as! String
-        if currentEpisodeId != newEpisodeId {
-            self.player?.pause()
-            self.currentEpisodeDict = episodeDictionary
-            
-            guard let episodeLink = episodeDictionary["url_podcast_40_f"] else {
-                return
-            }
-            guard let episodeURL = URL(string: episodeLink as! String) else {
-                return
-            }
-            
-            let newEpisodeAVItem = AVPlayerItem(url: episodeURL)
-            self.player?.replaceCurrentItem(with: newEpisodeAVItem)
-            self.player?.play()
-        }
-    }
-    
-    
-    //MARK MODIFICADORES de tempo
+    //MARK - MODIFICADORES de tempo
     func foward() {
         jumpBy(seconds: Double(skip_time))
     }

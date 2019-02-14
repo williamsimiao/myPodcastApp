@@ -24,6 +24,7 @@ class MiniPlayerViewController: UIViewController {
     //Initial State mast match the Storyboard
     var currentPlayButtonState = playButtonStates.play
 
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -81,7 +82,10 @@ extension MiniPlayerViewController {
 extension MiniPlayerViewController {
     @objc func onPlayingStateDidChange(_ notification: Notification) {
         if let data = notification.userInfo as? [String: Bool] {
+            //for (key, value)
             for (_, isPlaying) in data {
+                //TODO: replace for a animation instead
+                self.contentView.isHidden = false
                 if isPlaying && self.currentPlayButtonState != .pause {
                     changeButtonState(to: .pause)
                 }
