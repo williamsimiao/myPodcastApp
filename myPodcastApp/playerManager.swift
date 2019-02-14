@@ -25,14 +25,11 @@ class playerManager {
     var player : AVPlayer?
     var isSet = false
     var timeObserverToken: Any?
-    let skip_time = 5
+    let skip_time = 10
     let interfaceUpdateInterval = 0.5
+    var episodesQueue = [[String:AnyObject]]()
     var currentEpisodeDict = [String:AnyObject]()
     static let shared = playerManager()
-    let requiredAssetKeys = [
-        "playable",
-        "hasProtectedContent"
-    ]
     
     private init() {
     }
@@ -71,8 +68,7 @@ class playerManager {
 //        if let episodeTitle = self.currentEpisodeDict["title"] {
 //            return episodeTitle as! String
 //        }
-//        return ""
-        return "Author long long long Name"
+        return "-"
     }
     
     func getEpisodeCoverImgUrl() -> String {
@@ -112,6 +108,7 @@ class playerManager {
     //MARK Mudando de Episodio
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
+        self.episodesQueue.append(episodeDictionary)
         self.currentEpisodeDict = episodeDictionary
         let episode_url = self.currentEpisodeDict["url_podcast_40_f"] as! String
 
@@ -179,5 +176,18 @@ class playerManager {
         let currentTime = self.player?.currentItem?.currentTime()
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(seconds), preferredTimescale: currentTime!.timescale)
         self.player?.seek(to: jump)
+    }
+    
+    //MARK - Queue management
+    func insert(episode:[String:AnyObject]) {
+        self.episodesQueue.append(episode)
+    }
+    
+    func insertAtQueueBegening(episode:[String:AnyObject]) {
+        self.episodesQueue.insert(episode, at: 0)
+    }
+    
+    func getNextInQueue() -> [String:AnyObject] {
+         return self.episodesQueue.removeFirst()
     }
 }
