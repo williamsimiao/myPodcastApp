@@ -65,9 +65,7 @@ class playerManager {
     }
     
     func getEpisodeAuthor() -> String {
-//        if let episodeTitle = self.currentEpisodeDict["title"] {
-//            return episodeTitle as! String
-//        }
+        
         return "-"
     }
     
@@ -92,12 +90,11 @@ class playerManager {
     }
     
     func getEpisodeDurationInSeconds() -> Double {
-        guard CMTimeGetSeconds((self.player?.currentItem?.duration)!) == nil else {
-            let duration = CMTimeGetSeconds((self.player?.currentItem?.duration)!)
-            return Double(duration)
+        guard let durationTime = self.player?.currentItem?.duration else {
+            return 0
         }
-        
-        return 0
+        let duration = CMTimeGetSeconds(durationTime)
+        return Double(duration)
     }
     
     func getEpisodeCurrentTimeInSeconds() -> Double {
@@ -108,7 +105,6 @@ class playerManager {
     //MARK Mudando de Episodio
     
     func player_setup(episodeDictionary:[String:AnyObject]) {
-        self.episodesQueue.append(episodeDictionary)
         self.currentEpisodeDict = episodeDictionary
         let episode_url = self.currentEpisodeDict["url_podcast_40_f"] as! String
 
@@ -132,13 +128,20 @@ class playerManager {
     }
     
     func changePlayingEpisode(episodeDictionary:[String:AnyObject]) {
-        let currentEpisodeId = (self.currentEpisodeDict["cod_resumo"] as! NSNumber)
-        let newEpisodeId = (episodeDictionary["cod_resumo"] as! NSNumber)
+        let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
+        let newEpisodeId = episodeDictionary["cod_resumo"] as! String
         if currentEpisodeId != newEpisodeId {
             self.player?.pause()
             self.currentEpisodeDict = episodeDictionary
             
-            let newEpisodeAVItem = AVPlayerItem(url: Util.getUrl(forPlayingEpisode: newEpisodeId))
+            guard let episodeLink = episodeDictionary["url_podcast_40_f"] else {
+                return
+            }
+            guard let episodeURL = URL(string: episodeLink as! String) else {
+                return
+            }
+            
+            let newEpisodeAVItem = AVPlayerItem(url: episodeURL)
             self.player?.replaceCurrentItem(with: newEpisodeAVItem)
             self.player?.play()
         }

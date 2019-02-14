@@ -162,7 +162,7 @@
         <scene sceneID="bAt-vF-VM1">
             <objects>
                 <viewController id="3ii-sc-2q9" customClass="MiniPlayerViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" hidden="YES" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
+                    <view key="view" contentMode="center" id="I2q-Bg-fyC" userLabel="contentView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -371,34 +371,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec8-08-gS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6543" y="1012"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="DEc-kz-1Md">
-            <objects>
-                <tableViewController id="g4U-Wg-Pkd" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PJa-v2-DKR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bZB-R6-KgX">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bZB-R6-KgX" id="Cre-4a-I7R">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="g4U-Wg-Pkd" id="dPD-gP-q1y"/>
-                            <outlet property="delegate" destination="g4U-Wg-Pkd" id="fjA-Pj-o8m"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4eF-JI-Ihf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7688" y="409"/>
         </scene>
         <!--Episode Play Control View Controller-->
         <scene sceneID="2KS-9E-MRT">

@@ -34,7 +34,7 @@ class InicioViewController: InheritanceViewController {
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func setupTableView() {
         // Get main screen bounds
-        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.4)
+        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height)
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -79,7 +79,11 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-        playerManager.shared.player_setup(episodeDictionary: resumoDict)
+        if playerManager.shared.getPlayerIsSet() {
+            playerManager.shared.changePlayingEpisode(episodeDictionary: resumoDict)
+        } else {
+            playerManager.shared.player_setup(episodeDictionary: resumoDict)
+        }
 
     }
 }
@@ -135,7 +139,7 @@ extension InicioViewController {
                 
                 NSLog("Login SUCCESS");
                 // dados do json
-                self.episodesArray = json.object(forKey: "resumos") as! Array
+                self.episodesArray = (json.object(forKey: "resumos") as! Array)
                 
             } else {
                 
@@ -155,13 +159,12 @@ extension InicioViewController {
 
         if self.success! {
             //Salvar
-            print(episodesArray?.first)
             self.myTableView.reloadData()
 //            AppService.util.alert("deu bom", message: "Obaaa" as! String)
             
         }
         else {
-            AppService.util.alert("Erro no Login", message: error_msg as! String)
+            AppService.util.alert("Erro no Login", message: error_msg!)
         }
     }
 }
