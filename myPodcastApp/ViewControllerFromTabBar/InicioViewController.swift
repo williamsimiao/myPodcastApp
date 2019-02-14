@@ -18,6 +18,7 @@ class InicioViewController: InheritanceViewController {
     var episodesArray :[[String:AnyObject]]?
     var customTable : tableViewWithHeader?
     var myTableView =   UITableView()
+    var titleView = CustomTitleView()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubView()
@@ -26,28 +27,51 @@ class InicioViewController: InheritanceViewController {
         makeResquest()
     }
     override func viewWillAppear(_ animated: Bool) {
+        setupTitleView()
         setupTableView()
     }
 
 }
-// MARK: - TableView
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
+    // MARK: - Title View
+    func setupTitleView() {
+        self.titleView.titleLabel.text = "Bem vindo"
+        self.titleView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: 90)
+
+        self.resizableView.addSubview(self.titleView)
+        
+        //COnstraints
+        //left and right margins
+//        let leftConstraint = NSLayoutConstraint(item: self.titleView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+//        
+//         let rightConstraint = NSLayoutConstraint(item: self.titleView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+//        //top
+//        let topContraint = NSLayoutConstraint(item: self.titleView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+//        NSLayoutConstraint.activate([leftConstraint, rightConstraint, topContraint])
+        
+    }
+
+    
+    // MARK: - TableView
     func setupTableView() {
         // Get main screen bounds
-        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.7)
+        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.5)
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         myTableView.rowHeight = 90
-//        myTableView.backgroundColor = .black
+        myTableView.backgroundColor = .black
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         myTableView.register(nib, forCellReuseIdentifier: "myCell")
         self.resizableView.addSubview(myTableView)
 
         //Contrains
+        //top
+        let topContraint = NSLayoutConstraint(item: self.myTableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.titleView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 90)
         //bottom
         let bottomContraint = NSLayoutConstraint(item: self.myTableView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([bottomContraint])
+        
+        NSLayoutConstraint.activate([topContraint, bottomContraint])
 
         //end Contrains
     }
