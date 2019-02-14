@@ -44,7 +44,7 @@ extension UIView {
         
         let topConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: topReference, attribute: .bottom, multiplier: 1.0, constant: 0)
         
-        let bottomConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: bottomReference, attribute: .top, multiplier: 1.0, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: bottomReference, attribute: .bottom, multiplier: 1.0, constant: 0)
         
         NSLayoutConstraint.activate([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
     }

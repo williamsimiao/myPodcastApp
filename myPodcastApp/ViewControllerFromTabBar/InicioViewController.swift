@@ -36,7 +36,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - Title View
     func setupTitleView() {
         self.titleView.titleLabel.text = "Bem vindo"
-//        self.titleView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: 90)
+        self.titleView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: 90)
         self.resizableView.addSubview(self.titleView)
         
         //Contrains
