@@ -61,7 +61,40 @@
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-Cm-ubo" userLabel="resizable">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7G-Ws-s3R">
+                                        <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="resizeActionButton:" destination="4Qy-4E-s6P" eventType="touchUpInside" id="8eZ-rl-IKB"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uG-pN-MaH">
+                                        <rect key="frame" x="184" y="875" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="p7G-Ws-s3R" firstAttribute="centerX" secondItem="ihV-Cm-ubo" secondAttribute="centerX" id="4h5-bm-hZs"/>
+                                    <constraint firstItem="p7G-Ws-s3R" firstAttribute="centerY" secondItem="ihV-Cm-ubo" secondAttribute="centerY" id="oX7-Lb-btE"/>
+                                    <constraint firstAttribute="bottom" secondItem="6uG-pN-MaH" secondAttribute="bottom" id="sKl-4K-TSg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ihV-Cm-ubo" secondAttribute="trailing" id="VH3-WZ-g7N"/>
+                            <constraint firstItem="ihV-Cm-ubo" firstAttribute="leading" secondItem="mX1-0s-hWh" secondAttribute="leading" id="b62-X6-Hme"/>
+                            <constraint firstAttribute="bottom" secondItem="ihV-Cm-ubo" secondAttribute="bottom" id="d88-vc-B3Y"/>
+                            <constraint firstItem="ihV-Cm-ubo" firstAttribute="top" secondItem="mX1-0s-hWh" secondAttribute="top" id="kp1-RW-jQz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Início" image="tab_icon_inicio" selectedImage="tab_icon_selected_inicio" id="waN-wZ-nNA"/>

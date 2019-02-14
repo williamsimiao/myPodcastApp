@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class InicioViewController: InheritanceViewController {
   
+    @IBOutlet weak var botoomConstrain: NSLayoutConstraint!
     // MARK: - Properties
     var error_msg : String?
     var success : Bool?
@@ -21,16 +22,23 @@ class InicioViewController: InheritanceViewController {
     var titleView = CustomTitleView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSubView()
+//        setupSubView()
+
         
         //getting Data
         makeResquest()
     }
     override func viewWillAppear(_ animated: Bool) {
-        setupTitleView()
-        setupTableView()
+//        setupTitleView()
+//        setupTableView()
     }
+    
+    @IBAction func resizeActionButton(_ sender: Any) {
+        botoomConstrain.constant = -self.decreaseHightBy
+        self.view.layoutIfNeeded()
 
+    }
+    
 }
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - Title View
