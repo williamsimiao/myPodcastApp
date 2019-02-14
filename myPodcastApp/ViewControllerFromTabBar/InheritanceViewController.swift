@@ -18,7 +18,7 @@ class InheritanceViewController: UIViewController {
     
     open func setupSubView() {
         self.resizableView.translatesAutoresizingMaskIntoConstraints = false
-        self.resizableView.backgroundColor = .black
+        self.resizableView.backgroundColor = .green
         self.view.addSubview(resizableView)
 
         //adding contrains
@@ -27,11 +27,6 @@ class InheritanceViewController: UIViewController {
         let leadingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
 
         let trailingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-
-
-//        //top
-//        let topConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-//        NSLayoutConstraint.activate([topConstraint])
 
         //top
         if #available(iOS 11, *) {

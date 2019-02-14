@@ -36,53 +36,37 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - Title View
     func setupTitleView() {
         self.titleView.titleLabel.text = "Bem vindo"
-        self.titleView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: 90)
-
+//        self.titleView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: 90)
         self.resizableView.addSubview(self.titleView)
         
-        //COnstraints
-        //left and right margins
-//        let leftConstraint = NSLayoutConstraint(item: self.titleView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-//        
-//         let rightConstraint = NSLayoutConstraint(item: self.titleView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-//        //top
-//        let topContraint = NSLayoutConstraint(item: self.titleView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-//        NSLayoutConstraint.activate([leftConstraint, rightConstraint, topContraint])
-        
+        //Contrains
+        self.titleView.alignWithTop(self.resizableView, topReference: self.resizableView)
     }
 
     
     // MARK: - TableView
     func setupTableView() {
         // Get main screen bounds
-        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height*0.5)
+        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height)
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         myTableView.rowHeight = 90
-        myTableView.backgroundColor = .black
+//        myTableView.backgroundColor = .black
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         myTableView.register(nib, forCellReuseIdentifier: "myCell")
         self.resizableView.addSubview(myTableView)
-
-        //Contrains
-        //top
-        let topContraint = NSLayoutConstraint(item: self.myTableView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.titleView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 90)
-        //bottom
-        let bottomContraint = NSLayoutConstraint(item: self.myTableView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.resizableView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activate([topContraint, bottomContraint])
-
-        //end Contrains
+        //Contrains
+        myTableView.fixInViewBetweenTwoOthers(self.resizableView, topReference: self.titleView, bottomReference: self.resizableView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if episodesArray != nil {
-            return episodesArray!.count
-        }
-        else {
+        guard let episodesCounter = episodesArray?.count else {
             return 0
         }
+        return episodesCounter
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,11 +83,6 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let coverUrl = (resumoDict["url_imagem"] as! String)
         Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
         
-//        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)  as UITableViewCell
-//        cell.textLabel?.text = (resumoDict["titulo"] as! String)
-
-
         return cell
     }
     
