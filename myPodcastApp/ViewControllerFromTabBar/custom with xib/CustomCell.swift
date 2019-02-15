@@ -10,6 +10,7 @@ import UIKit
 
 class CustomCell: UITableViewCell {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
@@ -25,6 +26,7 @@ class CustomCell: UITableViewCell {
         coverImg.layer.borderWidth = 1
         coverImg.layer.borderColor = UIColor.white.cgColor
         coverImg.backgroundColor = .orange
+        
     }
     
 }

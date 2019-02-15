@@ -95,6 +95,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "to_detail", sender: self)
+        let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
     }
 }
 

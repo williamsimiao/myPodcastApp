@@ -65,6 +65,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="authorLabel" destination="dKq-gw-RC0" id="Lc4-en-emn"/>
+                <outlet property="containerView" destination="nZN-Ja-CZO" id="uuX-c0-8wH"/>
                 <outlet property="coverImg" destination="JSH-Pv-xim" id="7gk-2E-yIm"/>
                 <outlet property="titleLabel" destination="ZZU-1Q-Z7q" id="ZYw-Tf-KZ1"/>
             </connections>
