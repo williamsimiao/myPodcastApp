@@ -17,7 +17,6 @@ class InicioViewController: UIViewController {
     var success : Bool?
     var episodesArray :[[String:AnyObject]]?
     var customTable : tableViewWithHeader?
-    var titleView = CustomTitleView()
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
