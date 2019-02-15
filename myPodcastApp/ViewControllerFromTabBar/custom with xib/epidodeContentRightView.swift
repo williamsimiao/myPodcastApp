@@ -21,4 +21,25 @@ class epidodeContentRightView: UIView {
     @IBOutlet weak var star5: UIImageView!
     //
     @IBOutlet weak var starCountLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commomInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commomInit()
+    }
+    
+    func commomInit() {
+        Bundle.main.loadNibNamed("epidodeContentRight", owner: self, options: nil)
+        contentView.frame  = self.bounds
+        coverImg.backgroundColor = .orange
+        coverImg.layer.cornerRadius = 10
+        coverImg.clipsToBounds = true
+        coverImg.layer.borderWidth = 1
+        coverImg.layer.borderColor = UIColor.white.cgColor
+        contentView.fixInView(self)
+    }
 }

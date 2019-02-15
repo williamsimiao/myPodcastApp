@@ -23,6 +23,15 @@ class Util {
         return formatter.string(from: date)
     }
     
+    static func joinStringWithSeparator(authorsList:  [[String : AnyObject]],separator: String) -> String{
+        var authorsNamesList : [String] = []
+        
+        for author in authorsList {
+            authorsNamesList.append(author["nome"] as! String)
+        }
+        return authorsNamesList.joined(separator: separator)
+    }
+    
 //    func setupViewOnTop(bigView:UIView, subView:UIView) {
 //        subView.translatesAutoresizingMaskIntoConstraints = false
 //        bigView.addSubview(subView)

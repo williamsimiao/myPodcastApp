@@ -127,7 +127,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-9" width="414" height="134"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -145,6 +145,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVe-z9-9ge"/>
                     </view>
+                    <connections>
+                        <outlet property="episodeContentView" destination="xGi-DN-kzL" id="s2u-Ss-vyV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRb-yi-Dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

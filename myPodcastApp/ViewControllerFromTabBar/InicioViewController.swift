@@ -10,11 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+protocol episodeSelectedDelegate: class {
+    func episodeSelected(episode:[String:AnyObject], episodeCover:UIImage)
+}
+
 class InicioViewController: UIViewController {
   
     // MARK: - Properties
     var error_msg : String?
     var success : Bool?
+    var myEpisodeSelectedDelegate : episodeSelectedDelegate?
     var episodesArray :[[String:AnyObject]]?
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -36,7 +41,6 @@ class InicioViewController: UIViewController {
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
         setupNavBarTitle()
-
     }
     
     func setupNavBarTitle() {
@@ -78,12 +82,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
         cell.titleLabel.text = (resumoDict["titulo"] as! String)
         let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
-        var authorsNamesList : [String] = []
-        
-        for author in authorsList {
-            authorsNamesList.append(author["nome"] as! String)
-        }
-        cell.authorLabel.text = authorsNamesList.joined(separator: " & ")
+        cell.authorLabel.text = Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
         let coverUrl = (resumoDict["url_imagem"] as! String)
         Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
         
@@ -92,7 +91,8 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detalheVC = segue.destination as? DetalheViewController {
-            print("OI")
+            self.myEpisodeSelectedDelegate = detalheVC
+            
         }
     }
     
@@ -100,6 +100,9 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "to_detail", sender: self)
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
+        
+        let selectedEpisode = self.episodesArray![indexPath.row] as Dictionary
+        self.myEpisodeSelectedDelegate?.episodeSelected(episode: selectedEpisode, episodeCover: cell.coverImg.image!)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

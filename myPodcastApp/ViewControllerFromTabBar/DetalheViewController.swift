@@ -10,21 +10,18 @@ import UIKit
 
 class DetalheViewController: UIViewController {
 
+    @IBOutlet weak var episodeContentView: epidodeContentRightView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension DetalheViewController: episodeSelectedDelegate {
+    func episodeSelected(episode: [String : AnyObject], episodeCover: UIImage) {
+        
+        self.episodeContentView.titleLabel.text = (episode["titulo"] as! String)
+        let authorsList = episode["autores"] as! [[String : AnyObject]]
+        let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+        self.episodeContentView.authorLabel.text = joinedNames
     }
-    */
-
 }

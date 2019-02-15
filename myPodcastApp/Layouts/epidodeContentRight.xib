@@ -15,18 +15,17 @@
                 <outlet property="authorLabel" destination="rhb-Fw-J2j" id="9jD-sS-P6N"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="7X6-51-huY"/>
                 <outlet property="coverImg" destination="i5g-ky-luP" id="azf-FI-4Au"/>
-                <outlet property="episodeTitle" destination="SFL-gI-DI2" id="eCA-pX-Jvk"/>
                 <outlet property="star1" destination="0j8-BF-hSX" id="vwm-5I-nak"/>
                 <outlet property="star2" destination="rz1-4l-zBU" id="ZUx-ds-EZe"/>
                 <outlet property="star3" destination="Q3C-jH-QCZ" id="i6c-m7-vjj"/>
                 <outlet property="star4" destination="Vx5-vP-hoC" id="6In-xh-TtM"/>
                 <outlet property="star5" destination="YzK-Xr-4KS" id="iNS-Dl-Uiw"/>
                 <outlet property="starCountLabel" destination="PwV-xb-mXD" id="cEe-Qc-CbH"/>
-                <outlet property="titleLabel" destination="SFL-gI-DI2" id="sqh-3P-gTi"/>
+                <outlet property="titleLabel" destination="SFL-gI-DI2" id="UNX-Hz-ntQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="content">
+        <view alpha="0.69999999999999996" contentMode="scaleToFill" id="iN0-l3-epB" userLabel="content">
             <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -37,7 +36,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="IgV-gb-TUU">
-                    <rect key="frame" x="184" y="0.0" width="180" height="100"/>
+                    <rect key="frame" x="184" y="5" width="180" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-gI-DI2" userLabel="titleLabel">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="18.5"/>
@@ -84,14 +83,14 @@
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="3Qe-sV-jSU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="250" id="AcV-wm-5ie"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="leading" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="20" id="Lu1-zD-HgZ"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cwQ-Qv-A6x"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fKI-T5-lpJ"/>
-                <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" id="rmB-sZ-KYZ"/>
+                <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" constant="5" id="rmB-sZ-KYZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

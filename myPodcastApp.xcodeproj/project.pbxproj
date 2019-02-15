@@ -115,8 +115,8 @@
 				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
 				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
-				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
+				3DF5F6892217275E00F6BA33 /* custom with xib */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
