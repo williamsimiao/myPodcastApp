@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol contentViewDelegate : class {
+    func viewClicked()
+}
+
 class epidodeContentRightView: UIView {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet var contentView: UIView!
+    var delegate : contentViewDelegate?
     
     
     override init(frame: CGRect) {

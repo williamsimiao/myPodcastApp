@@ -16,6 +16,7 @@ class DetalheViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        episodeContentView.delegate = self
         setupUI()
     }
     
@@ -27,6 +28,14 @@ class DetalheViewController: UIViewController {
         self.episodeContentView.authorLabel.text = joinedNames
         self.episodeContentView.coverImg.image = self.selectedEpisodeImage
     }
+}
+
+extension DetalheViewController: contentViewDelegate {
+    func viewClicked() {
+        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
+    }
+    
+    
 }
 
 
