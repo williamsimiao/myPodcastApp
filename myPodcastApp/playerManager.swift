@@ -90,16 +90,19 @@ class playerManager {
     }
     
     func getEpisodeDurationInSeconds() -> Double {
-        guard let durationTime = self.player?.currentItem?.duration else {
-            return 0
+        let duration = Double(CMTimeGetSeconds((self.player?.currentItem?.duration)!))
+        if duration == 0 || duration.isNaN{
+            return 100
         }
-        let duration = CMTimeGetSeconds(durationTime)
-        return Double(duration)
+        return duration
     }
     
     func getEpisodeCurrentTimeInSeconds() -> Double {
 //        CMTimeGetSeconds(((self.player?.currentTime())!)
-        return CMTimeGetSeconds((self.player?.currentItem?.currentTime())!)
+        guard let currentTime = self.player?.currentItem?.currentTime() else {
+            return 0
+        }
+        return CMTimeGetSeconds(currentTime)
     }
     
     //MARK Mudando de Episodio

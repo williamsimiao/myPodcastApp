@@ -33,7 +33,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="authorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhb-Fw-J2j" userLabel="authorLabel">
-                            <rect key="frame" x="0.0" y="40.5" width="95" height="19"/>
+                            <rect key="frame" x="0.0" y="40.5" width="180" height="19"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="highlightedColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
@@ -67,7 +67,9 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="525-Ac-Srd"/>
+                        <constraint firstAttribute="trailing" secondItem="rhb-Fw-J2j" secondAttribute="trailing" id="6f3-z7-5Uw"/>
                         <constraint firstAttribute="width" constant="180" id="GBo-OT-bsr"/>
+                        <constraint firstItem="rhb-Fw-J2j" firstAttribute="leading" secondItem="IgV-gb-TUU" secondAttribute="leading" id="YhZ-cW-T0W"/>
                         <constraint firstItem="SFL-gI-DI2" firstAttribute="leading" secondItem="IgV-gb-TUU" secondAttribute="leading" id="lE6-0d-k9U"/>
                         <constraint firstAttribute="trailing" secondItem="SFL-gI-DI2" secondAttribute="trailing" id="uWx-iI-Nog"/>
                     </constraints>
@@ -87,6 +89,7 @@
                 <constraint firstItem="i5g-ky-luP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cwQ-Qv-A6x"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fKI-T5-lpJ"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" constant="9" id="rmB-sZ-KYZ"/>
+                <constraint firstItem="i5g-ky-luP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vrA-3j-scK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
