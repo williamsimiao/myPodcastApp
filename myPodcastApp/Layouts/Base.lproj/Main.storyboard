@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oIK-wd-AR1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sua Biblioteca" image="tab_icon_biblioteca" selectedImage="tab_item_selected_biblioteca" id="daf-Vc-okE"/>
+                    <tabBarItem key="tabBarItem" title="Sua Biblioteca" image="tab_icon_biblioteca" selectedImage="biblioteca" id="daf-Vc-okE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lD-1e-Xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +36,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dMw-xZ-BkT"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Notification" id="9e7-th-p8Z"/>
+                    <tabBarItem key="tabBarItem" title="Notification" selectedImage="notificacoes" id="9e7-th-p8Z"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZC-y7-rqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,7 +94,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Teste" id="sH1-tW-FQ6"/>
+                    <navigationItem key="navigationItem" title="Início" id="sH1-tW-FQ6"/>
                     <connections>
                         <outlet property="bottomConstrain" destination="6zl-fJ-Etw" id="TEz-jR-kam"/>
                         <outlet property="tableView" destination="vsC-Lh-quC" id="yfb-1z-y5s"/>
@@ -1028,6 +1028,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="biblioteca" width="32" height="26"/>
         <image name="chevron" width="19" height="11.5"/>
         <image name="downloadBlack" width="21.5" height="22"/>
         <image name="forward_10" width="26" height="26"/>
@@ -1036,6 +1037,7 @@
         <image name="miniPlay" width="25.5" height="25.5"/>
         <image name="moreBlack" width="23" height="5"/>
         <image name="next" width="33" height="25.5"/>
+        <image name="notificacoes" width="33.5" height="33.5"/>
         <image name="pause" width="70" height="70"/>
         <image name="previus" width="33" height="25.5"/>
         <image name="rewind_10" width="26" height="26"/>
@@ -1043,7 +1045,6 @@
         <image name="tab_icon_inicio" width="30" height="28.5"/>
         <image name="tab_icon_perfil" width="26" height="26"/>
         <image name="tab_icon_selected_inicio" width="30" height="28.5"/>
-        <image name="tab_item_selected_biblioteca" width="36" height="26"/>
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
