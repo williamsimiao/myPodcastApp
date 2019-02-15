@@ -10,16 +10,13 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-protocol episodeSelectedDelegate: class {
-    func episodeSelected(episode:[String:AnyObject], episodeCover:UIImage)
-}
-
 class InicioViewController: UIViewController {
   
     // MARK: - Properties
     var error_msg : String?
     var success : Bool?
-    var myEpisodeSelectedDelegate : episodeSelectedDelegate?
+    var selectedEpisode : [String: AnyObject]?
+    var selectedEpisodeImage : UIImage?
     var episodesArray :[[String:AnyObject]]?
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -91,18 +88,18 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detalheVC = segue.destination as? DetalheViewController {
-            self.myEpisodeSelectedDelegate = detalheVC
-            
+            detalheVC.selectedEpisode = self.selectedEpisode
+            detalheVC.selectedEpisodeImage = self.selectedEpisodeImage
         }
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "to_detail", sender: self)
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
-        let selectedEpisode = self.episodesArray![indexPath.row] as Dictionary
-        self.myEpisodeSelectedDelegate?.episodeSelected(episode: selectedEpisode, episodeCover: cell.coverImg.image!)
+        self.selectedEpisode = self.episodesArray![indexPath.row] as Dictionary
+        self.selectedEpisodeImage = cell.coverImg.image
+        performSegue(withIdentifier: "to_detail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

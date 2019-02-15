@@ -9,18 +9,11 @@
 import UIKit
 
 class epidodeContentRightView: UIView {
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    //stars from left to right
-    @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
-    @IBOutlet weak var star4: UIImageView!
-    @IBOutlet weak var star5: UIImageView!
-    //
-    @IBOutlet weak var starCountLabel: UILabel!
+    @IBOutlet var contentView: UIView!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +27,7 @@ class epidodeContentRightView: UIView {
     
     func commomInit() {
         Bundle.main.loadNibNamed("epidodeContentRight", owner: self, options: nil)
+        titleLabel.text = "teste"
         contentView.frame  = self.bounds
         coverImg.backgroundColor = .orange
         coverImg.layer.cornerRadius = 10

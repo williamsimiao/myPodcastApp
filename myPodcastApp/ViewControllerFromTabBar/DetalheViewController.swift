@@ -9,19 +9,24 @@
 import UIKit
 
 class DetalheViewController: UIViewController {
-
+    
     @IBOutlet weak var episodeContentView: epidodeContentRightView!
+    var selectedEpisode : [String: AnyObject]?
+    var selectedEpisodeImage : UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI() {
+        let titulo =  self.selectedEpisode!["titulo"] as! String
+        self.episodeContentView.titleLabel.text = titulo
+        let authorsList = self.selectedEpisode!["autores"] as! [[String : AnyObject]]
+        let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+        self.episodeContentView.authorLabel.text = joinedNames
+        self.episodeContentView.coverImg.image = self.selectedEpisodeImage
     }
 }
 
-extension DetalheViewController: episodeSelectedDelegate {
-    func episodeSelected(episode: [String : AnyObject], episodeCover: UIImage) {
-        
-        self.episodeContentView.titleLabel.text = (episode["titulo"] as! String)
-        let authorsList = episode["autores"] as! [[String : AnyObject]]
-        let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
-        self.episodeContentView.authorLabel.text = joinedNames
-    }
-}
+
