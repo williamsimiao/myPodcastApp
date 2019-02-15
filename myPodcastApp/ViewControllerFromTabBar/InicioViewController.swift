@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class InicioViewController: InheritanceViewController {
   
-    @IBOutlet weak var botoomConstrain: NSLayoutConstraint!
     // MARK: - Properties
     var error_msg : String?
     var success : Bool?
@@ -20,6 +19,8 @@ class InicioViewController: InheritanceViewController {
     var customTable : tableViewWithHeader?
     var myTableView =   UITableView()
     var titleView = CustomTitleView()
+    @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        setupSubView()
@@ -34,7 +35,7 @@ class InicioViewController: InheritanceViewController {
     }
     
     @IBAction func resizeActionButton(_ sender: Any) {
-        botoomConstrain.constant = -self.decreaseHightBy
+        self.bottomConstrain.constant = self.decreaseHightBy
         self.view.layoutIfNeeded()
 
     }

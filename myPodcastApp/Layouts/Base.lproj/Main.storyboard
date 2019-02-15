@@ -73,8 +73,11 @@
                                             <action selector="resizeActionButton:" destination="4Qy-4E-s6P" eventType="touchUpInside" id="8eZ-rl-IKB"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uG-pN-MaH">
-                                        <rect key="frame" x="184" y="875" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uG-pN-MaH">
+                                        <rect key="frame" x="184" y="784" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="LLR-Fq-NaE"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -83,22 +86,27 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="p7G-Ws-s3R" firstAttribute="centerX" secondItem="ihV-Cm-ubo" secondAttribute="centerX" id="4h5-bm-hZs"/>
+                                    <constraint firstAttribute="bottom" secondItem="6uG-pN-MaH" secondAttribute="bottom" constant="91" id="jFW-wf-0ub"/>
+                                    <constraint firstAttribute="trailing" secondItem="6uG-pN-MaH" secondAttribute="trailing" constant="188" id="kYD-Za-5s4"/>
                                     <constraint firstItem="p7G-Ws-s3R" firstAttribute="centerY" secondItem="ihV-Cm-ubo" secondAttribute="centerY" id="oX7-Lb-btE"/>
-                                    <constraint firstAttribute="bottom" secondItem="6uG-pN-MaH" secondAttribute="bottom" id="sKl-4K-TSg"/>
+                                    <constraint firstItem="6uG-pN-MaH" firstAttribute="leading" secondItem="ihV-Cm-ubo" secondAttribute="leading" constant="184" id="yc0-Ic-ned"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ihV-Cm-ubo" secondAttribute="trailing" id="VH3-WZ-g7N"/>
                             <constraint firstItem="ihV-Cm-ubo" firstAttribute="leading" secondItem="mX1-0s-hWh" secondAttribute="leading" id="b62-X6-Hme"/>
-                            <constraint firstAttribute="bottom" secondItem="ihV-Cm-ubo" secondAttribute="bottom" id="d88-vc-B3Y"/>
+                            <constraint firstAttribute="bottom" secondItem="ihV-Cm-ubo" secondAttribute="bottom" id="d88-vc-B3Y" userLabel="botoomConstrain"/>
                             <constraint firstItem="ihV-Cm-ubo" firstAttribute="top" secondItem="mX1-0s-hWh" secondAttribute="top" id="kp1-RW-jQz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Início" image="tab_icon_inicio" selectedImage="tab_icon_selected_inicio" id="waN-wZ-nNA"/>
                     <navigationItem key="navigationItem" id="sH1-tW-FQ6"/>
+                    <connections>
+                        <outlet property="bottomConstrain" destination="d88-vc-B3Y" id="hxD-kb-Lx1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
