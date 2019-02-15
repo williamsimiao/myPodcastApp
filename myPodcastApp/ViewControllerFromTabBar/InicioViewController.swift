@@ -23,7 +23,7 @@ class InicioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Bein Venue"
+//        self.title = "Bein Venue"
         setupUI()
 
         //getting Data
@@ -33,7 +33,27 @@ class InicioViewController: UIViewController {
     func setupUI() {
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
+        setupNavBarTitle()
 
+    }
+    
+    func setupNavBarTitle() {
+        //
+        //        let paragraph = NSMutableParagraphStyle()
+        //        paragraph.alignment = .center
+        //        let myAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.paragraphStyle: paragraph]
+        //
+        //        let greetingsMessage = NSLocalizedString("welcome", comment: "ola")
+        //        let attributedText = NSMutableAttributedString(string: greetingsMessage, attributes: myAttributes)
+        //        navigationController?.navigationBar.titleTextAttribute =  attributedText
+        //
+        
+        //        let paragraph = NSMutableParagraphStyle()
+        //        paragraph.alignment = .center
+        //
+        //        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.paragraphStyle: paragraph]
+        //
+        //        navigationController?.navigationBar.titleTextAttributes = attributes
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -77,8 +97,6 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "to_detail", sender: self)
-        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
-        playerManager.shared.episodeSelected(episodeDictionary: resumoDict)
     }
 }
 

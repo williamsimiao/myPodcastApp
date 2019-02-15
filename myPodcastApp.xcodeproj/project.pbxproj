@@ -43,6 +43,7 @@
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
 		3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5F681221703E700F6BA33 /* DetalheViewController.swift */; };
+		3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */; };
 		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,8 @@
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3DF5F681221703E700F6BA33 /* DetalheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheViewController.swift; sourceTree = "<group>"; };
+		3DF5F6842217144E00F6BA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = epidodeContentRight.xib; sourceTree = "<group>"; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				3D9514C321F5EDA7004960CE /* Main.storyboard */,
+				3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */,
 				3D34FD13221349A80062DB7E /* tableViewWithHeader.xib */,
 				3D34FD1522134ADF0062DB7E /* tableViewWithHeader.swift */,
 				3D34FD1D221485350062DB7E /* CustomCell.xib */,
@@ -307,6 +311,7 @@
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
 				3D123A1D2215DDC7009A8E57 /* CustomTitleView.xib in Resources */,
+				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,
 				3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +428,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3D9514C421F5EDA7004960CE /* Base */,
+				3DF5F6842217144E00F6BA33 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
