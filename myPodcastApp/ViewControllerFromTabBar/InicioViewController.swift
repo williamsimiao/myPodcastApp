@@ -16,7 +16,6 @@ class InicioViewController: UIViewController {
     var error_msg : String?
     var success : Bool?
     var episodesArray :[[String:AnyObject]]?
-    var customTable : tableViewWithHeader?
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
