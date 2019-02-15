@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D05B5F72202140E0056E7B9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B5F62202140E0056E7B9 /* Network.swift */; };
 		3D123A152215CC9D009A8E57 /* ColorWeel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D123A142215CC9D009A8E57 /* ColorWeel.swift */; };
-		3D123A1D2215DDC7009A8E57 /* CustomTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D123A1C2215DDC7009A8E57 /* CustomTitleView.xib */; };
-		3D123A1F2215DDF7009A8E57 /* CustomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D123A1E2215DDF7009A8E57 /* CustomTitleView.swift */; };
 		3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */; };
 		3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */; };
 		3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7B932208C8BA000E426A /* PerfilViewController.swift */; };
@@ -52,8 +50,6 @@
 		35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.release.xcconfig"; sourceTree = "<group>"; };
 		3D05B5F62202140E0056E7B9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3D123A142215CC9D009A8E57 /* ColorWeel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWeel.swift; sourceTree = "<group>"; };
-		3D123A1C2215DDC7009A8E57 /* CustomTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleView.xib; sourceTree = "<group>"; };
-		3D123A1E2215DDF7009A8E57 /* CustomTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleView.swift; sourceTree = "<group>"; };
 		3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InheritanceViewController.swift; sourceTree = "<group>"; };
 		3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliotecaViewController.swift; sourceTree = "<group>"; };
 		3D2D7B932208C8BA000E426A /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +118,6 @@
 				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
 				3D34FD1B221484EC0062DB7E /* CustomCell.swift */,
-				3D123A1E2215DDF7009A8E57 /* CustomTitleView.swift */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
@@ -137,7 +132,6 @@
 				3D34FD1522134ADF0062DB7E /* tableViewWithHeader.swift */,
 				3D34FD1D221485350062DB7E /* CustomCell.xib */,
 				3D123A142215CC9D009A8E57 /* ColorWeel.swift */,
-				3D123A1C2215DDC7009A8E57 /* CustomTitleView.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -310,7 +304,6 @@
 				3D34FD14221349A80062DB7E /* tableViewWithHeader.xib in Resources */,
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
-				3D123A1D2215DDC7009A8E57 /* CustomTitleView.xib in Resources */,
 				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,
 				3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */,
 			);
@@ -397,7 +390,6 @@
 				3D34FD1622134ADF0062DB7E /* tableViewWithHeader.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,
-				3D123A1F2215DDF7009A8E57 /* CustomTitleView.swift in Sources */,
 				3D34FCFC22131FDA0062DB7E /* NotificacoesViewController.swift in Sources */,
 				3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */,
 				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
