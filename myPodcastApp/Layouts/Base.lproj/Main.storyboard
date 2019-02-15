@@ -17,7 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oIK-wd-AR1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sua Biblioteca" image="tab_icon_biblioteca" selectedImage="tab_item_selected_biblioteca" id="daf-Vc-okE"/>
@@ -33,7 +33,7 @@
                     <view key="view" contentMode="scaleToFill" id="FNG-Jb-j9m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dMw-xZ-BkT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Notification" id="9e7-th-p8Z"/>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-9" width="414" height="134"/>
+                                        <rect key="frame" x="0.0" y="-9" width="414" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -148,7 +148,7 @@
                     <view key="view" contentMode="scaleToFill" id="PUH-Ue-gV7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Perfil" image="tab_icon_perfil" selectedImage="tab_item_selected_perfil" id="7JO-MM-v6S"/>
