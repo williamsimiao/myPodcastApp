@@ -28,6 +28,10 @@ class InicioViewController: UIViewController {
         makeResquest()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func setupUI() {
         let nib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
@@ -96,6 +100,14 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "to_detail", sender: self)
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
+//        cell.selectedBackgroundView?.backgroundColor = UIColor.white
+//        cell.titleLabel.textColor = .black
+//        cell.authorLabel.textColor = .black
+//        cell.coverImg.layer.borderColor = UIColor.black.cgColor
     }
 }
 
