@@ -17,59 +17,29 @@ class InicioViewController: InheritanceViewController {
     var success : Bool?
     var episodesArray :[[String:AnyObject]]?
     var customTable : tableViewWithHeader?
-    var myTableView =   UITableView()
     var titleView = CustomTitleView()
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupSubView()
-
-        
         //getting Data
         makeResquest()
     }
-    override func viewWillAppear(_ animated: Bool) {
-//        setupTitleView()
-//        setupTableView()
-    }
     
-    @IBAction func resizeActionButton(_ sender: Any) {
-        self.bottomConstrain.constant = self.decreaseHightBy
+    func setupUI() {
+        guard let tabController = self.tabBarController else {
+            return
+        }
+        self.bottomConstrain.constant = tabController.tabBar.frame.height
         self.view.layoutIfNeeded()
-
     }
     
 }
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
-    // MARK: - Title View
-    func setupTitleView() {
-        self.titleView.titleLabel.text = "Bem vindo"
-        self.titleView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: 90)
-        self.resizableView.addSubview(self.titleView)
-        
-        //Contrains
-        self.titleView.alignWithTop(self.resizableView, topReference: self.resizableView)
-    }
-
     
     // MARK: - TableView
-    func setupTableView() {
-        // Get main screen bounds
-        myTableView.frame = CGRect(x: 0, y: 0, width: self.resizableView.frame.width, height: self.resizableView.frame.height)
-        myTableView.dataSource = self
-        myTableView.delegate = self
-        myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        myTableView.rowHeight = 90
-//        myTableView.backgroundColor = .black
-        let nib = UINib(nibName: "CustomCell", bundle: nil)
-        myTableView.register(nib, forCellReuseIdentifier: "myCell")
-        self.resizableView.addSubview(myTableView)
-        
-        //Contrains
-        myTableView.fixInViewBetweenTwoOthers(self.resizableView, topReference: self.titleView, bottomReference: self.resizableView)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let episodesCounter = episodesArray?.count else {
             return 0
@@ -79,7 +49,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
         cell.titleLabel.text = (resumoDict["titulo"] as! String)
         let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
@@ -173,7 +143,7 @@ extension InicioViewController {
 
         if self.success! {
             //Salvar
-            self.myTableView.reloadData()
+            self.tableView.reloadData()
 //            AppService.util.alert("deu bom", message: "Obaaa" as! String)
             
         }

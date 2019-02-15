@@ -20,11 +20,11 @@ class CustomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        coverImg.layer.cornerRadius = 10
-        coverImg.clipsToBounds = true
-        coverImg.layer.borderWidth = 1
-        coverImg.layer.borderColor = UIColor.white.cgColor
-        coverImg.backgroundColor = .orange
+//        coverImg.layer.cornerRadius = 10
+//        coverImg.clipsToBounds = true
+//        coverImg.layer.borderWidth = 1
+//        coverImg.layer.borderColor = UIColor.white.cgColor
+//        coverImg.backgroundColor = .orange
         
         //
     }
