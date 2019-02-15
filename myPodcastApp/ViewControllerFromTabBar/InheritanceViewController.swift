@@ -9,7 +9,7 @@
 import UIKit
 
 class InheritanceViewController: UIViewController {
-    var decreaseHightBy: CGFloat = 70.0
+    var miniViewHeight: CGFloat = 70.0
     var resizableView = UIView()
 
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class InheritanceViewController: UIViewController {
         if #available(iOS 11, *) {
             let guide = view.safeAreaLayoutGuide
 
-            let bottomContraint =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.decreaseHightBy)
+            let bottomContraint =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.miniViewHeight)
             NSLayoutConstraint.activate([bottomContraint])
 
 

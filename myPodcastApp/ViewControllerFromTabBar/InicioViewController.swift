@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class InicioViewController: InheritanceViewController {
+class InicioViewController: UIViewController {
   
     // MARK: - Properties
     var error_msg : String?
@@ -19,21 +19,24 @@ class InicioViewController: InheritanceViewController {
     var customTable : tableViewWithHeader?
     var titleView = CustomTitleView()
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Bein Venue"
+        setupUI()
+
         //getting Data
         makeResquest()
     }
     
     func setupUI() {
-        guard let tabController = self.tabBarController else {
-            return
-        }
-        self.bottomConstrain.constant = tabController.tabBar.frame.height
-        self.view.layoutIfNeeded()
+        let nib = UINib(nibName: "CustomCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 }
@@ -65,8 +68,15 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detalheVC = segue.destination as? DetalheViewController {
+            print("OI")
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "to_detail", sender: self)
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
         playerManager.shared.episodeSelected(episodeDictionary: resumoDict)
     }

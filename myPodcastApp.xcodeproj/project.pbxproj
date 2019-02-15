@@ -42,6 +42,7 @@
 		3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20822020557009080EF /* MiniPlayerViewController.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
+		3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5F681221703E700F6BA33 /* DetalheViewController.swift */; };
 		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		3DC1C20822020557009080EF /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		3DF5F681221703E700F6BA33 /* DetalheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheViewController.swift; sourceTree = "<group>"; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
 				3D34FD1B221484EC0062DB7E /* CustomCell.swift */,
 				3D123A1E2215DDF7009A8E57 /* CustomTitleView.swift */,
+				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				3D38682E2211AED600E89FF4 /* AppService.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
+				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,

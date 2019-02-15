@@ -42,7 +42,7 @@ class Util {
 //        if #available(iOS 11, *) {
 //            let guide = bigView.safeAreaLayoutGuide
 //            
-//            let bottomContrain =  guide.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: self.decreaseHightBy)
+//            let bottomContrain =  guide.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: self.miniViewHeight)
 //            
 //            NSLayoutConstraint.activate([bottomContrain])
 //            

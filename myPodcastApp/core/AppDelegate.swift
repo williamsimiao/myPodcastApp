@@ -16,7 +16,6 @@ import FacebookCore
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
     
