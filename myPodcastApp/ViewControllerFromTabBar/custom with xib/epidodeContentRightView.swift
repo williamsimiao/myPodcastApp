@@ -32,7 +32,11 @@ class epidodeContentRightView: UIView {
     
     func commomInit() {
         Bundle.main.loadNibNamed("epidodeContentRight", owner: self, options: nil)
-        titleLabel.text = "teste"
+        
+        let touchTest = UITapGestureRecognizer(target: self, action: #selector(self.testTap))
+        contentView.isUserInteractionEnabled = true
+        contentView.addGestureRecognizer(touchTest)
+
         contentView.frame  = self.bounds
         coverImg.backgroundColor = .orange
         coverImg.layer.cornerRadius = 10
@@ -41,4 +45,10 @@ class epidodeContentRightView: UIView {
         coverImg.layer.borderColor = UIColor.white.cgColor
         contentView.fixInView(self)
     }
+    
+    @objc func testTap() {
+        self.delegate?.viewClicked()
+    }
+    
+    
 }

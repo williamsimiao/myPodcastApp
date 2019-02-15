@@ -17,19 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bem vindo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goH-AZ-qUD">
-                                <rect key="frame" x="166.5" y="780" width="81" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="goH-AZ-qUD" firstAttribute="centerX" secondItem="hAz-WZ-NcM" secondAttribute="centerX" id="RTm-mc-vwM"/>
-                            <constraint firstItem="oIK-wd-AR1" firstAttribute="bottom" secondItem="goH-AZ-qUD" secondAttribute="bottom" constant="12" id="cdp-OI-YkZ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oIK-wd-AR1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sua Biblioteca" image="tab_icon_biblioteca" selectedImage="tab_item_selected_biblioteca" id="daf-Vc-okE"/>
