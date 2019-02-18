@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import AVFoundation
 
-class BaseViewController: UIViewController {
+class BaseViewController: InheritanceViewController {
     // MARK: - Properties
     @IBOutlet weak var bigContainerView: UIView!
     @IBOutlet weak var miniContainerView: UIView!
@@ -36,7 +36,6 @@ class BaseViewController: UIViewController {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
                     let arrEpisodes = episodesData as! [[String:AnyObject]]
-//                    playerManager.shared.player_setup(episodeDictionary: arrEpisodes.first!)
                 }
             }
         }        
@@ -49,31 +48,6 @@ class BaseViewController: UIViewController {
         if let tabBarController = segue.destination as? TabBarViewController {
             tabBarController.getSizesDelegate = self
         }
-    }
-}
-
-extension BaseViewController : MiniPlayerDelegate {
-    func expandEpisode(miniPLayer: MiniPlayerViewController) {
-        guard let playerCardVC = storyboard?.instantiateViewController(
-            withIdentifier: "PlayerCardViewController")
-            as? PlayerCardViewController else {
-                assertionFailure("No view controller ID PlayerCardViewController in storyboard")
-                return
-        }
-        
-        playerCardVC.backingImage = self.bigContainerView.makeSnapshot()
-        playerCardVC.sourceView = miniPLayer
-        playerCardVC.currentPlayButtonState = miniPLayer.currentPlayButtonState
-        
-        //Epidosode Data
-        
-        
-        
-        //Chamar delegate para a tabviewController fazer a animacao de sumir a tab
-//        if let tabBar = tabBarController?.tabBar {
-//            playerCardVC.tabBarImage = tabBar.makeSnapshot()
-//        }
-        present(playerCardVC, animated: false)
     }
 }
 

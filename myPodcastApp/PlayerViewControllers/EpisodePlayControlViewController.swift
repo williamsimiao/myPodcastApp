@@ -156,9 +156,9 @@ extension EpisodePlayControlViewController {
     }
     
     func configureFields() {
-        self.episodeTitle.text = playerManager.shared.getEpisodeTitle()
-        let author = playerManager.shared.getEpisodeAuthor()
-        self.episodeAuthor.text = author
+        let title  = playerManager.shared.getEpisodeTitle()
+        self.episodeTitle.text = title
+        self.episodeAuthor.text = playerManager.shared.getEpisodeAuthor()
         
         let seconds = playerManager.shared.getEpisodeDurationInSeconds()
         self.slider.maximumValue = Float(seconds)

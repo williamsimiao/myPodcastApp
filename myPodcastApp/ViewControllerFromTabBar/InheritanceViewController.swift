@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol expandDelegate: class {
+    func expandEpisode(miniPLayer: MiniPlayerViewController)
+}
+
 class InheritanceViewController: UIViewController {
     var miniViewHeight: CGFloat = 70.0
     var resizableView = UIView()
@@ -15,43 +19,28 @@ class InheritanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    open func setupSubView() {
-        self.resizableView.translatesAutoresizingMaskIntoConstraints = false
-//        self.resizableView.backgroundColor = .green
-        self.view.addSubview(resizableView)
-
-        //adding contrains
-
-        //left and right margins
-        let leadingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-
-        let trailingConstraint = NSLayoutConstraint(item: resizableView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-
-        //top
-        if #available(iOS 11, *) {
-            let guide = view.safeAreaLayoutGuide
-            
-            let topConstraint =  guide.topAnchor.constraint(equalTo: resizableView.topAnchor, constant: 0)
-            NSLayoutConstraint.activate([topConstraint])
-        }
-        //bottom
-        if #available(iOS 11, *) {
-            let guide = view.safeAreaLayoutGuide
-
-            let bottomContraint =  guide.bottomAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: self.miniViewHeight)
-            NSLayoutConstraint.activate([bottomContraint])
-
-
-        } else {
-            let standardSpacing: CGFloat = 8.0
-            NSLayoutConstraint.activate([
-                resizableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: standardSpacing),
-                bottomLayoutGuide.topAnchor.constraint(equalTo: resizableView.bottomAnchor, constant: standardSpacing)
-                ])
-        }
-        NSLayoutConstraint.activate([leadingConstraint, trailingConstraint])
-
-    }
-
 }
+
+extension InheritanceViewController : MiniPlayerDelegate {
+    func expandEpisode(miniPLayer: MiniPlayerViewController) {
+        guard let playerCardVC = storyboard?.instantiateViewController(
+            withIdentifier: "PlayerCardViewController")
+            as? PlayerCardViewController else {
+                assertionFailure("No view controller ID PlayerCardViewController in storyboard")
+                return
+        }
+        
+        playerCardVC.backingImage = self.view.makeSnapshot()
+        playerCardVC.sourceView = miniPLayer
+        playerCardVC.currentPlayButtonState = miniPLayer.currentPlayButtonState
+        
+        //Epidosode Data
+        
+        //Chamar delegate para a tabviewController fazer a animacao de sumir a tab
+        //        if let tabBar = tabBarController?.tabBar {
+        //            playerCardVC.tabBarImage = tabBar.makeSnapshot()
+        //        }
+        present(playerCardVC, animated: false)
+    }
+}
+

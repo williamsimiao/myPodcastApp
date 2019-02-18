@@ -73,10 +73,6 @@
                         <constraint firstAttribute="trailing" secondItem="SFL-gI-DI2" secondAttribute="trailing" id="uWx-iI-Nog"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuI-Co-aaQ" userLabel="margin">
-                    <rect key="frame" x="0.0" y="0.0" width="25" height="134"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i5g-ky-luP">
                     <rect key="frame" x="25" y="44" width="56" height="56"/>
                     <constraints>
@@ -86,20 +82,17 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="i5g-ky-luP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.2" priority="999" id="6oJ-ZU-Tbk"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Ag5-2J-CXd"/>
+                <constraint firstItem="i5g-ky-luP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="HMN-L9-KAV"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="HmI-73-292"/>
-                <constraint firstItem="i5g-ky-luP" firstAttribute="leading" secondItem="xuI-Co-aaQ" secondAttribute="trailing" id="KoY-WE-eYc"/>
-                <constraint firstItem="xuI-Co-aaQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LPA-42-QNA"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="leading" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="10" id="Lu1-zD-HgZ"/>
-                <constraint firstItem="xuI-Co-aaQ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.06" id="bKL-UK-jP3"/>
-                <constraint firstItem="xuI-Co-aaQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eP3-nl-Rwm"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="h1t-4k-E72"/>
-                <constraint firstAttribute="bottom" secondItem="xuI-Co-aaQ" secondAttribute="bottom" id="lhz-Uh-WON"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" constant="5" id="rmB-sZ-KYZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="204" y="-226"/>
+            <point key="canvasLocation" x="202.89855072463769" y="-214.62053571428569"/>
         </view>
     </objects>
     <resources>
