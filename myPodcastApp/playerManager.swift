@@ -58,31 +58,45 @@ class playerManager {
     //MARK - Getters
     
     func getEpisodeTitle() -> String {
-        if let episodeTitle = self.currentEpisodeDict["titulo"] {
-            return episodeTitle as! String
+        guard let episodeTitle = self.currentEpisodeDict["titulo"] else {
+            return "-"
         }
-        return ""
+        return episodeTitle as! String
     }
     
     func getEpisodeAuthor() -> String {
-        
-        return "-"
+        guard let authors = self.currentEpisodeDict["autores"] else {
+            return "-"
+        }
+        let authorsList = authors as! [[String : AnyObject]]
+        let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+        return joinedNames
     }
     
     func getEpisodeCoverImgUrl() -> String {
-        if let episodeTitle = self.currentEpisodeDict["url_imagem"] {
-            return episodeTitle as! String
+        guard let episodeUrlImage = self.currentEpisodeDict["url_imagem"] else {
+            return ""
         }
-        return ""
+        return episodeUrlImage as! String
     }
     
     func getWantsToStartPlaying() -> Bool {
-        return self.player?.rate != 0
+        guard let playerRate = self.player?.rate else {
+            return false
+        }
+        return playerRate != 0
     }
 
     func getIsPlaying() -> Bool {
-        let boleano = playerManager.shared.player?.timeControlStatus == AVPlayer.TimeControlStatus.playing
-        return boleano
+        guard let status = self.player?.timeControlStatus else {
+            return false
+        }
+        if status == AVPlayer.TimeControlStatus.playing {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func getPlayerIsSet() -> Bool {
@@ -90,15 +104,19 @@ class playerManager {
     }
     
     func getEpisodeDurationInSeconds() -> Double {
-        let duration = Double(CMTimeGetSeconds((self.player?.currentItem?.duration)!))
-        if duration == 0 || duration.isNaN{
-            return 100
+        guard let duration = self.player?.currentItem?.duration else {
+            return 0
         }
-        return duration
+        let durationSeconds = Double(CMTimeGetSeconds(duration))
+        if durationSeconds.isNaN {
+            return 0.0
+        }
+        else {
+            return durationSeconds
+        }
     }
     
     func getEpisodeCurrentTimeInSeconds() -> Double {
-//        CMTimeGetSeconds(((self.player?.currentTime())!)
         guard let currentTime = self.player?.currentItem?.currentTime() else {
             return 0
         }

@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="IgV-gb-TUU">
-                    <rect key="frame" x="184" y="9" width="180" height="100"/>
+                    <rect key="frame" x="184" y="5" width="180" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-gI-DI2" userLabel="titleLabel">
                             <rect key="frame" x="0.0" y="0.0" width="180" height="18.5"/>
@@ -85,10 +85,10 @@
             <constraints>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="3Qe-sV-jSU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="250" id="AcV-wm-5ie"/>
+                <constraint firstItem="i5g-ky-luP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="HmI-73-292"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="leading" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="20" id="Lu1-zD-HgZ"/>
-                <constraint firstItem="i5g-ky-luP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cwQ-Qv-A6x"/>
-                <constraint firstItem="i5g-ky-luP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fKI-T5-lpJ"/>
-                <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" constant="9" id="rmB-sZ-KYZ"/>
+                <constraint firstItem="i5g-ky-luP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="h1t-4k-E72"/>
+                <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" constant="5" id="rmB-sZ-KYZ"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vrA-3j-scK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/InicioViewController.swift"
-            timestampString = "571957282.5357161"
+            timestampString = "572192186.980297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -22,32 +22,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/playerManager.swift"
-            timestampString = "571957282.536141"
+            filePath = "myPodcastApp/PlayerViewControllers/EpisodePlayControlViewController.swift"
+            timestampString = "572194727.200923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "getEpisodeDurationInSeconds()"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "onPlayerTimeDidProgress(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/playerManager.swift"
-            timestampString = "571957282.537186"
+            filePath = "myPodcastApp/PlayerViewControllers/EpisodePlayControlViewController.swift"
+            timestampString = "572194727.201334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "getEpisodeDurationInSeconds()"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "configureFields()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

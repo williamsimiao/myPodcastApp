@@ -127,7 +127,8 @@ extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
         if let data = notification.userInfo as? [String: Double] {
             for (_, value) in data {
-                let remainingTime = playerManager.shared.getEpisodeDurationInSeconds() - value
+                self.slider.maximumValue = Float(playerManager.shared.getEpisodeDurationInSeconds())
+                let remainingTime = Double(self.slider.maximumValue) - value
                 self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingTime)
                 
                 self.progressLabel.text = Util.convertSecondsToDateString(seconds: value)
@@ -156,7 +157,8 @@ extension EpisodePlayControlViewController {
     
     func configureFields() {
         self.episodeTitle.text = playerManager.shared.getEpisodeTitle()
-        self.episodeAuthor.text = playerManager.shared.getEpisodeAuthor()
+        let author = playerManager.shared.getEpisodeAuthor()
+        self.episodeAuthor.text = author
         
         let seconds = playerManager.shared.getEpisodeDurationInSeconds()
         self.slider.maximumValue = Float(seconds)

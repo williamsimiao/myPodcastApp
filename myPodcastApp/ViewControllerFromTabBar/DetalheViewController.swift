@@ -11,6 +11,12 @@ import UIKit
 class DetalheViewController: UIViewController {
     
     @IBOutlet weak var episodeContentView: epidodeContentRightView!
+    
+    @IBOutlet weak var FortyMinutesView: UIView!
+    @IBOutlet weak var TenMinutesView: UIView!
+    
+    
+    
     var selectedEpisode : [String: AnyObject]?
     var selectedEpisodeImage : UIImage?
 
@@ -20,6 +26,14 @@ class DetalheViewController: UIViewController {
         setupUI()
     }
     
+    @IBAction func fortyPlayButtonAction(_ sender: Any) {
+        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
+    }
+    
+    @IBAction func tenPlayButtonAction(_ sender: Any) {
+        
+    }
+    
     func setupUI() {
         let titulo =  self.selectedEpisode!["titulo"] as! String
         self.episodeContentView.titleLabel.text = titulo
@@ -27,15 +41,22 @@ class DetalheViewController: UIViewController {
         let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
         self.episodeContentView.authorLabel.text = joinedNames
         self.episodeContentView.coverImg.image = self.selectedEpisodeImage
+        
+        self.FortyMinutesView.layer.borderWidth = 1
+        self.FortyMinutesView.layer.borderColor = UIColor.white.cgColor
+        self.TenMinutesView.layer.borderWidth = 1
+        self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
+
     }
 }
 
 extension DetalheViewController: contentViewDelegate {
     func viewClicked() {
-        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
     }
-    
-    
 }
 
+//MARK - buttons
+extension DetalheViewController {
+    
+}
 
