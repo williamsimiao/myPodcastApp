@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetalheViewController: UIViewController {
+class DetalheViewController: InheritanceViewController {
     
     @IBOutlet weak var episodeContentView: epidodeContentRightView!
     
@@ -28,6 +28,9 @@ class DetalheViewController: UIViewController {
     
     @IBAction func fortyPlayButtonAction(_ sender: Any) {
         playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
+        
+        //expand
+        
     }
     
     @IBAction func tenPlayButtonAction(_ sender: Any) {

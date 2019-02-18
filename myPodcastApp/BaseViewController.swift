@@ -47,6 +47,7 @@ class BaseViewController: InheritanceViewController {
         }
         if let tabBarController = segue.destination as? TabBarViewController {
             tabBarController.getSizesDelegate = self
+            
         }
     }
 }

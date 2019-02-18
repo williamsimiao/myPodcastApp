@@ -21,14 +21,8 @@ class EpisodePlayControlViewController: UIViewController {
     
     @IBOutlet weak var episodeTitle: UILabel!
     @IBOutlet weak var episodeAuthor: UILabel!
-    @IBOutlet weak var downloadButton: UIButton!
-    @IBOutlet weak var moreButton: UIButton!
     
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var rewindButton: UIButton!
-    @IBOutlet weak var previusButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var forwardButton: UIButton!
     
     // MARK: - Properties
     var currentPlayButtonState : playButtonStates?
@@ -85,29 +79,36 @@ class EpisodePlayControlViewController: UIViewController {
     }
     
     // MARK: - IBActions
-    @IBAction func rewind_action(_ sender: Any) {
+    
+    @IBAction func rewindAction(_ sender: Any) {
         playerManager.shared.rewind()
-    }
-    @IBAction func slider_touchUp_inside(_ sender: Any) {
-        let jump = self.slider.value
-        playerManager.shared.jumpTo(seconds: Double(jump))
 
     }
     
-    @IBAction func play_action(_ sender: Any) {
+    
+    @IBAction func sliderTouchUpInside(_ sender: Any) {
+        let jump = self.slider.value
+        playerManager.shared.jumpTo(seconds: Double(jump))
+    }
+    
+    
+    @IBAction func forwardAction(_ sender: Any) {
+        playerManager.shared.foward()
+
+    }
+    
+    
+    @IBAction func playAction(_ sender: Any) {
         //User pressed PLAY
         if self.currentPlayButtonState == .play {
             playerManager.shared.playPause(shouldPlay: true)
             changeButtonState(to: .pause)
         }
-        //User pressed pause
+            //User pressed pause
         else {
             playerManager.shared.playPause(shouldPlay: false)
             changeButtonState(to: .play)
         }
-    }
-    @IBAction func forward_action(_ sender: Any) {
-        playerManager.shared.foward()
     }
 }
 
