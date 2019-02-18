@@ -17,6 +17,7 @@ class BaseViewController: InheritanceViewController {
     @IBOutlet weak var miniContainerView: UIView!
     @IBOutlet weak var miniContainerBottonConstrain: NSLayoutConstraint!
     
+    var miniPlayerController : MiniPlayerViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +45,7 @@ class BaseViewController: InheritanceViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let miniPlayer = segue.destination as? MiniPlayerViewController {
             miniPlayer.expandDelegate = self
+            self.miniPlayerController = miniPlayer
         }
         if let tabBarController = segue.destination as? TabBarViewController {
             tabBarController.getSizesDelegate = self
@@ -59,5 +61,32 @@ extension BaseViewController : TabBarViewControllerDelegate {
     
     func getMiniContainerFrameHight() -> CGFloat {
         return self.miniContainerView.frame.height
+    }
+}
+
+extension BaseViewController : MiniPlayerDelegate {
+    func expandEpisode() {
+        guard let playerCardVC = storyboard?.instantiateViewController(
+            withIdentifier: "PlayerCardViewController")
+            as? PlayerCardViewController else {
+                assertionFailure("No view controller ID PlayerCardViewController in storyboard")
+                return
+        }
+        guard let miniPlayer = self.miniPlayerController else {
+            return
+        }
+        
+        
+        playerCardVC.backingImage = self.view.makeSnapshot()
+        playerCardVC.sourceView = miniPlayer
+        playerCardVC.currentPlayButtonState = miniPlayer.currentPlayButtonState
+        
+        //Epidosode Data
+        
+        //Chamar delegate para a tabviewController fazer a animacao de sumir a tab
+        //        if let tabBar = tabBarController?.tabBar {
+        //            playerCardVC.tabBarImage = tabBar.makeSnapshot()
+        //        }
+        present(playerCardVC, animated: false)
     }
 }

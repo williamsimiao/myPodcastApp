@@ -14,7 +14,7 @@ enum playButtonStates {
 }
 
 protocol MiniPlayerDelegate: class {
-    func expandEpisode(miniPLayer: MiniPlayerViewController)
+    func expandEpisode()
 }
 
 class MiniPlayerViewController: UIViewController {
@@ -38,6 +38,9 @@ class MiniPlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onEpisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onFullPlayerShouldAppear(_:)), name: .fullPlayerShouldAppear, object: nil)
+
 
     }
     
@@ -61,7 +64,7 @@ class MiniPlayerViewController: UIViewController {
 // MARK: - IBActions
 extension MiniPlayerViewController {
     @IBAction func contentViewTapAction(_ sender: Any) {
-        self.expandDelegate?.expandEpisode(miniPLayer: self)
+        self.expandDelegate?.expandEpisode()
     }
     
     @IBAction func playAction(_ sender: Any) {
@@ -110,7 +113,9 @@ extension MiniPlayerViewController {
         let razao = currentTime/duration
         self.progressBar.progress = Float(razao)
     }
-
+    @objc func onFullPlayerShouldAppear(_ notification: Notification) {
+        self.expandDelegate?.expandEpisode()
+    }
 }
 
 // MARK: -

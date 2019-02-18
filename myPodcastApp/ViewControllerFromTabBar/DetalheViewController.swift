@@ -27,6 +27,7 @@ class DetalheViewController: InheritanceViewController {
     }
     
     @IBAction func fortyPlayButtonAction(_ sender: Any) {
+        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
         playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
         
         //expand

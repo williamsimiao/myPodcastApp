@@ -14,6 +14,8 @@ extension Notification.Name {
     static let playingStateDidChange = Notification.Name("playingStateDidChange")
     static let episodeDidChange = Notification.Name("episodeDidChange")
     static let playerTimeDidProgress = Notification.Name("playerTimeDidProgress")
+    static let fullPlayerShouldAppear = Notification.Name("fullPlayerShouldAppear")
+
 }
 
 protocol episodeDataSourceProtocol {
