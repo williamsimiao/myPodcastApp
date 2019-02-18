@@ -46,10 +46,12 @@ class DetalheViewController: InheritanceViewController {
         self.episodeContentView.coverImg.image = self.selectedEpisodeImage
         
         self.FortyMinutesView.layer.borderWidth = 1
+        self.FortyMinutesView.backgroundColor = .black
         self.FortyMinutesView.layer.borderColor = UIColor.white.cgColor
         self.FortyMinutesView.layer.cornerRadius = 10
 
         self.TenMinutesView.layer.borderWidth = 1
+        self.TenMinutesView.backgroundColor = .black
         self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
         self.TenMinutesView.layer.cornerRadius = 10
     }
