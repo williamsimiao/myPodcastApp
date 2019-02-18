@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -24,16 +24,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="IgV-gb-TUU">
-                    <rect key="frame" x="184" y="5" width="180" height="100"/>
+                    <rect key="frame" x="91" y="49" width="323" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-gI-DI2" userLabel="titleLabel">
-                            <rect key="frame" x="0.0" y="0.0" width="180" height="18.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="323" height="18.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="authorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhb-Fw-J2j" userLabel="authorLabel">
-                            <rect key="frame" x="0.0" y="40.5" width="180" height="19"/>
+                            <rect key="frame" x="0.0" y="40.5" width="323" height="19"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="highlightedColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
@@ -68,14 +68,17 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="525-Ac-Srd"/>
                         <constraint firstAttribute="trailing" secondItem="rhb-Fw-J2j" secondAttribute="trailing" id="6f3-z7-5Uw"/>
-                        <constraint firstAttribute="width" constant="180" id="GBo-OT-bsr"/>
                         <constraint firstItem="rhb-Fw-J2j" firstAttribute="leading" secondItem="IgV-gb-TUU" secondAttribute="leading" id="YhZ-cW-T0W"/>
                         <constraint firstItem="SFL-gI-DI2" firstAttribute="leading" secondItem="IgV-gb-TUU" secondAttribute="leading" id="lE6-0d-k9U"/>
                         <constraint firstAttribute="trailing" secondItem="SFL-gI-DI2" secondAttribute="trailing" id="uWx-iI-Nog"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuI-Co-aaQ" userLabel="margin">
+                    <rect key="frame" x="0.0" y="0.0" width="25" height="134"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i5g-ky-luP">
-                    <rect key="frame" x="30" y="0.0" width="134" height="134"/>
+                    <rect key="frame" x="25" y="44" width="56" height="56"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="i5g-ky-luP" secondAttribute="height" multiplier="1:1" id="Y6Z-eN-WCg"/>
                     </constraints>
@@ -83,17 +86,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="i5g-ky-luP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="3Qe-sV-jSU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="250" id="AcV-wm-5ie"/>
+                <constraint firstItem="IgV-gb-TUU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Ag5-2J-CXd"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="HmI-73-292"/>
-                <constraint firstItem="IgV-gb-TUU" firstAttribute="leading" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="20" id="Lu1-zD-HgZ"/>
+                <constraint firstItem="i5g-ky-luP" firstAttribute="leading" secondItem="xuI-Co-aaQ" secondAttribute="trailing" id="KoY-WE-eYc"/>
+                <constraint firstItem="xuI-Co-aaQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LPA-42-QNA"/>
+                <constraint firstItem="IgV-gb-TUU" firstAttribute="leading" secondItem="i5g-ky-luP" secondAttribute="trailing" constant="10" id="Lu1-zD-HgZ"/>
+                <constraint firstItem="xuI-Co-aaQ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.06" id="bKL-UK-jP3"/>
+                <constraint firstItem="xuI-Co-aaQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eP3-nl-Rwm"/>
                 <constraint firstItem="i5g-ky-luP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="h1t-4k-E72"/>
+                <constraint firstAttribute="bottom" secondItem="xuI-Co-aaQ" secondAttribute="bottom" id="lhz-Uh-WON"/>
                 <constraint firstItem="IgV-gb-TUU" firstAttribute="top" secondItem="i5g-ky-luP" secondAttribute="top" constant="5" id="rmB-sZ-KYZ"/>
-                <constraint firstItem="i5g-ky-luP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vrA-3j-scK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="191.19999999999999" y="-191.6041979010495"/>
+            <point key="canvasLocation" x="204" y="-226"/>
         </view>
     </objects>
     <resources>
