@@ -20,10 +20,13 @@ class InicioViewController: InheritanceViewController {
     var episodesArray :[[String:AnyObject]]?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resizableView: UIView!
+    @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.superResizableView = resizableView
+        self.superBottomConstraint = resizableBottomConstraint
+
         setupUI()
 
         //getting Data

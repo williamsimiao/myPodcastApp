@@ -18,9 +18,12 @@ class DetalheViewController: InheritanceViewController {
     var selectedEpisodeImage : UIImage?
     @IBOutlet weak var resizableView: UIView!
     
+    @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.superResizableView = resizableView
+        self.superBottomConstraint = resizableBottomConstraint
+        
         episodeContentView.delegate = self
 
         setupUI()

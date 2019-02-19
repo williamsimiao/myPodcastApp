@@ -10,7 +10,7 @@ import UIKit
 
 class InheritanceViewController: UIViewController {
     var superResizableView : UIView?
-
+    var superBottomConstraint : NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
@@ -26,9 +26,10 @@ class InheritanceViewController: UIViewController {
         guard let resizableView = self.superResizableView else {
             return
         }
-//        resizableView.translatesAutoresizingMaskIntoConstraints = false
-//        resizableView.frame.size.height -= playerManager.shared.miniContainerFrameHight!
-//        resizableView.layoutIfNeeded()
+        resizableView.translatesAutoresizingMaskIntoConstraints = false
+        let height = playerManager.shared.miniContainerFrameHight!
+        superBottomConstraint?.constant = height
+        resizableView.layoutIfNeeded()
     }
 }
 
