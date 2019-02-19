@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/TabBarViewController.swift"
-            timestampString = "572289066.60148"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/InheritanceViewController.swift"
+            timestampString = "572289757.246784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
-            landmarkName = "setMiniPlayerBottomConstraint()"
+            landmarkName = "resizeForMiniView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/InheritanceViewController.swift"
-            timestampString = "572289066.602672"
+            filePath = "myPodcastApp/TabBarViewController.swift"
+            timestampString = "572289757.2476881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
             endingLineNumber = "27"
-            landmarkName = "resizeForMiniView()"
+            landmarkName = "setMiniPlayerBottomConstraint()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

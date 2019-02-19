@@ -23,9 +23,9 @@ class TabBarViewController: UITabBarController {
     
     func setMiniPlayerBottomConstraint() {
         //to put the miniView right above the tabBar
-        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= self.tabBar.frame.height
+        let tabBarHeight = self.tabBar.frame.height
+        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= tabBarHeight
         let height = self.getSizesDelegate!.getMiniContainerFrameHight()
-        print("HUHU:\(height)")
         self.miniContainerFrameHight = height
     }
 }

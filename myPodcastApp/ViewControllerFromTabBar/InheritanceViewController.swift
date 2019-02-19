@@ -24,8 +24,8 @@ class InheritanceViewController: UIViewController {
         mytabBarVC.setMiniPlayerBottomConstraint()
         //Make the view go up
 //        self.superResizableView!.translatesAutoresizingMaskIntoConstraints = false
-        self.superResizableView?.frame.size.height -= mytabBarVC.miniContainerFrameHight!
-        self.superResizableView?.layoutIfNeeded()
+//        self.superResizableView?.frame.size.height -= mytabBarVC.miniContainerFrameHight!
+//        self.superResizableView?.layoutIfNeeded()
     }
 }
 
