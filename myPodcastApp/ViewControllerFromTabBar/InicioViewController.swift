@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class InicioViewController: UIViewController {
+class InicioViewController: InheritanceViewController {
   
     // MARK: - Properties
     var error_msg : String?
@@ -18,12 +18,12 @@ class InicioViewController: UIViewController {
     var selectedEpisode : [String: AnyObject]?
     var selectedEpisodeImage : UIImage?
     var episodesArray :[[String:AnyObject]]?
-    @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var resizableView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = "Bein Venue"
+        self.superResizableView = resizableView
         setupUI()
 
         //getting Data
@@ -31,6 +31,7 @@ class InicioViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        resizeForMiniView()
         tableView.reloadData()
     }
     

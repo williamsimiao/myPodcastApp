@@ -16,25 +16,16 @@ protocol TabBarViewControllerDelegate: class {
 class TabBarViewController: UITabBarController {
     // MARK: - Properties
     weak var getSizesDelegate: TabBarViewControllerDelegate?
+    var miniContainerFrameHight: CGFloat?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateLayoutForMiniPlayer()
     }
     
-    func updateLayoutForMiniPlayer() {
-
+    func setMiniPlayerBottomConstraint() {
+        //to put the miniView right above the tabBar
         self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= self.tabBar.frame.height
-        
-        //Changing the tabBar orin and size to have the height of tabbar+miniContainer
-//        guard let height = self.getSizesDelegate?.getMiniContainerFrameHight() else {
-//            assertionFailure("No MiniContainerFrameHight")
-//            return
-//        }
-//        
-//        for viewController in self.viewControllers! {
-//            let customVC = viewController as! InheritanceViewController
-//            customVC.miniViewHeight = height
-//        }
-//        self.view.layoutIfNeeded()
+        let height = self.getSizesDelegate!.getMiniContainerFrameHight()
+        print("HUHU:\(height)")
+        self.miniContainerFrameHight = height
     }
 }

@@ -96,7 +96,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Início" id="sH1-tW-FQ6"/>
                     <connections>
-                        <outlet property="bottomConstrain" destination="6zl-fJ-Etw" id="TEz-jR-kam"/>
+                        <outlet property="resizableView" destination="ihV-Cm-ubo" id="9Zd-Oz-8B9"/>
                         <outlet property="tableView" destination="vsC-Lh-quC" id="yfb-1z-y5s"/>
                     </connections>
                 </viewController>
@@ -112,7 +112,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0" userLabel="resizable">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
@@ -171,13 +171,29 @@
                                             <constraint firstItem="hqr-3g-cDK" firstAttribute="width" secondItem="V8v-ni-6oF" secondAttribute="width" id="NwU-tH-ZNZ"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-a8-NT5">
+                                        <rect key="frame" x="50.5" y="279.5" width="49" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-Q8-zTW">
+                                        <rect key="frame" x="222" y="279.5" width="46" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="gab-a8-NT5" firstAttribute="top" secondItem="xwQ-6m-mtE" secondAttribute="bottom" id="Aiw-Vb-Dv0"/>
                                     <constraint firstItem="xwQ-6m-mtE" firstAttribute="top" secondItem="DGl-jd-c3m" secondAttribute="bottom" constant="16" id="Lrt-TS-7er"/>
                                     <constraint firstItem="DGl-jd-c3m" firstAttribute="centerX" secondItem="SRM-8n-LH0" secondAttribute="centerX" id="Qsz-eO-OcT"/>
                                     <constraint firstItem="DGl-jd-c3m" firstAttribute="top" secondItem="xGi-DN-kzL" secondAttribute="bottom" constant="19" id="RaY-fg-Q5T"/>
+                                    <constraint firstItem="6Mv-Q8-zTW" firstAttribute="centerX" secondItem="WNu-sE-Eme" secondAttribute="centerX" id="Zrw-RE-ltg"/>
                                     <constraint firstItem="xGi-DN-kzL" firstAttribute="top" secondItem="SRM-8n-LH0" secondAttribute="top" id="n50-A2-OhV"/>
+                                    <constraint firstItem="6Mv-Q8-zTW" firstAttribute="top" secondItem="xwQ-6m-mtE" secondAttribute="bottom" id="ozF-Vl-sSo"/>
+                                    <constraint firstItem="gab-a8-NT5" firstAttribute="centerX" secondItem="OfT-K9-lCg" secondAttribute="centerX" id="zQb-Rc-El4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -198,6 +214,7 @@
                         <outlet property="FortyMinutesView" destination="V8v-ni-6oF" id="caf-kQ-PJw"/>
                         <outlet property="TenMinutesView" destination="hqr-3g-cDK" id="m3a-Bj-3eD"/>
                         <outlet property="episodeContentView" destination="xGi-DN-kzL" id="s2u-Ss-vyV"/>
+                        <outlet property="resizableView" destination="SRM-8n-LH0" id="wXb-Ay-Z6T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRb-yi-Dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec8-08-gS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8615.9420289855079" y="1022.5446428571428"/>
+            <point key="canvasLocation" x="8288" y="1012"/>
         </scene>
         <!--Episode Play Control View Controller-->
         <scene sceneID="2KS-9E-MRT">
@@ -663,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USh-ns-gwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9618.75" y="1022.5352112676056"/>
+            <point key="canvasLocation" x="9392" y="1007"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="UYm-rR-YE7">

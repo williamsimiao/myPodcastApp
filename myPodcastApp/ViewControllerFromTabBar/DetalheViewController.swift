@@ -11,27 +11,31 @@ import UIKit
 class DetalheViewController: InheritanceViewController {
     
     @IBOutlet weak var episodeContentView: epidodeContentRightView!
-    
     @IBOutlet weak var FortyMinutesView: UIView!
     @IBOutlet weak var TenMinutesView: UIView!
     
-    
-    
     var selectedEpisode : [String: AnyObject]?
     var selectedEpisodeImage : UIImage?
-
+    @IBOutlet weak var resizableView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.superResizableView = resizableView
         episodeContentView.delegate = self
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        resizeForMiniView()
+    }
+    
     @IBAction func fortyPlayButtonAction(_ sender: Any) {
-        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
+        //Play the episode
         playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
         
-        //expand
+        resizeForMiniView()
         
+//        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
     }
     
     @IBAction func tenPlayButtonAction(_ sender: Any) {

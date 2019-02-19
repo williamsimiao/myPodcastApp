@@ -13,11 +13,19 @@ protocol expandDelegate: class {
 }
 
 class InheritanceViewController: UIViewController {
-    var miniViewHeight: CGFloat = 70.0
-    var resizableView = UIView()
+    var superResizableView : UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func resizeForMiniView() {
+        let mytabBarVC = self.tabBarController as! TabBarViewController
+        mytabBarVC.setMiniPlayerBottomConstraint()
+        //Make the view go up
+//        self.superResizableView!.translatesAutoresizingMaskIntoConstraints = false
+        self.superResizableView?.frame.size.height -= mytabBarVC.miniContainerFrameHight!
+        self.superResizableView?.layoutIfNeeded()
     }
 }
 
