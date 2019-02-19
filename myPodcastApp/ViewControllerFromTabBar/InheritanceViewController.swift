@@ -8,24 +8,27 @@
 
 import UIKit
 
-protocol expandDelegate: class {
-    func expandEpisode(miniPLayer: MiniPlayerViewController)
-}
-
 class InheritanceViewController: UIViewController {
     var superResizableView : UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
     }
     
+    @objc func onPlayerIsSetUp(_ notification: Notification) {
+        resizeForMiniView()
+    }
+
     func resizeForMiniView() {
-        let mytabBarVC = self.tabBarController as! TabBarViewController
-        mytabBarVC.setMiniPlayerBottomConstraint()
+        
         //Make the view go up
-//        self.superResizableView!.translatesAutoresizingMaskIntoConstraints = false
-//        self.superResizableView?.frame.size.height -= mytabBarVC.miniContainerFrameHight!
-//        self.superResizableView?.layoutIfNeeded()
+        guard let resizableView = self.superResizableView else {
+            return
+        }
+//        resizableView.translatesAutoresizingMaskIntoConstraints = false
+//        resizableView.frame.size.height -= playerManager.shared.miniContainerFrameHight!
+//        resizableView.layoutIfNeeded()
     }
 }
 

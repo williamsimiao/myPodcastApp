@@ -19,13 +19,22 @@ class TabBarViewController: UITabBarController {
     var miniContainerFrameHight: CGFloat?
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
+        
+        let height = self.getSizesDelegate!.getMiniContainerFrameHight()
+        playerManager.shared.miniContainerFrameHight = height
     }
-    
+    @objc func onPlayerIsSetUp(_ notification: Notification) {
+        setMiniPlayerBottomConstraint()
+    }
+
     func setMiniPlayerBottomConstraint() {
         //to put the miniView right above the tabBar
         let tabBarHeight = self.tabBar.frame.height
-        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= tabBarHeight
-        let height = self.getSizesDelegate!.getMiniContainerFrameHight()
-        self.miniContainerFrameHight = height
+        let safeAreBottom = UIApplication.shared.keyWindow!.safeAreaInsets.bottom
+        let justTheTabBar = tabBarHeight - safeAreBottom
+        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= justTheTabBar
+
+        
     }
 }

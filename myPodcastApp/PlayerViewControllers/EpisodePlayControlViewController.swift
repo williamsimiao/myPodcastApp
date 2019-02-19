@@ -166,8 +166,8 @@ extension EpisodePlayControlViewController {
         self.slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
         
         //TODO: change this images
-        self.slider.setThumbImage(UIImage(named: "miniPlay"), for: UIControl.State.normal)
-        self.slider.setThumbImage(UIImage(named: "miniPause"), for: UIControl.State.highlighted)
+        self.slider.setThumbImage(UIImage(named: "thumbDefault"), for: UIControl.State.normal)
+        self.slider.setThumbImage(UIImage(named: "thumbSelected"), for: UIControl.State.highlighted)
         self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
     }
 }

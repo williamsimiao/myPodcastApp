@@ -22,20 +22,17 @@ class DetalheViewController: InheritanceViewController {
         super.viewDidLoad()
         self.superResizableView = resizableView
         episodeContentView.delegate = self
+
         setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        resizeForMiniView()
     }
     
     @IBAction func fortyPlayButtonAction(_ sender: Any) {
         //Play the episode
         playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
         
-        resizeForMiniView()
-        
+        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
 //        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
+
     }
     
     @IBAction func tenPlayButtonAction(_ sender: Any) {

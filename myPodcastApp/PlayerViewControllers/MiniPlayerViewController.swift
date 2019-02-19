@@ -30,7 +30,6 @@ class MiniPlayerViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
@@ -41,6 +40,7 @@ class MiniPlayerViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onFullPlayerShouldAppear(_:)), name: .fullPlayerShouldAppear, object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
 
     }
     
@@ -88,7 +88,6 @@ extension MiniPlayerViewController {
             //for (key, value)
             for (_, isPlaying) in data {
                 //TODO: replace for a animation instead
-                self.contentView.isHidden = false
                 if isPlaying && self.currentPlayButtonState != .pause {
                     changeButtonState(to: .pause)
                 }
@@ -113,9 +112,15 @@ extension MiniPlayerViewController {
         let razao = currentTime/duration
         self.progressBar.progress = Float(razao)
     }
+    
     @objc func onFullPlayerShouldAppear(_ notification: Notification) {
         self.expandDelegate?.expandEpisode()
     }
+    
+    @objc func onPlayerIsSetUp(_ notification: Notification) {
+        self.contentView.isHidden = false
+    }
+
 }
 
 // MARK: -

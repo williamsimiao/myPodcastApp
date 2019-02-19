@@ -15,7 +15,7 @@ extension Notification.Name {
     static let episodeDidChange = Notification.Name("episodeDidChange")
     static let playerTimeDidProgress = Notification.Name("playerTimeDidProgress")
     static let fullPlayerShouldAppear = Notification.Name("fullPlayerShouldAppear")
-    static let episodeIsSet = Notification.Name("episodeIsSet")
+    static let playerIsSetUp = Notification.Name("playerIsSetUp")
 }
 
 protocol episodeDataSourceProtocol {
@@ -24,6 +24,9 @@ protocol episodeDataSourceProtocol {
 }
 
 class playerManager {
+    //TODO TODO TODO remove this
+    var miniContainerFrameHight: CGFloat?
+
     var player : AVPlayer?
     var isSet = false
     var timeObserverToken: Any?
@@ -157,8 +160,8 @@ class playerManager {
         else {
             self.isSet = true
             self.player = AVPlayer(playerItem: newEpisodeAVItem)
+            NotificationCenter.default.post(name: .playerIsSetUp, object: self, userInfo: nil)
             addPeriodicTimeObserver()
-
         }
         self.currentEpisodeDict = episodeDictionary
         changeUIForEpisode()

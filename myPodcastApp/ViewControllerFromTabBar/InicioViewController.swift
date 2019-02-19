@@ -31,7 +31,6 @@ class InicioViewController: InheritanceViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        resizeForMiniView()
         tableView.reloadData()
     }
     
