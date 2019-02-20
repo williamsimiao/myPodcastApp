@@ -24,12 +24,17 @@ class Network {
     }
     
     static func getUIImageFor(imageUrl:String) -> UIImage{
-        let url = URL(string:imageUrl)!
-        let data = try! Data(contentsOf: url)
-        let image = UIImage(data: data, scale: UIScreen.main.scale)!
-        
-        image.af_inflate()
-        return image
+        var image : UIImage?
+        do {
+            let url = URL(string:imageUrl)!
+            let data = try Data(contentsOf: url)
+            image = UIImage(data: data, scale: UIScreen.main.scale)!
+        } catch {
+            image = UIImage(named: "cover_placeholder")!
+
+        }
+        image!.af_inflate()
+        return image!
     }
     
     static func getEpisodes() -> [[String:AnyObject]]{

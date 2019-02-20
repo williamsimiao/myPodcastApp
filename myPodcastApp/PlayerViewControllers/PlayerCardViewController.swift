@@ -21,7 +21,7 @@ class PlayerCardViewController: UIViewController {
     var currentEpisode: Resumo?
     weak var sourceView: PlayerCardSourceProtocol!
     var currentPlayButtonState : playButtonStates?
-
+    //To adapte for diferent sizes
 
     //scroller
     @IBOutlet weak var scrollView: UIScrollView!
@@ -70,7 +70,6 @@ class PlayerCardViewController: UIViewController {
         super.viewDidLoad()
         backingImageView.image = backingImage
         scrollView.contentInsetAdjustmentBehavior = .never //dont let Safe Area insets affect the scroll view
-        
         coverImageContainer.layer.cornerRadius = cardCornerRadius
         coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
@@ -257,7 +256,7 @@ extension PlayerCardViewController {
     }
     
     func animateCoverImageIn() {
-        let coverImageEdgeContraint: CGFloat = 30
+        let coverImageEdgeContraint: CGFloat = coverImageContainer.frame.size.width * 0.12
         let endHeight = coverImageContainer.bounds.width - coverImageEdgeContraint * 2
         UIView.animate(withDuration: primaryDuration, delay: 0, options: [.curveEaseIn], animations: {
             self.coverImageHeight.constant = endHeight
