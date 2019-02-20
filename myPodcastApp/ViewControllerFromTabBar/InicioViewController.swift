@@ -24,7 +24,6 @@ class InicioViewController: InheritanceViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
 
@@ -35,6 +34,7 @@ class InicioViewController: InheritanceViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
         tableView.reloadData()
     }
     

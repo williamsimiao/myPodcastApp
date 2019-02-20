@@ -33,8 +33,9 @@ class TabBarViewController: UITabBarController {
         let tabBarHeight = self.tabBar.frame.height
         let safeAreBottom = UIApplication.shared.keyWindow!.safeAreaInsets.bottom
         let justTheTabBar = tabBarHeight - safeAreBottom
-        self.getSizesDelegate?.getMiniContainerBottonConstrain().constant -= justTheTabBar
-
-        
+        UIView.animate(withDuration: 1 , delay: 0 , options: [.curveEaseIn], animations: {
+            self.getSizesDelegate?.getMiniContainerBottonConstrain().constant = -justTheTabBar
+            self.view.layoutIfNeeded()
+        })
     }
 }
