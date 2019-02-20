@@ -162,7 +162,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="118" height="90"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfT-K9-lCg">
-                                                        <rect key="frame" x="50.5" y="33.5" width="17" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118" height="90"/>
                                                         <state key="normal" image="orangePlay"/>
                                                         <connections>
                                                             <action selector="fortyPlayButtonAction:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="wqG-fA-ih9"/>
@@ -171,15 +171,17 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="OfT-K9-lCg" firstAttribute="centerX" secondItem="V8v-ni-6oF" secondAttribute="centerX" id="0wc-al-Uhg"/>
-                                                    <constraint firstItem="OfT-K9-lCg" firstAttribute="centerY" secondItem="V8v-ni-6oF" secondAttribute="centerY" id="ANf-fU-Dbt"/>
+                                                    <constraint firstItem="OfT-K9-lCg" firstAttribute="top" secondItem="V8v-ni-6oF" secondAttribute="top" id="S2X-ne-lHC"/>
+                                                    <constraint firstItem="OfT-K9-lCg" firstAttribute="leading" secondItem="V8v-ni-6oF" secondAttribute="leading" id="txq-e3-PPi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OfT-K9-lCg" secondAttribute="trailing" id="y37-iR-jDn"/>
+                                                    <constraint firstAttribute="bottom" secondItem="OfT-K9-lCg" secondAttribute="bottom" id="yKr-gU-WPn"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-3g-cDK">
                                                 <rect key="frame" x="138" y="0.0" width="118" height="90"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNu-sE-Eme">
-                                                        <rect key="frame" x="50.5" y="33.5" width="17" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118" height="90"/>
                                                         <state key="normal" image="orangePlay"/>
                                                         <connections>
                                                             <action selector="tenPlayButtonAction:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="fgu-aK-iAX"/>
@@ -188,8 +190,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="WNu-sE-Eme" firstAttribute="centerY" secondItem="hqr-3g-cDK" secondAttribute="centerY" id="Kqp-8l-ENe"/>
-                                                    <constraint firstItem="WNu-sE-Eme" firstAttribute="centerX" secondItem="hqr-3g-cDK" secondAttribute="centerX" id="X4N-D6-V8c"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WNu-sE-Eme" secondAttribute="trailing" id="BeD-7I-qQu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WNu-sE-Eme" secondAttribute="bottom" id="Jcc-NE-Uj6"/>
+                                                    <constraint firstItem="WNu-sE-Eme" firstAttribute="leading" secondItem="hqr-3g-cDK" secondAttribute="leading" id="S8E-FJ-6P5"/>
+                                                    <constraint firstItem="WNu-sE-Eme" firstAttribute="top" secondItem="hqr-3g-cDK" secondAttribute="top" id="kiz-Vg-wHr"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
