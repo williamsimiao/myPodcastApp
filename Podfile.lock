@@ -8,6 +8,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - DeckTransition (2.1.0)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -32,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (~> 3.5)
+  - DeckTransition (~> 2.0)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -42,6 +44,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - DeckTransition
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -54,6 +57,7 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  DeckTransition: ca707456e3d83928c895fed6f458cbf68c5cac84
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
@@ -62,6 +66,6 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 71118cc0fe6f853f13c5201ee2bfb7fe9349a6c2
+PODFILE CHECKSUM: 0e229f75cc98448cc7754040df4c7f5be54cb0b2
 
 COCOAPODS: 1.5.3

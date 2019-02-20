@@ -247,11 +247,12 @@
                         <outlet property="episodeContentView" destination="xGi-DN-kzL" id="s2u-Ss-vyV"/>
                         <outlet property="resizableBottomConstraint" destination="IXc-LS-7yB" id="U9V-Bb-Flj"/>
                         <outlet property="resizableView" destination="SRM-8n-LH0" id="wXb-Ay-Z6T"/>
+                        <segue destination="Flz-en-kHC" kind="custom" identifier="toPlayer" customClass="DeckSegue" customModule="DeckTransition" id="L3B-bP-Hfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRb-yi-Dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7426.875" y="1005.6338028169014"/>
+            <point key="canvasLocation" x="7333" y="1007"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="zcR-Rh-SC6">
