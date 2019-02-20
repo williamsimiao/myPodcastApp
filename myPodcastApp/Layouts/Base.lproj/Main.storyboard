@@ -274,7 +274,7 @@
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
             <objects>
-                <viewController id="KbZ-Y2-w5F" customClass="BaseViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseViewController" id="KbZ-Y2-w5F" customClass="BaseViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SA9-pc-NTe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1166,7 +1166,7 @@
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ElY-PV-xCf"/>
-        <segue reference="l7N-Mb-VwJ"/>
+        <segue reference="mSl-zQ-c2B"/>
+        <segue reference="oYo-NV-EEj"/>
     </inferredMetricsTieBreakers>
 </document>

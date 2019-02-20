@@ -31,36 +31,19 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         loading.isHidden = true
         
         btnEntrar.layer.cornerRadius = 5
         btnEntrar.clipsToBounds = true
         
+        configureFacebook()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        NSLog("viewDidAppear")
         
-        
-        let prefs:UserDefaults = UserDefaults.standard
-        
-        let isLoggedIn = prefs.integer(forKey: "isLogado") as Int
-        
-        NSLog("isLoggedIn %d", isLoggedIn)
-        
-        if (isLoggedIn == 1) {
-            NSLog("goto_main")
-            
-            self.performSegue(withIdentifier: "goto_main", sender: self)
-        } else {
-            NSLog("goto_inicio")
-            
-            configureFacebook()
-        }
         
         
         /*let prefs:UserDefaults = UserDefaults.standard
