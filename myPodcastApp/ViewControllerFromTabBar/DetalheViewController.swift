@@ -21,6 +21,7 @@ class DetalheViewController: InheritanceViewController {
     @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         

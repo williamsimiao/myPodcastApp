@@ -15,12 +15,9 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         coverImg.layer.cornerRadius = 10
         coverImg.clipsToBounds = true
         coverImg.layer.borderWidth = 1
@@ -28,4 +25,15 @@ class CustomCell: UITableViewCell {
         coverImg.backgroundColor = .orange
     }
     
+    func setHighlightColor() {
+        self.titleLabel.textColor = .black
+        self.authorLabel.textColor = .black
+        self.coverImg.layer.borderColor = UIColor.black.cgColor
+
+    }
+    func goBackToOriginalColors() {
+        self.titleLabel.textColor = .white
+        self.authorLabel.textColor = .white
+        self.coverImg.layer.borderColor = UIColor.white.cgColor
+    }
 }

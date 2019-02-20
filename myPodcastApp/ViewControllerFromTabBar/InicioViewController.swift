@@ -24,6 +24,7 @@ class InicioViewController: InheritanceViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
 
@@ -84,6 +85,10 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
         cell.authorLabel.text = Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
         let coverUrl = (resumoDict["url_imagem"] as! String)
+        
+        //When return from detailsVC
+        cell.goBackToOriginalColors()
+        
         Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
         
         return cell
@@ -107,10 +112,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
-//        cell.selectedBackgroundView?.backgroundColor = UIColor.white
-//        cell.titleLabel.textColor = .black
-//        cell.authorLabel.textColor = .black
-//        cell.coverImg.layer.borderColor = UIColor.black.cgColor
+        cell.setHighlightColor()
     }
 }
 
