@@ -42,6 +42,11 @@ class BaseViewController: UIViewController {
         }        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let height = self.miniContainerView.bounds.height
+        print("height: \(height)")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let miniPlayer = segue.destination as? MiniPlayerViewController {
             miniPlayer.expandDelegate = self

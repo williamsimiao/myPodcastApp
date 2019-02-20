@@ -119,6 +119,8 @@ extension MiniPlayerViewController {
     
     @objc func onPlayerIsSetUp(_ notification: Notification) {
         self.contentView.isHidden = false
+        let height = self.view.frame.size.height
+        playerManager.shared.miniContainerFrameHight = height
     }
 
 }

@@ -21,8 +21,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
         
-        let height = self.getSizesDelegate!.getMiniContainerFrameHight()
-        playerManager.shared.miniContainerFrameHight = height
+//        let height = self.getSizesDelegate!.getMiniContainerFrameHight()
+//        playerManager.shared.miniContainerFrameHight = height
     }
     @objc func onPlayerIsSetUp(_ notification: Notification) {
         setMiniPlayerBottomConstraint()

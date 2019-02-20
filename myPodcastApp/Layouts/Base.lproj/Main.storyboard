@@ -466,11 +466,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juM-Nu-SOs">
-                                        <rect key="frame" x="0.0" y="479" width="320" height="240"/>
+                                        <rect key="frame" x="0.0" y="479" width="320" height="300"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-wO-0SW">
-                                        <rect key="frame" x="0.0" y="419" width="320" height="300"/>
+                                        <rect key="frame" x="0.0" y="479" width="320" height="300"/>
                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="rbd-tc-rjp"/>
@@ -481,7 +481,7 @@
                                     </containerView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="K7C-wO-0SW" firstAttribute="top" secondItem="k2R-DF-ZPB" secondAttribute="bottom" constant="-60" id="1AT-6K-RL2"/>
+                                    <constraint firstItem="K7C-wO-0SW" firstAttribute="top" secondItem="k2R-DF-ZPB" secondAttribute="bottom" id="1AT-6K-RL2"/>
                                     <constraint firstItem="k2R-DF-ZPB" firstAttribute="centerX" secondItem="umU-Ql-7aD" secondAttribute="centerX" id="DB4-tL-fmi"/>
                                     <constraint firstAttribute="bottom" secondItem="juM-Nu-SOs" secondAttribute="bottom" id="HqO-Pn-Rsj"/>
                                     <constraint firstItem="K7C-wO-0SW" firstAttribute="leading" secondItem="umU-Ql-7aD" secondAttribute="leading" id="Mfe-L2-uI1"/>

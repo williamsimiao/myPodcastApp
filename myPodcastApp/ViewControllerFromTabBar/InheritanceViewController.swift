@@ -27,8 +27,10 @@ class InheritanceViewController: UIViewController {
             return
         }
         resizableView.translatesAutoresizingMaskIntoConstraints = false
+        
 
-        let height = playerManager.shared.miniContainerFrameHight! //+ 23
+        let height = playerManager.shared.miniContainerFrameHight!
+
         superBottomConstraint?.constant = height
         resizableView.layoutIfNeeded()
     }
