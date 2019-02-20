@@ -15,7 +15,7 @@ protocol updateMiniPlayerDelegate : class {
 class EpisodePlayControlViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var slider: CustomUISlider!
     @IBOutlet weak var remainingLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     
@@ -162,12 +162,6 @@ extension EpisodePlayControlViewController {
         self.episodeAuthor.text = playerManager.shared.getEpisodeAuthor()
         
         let seconds = playerManager.shared.getEpisodeDurationInSeconds()
-        self.slider.maximumValue = Float(seconds)
-        self.slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
-        
-        //TODO: change this images
-        self.slider.setThumbImage(UIImage(named: "thumbDefault"), for: UIControl.State.normal)
-        self.slider.setThumbImage(UIImage(named: "thumbSelected"), for: UIControl.State.highlighted)
         self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
     }
 }
