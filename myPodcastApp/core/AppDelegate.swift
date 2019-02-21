@@ -22,7 +22,8 @@ import FacebookCore
         
         if (isLoggedIn == 1) {
             let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let vc = sb.instantiateViewController(withIdentifier: "BaseViewController")
+//            let vc = sb.instantiateViewController(withIdentifier: "BaseViewController")
+            let vc = sb.instantiateViewController(withIdentifier: "WelcomeViewController")
             
             vc.modalTransitionStyle = .crossDissolve
             window!.rootViewController = vc

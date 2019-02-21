@@ -45,7 +45,6 @@
 		3DF98163221EF07D0052EC16 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */; };
 		3DF98165221EF7840052EC16 /* SlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF98164221EF7840052EC16 /* SlideView.xib */; };
 		3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98166221EF7AB0052EC16 /* SlideView.swift */; };
-		3DF98169221F16FB0052EC16 /* roundButtom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF98168221F16FB0052EC16 /* roundButtom.xib */; };
 		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +92,6 @@
 		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3DF98164221EF7840052EC16 /* SlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
 		3DF98166221EF7AB0052EC16 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
-		3DF98168221F16FB0052EC16 /* roundButtom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = roundButtom.xib; sourceTree = "<group>"; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +138,6 @@
 				3D34FD1D221485350062DB7E /* CustomCell.xib */,
 				3D123A142215CC9D009A8E57 /* ColorWeel.swift */,
 				3DF98164221EF7840052EC16 /* SlideView.xib */,
-				3DF98168221F16FB0052EC16 /* roundButtom.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -322,7 +319,6 @@
 			files = (
 				3DF98165221EF7840052EC16 /* SlideView.xib in Resources */,
 				3D34FD1E221485350062DB7E /* CustomCell.xib in Resources */,
-				3DF98169221F16FB0052EC16 /* roundButtom.xib in Resources */,
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
 				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,

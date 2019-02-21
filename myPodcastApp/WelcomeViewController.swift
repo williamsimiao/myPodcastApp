@@ -12,6 +12,7 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var groundButtom: UIButton!
     
     var slides:[SlideView] = [];
     override func viewDidLoad() {
@@ -47,18 +48,27 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupSlideScrollView(slides : [SlideView]) {
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
-        scrollView.isPagingEnabled = true
+//        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.8)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(slides.count), height: scrollView.frame.height)
         
+        scrollView.isPagingEnabled = true
+        print("slides.count\(slides.count)")
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+            slides[i].frame = CGRect(x: scrollView.frame.width * CGFloat(i), y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
             scrollView.addSubview(slides[i])
         }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
+        if pageIndex == 4 {
+            groundButtom.titleLabel?.text = "Então vamos lá"
+        }
     }
+    
+    @IBAction func groundButtomAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "goto_main", sender: self)
+    }
+    
 
 }
