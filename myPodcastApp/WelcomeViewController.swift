@@ -12,9 +12,10 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var groundButtom: UIButton!
+    @IBOutlet weak var groundButtom: welcomeButtom!
     
     var slides:[SlideView] = [];
+    var arrivedToTheEnd = false
     override func viewDidLoad() {
         super.viewDidLoad()
         slides = createSlides()
@@ -52,7 +53,6 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(slides.count), height: scrollView.frame.height)
         
         scrollView.isPagingEnabled = true
-        print("slides.count\(slides.count)")
         for i in 0 ..< slides.count {
             slides[i].frame = CGRect(x: scrollView.frame.width * CGFloat(i), y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
             scrollView.addSubview(slides[i])
@@ -61,8 +61,10 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
-        if pageIndex == 4 {
+        print("pageIndex:\(pageIndex)")
+        if pageIndex == 3 && !self.arrivedToTheEnd{
             groundButtom.titleLabel?.text = "Então vamos lá"
+            self.arrivedToTheEnd = true
         }
     }
     
