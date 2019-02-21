@@ -33,15 +33,15 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
         slide1.descriptionLabel.text = "Boas-vindas ao Resumo Cast"
         
         let slide2:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
-        slide2.imageView.image = UIImage(named: "personagem1")
+        slide2.imageView.image = UIImage(named: "personagem2")
         slide2.descriptionLabel.text = "Escute resumos incríveis de grandes livros em formatos de 40 e 10 minutos"
         
         let slide3:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
-        slide3.imageView.image = UIImage(named: "personagem1")
+        slide3.imageView.image = UIImage(named: "personagem3")
         slide3.descriptionLabel.text = "Ou se preferir, você pode ler os resumos dos livros"
 
         let slide4:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
-        slide4.imageView.image = UIImage(named: "personagem1")
+        slide4.imageView.image = UIImage(named: "personagem4")
         slide4.descriptionLabel.text = "E ainda tem os nossos podcasts"
 
         return [slide1, slide2, slide3, slide4]
