@@ -42,6 +42,10 @@
 		3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */; };
 		3DF5F6882217275400F6BA33 /* epidodeContentRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */; };
 		3DF98161221DF7CA0052EC16 /* CustomUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */; };
+		3DF98163221EF07D0052EC16 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */; };
+		3DF98165221EF7840052EC16 /* SlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF98164221EF7840052EC16 /* SlideView.xib */; };
+		3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98166221EF7AB0052EC16 /* SlideView.swift */; };
+		3DF98169221F16FB0052EC16 /* roundButtom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF98168221F16FB0052EC16 /* roundButtom.xib */; };
 		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = epidodeContentRight.xib; sourceTree = "<group>"; };
 		3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = epidodeContentRightView.swift; sourceTree = "<group>"; };
 		3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISlider.swift; sourceTree = "<group>"; };
+		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		3DF98164221EF7840052EC16 /* SlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
+		3DF98166221EF7AB0052EC16 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
+		3DF98168221F16FB0052EC16 /* roundButtom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = roundButtom.xib; sourceTree = "<group>"; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +139,8 @@
 				3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */,
 				3D34FD1D221485350062DB7E /* CustomCell.xib */,
 				3D123A142215CC9D009A8E57 /* ColorWeel.swift */,
+				3DF98164221EF7840052EC16 /* SlideView.xib */,
+				3DF98168221F16FB0052EC16 /* roundButtom.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -185,6 +195,7 @@
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
+				3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */,
 				3D3868312211B4BA00E89FF4 /* Cadastro */,
 				3DE481342209C770000431E0 /* PlayerViewControllers */,
 				3D2D7B902208BA66000E426A /* Layouts */,
@@ -230,6 +241,7 @@
 			children = (
 				3D34FD1B221484EC0062DB7E /* CustomCell.swift */,
 				3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */,
+				3DF98166221EF7AB0052EC16 /* SlideView.swift */,
 			);
 			path = "custom with xib";
 			sourceTree = "<group>";
@@ -308,7 +320,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF98165221EF7840052EC16 /* SlideView.xib in Resources */,
 				3D34FD1E221485350062DB7E /* CustomCell.xib in Resources */,
+				3DF98169221F16FB0052EC16 /* roundButtom.xib in Resources */,
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
 				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,
@@ -399,6 +413,7 @@
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,
 				3DF5F6882217275400F6BA33 /* epidodeContentRightView.swift in Sources */,
+				3DF98163221EF07D0052EC16 /* WelcomeViewController.swift in Sources */,
 				3D34FCFC22131FDA0062DB7E /* NotificacoesViewController.swift in Sources */,
 				3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */,
 				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
@@ -411,6 +426,7 @@
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
+				3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */,
 				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
 				3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */,
