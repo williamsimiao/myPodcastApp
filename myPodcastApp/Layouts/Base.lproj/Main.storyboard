@@ -92,6 +92,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <segue destination="N4r-FG-Rxn" kind="show" identifier="to_detail" id="XwK-Gc-UPM"/>
@@ -104,7 +105,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="vsC-Lh-quC" secondAttribute="bottom" id="auz-wb-d5c"/>
                                     <constraint firstItem="vsC-Lh-quC" firstAttribute="top" secondItem="ihV-Cm-ubo" secondAttribute="top" id="e7y-Yt-OOd"/>
@@ -113,7 +114,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="R2W-Yw-eQI" firstAttribute="bottom" secondItem="ihV-Cm-ubo" secondAttribute="bottom" id="6zl-fJ-Etw" userLabel="bottomConstrain"/>
                             <constraint firstItem="R2W-Yw-eQI" firstAttribute="top" secondItem="ihV-Cm-ubo" secondAttribute="top" id="AnR-1B-gMx"/>
@@ -262,7 +263,23 @@
                     <view key="view" contentMode="scaleToFill" id="PUH-Ue-gV7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAl-mG-n5u">
+                                <rect key="frame" x="60" y="269" width="200" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="LEF-Nc-LqW"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JAl-mG-n5u" firstAttribute="centerX" secondItem="PUH-Ue-gV7" secondAttribute="centerX" id="1OM-Pi-J5W"/>
+                            <constraint firstItem="JAl-mG-n5u" firstAttribute="centerY" secondItem="PUH-Ue-gV7" secondAttribute="centerY" id="7io-Tg-R8n"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Perfil" image="tab_icon_perfil" selectedImage="tab_item_selected_perfil" id="7JO-MM-v6S"/>
@@ -281,6 +298,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-3U-ikf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="86v-Ve-x0Q" kind="embed" id="OCp-D3-hdn"/>
                                 </connections>
@@ -734,7 +752,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-cE-DSk">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-HC-U87">
+                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-HC-U87">
                                                 <rect key="frame" x="60" y="40" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="AIe-3H-OEw"/>
@@ -961,7 +979,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnO-0s-iIc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200.png" translatesAutoresizingMaskIntoConstraints="NO" id="PT5-TC-uyh">
+                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="PT5-TC-uyh">
                                                 <rect key="frame" x="60" y="40" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="Bha-C6-WTd"/>
@@ -1106,7 +1124,7 @@
                                     <constraint firstAttribute="width" constant="200" id="deq-jb-3JV"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="256" placeholderIntrinsicHeight="45" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-MM-Cbh" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-MM-Cbh" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="32" y="240" width="256" height="50"/>
                                 <color key="backgroundColor" red="0.2784313725" green="0.34901960780000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1119,7 +1137,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5me-5z-Fud">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5me-5z-Fud">
                                 <rect key="frame" x="32" y="298" width="256" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1290,7 +1308,6 @@
         <image name="googleLogo" width="32.5" height="32.5"/>
         <image name="horizontalLine" width="155" height="1"/>
         <image name="logo_200" width="200" height="200"/>
-        <image name="logo_200.png" width="16" height="16"/>
         <image name="miniPlay" width="25.5" height="25.5"/>
         <image name="moreBlack" width="23" height="5"/>
         <image name="next" width="33" height="25.5"/>
@@ -1305,7 +1322,7 @@
         <image name="tab_item_selected_perfil" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mSl-zQ-c2B"/>
+        <segue reference="ElY-PV-xCf"/>
         <segue reference="oYo-NV-EEj"/>
     </inferredMetricsTieBreakers>
 </document>

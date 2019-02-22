@@ -31,13 +31,9 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     func createSlides() -> [SlideView] {
         let slide1:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
         
-        let greetingsMessage = NSLocalizedString("welcomeDescription1", comment: "top label from first welcome scene")
-//        let attributedText = NSMutableAttributedString(string: greetingsMessage, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white])
-        let attributedText = NSMutableAttributedString(string: greetingsMessage)
-
         slide1.imageView.image = UIImage(named: "personagem1")
         slide1.descriptionLabel.text = "Boas-vindas ao Resumo Cast"
-        slide1.detailsLabel.attributedText = attributedText
+        slide1.detailsLabel.text = ""
         
         let slide2:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
         slide2.imageView.image = UIImage(named: "personagem2")

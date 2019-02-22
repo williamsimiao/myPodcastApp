@@ -38,22 +38,20 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func setupLayout() {
         loading.isHidden = true
-        
-        btnFacebook.layer.cornerRadius = 25
+        let radius = CGFloat(15)
+        btnFacebook.layer.cornerRadius = radius
         btnFacebook.clipsToBounds = true
         
-        btnEntrar.layer.cornerRadius = 25
+        btnEntrar.layer.cornerRadius = radius
         btnEntrar.clipsToBounds = true
         btnEntrar.layer.borderWidth = 1
-        btnEntrar.layer.borderColor = (ColorWeel().orangeColor as! CGColor)
+        btnEntrar.layer.borderColor = ColorWeel().orangeColor.cgColor
 
-        btnGoogle.layer.cornerRadius = 25
+        btnGoogle.layer.cornerRadius = radius
         btnGoogle.clipsToBounds = true
         
         configureFacebook()
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
