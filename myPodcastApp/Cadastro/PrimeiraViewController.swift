@@ -15,6 +15,8 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet var btnEntrar: UIButton!
     @IBOutlet var btnFacebook: FBSDKLoginButton!
     @IBOutlet var loading: UIActivityIndicatorView!
+    @IBOutlet weak var btnGoogle: UIButton!
+    @IBOutlet weak var btnCriar: UIButton!
     
     var id_facebook:String!
     var name:String!
@@ -31,49 +33,44 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loading.isHidden = true
-        
-        btnEntrar.layer.cornerRadius = 5
-        btnEntrar.clipsToBounds = true
-        
-        configureFacebook()
-
+        setupLayout()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    func setupLayout() {
+        loading.isHidden = true
         
+        btnFacebook.layer.cornerRadius = 25
+        btnFacebook.clipsToBounds = true
         
+        btnEntrar.layer.cornerRadius = 25
+        btnEntrar.clipsToBounds = true
+        btnEntrar.layer.borderWidth = 1
+        btnEntrar.layer.borderColor = (ColorWeel().orangeColor as! CGColor)
+
+        btnGoogle.layer.cornerRadius = 25
+        btnGoogle.clipsToBounds = true
         
-        
-        /*let prefs:UserDefaults = UserDefaults.standard
-         
-         let isLoggedIn = prefs.integer(forKey: "isLogado") as Int
-         
-         if (isLoggedIn != 1) {
-         
-         NSLog("goto_login")
-         
-         self.performSegue(withIdentifier: "goto_login", sender: self)
-         
-         } else {
-         
-         NSLog("goto_main")
-         
-         self.performSegue(withIdentifier: "goto_main", sender: self)
-         }*/
-        
+        configureFacebook()
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func loginInProcess() {
+        loading.isHidden = false
+        loading.startAnimating()
+        btnFacebook.isEnabled = false
+//        btnGoogle.isEnabled = false
+//        btnEntrar.isEnabled = false
+//        btnCriar.isEnabled = false
+    }
+    
     func configureFacebook() {
-        
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-        
         loginManager.logOut()
         
         btnFacebook.setAttributedTitle(NSAttributedString(string: "ENTRAR COM FACEBOOK"), for: .normal)
@@ -84,20 +81,13 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginFacebook() {
         
         var num_id_ios:String = ""
-        /*if let token = FIRInstanceID.instanceID().token() {
-         num_id_ios = token
-         }*/
         
         if !AppService.util.isConnectedToNetwork() {
             AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
             return
         }
         
-        loading.isHidden = false
-        loading.startAnimating()
-        
-        btnFacebook.isEnabled = false
-        
+        loginInProcess()
         var dados:String = ""
         dados = dados + "&num_facebook=" + id_facebook
         dados = dados + "&nome=" + name
@@ -107,16 +97,9 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         dados = dados + "&gender=" + gender
         dados = dados + "&num_id_ios=" + num_id_ios
         
-        print("dados " + dados)
-        
-        
         let post = dados as String
-        
         let postData:Data = Data(post.utf8)
-        
         let postLength:NSString = String( postData.count ) as NSString
-        
-        
         
         let link = AppConfig.urlBaseApi + "loginFacebook.php"
         
@@ -153,7 +136,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func extract_json_data(_ data:NSString) {
-        
+
         NSLog("json %@", data)
         
         let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
@@ -275,15 +258,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                     self.url_foto = pictureData["url"] as! String
                     
-                    print("url_foto " + self.url_foto)
-                    
-                    
                     self.loginFacebook()
-                    
-                    /*print("User Name is: \(userName)")
-                     
-                     
-                     print("User Email is: \(userEmail)")*/
                 }
                 
             })
@@ -308,9 +283,9 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-    @IBAction func clickAcessar(_ sender: Any) {
+    @IBAction func clickCriar(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "goto_main", sender: self)
+        self.performSegue(withIdentifier: "goto_cadastro", sender: self)
         
     }
     
