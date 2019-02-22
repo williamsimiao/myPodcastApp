@@ -273,6 +273,9 @@
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutClick:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="0Fy-1Z-paR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -283,10 +286,13 @@
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Perfil" image="tab_icon_perfil" selectedImage="tab_item_selected_perfil" id="7JO-MM-v6S"/>
+                    <connections>
+                        <segue destination="PIR-rI-FoS" kind="show" identifier="goto_primeira" id="N1T-pc-UyF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvi-JN-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="-377"/>
+            <point key="canvasLocation" x="5578" y="-412"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">

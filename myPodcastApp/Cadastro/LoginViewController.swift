@@ -271,7 +271,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loading.stopAnimating()
         
         if self.success {
-            AppService.util.montarUsuario(usuario: self.usuario)
+            AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
             self.performSegue(withIdentifier: "goto_main", sender: self)
         }
         else {

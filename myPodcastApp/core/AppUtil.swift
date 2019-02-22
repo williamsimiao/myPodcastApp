@@ -309,7 +309,22 @@ open class AppUtil {
         
     }
     
-    func montarUsuario(usuario:NSDictionary) {
+    func removeUserDataFromUserDefaults() {
+        let prefs:UserDefaults = UserDefaults.standard
+        prefs.removeObject(forKey: "cod_usuario")
+        prefs.removeObject(forKey: "nome")
+        prefs.removeObject(forKey: "foto")
+        prefs.removeObject(forKey: "email")
+        prefs.removeObject(forKey: "sexo")
+        prefs.removeObject(forKey: "celular")
+        prefs.removeObject(forKey: "dat_nascimento")
+        prefs.removeObject(forKey: "validado_celular")
+        prefs.removeObject(forKey: "dat_nascimento")
+        prefs.set(0, forKey: "isLogado")
+
+    }
+    
+    func putuserDataOnUserDefaults(usuario:NSDictionary) {
         let cod_usuario = usuario.value(forKey: "cod_usuario") as! String
         let nome = usuario.value(forKey: "nome") as! String
         let foto = usuario.value(forKey: "foto") as! String

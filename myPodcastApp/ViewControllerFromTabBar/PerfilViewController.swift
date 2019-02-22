@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class PerfilViewController: InheritanceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func logoutClick(_ sender: Any) {
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        
+        loginManager.logOut()
+        AppService.util.removeUserDataFromUserDefaults()
+        performSegue(withIdentifier: "goto_primeira", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

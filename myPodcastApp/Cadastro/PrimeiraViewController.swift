@@ -181,7 +181,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         loading.stopAnimating()
         
         if self.success {
-            AppService.util.montarUsuario(usuario: self.usuario)
+            AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
             self.performSegue(withIdentifier: "goto_main", sender: self)
         }
         else {
@@ -272,6 +272,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         
         loginManager.logOut()
+        
         
     }
     
