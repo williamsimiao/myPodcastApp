@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:myPodcastApp/en.lproj/Localizable.strings">
+   </FileRef>
+   <FileRef
       location = "group:myPodcastApp.xcodeproj">
    </FileRef>
    <FileRef

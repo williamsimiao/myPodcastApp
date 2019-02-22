@@ -12,10 +12,10 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var groundButtom: welcomeButtom!
+    @IBOutlet weak var groundButtom: UIButton!
+    @IBOutlet weak var longerGroundButton: UIButton!
     
     var slides:[SlideView] = [];
-    var arrivedToTheEnd = false
     override func viewDidLoad() {
         super.viewDidLoad()
         slides = createSlides()
@@ -30,20 +30,30 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [SlideView] {
         let slide1:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
+        
+        let greetingsMessage = NSLocalizedString("welcomeDescription1", comment: "top label from first welcome scene")
+//        let attributedText = NSMutableAttributedString(string: greetingsMessage, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white])
+        let attributedText = NSMutableAttributedString(string: greetingsMessage)
+
         slide1.imageView.image = UIImage(named: "personagem1")
         slide1.descriptionLabel.text = "Boas-vindas ao Resumo Cast"
+        slide1.detailsLabel.attributedText = attributedText
         
         let slide2:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
         slide2.imageView.image = UIImage(named: "personagem2")
         slide2.descriptionLabel.text = "Escute resumos incríveis de grandes livros em formatos de 40 e 10 minutos"
+        slide2.detailsLabel.text = ""
+        
         
         let slide3:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
         slide3.imageView.image = UIImage(named: "personagem3")
         slide3.descriptionLabel.text = "Ou se preferir, você pode ler os resumos dos livros"
-
+        slide3.detailsLabel.text = ""
+        
         let slide4:SlideView = Bundle.main.loadNibNamed("SlideView", owner: self, options: nil)?.first as! SlideView
         slide4.imageView.image = UIImage(named: "personagem4")
         slide4.descriptionLabel.text = "E ainda tem os nossos podcasts"
+        slide4.detailsLabel.text = "Aprenda sobre diversos assuntos enquanto você está no transito, na academia ou em qualquer outra atividade e o melhor, sem conexão com a internet."
 
         return [slide1, slide2, slide3, slide4]
     }
@@ -61,10 +71,13 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
-        print("pageIndex:\(pageIndex)")
-        if pageIndex == 3 && !self.arrivedToTheEnd{
-            groundButtom.titleLabel?.text = "Então vamos lá"
-            self.arrivedToTheEnd = true
+        if pageIndex == 3 {
+            self.groundButtom.isHidden = true
+            self.longerGroundButton.isHidden = false
+        }
+        else {
+            self.groundButtom.isHidden = false
+            self.longerGroundButton.isHidden = true
         }
     }
     
