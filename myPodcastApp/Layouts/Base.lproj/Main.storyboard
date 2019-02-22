@@ -1099,70 +1099,173 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200.png" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-n6-0Nq">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-n6-0Nq">
                                 <rect key="frame" x="60" y="40" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="YQr-pK-567"/>
                                     <constraint firstAttribute="width" constant="200" id="deq-jb-3JV"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8k-68-IoE">
-                                <rect key="frame" x="16" y="509.5" width="288" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Acessar sem cadastro">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickAcessar:" destination="PIR-rI-FoS" eventType="touchUpInside" id="ECB-Mp-Ixe"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="N7i-e9-Np9">
                                 <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-8j-tKQ">
-                                <rect key="frame" x="32" y="280" width="256" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTK-T9-hCb" userLabel="FacebookView">
+                                <rect key="frame" x="32" y="260" width="256" height="45"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebookLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9G8-cL-Tuc">
+                                        <rect key="frame" x="8" y="8" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="9G8-cL-Tuc" secondAttribute="height" multiplier="1:1" id="xy3-PE-pN1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrar com o Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aub-44-CoS">
+                                        <rect key="frame" x="45" y="12" width="177" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.2784313725" green="0.34901960780000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Entrar com o Facebook" image="facebookLogo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickEntrar:" destination="PIR-rI-FoS" eventType="touchUpInside" id="yiD-Rh-dBr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRW-To-JwT">
-                                <rect key="frame" x="32" y="328" width="256" height="40"/>
+                                <constraints>
+                                    <constraint firstItem="aub-44-CoS" firstAttribute="leading" secondItem="9G8-cL-Tuc" secondAttribute="trailing" constant="8" id="1Ti-IW-nkz"/>
+                                    <constraint firstItem="9G8-cL-Tuc" firstAttribute="leading" secondItem="GTK-T9-hCb" secondAttribute="leading" constant="8" id="3m3-Nr-XOK"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aub-44-CoS" secondAttribute="trailing" constant="20" symbolic="YES" id="95l-Ld-hfr"/>
+                                    <constraint firstItem="aub-44-CoS" firstAttribute="centerY" secondItem="9G8-cL-Tuc" secondAttribute="centerY" id="IN1-SY-npe"/>
+                                    <constraint firstAttribute="bottom" secondItem="9G8-cL-Tuc" secondAttribute="bottom" constant="8" id="cFX-dS-cZI"/>
+                                    <constraint firstItem="9G8-cL-Tuc" firstAttribute="top" secondItem="GTK-T9-hCb" secondAttribute="top" constant="8" id="dNl-qw-lrt"/>
+                                    <constraint firstAttribute="height" constant="45" id="q4Z-wa-sqX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wX-3S-6yl" userLabel="GoogleView">
+                                <rect key="frame" x="32" y="313" width="256" height="45"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="googleLogo" translatesAutoresizingMaskIntoConstraints="NO" id="e3X-z2-mk0">
+                                        <rect key="frame" x="8" y="8" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="e3X-z2-mk0" secondAttribute="height" multiplier="1:1" id="OQd-eD-1YU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrar com o Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GI3-UJ-KbP">
+                                        <rect key="frame" x="45" y="12" width="158" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Entrar" image="facebookLogo">
+                                <constraints>
+                                    <constraint firstItem="GI3-UJ-KbP" firstAttribute="leading" secondItem="e3X-z2-mk0" secondAttribute="trailing" constant="8" id="0Lk-mW-Sci"/>
+                                    <constraint firstAttribute="bottom" secondItem="e3X-z2-mk0" secondAttribute="bottom" constant="8" id="2DX-0b-W3v"/>
+                                    <constraint firstItem="GI3-UJ-KbP" firstAttribute="centerY" secondItem="e3X-z2-mk0" secondAttribute="centerY" id="Mx5-Ap-RM7"/>
+                                    <constraint firstItem="e3X-z2-mk0" firstAttribute="leading" secondItem="1wX-3S-6yl" secondAttribute="leading" constant="8" id="XbM-eB-Yes"/>
+                                    <constraint firstItem="e3X-z2-mk0" firstAttribute="top" secondItem="1wX-3S-6yl" secondAttribute="top" constant="8" id="be1-sR-QYC"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GI3-UJ-KbP" secondAttribute="trailing" constant="20" symbolic="YES" id="o1A-Dq-Dd3"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Jf-eLx" userLabel="OUView">
+                                <rect key="frame" x="32" y="366" width="256" height="45"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-pc-MyG">
+                                        <rect key="frame" x="8" y="8" width="106.5" height="29"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-JG-Cgb">
+                                        <rect key="frame" x="141.5" y="8" width="106.5" height="29"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ou" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4z-c3-ZgQ">
+                                        <rect key="frame" x="117.5" y="12" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="AHp-nY-PHP"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="csU-Uv-UJw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ry4-JG-Cgb" secondAttribute="trailing" constant="8" id="5cI-Lp-KxU"/>
+                                    <constraint firstItem="ywm-pc-MyG" firstAttribute="top" secondItem="lXJ-Jf-eLx" secondAttribute="top" constant="8" id="A96-wU-zQv"/>
+                                    <constraint firstItem="ry4-JG-Cgb" firstAttribute="height" secondItem="ywm-pc-MyG" secondAttribute="height" id="J2m-sr-IuD"/>
+                                    <constraint firstItem="ry4-JG-Cgb" firstAttribute="centerY" secondItem="lXJ-Jf-eLx" secondAttribute="centerY" id="QG6-Lw-tdd"/>
+                                    <constraint firstAttribute="bottom" secondItem="ywm-pc-MyG" secondAttribute="bottom" constant="8" id="Var-xq-1tG"/>
+                                    <constraint firstAttribute="bottom" secondItem="ry4-JG-Cgb" secondAttribute="bottom" constant="8" id="XfH-hP-w7F"/>
+                                    <constraint firstItem="ywm-pc-MyG" firstAttribute="leading" secondItem="lXJ-Jf-eLx" secondAttribute="leading" constant="8" id="Xre-oZ-gwE"/>
+                                    <constraint firstItem="n4z-c3-ZgQ" firstAttribute="centerX" secondItem="lXJ-Jf-eLx" secondAttribute="centerX" id="c9N-fu-vVo"/>
+                                    <constraint firstItem="ry4-JG-Cgb" firstAttribute="width" secondItem="ywm-pc-MyG" secondAttribute="width" id="frq-Y5-2ca"/>
+                                    <constraint firstItem="n4z-c3-ZgQ" firstAttribute="centerY" secondItem="lXJ-Jf-eLx" secondAttribute="centerY" id="iDe-Ti-9DQ"/>
+                                    <constraint firstItem="ry4-JG-Cgb" firstAttribute="leading" secondItem="n4z-c3-ZgQ" secondAttribute="trailing" multiplier="1.02" id="jBL-DK-5Lt"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-cM-6Su" userLabel="emailButton">
+                                <rect key="frame" x="32" y="419" width="256" height="45"/>
+                                <state key="normal" title="Entrar com email">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="clickEntrar:" destination="PIR-rI-FoS" eventType="touchUpInside" id="Lml-Zd-iKb"/>
-                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-Pz-t3e" userLabel="criarContaView">
+                                <rect key="frame" x="68" y="481" width="176" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCP-Al-dZY">
+                                        <rect key="frame" x="132" y="0.0" width="44" height="30"/>
+                                        <state key="normal" title="CRIAR">
+                                            <color key="titleColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Não tem conta?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hB-ib-KcV">
+                                        <rect key="frame" x="0.0" y="4.5" width="121" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="6tM-dr-UAc"/>
+                                    <constraint firstItem="ZCP-Al-dZY" firstAttribute="leading" secondItem="1hB-ib-KcV" secondAttribute="trailing" constant="11" id="GGS-pz-l7j"/>
+                                    <constraint firstItem="ZCP-Al-dZY" firstAttribute="top" secondItem="PRa-Pz-t3e" secondAttribute="top" id="PDJ-gn-YAD"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZCP-Al-dZY" secondAttribute="bottom" id="QNO-3a-5RO"/>
+                                    <constraint firstItem="1hB-ib-KcV" firstAttribute="leading" secondItem="PRa-Pz-t3e" secondAttribute="leading" id="X6x-Gx-d9I"/>
+                                    <constraint firstItem="1hB-ib-KcV" firstAttribute="centerY" secondItem="PRa-Pz-t3e" secondAttribute="centerY" id="XvT-uc-qy7"/>
+                                    <constraint firstItem="ZCP-Al-dZY" firstAttribute="centerY" secondItem="PRa-Pz-t3e" secondAttribute="centerY" id="h9Q-Bp-6k2"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZCP-Al-dZY" secondAttribute="trailing" id="ocD-to-cFu"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-MM-Cbh" customClass="FBSDKButton">
+                                <rect key="frame" x="32" y="210" width="256" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.34901960780000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Entrar com o Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="1wX-3S-6yl" firstAttribute="height" secondItem="GTK-T9-hCb" secondAttribute="height" id="6dQ-0B-hFp"/>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="width" secondItem="GTK-T9-hCb" secondAttribute="width" id="76v-Mb-ajx"/>
                             <constraint firstItem="rJF-n6-0Nq" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="8kU-Jd-Km3"/>
-                            <constraint firstItem="G8k-68-IoE" firstAttribute="leading" secondItem="T1o-kt-84b" secondAttribute="leading" constant="16" id="CfD-RZ-xTy"/>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="height" secondItem="GTK-T9-hCb" secondAttribute="height" id="Bhq-0V-ajq"/>
                             <constraint firstItem="N7i-e9-Np9" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="Cj6-0A-3OA"/>
-                            <constraint firstItem="sCQ-8j-tKQ" firstAttribute="height" secondItem="RJI-il-pfb" secondAttribute="height" multiplier="0.07" id="IDl-1K-HfO"/>
-                            <constraint firstItem="vRW-To-JwT" firstAttribute="width" secondItem="sCQ-8j-tKQ" secondAttribute="width" id="Lqe-Js-v5S"/>
+                            <constraint firstItem="1wX-3S-6yl" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="F4a-kH-8gd"/>
+                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="top" secondItem="1wX-3S-6yl" secondAttribute="bottom" constant="8" id="MS9-ze-SFf"/>
                             <constraint firstItem="rJF-n6-0Nq" firstAttribute="top" secondItem="T1o-kt-84b" secondAttribute="top" constant="20" id="SSK-6v-o1R"/>
-                            <constraint firstItem="T1o-kt-84b" firstAttribute="trailing" secondItem="G8k-68-IoE" secondAttribute="trailing" constant="16" id="Wue-Lx-7F8"/>
+                            <constraint firstItem="GTK-T9-hCb" firstAttribute="top" secondItem="rJF-n6-0Nq" secondAttribute="bottom" constant="20" id="SaA-he-G4I"/>
+                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="width" secondItem="GTK-T9-hCb" secondAttribute="width" id="Sny-Jw-Nar"/>
                             <constraint firstItem="N7i-e9-Np9" firstAttribute="centerY" secondItem="RJI-il-pfb" secondAttribute="centerY" id="XdK-ih-hyq"/>
-                            <constraint firstItem="vRW-To-JwT" firstAttribute="height" secondItem="sCQ-8j-tKQ" secondAttribute="height" id="Xhr-MY-nb1"/>
-                            <constraint firstItem="sCQ-8j-tKQ" firstAttribute="top" secondItem="rJF-n6-0Nq" secondAttribute="bottom" constant="40" id="eFX-Bs-R6h"/>
-                            <constraint firstItem="sCQ-8j-tKQ" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="eO0-mx-cTo"/>
-                            <constraint firstItem="sCQ-8j-tKQ" firstAttribute="width" secondItem="RJI-il-pfb" secondAttribute="width" multiplier="0.8" id="rDp-wW-3or"/>
+                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="ec0-b9-qo6"/>
+                            <constraint firstItem="1wX-3S-6yl" firstAttribute="width" secondItem="GTK-T9-hCb" secondAttribute="width" id="fzc-Fm-tDS"/>
+                            <constraint firstItem="PRa-Pz-t3e" firstAttribute="centerX" secondItem="8dY-cM-6Su" secondAttribute="centerX" constant="-4" id="g58-HP-m3W"/>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="jAl-Dl-E2Q"/>
+                            <constraint firstItem="PRa-Pz-t3e" firstAttribute="centerY" secondItem="RJI-il-pfb" secondAttribute="centerY" constant="212" id="jGd-dp-AtF"/>
+                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="height" secondItem="GTK-T9-hCb" secondAttribute="height" id="jXb-GF-8jS"/>
+                            <constraint firstItem="1wX-3S-6yl" firstAttribute="top" secondItem="GTK-T9-hCb" secondAttribute="bottom" constant="8" id="mWm-lO-T79"/>
+                            <constraint firstItem="GTK-T9-hCb" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="o8e-es-JfH"/>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="top" secondItem="lXJ-Jf-eLx" secondAttribute="bottom" constant="8" id="pqq-TO-GeC"/>
+                            <constraint firstItem="GTK-T9-hCb" firstAttribute="width" secondItem="T1o-kt-84b" secondAttribute="width" multiplier="0.8" id="wUA-nv-xqj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T1o-kt-84b"/>
                     </view>
@@ -1212,6 +1315,9 @@
         <image name="downloadBlack" width="21.5" height="22"/>
         <image name="facebookLogo" width="33.5" height="33.5"/>
         <image name="forward_10" width="26" height="26"/>
+        <image name="googleLogo" width="32.5" height="32.5"/>
+        <image name="horizontalLine" width="155" height="1"/>
+        <image name="logo_200" width="200" height="200"/>
         <image name="logo_200.png" width="16" height="16"/>
         <image name="miniPlay" width="25.5" height="25.5"/>
         <image name="moreBlack" width="23" height="5"/>
@@ -1228,6 +1334,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mSl-zQ-c2B"/>
-        <segue reference="7Fl-9Q-3jf"/>
+        <segue reference="oYo-NV-EEj"/>
     </inferredMetricsTieBreakers>
 </document>
