@@ -71,8 +71,18 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
         
-        btnFacebook.setAttributedTitle(NSAttributedString(string: "ENTRAR COM FACEBOOK"), for: .normal)
+        btnFacebook.setAttributedTitle(NSAttributedString(string: "Entrar com o Facebook"), for: .normal)
         btnFacebook.readPermissions = ["public_profile", "email"]
+        let layoutConstraintsArr = btnFacebook.constraints
+        // Iterate over array and test constraints until we find the correct one:
+        for lc in layoutConstraintsArr { // or attribute is NSLayoutAttributeHeight etc.
+            if ( lc.constant == 28 ){
+                // Then disable it...
+                lc.isActive = false
+                break
+            }
+        }
+
         btnFacebook.delegate = self
     }
     
