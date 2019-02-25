@@ -282,33 +282,36 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         
         loginManager.logOut()
-        
-        
     }
     
     @IBAction func clickFacebook(_ sender: Any) {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            if (error != nil) {
-                print("Process error")
-            } else if (result?.isCancelled)! {
-                print("Canceled")
-            } else {
-                print("Loged in")
+            if error != nil {
+                // Process error
+                AppService.util.alert("Erro no Login Facebook", message: "Não foi possível fazer login")
+            }
+            else if result!.isCancelled {
+                print("Facebook login canceled")
+            }
+            else {
+                // If you ask for multiple permissions at once, you
+                // should check if specific permissions missing
+                if (result?.grantedPermissions.contains("email"))! {
+                    self.getDadosFacebook()
+                } else {
+                    AppService.util.alert("Erro no Login", message: "Não foi possível fazer login")
+                }
             }
         }
     }
     
     @IBAction func clickEntrar(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "goto_login", sender: self)
-        
     }
     
     @IBAction func clickCriar(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "goto_cadastro", sender: self)
-        
     }
     
 }
