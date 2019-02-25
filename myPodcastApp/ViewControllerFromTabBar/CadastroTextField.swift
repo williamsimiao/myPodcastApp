@@ -19,6 +19,9 @@ class CadastroTextField: UITextField {
     func setUpTextField() {
         self.backgroundColor = .black
         self.textColor = .white
+        self.tintColor = .white
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
         self.layer.borderWidth = 1

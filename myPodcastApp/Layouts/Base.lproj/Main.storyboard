@@ -1173,11 +1173,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-of-CbL">
+                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-of-CbL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-38-5dv">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="690"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="gm6-We-aFC">
                                                 <rect key="frame" x="60" y="40" width="200" height="200"/>
@@ -1186,118 +1186,101 @@
                                                     <constraint firstAttribute="width" constant="200" id="vwg-1r-Oyl"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wJ-Zm-kSe" userLabel="namesView">
-                                                <rect key="frame" x="16" y="260" width="288" height="40"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="v0h-De-W0K">
+                                                <rect key="frame" x="16" y="260" width="288" height="430"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" background="Rectangle 3" translatesAutoresizingMaskIntoConstraints="NO" id="NY1-vx-1Au" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="40"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TtN-Ne-9cU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-7k-W50" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSl-Ke-k9H" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="148" y="0.0" width="140" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fone (DDD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiG-YM-nHM" userLabel="telefone" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="56" width="288" height="39.5"/>
+                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES" textContentType="name"/>
-                                                        <connections>
-                                                            <action selector="textFieldEditingDidChange:" destination="lNs-Fr-eWm" eventType="editingChanged" id="klB-aJ-esi"/>
-                                                        </connections>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" background="Rectangle 3" translatesAutoresizingMaskIntoConstraints="NO" id="DVq-wj-zVA" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="152.5" y="0.0" width="135.5" height="40"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-Ix-ani" userLabel="data" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="111.5" width="288" height="40"/>
+                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="family-name"/>
-                                                        <connections>
-                                                            <action selector="textFieldEditingDidChange:" destination="lNs-Fr-eWm" eventType="editingChanged" id="5Vb-Fq-aUD"/>
-                                                        </connections>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="isY-jn-BeS">
+                                                        <rect key="frame" x="0.0" y="167.5" width="288" height="39.5"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sexo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aha-0k-uyP" userLabel="sexo" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="140" height="39.5"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escolaridade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbB-UP-9KG" userLabel="escolaridade" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="148" y="0.0" width="140" height="39.5"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xhq-Es-vq0" userLabel="email" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="223" width="288" height="40"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-Ys-xm4" userLabel="senha" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="279" width="288" height="39.5"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoN-Hx-gUX">
+                                                        <rect key="frame" x="0.0" y="334.5" width="288" height="40"/>
+                                                        <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="CADASTRAR">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="clickCadastrar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="bvu-oQ-a5p"/>
+                                                            <segue destination="lzb-Rf-PBa" kind="show" identifier="goto_login" id="s53-lD-jPb"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1c-pj-ZOP">
+                                                        <rect key="frame" x="0.0" y="390.5" width="288" height="39.5"/>
+                                                        <state key="normal" title="Voltar para o inicio">
+                                                            <color key="titleColor" red="0.9903254534" green="0.43943545210000001" blue="0.12856160950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="clickVoltar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="fZY-WY-rl1"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="NY1-vx-1Au" firstAttribute="leading" secondItem="9wJ-Zm-kSe" secondAttribute="leading" id="0nX-JW-GMh"/>
-                                                    <constraint firstAttribute="height" constant="40" id="9OH-RI-Pop"/>
-                                                    <constraint firstAttribute="bottom" secondItem="DVq-wj-zVA" secondAttribute="bottom" id="AeH-eP-xR6"/>
-                                                    <constraint firstItem="NY1-vx-1Au" firstAttribute="width" secondItem="9wJ-Zm-kSe" secondAttribute="width" multiplier="0.47" id="DiC-N7-3RN"/>
-                                                    <constraint firstItem="NY1-vx-1Au" firstAttribute="top" secondItem="9wJ-Zm-kSe" secondAttribute="top" id="GoK-gu-vMC"/>
-                                                    <constraint firstItem="DVq-wj-zVA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NY1-vx-1Au" secondAttribute="trailing" constant="8" symbolic="YES" id="HIa-rl-9AB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="DVq-wj-zVA" secondAttribute="trailing" id="VUK-5q-UiR"/>
-                                                    <constraint firstAttribute="bottom" secondItem="NY1-vx-1Au" secondAttribute="bottom" id="apQ-R6-djH"/>
-                                                    <constraint firstItem="DVq-wj-zVA" firstAttribute="width" secondItem="9wJ-Zm-kSe" secondAttribute="width" multiplier="0.47" id="fpK-mI-9eo"/>
-                                                    <constraint firstItem="DVq-wj-zVA" firstAttribute="top" secondItem="9wJ-Zm-kSe" secondAttribute="top" id="w8S-jQ-Jbx"/>
+                                                    <constraint firstAttribute="height" constant="430" id="FiU-MC-NXE"/>
                                                 </constraints>
-                                            </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZd-5j-z6p" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="308" width="288" height="40"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="email"/>
-                                                <connections>
-                                                    <action selector="textFieldEditingDidChange:" destination="lNs-Fr-eWm" eventType="editingChanged" id="lzE-W5-Kfg"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBj-wY-sfG" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="356" width="288" height="40"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
-                                                <connections>
-                                                    <action selector="textFieldEditingDidChange:" destination="lNs-Fr-eWm" eventType="editingChanged" id="XQi-EP-xrq"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmar Senha" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w5L-KG-kbL" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="404" width="288" height="40"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
-                                                <connections>
-                                                    <action selector="textFieldEditingDidChange:" destination="lNs-Fr-eWm" eventType="editingChanged" id="CRW-Bl-10S"/>
-                                                </connections>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoN-Hx-gUX">
-                                                <rect key="frame" x="16" y="459" width="288" height="40"/>
-                                                <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="yyV-RW-Bh4"/>
-                                                </constraints>
-                                                <state key="normal" title="CADASTRAR">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="clickCadastrar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="bvu-oQ-a5p"/>
-                                                    <segue destination="lzb-Rf-PBa" kind="show" identifier="goto_login" id="s53-lD-jPb"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1c-pj-ZOP">
-                                                <rect key="frame" x="16" y="519" width="288" height="30"/>
-                                                <state key="normal" title="Voltar para o inicio">
-                                                    <color key="titleColor" red="0.9903254534" green="0.43943545210000001" blue="0.12856160950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="clickVoltar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="fZY-WY-rl1"/>
-                                                </connections>
-                                            </button>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="JoN-Hx-gUX" secondAttribute="trailing" constant="16" id="3yO-ae-AKL"/>
-                                            <constraint firstItem="w5L-KG-kbL" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="6MM-ur-635"/>
-                                            <constraint firstItem="9wJ-Zm-kSe" firstAttribute="top" secondItem="gm6-We-aFC" secondAttribute="bottom" constant="20" id="Bjd-jl-6ji"/>
-                                            <constraint firstItem="oBj-wY-sfG" firstAttribute="top" secondItem="aZd-5j-z6p" secondAttribute="bottom" constant="8" id="DOc-4l-S7l"/>
+                                            <constraint firstAttribute="height" constant="690" id="6aZ-rF-oc3"/>
                                             <constraint firstItem="gm6-We-aFC" firstAttribute="top" secondItem="dc3-38-5dv" secondAttribute="top" constant="40" id="EKB-aK-g4K"/>
-                                            <constraint firstItem="oBj-wY-sfG" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="G19-sn-d9O"/>
-                                            <constraint firstAttribute="trailing" secondItem="w5L-KG-kbL" secondAttribute="trailing" constant="16" id="RpF-LO-Vt3"/>
-                                            <constraint firstItem="aZd-5j-z6p" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="T4a-0W-6Ag"/>
-                                            <constraint firstItem="oBj-wY-sfG" firstAttribute="height" secondItem="9wJ-Zm-kSe" secondAttribute="height" id="UO2-Iq-pRY"/>
-                                            <constraint firstAttribute="trailing" secondItem="i1c-pj-ZOP" secondAttribute="trailing" constant="16" id="YLq-8h-mgU"/>
-                                            <constraint firstItem="JoN-Hx-gUX" firstAttribute="top" secondItem="w5L-KG-kbL" secondAttribute="bottom" constant="15" id="Z1U-sE-fz0"/>
-                                            <constraint firstAttribute="trailing" secondItem="9wJ-Zm-kSe" secondAttribute="trailing" constant="16" id="Z5h-ig-36Y"/>
-                                            <constraint firstItem="aZd-5j-z6p" firstAttribute="height" secondItem="9wJ-Zm-kSe" secondAttribute="height" id="Z6p-JG-8pP"/>
-                                            <constraint firstAttribute="trailing" secondItem="oBj-wY-sfG" secondAttribute="trailing" constant="16" id="Zxp-h0-BWH"/>
-                                            <constraint firstItem="i1c-pj-ZOP" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="drC-Ef-KJF"/>
+                                            <constraint firstAttribute="trailing" secondItem="v0h-De-W0K" secondAttribute="trailing" constant="16" id="Zg3-Bn-b7I"/>
+                                            <constraint firstItem="v0h-De-W0K" firstAttribute="top" secondItem="gm6-We-aFC" secondAttribute="bottom" constant="20" id="bW1-bc-SoL"/>
+                                            <constraint firstItem="v0h-De-W0K" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="eOn-fn-ZJb"/>
                                             <constraint firstItem="gm6-We-aFC" firstAttribute="centerX" secondItem="dc3-38-5dv" secondAttribute="centerX" id="jdQ-H7-nAq"/>
-                                            <constraint firstAttribute="trailing" secondItem="aZd-5j-z6p" secondAttribute="trailing" constant="16" id="mbk-0n-zLF"/>
-                                            <constraint firstItem="aZd-5j-z6p" firstAttribute="top" secondItem="9wJ-Zm-kSe" secondAttribute="bottom" constant="8" id="mjV-Od-anF"/>
-                                            <constraint firstItem="w5L-KG-kbL" firstAttribute="top" secondItem="oBj-wY-sfG" secondAttribute="bottom" constant="8" id="pko-PR-65L"/>
-                                            <constraint firstItem="JoN-Hx-gUX" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="sXE-2g-6BE"/>
-                                            <constraint firstItem="w5L-KG-kbL" firstAttribute="height" secondItem="9wJ-Zm-kSe" secondAttribute="height" id="tPU-Ub-bnq"/>
-                                            <constraint firstItem="9wJ-Zm-kSe" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="tau-Tx-FXw"/>
-                                            <constraint firstItem="i1c-pj-ZOP" firstAttribute="top" secondItem="JoN-Hx-gUX" secondAttribute="bottom" constant="20" id="ven-Xt-fkd"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1305,7 +1288,6 @@
                                     <constraint firstAttribute="trailing" secondItem="dc3-38-5dv" secondAttribute="trailing" id="6qp-gF-62U"/>
                                     <constraint firstItem="dc3-38-5dv" firstAttribute="top" secondItem="ddg-of-CbL" secondAttribute="top" id="Hna-2D-cWc"/>
                                     <constraint firstItem="dc3-38-5dv" firstAttribute="width" secondItem="ddg-of-CbL" secondAttribute="width" id="Jq4-da-b36"/>
-                                    <constraint firstItem="dc3-38-5dv" firstAttribute="height" secondItem="ddg-of-CbL" secondAttribute="height" id="SdV-eU-pNs"/>
                                     <constraint firstItem="dc3-38-5dv" firstAttribute="leading" secondItem="ddg-of-CbL" secondAttribute="leading" id="WJT-eM-tH3"/>
                                     <constraint firstAttribute="bottom" secondItem="dc3-38-5dv" secondAttribute="bottom" id="w7N-g8-veu"/>
                                 </constraints>
@@ -1328,20 +1310,23 @@
                     </view>
                     <connections>
                         <outlet property="btnCadastrar" destination="JoN-Hx-gUX" id="8aZ-iS-x9X"/>
-                        <outlet property="constraintContentHeight" destination="SdV-eU-pNs" id="Ni2-f7-gBW"/>
+                        <outlet property="constraintContentHeight" destination="6aZ-rF-oc3" id="J4V-HO-3tu"/>
                         <outlet property="contentView" destination="dc3-38-5dv" id="Weg-lT-qcX"/>
-                        <outlet property="edtConfirmarSenha" destination="w5L-KG-kbL" id="6zQ-PS-pFT"/>
-                        <outlet property="edtEmail" destination="aZd-5j-z6p" id="Tbm-bl-Fqf"/>
-                        <outlet property="edtNome" destination="NY1-vx-1Au" id="JtY-Ah-i02"/>
-                        <outlet property="edtSenha" destination="oBj-wY-sfG" id="xbF-Z3-HNb"/>
-                        <outlet property="edtSobrenome" destination="DVq-wj-zVA" id="qaP-mE-bVb"/>
+                        <outlet property="edtDataNascimento" destination="l3e-Ix-ani" id="LAp-3q-bEO"/>
+                        <outlet property="edtEmail" destination="Xhq-Es-vq0" id="XQ5-mM-M2X"/>
+                        <outlet property="edtEscolaridade" destination="gbB-UP-9KG" id="pxG-cf-p0l"/>
+                        <outlet property="edtFone" destination="qiG-YM-nHM" id="HZD-qm-qOr"/>
+                        <outlet property="edtNome" destination="RI7-7k-W50" id="BVl-NM-StV"/>
+                        <outlet property="edtSenha" destination="aYy-Ys-xm4" id="dZB-Rf-N5Q"/>
+                        <outlet property="edtSexo" destination="aha-0k-uyP" id="Dk5-ZR-m3O"/>
+                        <outlet property="edtSobrenome" destination="VSl-Ke-k9H" id="6ET-Ur-nGg"/>
                         <outlet property="loading" destination="ytg-Dv-VO6" id="fRh-Bd-gRX"/>
                         <outlet property="scrollView" destination="ddg-of-CbL" id="JYm-5j-ozH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6X-Un-eEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1200" y="1480"/>
+            <point key="canvasLocation" x="1215" y="1500"/>
         </scene>
     </scenes>
     <resources>

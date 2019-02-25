@@ -14,9 +14,16 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var edtNome: UITextField!
     @IBOutlet weak var edtSobrenome: UITextField!
+    
+    @IBOutlet weak var edtFone: CadastroTextField!
+    @IBOutlet weak var edtDataNascimento: CadastroTextField!
+    
+    @IBOutlet weak var edtSexo: CadastroTextField!
+    @IBOutlet weak var edtEscolaridade: CadastroTextField!
+    
+    
     @IBOutlet weak var edtEmail: UITextField!
     @IBOutlet weak var edtSenha: UITextField!
-    @IBOutlet weak var edtConfirmarSenha: UITextField!
     @IBOutlet weak var btnCadastrar: UIButton!
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
@@ -39,10 +46,14 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         
         edtNome.delegate = self
         edtSobrenome.delegate = self
+        
+        edtFone.delegate = self
+        edtDataNascimento.delegate = self
+        edtSexo.delegate = self
+        edtEscolaridade.delegate = self
+        
         edtEmail.delegate = self
         edtSenha.delegate = self
-        edtConfirmarSenha.delegate = self
-        
         
         btnCadastrar.layer.cornerRadius = radius
         
