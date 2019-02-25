@@ -30,27 +30,32 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     
     var success:Bool = false
     var error_msg:String = ""
+    let radius = CGFloat(20)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         loading.isHidden = true
         
-        btnCadastrar.layer.cornerRadius = 10
-        btnCadastrar.clipsToBounds = true
+        setUpTextField(textField: edtNome)
+        setUpTextField(textField: edtSobrenome)
+        setUpTextField(textField: edtEmail)
+        setUpTextField(textField: edtSenha)
+        setUpTextField(textField: edtConfirmarSenha)
         
-        
-        edtNome.delegate = self
-        edtSobrenome.delegate = self
-        edtEmail.delegate = self
-        edtSenha.delegate = self
-        edtConfirmarSenha.delegate = self
-        
+        btnCadastrar.layer.cornerRadius = radius
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
-        
+    }
+    
+    func setUpTextField(textField: UITextField) {
+        textField.backgroundColor = .black
+        textField.layer.cornerRadius = radius
+        textField.clipsToBounds = true
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = ColorWeel().orangeColor.cgColor
+        textField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -283,6 +288,8 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.dismiss(animated: true, completion: nil)
+//                self.performSegue(withIdentifier: "goto_login", sender: self)
+
             }))
             
             present(refreshAlert, animated: true, completion: nil)

@@ -38,7 +38,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func setupLayout() {
         loading.isHidden = true
-        let radius = CGFloat(15)
+        let radius = CGFloat(25)
         btnFacebook.layer.cornerRadius = radius
         btnFacebook.clipsToBounds = true
         
