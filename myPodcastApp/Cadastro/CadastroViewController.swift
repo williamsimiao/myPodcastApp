@@ -26,7 +26,9 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edtSenha: UITextField!
     @IBOutlet weak var btnCadastrar: UIButton!
     
+    @IBOutlet weak var btnEmpreende: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    
     
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
@@ -38,6 +40,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     var success:Bool = false
     var error_msg:String = ""
     let radius = CGFloat(20)
+    var empreendeButtonHasMark = true
 
     
     override func viewDidLoad() {
@@ -56,6 +59,11 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         edtSenha.delegate = self
         
         btnCadastrar.layer.cornerRadius = radius
+        
+        btnEmpreende.imageView?.layer.cornerRadius = 5
+        btnEmpreende.imageView?.layer.borderWidth = 1
+        btnEmpreende.imageView?.layer.borderColor = ColorWeel().orangeColor.cgColor
+
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
@@ -304,6 +312,24 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
             AppService.util.alert("Erro no Cadastro", message: error_msg)
         }
         
+    }
+    
+    
+    @IBAction func clickBtnEmpreende(_ sender: Any) {
+        if self.empreendeButtonHasMark {
+            self.btnEmpreende.imageView?.image = UIImage(named:
+                "downloadBlack")
+            self.empreendeButtonHasMark = false
+
+        }
+        else {
+            self.btnEmpreende.imageView?.image = UIImage(named: "checkWhite")
+            self.empreendeButtonHasMark = true
+        }
+    }
+    
+    
+    @IBAction func clickBtnTermosDeUso(_ sender: Any) {
     }
     
     

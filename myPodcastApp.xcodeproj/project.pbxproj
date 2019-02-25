@@ -33,6 +33,7 @@
 		3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C621F5EDA9004960CE /* Assets.xcassets */; };
 		3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */; };
 		3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BCD2224443C00E20477 /* CadastroTextField.swift */; };
+		3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BD022248EE200E20477 /* UITextViewExtension.swift */; };
 		3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C1FF2200C175009080EF /* TabBarViewController.swift */; };
 		3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */; };
 		3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */; };
@@ -81,6 +82,7 @@
 		3D9514CB21F5EDA9004960CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D956BCD2224443C00E20477 /* CadastroTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroTextField.swift; sourceTree = "<group>"; };
 		3D956BCF2224573200E20477 /* myPodcastApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myPodcastApp.entitlements; sourceTree = "<group>"; };
+		3D956BD022248EE200E20477 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		3DC1C1FF2200C175009080EF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardViewController.swift; sourceTree = "<group>"; };
 		3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSubscriber.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				3D415D3E21FB84A500A8FE31 /* Util.swift */,
 				3DD2346922049FB1003C940F /* UIViewExtension.swift */,
+				3D956BD022248EE200E20477 /* UITextViewExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				3D05B5F72202140E0056E7B9 /* Network.swift in Sources */,
 				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
+				3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */,
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */,
