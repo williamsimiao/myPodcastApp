@@ -32,6 +32,7 @@
 		3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C321F5EDA7004960CE /* Main.storyboard */; };
 		3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C621F5EDA9004960CE /* Assets.xcassets */; };
 		3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */; };
+		3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BCD2224443C00E20477 /* CadastroTextField.swift */; };
 		3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C1FF2200C175009080EF /* TabBarViewController.swift */; };
 		3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */; };
 		3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */; };
@@ -78,6 +79,8 @@
 		3D9514C621F5EDA9004960CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D9514C921F5EDA9004960CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9514CB21F5EDA9004960CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D956BCD2224443C00E20477 /* CadastroTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroTextField.swift; sourceTree = "<group>"; };
+		3D956BCF2224573200E20477 /* myPodcastApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myPodcastApp.entitlements; sourceTree = "<group>"; };
 		3DC1C1FF2200C175009080EF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardViewController.swift; sourceTree = "<group>"; };
 		3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSubscriber.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
+				3D956BCD2224443C00E20477 /* CadastroTextField.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -185,6 +189,7 @@
 		3D9514BE21F5EDA7004960CE /* myPodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
 				3DC1C207220200BE009080EF /* Model */,
 				3D3868262211AE5C00E89FF4 /* core */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
@@ -287,6 +292,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -419,6 +427,7 @@
 				3D38682E2211AED600E89FF4 /* AppService.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
+				3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */,
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */,
@@ -577,6 +586,7 @@
 			baseConfigurationReference = F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = myPodcastApp/myPodcastApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQ28865C6V;
 				INFOPLIST_FILE = myPodcastApp/Info.plist;
@@ -597,6 +607,7 @@
 			baseConfigurationReference = 35B2AF61163181F9E601E672 /* Pods-myPodcastApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = myPodcastApp/myPodcastApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQ28865C6V;
 				INFOPLIST_FILE = myPodcastApp/Info.plist;

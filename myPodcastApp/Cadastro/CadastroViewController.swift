@@ -37,25 +37,17 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         loading.isHidden = true
         
-        setUpTextField(textField: edtNome)
-        setUpTextField(textField: edtSobrenome)
-        setUpTextField(textField: edtEmail)
-        setUpTextField(textField: edtSenha)
-        setUpTextField(textField: edtConfirmarSenha)
+        edtNome.delegate = self
+        edtSobrenome.delegate = self
+        edtEmail.delegate = self
+        edtSenha.delegate = self
+        edtConfirmarSenha.delegate = self
+        
         
         btnCadastrar.layer.cornerRadius = radius
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
-    }
-    
-    func setUpTextField(textField: UITextField) {
-        textField.backgroundColor = .black
-        textField.layer.cornerRadius = radius
-        textField.clipsToBounds = true
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = ColorWeel().orangeColor.cgColor
-        textField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +86,9 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeField = textField
+//        let newYPosition = self.scrollView.frame.height - textField.frame.origin.y
+//        self.scrollView.contentOffset.y = newYPosition
+        
         lastOffset = self.scrollView.contentOffset
         return true
     }
@@ -304,7 +299,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clickCadastrar(_ sender: Any) {
         
         cadastrar()
-        
+    
     }
     
     
@@ -314,4 +309,10 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func textFieldEditingDidChange(_ sender: Any) {
+        let textField = sender as! CadastroTextField
+
+//        self.scrollView.contentOffset.y = self.scrollView.contentSize.height - textField.bounds.origin.y - textField.bounds.size.height
+//        self.scrollView.contentOffset.y = textField.bounds.origin.y
+    }
 }
