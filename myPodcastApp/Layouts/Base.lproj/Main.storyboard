@@ -1131,10 +1131,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-MM-Cbh">
-                                <rect key="frame" x="32" y="240" width="256" height="40"/>
+                                <rect key="frame" x="32" y="240" width="256" height="45"/>
                                 <color key="backgroundColor" red="0.2784313725" green="0.34901960780000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2mh-y9-55O"/>
+                                    <constraint firstAttribute="height" constant="45" id="2mh-y9-55O"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1147,7 +1147,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5me-5z-Fud">
-                                <rect key="frame" x="32" y="288" width="256" height="40"/>
+                                <rect key="frame" x="32" y="293" width="256" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1160,7 +1160,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Jf-eLx" userLabel="OUView">
-                                <rect key="frame" x="32" y="336" width="256" height="31"/>
+                                <rect key="frame" x="32" y="346" width="256" height="31"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-pc-MyG">
                                         <rect key="frame" x="8" y="8" width="106.5" height="15"/>
@@ -1198,7 +1198,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-cM-6Su" userLabel="emailButton">
-                                <rect key="frame" x="32" y="375" width="256" height="40"/>
+                                <rect key="frame" x="32" y="385" width="256" height="45"/>
                                 <state key="normal" title="Entrar com email">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1207,7 +1207,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-Pz-t3e" userLabel="criarContaView">
-                                <rect key="frame" x="70" y="423" width="180" height="30"/>
+                                <rect key="frame" x="70" y="438" width="180" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCP-Al-dZY">
                                         <rect key="frame" x="132" y="0.0" width="44" height="30"/>
@@ -1275,7 +1275,7 @@
                         <outlet property="loading" destination="TI0-W9-T6g" id="hEk-jj-DGb"/>
                         <segue destination="lzb-Rf-PBa" kind="presentation" identifier="goto_login" id="nvL-Xg-I1S"/>
                         <segue destination="wyi-ex-zua" kind="presentation" identifier="goto_cadastro" id="mSl-zQ-c2B"/>
-                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_main" id="oYo-NV-EEj"/>
+                        <segue destination="lMJ-6l-Pgj" kind="show" identifier="goto_welcome" id="cc4-Nu-2VX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkH-Ob-XkW" sceneMemberID="firstResponder"/>
@@ -1335,6 +1335,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mSl-zQ-c2B"/>
-        <segue reference="oYo-NV-EEj"/>
+        <segue reference="cc4-Nu-2VX"/>
     </inferredMetricsTieBreakers>
 </document>

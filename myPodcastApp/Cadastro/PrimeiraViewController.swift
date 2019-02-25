@@ -192,7 +192,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if self.success {
             AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
-            self.performSegue(withIdentifier: "goto_main", sender: self)
+            self.performSegue(withIdentifier: "goto_welcome", sender: self)
         }
         else {
             AppService.util.alert("Erro no Login", message: error_msg as String)
