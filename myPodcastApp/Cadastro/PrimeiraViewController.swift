@@ -50,7 +50,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         btnGoogle.layer.cornerRadius = radius
         btnGoogle.clipsToBounds = true
         
-        configureFacebook()
+//        configureFacebook()
     }
     
     override func didReceiveMemoryWarning() {
@@ -284,6 +284,19 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginManager.logOut()
         
         
+    }
+    
+    @IBAction func clickFacebook(_ sender: Any) {
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if (error != nil) {
+                print("Process error")
+            } else if (result?.isCancelled)! {
+                print("Canceled")
+            } else {
+                print("Loged in")
+            }
+        }
     }
     
     @IBAction func clickEntrar(_ sender: Any) {
