@@ -17,11 +17,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var btnLogin: UIButton!
     
     
+    @IBOutlet weak var blackBox: UIView!
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
+    var radius = CGFloat(20)
     
     var usuario:NSDictionary = NSDictionary()
     
@@ -30,16 +32,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        blackBox.layer.cornerRadius = radius
         
         btnLogin.layer.cornerRadius = 20
         btnLogin.clipsToBounds = true
+        btnLogin.layer.borderWidth = 1
+        btnLogin.layer.borderColor = ColorWeel().orangeColor.cgColor
         
         txtEmail.delegate = self
-        txtEmail.makeItWhite()
         
         txtSenha.delegate = self
-        txtSenha.makeItWhite()
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LoginViewController.returnTextView(gesture:))))
