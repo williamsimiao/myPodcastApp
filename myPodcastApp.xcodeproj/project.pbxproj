@@ -138,10 +138,6 @@
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
-				3D956BCD2224443C00E20477 /* CadastroTextField.swift */,
-				3DD43F392225C26400017B3E /* LoginTextField.swift */,
-				3DD43F35222585E100017B3E /* TermosViewController.swift */,
-				3DD43F372225B26F00017B3E /* RecuperarViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -177,6 +173,10 @@
 				3D34FD072213244F0062DB7E /* PrimeiraViewController.swift */,
 				3D38682222119FDF00E89FF4 /* CadastroViewController.swift */,
 				3D3868242211A00E00E89FF4 /* LoginViewController.swift */,
+				3D956BCD2224443C00E20477 /* CadastroTextField.swift */,
+				3DD43F392225C26400017B3E /* LoginTextField.swift */,
+				3DD43F35222585E100017B3E /* TermosViewController.swift */,
+				3DD43F372225B26F00017B3E /* RecuperarViewController.swift */,
 			);
 			path = Cadastro;
 			sourceTree = "<group>";

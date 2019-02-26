@@ -781,13 +781,16 @@
                                                         <rect key="frame" x="16" y="143" width="248" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-Kx-0Xf">
                                                         <rect key="frame" x="16" y="213" width="248" height="40"/>
                                                         <state key="normal" title="ENTRAR">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="clickLogin:" destination="lzb-Rf-PBa" eventType="touchUpInside" id="s3E-Wf-Xem"/>
+                                                        </connections>
                                                     </button>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65r-na-Iz2" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="95" width="248" height="40"/>

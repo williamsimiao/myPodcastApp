@@ -271,7 +271,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if self.success {
             AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
-            self.performSegue(withIdentifier: "goto_main", sender: self)
+            self.performSegue(withIdentifier: "goto_welcome", sender: self)
         }
         else {
             AppService.util.alert("Erro no Login", message: error_msg as String)
@@ -279,32 +279,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func clickLogin(_ sender: UIButton) {
-        
         login()
-        
-    }
-    
-    
-    @IBAction func clickEsqueceuSenha(_ sender: Any) {
-        
-        DispatchQueue.main.async(execute: {
-            self.performSegue(withIdentifier: "goto_esqueceu_senha", sender: nil)
-        })
-        
-    }
-    
-    @IBAction func clickCadastro(_ sender: Any) {
-        
-        DispatchQueue.main.async(execute: {
-            self.performSegue(withIdentifier: "from_login_to_cadatro", sender: nil)
-        })
-        
-    }
-    
-    @IBAction func clickVoltar(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func clickClose(_ sender: Any) {

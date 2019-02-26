@@ -195,13 +195,16 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         let pemail = edtEmail.text! as String
         let psenha = edtSenha.text! as String
         
+        //TODO use this Data
+//        let pnascimento = edtDataNascimento.text! as String
+//        let pfone = edtFone.text! as String
+//        let psexo = edtSexo.text! as String
+//        let pescolaridade = edtEscolaridade.text! as String
         
         if !AppService.util.isConnectedToNetwork() {
             AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
             return
         }
-        
-        
         
         // validar nome
         if ( pnome.isEqual("") ) {
@@ -229,7 +232,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         let nomeCompleto = pnome + " " + psobrenome
         
-        
         loading.isHidden = false
         loading.startAnimating()
         
@@ -239,12 +241,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         let post:NSString = "nome=\(nomeCompleto)&email=\(pemail)&senha=\(psenha)" as NSString
         
         print(post)
-        
-        /*post = (post as String) + "" +  as NSString
-         post = (post as String) + "&email=" + pemail as NSString
-         post = (post as String) + "&senha=" + psenha as NSString
-         post = (post as String) + "&num_id_ios=" + num_id_ios as NSString*/
-        
         
         let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
         
@@ -372,9 +368,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     
     @IBAction func clickCadastrar(_ sender: Any) {
-        
         cadastrar()
-    
     }
     
     

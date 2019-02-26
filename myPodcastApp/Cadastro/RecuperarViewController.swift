@@ -27,6 +27,7 @@ class RecuperarViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func clickRecuperar(_ sender: Any) {
+        //TODO: Call API
     }
     
     /*
