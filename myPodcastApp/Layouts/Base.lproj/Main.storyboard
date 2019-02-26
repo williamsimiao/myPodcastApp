@@ -1276,7 +1276,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="clickCadastrar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="bvu-oQ-a5p"/>
-                                                    <segue destination="lzb-Rf-PBa" kind="show" identifier="goto_login" id="s53-lD-jPb"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J88-wb-oYg">
@@ -1364,7 +1363,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="j6S-ll-57v">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="RAM-T7-3bD">
-                            <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="clickDone:" destination="lNs-Fr-eWm" id="pJA-tk-Boy"/>
                             </connections>
@@ -1386,6 +1384,7 @@
                         <outlet property="edtSobrenome" destination="VSl-Ke-k9H" id="6ET-Ur-nGg"/>
                         <outlet property="loading" destination="ytg-Dv-VO6" id="fRh-Bd-gRX"/>
                         <outlet property="scrollView" destination="ddg-of-CbL" id="JYm-5j-ozH"/>
+                        <segue destination="rZA-78-vIT" kind="show" identifier="goto_termos" id="Juy-Im-NHz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6X-Un-eEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1395,7 +1394,7 @@
         <!--termos-->
         <scene sceneID="HHI-c6-vt2">
             <objects>
-                <viewController id="rZA-78-vIT" userLabel="termos" customClass="CadastroViewController" customModule="myPodcastApp" sceneMemberID="viewController">
+                <viewController id="rZA-78-vIT" userLabel="termos" customClass="TermosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cto-eo-Y4Z"/>
                         <viewControllerLayoutGuide type="bottom" id="1bz-U0-kcT"/>
@@ -1417,10 +1416,9 @@
                                                     <constraint firstAttribute="height" constant="200" id="xua-wG-Zbu"/>
                                                 </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="justified" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-z2-spv">
-                                                <rect key="frame" x="0.0" y="340" width="320" height="128"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" editable="NO" text="textao" textAlignment="justified" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzz-z2-spv">
+                                                <rect key="frame" x="0.0" y="260" width="320" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1428,8 +1426,8 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="dzz-z2-spv" secondAttribute="trailing" id="M6Q-d8-Jti"/>
                                             <constraint firstAttribute="height" constant="808" id="Mzo-WR-W4D"/>
-                                            <constraint firstAttribute="trailing" secondItem="dzz-z2-spv" secondAttribute="trailing" id="Rl3-Ep-gk7"/>
                                             <constraint firstItem="NmZ-mG-XGB" firstAttribute="top" secondItem="bOi-Qz-I8b" secondAttribute="top" constant="40" id="Zn4-iQ-XzU"/>
                                             <constraint firstItem="dzz-z2-spv" firstAttribute="top" secondItem="NmZ-mG-XGB" secondAttribute="bottom" constant="20" id="fwi-82-dYN"/>
                                             <constraint firstItem="NmZ-mG-XGB" firstAttribute="centerX" secondItem="bOi-Qz-I8b" secondAttribute="centerX" id="hhi-qY-6tW"/>
@@ -1445,33 +1443,29 @@
                                     <constraint firstItem="bOi-Qz-I8b" firstAttribute="top" secondItem="pqG-Ih-Zsw" secondAttribute="top" id="rmP-nb-khY"/>
                                 </constraints>
                             </scrollView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qOK-IV-Kcj">
-                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="pqG-Ih-Zsw" firstAttribute="top" secondItem="zoe-cf-Wa1" secondAttribute="top" id="Rt3-HO-9Cl"/>
-                            <constraint firstItem="qOK-IV-Kcj" firstAttribute="centerX" secondItem="zoe-cf-Wa1" secondAttribute="centerX" id="hZw-dH-qv9"/>
                             <constraint firstItem="pqG-Ih-Zsw" firstAttribute="trailing" secondItem="Zkm-90-LCd" secondAttribute="trailing" id="qFG-IT-crg"/>
                             <constraint firstItem="1bz-U0-kcT" firstAttribute="top" secondItem="pqG-Ih-Zsw" secondAttribute="bottom" id="sXV-s6-ggG"/>
-                            <constraint firstItem="qOK-IV-Kcj" firstAttribute="centerY" secondItem="zoe-cf-Wa1" secondAttribute="centerY" id="tkS-Pk-OH3"/>
                             <constraint firstItem="pqG-Ih-Zsw" firstAttribute="leading" secondItem="Zkm-90-LCd" secondAttribute="leading" id="uCg-zU-HtC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zkm-90-LCd"/>
                     </view>
                     <navigationItem key="navigationItem" id="KJY-hZ-YKR"/>
                     <connections>
-                        <outlet property="constraintContentHeight" destination="Mzo-WR-W4D" id="LcV-HN-mbE"/>
-                        <outlet property="contentView" destination="bOi-Qz-I8b" id="BCi-Hc-PbA"/>
-                        <outlet property="loading" destination="qOK-IV-Kcj" id="4yn-DL-C4h"/>
-                        <outlet property="scrollView" destination="pqG-Ih-Zsw" id="hIK-gX-7OK"/>
+                        <outlet property="contentViewHeightConstraint" destination="Mzo-WR-W4D" id="EpW-Y9-80B"/>
+                        <outlet property="logoImage" destination="NmZ-mG-XGB" id="ztZ-Bu-1lj"/>
+                        <outlet property="logoTopMargin" destination="Zn4-iQ-XzU" id="zTz-zR-F88"/>
+                        <outlet property="scrollView" destination="pqG-Ih-Zsw" id="maE-tz-Rxb"/>
+                        <outlet property="textView" destination="dzz-z2-spv" id="eQW-hV-y11"/>
+                        <outlet property="textViewTopMargin" destination="fwi-82-dYN" id="pEz-Ob-4Fy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLv-rM-eYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="3055"/>
+            <point key="canvasLocation" x="1215" y="3054.929577464789"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="APi-Ew-LXl">
@@ -1481,6 +1475,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="8uK-JS-pmQ">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1519,6 +1514,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="OcI-1H-Fib"/>
         <segue reference="A3P-4d-8gn"/>
-        <segue reference="s53-lD-jPb"/>
     </inferredMetricsTieBreakers>
 </document>

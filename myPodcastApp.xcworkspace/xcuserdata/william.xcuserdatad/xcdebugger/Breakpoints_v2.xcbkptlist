@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/Cadastro/CadastroViewController.swift"
-            timestampString = "572884000.508453"
+            timestampString = "572885988.154793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/Cadastro/CadastroViewController.swift"
-            timestampString = "572884000.508866"
+            timestampString = "572885988.155254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "textFieldEditingDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>

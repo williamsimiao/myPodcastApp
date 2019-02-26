@@ -326,7 +326,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.dismiss(animated: true, completion: nil)
-//                self.performSegue(withIdentifier: "goto_login", sender: self)
 
             }))
             
@@ -365,7 +364,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     
     @IBAction func clickBtnTermosDeUso(_ sender: Any) {
-        
+        performSegue(withIdentifier: "goto_termos", sender: self)
     }
     
     
@@ -394,6 +393,8 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 //        self.scrollView.contentOffset.y = self.scrollView.contentSize.height - textField.bounds.origin.y - textField.bounds.size.height
 //        self.scrollView.contentOffset.y = textField.bounds.origin.y
     }
+    
+    //MARK - pickerView dataSource and Delegate
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
