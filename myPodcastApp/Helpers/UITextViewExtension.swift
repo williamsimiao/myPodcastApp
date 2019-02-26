@@ -15,7 +15,7 @@ extension UITextView {
             NSAttributedString.Key.strokeColor : oulineColor,
             NSAttributedString.Key.foregroundColor : foregroundColor,
             NSAttributedString.Key.strokeWidth : -4.0,
-            NSAttributedString.Key.font : self.font as Any
+            NSAttributedString.Key.font : self.font as Any,
             ] as [NSAttributedString.Key : Any]
         self.attributedText = NSMutableAttributedString(string: self.text ?? "", attributes: strokeTextAttributes)
     }

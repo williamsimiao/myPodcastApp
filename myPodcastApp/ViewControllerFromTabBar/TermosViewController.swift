@@ -21,10 +21,13 @@ class TermosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.text = termos
+        textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
         let fixedWidth = textView.frame.size.width
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         textView.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
         contentViewHeightConstraint.constant = newSize.height + logoImage.frame.height + logoTopMargin.constant + textViewTopMargin.constant + 10
+        textView.textAlignment = NSTextAlignment.justified
+
         self.view.layoutIfNeeded()
         
     }
