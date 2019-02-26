@@ -83,6 +83,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         btnCadastrar.layer.cornerRadius = radius
         
+//        btnEmpreende.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         btnEmpreende.imageView?.layer.cornerRadius = 5
         btnEmpreende.imageView?.layer.borderWidth = 1
         btnEmpreende.imageView?.layer.borderColor = ColorWeel().orangeColor.cgColor
@@ -351,13 +352,15 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     @IBAction func clickBtnEmpreende(_ sender: Any) {
         if self.empreendeButtonHasMark {
-            self.btnEmpreende.imageView?.image = UIImage(named:
-                "downloadBlack")
+            self.btnEmpreende.setImage(UIImage(named:
+                "downloadBlack"), for: UIControl.State.normal)
+            
             self.empreendeButtonHasMark = false
 
         }
         else {
-            self.btnEmpreende.imageView?.image = UIImage(named: "checkWhite")
+            self.btnEmpreende.setImage(UIImage(named:
+                "checkWhite"), for: UIControl.State.normal)
             self.empreendeButtonHasMark = true
         }
     }

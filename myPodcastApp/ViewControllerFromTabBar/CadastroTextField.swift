@@ -28,6 +28,14 @@ class CadastroTextField: UITextField {
         self.layer.borderColor = ColorWeel().orangeColor.cgColor
     }
     
+    func makeItWhite() {
+        self.backgroundColor = .white
+        self.textColor = .black
+        self.tintColor = .black
+        self.layer.borderWidth = 0
+    }
+    
+    //MARK - for padding the placeholder
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }

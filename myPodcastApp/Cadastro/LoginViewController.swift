@@ -12,10 +12,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var txtSenha: UITextField!
+    @IBOutlet weak var txtEmail: CadastroTextField!
+    @IBOutlet weak var txtSenha: CadastroTextField!
     @IBOutlet var btnLogin: UIButton!
-    @IBOutlet var loading: UIActivityIndicatorView!
+    
     
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
@@ -31,14 +31,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loading.isHidden = true
         
-        btnLogin.layer.cornerRadius = 10
+        btnLogin.layer.cornerRadius = 20
         btnLogin.clipsToBounds = true
         
         txtEmail.delegate = self
-        txtSenha.delegate = self
+        txtEmail.makeItWhite()
         
+        txtSenha.delegate = self
+        txtSenha.makeItWhite()
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LoginViewController.returnTextView(gesture:))))
@@ -167,8 +168,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        loading.isHidden = false
-        loading.startAnimating()
         
         btnLogin.isEnabled = false
         
@@ -267,8 +266,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func onResultReceived() {
         btnLogin.isEnabled = true
-        loading.isHidden = true
-        loading.stopAnimating()
         
         if self.success {
             AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
@@ -306,6 +303,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.dismiss(animated: true, completion: nil)
         
+    }
+    
+    @IBAction func clickClose(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func clickEsqueciSenha(_ sender: Any) {
+        performSegue(withIdentifier: "goto_recuperar", sender: self)
     }
     
 }
