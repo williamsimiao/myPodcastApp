@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CadastroViewController: UIViewController, UITextFieldDelegate {
+class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -26,6 +26,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edtSenha: UITextField!
     @IBOutlet weak var btnCadastrar: UIButton!
     
+    @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var btnEmpreende: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
@@ -35,25 +36,47 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
-    
+    var datePicker : UIDatePicker?
+    var sexoPicker : UIPickerView!
+    var escolaridadePicker : UIPickerView!
+
     
     var success:Bool = false
     var error_msg:String = ""
     let radius = CGFloat(20)
     var empreendeButtonHasMark = true
-
+    let sexoArray = ["Feminino", "Masculino"]
+    let escolaridadeAray = ["Ensino Fundamental", "Ensino Médio", "Ensino Superior", "Pós-Graduação", "Mestrado", "Doutorado"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loading.isHidden = true
+        btnDone.isHidden = true
         
         edtNome.delegate = self
         edtSobrenome.delegate = self
         
         edtFone.delegate = self
+        
         edtDataNascimento.delegate = self
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        datePicker?.addTarget(self, action: #selector(CadastroViewController.dateChanged(datePicker:)), for: .valueChanged )
+        edtDataNascimento.inputView = datePicker
+        let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(CadastroViewController.viewTapped(gestureReconizer:)))
+        view.addGestureRecognizer(tapGestureReconizer)
+        
         edtSexo.delegate = self
+        sexoPicker = UIPickerView()
+        sexoPicker.dataSource = self
+        sexoPicker.delegate = self
+        edtSexo.inputView = sexoPicker
+        
         edtEscolaridade.delegate = self
+        escolaridadePicker = UIPickerView()
+        escolaridadePicker.dataSource = self
+        escolaridadePicker.delegate = self
+        edtEscolaridade.inputView = escolaridadePicker
         
         edtEmail.delegate = self
         edtSenha.delegate = self
@@ -105,6 +128,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeField = textField
+        btnDone.isHidden = false
 //        let newYPosition = self.scrollView.frame.height - textField.frame.origin.y
 //        self.scrollView.contentOffset.y = newYPosition
         
@@ -314,6 +338,17 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        edtDataNascimento.text = dateFormatter.string(from: datePicker.date)
+//        view.endEditing(true )
+    }
+    
+    @objc func viewTapped(gestureReconizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     
     @IBAction func clickBtnEmpreende(_ sender: Any) {
         if self.empreendeButtonHasMark {
@@ -330,6 +365,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func clickBtnTermosDeUso(_ sender: Any) {
+        
     }
     
     
@@ -346,10 +382,63 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    @IBAction func clickDone(_ sender: Any) {
+        view.endEditing(true)
+        self.btnDone.isHidden = true
+    }
+    
     @IBAction func textFieldEditingDidChange(_ sender: Any) {
-        let textField = sender as! CadastroTextField
+//        let textField = sender as! CadastroTextField
 
 //        self.scrollView.contentOffset.y = self.scrollView.contentSize.height - textField.bounds.origin.y - textField.bounds.size.height
 //        self.scrollView.contentOffset.y = textField.bounds.origin.y
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == sexoPicker {
+            return sexoArray.count
+        }
+        else if pickerView == escolaridadePicker {
+            return escolaridadeAray.count
+        }
+        else {
+            print("DOIDO")
+            return 2
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == sexoPicker {
+            return sexoArray[row]
+        }
+        else if pickerView == escolaridadePicker {
+            return escolaridadeAray[row]
+        }
+        else {
+            print("DOIDO2")
+            return escolaridadeAray[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == sexoPicker {
+            edtSexo.text = sexoArray[row]
+        }
+        else if pickerView == escolaridadePicker {
+            edtEscolaridade.text = escolaridadeAray[row]
+        }
+        else {
+            print("DOIDO3")
+            edtEscolaridade.text = escolaridadeAray[row]
+        }
+        self.view.endEditing(true)
+        btnDone.isHidden = true
+    }
+    
+    
 }
