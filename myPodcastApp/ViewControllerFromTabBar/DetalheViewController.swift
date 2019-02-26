@@ -19,6 +19,11 @@ class DetalheViewController: InheritanceViewController {
     @IBOutlet weak var resizableView: UIView!
     
     @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var resumoView: UIView!
+    @IBOutlet weak var textView: UITextView!
+    
+    var exempleText = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -60,7 +65,30 @@ class DetalheViewController: InheritanceViewController {
         self.TenMinutesView.backgroundColor = .black
         self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
         self.TenMinutesView.layer.cornerRadius = 10
+        
+        self.resumoView.layer.cornerRadius = 10
+        self.textView.text = self.exempleText
+        self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
+        self.textView.textAlignment = NSTextAlignment.justified
+
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let leituraVC = segue.destination as? LeituraViewController {
+            let authorsList = self.selectedEpisode!["autores"] as! [[String : AnyObject]]
+            let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+            
+            leituraVC.author = joinedNames
+            leituraVC.episodeTitle = (self.selectedEpisode!["titulo"] as! String)
+            leituraVC.resumoText = exempleText
+        }
+
+    }
+    @IBAction func clickORSwipeUp(_ sender: Any) {
+        
+        performSegue(withIdentifier: "goto_leitura", sender: self)
+    }
+    
 }
 
 extension DetalheViewController: contentViewDelegate {
