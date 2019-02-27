@@ -26,6 +26,9 @@ class DetalheViewController: InheritanceViewController {
     
     var selectedEpisode : [String: AnyObject]?
     var selectedEpisodeImage : UIImage?
+    var success: Bool?
+    var detailsEpisode: [String: AnyObject]?
+    var error_msg: String?
     @IBOutlet weak var resizableView: UIView!
     
     @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
@@ -40,10 +43,98 @@ class DetalheViewController: InheritanceViewController {
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         
+        makeResquest()
+        
         episodeContentView.delegate = self
-
         setupUI()
     }
+    
+    func createURLWithComponents(cod_resumo: String) -> URL? {
+        // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
+        let urlComponents = NSURLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.resumocast.com.br/ws"
+        urlComponents.path = "/detalheResumo.php"
+        
+        // add params
+        let cod_resumo = NSURLQueryItem(name: "cod_resumo", value: cod_resumo)
+        urlComponents.queryItems = [cod_resumo] as [URLQueryItem]
+        
+        return urlComponents.url
+    }
+    
+    func makeResquest() {
+        let cod_resumo = selectedEpisode!["cod_resumo"] as! String
+        
+//        let url:URL = createURLWithComponents(cod_resumo: cod_resumo)!
+        let urlString = AppConfig.urlBaseApi + "detalheResumo.php" + "?cod_resumo=" + cod_resumo
+        let myUrl = URL(string: urlString)
+
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: myUrl!)
+        
+        request.timeoutInterval = 10
+        request.httpMethod = "GET"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                return
+            }
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            self.extract_json_data(dataString!)
+        })
+        task.resume()
+    }
+    
+    func extract_json_data(_ data:NSString) {
+        
+        NSLog("FILO %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do {
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            self.success = (json.value(forKey: "success") as! Bool)
+            if (self.success!) {
+                
+                NSLog("Login SUCCESS");
+                self.detailsEpisode = (json.object(forKey: "resumo") as! Dictionary)
+            } else {
+                NSLog("Login ERROR");
+                error_msg = (json.value(forKey: "error") as! String)
+            }
+        }
+        catch {
+            print("error")
+            return
+        }
+        DispatchQueue.main.async(execute: onResultReceived)
+    }
+    
+    func onResultReceived() {
+        if self.success! {
+            let resumo = (detailsEpisode!["resumo_10"] as! String)
+            textView.text = resumo
+            if resumo == "" {
+//                resumoView.isUserInteractionEnabled = false
+                textView.text = exempleText
+            }
+        }
+        else {
+            
+            AppService.util.alert("Erro no Login", message: error_msg!)
+        }
+    }
+
     
     func checkAvaliableLinks() {
         let variavel = Util.nullToNil(value: selectedEpisode![linkType.fortyFree.rawValue])
@@ -89,7 +180,8 @@ class DetalheViewController: InheritanceViewController {
         checkAvaliableLinks()
         
         self.resumoView.layer.cornerRadius = 10
-        self.textView.text = self.exempleText
+//        self.textView.text = self.exempleText
+        self.textView.text = ""
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
         self.textView.textAlignment = NSTextAlignment.justified
 
@@ -102,7 +194,7 @@ class DetalheViewController: InheritanceViewController {
             
             leituraVC.author = joinedNames
             leituraVC.episodeTitle = (self.selectedEpisode!["titulo"] as! String)
-            leituraVC.resumoText = exempleText
+            leituraVC.resumoText = textView.text
         }
 
     }

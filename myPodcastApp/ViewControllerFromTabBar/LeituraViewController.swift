@@ -28,8 +28,8 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     var textSettingsIsActive = false
     override func viewDidLoad() {
         super.viewDidLoad()
-//        textSettingsButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
-//        textSettingsButton!.setBackgroundImage(UIImage(named: "textSettingsOff"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
+        textSettingsButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
+        textSettingsButton!.setBackgroundImage(UIImage(named: "textSettingsOff"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
 //
 //        lightModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
 //        lightModeButton!.setBackgroundImage(UIImage(named: "lightMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
@@ -37,7 +37,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
 //        darkModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickDarkMode(_:)))
 //        darkModeButton!.setBackgroundImage(UIImage(named: "darkMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
         
-        textSettingsButton = UIBarButtonItem.menuButton(self, action: #selector(LeituraViewController.clickTextSettings(_:)), imageName: "textSettingsOff")
+//        textSettingsButton = UIBarButtonItem.menuButton(self, action: #selector(LeituraViewController.clickTextSettings(_:)), imageName: "textSettingsOff")
         
         self.navigationItem.setRightBarButtonItems([textSettingsButton!], animated: true)
         
