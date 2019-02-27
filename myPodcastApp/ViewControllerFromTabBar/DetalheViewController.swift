@@ -8,11 +8,21 @@
 
 import UIKit
 
+enum linkType: String {
+    case fortyFree = "url_podcast_40_f"
+    case fortyPremium = "url_podcast_40_p"
+    case ten = "url_podcast_10"
+}
+
+
 class DetalheViewController: InheritanceViewController {
     
     @IBOutlet weak var episodeContentView: epidodeContentRightView!
     @IBOutlet weak var FortyMinutesView: UIView!
+    @IBOutlet weak var fortyMinutesButton: UIButton!
+    
     @IBOutlet weak var TenMinutesView: UIView!
+    @IBOutlet weak var tenMinutesButton: UIButton!
     
     var selectedEpisode : [String: AnyObject]?
     var selectedEpisodeImage : UIImage?
@@ -22,7 +32,7 @@ class DetalheViewController: InheritanceViewController {
     @IBOutlet weak var resumoView: UIView!
     @IBOutlet weak var textView: UITextView!
     
-    var exempleText = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
+    var exempleText = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +45,29 @@ class DetalheViewController: InheritanceViewController {
         setupUI()
     }
     
+    func checkAvaliableLinks() {
+        let variavel = Util.nullToNil(value: selectedEpisode![linkType.fortyFree.rawValue])
+        if variavel == nil {
+            fortyMinutesButton.isEnabled = false
+        }
+        
+        let variave2 = Util.nullToNil(value: selectedEpisode![linkType.ten.rawValue])
+        if variave2 == nil {
+            tenMinutesButton.isEnabled = false
+        }
+    }
+    
     @IBAction func fortyPlayButtonAction(_ sender: Any) {
         //Play the episode
-        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!)
+        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!, link: linkType.fortyFree)
         
         NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
-//        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
-
     }
     
     @IBAction func tenPlayButtonAction(_ sender: Any) {
+        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!, link: linkType.ten)
         
+        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
     }
     
     func setupUI() {
@@ -59,12 +81,12 @@ class DetalheViewController: InheritanceViewController {
         self.FortyMinutesView.layer.borderWidth = 1
         self.FortyMinutesView.backgroundColor = .black
         self.FortyMinutesView.layer.borderColor = UIColor.white.cgColor
-        self.FortyMinutesView.layer.cornerRadius = 10
 
         self.TenMinutesView.layer.borderWidth = 1
         self.TenMinutesView.backgroundColor = .black
         self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
-        self.TenMinutesView.layer.cornerRadius = 10
+        
+        checkAvaliableLinks()
         
         self.resumoView.layer.cornerRadius = 10
         self.textView.text = self.exempleText
@@ -93,11 +115,6 @@ class DetalheViewController: InheritanceViewController {
 
 extension DetalheViewController: contentViewDelegate {
     func viewClicked() {
+        
     }
 }
-
-//MARK - buttons
-extension DetalheViewController {
-    
-}
-

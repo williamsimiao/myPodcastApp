@@ -34,10 +34,10 @@ class playerManager {
     let interfaceUpdateInterval = 0.5
     var episodesQueue = [[String:AnyObject]]()
     var currentEpisodeDict = [String:AnyObject]()
+    var currentLinkType: linkType?
     static let shared = playerManager()
     
-    private init() {
-    }
+    private init() {}
     
     func addPeriodicTimeObserver() {
         // Notify every half second
@@ -129,14 +129,16 @@ class playerManager {
     }
     
     //MARK Mudando de Episodio
-    func episodeSelected(episodeDictionary: [String:AnyObject]) {
+    func episodeSelected(episodeDictionary: [String:AnyObject], link:linkType) {
         
         //Getting episode AVPlayerItem
         let newEpisodeAVItem : AVPlayerItem
         
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
+        let episodeLink = episodeDictionary[link.rawValue] as? String
+
         do {
-            newEpisodeAVItem = try getAVItem(ForEpisode: episodeDictionary)
+            newEpisodeAVItem = try getAVItem(ForEpisodeLink: episodeLink)
         } catch AppError.urlKeyError {
             print("Erro - key for url not found")
             return
@@ -152,7 +154,7 @@ class playerManager {
             let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
             let newEpisodeId = episodeDictionary["cod_resumo"] as! String
 
-            if currentEpisodeId != newEpisodeId {
+            if (currentEpisodeId != newEpisodeId) || (currentLinkType != link) {
                 self.player?.pause()
                 self.player?.replaceCurrentItem(with: newEpisodeAVItem)
             }
@@ -169,11 +171,11 @@ class playerManager {
 
     }
     
-    func getAVItem(ForEpisode episodeDictionary:[String:AnyObject]) throws -> AVPlayerItem{
-        guard let episodeLink = episodeDictionary["url_podcast_40_f"] else {
+    func getAVItem(ForEpisodeLink episodeLink:String?) throws -> AVPlayerItem{
+        guard (episodeLink != nil) else {
             throw AppError.urlKeyError
         }
-        guard let episodeURL = URL(string: episodeLink as! String) else {
+        guard let episodeURL = URL(string: episodeLink!) else {
             throw AppError.urlError
         }
         return AVPlayerItem(url: episodeURL)

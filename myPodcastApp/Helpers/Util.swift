@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 class Util {
+    static func nullToNil(value : AnyObject?) -> AnyObject? {
+        if value is NSNull {
+            return nil
+        } else {
+            return value
+        }
+    }
+    
     static func getUrl(forPlayingEpisode episodeId:NSNumber) -> URL{
         let episodeIdString = episodeId.stringValue
         let urlString = "https://api.spreaker.com/v2/episodes/" + episodeIdString + "/play"

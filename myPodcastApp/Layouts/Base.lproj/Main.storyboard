@@ -171,9 +171,16 @@
                                                             <action selector="fortyPlayButtonAction:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="wqG-fA-ih9"/>
                                                         </connections>
                                                     </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1RS-D4-JhE">
+                                                        <rect key="frame" x="0.0" y="87" width="155.66666666666666" height="2"/>
+                                                        <color key="progressTintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </progressView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="1RS-D4-JhE" secondAttribute="bottom" constant="1" id="8hK-PO-biZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1RS-D4-JhE" secondAttribute="trailing" id="Mn3-aX-VH5"/>
+                                                    <constraint firstItem="1RS-D4-JhE" firstAttribute="leading" secondItem="V8v-ni-6oF" secondAttribute="leading" id="QmQ-Vb-fj3"/>
                                                     <constraint firstItem="OfT-K9-lCg" firstAttribute="top" secondItem="V8v-ni-6oF" secondAttribute="top" id="S2X-ne-lHC"/>
                                                     <constraint firstItem="OfT-K9-lCg" firstAttribute="leading" secondItem="V8v-ni-6oF" secondAttribute="leading" id="txq-e3-PPi"/>
                                                     <constraint firstAttribute="trailing" secondItem="OfT-K9-lCg" secondAttribute="trailing" id="y37-iR-jDn"/>
@@ -190,13 +197,20 @@
                                                             <action selector="tenPlayButtonAction:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="fgu-aK-iAX"/>
                                                         </connections>
                                                     </button>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xbS-KE-duo">
+                                                        <rect key="frame" x="0.0" y="87" width="155.66666666666666" height="2"/>
+                                                        <color key="progressTintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </progressView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="xbS-KE-duo" firstAttribute="leading" secondItem="hqr-3g-cDK" secondAttribute="leading" id="0EG-fJ-KSZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="WNu-sE-Eme" secondAttribute="trailing" id="BeD-7I-qQu"/>
                                                     <constraint firstAttribute="bottom" secondItem="WNu-sE-Eme" secondAttribute="bottom" id="Jcc-NE-Uj6"/>
                                                     <constraint firstItem="WNu-sE-Eme" firstAttribute="leading" secondItem="hqr-3g-cDK" secondAttribute="leading" id="S8E-FJ-6P5"/>
                                                     <constraint firstItem="WNu-sE-Eme" firstAttribute="top" secondItem="hqr-3g-cDK" secondAttribute="top" id="kiz-Vg-wHr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xbS-KE-duo" secondAttribute="bottom" constant="1" id="mm7-hR-Vfb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xbS-KE-duo" secondAttribute="trailing" id="zgP-Ja-5cx"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -208,13 +222,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-a8-NT5">
                                         <rect key="frame" x="95" y="279.33333333333331" width="48.666666666666657" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-Q8-zTW">
                                         <rect key="frame" x="272" y="279.33333333333331" width="45.666666666666686" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
@@ -293,9 +307,11 @@
                         <outlet property="FortyMinutesView" destination="V8v-ni-6oF" id="caf-kQ-PJw"/>
                         <outlet property="TenMinutesView" destination="hqr-3g-cDK" id="m3a-Bj-3eD"/>
                         <outlet property="episodeContentView" destination="xGi-DN-kzL" id="s2u-Ss-vyV"/>
+                        <outlet property="fortyMinutesButton" destination="OfT-K9-lCg" id="QLx-HU-Xes"/>
                         <outlet property="resizableBottomConstraint" destination="IXc-LS-7yB" id="U9V-Bb-Flj"/>
                         <outlet property="resizableView" destination="SRM-8n-LH0" id="wXb-Ay-Z6T"/>
                         <outlet property="resumoView" destination="E4b-9s-7TE" id="xxi-JW-IAI"/>
+                        <outlet property="tenMinutesButton" destination="WNu-sE-Eme" id="21f-Iu-5bi"/>
                         <outlet property="textView" destination="FAJ-zW-hRi" id="4Mq-T9-GfA"/>
                         <segue destination="m7C-do-6mr" kind="custom" identifier="goto_leitura" customClass="DeckSegue" customModule="DeckTransition" id="c9G-pd-aaM"/>
                     </connections>
@@ -338,7 +354,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s33-qC-Tto">
-                                        <rect key="frame" x="24" y="88.666666666666629" width="366" height="2"/>
+                                        <rect key="frame" x="24" y="88.666666666666657" width="366" height="2"/>
                                         <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </progressView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2B-GG-Z3j">
@@ -879,7 +895,7 @@
                         <outlet property="episodeTitle" destination="BMy-aB-VMw" id="hCF-dY-KPj"/>
                         <outlet property="playButton" destination="Nrm-o1-zvg" id="7ga-Ld-TJz"/>
                         <outlet property="progressLabel" destination="O0w-Fp-1n9" id="P07-K6-5xi"/>
-                        <outlet property="remainingLabel" destination="O0w-Fp-1n9" id="1EA-Cb-MUx"/>
+                        <outlet property="remainingLabel" destination="ccp-7t-57J" id="dgm-WC-48G"/>
                         <outlet property="slider" destination="NdP-MI-nFz" id="L8N-l2-TfZ"/>
                     </connections>
                 </viewController>

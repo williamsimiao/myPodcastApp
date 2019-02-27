@@ -138,9 +138,9 @@
 				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
-				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
+				3DF5F6892217275E00F6BA33 /* custom with xib */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
