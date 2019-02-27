@@ -18,16 +18,26 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var star1: UIButton!
+    @IBOutlet weak var star2: UIButton!
+    @IBOutlet weak var star3: UIButton!
+    @IBOutlet weak var star4: UIButton!
+    @IBOutlet weak var star5: UIButton!
+    
+    
     var episodeTitle: String?
     var author: String?
     var resumoText: String?
     var textSettingsButton : UIBarButtonItem?
     var lightModeButton : UIBarButtonItem?
     var darkModeButton : UIBarButtonItem?
+    var starArray: [UIButton]?
 
     var textSettingsIsActive = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        starArray = [star1, star2, star3, star4, star5]
         textSettingsButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
         textSettingsButton!.setBackgroundImage(UIImage(named: "textSettingsOff"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
 //
@@ -93,12 +103,34 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         progressView.progress = Float(ratio)
     }
     
+    @IBAction func tapStar(_ sender: Any) {
+        let senderStar = sender as! UIButton
+        let index: Int
+        switch senderStar {
+        case self.star1:
+            index = 1
+        case self.star2:
+            index = 2
+        case self.star3:
+            index = 3
+        case self.star4:
+            index = 4
+        case self.star5:
+            index = 5
+        default:
+            return
+        }
+        //Coloring until the taped one
+        for i in 0..<index {
+            let currentStar = starArray![i]
+            currentStar.setImage(UIImage(named: "starBig"), for: UIControl.State.normal)
+        }
+        //Discoloring the others
+        for i in index..<(starArray?.count)! {
+            let currentStar = starArray![i]
+            currentStar.setImage(UIImage(named: "starBigBlanck"), for: UIControl.State.normal)
+        }
+    }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
-//        if (bottomEdge >= scrollView.contentSize.height) {
-//            print("FIM")
-//        }
-//    }
 
 }
