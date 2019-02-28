@@ -10,6 +10,8 @@ import UIKit
 
 class LeituraViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var parabensLabel: UILabel!
+    @IBOutlet weak var avaliarLabel: UILabel!
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var scrollView: UIScrollView!
