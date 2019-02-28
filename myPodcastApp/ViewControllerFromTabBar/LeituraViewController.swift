@@ -42,16 +42,16 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         starArray = [star1, star2, star3, star4, star5]
         textSettingsButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
         textSettingsButton!.setBackgroundImage(UIImage(named: "textSettingsOff"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
-//
-//        lightModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
-//        lightModeButton!.setBackgroundImage(UIImage(named: "lightMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
-//
-//        darkModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickDarkMode(_:)))
-//        darkModeButton!.setBackgroundImage(UIImage(named: "darkMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
+
+        lightModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
+        lightModeButton!.setBackgroundImage(UIImage(named: "lightMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
+
+        darkModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickDarkMode(_:)))
+        darkModeButton!.setBackgroundImage(UIImage(named: "darkMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
         
-//        textSettingsButton = UIBarButtonItem.menuButton(self, action: #selector(LeituraViewController.clickTextSettings(_:)), imageName: "textSettingsOff")
+        textSettingsButton = UIBarButtonItem.menuButton(self, action: #selector(LeituraViewController.clickTextSettings(_:)), imageName: "textSettingsOff")
         
-        self.navigationItem.setRightBarButtonItems([textSettingsButton!], animated: true)
+//        self.navigationItem.setRightBarButtonItems([textSettingsButton!, lightModeButton!, darkModeButton!], animated: true)
         
         scrollView.delegate = self
         tittleLabel.text = episodeTitle
