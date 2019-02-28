@@ -1406,7 +1406,7 @@ concluir essa leitura!</string>
                                 <rect key="frame" x="0.0" y="304" width="414" height="432"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-38-5dv">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="558"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="v0h-De-W0K" userLabel="primeira Stack View">
                                                 <rect key="frame" x="16" y="0.0" width="382" height="320"/>
@@ -1542,7 +1542,7 @@ concluir essa leitura!</string>
                                         <constraints>
                                             <constraint firstItem="i1c-pj-ZOP" firstAttribute="top" secondItem="J88-wb-oYg" secondAttribute="bottom" constant="30" id="1a7-OL-coc"/>
                                             <constraint firstItem="i1c-pj-ZOP" firstAttribute="centerX" secondItem="dc3-38-5dv" secondAttribute="centerX" id="2nU-7r-YdQ"/>
-                                            <constraint firstAttribute="height" constant="808" id="6aZ-rF-oc3"/>
+                                            <constraint firstAttribute="height" constant="558" id="6aZ-rF-oc3"/>
                                             <constraint firstItem="UkL-bT-516" firstAttribute="width" relation="greaterThanOrEqual" secondItem="dc3-38-5dv" secondAttribute="width" multiplier="0.7" constant="-110.79999999999995" id="GdK-he-vhb"/>
                                             <constraint firstItem="J88-wb-oYg" firstAttribute="top" secondItem="JoN-Hx-gUX" secondAttribute="bottom" constant="8" id="PDw-2x-zD3"/>
                                             <constraint firstAttribute="trailing" secondItem="JoN-Hx-gUX" secondAttribute="trailing" constant="16" id="SGM-oB-pro"/>
