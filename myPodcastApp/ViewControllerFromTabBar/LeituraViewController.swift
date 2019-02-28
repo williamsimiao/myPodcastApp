@@ -109,18 +109,18 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         let senderStar = sender as! UIButton
         let index: Int
         switch senderStar {
-        case self.star1:
-            index = 1
-        case self.star2:
-            index = 2
-        case self.star3:
-            index = 3
-        case self.star4:
-            index = 4
-        case self.star5:
-            index = 5
-        default:
-            return
+            case self.star1:
+                index = 1
+            case self.star2:
+                index = 2
+            case self.star3:
+                index = 3
+            case self.star4:
+                index = 4
+            case self.star5:
+                index = 5
+            default:
+                return
         }
         //Coloring until the taped one
         for i in 0..<index {
@@ -133,6 +133,4 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
             currentStar.setImage(UIImage(named: "starBigBlanck"), for: UIControl.State.normal)
         }
     }
-    
-
 }

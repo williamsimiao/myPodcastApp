@@ -36,4 +36,9 @@ class CustomCell: UITableViewCell {
         self.authorLabel.textColor = .white
         self.coverImg.layer.borderColor = UIColor.white.cgColor
     }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.goBackToOriginalColors()
+
+    }
 }

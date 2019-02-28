@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/Cadastro/CadastroViewController.swift"
-            timestampString = "573056128.021426"
+            timestampString = "573062129.233956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/Cadastro/CadastroViewController.swift"
-            timestampString = "573056128.022705"
+            timestampString = "573062129.234556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "389"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/Cadastro/CadastroViewController.swift"
-            timestampString = "573056128.023564"
+            timestampString = "573062129.235006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "351"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/Cadastro/CadastroViewController.swift"
-            timestampString = "573056128.0242521"
+            timestampString = "573062129.235437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
@@ -166,11 +166,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/TabBarViewController.swift"
-            timestampString = "573056128.026132"
+            timestampString = "573062129.236251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -179,14 +179,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "myPodcastApp.TabBarViewController.setMiniPlayerBottomConstraint() -&gt; ()"
                   moduleName = "myPodcastApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/TabBarViewController.swift"
-                  timestampString = "573056128.324766"
+                  timestampString = "573059227.006485"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "36"
@@ -194,14 +194,14 @@
                   offsetFromSymbolStart = "686">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 () -&gt; () in myPodcastApp.TabBarViewController.setMiniPlayerBottomConstraint() -&gt; ()"
                   moduleName = "myPodcastApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/TabBarViewController.swift"
-                  timestampString = "573056128.3271019"
+                  timestampString = "573059227.00876"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
