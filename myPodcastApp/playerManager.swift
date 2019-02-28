@@ -136,7 +136,6 @@ class playerManager {
         
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
         let episodeLink = episodeDictionary[link.rawValue] as? String
-
         do {
             newEpisodeAVItem = try getAVItem(ForEpisodeLink: episodeLink)
         } catch AppError.urlKeyError {
