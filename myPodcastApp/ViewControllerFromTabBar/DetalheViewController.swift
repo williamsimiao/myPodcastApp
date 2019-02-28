@@ -126,10 +126,11 @@ class DetalheViewController: InheritanceViewController {
             let resumo = (detailsEpisode!["resumo_10"] as! String)
             textView.text = resumo
             if resumo == "" {
-//                textView.text = exempleText
+                resumoView.isHidden = false
+                textView.text = exempleText
             }
             else {
-                resumoView.isHidden = false
+//                resumoView.isHidden = false
             }
         }
         else {
