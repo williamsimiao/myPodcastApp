@@ -44,6 +44,12 @@ class MiniPlayerViewController: UIViewController {
 
     }
     
+    
+    @IBAction func clickClose(_ sender: Any) {
+        playerManager.shared.player?.pause()
+        self.contentView.isHidden = true
+    }
+    
     func changeButtonState(to state:playButtonStates) {
         if state != self.currentPlayButtonState {
             if state == .pause {
@@ -79,6 +85,7 @@ extension MiniPlayerViewController {
             changeButtonState(to: .play)
         }
     }
+    
 }
 
 // MARK: - Player dataSource
@@ -99,6 +106,7 @@ extension MiniPlayerViewController {
     }
     
     @objc func onEpisodeDidChange(_ notification: Notification) {
+        self.contentView.isHidden = false
         let title = playerManager.shared.getEpisodeTitle()
         let imageURL = playerManager.shared.getEpisodeCoverImgUrl()
         Network.setCoverImgWithPlaceHolder(imageUrl: imageURL, theImage: self.coverImg)

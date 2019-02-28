@@ -625,14 +625,14 @@ concluir essa leitura!</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-yz-sd5">
-                                <rect key="frame" x="5" y="5" width="44" height="44"/>
+                                <rect key="frame" x="35" y="5" width="44" height="44"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZiE-yz-sd5" secondAttribute="height" multiplier="1:1" id="mYb-P2-wHG"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-fF-k0X">
-                                <rect key="frame" x="63" y="17" width="285" height="20"/>
+                                <rect key="frame" x="93" y="17" width="255" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -641,22 +641,36 @@ concluir essa leitura!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
                                 <color key="progressTintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tB-9h-bFL">
+                                <rect key="frame" x="8" y="10" width="19" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="Fnj-Rb-m5T"/>
+                                    <constraint firstAttribute="height" constant="43" id="rpI-sJ-lTo"/>
+                                </constraints>
+                                <state key="normal" image="chevron"/>
+                                <connections>
+                                    <action selector="clickClose:" destination="3ii-sc-2q9" eventType="touchUpInside" id="aSo-NP-O5t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="RMh-57-LlP" firstAttribute="bottom" secondItem="8tB-9h-bFL" secondAttribute="bottom" constant="1" id="7B2-BN-82X"/>
                             <constraint firstItem="ZiE-yz-sd5" firstAttribute="top" secondItem="I2q-Bg-fyC" secondAttribute="top" constant="5" id="8qB-gz-raz"/>
                             <constraint firstItem="8Yt-a1-CRK" firstAttribute="top" secondItem="I2q-Bg-fyC" secondAttribute="top" id="HHC-ur-wX8"/>
                             <constraint firstAttribute="trailing" secondItem="8Yt-a1-CRK" secondAttribute="trailing" id="KQg-DB-BGH"/>
+                            <constraint firstItem="8tB-9h-bFL" firstAttribute="leading" secondItem="RMh-57-LlP" secondAttribute="leading" constant="8" id="RQX-M2-WPS"/>
                             <constraint firstItem="RMh-57-LlP" firstAttribute="trailing" secondItem="qyx-VU-iM0" secondAttribute="trailing" constant="16" id="Rag-t2-D84"/>
                             <constraint firstItem="qyx-VU-iM0" firstAttribute="leading" secondItem="ssT-fF-k0X" secondAttribute="trailing" constant="15" id="V8F-Xt-Lx6"/>
                             <constraint firstItem="ZiE-yz-sd5" firstAttribute="centerY" secondItem="I2q-Bg-fyC" secondAttribute="centerY" id="arl-Ry-Xun"/>
                             <constraint firstItem="ssT-fF-k0X" firstAttribute="centerY" secondItem="I2q-Bg-fyC" secondAttribute="centerY" id="b87-ns-snK"/>
                             <constraint firstItem="8Yt-a1-CRK" firstAttribute="leading" secondItem="I2q-Bg-fyC" secondAttribute="leading" id="cSF-Do-ncU"/>
                             <constraint firstItem="ssT-fF-k0X" firstAttribute="leading" secondItem="ZiE-yz-sd5" secondAttribute="trailing" constant="14" id="dKh-hk-iVG"/>
-                            <constraint firstItem="ZiE-yz-sd5" firstAttribute="leading" secondItem="RMh-57-LlP" secondAttribute="leading" constant="5" id="nu0-1r-pbC"/>
                             <constraint firstAttribute="bottom" secondItem="ZiE-yz-sd5" secondAttribute="bottom" constant="5" id="qoP-cv-J1M"/>
+                            <constraint firstItem="8tB-9h-bFL" firstAttribute="top" secondItem="8Yt-a1-CRK" secondAttribute="bottom" constant="8" symbolic="YES" id="qvv-Vg-i1L"/>
                             <constraint firstItem="qyx-VU-iM0" firstAttribute="centerY" secondItem="I2q-Bg-fyC" secondAttribute="centerY" id="uY9-Oc-43G"/>
+                            <constraint firstItem="ZiE-yz-sd5" firstAttribute="leading" secondItem="8tB-9h-bFL" secondAttribute="trailing" constant="8" id="vWp-Pe-Ub7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RMh-57-LlP"/>
                         <connections>
