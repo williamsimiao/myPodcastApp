@@ -126,13 +126,14 @@ class DetalheViewController: InheritanceViewController {
             let resumo = (detailsEpisode!["resumo_10"] as! String)
             textView.text = resumo
             if resumo == "" {
-//                resumoView.isUserInteractionEnabled = false
-                textView.text = exempleText
+//                textView.text = exempleText
+            }
+            else {
+                resumoView.isHidden = false
             }
         }
         else {
-            
-            AppService.util.alert("Erro no Login", message: error_msg!)
+            AppService.util.alert("Erro na Detail", message: error_msg!)
         }
     }
 
