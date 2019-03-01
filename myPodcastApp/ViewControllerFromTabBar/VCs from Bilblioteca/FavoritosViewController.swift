@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoritosViewController: UIViewController {
+    let realm = try! Realm()
+    lazy var resumos: Results<Resumo> = { self.realm.objects(Resumo.self) }()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -26,11 +29,18 @@ class FavoritosViewController: UIViewController {
 //TableView
 extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return resumos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        
+        
+        
+//        let resumo = resumos[indexPath.row]
+//
+//        cell.titleLabel.text = resumo.titulo
+//        cell.authorLabel.text = resumo.
         return cell
     }
 }

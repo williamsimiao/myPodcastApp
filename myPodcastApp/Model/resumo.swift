@@ -17,7 +17,7 @@ class Resumo: Object {
     @objc dynamic var url_podcast_40_p = ""
     @objc dynamic var url_podcast_40_f = ""
     @objc dynamic var resumo_10 = ""
-    @objc dynamic var favoritado = false
-    @objc dynamic var downloaded = false
-    @objc dynamic var concluido = false
+    @objc dynamic var favoritado = true
+    @objc dynamic var downloaded = true
+    @objc dynamic var concluido = true
 }

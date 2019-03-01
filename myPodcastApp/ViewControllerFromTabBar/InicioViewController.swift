@@ -56,6 +56,9 @@ class InicioViewController: InheritanceViewController {
                         newResumo.url_podcast_40_p = episode["url_podcast_40_p"] as! String
                     }
                     
+//                    let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
+//                    newResumo. = Util.joinStringWithSeparator(authorsList:
+                    
                     realm.add(newResumo)
                 }
                 resumos = realm.objects(Resumo.self)

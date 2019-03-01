@@ -20,6 +20,9 @@ class BibliotecaViewController: InheritanceViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var contentView: UIView!
     
+    var size = CGSize(width: 2, height: 29)
+    var lineWidth: CGFloat = 2
+
     var currentViewController: UIViewController?
     lazy var favoritosVC: UIViewController? = {
         let favoritosVC = self.storyboard?.instantiateViewController(withIdentifier: "FavoritosViewController")
@@ -38,10 +41,11 @@ class BibliotecaViewController: InheritanceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        segmentControl.initUI()
         segmentControl.selectedSegmentIndex = TabIndex.favoritos.rawValue
         displayCurrentTab(TabIndex.favoritos.rawValue)
-
+        
+        segmentControl.setBackgroundImage(background(color: .black), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
+        segmentControl.setDividerImage(divider(leftColor: ColorWeel().orangeColor, rightColor: .black), forLeftSegmentState: UIControl.State.focused, rightSegmentState: UIControl.State.normal, barMetrics: UIBarMetrics.default)
     }
 
     
@@ -80,6 +84,19 @@ class BibliotecaViewController: InheritanceViewController {
         
         displayCurrentTab((sender as AnyObject).selectedSegmentIndex)
         
+    }
+    
+    func background(color: UIColor) -> UIImage? {
+        return UIImage.render(size: size) {
+            color.setFill()
+            UIRectFill(CGRect(x: 0, y: size.height-lineWidth, width: size.width, height: lineWidth))
+        }
+    }
+    
+    func divider(leftColor: UIColor, rightColor: UIColor) -> UIImage? {
+        return UIImage.render(size: size) {
+            UIColor.clear.setFill()
+        }
     }
     
 }

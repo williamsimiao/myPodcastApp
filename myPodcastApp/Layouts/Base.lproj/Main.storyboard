@@ -28,6 +28,7 @@
                                             <segment title="Second"/>
                                             <segment title=""/>
                                         </segments>
+                                        <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="switchSegment:" destination="gIU-ch-xKk" eventType="valueChanged" id="AaE-4g-wsn"/>
                                         </connections>
