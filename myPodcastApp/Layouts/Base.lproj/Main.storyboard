@@ -20,7 +20,23 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVp-hh-bYQ" userLabel="resizable">
                                 <rect key="frame" x="0.0" y="20" width="414" height="667"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fXV-IO-wDW">
+                                        <rect key="frame" x="24" y="0.0" width="366" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                            <segment title=""/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fXV-IO-wDW" secondAttribute="trailing" constant="24" id="ALl-U3-Dyn"/>
+                                    <constraint firstItem="fXV-IO-wDW" firstAttribute="top" secondItem="PVp-hh-bYQ" secondAttribute="top" id="NcT-Rc-yc5"/>
+                                    <constraint firstItem="fXV-IO-wDW" firstAttribute="centerX" secondItem="PVp-hh-bYQ" secondAttribute="centerX" id="OXh-Rj-aei"/>
+                                    <constraint firstItem="fXV-IO-wDW" firstAttribute="leading" secondItem="PVp-hh-bYQ" secondAttribute="leading" constant="24" id="vwD-we-d4c"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

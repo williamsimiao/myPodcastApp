@@ -28,9 +28,11 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topMenuHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var fontSizeSlider: CustomUISlider!
     
-    let primaryDuration = 0.3
+    let primaryDuration = Double(0.3)
     let maxFontSize = Float(30)
     let minFontSize = Float(10)
+    let topMenuHeight = CGFloat(100)
+    
     var episodeTitle: String?
     var author: String?
     var resumoText: String?
@@ -40,6 +42,8 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     var starArray: [UIButton]?
 
     var textSettingsIsActive = false
+    var lightModeIsOn = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         starArray = [star1, star2, star3, star4, star5]
@@ -55,23 +59,28 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         resetNavBarMenu()
+        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
+            item.tintColor = .black
+        }
     }
     
     func setUpNavBarMenu() {
         //Hidden Menu
         topMenuView.backgroundColor = ColorWeel().darkNavBar
+
         fontSizeSlider.maximumValue = maxFontSize
         fontSizeSlider.minimumValue = minFontSize
         fontSizeSlider.value = Float((textView.font?.pointSize)!)
         
         //Navbuttons
-        textSettingsButton = UIBarButtonItem(image: UIImage(named: "textSettingsOff"),  style: .plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
+        textSettingsButton = UIBarButtonItem(image: getOppositeColorImage(),  style: .plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
         
         lightModeButton = UIBarButtonItem(image: UIImage(named: "lightMode"),  style: .plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
         
         darkModeButton = UIBarButtonItem(image: UIImage(named: "darkMode"),  style: .plain, target: self, action: #selector(LeituraViewController.clickDarkMode(_:)))
         
         self.navigationItem.setRightBarButtonItems([textSettingsButton!, lightModeButton!, darkModeButton!], animated: true)
+        
     }
     
     func resetNavBarMenu() {
@@ -80,29 +89,46 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         darkModeButton?.isHidden = true
         //TODO: Make the ajust view disapier
     }
+    
+    func getOppositeColorImage() -> UIImage {
+        if textSettingsIsActive && lightModeIsOn {
+            return UIImage(named: "textSettingsBlack")!
+        }
+        else if !textSettingsIsActive && lightModeIsOn {
+            return UIImage(named: "textSettingsWhite")!
+        }
+        else if textSettingsIsActive && !lightModeIsOn {
+            return UIImage(named: "downloadBlack")!
+        }
+        else if !textSettingsIsActive && !lightModeIsOn {
+            return UIImage(named: "textSettingsBlack")!
+        }
+        
+        //Redundancy
+        return UIImage(named: "textSettingsWhite")!
+    }
 
     @objc func clickTextSettings(_ sender: UIBarButtonItem) {
         if !textSettingsIsActive {
             textSettingsIsActive = true
-            sender.image = UIImage(named: "textSettingsOn")
-
+            sender.image = getOppositeColorImage()
             
             lightModeButton?.isHidden = false
             darkModeButton?.isHidden = false
             
             //expanding menu
-            self.navigationController?.navigationBar.barTintColor = ColorWeel().darkNavBar
-            animateTopMenuIn()
+            animateTopMenuIn(presenting: true)
 
         }
         else {
             textSettingsIsActive = false
-            sender.image = UIImage(named: "textSettingsOff")
+            sender.image = getOppositeColorImage()
 
             lightModeButton?.isHidden = true
             darkModeButton?.isHidden = true
             
-            
+            //retract menu
+            animateTopMenuIn(presenting: false)
         }
     }
     
@@ -157,12 +183,12 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         textView.changeFontSize(newSize: fontSize)
     }
     
-    func animateTopMenuIn() {
+    func animateTopMenuIn(presenting: Bool) {
         UIView.animate(withDuration: primaryDuration) {
-            self.topMenuView.isHidden = false
-            self.topMenuHeightConstraint.constant = 100
-            self.topMenuView.layoutIfNeeded() //IMPORTANT!
+            self.navigationController?.navigationBar.barTintColor = ColorWeel().darkNavBar
+            self.topMenuView.isHidden = presenting ? false : true
+            self.topMenuHeightConstraint.constant = presenting ? self.topMenuHeight : -self.topMenuHeight
+            self.view.layoutIfNeeded() //IMPORTANT!
         }
     }
-    
 }
