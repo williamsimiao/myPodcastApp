@@ -40,18 +40,8 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         starArray = [star1, star2, star3, star4, star5]
-        textSettingsButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
-        textSettingsButton!.setBackgroundImage(UIImage(named: "textSettingsOff"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
-
-        lightModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
-        lightModeButton!.setBackgroundImage(UIImage(named: "lightMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
-
-        darkModeButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LeituraViewController.clickDarkMode(_:)))
-        darkModeButton!.setBackgroundImage(UIImage(named: "darkMode"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
         
-        textSettingsButton = UIBarButtonItem.menuButton(self, action: #selector(LeituraViewController.clickTextSettings(_:)), imageName: "textSettingsOff")
-        
-//        self.navigationItem.setRightBarButtonItems([textSettingsButton!, lightModeButton!, darkModeButton!], animated: true)
+        setUpNavBarMenu()
         
         scrollView.delegate = self
         tittleLabel.text = episodeTitle
@@ -61,13 +51,23 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         textView.textAlignment = NSTextAlignment.justified
     }
     override func viewWillAppear(_ animated: Bool) {
-        resetMenuApperence()
+//        resetNavBarMenu()
     }
     
-    func resetMenuApperence() {
+    func setUpNavBarMenu() {
+        textSettingsButton = UIBarButtonItem(image: UIImage(named: "textSettingsOff"),  style: .plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
+        
+        lightModeButton = UIBarButtonItem(image: UIImage(named: "lightMode"),  style: .plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
+        
+        darkModeButton = UIBarButtonItem(image: UIImage(named: "darkMode"),  style: .plain, target: self, action: #selector(LeituraViewController.clickDarkMode(_:)))
+        
+        self.navigationItem.setRightBarButtonItems([textSettingsButton!, lightModeButton!, darkModeButton!], animated: true)
+    }
+    
+    func resetNavBarMenu() {
         textSettingsIsActive = false
-        lightModeButton?.isHidden = false
-        darkModeButton?.isHidden = false
+        lightModeButton?.isHidden = true
+        darkModeButton?.isHidden = true
         //TODO: Make the ajust view disapier
     }
 
@@ -90,13 +90,13 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func clickLightMode(_ sender: UIBarButtonItem) {
         sender.tintColor = ColorWeel().orangeColor
-        darkModeButton?.tintColor = .gray
+        darkModeButton?.tintColor = .white
         //TODO: Change text and background color
     }
     
     @objc func clickDarkMode(_ sender: UIBarButtonItem) {
         sender.tintColor = ColorWeel().orangeColor
-        lightModeButton?.tintColor = .gray
+        lightModeButton?.tintColor = .white
         //TODO: Change text and background color
     }
     
