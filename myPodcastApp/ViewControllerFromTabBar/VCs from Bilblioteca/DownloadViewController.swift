@@ -10,10 +10,16 @@ import UIKit
 
 class DownloadViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupUI() {
+        let nib = UINib(nibName: "CustomCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "cell")
     }
 }
 

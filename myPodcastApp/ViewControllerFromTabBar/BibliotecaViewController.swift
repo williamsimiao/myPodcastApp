@@ -38,8 +38,12 @@ class BibliotecaViewController: InheritanceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        segmentControl.initUI()
+        segmentControl.selectedSegmentIndex = TabIndex.favoritos.rawValue
+        displayCurrentTab(TabIndex.favoritos.rawValue)
 
     }
+
     
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
         var vc: UIViewController?
