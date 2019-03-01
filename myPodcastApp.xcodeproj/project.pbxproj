@@ -30,6 +30,7 @@
 		3D6CFD5B2229C5CF00561B16 /* ConcluidosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */; };
 		3D6CFD5E2229CE2A00561B16 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5D2229CE2A00561B16 /* resumo.swift */; };
 		3D6CFD602229DB9000561B16 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5F2229DB9000561B16 /* UIImageExtension.swift */; };
+		3D6CFD622229E36900561B16 /* UISegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD612229E36900561B16 /* UISegmentedControlExtension.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
@@ -85,6 +86,7 @@
 		3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcluidosViewController.swift; sourceTree = "<group>"; };
 		3D6CFD5D2229CE2A00561B16 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
 		3D6CFD5F2229DB9000561B16 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		3D6CFD612229E36900561B16 /* UISegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControlExtension.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeituraViewController.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				3D956BD022248EE200E20477 /* UITextViewExtension.swift */,
 				3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */,
 				3D6CFD5F2229DB9000561B16 /* UIImageExtension.swift */,
+				3D6CFD612229E36900561B16 /* UISegmentedControlExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D6CFD622229E36900561B16 /* UISegmentedControlExtension.swift in Sources */,
 				3D05B5F72202140E0056E7B9 /* Network.swift in Sources */,
 				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,

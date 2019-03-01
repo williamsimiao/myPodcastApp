@@ -222,7 +222,6 @@ extension InicioViewController {
         if self.success! {
             //Salvar
             self.tableView.reloadData()
-            populateDefaultCategories()
 
 //            AppService.util.alert("deu bom", message: "Obaaa" as! String)
             
