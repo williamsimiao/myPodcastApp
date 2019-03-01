@@ -10,14 +10,6 @@ import Foundation
 import MediaPlayer
 import UIKit
 
-extension Notification.Name {
-    static let playingStateDidChange = Notification.Name("playingStateDidChange")
-    static let episodeDidChange = Notification.Name("episodeDidChange")
-    static let playerTimeDidProgress = Notification.Name("playerTimeDidProgress")
-    static let fullPlayerShouldAppear = Notification.Name("fullPlayerShouldAppear")
-    static let playerIsSetUp = Notification.Name("playerIsSetUp")
-}
-
 protocol episodeDataSourceProtocol {
     //TODO colocar uma classe da model
     func episodeDataChangedTo(imageURL:String, title:String)

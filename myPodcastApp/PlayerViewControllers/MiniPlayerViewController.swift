@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let playingStateDidChange = Notification.Name("playingStateDidChange")
+    static let episodeDidChange = Notification.Name("episodeDidChange")
+    static let playerTimeDidProgress = Notification.Name("playerTimeDidProgress")
+    static let fullPlayerShouldAppear = Notification.Name("fullPlayerShouldAppear")
+    static let playerIsSetUp = Notification.Name("playerIsSetUp")
+    static let playerShouldClose = Notification.Name("playerShouldClose")
+}
+
 enum playButtonStates {
     case play
     case pause
@@ -41,7 +50,6 @@ class MiniPlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onFullPlayerShouldAppear(_:)), name: .fullPlayerShouldAppear, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
-
     }
     
     
