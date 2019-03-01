@@ -27,6 +27,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topMenuView: UIView!
     @IBOutlet weak var topMenuHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var fontSizeSlider: CustomUISlider!
+    @IBOutlet weak var tamanhoLabel: UILabel!
     
     let primaryDuration = Double(0.3)
     let maxFontSize = Float(30)
@@ -59,9 +60,9 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         resetNavBarMenu()
-        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
-            item.tintColor = .black
-        }
+//        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
+//            item.tintColor = .black
+//        }
     }
     
     func setUpNavBarMenu() {
@@ -98,7 +99,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
             return UIImage(named: "textSettingsWhite")!
         }
         else if textSettingsIsActive && !lightModeIsOn {
-            return UIImage(named: "downloadBlack")!
+            return UIImage(named: "textSettingsWhite")!
         }
         else if !textSettingsIsActive && !lightModeIsOn {
             return UIImage(named: "textSettingsBlack")!
@@ -184,11 +185,17 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func animateTopMenuIn(presenting: Bool) {
-        UIView.animate(withDuration: primaryDuration) {
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: [], animations: {
+            
             self.navigationController?.navigationBar.barTintColor = ColorWeel().darkNavBar
             self.topMenuView.isHidden = presenting ? false : true
             self.topMenuHeightConstraint.constant = presenting ? self.topMenuHeight : -self.topMenuHeight
             self.view.layoutIfNeeded() //IMPORTANT!
-        }
+            
+        }, completion: { (finished: Bool) in
+            self.fontSizeSlider.isHidden = presenting ? false : true
+            self.tamanhoLabel.isHidden = presenting ? false : true
+        })
+        
     }
 }

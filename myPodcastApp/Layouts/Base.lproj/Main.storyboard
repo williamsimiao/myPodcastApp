@@ -467,13 +467,13 @@ concluir essa leitura!</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyY-Xt-8yo" userLabel="topMenu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="ked-08-5Sy" customClass="CustomUISlider" customModule="myPodcastApp" customModuleProvider="target">
+                                    <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="ked-08-5Sy" customClass="CustomUISlider" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="108" y="25.333333333333343" width="292" height="31"/>
                                         <connections>
                                             <action selector="sliderChangedValue:" destination="m7C-do-6mr" eventType="valueChanged" id="Pii-KV-WJS"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tamanho" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLZ-kx-H8E">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tamanho" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLZ-kx-H8E">
                                         <rect key="frame" x="24" y="30" width="70" height="20.333333333333329"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="zQi-Dn-PEQ"/>
@@ -531,6 +531,7 @@ concluir essa leitura!</string>
                         <outlet property="star3" destination="jc8-N7-4QP" id="Ioo-it-lUC"/>
                         <outlet property="star4" destination="MbI-S8-202" id="pmP-Ak-5MV"/>
                         <outlet property="star5" destination="vr7-cR-WgV" id="3Fr-UM-wcr"/>
+                        <outlet property="tamanhoLabel" destination="tLZ-kx-H8E" id="HYA-4A-oLE"/>
                         <outlet property="textView" destination="xEF-CI-4Vm" id="jaZ-y6-iXK"/>
                         <outlet property="tittleLabel" destination="kVt-wp-SW7" id="SlI-tx-Pt6"/>
                         <outlet property="topMenuHeightConstraint" destination="bue-Cg-XGe" id="Iwu-eq-5OI"/>
