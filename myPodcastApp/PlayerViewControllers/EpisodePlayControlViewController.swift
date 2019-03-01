@@ -163,6 +163,9 @@ extension EpisodePlayControlViewController {
         
         let seconds = playerManager.shared.getEpisodeDurationInSeconds()
         self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
+        
+        slider.maximumValue = Float(seconds)
+        slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
     }
 }
 

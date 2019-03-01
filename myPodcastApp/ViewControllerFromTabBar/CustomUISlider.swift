@@ -29,11 +29,6 @@ class CustomUISlider: UISlider {
     }
     
     func commonInit() {
-        let seconds = playerManager.shared.getEpisodeDurationInSeconds()
-        self.maximumValue = Float(seconds)
-        self.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
-        
-        
     }
     
     override func trackRect(forBounds bounds: CGRect) -> CGRect {

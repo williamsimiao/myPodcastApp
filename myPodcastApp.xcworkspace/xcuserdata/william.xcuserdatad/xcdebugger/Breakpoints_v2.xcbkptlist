@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
-            timestampString = "573144089.1439691"
+            timestampString = "573148658.817243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
-            timestampString = "573144089.145068"
+            timestampString = "573148658.818152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
-            timestampString = "573144089.146143"
+            timestampString = "573148658.81859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
@@ -176,6 +176,38 @@
             startingLineNumber = "352"
             endingLineNumber = "352"
             landmarkName = "clickEmpreender(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/LeituraViewController.swift"
+            timestampString = "573149228.817652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "clickTextSettings(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/LeituraViewController.swift"
+            timestampString = "573149228.818251"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "clickTextSettings(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

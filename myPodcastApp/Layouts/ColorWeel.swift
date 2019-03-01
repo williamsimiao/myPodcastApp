@@ -12,6 +12,6 @@ import UIKit
 class ColorWeel {
     
     
-    let orangeColor = UIColor(red: 255/255.0, green: 134/255.0, blue: 51/255.0, alpha: 1.0) //orange color
-    
+    let orangeColor = UIColor(red: 255/255.0, green: 134/255.0, blue: 51/255.0, alpha: 1.0)
+    let darkNavBar = UIColor(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1.0)
 }

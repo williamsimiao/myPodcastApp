@@ -19,5 +19,10 @@ extension UITextView {
             ] as [NSAttributedString.Key : Any]
         self.attributedText = NSMutableAttributedString(string: self.text ?? "", attributes: strokeTextAttributes)
     }
+    
+    func changeFontSize(newSize : Float) {
+        self.font =  UIFont(name: (self.font?.fontName)!, size: CGFloat(newSize))
+    }
+
 
 }

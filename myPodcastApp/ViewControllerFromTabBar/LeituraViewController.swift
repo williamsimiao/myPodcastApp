@@ -9,9 +9,6 @@
 import UIKit
 
 class LeituraViewController: UIViewController, UIScrollViewDelegate {
-
-    @IBOutlet weak var parabensLabel: UILabel!
-    @IBOutlet weak var avaliarLabel: UILabel!
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -27,7 +24,13 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     
+    @IBOutlet weak var topMenuView: UIView!
+    @IBOutlet weak var topMenuHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var fontSizeSlider: CustomUISlider!
     
+    let primaryDuration = 0.3
+    let maxFontSize = Float(30)
+    let minFontSize = Float(10)
     var episodeTitle: String?
     var author: String?
     var resumoText: String?
@@ -51,10 +54,17 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         textView.textAlignment = NSTextAlignment.justified
     }
     override func viewWillAppear(_ animated: Bool) {
-//        resetNavBarMenu()
+        resetNavBarMenu()
     }
     
     func setUpNavBarMenu() {
+        //Hidden Menu
+        topMenuView.backgroundColor = ColorWeel().darkNavBar
+        fontSizeSlider.maximumValue = maxFontSize
+        fontSizeSlider.minimumValue = minFontSize
+        fontSizeSlider.value = Float((textView.font?.pointSize)!)
+        
+        //Navbuttons
         textSettingsButton = UIBarButtonItem(image: UIImage(named: "textSettingsOff"),  style: .plain, target: self, action: #selector(LeituraViewController.clickTextSettings(_:)))
         
         lightModeButton = UIBarButtonItem(image: UIImage(named: "lightMode"),  style: .plain, target: self, action: #selector(LeituraViewController.clickLightMode(_:)))
@@ -74,17 +84,25 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @objc func clickTextSettings(_ sender: UIBarButtonItem) {
         if !textSettingsIsActive {
             textSettingsIsActive = true
-            sender.setBackgroundImage(UIImage(named: "textSettingsOn"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
+            sender.image = UIImage(named: "textSettingsOn")
+
             
             lightModeButton?.isHidden = false
             darkModeButton?.isHidden = false
+            
+            //expanding menu
+            self.navigationController?.navigationBar.barTintColor = ColorWeel().darkNavBar
+            animateTopMenuIn()
+
         }
         else {
             textSettingsIsActive = false
-            sender.setBackgroundImage(UIImage(named: "textSettingsOff"), for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
-            
+            sender.image = UIImage(named: "textSettingsOff")
+
             lightModeButton?.isHidden = true
             darkModeButton?.isHidden = true
+            
+            
         }
     }
     
@@ -133,4 +151,18 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
             currentStar.setImage(UIImage(named: "starBigBlanck"), for: UIControl.State.normal)
         }
     }
+    
+    @IBAction func sliderChangedValue(_ sender: Any) {
+        let fontSize = fontSizeSlider.value
+        textView.changeFontSize(newSize: fontSize)
+    }
+    
+    func animateTopMenuIn() {
+        UIView.animate(withDuration: primaryDuration) {
+            self.topMenuView.isHidden = false
+            self.topMenuHeightConstraint.constant = 100
+            self.topMenuView.layoutIfNeeded() //IMPORTANT!
+        }
+    }
+    
 }
