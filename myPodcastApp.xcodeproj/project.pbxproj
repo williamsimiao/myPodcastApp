@@ -26,6 +26,9 @@
 		3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682F2211AEE900E89FF4 /* AppConfig.swift */; };
 		3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868322211DBEE00E89FF4 /* resumo.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
+		3D6CFD572229C5B000561B16 /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD562229C5B000561B16 /* FavoritosViewController.swift */; };
+		3D6CFD592229C5C000561B16 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD582229C5C000561B16 /* DownloadViewController.swift */; };
+		3D6CFD5B2229C5CF00561B16 /* ConcluidosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
@@ -77,6 +80,9 @@
 		3D38682F2211AEE900E89FF4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		3D3868322211DBEE00E89FF4 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		3D6CFD562229C5B000561B16 /* FavoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
+		3D6CFD582229C5C000561B16 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcluidosViewController.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeituraViewController.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
+				3D6CFD5C2229C5DC00561B16 /* VCs from Bilblioteca */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -182,6 +189,16 @@
 				3DD43F372225B26F00017B3E /* RecuperarViewController.swift */,
 			);
 			path = Cadastro;
+			sourceTree = "<group>";
+		};
+		3D6CFD5C2229C5DC00561B16 /* VCs from Bilblioteca */ = {
+			isa = PBXGroup;
+			children = (
+				3D6CFD562229C5B000561B16 /* FavoritosViewController.swift */,
+				3D6CFD582229C5C000561B16 /* DownloadViewController.swift */,
+				3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */,
+			);
+			path = "VCs from Bilblioteca";
 			sourceTree = "<group>";
 		};
 		3D9514B321F5EDA7004960CE = {
@@ -429,10 +446,12 @@
 				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
 				3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */,
+				3D6CFD572229C5B000561B16 /* FavoritosViewController.swift in Sources */,
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DD43F36222585E100017B3E /* TermosViewController.swift in Sources */,
 				3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */,
+				3D6CFD5B2229C5CF00561B16 /* ConcluidosViewController.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,
 				3DF5F6882217275400F6BA33 /* epidodeContentRightView.swift in Sources */,
@@ -462,6 +481,7 @@
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
 				3D123A152215CC9D009A8E57 /* ColorWeel.swift in Sources */,
 				3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */,
+				3D6CFD592229C5C000561B16 /* DownloadViewController.swift in Sources */,
 				3DF98161221DF7CA0052EC16 /* CustomUISlider.swift in Sources */,
 				3DD43F3A2225C26400017B3E /* LoginTextField.swift in Sources */,
 			);

@@ -28,13 +28,24 @@
                                             <segment title="Second"/>
                                             <segment title=""/>
                                         </segments>
+                                        <connections>
+                                            <action selector="switchSegment:" destination="gIU-ch-xKk" eventType="valueChanged" id="AaE-4g-wsn"/>
+                                        </connections>
                                     </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVl-g2-bRM">
+                                        <rect key="frame" x="0.0" y="36" width="414" height="631"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fXV-IO-wDW" secondAttribute="trailing" constant="24" id="ALl-U3-Dyn"/>
+                                    <constraint firstItem="kVl-g2-bRM" firstAttribute="leading" secondItem="PVp-hh-bYQ" secondAttribute="leading" id="GWN-ek-AKg"/>
                                     <constraint firstItem="fXV-IO-wDW" firstAttribute="top" secondItem="PVp-hh-bYQ" secondAttribute="top" id="NcT-Rc-yc5"/>
                                     <constraint firstItem="fXV-IO-wDW" firstAttribute="centerX" secondItem="PVp-hh-bYQ" secondAttribute="centerX" id="OXh-Rj-aei"/>
+                                    <constraint firstItem="kVl-g2-bRM" firstAttribute="top" secondItem="fXV-IO-wDW" secondAttribute="bottom" constant="8" id="esI-xC-Lbw"/>
+                                    <constraint firstAttribute="bottom" secondItem="kVl-g2-bRM" secondAttribute="bottom" id="jBw-aV-Vdj"/>
+                                    <constraint firstAttribute="trailing" secondItem="kVl-g2-bRM" secondAttribute="trailing" id="sAc-t6-teS"/>
                                     <constraint firstItem="fXV-IO-wDW" firstAttribute="leading" secondItem="PVp-hh-bYQ" secondAttribute="leading" constant="24" id="vwD-we-d4c"/>
                                 </constraints>
                             </view>
@@ -49,10 +60,15 @@
                         <viewLayoutGuide key="safeArea" id="oIK-wd-AR1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sua Biblioteca" image="biblioteca" id="daf-Vc-okE"/>
+                    <connections>
+                        <outlet property="contentView" destination="kVl-g2-bRM" id="W5y-hC-EKl"/>
+                        <outlet property="resizableView" destination="PVp-hh-bYQ" id="Yue-w2-aqE"/>
+                        <outlet property="segmentControl" destination="fXV-IO-wDW" id="sEP-3b-pbW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lD-1e-Xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="332.74647887323943"/>
+            <point key="canvasLocation" x="6353.6231884057979" y="284.51086956521743"/>
         </scene>
         <!--Notification-->
         <scene sceneID="naS-Te-ujt">
@@ -579,6 +595,99 @@ concluir essa leitura!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvi-JN-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5578" y="-412"/>
+        </scene>
+        <!--Downloads-->
+        <scene sceneID="KvY-o7-C2m">
+            <objects>
+                <viewController storyboardIdentifier="DownloadViewController" title="Downloads" id="cXi-wf-htZ" customClass="DownloadViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pyp-Tn-DPr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="12L-US-idT">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cXi-wf-htZ" id="Kbz-jv-Jmr"/>
+                                    <outlet property="delegate" destination="cXi-wf-htZ" id="qbF-HL-n7q"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="12L-US-idT" firstAttribute="leading" secondItem="K5f-t1-grH" secondAttribute="leading" id="9wU-jb-67t"/>
+                            <constraint firstItem="12L-US-idT" firstAttribute="top" secondItem="K5f-t1-grH" secondAttribute="top" id="oWV-j5-6Ni"/>
+                            <constraint firstItem="12L-US-idT" firstAttribute="trailing" secondItem="K5f-t1-grH" secondAttribute="trailing" id="p9T-cg-xj2"/>
+                            <constraint firstItem="12L-US-idT" firstAttribute="bottom" secondItem="K5f-t1-grH" secondAttribute="bottom" id="uaC-fU-mpO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="K5f-t1-grH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ovD-uh-gYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7283" y="-541"/>
+        </scene>
+        <!--concluidos-->
+        <scene sceneID="6yJ-KT-HCi">
+            <objects>
+                <viewController storyboardIdentifier="ConcluidosViewController" title="concluidos" id="cgp-Tf-KGG" customClass="ConcluidosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Ld-ie-lD2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCQ-hu-Xe2">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cgp-Tf-KGG" id="vwd-rL-aMx"/>
+                                    <outlet property="delegate" destination="cgp-Tf-KGG" id="re7-9o-6BW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lCQ-hu-Xe2" firstAttribute="trailing" secondItem="6wL-AN-G87" secondAttribute="trailing" id="1j0-PR-5wu"/>
+                            <constraint firstItem="lCQ-hu-Xe2" firstAttribute="bottom" secondItem="6wL-AN-G87" secondAttribute="bottom" id="82n-lH-DpZ"/>
+                            <constraint firstItem="lCQ-hu-Xe2" firstAttribute="leading" secondItem="6wL-AN-G87" secondAttribute="leading" id="e2h-HX-Oe0"/>
+                            <constraint firstItem="lCQ-hu-Xe2" firstAttribute="top" secondItem="6wL-AN-G87" secondAttribute="top" id="e9d-Lh-GMW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6wL-AN-G87"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8q-KB-fwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7283" y="-1213"/>
+        </scene>
+        <!--Favoritos-->
+        <scene sceneID="KjQ-9H-tVb">
+            <objects>
+                <viewController storyboardIdentifier="FavoritosViewController" title="Favoritos" id="fkp-Yo-DFF" customClass="FavoritosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c3d-87-kOP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-Zs-1ni">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fkp-Yo-DFF" id="iEB-oS-0ml"/>
+                                    <outlet property="delegate" destination="fkp-Yo-DFF" id="Lb0-FE-W8L"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7ve-Zs-1ni" firstAttribute="top" secondItem="xKV-IS-ugs" secondAttribute="top" id="054-ZH-RQX"/>
+                            <constraint firstItem="7ve-Zs-1ni" firstAttribute="bottom" secondItem="xKV-IS-ugs" secondAttribute="bottom" id="IC7-f8-R0x"/>
+                            <constraint firstItem="7ve-Zs-1ni" firstAttribute="trailing" secondItem="xKV-IS-ugs" secondAttribute="trailing" id="mav-AZ-Ez4"/>
+                            <constraint firstItem="7ve-Zs-1ni" firstAttribute="leading" secondItem="xKV-IS-ugs" secondAttribute="leading" id="xOy-98-sr5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xKV-IS-ugs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PKO-qP-OeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7284" y="157"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
