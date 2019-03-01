@@ -9,12 +9,14 @@
 import Foundation
 import RealmSwift
 
-class Specimen: Object {
-    @objc dynamic var name = ""
-    @objc dynamic var author = ""
-    @objc dynamic var audio_free_url = ""
-    @objc dynamic var audio_premium_40_url = ""
-    @objc dynamic var audio_premium_10_url = ""
+class Resumo: Object {
+    @objc dynamic var cod_resumo = ""
+    @objc dynamic var titulo = ""
+    @objc dynamic var subtitulo = ""
+    @objc dynamic var url_podcast_10 = ""
+    @objc dynamic var url_podcast_40_p = ""
+    @objc dynamic var url_podcast_40_f = ""
+    @objc dynamic var resumo_10 = ""
     @objc dynamic var favoritado = false
     @objc dynamic var downloaded = false
     @objc dynamic var concluido = false

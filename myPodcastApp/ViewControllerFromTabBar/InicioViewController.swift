@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class InicioViewController: InheritanceViewController {
   
@@ -18,6 +19,10 @@ class InicioViewController: InheritanceViewController {
     var selectedEpisode : [String: AnyObject]?
     var selectedEpisodeImage : UIImage?
     var episodesArray :[[String:AnyObject]]?
+    
+    let realm = try! Realm()
+    lazy var resumos: Results<Resumo> = { self.realm.objects(Resumo.self) }()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resizableView: UIView!
     @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
@@ -32,6 +37,32 @@ class InicioViewController: InheritanceViewController {
         //getting Data
         makeResquest()
     }
+    
+    private func populateDefaultCategories() {
+        if resumos.count == 0 {
+            try! realm.write() {
+                for episode in episodesArray! {
+                    let newResumo = Resumo()
+                    newResumo.cod_resumo = episode["cod_resumo"] as! String
+                    newResumo.titulo = episode["titulo"] as! String
+                    
+                    if (Util.nullToNil(value: episode["url_podcast_10"]) != nil) {
+                        newResumo.url_podcast_10 = episode["url_podcast_10"] as! String
+                    }
+                    if (Util.nullToNil(value: episode["url_podcast_40_f"]) != nil) {
+                        newResumo.url_podcast_40_f = episode["url_podcast_40_f"] as! String
+                    }
+                    if (Util.nullToNil(value: episode["url_podcast_40_p"]) != nil) {
+                        newResumo.url_podcast_40_p = episode["url_podcast_40_p"] as! String
+                    }
+                    
+                    realm.add(newResumo)
+                }
+                resumos = realm.objects(Resumo.self)
+            }
+        }
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -188,6 +219,8 @@ extension InicioViewController {
         if self.success! {
             //Salvar
             self.tableView.reloadData()
+            populateDefaultCategories()
+
 //            AppService.util.alert("deu bom", message: "Obaaa" as! String)
             
         }
