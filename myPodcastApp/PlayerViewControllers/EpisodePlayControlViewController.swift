@@ -112,17 +112,6 @@ class EpisodePlayControlViewController: UIViewController {
     }
 }
 
-// MARK: - Song Extension
-extension Resumo {
-    
-//    var presentationTime: String {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "mm:ss"
-//        let date = Date(timeIntervalSince1970: duration)
-//        return formatter.string(from: date)
-//    }
-}
-
 // MARK: - Player dataSource
 extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
