@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-//import RealmSwift
+import RealmSwift
 
 public struct AppService {
     static let server   = AppServer()
@@ -16,10 +16,10 @@ public struct AppService {
     static let util     = AppUtil()
     //static let template = AppTemplate()
     
-    /*static func realm() -> Realm {
-     let config = Realm.Configuration(schemaVersion: 15)
-     let realm = try! Realm(configuration: config)
-     return realm
-     }*/
+    static func realm() -> Realm {
+        let config = Realm.Configuration(schemaVersion: 3)
+        let realm = try! Realm(configuration: config)
+        return realm
+    }
     
 }

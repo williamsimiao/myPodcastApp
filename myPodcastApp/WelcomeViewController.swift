@@ -9,7 +9,7 @@
 import UIKit
 
 class WelcomeViewController: UIViewController, UIScrollViewDelegate {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var groundButtom: UIButton!
@@ -50,12 +50,12 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
         slide4.imageView.image = UIImage(named: "personagem4")
         slide4.descriptionLabel.text = "E ainda tem os nossos podcasts"
         slide4.detailsLabel.text = "Aprenda sobre diversos assuntos enquanto você está no transito, na academia ou em qualquer outra atividade e o melhor, sem conexão com a internet."
-
+        
         return [slide1, slide2, slide3, slide4]
     }
     
     func setupSlideScrollView(slides : [SlideView]) {
-//        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.8)
+        //        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.8)
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(slides.count), height: scrollView.frame.height)
         
         scrollView.isPagingEnabled = true
@@ -81,5 +81,5 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
         self.performSegue(withIdentifier: "goto_main", sender: self)
     }
     
-
+    
 }

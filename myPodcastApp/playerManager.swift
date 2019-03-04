@@ -18,7 +18,7 @@ protocol episodeDataSourceProtocol {
 class playerManager {
     //TODO TODO TODO remove this
     var miniContainerFrameHight: CGFloat?
-
+    
     var player : AVPlayer?
     var isSet = false
     var timeObserverToken: Any?
@@ -39,7 +39,7 @@ class playerManager {
         self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
             if self!.getIsPlaying() {
                 let currentTime = CMTimeGetSeconds((self!.player?.currentItem?.currentTime())!)
-
+                
                 NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime])
             }
         }
@@ -53,6 +53,13 @@ class playerManager {
     }
     
     //MARK - Getters
+    
+    func getEpisodeCodigo() -> String {
+        guard let episodeCodigo = self.currentEpisodeDict["cod_resumo"] else {
+            return "-"
+        }
+        return episodeCodigo as! String
+    }
     
     func getEpisodeTitle() -> String {
         guard let episodeTitle = self.currentEpisodeDict["titulo"] else {
@@ -83,7 +90,7 @@ class playerManager {
         }
         return playerRate != 0
     }
-
+    
     func getIsPlaying() -> Bool {
         guard let status = self.player?.timeControlStatus else {
             return false
@@ -144,7 +151,7 @@ class playerManager {
         if playerManager.shared.getPlayerIsSet() {
             let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
             let newEpisodeId = episodeDictionary["cod_resumo"] as! String
-
+            
             if (currentEpisodeId != newEpisodeId) || (currentLinkType != link) {
                 self.player?.pause()
                 self.player?.replaceCurrentItem(with: newEpisodeAVItem)
@@ -159,7 +166,7 @@ class playerManager {
         self.currentEpisodeDict = episodeDictionary
         changeUIForEpisode()
         playPause(shouldPlay: true)
-
+        
     }
     
     func getAVItem(ForEpisodeLink episodeLink:String?) throws -> AVPlayerItem{
@@ -179,6 +186,7 @@ class playerManager {
         //Seting ControlCenter UI
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
             return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["url_imagem"] as! String)
+            //return AppService.util.get_image_resumo(cod_resumo: self.currentEpisodeDict["cod_resumo"] as! String)
         }
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : self.getEpisodeTitle(), MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
@@ -198,7 +206,7 @@ class playerManager {
             self.player?.pause()
         }
         NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": shouldPlay])
-
+        
     }
     
     func rewind() {
@@ -227,6 +235,6 @@ class playerManager {
     }
     
     func getNextInQueue() -> [String:AnyObject] {
-         return self.episodesQueue.removeFirst()
+        return self.episodesQueue.removeFirst()
     }
 }

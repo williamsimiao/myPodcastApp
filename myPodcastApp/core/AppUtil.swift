@@ -117,12 +117,12 @@ open class AppUtil {
         return (isReachable && !needsConnection)
     }
     
-    func load_image_usuario(_ link:String, imageview:UIImageView) {
+    func load_image_usuario(_ link:String, cod_usuario:String, imageview:UIImageView) {
         
         // verificar se image jah existe
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
         
-        let filePath = documentsPath + "/usuario_60_" + link;
+        let filePath = documentsPath + "/usuario_200_" + cod_usuario;
         
         let fileManager = FileManager.default
         
@@ -136,7 +136,7 @@ open class AppUtil {
             
         } else {
             
-            let url_foto:String = AppConfig.urlBaseThumb + "src=/images/" + link + "&w=120&h=120&zc=1"
+            let url_foto:String = link
             
             print(url_foto)
             
@@ -245,12 +245,12 @@ open class AppUtil {
         
     }
     
-    func load_image_empresa(_ link:String, cod_empresa:String, imageview:UIImageView) {
+    func load_image_resumo(_ link:String, cod_resumo:String, imageview:UIImageView) {
         
         // verificar se image jah existe
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
         
-        let filePath = documentsPath + "/empresa_" + cod_empresa + "_150";
+        let filePath = documentsPath + "/resumo_" + cod_resumo + "_70";
         
         let fileManager = FileManager.default
         
@@ -309,6 +309,34 @@ open class AppUtil {
         
     }
     
+    func get_image_resumo(cod_resumo:String) -> UIImage {
+        
+        var image:UIImage!
+        
+        // verificar se image jah existe
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
+        
+        let filePath = documentsPath + "/resumo_" + cod_resumo + "_70";
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: filePath) {
+            
+            do {
+                
+                image = UIImage(contentsOfFile: filePath)
+                
+            }
+            
+        } else {
+            
+            image = UIImage(named: "cover_placeholder")!
+            
+        }
+        
+        return image
+    }
+    
     func removeUserDataFromUserDefaults() {
         let prefs:UserDefaults = UserDefaults.standard
         prefs.removeObject(forKey: "cod_usuario")
@@ -322,6 +350,7 @@ open class AppUtil {
         prefs.removeObject(forKey: "dat_nascimento")
         prefs.set(0, forKey: "isLogado")
 
+        prefs.synchronize()
     }
     
     func putuserDataOnUserDefaults(usuario:NSDictionary) {
@@ -354,6 +383,13 @@ open class AppUtil {
         
         prefs.set(1, forKey: "isLogado")
         prefs.synchronize()
+    }
+    
+    func populateString(_ text: AnyObject?) -> String {
+        if let text = text as? String {
+            return text.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return ""
     }
     
 }

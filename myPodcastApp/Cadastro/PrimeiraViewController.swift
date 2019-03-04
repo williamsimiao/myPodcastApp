@@ -33,11 +33,14 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupLayout()
+        
     }
     
     func setupLayout() {
         loading.isHidden = true
+        
         let radius = CGFloat(22.5)
         btnFacebook.layer.cornerRadius = radius
         btnFacebook.clipsToBounds = true
@@ -88,7 +91,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginFacebook() {
         
-        var num_id_ios:String = ""
+        let num_id_ios:String = ""
         
         if !AppService.util.isConnectedToNetwork() {
             AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
@@ -255,16 +258,18 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
                 {
                     print("fetched user: \(String(describing: result))")
                     
-                    self.id_facebook = data["id"] as! String
-                    self.name = data["name"] as! String
-                    self.email = data["email"] as! String
+                    self.id_facebook = data["id"] as? String
+                    self.name = data["name"] as? String
+                    self.email = data["email"] as? String
                     self.gender = "" //data["gender"] as! String
                     self.birthday = ""
                     
                     let picture = data["picture"] as! [String:AnyObject]
                     let pictureData = picture["data"] as! [String:AnyObject]
                     
-                    self.url_foto = pictureData["url"] as! String
+                    self.url_foto = pictureData["url"] as? String
+                    
+                    print("foto " + self.url_foto)
                     
                     self.loginFacebook()
                 }

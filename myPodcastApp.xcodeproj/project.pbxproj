@@ -24,13 +24,8 @@
 		3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682B2211AEC000E89FF4 /* AppServer.swift */; };
 		3D38682E2211AED600E89FF4 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682D2211AED600E89FF4 /* AppService.swift */; };
 		3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682F2211AEE900E89FF4 /* AppConfig.swift */; };
+		3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868322211DBEE00E89FF4 /* resumo.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
-		3D6CFD572229C5B000561B16 /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD562229C5B000561B16 /* FavoritosViewController.swift */; };
-		3D6CFD592229C5C000561B16 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD582229C5C000561B16 /* DownloadViewController.swift */; };
-		3D6CFD5B2229C5CF00561B16 /* ConcluidosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */; };
-		3D6CFD5E2229CE2A00561B16 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5D2229CE2A00561B16 /* resumo.swift */; };
-		3D6CFD602229DB9000561B16 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD5F2229DB9000561B16 /* UIImageExtension.swift */; };
-		3D6CFD622229E36900561B16 /* UISegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6CFD612229E36900561B16 /* UISegmentedControlExtension.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
@@ -58,6 +53,13 @@
 		3DF98165221EF7840052EC16 /* SlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF98164221EF7840052EC16 /* SlideView.xib */; };
 		3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98166221EF7AB0052EC16 /* SlideView.swift */; };
 		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
+		4E7F1BB222287F3F0000F6EB /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB122287F3E0000F6EB /* banner.png */; };
+		4E7F1BB5222885EF0000F6EB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB4222885EF0000F6EB /* UIColorExtension.swift */; };
+		4E7F1BBA222C28D90000F6EB /* ConcluidosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB7222C28D90000F6EB /* ConcluidosViewController.swift */; };
+		4E7F1BBB222C28D90000F6EB /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB8222C28D90000F6EB /* DownloadViewController.swift */; };
+		4E7F1BBC222C28D90000F6EB /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB9222C28D90000F6EB /* FavoritosViewController.swift */; };
+		4E7F1BBE222C34A20000F6EB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BBD222C34A20000F6EB /* UIImageExtension.swift */; };
+		4E7F1BC0222C34DC0000F6EB /* UISegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BBF222C34DB0000F6EB /* UISegmentedControlExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,13 +82,8 @@
 		3D38682B2211AEC000E89FF4 /* AppServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServer.swift; sourceTree = "<group>"; };
 		3D38682D2211AED600E89FF4 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		3D38682F2211AEE900E89FF4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		3D3868322211DBEE00E89FF4 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		3D6CFD562229C5B000561B16 /* FavoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
-		3D6CFD582229C5C000561B16 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
-		3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcluidosViewController.swift; sourceTree = "<group>"; };
-		3D6CFD5D2229CE2A00561B16 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
-		3D6CFD5F2229DB9000561B16 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		3D6CFD612229E36900561B16 /* UISegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControlExtension.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeituraViewController.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +113,13 @@
 		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3DF98164221EF7840052EC16 /* SlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
 		3DF98166221EF7AB0052EC16 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
+		4E7F1BB122287F3E0000F6EB /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		4E7F1BB4222885EF0000F6EB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		4E7F1BB7222C28D90000F6EB /* ConcluidosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcluidosViewController.swift; sourceTree = "<group>"; };
+		4E7F1BB8222C28D90000F6EB /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		4E7F1BB9222C28D90000F6EB /* FavoritosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
+		4E7F1BBD222C34A20000F6EB /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		4E7F1BBF222C34DB0000F6EB /* UISegmentedControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControlExtension.swift; sourceTree = "<group>"; };
 		F6E40D0697E1BB5535F86B83 /* Pods-myPodcastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myPodcastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +146,7 @@
 		3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				4E7F1BB6222C28C90000F6EB /* VCs from Bilblioteca */,
 				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
 				3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */,
 				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
@@ -151,7 +156,6 @@
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
-				3D6CFD5C2229C5DC00561B16 /* VCs from Bilblioteca */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -195,16 +199,6 @@
 			path = Cadastro;
 			sourceTree = "<group>";
 		};
-		3D6CFD5C2229C5DC00561B16 /* VCs from Bilblioteca */ = {
-			isa = PBXGroup;
-			children = (
-				3D6CFD562229C5B000561B16 /* FavoritosViewController.swift */,
-				3D6CFD582229C5C000561B16 /* DownloadViewController.swift */,
-				3D6CFD5A2229C5CE00561B16 /* ConcluidosViewController.swift */,
-			);
-			path = "VCs from Bilblioteca";
-			sourceTree = "<group>";
-		};
 		3D9514B321F5EDA7004960CE = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +220,8 @@
 		3D9514BE21F5EDA7004960CE /* myPodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E7F1BB3222885900000F6EB /* extension */,
+				4E7F1BB022287F310000F6EB /* images */,
 				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
 				3DC1C207220200BE009080EF /* Model */,
 				3D3868262211AE5C00E89FF4 /* core */,
@@ -250,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */,
-				3D6CFD5D2229CE2A00561B16 /* resumo.swift */,
+				3D3868322211DBEE00E89FF4 /* resumo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,8 +258,6 @@
 				3DD2346922049FB1003C940F /* UIViewExtension.swift */,
 				3D956BD022248EE200E20477 /* UITextViewExtension.swift */,
 				3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */,
-				3D6CFD5F2229DB9000561B16 /* UIImageExtension.swift */,
-				3D6CFD612229E36900561B16 /* UISegmentedControlExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -286,6 +280,34 @@
 				3DF98166221EF7AB0052EC16 /* SlideView.swift */,
 			);
 			path = "custom with xib";
+			sourceTree = "<group>";
+		};
+		4E7F1BB022287F310000F6EB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4E7F1BB122287F3E0000F6EB /* banner.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		4E7F1BB3222885900000F6EB /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				4E7F1BBF222C34DB0000F6EB /* UISegmentedControlExtension.swift */,
+				4E7F1BBD222C34A20000F6EB /* UIImageExtension.swift */,
+				4E7F1BB4222885EF0000F6EB /* UIColorExtension.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		4E7F1BB6222C28C90000F6EB /* VCs from Bilblioteca */ = {
+			isa = PBXGroup;
+			children = (
+				4E7F1BB7222C28D90000F6EB /* ConcluidosViewController.swift */,
+				4E7F1BB8222C28D90000F6EB /* DownloadViewController.swift */,
+				4E7F1BB9222C28D90000F6EB /* FavoritosViewController.swift */,
+			);
+			path = "VCs from Bilblioteca";
 			sourceTree = "<group>";
 		};
 		C9512E9ACEBDD135EE35FABD /* Pods */ = {
@@ -365,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E7F1BB222287F3F0000F6EB /* banner.png in Resources */,
 				3DF98165221EF7840052EC16 /* SlideView.xib in Resources */,
 				3D34FD1E221485350062DB7E /* CustomCell.xib in Resources */,
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
@@ -407,19 +430,24 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/DeckTransition/DeckTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/HSPopupMenu/HSPopupMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -428,19 +456,24 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeckTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HSPopupMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -450,23 +483,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D6CFD622229E36900561B16 /* UISegmentedControlExtension.swift in Sources */,
 				3D05B5F72202140E0056E7B9 /* Network.swift in Sources */,
 				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
 				3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */,
-				3D6CFD572229C5B000561B16 /* FavoritosViewController.swift in Sources */,
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DD43F36222585E100017B3E /* TermosViewController.swift in Sources */,
 				3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */,
-				3D6CFD5B2229C5CF00561B16 /* ConcluidosViewController.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,
+				4E7F1BBB222C28D90000F6EB /* DownloadViewController.swift in Sources */,
 				3DF5F6882217275400F6BA33 /* epidodeContentRightView.swift in Sources */,
 				3DF98163221EF07D0052EC16 /* WelcomeViewController.swift in Sources */,
 				3D34FCFC22131FDA0062DB7E /* NotificacoesViewController.swift in Sources */,
 				3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */,
+				4E7F1BBE222C34A20000F6EB /* UIImageExtension.swift in Sources */,
 				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
 				3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */,
 				3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */,
@@ -475,23 +507,25 @@
 				3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */,
 				3D38682E2211AED600E89FF4 /* AppService.swift in Sources */,
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
-				3D6CFD5E2229CE2A00561B16 /* resumo.swift in Sources */,
+				4E7F1BC0222C34DC0000F6EB /* UISegmentedControlExtension.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
 				3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */,
 				3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */,
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
+				4E7F1BB5222885EF0000F6EB /* UIColorExtension.swift in Sources */,
 				3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */,
 				3DD43F3422257D2B00017B3E /* UIBarButtonItemExtension.swift in Sources */,
 				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
+				3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
-				3D6CFD602229DB9000561B16 /* UIImageExtension.swift in Sources */,
 				3D34FD082213244F0062DB7E /* PrimeiraViewController.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
+				4E7F1BBC222C28D90000F6EB /* FavoritosViewController.swift in Sources */,
+				4E7F1BBA222C28D90000F6EB /* ConcluidosViewController.swift in Sources */,
 				3D123A152215CC9D009A8E57 /* ColorWeel.swift in Sources */,
 				3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */,
-				3D6CFD592229C5C000561B16 /* DownloadViewController.swift in Sources */,
 				3DF98161221DF7CA0052EC16 /* CustomUISlider.swift in Sources */,
 				3DD43F3A2225C26400017B3E /* LoginTextField.swift in Sources */,
 			);
@@ -649,7 +683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.dubbox.resumocast;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.dubba.resumocast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -670,7 +704,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.dubbox.resumocast;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.dubba.resumocast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

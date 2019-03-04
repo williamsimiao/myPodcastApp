@@ -22,17 +22,18 @@ class InheritanceViewController: UIViewController {
 
     func resizeForMiniView() {
         
-        //Make the view go up
+        /*//Make the view go up
         guard let resizableView = self.superResizableView else {
             return
         }
+        
         resizableView.translatesAutoresizingMaskIntoConstraints = false
         
 
         let height = playerManager.shared.miniContainerFrameHight!
 
         superBottomConstraint?.constant = height
-        resizableView.layoutIfNeeded()
+        resizableView.layoutIfNeeded()*/
     }
 }
 

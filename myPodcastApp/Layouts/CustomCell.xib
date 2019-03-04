@@ -20,37 +20,35 @@
                     <rect key="frame" x="0.0" y="0.0" width="427" height="90"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JSH-Pv-xim">
-                            <rect key="frame" x="21.5" y="10" width="70" height="70"/>
+                            <rect key="frame" x="20" y="10" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="JSH-Pv-xim" secondAttribute="height" multiplier="1:1" id="0gW-rm-EMw"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="eKF-ji-kuE"/>
+                                <constraint firstAttribute="height" constant="70" id="1Wm-XD-9YE"/>
+                                <constraint firstAttribute="width" constant="70" id="1qE-ID-I5w"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZU-1Q-Z7q">
-                            <rect key="frame" x="99.5" y="15" width="319.5" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZU-1Q-Z7q">
+                            <rect key="frame" x="98" y="10" width="321" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-gw-RC0" userLabel="Author Label">
-                            <rect key="frame" x="99.5" y="54" width="319.5" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="98" y="38.5" width="321" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="JSH-Pv-xim" secondAttribute="bottom" priority="250" constant="10" id="4Em-bF-I7a"/>
+                        <constraint firstItem="JSH-Pv-xim" firstAttribute="leading" secondItem="nZN-Ja-CZO" secondAttribute="leading" constant="20" id="CtB-wJ-Phf"/>
                         <constraint firstItem="dKq-gw-RC0" firstAttribute="leading" secondItem="JSH-Pv-xim" secondAttribute="trailing" constant="8" id="F17-ah-vik"/>
-                        <constraint firstItem="JSH-Pv-xim" firstAttribute="leading" secondItem="nZN-Ja-CZO" secondAttribute="trailing" multiplier="0.05" symbolic="YES" id="Iwr-kf-riT"/>
-                        <constraint firstItem="JSH-Pv-xim" firstAttribute="top" secondItem="nZN-Ja-CZO" secondAttribute="top" priority="250" constant="10" id="LG7-ce-QyY"/>
                         <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="leading" secondItem="JSH-Pv-xim" secondAttribute="trailing" constant="8" id="PbM-Ai-CDT"/>
                         <constraint firstAttribute="trailing" secondItem="dKq-gw-RC0" secondAttribute="trailing" constant="8" id="PfJ-yB-2s4"/>
                         <constraint firstItem="JSH-Pv-xim" firstAttribute="centerY" secondItem="nZN-Ja-CZO" secondAttribute="centerY" id="TI5-p4-yhQ"/>
-                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="top" secondItem="JSH-Pv-xim" secondAttribute="top" constant="5" id="eYi-E5-Z7x"/>
+                        <constraint firstItem="ZZU-1Q-Z7q" firstAttribute="top" secondItem="JSH-Pv-xim" secondAttribute="top" id="eYi-E5-Z7x"/>
                         <constraint firstAttribute="trailing" secondItem="ZZU-1Q-Z7q" secondAttribute="trailing" constant="8" id="tNy-ba-7hs"/>
-                        <constraint firstItem="dKq-gw-RC0" firstAttribute="bottom" secondItem="JSH-Pv-xim" secondAttribute="bottom" constant="-5" id="uKi-Mc-EIn"/>
+                        <constraint firstItem="dKq-gw-RC0" firstAttribute="top" secondItem="ZZU-1Q-Z7q" secondAttribute="bottom" constant="8" id="uaJ-yR-35n"/>
                     </constraints>
                 </view>
             </subviews>

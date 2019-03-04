@@ -13,7 +13,7 @@ protocol updateMiniPlayerDelegate : class {
 }
 
 class EpisodePlayControlViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet weak var slider: CustomUISlider!
     @IBOutlet weak var remainingLabel: UILabel!
@@ -35,7 +35,7 @@ class EpisodePlayControlViewController: UIViewController {
             configureFields()
         }
         else {
-//            setFieldsBlank()
+            //            setFieldsBlank()
         }
         //Config button initial state
         if self.currentPlayButtonState == .pause {
@@ -82,7 +82,7 @@ class EpisodePlayControlViewController: UIViewController {
     
     @IBAction func rewindAction(_ sender: Any) {
         playerManager.shared.rewind()
-
+        
     }
     
     
@@ -94,7 +94,7 @@ class EpisodePlayControlViewController: UIViewController {
     
     @IBAction func forwardAction(_ sender: Any) {
         playerManager.shared.foward()
-
+        
     }
     
     

@@ -29,11 +29,15 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var fontSizeSlider: CustomUISlider!
     @IBOutlet weak var tamanhoLabel: UILabel!
     
+    var realm = AppService.realm()
+    
+    
     let primaryDuration = Double(0.3)
     let maxFontSize = Float(30)
     let minFontSize = Float(10)
     let topMenuHeight = CGFloat(100)
     
+    var cod_resumo:String!
     var episodeTitle: String?
     var author: String?
     var resumoText: String?
@@ -41,7 +45,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     var lightModeButton : UIBarButtonItem?
     var darkModeButton : UIBarButtonItem?
     var starArray: [UIButton]?
-
+    
     var textSettingsIsActive = false
     var lightModeIsOn = false
     
@@ -54,21 +58,27 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         tittleLabel.text = episodeTitle
         authorLabel.text = author
+        
         textView.text = resumoText
         textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
         textView.textAlignment = NSTextAlignment.justified
+        
+        
+        print(textView.contentSize.height)
+        
+        //heightConstraint.constant = textView.contentSize.height + 300
     }
     override func viewWillAppear(_ animated: Bool) {
         resetNavBarMenu()
-//        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
-//            item.tintColor = .black
-//        }
+        //        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
+        //            item.tintColor = .black
+        //        }
     }
     
     func setUpNavBarMenu() {
         //Hidden Menu
         topMenuView.backgroundColor = ColorWeel().darkNavBar
-
+        
         fontSizeSlider.maximumValue = maxFontSize
         fontSizeSlider.minimumValue = minFontSize
         fontSizeSlider.value = Float((textView.font?.pointSize)!)
@@ -108,7 +118,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         //Redundancy
         return UIImage(named: "textSettingsWhite")!
     }
-
+    
     @objc func clickTextSettings(_ sender: UIBarButtonItem) {
         if !textSettingsIsActive {
             textSettingsIsActive = true
@@ -119,12 +129,12 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
             
             //expanding menu
             animateTopMenuIn(presenting: true)
-
+            
         }
         else {
             textSettingsIsActive = false
             sender.image = getOppositeColorImage()
-
+            
             lightModeButton?.isHidden = true
             darkModeButton?.isHidden = true
             
@@ -154,18 +164,18 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         let senderStar = sender as! UIButton
         let index: Int
         switch senderStar {
-            case self.star1:
-                index = 1
-            case self.star2:
-                index = 2
-            case self.star3:
-                index = 3
-            case self.star4:
-                index = 4
-            case self.star5:
-                index = 5
-            default:
-                return
+        case self.star1:
+            index = 1
+        case self.star2:
+            index = 2
+        case self.star3:
+            index = 3
+        case self.star4:
+            index = 4
+        case self.star5:
+            index = 5
+        default:
+            return
         }
         //Coloring until the taped one
         for i in 0..<index {
@@ -198,4 +208,38 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         })
         
     }
+    
+    @IBAction func clickMarcarLido(_ sender: Any) {
+        
+        // marcar como concluido
+        let resumos = self.realm.objects(Resumo.self)
+            .filter("cod_resumo = %@", self.cod_resumo);
+        
+        if let resumo = resumos.first {
+            
+            try! self.realm.write {
+                resumo.concluido = 1
+                
+                NSLog("concluido resumo %@", resumo.cod_resumo)
+            }
+        }
+        
+        /*resumo.cod_resumo = self.cod_resumo
+        resumo.concluido = 1
+        
+        try! realm.write {
+            realm.add(resumo, update: true)
+            
+            NSLog("concluido resumo %@", resumo.cod_resumo)
+        }*/
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let vc = storyboard.instantiateViewController(withIdentifier: "TabBarVC")
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    
 }

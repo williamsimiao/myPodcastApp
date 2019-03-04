@@ -9,37 +9,83 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ImageSlideshow
 import RealmSwift
 
 class InicioViewController: InheritanceViewController {
-  
-    // MARK: - Properties
-    var error_msg : String?
-    var success : Bool?
-    var selectedEpisode : [String: AnyObject]?
-    var selectedEpisodeImage : UIImage?
-    var episodesArray :[[String:AnyObject]]?
-    
-    let realm = try! Realm()
-    lazy var resumos: Results<Resumo> = { self.realm.objects(Resumo.self) }()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resizableView: UIView!
     @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var slideShow: ImageSlideshow!
+    
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    
+    // MARK: - Properties
+    var error_msg:String!
+    var success:Bool!
+    
+    var selectedEpisode : [String: AnyObject]?
+    var selectedEpisodeImage : UIImage?
+    var episodesArray :[[String:AnyObject]]?
+    
+    let realm = AppService.realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
+        
+        
+        slideShow.layer.cornerRadius = 10
+        slideShow.clipsToBounds = true
+        
+        
+        loading.isHidden = true
+        
+        
+        slideShow.setImageInputs([
+            ImageSource(image: UIImage(named: "banner")!),
+            ImageSource(image: UIImage(named: "banner")!),
+            //AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080"),
+            //KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080"),
+            //ParseSource(file: PFFile(name:"image.jpg", data:data))
+        ])
+        
+        
+        let pageIndicator = UIPageControl()
+        pageIndicator.currentPageIndicatorTintColor = UIColor.init(hex: 0xFF8633) //UIColor.darkGray //
+        pageIndicator.pageIndicatorTintColor = UIColor.white
+        slideShow.pageIndicator = pageIndicator
+        
+        slideShow.circular = true
+        
+        slideShow.contentScaleMode = UIView.ContentMode.scaleToFill
+        
 
         setupUI()
 
         //getting Data
         makeResquest()
+        
     }
     
-    private func populateDefaultCategories() {
+    override func viewWillAppear(_ animated: Bool) {
+        //navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //if !playerManager.shared.getPlayerIsSet() {
+            //self.superBottomConstraint?.constant = 0
+        //}
+        
+        self.tableView.reloadData()
+    }
+    
+    /*private func populateDefaultCategories() {
+        
         if resumos.count == 0 {
+            
             try! realm.write() {
                 for episode in episodesArray! {
                     let newResumo = Resumo()
@@ -56,21 +102,18 @@ class InicioViewController: InheritanceViewController {
                         newResumo.url_podcast_40_p = episode["url_podcast_40_p"] as! String
                     }
                     
-//                    let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
-//                    newResumo. = Util.joinStringWithSeparator(authorsList:
+                    //                    let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
+                    //                    newResumo. = Util.joinStringWithSeparator(authorsList:
                     
                     realm.add(newResumo)
                 }
                 resumos = realm.objects(Resumo.self)
             }
+            
         }
-    }
-
+        
+    }*/
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.reloadData()
-    }
     
     func setupUI() {
         let nib = UINib(nibName: "CustomCell", bundle: nil)
@@ -109,12 +152,16 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
             return 0
         }
         return episodesCounter
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        
         let resumoDict = self.episodesArray![indexPath.row] as Dictionary
+        
+        let cod_resumo = resumoDict["cod_resumo"] as! String
+        
         cell.titleLabel.text = (resumoDict["titulo"] as! String)
         let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
         cell.authorLabel.text = Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
@@ -123,7 +170,13 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         //When return from detailsVC
         cell.goBackToOriginalColors()
         
-        Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
+        
+        cell.coverImg.image = UIImage(named: "cover_placeholder")!
+        if AppService.util.isNotNull(coverUrl as AnyObject?) {
+            AppService.util.load_image_resumo(coverUrl, cod_resumo: cod_resumo, imageview: cell.coverImg)
+        }
+        
+        //Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
         
         return cell
     }
@@ -141,17 +194,27 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         
         self.selectedEpisode = self.episodesArray![indexPath.row] as Dictionary
         self.selectedEpisodeImage = cell.coverImg.image
+        
         performSegue(withIdentifier: "to_detail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
-        cell.setHighlightColor()
+        
+        //cell.setHighlightColor()
+        
+        cell.goBackToOriginalColors()
     }
 }
 
 extension InicioViewController {
+    
     func makeResquest() {
+        
+        loading.isHidden = false
+        loading.startAnimating()
+        
+        
         let link = AppConfig.urlBaseApi + "buscaResumos.php"
         
         let url:URL = URL(string: link)!
@@ -218,17 +281,63 @@ extension InicioViewController {
     }
     
     func onResultReceived() {
-
-        if self.success! {
-            //Salvar
+        
+        loading.isHidden = true
+        loading.stopAnimating()
+        
+        if self.success {
+            
+            // zerar dados
+            /*for entity in realm.objects(Resumo.self) {
+                try! realm.write {
+                    self.realm.delete(entity)
+                }
+            }*/
+            
+            
+            for resumoDict in self.episodesArray! {
+                
+                let cod_resumo = resumoDict["cod_resumo"] as! String
+                
+                var resumoInit = realm.objects(Resumo.self).filter("cod_resumo = %@", cod_resumo).first
+                
+                if resumoInit == nil {
+                    resumoInit = Resumo()
+                    resumoInit!.cod_resumo = cod_resumo
+                }
+                
+                let resumo = resumoInit!
+                
+                try! realm.write {
+                    resumo.titulo = AppService.util.populateString(resumoDict["titulo"] as AnyObject)
+                    resumo.subtitulo = AppService.util.populateString(resumoDict["subtitulo"] as AnyObject)
+                    resumo.temporada = AppService.util.populateString(resumoDict["temporada"] as AnyObject)
+                    resumo.episodio = AppService.util.populateString(resumoDict["episodio"] as AnyObject)
+                    resumo.url_imagem = AppService.util.populateString(resumoDict["url_imagem"] as AnyObject)
+                    resumo.url_podcast_10 = AppService.util.populateString(resumoDict["url_podcast_10"] as AnyObject)
+                    resumo.url_podcast_40_p = AppService.util.populateString(resumoDict["url_podcast_40_p"] as AnyObject)
+                    resumo.url_podcast_40_f = AppService.util.populateString(resumoDict["url_podcast_40_f"] as AnyObject)
+                    resumo.resumo_10 = AppService.util.populateString(resumoDict["resumo_10"] as AnyObject)
+                    
+                    
+                    let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
+                    
+                    resumo.autores = Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+                    
+                    self.realm.add(resumo, update: true)
+                    
+                    NSLog("save resumo %@ - %@", resumo.cod_resumo, resumo.titulo)
+                }
+                
+            }
+            
             self.tableView.reloadData()
-
-//            AppService.util.alert("deu bom", message: "Obaaa" as! String)
             
         }
         else {
             AppService.util.alert("Erro no Login", message: error_msg!)
         }
+        
     }
+    
 }
-

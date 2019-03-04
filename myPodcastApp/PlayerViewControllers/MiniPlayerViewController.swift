@@ -32,7 +32,7 @@ class MiniPlayerViewController: UIViewController {
     weak var expandDelegate: MiniPlayerDelegate?
     //Initial State mast match the Storyboard
     var currentPlayButtonState = playButtonStates.play
-
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var coverImg: UIImageView!
@@ -48,7 +48,7 @@ class MiniPlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onFullPlayerShouldAppear(_:)), name: .fullPlayerShouldAppear, object: nil)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerIsSetUp(_:)), name: .playerIsSetUp, object: nil)
     }
     
@@ -87,7 +87,7 @@ extension MiniPlayerViewController {
             playerManager.shared.playPause(shouldPlay: true)
             changeButtonState(to: .pause)
         }
-        //User pressed pause
+            //User pressed pause
         else {
             playerManager.shared.playPause(shouldPlay: false)
             changeButtonState(to: .play)
@@ -138,7 +138,7 @@ extension MiniPlayerViewController {
         let height = self.view.frame.size.height
         playerManager.shared.miniContainerFrameHight = height
     }
-
+    
 }
 
 // MARK: -

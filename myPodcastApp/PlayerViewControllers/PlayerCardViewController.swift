@@ -21,7 +21,7 @@ class PlayerCardViewController: UIViewController {
     weak var sourceView: PlayerCardSourceProtocol!
     var currentPlayButtonState : playButtonStates?
     //To adapte for diferent sizes
-
+    
     //scroller
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stretchySkirt: UIView!
@@ -77,8 +77,18 @@ class PlayerCardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         configureImageLayerInStartPosition()
-        coverArtImage.image = sourceView.originatingCoverImageView.image
+        
+        let cod_resumo = playerManager.shared.getEpisodeCodigo()
+        let coverUrl = playerManager.shared.getEpisodeCoverImgUrl()
+        
+        if AppService.util.isNotNull(coverUrl as AnyObject?) {
+            AppService.util.load_image_resumo(coverUrl, cod_resumo: cod_resumo, imageview: coverArtImage)
+        }
+        
+        //coverArtImage.image = playerManager ///sourceView.originatingCoverImageView.image
+        
         configureCoverImageInStartPosition()
         stretchySkirt.backgroundColor = .white
         configureLowerModuleInStartPosition()
@@ -102,12 +112,12 @@ class PlayerCardViewController: UIViewController {
         }
     }
     
-
+    
 }
 
 // MARK: - IBActions
 extension PlayerCardViewController {
-
+    
     @IBAction func dismissAction(_ sender: Any) {
         animateBackingImageOut()
         animateCoverImageOut()

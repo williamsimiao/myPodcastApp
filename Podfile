@@ -8,5 +8,11 @@ target 'myPodcastApp' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FacebookShare'
+    pod 'DeckTransition', '~> 2.0'
+    pod 'ImageSlideshow', '~> 1.6'
+    pod 'HSPopupMenu'
+    
+    pod 'Toast'
+    pod 'Realm', '~> 2.8.1'
     pod 'RealmSwift'
 end

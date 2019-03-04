@@ -80,6 +80,7 @@ extension BaseViewController : MiniPlayerDelegate {
         guard let miniPlayer = self.miniPlayerController else {
             return
         }
+        
         playerCardVC.backingImage = self.view.makeSnapshot()
         playerCardVC.sourceView = miniPlayer
         playerCardVC.currentPlayButtonState = miniPlayer.currentPlayButtonState

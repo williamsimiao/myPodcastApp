@@ -27,8 +27,8 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     @IBOutlet weak var btnCadastrar: UIButton!
     
     @IBOutlet weak var btnDone: UIBarButtonItem!
+    @IBOutlet weak var btnEmpreende: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    @IBOutlet weak var imgCheckBox: UIImageView!
     
     
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
@@ -44,7 +44,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     var success:Bool = false
     var error_msg:String = ""
     let radius = CGFloat(20)
-    var checkBoxHasMark = false
+    var empreendeButtonHasMark = true
     let sexoArray = ["Feminino", "Masculino"]
     let escolaridadeAray = ["Ensino Fundamental", "Ensino Médio", "Ensino Superior", "Pós-Graduação", "Mestrado", "Doutorado"]
     
@@ -84,12 +84,9 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         btnCadastrar.layer.cornerRadius = radius
         
 //        btnEmpreende.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
-        imgCheckBox.layer.cornerRadius = 10
-        imgCheckBox.layer.borderWidth = 1
-        imgCheckBox.layer.borderColor = ColorWeel().orangeColor.cgColor
-        
-        
-
+        btnEmpreende.imageView?.layer.cornerRadius = 5
+        btnEmpreende.imageView?.layer.borderWidth = 1
+        btnEmpreende.imageView?.layer.borderColor = ColorWeel().orangeColor.cgColor
 
         
         // Add touch gesture for contentView
@@ -348,15 +345,19 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         view.endEditing(true)
     }
     
-    @IBAction func clickEmpreender(_ sender: Any) {
-        if self.checkBoxHasMark {
-             self.imgCheckBox.image = nil
-            self.checkBoxHasMark = false
+    
+    @IBAction func clickBtnEmpreende(_ sender: Any) {
+        if self.empreendeButtonHasMark {
+            self.btnEmpreende.setImage(UIImage(named:
+                "downloadBlack"), for: UIControl.State.normal)
             
+            self.empreendeButtonHasMark = false
+
         }
         else {
-            self.imgCheckBox.image = UIImage(named: "checkWhite")
-            self.checkBoxHasMark = true
+            self.btnEmpreende.setImage(UIImage(named:
+                "checkWhite"), for: UIControl.State.normal)
+            self.empreendeButtonHasMark = true
         }
     }
     

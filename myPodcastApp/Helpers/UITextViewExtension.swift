@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITextView {
-
+    
     func makeOutLine(oulineColor: UIColor, foregroundColor: UIColor) {
         let strokeTextAttributes = [
             NSAttributedString.Key.strokeColor : oulineColor,
@@ -23,6 +23,6 @@ extension UITextView {
     func changeFontSize(newSize : Float) {
         self.font =  UIFont(name: (self.font?.fontName)!, size: CGFloat(newSize))
     }
-
-
+    
+    
 }
