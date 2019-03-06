@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Toaster
 
 enum linkType: String {
     case fortyFree = "url_podcast_40_f"
@@ -200,16 +201,27 @@ class DetalheViewController: InheritanceViewController {
         }
     }
     
-    @IBAction func fortyPlayButtonAction(_ sender: Any) {
+    @IBAction func clickPlayButton(_ sender: Any) {
+        let episodeLink : URL
+        do {
+            if (sender as AnyObject).isEqual(self.fortyMinutesButton) {
+                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: selectedEpisode![linkType.fortyFree.rawValue] as! String)
+
+            }
+            else if (sender as AnyObject).isEqual(self.tenMinutesButton) {
+                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: selectedEpisode![linkType.ten.rawValue ] as! String)
+            }
+            
+        } catch AppError.filePathError {
+            print("filePathError error")
+            return
+
+        } catch {
+            print("Unexpected error: \(error).")
+            return
+        }
         
-        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!, link: linkType.fortyFree)
-        
-        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
-    }
-    
-    @IBAction func tenPlayButtonAction(_ sender: Any) {
-        
-        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!, link: linkType.ten)
+        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!, episodeLink: episodeLink)
         
         NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
     }
@@ -288,11 +300,26 @@ class DetalheViewController: InheritanceViewController {
     }
     
     @IBAction func clickDownload(_ sender: Any) {
+        //Marking as downloaded
+        let cod_resumo = self.selectedEpisode!["cod_resumo"] as! String
+        let resumos = self.realm.objects(Resumo.self).filter("cod_resumo = %@", cod_resumo)
+        guard let resumo = resumos.first else {
+//            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
+//            Delay.short
+            print("Não foi possivel fazer o download")
+        }
+        try! self.realm.write {
+            resumo.downloaded = 1
+            
+            NSLog("downloaded resumo %@", resumo.cod_resumo)
+        }
+//        Toast(text: "Download em andamento", duration: 1).show()
+        print("Download em andamento")
+
         
-        
+        //Saving file
+        AppService.util.dowanloadAudio(urlSring: selectedEpisode![linkType.fortyFree.rawValue] as! String)
     }
-    
-    
 }
 
 extension DetalheViewController: contentViewDelegate {

@@ -218,7 +218,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
                                                         <state key="normal" image="orangePlay"/>
                                                         <connections>
-                                                            <action selector="fortyPlayButtonAction:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="wqG-fA-ih9"/>
+                                                            <action selector="clickPlayButton:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="5Z7-eU-b9H"/>
                                                         </connections>
                                                     </button>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1RS-D4-JhE">
@@ -244,7 +244,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
                                                         <state key="normal" image="orangePlay"/>
                                                         <connections>
-                                                            <action selector="tenPlayButtonAction:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="fgu-aK-iAX"/>
+                                                            <action selector="clickPlayButton:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="Ya2-Tj-aGe"/>
                                                         </connections>
                                                     </button>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xbS-KE-duo">
@@ -1575,7 +1575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLv-rM-eYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1436" y="3128"/>
+            <point key="canvasLocation" x="1614" y="2313"/>
         </scene>
         <!--Recuperar View Controller-->
         <scene sceneID="W3T-eC-wQe">
@@ -2281,7 +2281,7 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A3P-4d-8gn"/>
-        <segue reference="BEu-Ua-mz1"/>
+        <segue reference="cc4-Nu-2VX"/>
+        <segue reference="7Fl-9Q-3jf"/>
     </inferredMetricsTieBreakers>
 </document>

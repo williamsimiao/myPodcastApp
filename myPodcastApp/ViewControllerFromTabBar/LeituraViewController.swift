@@ -236,7 +236,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let vc = storyboard.instantiateViewController(withIdentifier: "TabBarVC")
+        let vc = storyboard.instantiateViewController(withIdentifier: "BaseViewController")
         self.present(vc, animated: true, completion: nil)
         
     }

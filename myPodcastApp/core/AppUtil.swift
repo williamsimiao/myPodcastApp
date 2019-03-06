@@ -392,4 +392,55 @@ open class AppUtil {
         return ""
     }
     
+    func dowanloadAudio(urlSring: String) {
+        print(urlSring)
+        if let audioUrl = URL(string: urlSring) {
+            
+            // then lets create your document folder url
+            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            // lets create your destination file url
+            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
+            print(destinationUrl)
+            
+            // to check if it exists before downloading it
+            if FileManager.default.fileExists(atPath: destinationUrl.path) {
+                print("The file already exists at path")
+                
+                // if the file doesn't exist
+            } else {
+                
+                // you can use NSURLSession.sharedSession to download the data asynchronously
+                URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
+                    guard let location = location, error == nil else { return }
+                    do {
+                        // after downloading your file you need to move it to your destination url
+                        try FileManager.default.moveItem(at: location, to: destinationUrl)
+                        print("File moved to documents folder")
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
+                }).resume()
+            }
+        }
+    }
+    
+    func getPathFromDownloadedAudio(urlString: String) throws -> URL {
+        guard let fileURL = URL(string: urlString)  else {
+            throw AppError.filePathError
+        }
+        
+        // then lets create your document folder url
+        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        // lets create your destination file url
+        let destinationUrl = documentsDirectoryURL.appendingPathComponent(fileURL.lastPathComponent)
+        
+//        guard (destinationUrl != nil) else {
+//            throw AppError.filePathError
+//        }
+        
+        return destinationUrl
+    }
+    
 }

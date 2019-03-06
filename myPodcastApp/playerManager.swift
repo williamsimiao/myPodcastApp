@@ -25,8 +25,8 @@ class playerManager {
     let skip_time = 10
     let interfaceUpdateInterval = 0.5
     var episodesQueue = [[String:AnyObject]]()
-    var currentEpisodeDict = [String:AnyObject]()
-    var currentLinkType: linkType?
+    var currentEpisode = Resumo()
+    var currentLink: URL?
     static let shared = playerManager()
     
     private init() {}
@@ -69,7 +69,7 @@ class playerManager {
     }
     
     func getEpisodeAuthor() -> String {
-        guard let authors = self.currentEpisodeDict["autores"] else {
+        guard let authors = self.currentEpisode.autores else {
             return "-"
         }
         let authorsList = authors as! [[String : AnyObject]]
@@ -128,31 +128,17 @@ class playerManager {
     }
     
     //MARK Mudando de Episodio
-    func episodeSelected(episodeDictionary: [String:AnyObject], link:linkType) {
-        
-        //Getting episode AVPlayerItem
-        let newEpisodeAVItem : AVPlayerItem
+    func episodeSelected(episode: Resumo, episodeLink: URL) {
         
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
-        let episodeLink = episodeDictionary[link.rawValue] as? String
-        do {
-            newEpisodeAVItem = try getAVItem(ForEpisodeLink: episodeLink)
-        } catch AppError.urlKeyError {
-            print("Erro - key for url not found")
-            return
-        } catch AppError.urlError {
-            print("Erro - not possible to convert the string to URL")
-            return
-        } catch {
-            print("Unexpected error: \(error).")
-            return
-        }
+        let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
+
         
         if playerManager.shared.getPlayerIsSet() {
             let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
-            let newEpisodeId = episodeDictionary["cod_resumo"] as! String
+            let newEpisodeId = episode.cod_resumo
             
-            if (currentEpisodeId != newEpisodeId) || (currentLinkType != link) {
+            if (currentEpisodeId != newEpisodeId) || (self.currentLink != episodeLink) {
                 self.player?.pause()
                 self.player?.replaceCurrentItem(with: newEpisodeAVItem)
             }
@@ -164,19 +150,10 @@ class playerManager {
             addPeriodicTimeObserver()
         }
         self.currentEpisodeDict = episodeDictionary
+        self.currentLink = episodeLink
         changeUIForEpisode()
         playPause(shouldPlay: true)
         
-    }
-    
-    func getAVItem(ForEpisodeLink episodeLink:String?) throws -> AVPlayerItem{
-        guard (episodeLink != nil) else {
-            throw AppError.urlKeyError
-        }
-        guard let episodeURL = URL(string: episodeLink!) else {
-            throw AppError.urlError
-        }
-        return AVPlayerItem(url: episodeURL)
     }
     
     func changeUIForEpisode() {

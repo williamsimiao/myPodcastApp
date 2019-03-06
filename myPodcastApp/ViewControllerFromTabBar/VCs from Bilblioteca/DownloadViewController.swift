@@ -80,7 +80,7 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         let cod_resumo = resumoDict.cod_resumo
         
         cell.titleLabel.text = resumoDict.titulo
-        cell.authorLabel.text = resumoDict.autores
+        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumoDict.autores)
         
         let coverUrl = resumoDict.url_imagem
         
@@ -102,16 +102,12 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
         self.selectedEpisode = self.episodesArray[indexPath.row]
-        
-        //performSegue(withIdentifier: "to_detail", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let detalheVC = segue.destination as? DetalheViewController {
-            //detalheVC.selectedEpisode = self.selectedEpisode
+        let episodeURL = URL(string: selectedEpisode![linkType.fortyFree.rawValue] as! String)
+        guard episodeURL != nil else {
+            return
         }
+        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode, episodeLink: episodeURL!)
         
     }
-    
+    x
 }

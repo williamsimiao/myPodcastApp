@@ -83,7 +83,7 @@ extension ConcluidosViewController: UITableViewDelegate, UITableViewDataSource {
         let cod_resumo = resumoDict.cod_resumo
         
         cell.titleLabel.text = resumoDict.titulo
-        cell.authorLabel.text = resumoDict.autores
+        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumoDict.autores)
         
         let coverUrl = resumoDict.url_imagem
         

@@ -18,11 +18,11 @@ class Util {
         }
     }
     
-    static func getUrl(forPlayingEpisode episodeId:NSNumber) -> URL{
-        let episodeIdString = episodeId.stringValue
-        let urlString = "https://api.spreaker.com/v2/episodes/" + episodeIdString + "/play"
-        return URL(string: urlString)!
-    }
+//    static func getUrl(forPlayingEpisode episodeId:NSNumber) -> URL{
+//        let episodeIdString = episodeId.stringValue
+//        let urlString = "https://api.spreaker.com/v2/episodes/" + episodeIdString + "/play"
+//        return URL(string: urlString)!
+//    }
     
     static func convertSecondsToDateString(seconds:Float64) -> String {
         let formatter = DateFormatter()
@@ -30,6 +30,15 @@ class Util {
         let date = Date(timeIntervalSince1970: seconds)
         return formatter.string(from: date)
     }
+    
+    static func joinAuthorsNames(authorsList: [Autor]) -> String {
+        var authorsNamesList = [String]()
+        for autor in authorsList {
+            authorsNamesList.append(autor.nome)
+        }
+        return authorsNamesList.joined(separator: " & ")
+    }
+
     
     static func joinStringWithSeparator(authorsList:  [[String : AnyObject]],separator: String) -> String{
         var authorsNamesList : [String] = []

@@ -320,9 +320,10 @@ extension InicioViewController {
                     resumo.resumo_10 = AppService.util.populateString(resumoDict["resumo_10"] as AnyObject)
                     
                     
-                    let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
+                    let authorsDictList = resumoDict["autores"] as! [[String : AnyObject]]
+                    var authorList = 
                     
-                    resumo.autores = Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+//                    resumo.autores = Util.joinAuthorsNames(authorsList: authorsList)
                     
                     self.realm.add(resumo, update: true)
                     

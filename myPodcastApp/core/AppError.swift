@@ -13,4 +13,6 @@ enum AppError: Error {
     //playerManagerErrors
     case urlError
     case urlKeyError
+    //
+    case filePathError
 }
