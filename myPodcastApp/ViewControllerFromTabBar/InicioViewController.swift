@@ -26,15 +26,16 @@ class InicioViewController: InheritanceViewController {
     var error_msg:String!
     var success:Bool!
     
-    var selectedEpisode : [String: AnyObject]?
+//    var selectedEpisode : [String: AnyObject]?
+    var selectedResumo : Resumo?
     var selectedEpisodeImage : UIImage?
     var episodesArray :[[String:AnyObject]]?
+    var resumoArray = [Resumo]()
     
     let realm = AppService.realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         
@@ -158,32 +159,29 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        let resumoDict = self.episodesArray![indexPath.row] as Dictionary
+        let resumo = self.resumoArray[indexPath.row]
         
-        let cod_resumo = resumoDict["cod_resumo"] as! String
+        let cod_resumo = resumo.cod_resumo
         
-        cell.titleLabel.text = (resumoDict["titulo"] as! String)
-        let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
-        cell.authorLabel.text = Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
-        let coverUrl = (resumoDict["url_imagem"] as! String)
+        cell.titleLabel.text = resumo.titulo
+        let authorsList = resumo.autores
+        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: authorsList)
+        let coverUrl = resumo.url_imagem
         
         //When return from detailsVC
         cell.goBackToOriginalColors()
-        
         
         cell.coverImg.image = UIImage(named: "cover_placeholder")!
         if AppService.util.isNotNull(coverUrl as AnyObject?) {
             AppService.util.load_image_resumo(coverUrl, cod_resumo: cod_resumo, imageview: cell.coverImg)
         }
         
-        //Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
-        
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detalheVC = segue.destination as? DetalheViewController {
-            detalheVC.selectedEpisode = self.selectedEpisode
+            detalheVC.selectedResumo = self.selectedResumo
             detalheVC.selectedEpisodeImage = self.selectedEpisodeImage
         }
     }
@@ -192,7 +190,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
-        self.selectedEpisode = self.episodesArray![indexPath.row] as Dictionary
+        self.selectedResumo = self.resumoArray[indexPath.row]
         self.selectedEpisodeImage = cell.coverImg.image
         
         performSegue(withIdentifier: "to_detail", sender: self)
@@ -319,12 +317,11 @@ extension InicioViewController {
                     resumo.url_podcast_40_f = AppService.util.populateString(resumoDict["url_podcast_40_f"] as AnyObject)
                     resumo.resumo_10 = AppService.util.populateString(resumoDict["resumo_10"] as AnyObject)
                     
-                    
                     let authorsDictList = resumoDict["autores"] as! [[String : AnyObject]]
                     var authorList = 
                     
 //                    resumo.autores = Util.joinAuthorsNames(authorsList: authorsList)
-                    
+                    resumoArray.append(resumo)
                     self.realm.add(resumo, update: true)
                     
                     NSLog("save resumo %@ - %@", resumo.cod_resumo, resumo.titulo)

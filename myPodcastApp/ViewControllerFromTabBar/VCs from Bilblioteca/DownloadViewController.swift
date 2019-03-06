@@ -12,8 +12,8 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     
-    var episodesArray = [Resumo]()
-    var selectedEpisode:Resumo!
+    var resumoArray = [Resumo]()
+    var selectedResumo:Resumo!
     
     let realm = AppService.realm()
     
@@ -41,12 +41,12 @@ class DownloadViewController: UIViewController {
         
         print("qtd " + String(resumos.count))
         
-        episodesArray.removeAll()
+        resumoArray.removeAll()
         for resumo in resumos {
-            episodesArray.append(resumo)
+            resumoArray.append(resumo)
         }
         
-        if episodesArray.count == 0 {
+        if resumoArray.count == 0 {
             lblNenhum.isHidden = false
         } else {
             lblNenhum.isHidden = true
@@ -69,13 +69,13 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return episodesArray.count
+        return resumoArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        let resumoDict = self.episodesArray[indexPath.item]
+        let resumoDict = self.resumoArray[indexPath.item]
         
         let cod_resumo = resumoDict.cod_resumo
         
@@ -101,13 +101,12 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
-        self.selectedEpisode = self.episodesArray[indexPath.row]
-        let episodeURL = URL(string: selectedEpisode![linkType.fortyFree.rawValue] as! String)
+        self.selectedResumo = self.resumoArray[indexPath.row]
+        let episodeURL = URL(string: selectedResumo![linkType.fortyFree.rawValue] as! String)
         guard episodeURL != nil else {
             return
         }
-        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode, episodeLink: episodeURL!)
-        
+        playerManager.shared.episodeSelected(episode: self.selectedResumo, episodeLink: episodeURL!)
     }
-    x
+
 }

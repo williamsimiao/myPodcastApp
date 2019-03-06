@@ -38,7 +38,8 @@ class DetalheViewController: InheritanceViewController {
     var realm = AppService.realm()
     
     
-    var selectedEpisode : [String: AnyObject]?
+//    var selectedEpisode : [String: AnyObject]?
+    var selectedResumo : Resumo?
     var selectedEpisodeImage : UIImage?
     var success: Bool?
     var detailsEpisode: [String: AnyObject]?
@@ -60,10 +61,10 @@ class DetalheViewController: InheritanceViewController {
         
         
         // verificar se eh favorito
-        let cod_resumo = selectedEpisode!["cod_resumo"] as! String
+        let cod_resumo = selectedResumo?.cod_resumo
         
         let resumos = self.realm.objects(Resumo.self)
-            .filter("cod_resumo = %@", cod_resumo);
+            .filter("cod_resumo = %@", cod_resumo!);
         
         if let resumo = resumos.first {
                 
@@ -80,7 +81,7 @@ class DetalheViewController: InheritanceViewController {
         
         
         // resumo texto 10
-        let resumo = selectedEpisode!["resumo_10"] as! String
+        let resumo = selectedResumo?.resumo_10
         
         textView.text = resumo
         
@@ -109,10 +110,10 @@ class DetalheViewController: InheritanceViewController {
     }
     
     func makeResquest() {
-        let cod_resumo = selectedEpisode!["cod_resumo"] as! String
+        let cod_resumo = selectedResumo?.cod_resumo
         
         //        let url:URL = createURLWithComponents(cod_resumo: cod_resumo)!
-        let urlString = AppConfig.urlBaseApi + "detalheResumo.php" + "?cod_resumo=" + cod_resumo
+        let urlString = AppConfig.urlBaseApi + "detalheResumo.php" + "?cod_resumo=" + cod_resumo!
         let myUrl = URL(string: urlString)
         
         let session = URLSession.shared
@@ -190,13 +191,11 @@ class DetalheViewController: InheritanceViewController {
     
     
     func checkAvaliableLinks() {
-        let variavel = Util.nullToNil(value: selectedEpisode![linkType.fortyFree.rawValue])
-        if variavel == nil {
+        if selectedResumo?.url_podcast_40_f == nil || selectedResumo?.url_podcast_40_f == "" {
             fortyMinutesButton.isEnabled = false
         }
         
-        let variave2 = Util.nullToNil(value: selectedEpisode![linkType.ten.rawValue])
-        if variave2 == nil {
+        if selectedResumo?.url_podcast_10 == nil || selectedResumo?.url_podcast_10 == "" {
             tenMinutesButton.isEnabled = false
         }
     }
@@ -205,13 +204,15 @@ class DetalheViewController: InheritanceViewController {
         let episodeLink : URL
         do {
             if (sender as AnyObject).isEqual(self.fortyMinutesButton) {
-                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: selectedEpisode![linkType.fortyFree.rawValue] as! String)
+                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: (selectedResumo?.url_podcast_40_f)!)
 
             }
-            else if (sender as AnyObject).isEqual(self.tenMinutesButton) {
-                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: selectedEpisode![linkType.ten.rawValue ] as! String)
+            //if (sender as AnyObject).isEqual(self.tenMinutesButton)
+            else {
+                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: (selectedResumo?.url_podcast_10)!)
             }
-            
+            playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
+
         } catch AppError.filePathError {
             print("filePathError error")
             return
@@ -221,16 +222,16 @@ class DetalheViewController: InheritanceViewController {
             return
         }
         
-        playerManager.shared.episodeSelected(episodeDictionary: selectedEpisode!, episodeLink: episodeLink)
+        playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
         
         NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
     }
     
     func setupUI() {
-        let titulo =  self.selectedEpisode!["titulo"] as! String
+        let titulo =  self.selectedResumo?.titulo
         self.episodeContentView.titleLabel.text = titulo
-        let authorsList = self.selectedEpisode!["autores"] as! [[String : AnyObject]]
-        let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+        let authorsList = self.selectedResumo?.autores
+        let joinedNames = Util.joinAuthorsNames(authorsList: authorsList!)
         self.episodeContentView.authorLabel.text = joinedNames
         self.episodeContentView.coverImg.image = self.selectedEpisodeImage
         
@@ -254,14 +255,14 @@ class DetalheViewController: InheritanceViewController {
         
         if let leituraVC = segue.destination as? LeituraViewController {
             
-            leituraVC.cod_resumo = (self.selectedEpisode!["cod_resumo"] as! String)
+            leituraVC.cod_resumo = self.selectedResumo?.cod_resumo
             
-            let authorsList = self.selectedEpisode!["autores"] as! [[String : AnyObject]]
-            let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+            let authorsList = self.selectedResumo?.autores
+            let joinedNames =  Util.joinAuthorsNames(authorsList: authorsList!)
             
             leituraVC.author = joinedNames
             
-            leituraVC.episodeTitle = (self.selectedEpisode!["titulo"] as! String)
+            leituraVC.episodeTitle = self.selectedResumo?.titulo
             leituraVC.resumoText = textView.text
         }
         
@@ -274,7 +275,7 @@ class DetalheViewController: InheritanceViewController {
     
     @IBAction func clickSalvar(_ sender: Any) {
         
-        let cod_resumo = self.selectedEpisode!["cod_resumo"] as! String
+        let cod_resumo = self.selectedResumo?.cod_resumo
         
         let resumos = self.realm.objects(Resumo.self)
             .filter("cod_resumo = %@", cod_resumo);
@@ -301,12 +302,13 @@ class DetalheViewController: InheritanceViewController {
     
     @IBAction func clickDownload(_ sender: Any) {
         //Marking as downloaded
-        let cod_resumo = self.selectedEpisode!["cod_resumo"] as! String
+        let cod_resumo = self.selectedResumo?.cod_resumo
         let resumos = self.realm.objects(Resumo.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumo = resumos.first else {
 //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
 //            Delay.short
             print("Não foi possivel fazer o download")
+            return
         }
         try! self.realm.write {
             resumo.downloaded = 1
@@ -317,8 +319,11 @@ class DetalheViewController: InheritanceViewController {
         print("Download em andamento")
 
         
-        //Saving file
-        AppService.util.dowanloadAudio(urlSring: selectedEpisode![linkType.fortyFree.rawValue] as! String)
+        //Saving files
+        AppService.util.dowanloadAudio(urlSring: (self.selectedResumo?.url_podcast_40_f)!)
+        AppService.util.dowanloadAudio(urlSring: (self.selectedResumo?.url_podcast_10)!)
+
+        
     }
 }
 

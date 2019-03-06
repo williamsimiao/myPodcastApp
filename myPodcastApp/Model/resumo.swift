@@ -19,7 +19,7 @@ class Resumo: Object {
     @objc dynamic var url_podcast_40_p = ""
     @objc dynamic var url_podcast_40_f = ""
     @objc dynamic var resumo_10 = ""
-    @objc dynamic var autores = [Autor]()
+    let autores = RealmSwift.List<Autor>()
     
     @objc dynamic var favoritado = 0
     @objc dynamic var downloaded = 0

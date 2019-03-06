@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class Util {
     static func nullToNil(value : AnyObject?) -> AnyObject? {
@@ -31,7 +32,7 @@ class Util {
         return formatter.string(from: date)
     }
     
-    static func joinAuthorsNames(authorsList: [Autor]) -> String {
+    static func joinAuthorsNames(authorsList: RealmSwift.List<Autor>) -> String {
         var authorsNamesList = [String]()
         for autor in authorsList {
             authorsNamesList.append(autor.nome)

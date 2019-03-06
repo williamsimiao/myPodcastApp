@@ -55,33 +55,22 @@ class playerManager {
     //MARK - Getters
     
     func getEpisodeCodigo() -> String {
-        guard let episodeCodigo = self.currentEpisodeDict["cod_resumo"] else {
-            return "-"
-        }
-        return episodeCodigo as! String
+        return self.currentEpisode.cod_resumo
     }
     
     func getEpisodeTitle() -> String {
-        guard let episodeTitle = self.currentEpisodeDict["titulo"] else {
-            return "-"
-        }
-        return episodeTitle as! String
+        return self.currentEpisode.titulo
     }
     
     func getEpisodeAuthor() -> String {
-        guard let authors = self.currentEpisode.autores else {
-            return "-"
-        }
-        let authorsList = authors as! [[String : AnyObject]]
-        let joinedNames =  Util.joinStringWithSeparator(authorsList: authorsList, separator: " & ")
+        
+        let authorsList = self.currentEpisode.autores
+        let joinedNames =  Util.joinAuthorsNames(authorsList: authorsList)
         return joinedNames
     }
     
     func getEpisodeCoverImgUrl() -> String {
-        guard let episodeUrlImage = self.currentEpisodeDict["url_imagem"] else {
-            return ""
-        }
-        return episodeUrlImage as! String
+        return self.currentEpisode.url_imagem
     }
     
     func getWantsToStartPlaying() -> Bool {
@@ -135,7 +124,7 @@ class playerManager {
 
         
         if playerManager.shared.getPlayerIsSet() {
-            let currentEpisodeId = self.currentEpisodeDict["cod_resumo"] as! String
+            let currentEpisodeId = self.currentEpisode.cod_resumo
             let newEpisodeId = episode.cod_resumo
             
             if (currentEpisodeId != newEpisodeId) || (self.currentLink != episodeLink) {
@@ -149,7 +138,7 @@ class playerManager {
             NotificationCenter.default.post(name: .playerIsSetUp, object: self, userInfo: nil)
             addPeriodicTimeObserver()
         }
-        self.currentEpisodeDict = episodeDictionary
+        self.currentEpisode = episode
         self.currentLink = episodeLink
         changeUIForEpisode()
         playPause(shouldPlay: true)
@@ -158,11 +147,11 @@ class playerManager {
     
     func changeUIForEpisode() {
         //To change UI
-        NotificationCenter.default.post(name: .episodeDidChange, object: self, userInfo: self.currentEpisodeDict)
+        NotificationCenter.default.post(name: .episodeDidChange, object: self, userInfo: nil)
         
         //Seting ControlCenter UI
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
-            return Network.getUIImageFor(imageUrl: self.currentEpisodeDict["url_imagem"] as! String)
+            return Network.getUIImageFor(imageUrl: self.currentEpisode.url_imagem)
             //return AppService.util.get_image_resumo(cod_resumo: self.currentEpisodeDict["cod_resumo"] as! String)
         }
         
