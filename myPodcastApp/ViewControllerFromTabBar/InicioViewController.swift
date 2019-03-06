@@ -297,34 +297,39 @@ extension InicioViewController {
                 
                 let cod_resumo = resumoDict["cod_resumo"] as! String
                 
-                var resumoInit = realm.objects(Resumo.self).filter("cod_resumo = %@", cod_resumo).first
+                //
+                var resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
                 
                 if resumoInit == nil {
-                    resumoInit = Resumo()
+                    resumoInit = ResumoEntity()
                     resumoInit!.cod_resumo = cod_resumo
                 }
                 
-                let resumo = resumoInit!
+                let resumoEntity = resumoInit!
                 
                 try! realm.write {
-                    resumo.titulo = AppService.util.populateString(resumoDict["titulo"] as AnyObject)
-                    resumo.subtitulo = AppService.util.populateString(resumoDict["subtitulo"] as AnyObject)
-                    resumo.temporada = AppService.util.populateString(resumoDict["temporada"] as AnyObject)
-                    resumo.episodio = AppService.util.populateString(resumoDict["episodio"] as AnyObject)
-                    resumo.url_imagem = AppService.util.populateString(resumoDict["url_imagem"] as AnyObject)
-                    resumo.url_podcast_10 = AppService.util.populateString(resumoDict["url_podcast_10"] as AnyObject)
-                    resumo.url_podcast_40_p = AppService.util.populateString(resumoDict["url_podcast_40_p"] as AnyObject)
-                    resumo.url_podcast_40_f = AppService.util.populateString(resumoDict["url_podcast_40_f"] as AnyObject)
-                    resumo.resumo_10 = AppService.util.populateString(resumoDict["resumo_10"] as AnyObject)
+                    resumoEntity.titulo = AppService.util.populateString(resumoDict["titulo"] as AnyObject)
+                    resumoEntity.subtitulo = AppService.util.populateString(resumoDict["subtitulo"] as AnyObject)
+                    resumoEntity.temporada = AppService.util.populateString(resumoDict["temporada"] as AnyObject)
+                    resumoEntity.episodio = AppService.util.populateString(resumoDict["episodio"] as AnyObject)
+                    resumoEntity.url_imagem = AppService.util.populateString(resumoDict["url_imagem"] as AnyObject)
+                    resumoEntity.url_podcast_10 = AppService.util.populateString(resumoDict["url_podcast_10"] as AnyObject)
+                    resumoEntity.url_podcast_40_p = AppService.util.populateString(resumoDict["url_podcast_40_p"] as AnyObject)
+                    resumoEntity.url_podcast_40_f = AppService.util.populateString(resumoDict["url_podcast_40_f"] as AnyObject)
+                    resumoEntity.resumo_10 = AppService.util.populateString(resumoDict["resumo_10"] as AnyObject)
                     
                     let authorsDictList = resumoDict["autores"] as! [[String : AnyObject]]
-                    var authorList = 
+                    for authorDict in authorsDictList {
+                        let newAutorEntity = AutorEntity(autorDictonary: authorDict)
+                        resumoEntity.autores.append(newAutorEntity!)
+                    }
                     
-//                    resumo.autores = Util.joinAuthorsNames(authorsList: authorsList)
-                    resumoArray.append(resumo)
-                    self.realm.add(resumo, update: true)
+                    self.realm.add(resumoEntity, update: true)
+                    NSLog("save resumo %@ - %@", resumoEntity.cod_resumo, resumoEntity.titulo)
                     
-                    NSLog("save resumo %@ - %@", resumo.cod_resumo, resumo.titulo)
+                    //Building Model
+                    let newResumo = Resumo(resumoEntity: resumoEntity)
+                    self.resumoArray.append(newResumo)
                 }
                 
             }

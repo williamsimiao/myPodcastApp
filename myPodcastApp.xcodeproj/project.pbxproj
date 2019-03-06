@@ -24,7 +24,7 @@
 		3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682B2211AEC000E89FF4 /* AppServer.swift */; };
 		3D38682E2211AED600E89FF4 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682D2211AED600E89FF4 /* AppService.swift */; };
 		3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682F2211AEE900E89FF4 /* AppConfig.swift */; };
-		3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868322211DBEE00E89FF4 /* resumo.swift */; };
+		3D3868332211DBEE00E89FF4 /* resumoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868322211DBEE00E89FF4 /* resumoEntity.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */; };
@@ -35,7 +35,9 @@
 		3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */; };
 		3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BCD2224443C00E20477 /* CadastroTextField.swift */; };
 		3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BD022248EE200E20477 /* UITextViewExtension.swift */; };
-		3DC16F3A222F038D00F4876F /* autor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC16F39222F038D00F4876F /* autor.swift */; };
+		3DBBD7DE22304E6C00F3DA64 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBD7DD22304E6C00F3DA64 /* resumo.swift */; };
+		3DBBD7E022304E7F00F3DA64 /* autor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBD7DF22304E7F00F3DA64 /* autor.swift */; };
+		3DC16F3A222F038D00F4876F /* autorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC16F39222F038D00F4876F /* autorEntity.swift */; };
 		3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C1FF2200C175009080EF /* TabBarViewController.swift */; };
 		3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */; };
 		3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */; };
@@ -83,7 +85,7 @@
 		3D38682B2211AEC000E89FF4 /* AppServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServer.swift; sourceTree = "<group>"; };
 		3D38682D2211AED600E89FF4 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		3D38682F2211AEE900E89FF4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
-		3D3868322211DBEE00E89FF4 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
+		3D3868322211DBEE00E89FF4 /* resumoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumoEntity.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeituraViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +99,9 @@
 		3D956BCD2224443C00E20477 /* CadastroTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroTextField.swift; sourceTree = "<group>"; };
 		3D956BCF2224573200E20477 /* myPodcastApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myPodcastApp.entitlements; sourceTree = "<group>"; };
 		3D956BD022248EE200E20477 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
-		3DC16F39222F038D00F4876F /* autor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autor.swift; sourceTree = "<group>"; };
+		3DBBD7DD22304E6C00F3DA64 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
+		3DBBD7DF22304E7F00F3DA64 /* autor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autor.swift; sourceTree = "<group>"; };
+		3DC16F39222F038D00F4876F /* autorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autorEntity.swift; sourceTree = "<group>"; };
 		3DC1C1FF2200C175009080EF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardViewController.swift; sourceTree = "<group>"; };
 		3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSubscriber.swift; sourceTree = "<group>"; };
@@ -222,10 +226,11 @@
 		3D9514BE21F5EDA7004960CE /* myPodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DC1C207220200BE009080EF /* Realm Entities */,
+				3DBBD7E122304E9700F3DA64 /* Model */,
 				4E7F1BB3222885900000F6EB /* extension */,
 				4E7F1BB022287F310000F6EB /* images */,
 				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
-				3DC1C207220200BE009080EF /* Model */,
 				3D3868262211AE5C00E89FF4 /* core */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
@@ -244,14 +249,23 @@
 			path = myPodcastApp;
 			sourceTree = "<group>";
 		};
-		3DC1C207220200BE009080EF /* Model */ = {
+		3DBBD7E122304E9700F3DA64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3DBBD7DD22304E6C00F3DA64 /* resumo.swift */,
+				3DBBD7DF22304E7F00F3DA64 /* autor.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3DC1C207220200BE009080EF /* Realm Entities */ = {
 			isa = PBXGroup;
 			children = (
 				3DC1C2052202005E009080EF /* EpisodeSubscriber.swift */,
-				3D3868322211DBEE00E89FF4 /* resumo.swift */,
-				3DC16F39222F038D00F4876F /* autor.swift */,
+				3D3868322211DBEE00E89FF4 /* resumoEntity.swift */,
+				3DC16F39222F038D00F4876F /* autorEntity.swift */,
 			);
-			path = Model;
+			path = "Realm Entities";
 			sourceTree = "<group>";
 		};
 		3DD2346B22049FE3003C940F /* Helpers */ = {
@@ -521,16 +535,18 @@
 				3DD43F3422257D2B00017B3E /* UIBarButtonItemExtension.swift in Sources */,
 				3D2D7B942208C8BA000E426A /* PerfilViewController.swift in Sources */,
 				3DC1C2062202005E009080EF /* EpisodeSubscriber.swift in Sources */,
-				3D3868332211DBEE00E89FF4 /* resumo.swift in Sources */,
+				3D3868332211DBEE00E89FF4 /* resumoEntity.swift in Sources */,
 				3D9514C021F5EDA7004960CE /* AppDelegate.swift in Sources */,
 				3D34FD082213244F0062DB7E /* PrimeiraViewController.swift in Sources */,
 				3D79641321F79F0700E171DC /* playerManager.swift in Sources */,
+				3DBBD7E022304E7F00F3DA64 /* autor.swift in Sources */,
 				4E7F1BBC222C28D90000F6EB /* FavoritosViewController.swift in Sources */,
 				4E7F1BBA222C28D90000F6EB /* ConcluidosViewController.swift in Sources */,
-				3DC16F3A222F038D00F4876F /* autor.swift in Sources */,
+				3DC16F3A222F038D00F4876F /* autorEntity.swift in Sources */,
 				3D123A152215CC9D009A8E57 /* ColorWeel.swift in Sources */,
 				3D38682322119FDF00E89FF4 /* CadastroViewController.swift in Sources */,
 				3DF98161221DF7CA0052EC16 /* CustomUISlider.swift in Sources */,
+				3DBBD7DE22304E6C00F3DA64 /* resumo.swift in Sources */,
 				3DD43F3A2225C26400017B3E /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

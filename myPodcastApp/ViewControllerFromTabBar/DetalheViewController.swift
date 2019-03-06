@@ -63,7 +63,7 @@ class DetalheViewController: InheritanceViewController {
         // verificar se eh favorito
         let cod_resumo = selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(Resumo.self)
+        let resumos = self.realm.objects(ResumoEntity.self)
             .filter("cod_resumo = %@", cod_resumo!);
         
         if let resumo = resumos.first {
@@ -277,7 +277,7 @@ class DetalheViewController: InheritanceViewController {
         
         let cod_resumo = self.selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(Resumo.self)
+        let resumos = self.realm.objects(ResumoEntity.self)
             .filter("cod_resumo = %@", cod_resumo);
         
         if let resumo = resumos.first {
@@ -303,7 +303,7 @@ class DetalheViewController: InheritanceViewController {
     @IBAction func clickDownload(_ sender: Any) {
         //Marking as downloaded
         let cod_resumo = self.selectedResumo?.cod_resumo
-        let resumos = self.realm.objects(Resumo.self).filter("cod_resumo = %@", cod_resumo)
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumo = resumos.first else {
 //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
 //            Delay.short

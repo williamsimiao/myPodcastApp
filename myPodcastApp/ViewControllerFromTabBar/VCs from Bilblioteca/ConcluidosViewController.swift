@@ -32,18 +32,16 @@ class ConcluidosViewController: UIViewController {
     }
     
     func setupUI() {
-        
         // buscar resumos favoritos
-        let resumos = realm.objects(Resumo.self)
-            .filter("concluido = 1");
+        let resumos = realm.objects(ResumoEntity.self).filter("concluido = 1")
         //.sorted(byKeyPath: "dt_lib", ascending: false);
         
         
         print("qtd " + String(resumos.count))
         
-        
         episodesArray.removeAll()
-        for resumo in resumos {
+        for resumoEntity in resumos {
+            let resumo = Resumo(resumoEntity: resumoEntity)
             episodesArray.append(resumo)
             
             print("concluido " + String(resumo.concluido))

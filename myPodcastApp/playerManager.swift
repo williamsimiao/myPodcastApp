@@ -25,7 +25,7 @@ class playerManager {
     let skip_time = 10
     let interfaceUpdateInterval = 0.5
     var episodesQueue = [[String:AnyObject]]()
-    var currentEpisode = Resumo()
+    var currentEpisode : Resumo?
     var currentLink: URL?
     static let shared = playerManager()
     
@@ -55,22 +55,22 @@ class playerManager {
     //MARK - Getters
     
     func getEpisodeCodigo() -> String {
-        return self.currentEpisode.cod_resumo
+        return self.currentEpisode!.cod_resumo
     }
     
     func getEpisodeTitle() -> String {
-        return self.currentEpisode.titulo
+        return self.currentEpisode!.titulo
     }
     
     func getEpisodeAuthor() -> String {
         
-        let authorsList = self.currentEpisode.autores
+        let authorsList = self.currentEpisode!.autores
         let joinedNames =  Util.joinAuthorsNames(authorsList: authorsList)
         return joinedNames
     }
     
     func getEpisodeCoverImgUrl() -> String {
-        return self.currentEpisode.url_imagem
+        return self.currentEpisode!.url_imagem
     }
     
     func getWantsToStartPlaying() -> Bool {
@@ -124,7 +124,7 @@ class playerManager {
 
         
         if playerManager.shared.getPlayerIsSet() {
-            let currentEpisodeId = self.currentEpisode.cod_resumo
+            let currentEpisodeId = self.currentEpisode!.cod_resumo
             let newEpisodeId = episode.cod_resumo
             
             if (currentEpisodeId != newEpisodeId) || (self.currentLink != episodeLink) {
@@ -151,11 +151,11 @@ class playerManager {
         
         //Seting ControlCenter UI
         let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
-            return Network.getUIImageFor(imageUrl: self.currentEpisode.url_imagem)
+            return Network.getUIImageFor(imageUrl: self.currentEpisode!.url_imagem)
             //return AppService.util.get_image_resumo(cod_resumo: self.currentEpisodeDict["cod_resumo"] as! String)
         }
         
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : self.getEpisodeTitle(), MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : "DOIDO", MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
     }
     
     //MARK - MODIFICADORES de tempo

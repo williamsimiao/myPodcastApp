@@ -1,49 +1,25 @@
 //
-//  autor.swift
+//  autorModel.swift
 //  myPodcastApp
 //
-//  Created by William on 05/03/19.
+//  Created by William on 06/03/19.
 //  Copyright © 2019 William. All rights reserved.
 //
 
 import Foundation
-import RealmSwift
 
-class Autor: Object {
-    @objc dynamic var cod_autor = ""
-    @objc dynamic var nome = ""
-    @objc dynamic var descricao = ""
-    @objc dynamic var url_imagem = ""
-    @objc dynamic var cod_status = ""
+class Autor {
+    var cod_autor : String
+    var nome : String
+    var descricao : String
+    var url_imagem : String
+    var cod_status : String
     
-    public convenience init? (autorDictonary: [String:AnyObject]) {
-        self.init()
-        guard let cod_autor = autorDictonary["cod_autor"] else {
-            return
-        }
-        self.cod_autor = cod_autor as! String
-        
-        guard let nome = autorDictonary["nome"] else {
-            return
-        }
-        self.nome = nome as! String
-
-        guard let descricao = autorDictonary["descricao"] else {
-            return
-        }
-        self.descricao = descricao as! String
-
-        guard let url_imagem = autorDictonary["url_imagem"] else {
-            return
-        }
-        self.url_imagem = url_imagem as! String
-        
-
-        guard let cod_status = autorDictonary["cod_status"] else {
-            return
-        }
-        self.cod_status = cod_status as! String
+    init(autorEntity: AutorEntity) {
+        self.cod_autor = autorEntity.cod_autor
+        self.nome = autorEntity.nome
+        self.descricao = autorEntity.descricao
+        self.url_imagem = autorEntity.url_imagem
+        self.cod_status = autorEntity.cod_status
     }
-
 }
-

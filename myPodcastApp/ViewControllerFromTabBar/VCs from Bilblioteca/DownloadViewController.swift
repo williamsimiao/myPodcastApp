@@ -19,9 +19,6 @@ class DownloadViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //setupUI()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +31,15 @@ class DownloadViewController: UIViewController {
     func setupUI() {
         
         // buscar resumos favoritos
-        let resumos = realm.objects(Resumo.self)
-            .filter("downloaded = 1");
+        let resumos = realm.objects(ResumoEntity.self).filter("downloaded = 1")
         //.sorted(byKeyPath: "dt_lib", ascending: false);
         
         
         print("qtd " + String(resumos.count))
         
         resumoArray.removeAll()
-        for resumo in resumos {
+        for resumoEntity in resumos {
+            let resumo = Resumo(resumoEntity: resumoEntity)
             resumoArray.append(resumo)
         }
         
@@ -61,8 +58,6 @@ class DownloadViewController: UIViewController {
     }
     
 }
-
-
 
 //TableView
 extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
@@ -102,7 +97,7 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
         self.selectedResumo = self.resumoArray[indexPath.row]
-        let episodeURL = URL(string: selectedResumo![linkType.fortyFree.rawValue] as! String)
+        let episodeURL = URL(string: selectedResumo.url_podcast_40_f)
         guard episodeURL != nil else {
             return
         }

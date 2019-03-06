@@ -212,7 +212,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func clickMarcarLido(_ sender: Any) {
         
         // marcar como concluido
-        let resumos = self.realm.objects(Resumo.self)
+        let resumos = self.realm.objects(ResumoEntity.self)
             .filter("cod_resumo = %@", self.cod_resumo);
         
         if let resumo = resumos.first {
