@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-class Resumo: Object {
+class ResumoEntity: Object {
     @objc dynamic var cod_resumo = ""
     @objc dynamic var titulo = ""
     @objc dynamic var subtitulo = ""
@@ -19,7 +19,7 @@ class Resumo: Object {
     @objc dynamic var url_podcast_40_p = ""
     @objc dynamic var url_podcast_40_f = ""
     @objc dynamic var resumo_10 = ""
-    let autores = RealmSwift.List<Autor>()
+    let autores = RealmSwift.List<AutorEntity>()
     
     @objc dynamic var favoritado = 0
     @objc dynamic var downloaded = 0
@@ -82,8 +82,8 @@ class Resumo: Object {
             return nil
         }
         for autorDicionary in (autores as! [[String: AnyObject]]) {
-            let autor = Autor(autorDictonary: autorDicionary)
-            self.autores.append(autor!)
+            let autorEntity = AutorEntity(autorDictonary: autorDicionary)
+            self.autores.append(autorEntity!)
         }
     }
     

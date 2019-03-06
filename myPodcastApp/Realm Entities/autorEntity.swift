@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Autor: Object {
+class AutorEntity: Object {
     @objc dynamic var cod_autor = ""
     @objc dynamic var nome = ""
     @objc dynamic var descricao = ""
