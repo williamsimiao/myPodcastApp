@@ -10,13 +10,205 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/InicioViewController.swift"
-            timestampString = "573595439.266737"
+            timestampString = "573597652.97679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "573597652.976871"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "clickPlayButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.184693"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "219"
+                  endingLineNumber = "219"
+                  offsetFromSymbolStart = "4202">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.1870199"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "219"
+                  endingLineNumber = "219"
+                  offsetFromSymbolStart = "5393">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "573597652.97751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "clickPlayButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.193123"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "3669">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.1954941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "5369">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "573597652.978243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "clickPlayButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.201685"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "2616">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.20468"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "5345">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "573597652.978761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "clickPlayButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.21162"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "1444">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.clickPlayButton(Any) -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "573597653.214134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "5321">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

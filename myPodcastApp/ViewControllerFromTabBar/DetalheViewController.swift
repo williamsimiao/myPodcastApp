@@ -202,29 +202,44 @@ class DetalheViewController: InheritanceViewController {
     
     @IBAction func clickPlayButton(_ sender: Any) {
         let episodeLink : URL
-        do {
-            if (sender as AnyObject).isEqual(self.fortyMinutesButton) {
-                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: (selectedResumo?.url_podcast_40_f)!)
-
-            }
-            //if (sender as AnyObject).isEqual(self.tenMinutesButton)
-            else {
-                try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: (selectedResumo?.url_podcast_10)!)
-            }
-            playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
-
-        } catch AppError.filePathError {
-            print("filePathError error")
-            return
-
-        } catch {
-            print("Unexpected error: \(error).")
-            return
+        
+        let resumo = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo as Any).first
+        let senderObject = sender as AnyObject
+        
+        if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 1 {
+            episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_10)!)!)
+        }
+        else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
+            episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
+        }
+        else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
+            episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
+        }
+        else {
+            episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
         }
         
+
+        
+
         playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
         
         NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
+    }
+    
+    func getLocalURL(sender: Any, serverUrl: URL) -> URL {
+        var episodeLink  = serverUrl
+        do {
+            
+            try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: (selectedResumo?.url_podcast_40_f)!)
+            
+        } catch AppError.filePathError {
+            print("filePathError error")
+            
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+        return episodeLink
     }
     
     func setupUI() {
