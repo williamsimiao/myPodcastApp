@@ -218,9 +218,6 @@ class DetalheViewController: InheritanceViewController {
         else {
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
         }
-        
-
-        
 
         playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
         
