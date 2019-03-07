@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DownloadViewController: UIViewController {
+class DownloadViewController: InheritanceViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     

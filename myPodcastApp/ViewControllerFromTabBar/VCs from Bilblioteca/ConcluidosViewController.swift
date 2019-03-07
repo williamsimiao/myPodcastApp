@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConcluidosViewController: UIViewController {
+class ConcluidosViewController: InheritanceViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     

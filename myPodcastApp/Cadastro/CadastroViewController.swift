@@ -418,7 +418,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
             return escolaridadeAray[row]
         }
         else {
-            print("DOIDO2")
             return escolaridadeAray[row]
         }
     }
@@ -431,7 +430,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
             edtEscolaridade.text = escolaridadeAray[row]
         }
         else {
-            print("DOIDO3")
             edtEscolaridade.text = escolaridadeAray[row]
         }
         self.view.endEditing(true)

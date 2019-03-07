@@ -10,12 +10,17 @@ import UIKit
 
 class RecuperarViewController: UIViewController {
 
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var btnRecuperar: UIButton!
     @IBOutlet weak var blackBox: UIView!
     @IBOutlet weak var edtEmail: CadastroTextField!
     var radius = CGFloat(20)
+    var success: Bool!
+    var error_msg:String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loading.isHidden = true
         blackBox.layer.cornerRadius = radius
         btnRecuperar.layer.cornerRadius = 20
         btnRecuperar.clipsToBounds = true
@@ -27,6 +32,109 @@ class RecuperarViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func clickRecuperar(_ sender: Any) {
-        //TODO: Call API
+        let usuarioEmail = edtEmail.text
+        let esqueceuSenhaURL = createURLWithComponents(path: "/esqueceuSenha.php", parameters: ["email"], values: [usuarioEmail!])
+        makeResquest(url: esqueceuSenhaURL!)
     }
+    
+    func createURLWithComponents(path: String, parameters: [String], values: [String]) -> URL? {
+        
+        // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
+        let urlComponents = NSURLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.resumocast.com.br/ws"
+        urlComponents.path = path
+        
+        // add params
+        var queryItensArray = [URLQueryItem]()
+        for (parameter, value) in zip(parameters, values) {
+            let queryItem = URLQueryItem(name: parameter, value: value)
+            queryItensArray.append(queryItem)
+        }
+        urlComponents.queryItems = queryItensArray
+        
+        return urlComponents.url
+    }
+    
+    func makeResquest(url: URL) {
+        loading.isHidden = false
+        loading.startAnimating()
+        
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+
+        
+        request.timeoutInterval = 10
+        request.httpMethod = "GET"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            
+            self.extract_json_data(dataString!)
+            
+        })
+        
+        task.resume()
+    }
+    
+    func extract_json_data(_ data:NSString) {
+        
+        NSLog("json %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do
+        {
+            // converter pra json
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            
+            // verificar success
+            self.success = (json.value(forKey: "success") as! Bool)
+            if (self.success!) {
+                
+                NSLog("Login SUCCESS");
+                
+                
+            } else {
+                
+                NSLog("Login ERROR");
+                error_msg = (json.value(forKey: "error") as! String)
+            }
+        }
+        catch
+        {
+            print("error")
+            return
+        }
+        DispatchQueue.main.async(execute: onResultReceived)
+    }
+    
+    func onResultReceived() {
+        
+        loading.isHidden = true
+        loading.stopAnimating()
+        
+        if self.success {
+            print("Verifique seu email")
+            performSegue(withIdentifier: "goto_login", sender: self)
+        }
+        else {
+            AppService.util.alert("Erro no Login", message: error_msg!)
+        }
+        
+    }
+    
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritosViewController: UIViewController {
+class FavoritosViewController: InheritanceViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
