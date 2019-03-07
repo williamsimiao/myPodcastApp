@@ -1692,7 +1692,6 @@
                         <outlet property="btnRecuperar" destination="B4q-bh-M3K" id="6i8-az-GMd"/>
                         <outlet property="edtEmail" destination="P2K-ug-UkD" id="P0F-bX-eli"/>
                         <outlet property="loading" destination="7sY-2Y-3mM" id="rwq-sv-Wfq"/>
-                        <segue destination="lzb-Rf-PBa" kind="show" identifier="goto_login" id="ICE-yx-LR4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ald-fg-zmy" sceneMemberID="firstResponder"/>
@@ -2292,7 +2291,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="A3P-4d-8gn"/>
-        <segue reference="ICE-yx-LR4"/>
         <segue reference="7Fl-9Q-3jf"/>
         <segue reference="CRf-lU-hgc"/>
     </inferredMetricsTieBreakers>

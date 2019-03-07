@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class RecuperarViewController: UIViewController {
 
@@ -128,7 +129,10 @@ class RecuperarViewController: UIViewController {
         
         if self.success {
             print("Verifique seu email")
-            performSegue(withIdentifier: "goto_login", sender: self)
+
+            self.dismiss(animated: true) {
+                self.parent?.view.makeToast("Verifique seu email", duration: 3.0)
+            }
         }
         else {
             AppService.util.alert("Erro ao recuperar senha", message: error_msg!)

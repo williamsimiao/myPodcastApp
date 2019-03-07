@@ -22,11 +22,11 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.40.0):
+  - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.40.0):
+  - FBSDKLoginKit (4.39.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.40.0):
+  - FBSDKShareKit (4.39.1):
     - FBSDKCoreKit
   - HSPopupMenu (0.1.1):
     - SnapKit (~> 4.0.0)
@@ -40,7 +40,7 @@ PODS:
     - Realm (= 2.8.3)
   - SnapKit (4.0.1)
   - SwiftyJSON (4.2.0)
-  - Toast (4.0.0)
+  - Toast-Swift (4.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -54,7 +54,7 @@ DEPENDENCIES:
   - Realm (~> 2.8.1)
   - RealmSwift
   - SwiftyJSON (~> 4.0)
-  - Toast
+  - Toast-Swift (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -74,7 +74,7 @@ SPEC REPOS:
     - RealmSwift
     - SnapKit
     - SwiftyJSON
-    - Toast
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -84,17 +84,17 @@ SPEC CHECKSUMS:
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
-  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
+  FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
   HSPopupMenu: ca8c0f872cdbc8fc7d9c8098c2aa6e6a0027d201
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: 10d678dd3076663dcbd7725e306e9f1a42d4dde2
+PODFILE CHECKSUM: e2315a73475771a370803837f64a7a2f1f2f5457
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.5.3

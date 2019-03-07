@@ -12,7 +12,7 @@ target 'myPodcastApp' do
     pod 'ImageSlideshow', '~> 1.6'
     pod 'HSPopupMenu'
     
-    pod 'Toast'
+    pod 'Toast-Swift', '~> 4.0.0'
     pod 'Realm', '~> 2.8.1'
     pod 'RealmSwift'
 end
