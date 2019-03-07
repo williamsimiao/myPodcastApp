@@ -28,7 +28,7 @@ class InicioViewController: InheritanceViewController {
     
 //    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
-    var selectedEpisodeImage : UIImage?
+    var selectedResumoImage : UIImage?
     var episodesArray :[[String:AnyObject]]?
     var resumoArray = [Resumo]()
     
@@ -182,7 +182,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detalheVC = segue.destination as? DetalheViewController {
             detalheVC.selectedResumo = self.selectedResumo
-            detalheVC.selectedEpisodeImage = self.selectedEpisodeImage
+            detalheVC.selectedResumoImage = self.selectedResumoImage
         }
     }
     
@@ -191,7 +191,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
         self.selectedResumo = self.resumoArray[indexPath.row]
-        self.selectedEpisodeImage = cell.coverImg.image
+        self.selectedResumoImage = cell.coverImg.image
         
         performSegue(withIdentifier: "to_detail", sender: self)
     }
