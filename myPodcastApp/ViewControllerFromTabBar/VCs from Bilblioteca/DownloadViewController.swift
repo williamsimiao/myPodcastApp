@@ -14,6 +14,7 @@ class DownloadViewController: UIViewController {
     
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
+    var selectedResumoImage: UIImage?
     
     let realm = AppService.realm()
     
@@ -97,11 +98,16 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
         self.selectedResumo = self.resumoArray[indexPath.row]
-        let episodeURL = URL(string: selectedResumo.url_podcast_40_f)
-        guard episodeURL != nil else {
-            return
+        self.selectedResumoImage = cell.coverImg.image
+
+        performSegue(withIdentifier: "to_detail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detalheVC = segue.destination as? DetalheViewController {
+            detalheVC.selectedResumo = self.selectedResumo
+            detalheVC.selectedResumoImage = self.selectedResumoImage
         }
-        playerManager.shared.episodeSelected(episode: self.selectedResumo, episodeLink: episodeURL!)
     }
 
 }

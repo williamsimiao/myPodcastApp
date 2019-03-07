@@ -12,8 +12,9 @@ class ConcluidosViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     
-    var episodesArray = [Resumo]()
-    var selectedEpisode:Resumo!
+    var resumoArray = [Resumo]()
+    var selectedResumo:Resumo!
+    var selectedResumoImage: UIImage?
     
     let realm = AppService.realm()
     
@@ -39,15 +40,15 @@ class ConcluidosViewController: UIViewController {
         
         print("qtd " + String(resumos.count))
         
-        episodesArray.removeAll()
+        resumoArray.removeAll()
         for resumoEntity in resumos {
             let resumo = Resumo(resumoEntity: resumoEntity)
-            episodesArray.append(resumo)
+            resumoArray.append(resumo)
             
             print("concluido " + String(resumo.concluido))
         }
         
-        if episodesArray.count == 0 {
+        if resumoArray.count == 0 {
             lblNenhum.isHidden = false
         } else {
             lblNenhum.isHidden = true
@@ -70,13 +71,13 @@ extension ConcluidosViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return episodesArray.count
+        return resumoArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        let resumoDict = self.episodesArray[indexPath.item]
+        let resumoDict = self.resumoArray[indexPath.item]
         
         let cod_resumo = resumoDict.cod_resumo
         
@@ -102,17 +103,17 @@ extension ConcluidosViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
-        self.selectedEpisode = self.episodesArray[indexPath.row]
+        self.selectedResumo = self.resumoArray[indexPath.row]
+        self.selectedResumoImage = cell.coverImg.image
         
-        //performSegue(withIdentifier: "to_detail", sender: self)
+        performSegue(withIdentifier: "to_detail", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if let detalheVC = segue.destination as? DetalheViewController {
-            //detalheVC.selectedEpisode = self.selectedEpisode
+            detalheVC.selectedResumo = self.selectedResumo
+            detalheVC.selectedResumoImage = self.selectedResumoImage
         }
-        
     }
     
 }

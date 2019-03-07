@@ -40,7 +40,7 @@ class DetalheViewController: InheritanceViewController {
     
 //    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
-    var selectedEpisodeImage : UIImage?
+    var selectedResumoImage : UIImage?
     var success: Bool?
     var detailsEpisode: [String: AnyObject]?
     var error_msg: String?
@@ -245,7 +245,7 @@ class DetalheViewController: InheritanceViewController {
         let authorsList = self.selectedResumo?.autores
         let joinedNames = Util.joinAuthorsNames(authorsList: authorsList!)
         self.episodeContentView.authorLabel.text = joinedNames
-        self.episodeContentView.coverImg.image = self.selectedEpisodeImage
+        self.episodeContentView.coverImg.image = self.selectedResumoImage
         
         self.FortyMinutesView.layer.borderWidth = 1
         self.FortyMinutesView.backgroundColor = .black
