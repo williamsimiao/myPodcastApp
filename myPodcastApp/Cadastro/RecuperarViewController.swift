@@ -33,27 +33,27 @@ class RecuperarViewController: UIViewController {
     }
     @IBAction func clickRecuperar(_ sender: Any) {
         let usuarioEmail = edtEmail.text
-        let esqueceuSenhaURL = createURLWithComponents(path: "/esqueceuSenha.php", parameters: ["email"], values: [usuarioEmail!])
+        let esqueceuSenhaURL = createURLWithComponents(path: "esqueceuSenha.php", parameters: ["email"], values: [usuarioEmail!])
+        print(esqueceuSenhaURL)
         makeResquest(url: esqueceuSenhaURL!)
     }
     
     func createURLWithComponents(path: String, parameters: [String], values: [String]) -> URL? {
         
         // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
-        let urlComponents = NSURLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.resumocast.com.br/ws"
-        urlComponents.path = path
-        
+        var url = AppConfig.urlBaseApi
+        url += path + "?"
         // add params
-        var queryItensArray = [URLQueryItem]()
-        for (parameter, value) in zip(parameters, values) {
-            let queryItem = URLQueryItem(name: parameter, value: value)
-            queryItensArray.append(queryItem)
+        var paramValueArray = [String]()
+        let tuples = zip(parameters, values)
+        for (parameter, value) in tuples {
+            let paramValue = parameter + "=" + value
+            paramValueArray.append(paramValue)
+            print("OI")
         }
-        urlComponents.queryItems = queryItensArray
+        url += paramValueArray.joined(separator: "&")
         
-        return urlComponents.url
+        return URL(string: url)
     }
     
     func makeResquest(url: URL) {
@@ -104,12 +104,12 @@ class RecuperarViewController: UIViewController {
             self.success = (json.value(forKey: "success") as! Bool)
             if (self.success!) {
                 
-                NSLog("Login SUCCESS");
+                NSLog("Recuperar SUCCESS");
                 
                 
             } else {
                 
-                NSLog("Login ERROR");
+                NSLog("Recuperar ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
             }
         }
@@ -131,7 +131,7 @@ class RecuperarViewController: UIViewController {
             performSegue(withIdentifier: "goto_login", sender: self)
         }
         else {
-            AppService.util.alert("Erro no Login", message: error_msg!)
+            AppService.util.alert("Erro ao recuperar senha", message: error_msg!)
         }
         
     }
