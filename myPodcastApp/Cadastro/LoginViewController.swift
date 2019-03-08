@@ -272,6 +272,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if self.success {
             AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
             self.performSegue(withIdentifier: "goto_base", sender: self)
+            
+            let prefs:UserDefaults = UserDefaults.standard
+            prefs.set(false, forKey: "isVisitante")
         }
         else {
             AppService.util.alert("Erro no Login", message: error_msg as String)

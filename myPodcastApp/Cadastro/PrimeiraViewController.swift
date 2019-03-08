@@ -196,7 +196,9 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         if self.success {
             AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
             self.performSegue(withIdentifier: "goto_base", sender: self)
-        }
+            
+            let prefs:UserDefaults = UserDefaults.standard
+            prefs.set(false, forKey: "isVisitante")        }
         else {
             AppService.util.alert("Erro no Login", message: error_msg as String)
         }
@@ -311,8 +313,15 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    @IBAction func clickEntrar(_ sender: Any) {
+    @IBAction func clickEntrarEmail(_ sender: Any) {
         self.performSegue(withIdentifier: "goto_login", sender: self)
+    }
+    
+    @IBAction func clickEntrarVisitante(_ sender: Any) {
+        self.performSegue(withIdentifier: "goto_base", sender: self)
+        let prefs:UserDefaults = UserDefaults.standard
+        prefs.set(true, forKey: "isVisitante")
+        prefs.set(0, forKey: "visitasCounter")
     }
     
     @IBAction func clickCriar(_ sender: Any) {

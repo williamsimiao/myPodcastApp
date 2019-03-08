@@ -11,6 +11,7 @@ import SystemConfiguration
 import UIKit
 
 open class AppUtil {
+    let maxVisitas = 2
     
     func currentView() -> UIViewController {
         var currentViewController: UIViewController!
@@ -441,6 +442,28 @@ open class AppUtil {
 //        }
         
         return destinationUrl
+    }
+    
+    func handleInCaseIsVisitante() -> Bool{
+        let prefs:UserDefaults = UserDefaults.standard
+        let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
+
+        if isVisitante {
+            let visitasCounter = prefs.integer(forKey: "visitasCounter") as Int
+            prefs.set(visitasCounter + 1, forKey: "visitasCounter")
+            return checkVisitasLimit()
+        }
+        return true
+    }
+    
+    func checkVisitasLimit() -> Bool {
+        let prefs:UserDefaults = UserDefaults.standard
+        let visitasCounter = prefs.integer(forKey: "visitasCounter") as Int
+
+        if visitasCounter > maxVisitas {
+            return false
+        }
+        return true
     }
     
 }

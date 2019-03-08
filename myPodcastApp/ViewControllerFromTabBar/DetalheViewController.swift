@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Toaster
+import Toast_Swift
 
 enum linkType: String {
     case fortyFree = "url_podcast_40_f"
@@ -219,9 +219,27 @@ class DetalheViewController: InheritanceViewController {
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
         }
 
-        playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
+        let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
         
-        NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
+        if userIsAllowedToPlay {
+            NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
+        }
+        else {
+            handleNotAllowed()
+        }
+    }
+    
+    func handleNotAllowed() {
+        let alert = UIAlertController(
+            title: "Faça o login",
+            message: "Você já consumiu o limite de conteúdo para visitantes. Realize o login para continuar usando o aplicativo",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        alert.addAction(UIAlertAction(title: "Login", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
+        }))
+        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func getLocalURL(sender: Any, serverUrl: URL) -> URL {

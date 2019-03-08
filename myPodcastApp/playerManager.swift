@@ -117,7 +117,11 @@ class playerManager {
     }
     
     //MARK Mudando de Episodio
-    func episodeSelected(episode: Resumo, episodeLink: URL) {
+    func episodeSelected(episode: Resumo, episodeLink: URL) -> Bool {
+        if !AppService.util.handleInCaseIsVisitante() {
+            return false
+        }
+        
         
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
         let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
@@ -142,7 +146,7 @@ class playerManager {
         self.currentLink = episodeLink
         changeUIForEpisode()
         playPause(shouldPlay: true)
-        
+        return true
     }
     
     func changeUIForEpisode() {
