@@ -63,11 +63,6 @@ class BibliotecaViewController: InheritanceViewController {
         
         
         self.favoritosVC?.tableView.reloadData()
-        //self.downloadVC?.tableView.reloadData()
-        //self.concluidosVC?.tableView.reloadData()
-        
-        //makeResquest()
-        
     }
     
     
@@ -110,17 +105,14 @@ class BibliotecaViewController: InheritanceViewController {
             
             switch tabIndex {
                 case TabIndex.favoritos.rawValue :
-                    //self.favoritosVC?.episodesArray = self.episodesArray
                     self.favoritosVC?.tableView.reloadData()
                     break
                 
                 case TabIndex.downloads.rawValue :
-                    //self.downloadVC?.episodesArray = self.episodesArray
                     self.downloadVC?.tableView.reloadData()
                     break
                 
                 case TabIndex.concluidos.rawValue :
-                    //self.concluidosVC?.episodesArray = self.episodesArray
                     self.concluidosVC?.tableView.reloadData()
                     break
                 
@@ -150,89 +142,6 @@ class BibliotecaViewController: InheritanceViewController {
     func divider(leftColor: UIColor, rightColor: UIColor) -> UIImage? {
         return UIImage.render(size: size) {
             UIColor.clear.setFill()
-        }
-    }
-    
-}
-
-extension BibliotecaViewController {
-    func makeResquest() {
-        let link = AppConfig.urlBaseApi + "buscaResumos.php"
-        
-        let url:URL = URL(string: link)!
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        
-        request.timeoutInterval = 10
-        request.httpMethod = "GET"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
-        
-        let task = session.dataTask(with: request, completionHandler: {
-            (
-            data, response, error) in
-            
-            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
-                
-                return
-            }
-            
-            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            
-            self.extract_json_data(dataString!)
-            
-        })
-        
-        task.resume()
-    }
-    
-    func extract_json_data(_ data:NSString) {
-        
-        NSLog("json %@", data)
-        
-        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
-        
-        
-        do
-        {
-            // converter pra json
-            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
-            
-            
-            // verificar success
-            self.success = (json.value(forKey: "success") as! Bool)
-            if (self.success!) {
-                
-                NSLog("Login SUCCESS");
-                // dados do json
-                self.episodesArray = (json.object(forKey: "resumos") as! Array)
-                
-            } else {
-                
-                NSLog("Login ERROR");
-                error_msg = (json.value(forKey: "error") as! String)
-            }
-        }
-        catch
-        {
-            print("error")
-            return
-        }
-        DispatchQueue.main.async(execute: onResultReceived)
-    }
-    
-    func onResultReceived() {
-        
-        if self.success! {
-            //Salvar
-            
-            //self.favoritosVC?.episodesArray = self.episodesArray
-            //self.favoritosVC?.tableView.reloadData()
-            
-        }
-        else {
-            AppService.util.alert("Erro no Login", message: error_msg!)
         }
     }
     
