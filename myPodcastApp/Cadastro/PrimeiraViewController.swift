@@ -318,10 +318,13 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func clickEntrarVisitante(_ sender: Any) {
-        self.performSegue(withIdentifier: "goto_base", sender: self)
         let prefs:UserDefaults = UserDefaults.standard
-        prefs.set(true, forKey: "isVisitante")
-        prefs.set(0, forKey: "visitasCounter")
+        let isVisitante = prefs.bool(forKey: "isVisitante")
+        if !isVisitante {
+            prefs.set(true, forKey: "isVisitante")
+            prefs.set(0, forKey: "visitasCounter")
+        }
+        self.performSegue(withIdentifier: "goto_base", sender: self)
     }
     
     @IBAction func clickCriar(_ sender: Any) {

@@ -466,4 +466,22 @@ open class AppUtil {
         return true
     }
     
+    func handleNotAllowed() {
+        let alert = UIAlertController(
+            title: "Faça o login",
+            message: "Você já consumiu o limite de conteúdo para visitantes. Realize o login para continuar usando o aplicativo",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        alert.addAction(UIAlertAction(title: "Login", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PrimeiraVC")
+            self.currentView().present(vc, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
+        }))
+        self.currentView().present(alert, animated: true, completion: nil)
+    }
+    
 }

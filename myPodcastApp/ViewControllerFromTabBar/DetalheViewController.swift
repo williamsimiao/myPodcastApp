@@ -225,21 +225,8 @@ class DetalheViewController: InheritanceViewController {
             NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
         }
         else {
-            handleNotAllowed()
+            AppService.util.handleNotAllowed()
         }
-    }
-    
-    func handleNotAllowed() {
-        let alert = UIAlertController(
-            title: "Faça o login",
-            message: "Você já consumiu o limite de conteúdo para visitantes. Realize o login para continuar usando o aplicativo",
-            preferredStyle: UIAlertController.Style.alert
-        )
-        alert.addAction(UIAlertAction(title: "Login", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
-        }))
-        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
     
     func getLocalURL(sender: Any, serverUrl: URL) -> URL {
