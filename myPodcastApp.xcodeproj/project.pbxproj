@@ -226,9 +226,6 @@
 			children = (
 				3DC1C207220200BE009080EF /* Realm Entities */,
 				3DBBD7E122304E9700F3DA64 /* Model */,
-				4E7F1BB3222885900000F6EB /* extension */,
-				4E7F1BB022287F310000F6EB /* images */,
-				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
 				3D3868262211AE5C00E89FF4 /* core */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
@@ -243,6 +240,9 @@
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
 				3D9514CB21F5EDA9004960CE /* Info.plist */,
+				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
+				4E7F1BB3222885900000F6EB /* extension */,
+				4E7F1BB022287F310000F6EB /* images */,
 			);
 			path = myPodcastApp;
 			sourceTree = "<group>";

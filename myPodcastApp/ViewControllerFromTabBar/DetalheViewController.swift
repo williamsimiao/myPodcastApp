@@ -38,7 +38,6 @@ class DetalheViewController: InheritanceViewController {
     var realm = AppService.realm()
     
     
-//    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
     var selectedResumoImage : UIImage?
     var success: Bool?
@@ -48,17 +47,11 @@ class DetalheViewController: InheritanceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationController?.navigationBar.prefersLargeTitles = false
-        
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         
-        //makeResquest()
-        
         episodeContentView.delegate = self
         setupUI()
-        
-        
         
         // verificar se eh favorito
         let cod_resumo = selectedResumo?.cod_resumo
@@ -77,8 +70,6 @@ class DetalheViewController: InheritanceViewController {
             }
             
         }
-        
-        
         
         // resumo texto 10
         let resumo = selectedResumo?.resumo_10
@@ -108,87 +99,6 @@ class DetalheViewController: InheritanceViewController {
         
         return urlComponents.url
     }
-    
-    func makeResquest() {
-        let cod_resumo = selectedResumo?.cod_resumo
-        
-        //        let url:URL = createURLWithComponents(cod_resumo: cod_resumo)!
-        let urlString = AppConfig.urlBaseApi + "detalheResumo.php" + "?cod_resumo=" + cod_resumo!
-        let myUrl = URL(string: urlString)
-        
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: myUrl!)
-        
-        request.timeoutInterval = 10
-        request.httpMethod = "GET"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
-        
-        let task = session.dataTask(with: request, completionHandler: {
-            (
-            data, response, error) in
-            
-            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
-                return
-            }
-            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            self.extract_json_data(dataString!)
-        })
-        task.resume()
-    }
-    
-    func extract_json_data(_ data:NSString) {
-        
-        NSLog("FILO %@", data)
-        
-        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
-        
-        
-        do {
-            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
-            
-            self.success = (json.value(forKey: "success") as! Bool)
-            if (self.success!) {
-                
-                NSLog("Login SUCCESS");
-                self.detailsEpisode = (json.object(forKey: "resumo") as! Dictionary)
-            } else {
-                NSLog("Login ERROR");
-                error_msg = (json.value(forKey: "error") as! String)
-            }
-        }
-        catch {
-            print("error")
-            return
-        }
-        DispatchQueue.main.async(execute: onResultReceived)
-    }
-    
-    func onResultReceived() {
-        
-        if self.success! {
-            
-            let resumo = (detailsEpisode!["resumo_10"] as! String)
-            
-            textView.text = resumo
-            
-            if resumo == "" {
-                resumoView.isHidden = true
-                //textView.text = exempleText
-            }
-            else {
-                resumoView.isHidden = false
-            }
-            
-        }
-        else {
-            AppService.util.alert("Erro na Detail", message: error_msg!)
-        }
-        
-    }
-    
     
     func checkAvaliableLinks() {
         if selectedResumo?.url_podcast_40_f == nil || selectedResumo?.url_podcast_40_f == "" {
@@ -221,7 +131,7 @@ class DetalheViewController: InheritanceViewController {
 
         let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
         
-        if userIsAllowedToPlay {
+        if userIsAllowedToPlay {            
             NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
         }
         else {

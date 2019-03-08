@@ -24,6 +24,8 @@ class ResumoEntity: Object {
     @objc dynamic var favoritado = 0
     @objc dynamic var downloaded = 0
     @objc dynamic var concluido = 0
+    @objc dynamic var iniciado = 0
+
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
         self.init()

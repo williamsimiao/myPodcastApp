@@ -118,7 +118,7 @@ class playerManager {
     
     //MARK Mudando de Episodio
     func episodeSelected(episode: Resumo, episodeLink: URL) -> Bool {
-        if !AppService.util.handleInCaseIsVisitante() {
+        if !AppService.util.checkIfVisitanteIsAbleToPlay(resumo: episode) {
             return false
         }
         

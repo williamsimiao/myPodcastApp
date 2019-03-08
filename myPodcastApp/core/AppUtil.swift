@@ -11,8 +11,9 @@ import SystemConfiguration
 import UIKit
 
 open class AppUtil {
-    let maxVisitas = 2
-    
+    let maxVisitas = 3
+    var realm = AppService.realm()
+
     func currentView() -> UIViewController {
         var currentViewController: UIViewController!
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -444,26 +445,32 @@ open class AppUtil {
         return destinationUrl
     }
     
-    func handleInCaseIsVisitante() -> Bool{
+    func checkIfVisitanteIsAbleToPlay(resumo: Resumo) -> Bool{
         let prefs:UserDefaults = UserDefaults.standard
         let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
 
         if isVisitante {
-            let visitasCounter = prefs.integer(forKey: "visitasCounter") as Int
-            prefs.set(visitasCounter + 1, forKey: "visitasCounter")
-            return checkVisitasLimit()
+            if resumo.iniciado == 1 {
+                return true
+            }
+            else if VisitasLimitReached() {
+                return false
+            }
+            let theResumo = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", resumo.cod_resumo).first
+            try! self.realm.write {
+                theResumo?.iniciado = 1
+            }
+            
         }
         return true
     }
     
-    func checkVisitasLimit() -> Bool {
-        let prefs:UserDefaults = UserDefaults.standard
-        let visitasCounter = prefs.integer(forKey: "visitasCounter") as Int
-
-        if visitasCounter > maxVisitas {
-            return false
+    func VisitasLimitReached() -> Bool {
+        let resumosIniciados = realm.objects(ResumoEntity.self).filter("iniciado = 1")
+        if resumosIniciados.count > maxVisitas {
+            return true
         }
-        return true
+        return false
     }
     
     func handleNotAllowed() {

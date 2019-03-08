@@ -24,6 +24,7 @@ class Resumo {
     var favoritado = 0
     var downloaded = 0
     var concluido = 0
+    var iniciado = 0
     
     init(resumoEntity: ResumoEntity) {
         self.cod_resumo = resumoEntity.cod_resumo

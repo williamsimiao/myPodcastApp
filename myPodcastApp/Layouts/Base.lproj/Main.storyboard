@@ -1157,7 +1157,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-cM-6Su" userLabel="emailButton">
-                                <rect key="frame" x="129.5" y="385" width="116" height="30"/>
+                                <rect key="frame" x="37.5" y="385" width="300" height="45"/>
                                 <state key="normal" title="Entrar com email">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1166,7 +1166,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-Pz-t3e" userLabel="criarContaView">
-                                <rect key="frame" x="97.5" y="423" width="180" height="30"/>
+                                <rect key="frame" x="97.5" y="438" width="180" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCP-Al-dZY">
                                         <rect key="frame" x="132" y="0.0" width="44" height="30"/>
@@ -1201,7 +1201,7 @@
                                 <rect key="frame" x="177.5" y="210" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJI-kv-Peb" userLabel="emailButton">
-                                <rect key="frame" x="114.5" y="469" width="146" height="30"/>
+                                <rect key="frame" x="114.5" y="484" width="146" height="30"/>
                                 <state key="normal" title="Entrar como visitante">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1212,6 +1212,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="width" secondItem="5me-5z-Fud" secondAttribute="width" id="09c-f5-42v"/>
                             <constraint firstItem="5me-5z-Fud" firstAttribute="height" secondItem="6dB-MM-Cbh" secondAttribute="height" id="1Zc-X0-8hD"/>
                             <constraint firstItem="PRa-Pz-t3e" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="4aX-OK-HPl"/>
                             <constraint firstItem="6dB-MM-Cbh" firstAttribute="width" secondItem="T1o-kt-84b" secondAttribute="width" multiplier="0.8" id="5Vo-iL-njI"/>
@@ -1223,6 +1224,7 @@
                             <constraint firstItem="6dB-MM-Cbh" firstAttribute="top" secondItem="rJF-n6-0Nq" secondAttribute="bottom" id="MwM-5h-qdp"/>
                             <constraint firstItem="rJF-n6-0Nq" firstAttribute="top" secondItem="T1o-kt-84b" secondAttribute="top" constant="20" id="SSK-6v-o1R"/>
                             <constraint firstItem="lXJ-Jf-eLx" firstAttribute="top" secondItem="5me-5z-Fud" secondAttribute="bottom" constant="8" id="VSs-fq-26Z"/>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="height" secondItem="5me-5z-Fud" secondAttribute="height" id="WGk-02-Osq"/>
                             <constraint firstItem="RJI-kv-Peb" firstAttribute="top" secondItem="PRa-Pz-t3e" secondAttribute="bottom" constant="16" id="Xbn-Uq-6Lb"/>
                             <constraint firstItem="6dB-MM-Cbh" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="afe-Ib-aP9"/>
                             <constraint firstItem="TI0-W9-T6g" firstAttribute="bottom" secondItem="rJF-n6-0Nq" secondAttribute="bottom" constant="-10" id="aoi-Yv-SoX"/>
