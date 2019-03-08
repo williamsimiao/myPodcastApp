@@ -110,10 +110,7 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
             
             AppService.util.removeUserDataFromUserDefaults()
         }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let vc = storyboard.instantiateViewController(withIdentifier: "PrimeiraVC")
-        self.present(vc, animated: true, completion: nil)
+        AppService.util.logout()
     }
     
     @IBAction func clickMenu(_ sender: Any) {

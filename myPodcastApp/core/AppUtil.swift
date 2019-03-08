@@ -473,15 +473,20 @@ open class AppUtil {
             preferredStyle: UIAlertController.Style.alert
         )
         alert.addAction(UIAlertAction(title: "Login", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "PrimeiraVC")
-            self.currentView().present(vc, animated: true, completion: nil)
+            AppService.util.logout()
         }))
         
         alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
         }))
         self.currentView().present(alert, animated: true, completion: nil)
+    }
+    
+    func logout() {
+        playerManager.shared.player?.pause()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PrimeiraVC")
+        self.currentView().present(vc, animated: true, completion: nil)
     }
     
 }
