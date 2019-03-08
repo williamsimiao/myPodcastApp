@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIR-rI-FoS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lMJ-6l-Pgj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -985,8 +985,8 @@
                         <outlet property="scrollView" destination="llc-s4-Izh" id="h0m-xP-AZO"/>
                         <outlet property="txtEmail" destination="65r-na-Iz2" id="kHU-05-gIO"/>
                         <outlet property="txtSenha" destination="Auz-G6-7RD" id="Sea-Za-0su"/>
-                        <segue destination="lMJ-6l-Pgj" kind="show" identifier="goto_welcome" id="A3P-4d-8gn"/>
                         <segue destination="o0g-nU-naZ" kind="show" identifier="goto_recuperar" id="JfO-l2-Onr"/>
+                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_base" id="YRk-1p-Ij2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJ5-Y9-Jy0" sceneMemberID="firstResponder"/>
@@ -1067,12 +1067,12 @@
                         <outlet property="longerGroundButton" destination="cd2-xN-vNW" id="Gz0-rZ-ep6"/>
                         <outlet property="pageControl" destination="5sV-Ng-RSL" id="4O3-dQ-btA"/>
                         <outlet property="scrollView" destination="tTb-dy-4i6" id="t3r-Rb-19C"/>
-                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_main" id="7Fl-9Q-3jf"/>
+                        <segue destination="PIR-rI-FoS" kind="show" identifier="goto_primeira" id="WHg-fS-E5q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVT-sF-K9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3867" y="1446"/>
+            <point key="canvasLocation" x="1210" y="649"/>
         </scene>
         <!--Primeira View Controller-->
         <scene sceneID="qO6-Hi-PQM">
@@ -1233,8 +1233,7 @@
                         <outlet property="btnGoogle" destination="5me-5z-Fud" id="Ydn-FY-LmR"/>
                         <outlet property="loading" destination="TI0-W9-T6g" id="hEk-jj-DGb"/>
                         <segue destination="lzb-Rf-PBa" kind="presentation" identifier="goto_login" id="nvL-Xg-I1S"/>
-                        <segue destination="lMJ-6l-Pgj" kind="show" identifier="goto_welcome" id="cc4-Nu-2VX"/>
-                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_main" id="BEu-Ua-mz1"/>
+                        <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_base" id="BEu-Ua-mz1"/>
                         <segue destination="lNs-Fr-eWm" kind="presentation" identifier="goto_cadastro" id="B1u-DA-Ebh"/>
                     </connections>
                 </viewController>
@@ -1269,6 +1268,187 @@
             </objects>
             <point key="canvasLocation" x="6575.625" y="1006.6901408450705"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="vbj-lI-2oG">
+            <objects>
+                <viewController id="5Y3-qG-VEH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q7I-dd-L9W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgT-CH-9R6">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-L0-0pg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="808"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="b7R-g0-C5A">
+                                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="QoW-hQ-ek2"/>
+                                                    <constraint firstAttribute="height" constant="200" id="vap-Hw-uN4"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="r4k-DJ-Qon" userLabel="primeira Stack View">
+                                                <rect key="frame" x="16" y="260" width="343" height="320"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zSA-at-bME">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wU-19-as2" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-AL-kVv" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fone (DDD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOm-0c-kyl" userLabel="telefone" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="56" width="343" height="40"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZ3-XD-b0l" userLabel="data" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="112" width="343" height="40"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E8Y-wv-lJ0">
+                                                        <rect key="frame" x="0.0" y="168" width="343" height="40"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sexo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4He-ec-seX" userLabel="sexo" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escolaridade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpI-oi-hkZ" userLabel="escolaridade" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A6e-TQ-kzp" userLabel="email" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="224" width="343" height="40"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8n-vF-enc" userLabel="senha" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="280" width="343" height="40"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="320" id="Lq6-ZZ-MRX"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5D-M5-N1W" userLabel="empreende">
+                                                <rect key="frame" x="16" y="596" width="343" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Duv-pB-cAH"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Já Empreende ?" image="checkWhite"/>
+                                                <connections>
+                                                    <action selector="clickBtnEmpreende:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="UWR-n8-oZF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziI-VQ-si9">
+                                                <rect key="frame" x="16" y="662" width="343" height="40"/>
+                                                <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="2fb-rK-5Lx"/>
+                                                </constraints>
+                                                <state key="normal" title="CADASTRAR">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clickCadastrar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="d74-Yb-fbF"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-Hy-QhM">
+                                                <rect key="frame" x="92.5" y="710" width="190.5" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ao continuar, você concorda com os" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRb-3p-Am9">
+                                                        <rect key="frame" x="0.0" y="8.5" width="190.5" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="3FU-dn-YgC"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-Cf-f8X">
+                                                <rect key="frame" x="124" y="770" width="127" height="30"/>
+                                                <state key="normal" title="Voltar para o inicio">
+                                                    <color key="titleColor" red="0.9903254534" green="0.43943545210000001" blue="0.12856160950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clickVoltar:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="JIx-1G-aoa"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="r4k-DJ-Qon" secondAttribute="trailing" constant="16" id="626-Ql-EdK"/>
+                                            <constraint firstItem="iy3-Cf-f8X" firstAttribute="top" secondItem="P7G-Hy-QhM" secondAttribute="bottom" constant="30" id="65G-LZ-EVm"/>
+                                            <constraint firstAttribute="trailing" secondItem="ziI-VQ-si9" secondAttribute="trailing" constant="16" id="7wL-Vq-Uu4"/>
+                                            <constraint firstItem="r4k-DJ-Qon" firstAttribute="leading" secondItem="qDI-L0-0pg" secondAttribute="leading" constant="16" id="8W5-rK-BqF"/>
+                                            <constraint firstItem="b7R-g0-C5A" firstAttribute="centerX" secondItem="qDI-L0-0pg" secondAttribute="centerX" id="GM7-mt-ycV"/>
+                                            <constraint firstItem="ziI-VQ-si9" firstAttribute="leading" secondItem="qDI-L0-0pg" secondAttribute="leading" constant="16" id="NS6-Xf-e4h"/>
+                                            <constraint firstItem="ziI-VQ-si9" firstAttribute="top" secondItem="P5D-M5-N1W" secondAttribute="bottom" constant="16" id="QhP-Uc-KEt"/>
+                                            <constraint firstItem="r4k-DJ-Qon" firstAttribute="top" secondItem="b7R-g0-C5A" secondAttribute="bottom" constant="20" id="RIZ-8Q-ZO1"/>
+                                            <constraint firstItem="P5D-M5-N1W" firstAttribute="top" secondItem="r4k-DJ-Qon" secondAttribute="bottom" constant="16" id="XYV-7a-rId"/>
+                                            <constraint firstItem="iy3-Cf-f8X" firstAttribute="centerX" secondItem="qDI-L0-0pg" secondAttribute="centerX" id="XdC-p2-bdW"/>
+                                            <constraint firstAttribute="trailing" secondItem="P5D-M5-N1W" secondAttribute="trailing" constant="16" id="XdU-qq-qIj"/>
+                                            <constraint firstItem="P5D-M5-N1W" firstAttribute="leading" secondItem="qDI-L0-0pg" secondAttribute="leading" constant="16" id="hg4-G7-MjU"/>
+                                            <constraint firstItem="P7G-Hy-QhM" firstAttribute="top" secondItem="ziI-VQ-si9" secondAttribute="bottom" constant="8" id="j6E-7a-VNv"/>
+                                            <constraint firstItem="b7R-g0-C5A" firstAttribute="top" secondItem="qDI-L0-0pg" secondAttribute="top" constant="40" id="mUq-jZ-w8U"/>
+                                            <constraint firstAttribute="height" constant="808" id="qvm-0h-OQZ"/>
+                                            <constraint firstItem="P7G-Hy-QhM" firstAttribute="centerX" secondItem="qDI-L0-0pg" secondAttribute="centerX" id="rr9-ef-1Cs"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qDI-L0-0pg" secondAttribute="trailing" id="CZ1-VF-C9c"/>
+                                    <constraint firstItem="qDI-L0-0pg" firstAttribute="leading" secondItem="bgT-CH-9R6" secondAttribute="leading" id="MbC-Zo-Mcj"/>
+                                    <constraint firstItem="qDI-L0-0pg" firstAttribute="width" secondItem="bgT-CH-9R6" secondAttribute="width" id="VYF-8B-XbG"/>
+                                    <constraint firstAttribute="bottom" secondItem="qDI-L0-0pg" secondAttribute="bottom" id="b3S-Ou-ypK"/>
+                                    <constraint firstItem="qDI-L0-0pg" firstAttribute="top" secondItem="bgT-CH-9R6" secondAttribute="top" id="jKU-xi-Xig"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bgT-CH-9R6" firstAttribute="top" secondItem="p82-qA-wpy" secondAttribute="top" id="9uO-A7-qF8"/>
+                            <constraint firstItem="bgT-CH-9R6" firstAttribute="bottom" secondItem="p82-qA-wpy" secondAttribute="bottom" id="HJ5-aT-Gup"/>
+                            <constraint firstItem="p82-qA-wpy" firstAttribute="trailing" secondItem="bgT-CH-9R6" secondAttribute="trailing" id="Zei-vJ-2xi"/>
+                            <constraint firstItem="bgT-CH-9R6" firstAttribute="leading" secondItem="Q7I-dd-L9W" secondAttribute="leading" id="dP8-S2-WaM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p82-qA-wpy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Gx-uY-2bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="1501"/>
+        </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="oUU-Fj-7c1">
             <objects>
@@ -1295,48 +1475,19 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="v0h-De-W0K" userLabel="primeira Stack View">
-                                                <rect key="frame" x="16" y="260" width="343" height="320"/>
+                                                <rect key="frame" x="16" y="260" width="343" height="153"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TtN-Ne-9cU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40.5"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-7k-W50" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSl-Ke-k9H" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fone (DDD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiG-YM-nHM" userLabel="telefone" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="56" width="343" height="40"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-Ix-ani" userLabel="data" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="112" width="343" height="40"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="isY-jn-BeS">
-                                                        <rect key="frame" x="0.0" y="168" width="343" height="40"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sexo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aha-0k-uyP" userLabel="sexo" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escolaridade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbB-UP-9KG" userLabel="escolaridade" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40"/>
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1344,24 +1495,24 @@
                                                         </subviews>
                                                     </stackView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xhq-Es-vq0" userLabel="email" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="224" width="343" height="40"/>
+                                                        <rect key="frame" x="0.0" y="56.5" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-Ys-xm4" userLabel="senha" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="280" width="343" height="40"/>
+                                                        <rect key="frame" x="0.0" y="112.5" width="343" height="40.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="320" id="FiU-MC-NXE"/>
+                                                    <constraint firstAttribute="height" constant="153" id="FiU-MC-NXE"/>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UkL-bT-516" userLabel="empreende">
-                                                <rect key="frame" x="16" y="596" width="343" height="50"/>
+                                                <rect key="frame" x="16" y="429" width="343" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="JQb-i5-Gzz"/>
@@ -1374,7 +1525,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoN-Hx-gUX">
-                                                <rect key="frame" x="16" y="662" width="343" height="40"/>
+                                                <rect key="frame" x="16" y="495" width="343" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="0KB-ex-gcx"/>
@@ -1387,7 +1538,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J88-wb-oYg">
-                                                <rect key="frame" x="47.5" y="710" width="280.5" height="30"/>
+                                                <rect key="frame" x="92.5" y="543" width="190.5" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ao continuar, você concorda com os" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrL-7d-iLq">
                                                         <rect key="frame" x="0.0" y="8.5" width="190.5" height="13.5"/>
@@ -1395,27 +1546,13 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa9-hK-gAS">
-                                                        <rect key="frame" x="190.5" y="2" width="90" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="IAf-Ef-BZb"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="termos de uso">
-                                                            <color key="titleColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="clickBtnTermosDeUso:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="Lmi-xO-Hah"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Ah6-sR-tzo"/>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1c-pj-ZOP">
-                                                <rect key="frame" x="124" y="770" width="127" height="30"/>
+                                                <rect key="frame" x="124" y="603" width="127" height="30"/>
                                                 <state key="normal" title="Voltar para o inicio">
                                                     <color key="titleColor" red="0.9903254534" green="0.43943545210000001" blue="0.12856160950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -1484,13 +1621,9 @@
                         <outlet property="btnEmpreende" destination="UkL-bT-516" id="qCZ-VU-xwE"/>
                         <outlet property="constraintContentHeight" destination="6aZ-rF-oc3" id="J4V-HO-3tu"/>
                         <outlet property="contentView" destination="dc3-38-5dv" id="Weg-lT-qcX"/>
-                        <outlet property="edtDataNascimento" destination="l3e-Ix-ani" id="LAp-3q-bEO"/>
                         <outlet property="edtEmail" destination="Xhq-Es-vq0" id="XQ5-mM-M2X"/>
-                        <outlet property="edtEscolaridade" destination="gbB-UP-9KG" id="pxG-cf-p0l"/>
-                        <outlet property="edtFone" destination="qiG-YM-nHM" id="HZD-qm-qOr"/>
                         <outlet property="edtNome" destination="RI7-7k-W50" id="BVl-NM-StV"/>
                         <outlet property="edtSenha" destination="aYy-Ys-xm4" id="dZB-Rf-N5Q"/>
-                        <outlet property="edtSexo" destination="aha-0k-uyP" id="Dk5-ZR-m3O"/>
                         <outlet property="edtSobrenome" destination="VSl-Ke-k9H" id="6ET-Ur-nGg"/>
                         <outlet property="loading" destination="ytg-Dv-VO6" id="fRh-Bd-gRX"/>
                         <outlet property="scrollView" destination="ddg-of-CbL" id="JYm-5j-ozH"/>
@@ -2290,8 +2423,7 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A3P-4d-8gn"/>
-        <segue reference="7Fl-9Q-3jf"/>
+        <segue reference="YRk-1p-Ij2"/>
         <segue reference="CRf-lU-hgc"/>
     </inferredMetricsTieBreakers>
 </document>

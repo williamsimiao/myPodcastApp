@@ -271,7 +271,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if self.success {
             AppService.util.putuserDataOnUserDefaults(usuario: self.usuario)
-            self.performSegue(withIdentifier: "goto_welcome", sender: self)
+            self.performSegue(withIdentifier: "goto_base", sender: self)
         }
         else {
             AppService.util.alert("Erro no Login", message: error_msg as String)

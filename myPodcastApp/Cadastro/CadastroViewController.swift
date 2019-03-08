@@ -362,11 +362,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     }
     
     
-    @IBAction func clickBtnTermosDeUso(_ sender: Any) {
-        performSegue(withIdentifier: "goto_termos", sender: self)
-    }
-    
-    
     @IBAction func clickCadastrar(_ sender: Any) {
         cadastrar()
     }

@@ -78,7 +78,7 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func groundButtomAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "goto_main", sender: self)
+        self.performSegue(withIdentifier: "goto_primeira", sender: self)
     }
     
     
