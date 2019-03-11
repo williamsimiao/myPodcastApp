@@ -293,28 +293,7 @@ extension InicioViewController {
                 var resumoEntity = ResumoEntity()
                 try! realm.write {
                     resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
-//                    resumoEntity.titulo = AppService.util.populateString(resumoDict["titulo"] as AnyObject)
-//                    resumoEntity.subtitulo = AppService.util.populateString(resumoDict["subtitulo"] as AnyObject)
-//                    resumoEntity.temporada = AppService.util.populateString(resumoDict["temporada"] as AnyObject)
-//                    resumoEntity.episodio = AppService.util.populateString(resumoDict["episodio"] as AnyObject)
-//                    resumoEntity.url_imagem = AppService.util.populateString(resumoDict["url_imagem"] as AnyObject)
-//                    resumoEntity.url_podcast_10 = AppService.util.populateString(resumoDict["url_podcast_10"] as AnyObject)
-//                    resumoEntity.url_podcast_40_p = AppService.util.populateString(resumoDict["url_podcast_40_p"] as AnyObject)
-//                    resumoEntity.url_podcast_40_f = AppService.util.populateString(resumoDict["url_podcast_40_f"] as AnyObject)
-//                    resumoEntity.resumo_10 = AppService.util.populateString(resumoDict["resumo_10"] as AnyObject)
-//
-//                    let authorsDictList = resumoDict["autores"] as! [[String : AnyObject]]
-//                    let numero = authorsDictList.count
-//                    print(numero)
-//                    for authorDict in authorsDictList {
-//                        let newAutorEntity = AutorEntity(autorDictonary: authorDict)
-//                        resumoEntity.autores.append(newAutorEntity!)
-//                    }
-                    
-//
-                    self.realm.add(resumoEntity, update: true)
-                    NSLog("save resumo %@ - %@", resumoEntity.cod_resumo, resumoEntity.titulo)
-                    
+                    self.realm.add(resumoEntity, update: true)                    
                 }
                 //Building Model
                 let newResumo = Resumo(resumoEntity: resumoEntity)

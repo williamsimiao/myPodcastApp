@@ -37,7 +37,6 @@ class Resumo {
         self.url_podcast_40_p = resumoEntity.url_podcast_40_p
         self.url_podcast_40_f = resumoEntity.url_podcast_40_f
         self.resumo_10  = resumoEntity.resumo_10
-        print("COUNTER: \(resumoEntity.autores.count)")
         var autorList = [Autor]()
         for autorEntity in resumoEntity.autores {
             let newAutor = Autor(autorEntity: autorEntity)
