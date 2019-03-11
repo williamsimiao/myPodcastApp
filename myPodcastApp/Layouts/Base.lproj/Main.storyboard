@@ -245,18 +245,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7456.8000000000002" y="1011.544227886057"/>
+            <point key="canvasLocation" x="7551" y="1012"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ovw-cO-TFe">
+            <objects>
+                <viewController storyboardIdentifier="authorVC" id="mmL-8v-9JN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y57-rJ-d6T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DaK-4C-qsN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gRf-8u-zMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11349" y="413"/>
         </scene>
         <!--Detalhe View Controller-->
         <scene sceneID="B28-Ha-nEo">
             <objects>
                 <viewController id="N4r-FG-Rxn" customClass="DetalheViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CQP-9f-KoR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0" userLabel="resizable">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
@@ -355,13 +370,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
-                                        <rect key="frame" x="37.5" y="350" width="300" height="204"/>
+                                        <rect key="frame" x="37.5" y="350" width="300" height="297"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="straightLine" translatesAutoresizingMaskIntoConstraints="NO" id="yAx-ki-ZDS">
                                                 <rect key="frame" x="129.5" y="8" width="41" height="3"/>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
-                                                <rect key="frame" x="8" y="60.5" width="284" height="143.5"/>
+                                                <rect key="frame" x="8" y="60.5" width="284" height="236.5"/>
                                                 <color key="backgroundColor" red="0.19604682922363281" green="0.2000163197517395" blue="0.19604870676994324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -469,7 +484,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="8327.536231884058" y="1006.4732142857142"/>
+            <point key="canvasLocation" x="11393" y="1154"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="zcR-Rh-SC6">
@@ -767,7 +782,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec8-08-gS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10352" y="1013"/>
+            <point key="canvasLocation" x="13417" y="1160"/>
         </scene>
         <!--Episode Play Control View Controller-->
         <scene sceneID="2KS-9E-MRT">
@@ -925,7 +940,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USh-ns-gwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11142" y="1007"/>
+            <point key="canvasLocation" x="14206" y="1154"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="UYm-rR-YE7">
@@ -1352,7 +1367,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWg-3U-Nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6575.625" y="1006.6901408450705"/>
+            <point key="canvasLocation" x="6756" y="1012"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vbj-lI-2oG">
@@ -2140,7 +2155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSW-qR-aEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6428" y="2695"/>
+            <point key="canvasLocation" x="10590" y="1986"/>
         </scene>
         <!--Downloads-->
         <scene sceneID="qXT-5u-e1E">
@@ -2194,7 +2209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3T-6t-EjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7244" y="2695"/>
+            <point key="canvasLocation" x="11406" y="1986"/>
         </scene>
         <!--concluidos-->
         <scene sceneID="slt-Tq-uBK">
@@ -2248,28 +2263,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vf2-NF-joG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8034" y="2695"/>
+            <point key="canvasLocation" x="12193" y="1986"/>
         </scene>
         <!--Leitura View Controller-->
         <scene sceneID="RWX-PM-1tq">
             <objects>
                 <viewController id="TTd-qY-eSi" customClass="LeituraViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ppr-fY-uzy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnm-ad-inf">
-                                <rect key="frame" x="16" y="47.5" width="343" height="25.5"/>
+                                <rect key="frame" x="16" y="67.5" width="343" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-ub-FV0">
-                                <rect key="frame" x="52" y="81" width="271" height="2"/>
+                                <rect key="frame" x="52" y="101" width="271" height="2"/>
                                 <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zds-1R-cX4">
-                                <rect key="frame" x="0.0" y="99" width="375" height="455"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-97-F79">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="315.5"/>
@@ -2397,7 +2412,7 @@ concluir essa leitura!</string>
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjF-Q2-sGH">
-                                <rect key="frame" x="16" y="8" width="343" height="31.5"/>
+                                <rect key="frame" x="16" y="28" width="343" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2477,7 +2492,7 @@ concluir essa leitura!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fB-IO-sf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9096.7999999999993" y="1004.3478260869566"/>
+            <point key="canvasLocation" x="12161" y="1151"/>
         </scene>
     </scenes>
     <resources>
@@ -2512,7 +2527,7 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BEu-Ua-mz1"/>
-        <segue reference="XwK-Gc-UPM"/>
+        <segue reference="YRk-1p-Ij2"/>
+        <segue reference="kYh-qA-jn5"/>
     </inferredMetricsTieBreakers>
 </document>

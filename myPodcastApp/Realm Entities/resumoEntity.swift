@@ -83,10 +83,13 @@ class ResumoEntity: Object {
         guard let autores = episodeDictonary["autores"] else {
             return nil
         }
+        self.autores.removeAll()
         for autorDicionary in (autores as! [[String: AnyObject]]) {
             let autorEntity = AutorEntity(autorDictonary: autorDicionary)
             self.autores.append(autorEntity!)
         }
+        let valor = self.autores.count
+        print(valor)
     }
     
     override static func primaryKey() -> String? {
