@@ -467,7 +467,7 @@ open class AppUtil {
     
     func VisitasLimitReached() -> Bool {
         let resumosIniciados = realm.objects(ResumoEntity.self).filter("iniciado = 1")
-        if resumosIniciados.count > maxVisitas {
+        if resumosIniciados.count >= maxVisitas {
             return true
         }
         return false

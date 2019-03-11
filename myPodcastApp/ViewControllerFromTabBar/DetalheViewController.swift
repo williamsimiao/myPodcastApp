@@ -21,9 +21,12 @@ class DetalheViewController: InheritanceViewController {
     @IBOutlet weak var episodeContentView: epidodeContentRightView!
     @IBOutlet weak var FortyMinutesView: UIView!
     @IBOutlet weak var fortyMinutesButton: UIButton!
+    @IBOutlet weak var fortyLoading: UIActivityIndicatorView!
     
     @IBOutlet weak var TenMinutesView: UIView!
     @IBOutlet weak var tenMinutesButton: UIButton!
+    @IBOutlet weak var tenLoading: UIActivityIndicatorView!
+    
     
     @IBOutlet weak var resizableView: UIView!
     
@@ -85,6 +88,14 @@ class DetalheViewController: InheritanceViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.fortyLoading.stopAnimating()
+        self.fortyLoading.isHidden = true
+        
+        self.tenLoading.stopAnimating()
+        self.tenLoading.isHidden = true
+    }
+    
     func createURLWithComponents(cod_resumo: String) -> URL? {
         
         // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
@@ -121,12 +132,16 @@ class DetalheViewController: InheritanceViewController {
         }
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
+            self.tenLoading.isHidden = false
+            self.tenLoading.startAnimating()
         }
         else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
             episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
         }
         else {
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
+            self.fortyLoading.isHidden = false
+            self.fortyLoading.startAnimating()
         }
 
         let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)

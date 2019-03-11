@@ -106,7 +106,7 @@
                   moduleName = "myPodcastApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/Cadastro/RecuperarViewController.swift"
-                  timestampString = "573773060.242689"
+                  timestampString = "574002994.651273"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "73"
@@ -121,7 +121,7 @@
                   moduleName = "myPodcastApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/Cadastro/RecuperarViewController.swift"
-                  timestampString = "573773060.244728"
+                  timestampString = "574002994.653355"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
@@ -186,12 +186,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/core/AppUtil.swift"
-            timestampString = "573773060.0331711"
+            timestampString = "574002992.988415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
-            landmarkName = "logout()"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
+            landmarkName = "VisitasLimitReached()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/core/AppUtil.swift"
+            timestampString = "574004087.302222"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
+            landmarkName = "VisitasLimitReached()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/core/AppUtil.swift"
+            timestampString = "574004089.701424"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
+            landmarkName = "VisitasLimitReached()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
