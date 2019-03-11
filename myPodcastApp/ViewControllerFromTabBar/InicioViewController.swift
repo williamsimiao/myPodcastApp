@@ -15,13 +15,12 @@ import RealmSwift
 class InicioViewController: InheritanceViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var resizableView: UIView!
-    @IBOutlet weak var resizableBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var slideShow: ImageSlideshow!
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
+    @IBOutlet weak var authorCollectionView: UICollectionView!
     // MARK: - Properties
     var error_msg:String!
     var success:Bool!
@@ -36,8 +35,8 @@ class InicioViewController: InheritanceViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.superResizableView = resizableView
-        self.superBottomConstraint = resizableBottomConstraint
+//        self.superResizableView = resizableView
+//        self.superBottomConstraint = resizableBottomConstraint
         
         
         slideShow.layer.cornerRadius = 10
@@ -117,28 +116,18 @@ class InicioViewController: InheritanceViewController {
     
     
     func setupUI() {
-        let nib = UINib(nibName: "CustomCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
+        let nibTableCell = UINib(nibName: "CustomCell", bundle: nil)
+        tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
+        
+        let nibCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
+        authorCollectionView.register(nibCollectionCell, forCellWithReuseIdentifier: "collectionCell")
+        
+        
         setupNavBarTitle()
     }
     
     func setupNavBarTitle() {
-        //
-        //        let paragraph = NSMutableParagraphStyle()
-        //        paragraph.alignment = .center
-        //        let myAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.paragraphStyle: paragraph]
-        //
-        //        let greetingsMessage = NSLocalizedString("welcome", comment: "ola")
-        //        let attributedText = NSMutableAttributedString(string: greetingsMessage, attributes: myAttributes)
-        //        navigationController?.navigationBar.titleTextAttribute =  attributedText
-        //
-        
-        //        let paragraph = NSMutableParagraphStyle()
-        //        paragraph.alignment = .center
-        //
-        //        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.paragraphStyle: paragraph]
-        //
-        //        navigationController?.navigationBar.titleTextAttributes = attributes
+       
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -343,4 +332,27 @@ extension InicioViewController {
         
     }
     
+}
+
+extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.resumoArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! authorCollectionViewCell
+        
+        let resumo = self.resumoArray[indexPath.row]
+        let authorsList = resumo.autores
+
+        
+        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: authorsList)
+        let coverUrl = resumo.url_imagem
+        
+        cell.authorImg.image = UIImage(named: "cover_placeholder")!
+        if AppService.util.isNotNull(coverUrl as AnyObject?) {
+            AppService.util.load_image_resumo(coverUrl, cod_resumo: resumo.cod_resumo, imageview: cell.authorImg)
+        }
+        return cell
+    }
 }
