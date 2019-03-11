@@ -80,6 +80,7 @@ class InicioViewController: InheritanceViewController {
         //}
         
         self.tableView.reloadData()
+        self.authorCollectionView.reloadData()
     }
     
     /*private func populateDefaultCategories() {
@@ -121,14 +122,8 @@ class InicioViewController: InheritanceViewController {
         
         let nibCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
         authorCollectionView.register(nibCollectionCell, forCellWithReuseIdentifier: "collectionCell")
-        
-        
-        setupNavBarTitle()
     }
     
-    func setupNavBarTitle() {
-       
-    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -324,6 +319,7 @@ extension InicioViewController {
             }
             
             self.tableView.reloadData()
+            self.authorCollectionView.reloadData()
             
         }
         else {

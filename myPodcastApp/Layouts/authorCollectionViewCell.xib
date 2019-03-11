@@ -12,43 +12,39 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yFg-Hw-42N" customClass="CustomCollectionViewCell" customModule="myPodcastApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
+        <view contentMode="scaleToFill" id="ogD-hx-9Bj" customClass="authorCollectionViewCell" customModule="myPodcastApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s02-TE-TX8">
-                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="80" id="D3k-Uu-47b"/>
-                            <constraint firstAttribute="width" constant="80" id="NUF-4g-hiZ"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Alberto Zukberg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-3I-CVf">
-                        <rect key="frame" x="0.0" y="88" width="80" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
-            </view>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2de-80-Gv5">
+                    <rect key="frame" x="12" y="0.0" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="BQY-Jz-NR3"/>
+                        <constraint firstAttribute="height" constant="80" id="epe-8F-dnv"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Alberto Zukberg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbO-XK-V0O">
+                    <rect key="frame" x="0.0" y="88" width="104" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="nsc-3I-CVf" firstAttribute="top" secondItem="s02-TE-TX8" secondAttribute="bottom" constant="8" id="09H-8c-paI"/>
-                <constraint firstItem="nsc-3I-CVf" firstAttribute="centerX" secondItem="yFg-Hw-42N" secondAttribute="centerX" id="DuM-6u-7rm"/>
-                <constraint firstItem="s02-TE-TX8" firstAttribute="top" secondItem="yFg-Hw-42N" secondAttribute="top" id="cJv-uP-uGe"/>
-                <constraint firstAttribute="trailing" secondItem="s02-TE-TX8" secondAttribute="trailing" id="gLo-Lj-5Nc"/>
-                <constraint firstItem="s02-TE-TX8" firstAttribute="leading" secondItem="yFg-Hw-42N" secondAttribute="leading" id="os9-Ai-16C"/>
-                <constraint firstItem="nsc-3I-CVf" firstAttribute="leading" secondItem="yFg-Hw-42N" secondAttribute="leading" id="z1Q-98-xzB"/>
+                <constraint firstItem="pbO-XK-V0O" firstAttribute="leading" secondItem="srm-vc-G1N" secondAttribute="leading" id="6b0-QT-1NI"/>
+                <constraint firstItem="pbO-XK-V0O" firstAttribute="trailing" secondItem="srm-vc-G1N" secondAttribute="trailing" id="RK4-bD-Z1L"/>
+                <constraint firstItem="pbO-XK-V0O" firstAttribute="top" secondItem="2de-80-Gv5" secondAttribute="bottom" constant="8" id="jih-jJ-5oa"/>
+                <constraint firstItem="2de-80-Gv5" firstAttribute="top" secondItem="srm-vc-G1N" secondAttribute="top" id="vTW-Yv-O8W"/>
+                <constraint firstItem="2de-80-Gv5" firstAttribute="centerX" secondItem="ogD-hx-9Bj" secondAttribute="centerX" id="yxl-qm-dm7"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="waM-vB-fCs"/>
-            <size key="customSize" width="91" height="115"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="srm-vc-G1N"/>
             <connections>
-                <outlet property="authorImg" destination="s02-TE-TX8" id="ZBi-GO-8Kr"/>
-                <outlet property="authorLabel" destination="nsc-3I-CVf" id="dfA-o4-6QQ"/>
+                <outlet property="authorImg" destination="2de-80-Gv5" id="U4m-R0-gDw"/>
+                <outlet property="authorLabel" destination="pbO-XK-V0O" id="YbA-PG-QJ4"/>
             </connections>
-            <point key="canvasLocation" x="-124.8" y="65.667166416791616"/>
-        </collectionViewCell>
+            <point key="canvasLocation" x="-384.80000000000001" y="-263.56821589205401"/>
+        </view>
     </objects>
 </document>
