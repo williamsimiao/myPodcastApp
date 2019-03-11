@@ -7,6 +7,7 @@
 //
 
 import RealmSwift
+import MediaPlayer
 
 class ResumoEntity: Object {
     @objc dynamic var cod_resumo = ""
@@ -24,7 +25,10 @@ class ResumoEntity: Object {
     @objc dynamic var favoritado = 0
     @objc dynamic var downloaded = 0
     @objc dynamic var concluido = 0
+    
     @objc dynamic var iniciado = 0
+    @objc dynamic var progresSeconds = 0.0
+    @objc dynamic var preferedSpeed = 1.0
 
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
@@ -88,10 +92,8 @@ class ResumoEntity: Object {
             let autorEntity = AutorEntity(autorDictonary: autorDicionary)
             self.autores.append(autorEntity!)
         }
-        let valor = self.autores.count
-        print(valor)
     }
-    
+        
     override static func primaryKey() -> String? {
         return "cod_resumo"
     }

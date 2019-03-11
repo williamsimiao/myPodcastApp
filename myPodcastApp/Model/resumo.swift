@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import MediaPlayer
+import UIKit
+
 
 class Resumo {
     var cod_resumo : String
@@ -24,7 +27,11 @@ class Resumo {
     var favoritado = 0
     var downloaded = 0
     var concluido = 0
+    
+    //
     var iniciado = 0
+    var progressSeconds = 0.0
+    var preferedSpeed = 1.0
     
     init(resumoEntity: ResumoEntity) {
         self.cod_resumo = resumoEntity.cod_resumo
@@ -43,6 +50,8 @@ class Resumo {
             autorList.append(newAutor)
         }
         self.autores = autorList
+        self.progressSeconds = resumoEntity.progresSeconds
+        self.preferedSpeed = resumoEntity.preferedSpeed
     }
     
 //    init?(resumoDict: [String:AnyObject]) {

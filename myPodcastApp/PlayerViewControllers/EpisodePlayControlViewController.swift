@@ -110,6 +110,25 @@ class EpisodePlayControlViewController: UIViewController {
             changeButtonState(to: .play)
         }
     }
+    
+    @IBAction func clickDownload(_ sender: Any) {
+    }
+    
+    @IBAction func clickMore(_ sender: Any) {
+        
+        let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = sb.instantiateViewController(withIdentifier: "speedModal")
+        vc.modalTransitionStyle = .coverVertical
+
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func valueChanged(sender: UISlider) {
+    }
+
+    
+    
+    
 }
 
 // MARK: - Player dataSource

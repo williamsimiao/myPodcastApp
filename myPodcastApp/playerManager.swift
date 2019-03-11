@@ -167,6 +167,10 @@ class playerManager {
         jumpBy(seconds: Double(skip_time))
     }
     
+    func changePlaybackRate(rate: Float) {
+        self.player?.rate = rate
+    }
+    
     func playPause(shouldPlay:Bool) {
         //Notifing that the state changed
         if shouldPlay {

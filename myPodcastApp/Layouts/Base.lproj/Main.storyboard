@@ -845,10 +845,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-yX-3fM" userLabel="download">
                                                 <rect key="frame" x="8" y="155" width="21" height="22"/>
                                                 <state key="normal" image="downloadBlack"/>
+                                                <connections>
+                                                    <action selector="clickDownload:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="c8M-aM-qje"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zy-su-MTj" userLabel="more">
                                                 <rect key="frame" x="344" y="155" width="23" height="22"/>
                                                 <state key="normal" image="moreBlack"/>
+                                                <connections>
+                                                    <action selector="clickMore:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="yDZ-Oh-lga"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Philip Kotler" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzR-5F-cPF" userLabel="author">
                                                 <rect key="frame" x="52.5" y="131" width="270.5" height="24"/>
@@ -1372,7 +1378,7 @@
         <!--View Controller-->
         <scene sceneID="vbj-lI-2oG">
             <objects>
-                <viewController id="5Y3-qG-VEH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="speedModal" id="5Y3-qG-VEH" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q7I-dd-L9W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1548,7 +1554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gx-uY-2bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="1501"/>
+            <point key="canvasLocation" x="15247" y="1208"/>
         </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="oUU-Fj-7c1">
