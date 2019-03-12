@@ -923,15 +923,26 @@
                                     <constraint firstItem="pNf-4Y-tEt" firstAttribute="top" secondItem="uKB-e1-Cfm" secondAttribute="bottom" constant="2" id="Vu4-Js-Ph2"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diX-jB-DxU">
+                                <rect key="frame" x="172.5" y="261" width="30" height="30"/>
+                                <state key="normal" title="1x">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickSpeedBtn:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="rj3-GG-u58"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="diX-jB-DxU" firstAttribute="top" secondItem="5ye-ib-aWJ" secondAttribute="bottom" constant="15" id="4zh-zX-snG"/>
                             <constraint firstItem="uKB-e1-Cfm" firstAttribute="top" secondItem="6o0-MF-tlj" secondAttribute="top" id="B3x-U8-lqH"/>
                             <constraint firstItem="uKB-e1-Cfm" firstAttribute="leading" secondItem="6o0-MF-tlj" secondAttribute="leading" id="XTA-FN-CSA"/>
                             <constraint firstItem="uKB-e1-Cfm" firstAttribute="trailing" secondItem="6o0-MF-tlj" secondAttribute="trailing" id="ZWC-mI-2oM"/>
                             <constraint firstItem="5ye-ib-aWJ" firstAttribute="leading" secondItem="6o0-MF-tlj" secondAttribute="leading" id="aDY-8I-iRF"/>
                             <constraint firstItem="5ye-ib-aWJ" firstAttribute="top" secondItem="6o0-MF-tlj" secondAttribute="top" id="avc-bm-cL1"/>
                             <constraint firstItem="5ye-ib-aWJ" firstAttribute="trailing" secondItem="6o0-MF-tlj" secondAttribute="trailing" id="fiK-pM-DwW"/>
+                            <constraint firstItem="diX-jB-DxU" firstAttribute="centerX" secondItem="5UM-G1-Rtv" secondAttribute="centerX" id="uLL-5a-YhB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6o0-MF-tlj"/>
                     </view>
@@ -942,6 +953,7 @@
                         <outlet property="progressLabel" destination="O0w-Fp-1n9" id="P07-K6-5xi"/>
                         <outlet property="remainingLabel" destination="ccp-7t-57J" id="dgm-WC-48G"/>
                         <outlet property="slider" destination="NdP-MI-nFz" id="L8N-l2-TfZ"/>
+                        <outlet property="speedBtn" destination="diX-jB-DxU" id="UtG-KW-Ygc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USh-ns-gwm" userLabel="First Responder" sceneMemberID="firstResponder"/>

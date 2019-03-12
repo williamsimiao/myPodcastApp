@@ -26,12 +26,21 @@ class Resumo {
     
     var favoritado = 0
     var downloaded = 0
-    var concluido = 0
     
-    //
-    var iniciado = 0
-    var progressSeconds = 0.0
+    //Concluido field suits both free and premium types
+    var concluido_podcast_40 = 0
+    var concluido_podcast_10 = 0
+    var concluido_resumo_10 = 0
+    
+    //Seconds
+    var progressPodcast_10 = 0.0
+    var progressPodcast_40_p = 0.0
+    var progressPodcast_40_f = 0.0
+
     var preferedSpeed = 1.0
+    
+    //0 to 1
+    var progressResumo10 = 0.0
     
     init(resumoEntity: ResumoEntity) {
         self.cod_resumo = resumoEntity.cod_resumo
@@ -50,7 +59,10 @@ class Resumo {
             autorList.append(newAutor)
         }
         self.autores = autorList
-        self.progressSeconds = resumoEntity.progresSeconds
+        self.progressPodcast_10 = resumoEntity.progressPodcast_10
+        self.progressPodcast_40_p = resumoEntity.progressPodcast_40_p
+        self.progressPodcast_40_f = resumoEntity.progressPodcast_40_f
+
         self.preferedSpeed = resumoEntity.preferedSpeed
     }
     

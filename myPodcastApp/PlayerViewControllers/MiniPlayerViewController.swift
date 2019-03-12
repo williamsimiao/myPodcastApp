@@ -54,7 +54,7 @@ class MiniPlayerViewController: UIViewController {
     
     
     @IBAction func clickClose(_ sender: Any) {
-        playerManager.shared.player?.pause()
+        playerManager.shared.stopPlayer()
         self.contentView.isHidden = true
     }
     

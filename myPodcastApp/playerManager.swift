@@ -9,6 +9,7 @@
 import Foundation
 import MediaPlayer
 import UIKit
+import RealmSwift
 
 protocol episodeDataSourceProtocol {
     //TODO colocar uma classe da model
@@ -24,31 +25,39 @@ class playerManager {
     var timeObserverToken: Any?
     let skip_time = 10
     let interfaceUpdateInterval = 0.5
+    let recordCurrentPositionInterval = 5.0
     var episodesQueue = [[String:AnyObject]]()
     var currentEpisode : Resumo?
-    var currentLink: URL?
+    var currentEpisodeType: episodeType!
+    var sliderTimeObserver: Any?
     static let shared = playerManager()
     
     private init() {}
     
-    func addPeriodicTimeObserver() {
+    func addPeriodicTimeObserverToUpdateSlider() {
         // Notify every half second
         let timeScale = CMTimeScale(NSEC_PER_SEC)
         let timeInterval = CMTime(seconds: interfaceUpdateInterval, preferredTimescale: timeScale)
-        
         self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
             if self!.getIsPlaying() {
-                let currentTime = CMTimeGetSeconds((self!.player?.currentItem?.currentTime())!)
+                let currentTime = self!.getEpisodeCurrentTimeInSeconds()
                 
                 NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime])
             }
         }
     }
     
-    func removePeriodicTimeObserver() {
-        if let timeObserverToken = timeObserverToken {
-            self.player!.removeTimeObserver(timeObserverToken)
-            self.timeObserverToken = nil
+    func removePeriodicTimeObserver(timeObserver: Any) {
+        self.player!.removeTimeObserver(timeObserver)
+    }
+    
+    func addTimeObserverToRecordProgress() {
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let timeInterval = CMTime(seconds: recordCurrentPositionInterval, preferredTimescale: timeScale)
+        self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
+            if self!.getIsPlaying() {
+                self?.recordCurrentProgress()
+            }
         }
     }
     
@@ -117,21 +126,20 @@ class playerManager {
     }
     
     //MARK Mudando de Episodio
-    func episodeSelected(episode: Resumo, episodeLink: URL) -> Bool {
+    func episodeSelected(episode: Resumo, episodeLink: URL, episodeType: episodeType) -> Bool {
         if !AppService.util.checkIfVisitanteIsAbleToPlay(resumo: episode) {
             return false
         }
-        
+
         
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
         let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
-
         
         if playerManager.shared.getPlayerIsSet() {
             let currentEpisodeId = self.currentEpisode!.cod_resumo
             let newEpisodeId = episode.cod_resumo
             
-            if (currentEpisodeId != newEpisodeId) || (self.currentLink != episodeLink) {
+            if (currentEpisodeId != newEpisodeId) || (self.currentEpisodeType != episodeType) {
                 self.player?.pause()
                 self.player?.replaceCurrentItem(with: newEpisodeAVItem)
             }
@@ -140,10 +148,10 @@ class playerManager {
             self.isSet = true
             self.player = AVPlayer(playerItem: newEpisodeAVItem)
             NotificationCenter.default.post(name: .playerIsSetUp, object: self, userInfo: nil)
-            addPeriodicTimeObserver()
+            addPeriodicTimeObserverToUpdateSlider()
         }
         self.currentEpisode = episode
-        self.currentLink = episodeLink
+        self.currentEpisodeType = episodeType
         changeUIForEpisode()
         playPause(shouldPlay: true)
         return true
@@ -179,6 +187,7 @@ class playerManager {
         else {
             self.player?.pause()
         }
+        recordCurrentProgress()
         NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": shouldPlay])
         
     }
@@ -197,6 +206,27 @@ class playerManager {
         let currentTime = self.player?.currentItem?.currentTime()
         let jump = CMTimeMakeWithSeconds(CMTimeGetSeconds(currentTime!) + Double(seconds), preferredTimescale: currentTime!.timescale)
         self.player?.seek(to: jump)
+    }
+    
+    func stopPlayer() {
+        recordCurrentProgress()
+        self.player = nil
+    }
+    
+    func recordCurrentProgress() {
+        let theResumo = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
+        try! AppService.realm().write {
+            if self.currentEpisodeType == episodeType.ten {
+                theResumo?.progressPodcast_10 = self.getEpisodeCurrentTimeInSeconds()
+            }
+            else if self.currentEpisodeType == episodeType.fortyPremium {
+                theResumo?.progressPodcast_40_p = self.getEpisodeCurrentTimeInSeconds()
+            }
+            //FORTY FREE
+            else {
+                theResumo?.progressPodcast_40_f = self.getEpisodeCurrentTimeInSeconds()
+            }
+        }
     }
     
     //MARK - Queue management

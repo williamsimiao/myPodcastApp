@@ -9,7 +9,7 @@
 import UIKit
 import Toast_Swift
 
-enum linkType: String {
+enum episodeType: String {
     case fortyFree = "url_podcast_40_f"
     case fortyPremium = "url_podcast_40_p"
     case ten = "url_podcast_10"
@@ -122,29 +122,54 @@ class DetalheViewController: InheritanceViewController {
     }
     
     @IBAction func clickPlayButton(_ sender: Any) {
+        //TODO: trocar essa variavel por acesso a API
+        let userIsPremium = false
+        
         let episodeLink : URL
+        let mEpisodeType: episodeType
         
         let resumo = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo as Any).first
         let senderObject = sender as AnyObject
         
+        //TEN and Downloaded
         if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 1 {
+            mEpisodeType = episodeType.ten
             episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_10)!)!)
         }
+        //TEN not downloaded
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
+            mEpisodeType = episodeType.ten
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
             self.tenLoading.isHidden = false
             self.tenLoading.startAnimating()
         }
+        //FORTY downloaded
         else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
-            episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
+            if userIsPremium {
+                mEpisodeType = episodeType.fortyPremium
+                episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_p)!)!)
+            }
+            else {
+                mEpisodeType = episodeType.fortyFree
+                episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
+            }
+            
         }
+        //FORTY not downloaded
         else {
-            episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
+            if userIsPremium {
+                mEpisodeType = episodeType.fortyPremium
+                episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_p)!)!
+            }
+            else {
+                mEpisodeType = episodeType.fortyFree
+                episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
+            }
             self.fortyLoading.isHidden = false
             self.fortyLoading.startAnimating()
         }
 
-        let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink)
+        let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink, episodeType: mEpisodeType)
         
         if userIsAllowedToPlay {            
             NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)

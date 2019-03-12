@@ -450,23 +450,19 @@ open class AppUtil {
         let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
 
         if isVisitante {
-            if resumo.iniciado == 1 {
+            let episodeWasPlayed = resumo.progressPodcast_10 > 0.0 && resumo.progressPodcast_40_f > 0.0 && resumo.progressPodcast_40_p > 0.0
+            if episodeWasPlayed {
                 return true
             }
             else if VisitasLimitReached() {
                 return false
             }
-            let theResumo = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", resumo.cod_resumo).first
-            try! self.realm.write {
-                theResumo?.iniciado = 1
-            }
-            
         }
         return true
     }
     
     func VisitasLimitReached() -> Bool {
-        let resumosIniciados = realm.objects(ResumoEntity.self).filter("iniciado = 1")
+        let resumosIniciados = realm.objects(ResumoEntity.self).filter("progressSeconds > 0.0")
         if resumosIniciados.count >= maxVisitas {
             return true
         }
@@ -489,7 +485,7 @@ open class AppUtil {
     }
     
     func logout() {
-        playerManager.shared.player?.pause()
+        playerManager.shared.stopPlayer()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PrimeiraVC")

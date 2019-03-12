@@ -218,14 +218,14 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         if let resumo = resumos.first {
             
             try! self.realm.write {
-                resumo.concluido = 1
+                resumo.concluido_resumo_10 = 1
                 
                 NSLog("concluido resumo %@", resumo.cod_resumo)
             }
         }
         
         /*resumo.cod_resumo = self.cod_resumo
-        resumo.concluido = 1
+        concluido_resumo_10 = 1
         
         try! realm.write {
             realm.add(resumo, update: true)

@@ -34,19 +34,33 @@ class ConcluidosViewController: InheritanceViewController {
     
     func setupUI() {
         // buscar resumos favoritos
-        let resumos = realm.objects(ResumoEntity.self).filter("concluido = 1")
-        //.sorted(byKeyPath: "dt_lib", ascending: false);
+        let concluido_podcast_10 = realm.objects(ResumoEntity.self).filter("concluido_podcast_10 = 1")
+        let concluido_podcast_40_p = realm.objects(ResumoEntity.self).filter("concluido_podcast_40_p = 1")
+        let concluido_podcast_40_f = realm.objects(ResumoEntity.self).filter("concluido_podcast_40_f = 1")
+        let concluido_resumo_10 = realm.objects(ResumoEntity.self).filter("concluido_resumo_10 = 1")
+//        resultsToResumosArray(resumosEntityList: concluido_podcast_10)
+//        resultsToResumosArray(resumosEntityList: concluido_resumo_10)
+//        resultsToResumosArray(resumosEntityList: concluido_podcast_40_f)
+//        resultsToResumosArray(resumosEntityList: concluido_podcast_40_p)
         
-        
-        print("qtd " + String(resumos.count))
-        
-        resumoArray.removeAll()
-        for resumoEntity in resumos {
+        //TODO: exchange the code bellow for caling resultsToResumosArray
+        for resumoEntity in concluido_podcast_10 {
             let resumo = Resumo(resumoEntity: resumoEntity)
-            resumoArray.append(resumo)
-            
-            print("concluido " + String(resumo.concluido))
+            self.resumoArray.append(resumo)
         }
+        for resumoEntity in concluido_podcast_40_p {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            self.resumoArray.append(resumo)
+        }
+        for resumoEntity in concluido_podcast_40_f {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            self.resumoArray.append(resumo)
+        }
+        for resumoEntity in concluido_resumo_10 {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            self.resumoArray.append(resumo)
+        }
+        
         
         if resumoArray.count == 0 {
             lblNenhum.isHidden = false
@@ -62,8 +76,16 @@ class ConcluidosViewController: InheritanceViewController {
         tableView.reloadData()
     }
     
+    func resultsToResumosArray(resumosEntityList: [ResumoEntity]) -> [Resumo] {
+        var partialResumoList = [Resumo]()
+        for resumoEntity in resumosEntityList {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            partialResumoList.append(resumo)
+        }
+        return partialResumoList
+    }
+    
 }
-
 
 
 //TableView

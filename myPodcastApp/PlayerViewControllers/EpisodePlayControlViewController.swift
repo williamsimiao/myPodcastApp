@@ -23,6 +23,7 @@ class EpisodePlayControlViewController: UIViewController {
     @IBOutlet weak var episodeAuthor: UILabel!
     
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var speedBtn: UIButton!
     
     // MARK: - Properties
     var currentPlayButtonState : playButtonStates?
@@ -115,19 +116,29 @@ class EpisodePlayControlViewController: UIViewController {
     }
     
     @IBAction func clickMore(_ sender: Any) {
+    }
+    
+    @IBAction func clickSpeedBtn(_ sender: Any) {
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Personenakte", bundle: nil).instantiateViewController(withIdentifier: "popoverId")
         
-        let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = sb.instantiateViewController(withIdentifier: "speedModal")
-        vc.modalTransitionStyle = .coverVertical
-
-        self.present(vc, animated: true, completion: nil)
+        // set the presentation style
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = sender as! UIView // button
+        popController.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
+        
+        // present the popover
+        self.present(popController, animated: true, completion: nil)
     }
     
-    @objc func valueChanged(sender: UISlider) {
-    }
+    
+}
 
-    
-    
+extension EpisodePlayControlViewController: UIPopoverPresentationControllerDelegate {
     
 }
 

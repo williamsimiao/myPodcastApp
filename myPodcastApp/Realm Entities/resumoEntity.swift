@@ -24,12 +24,21 @@ class ResumoEntity: Object {
     
     @objc dynamic var favoritado = 0
     @objc dynamic var downloaded = 0
-    @objc dynamic var concluido = 0
     
-    @objc dynamic var iniciado = 0
-    @objc dynamic var progresSeconds = 0.0
+    //Concluido field suits both free and premium types
+    @objc dynamic var concluido_podcast_40 = 0
+    @objc dynamic var concluido_podcast_10 = 0
+    @objc dynamic var concluido_resumo_10 = 0
+    
+    //Seconds
+    @objc dynamic var progressPodcast_10 = 0.0
+    @objc dynamic var progressPodcast_40_p = 0.0
+    @objc dynamic var progressPodcast_40_f = 0.0
+    
     @objc dynamic var preferedSpeed = 1.0
 
+    //0 to 1
+    @objc dynamic var progressResumo10 = 0.0
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
         self.init()
