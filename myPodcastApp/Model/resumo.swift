@@ -36,12 +36,12 @@ class Resumo {
     var progressPodcast_10 = 0.0
     var progressPodcast_40_p = 0.0
     var progressPodcast_40_f = 0.0
-
-    var preferedSpeed = 1.0
     
     //0 to 1
     var progressResumo10 = 0.0
-    
+
+    var preferedSpeed = 1.0
+
     init(resumoEntity: ResumoEntity) {
         self.cod_resumo = resumoEntity.cod_resumo
         self.titulo = resumoEntity.titulo

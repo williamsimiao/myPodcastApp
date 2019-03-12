@@ -47,8 +47,18 @@ class playerManager {
         }
     }
     
-    func removePeriodicTimeObserver(timeObserver: Any) {
-        self.player!.removeTimeObserver(timeObserver)
+    func removePeriodicSliderTimeObserver() {
+        if let token = self.sliderTimeObserver {
+            self.player!.removeTimeObserver(token)
+            self.sliderTimeObserver = nil
+        }
+    }
+    
+    func removePeriodicProgressTimeObserver() {
+        if let token = self.progressTimeObserver {
+            self.player!.removeTimeObserver(token)
+            self.progressTimeObserver = nil
+        }
     }
     
     func addTimeObserverToRecordProgress() {
@@ -102,7 +112,7 @@ class playerManager {
     }
     
     func getPlayerIsSet() -> Bool {
-        return self.isSet
+        return self.player == nil ? false : true
     }
     
     func getEpisodeDurationInSeconds() -> Double {
@@ -127,8 +137,6 @@ class playerManager {
     
     //MARK Mudando de Episodio
     func episodeSelected(episode: Resumo, episodeLink: URL, episodeType: episodeType) -> Bool {
-        removePeriodicTimeObserver(timeObserver: self.sliderTimeObserver!)
-        removePeriodicTimeObserver(timeObserver: self.progressTimeObserver!)
         
         if !AppService.util.checkIfVisitanteIsAbleToPlay(resumo: episode) {
             return false
@@ -138,6 +146,9 @@ class playerManager {
         let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
         
         if playerManager.shared.getPlayerIsSet() {
+            removePeriodicSliderTimeObserver()
+            removePeriodicProgressTimeObserver()
+
             let currentEpisodeId = self.currentEpisode!.cod_resumo
             let newEpisodeId = episode.cod_resumo
             
@@ -147,7 +158,6 @@ class playerManager {
             }
         }
         else {
-            self.isSet = true
             self.player = AVPlayer(playerItem: newEpisodeAVItem)
             NotificationCenter.default.post(name: .playerIsSetUp, object: self, userInfo: nil)
         }
@@ -212,7 +222,10 @@ class playerManager {
     }
     
     func stopPlayer() {
+        removePeriodicProgressTimeObserver()
+        removePeriodicSliderTimeObserver()
         recordCurrentProgress()
+        
         self.player = nil
     }
     

@@ -35,10 +35,11 @@ class ResumoEntity: Object {
     @objc dynamic var progressPodcast_40_p = 0.0
     @objc dynamic var progressPodcast_40_f = 0.0
     
-    @objc dynamic var preferedSpeed = 1.0
-
     //0 to 1
     @objc dynamic var progressResumo10 = 0.0
+    
+    @objc dynamic var preferedSpeed = 1.0
+
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
         self.init()

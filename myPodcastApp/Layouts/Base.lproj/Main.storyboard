@@ -461,12 +461,12 @@
                         <outlet property="btnDownload" destination="fBu-T8-7kb" id="grs-2D-amt"/>
                         <outlet property="btnSalvar" destination="RIl-hY-YRy" id="qyz-cT-6UU"/>
                         <outlet property="episodeContentView" destination="xGi-DN-kzL" id="s2u-Ss-vyV"/>
-                        <outlet property="fortyLoading" destination="z6z-4H-dqj" id="H38-jA-b0V"/>
+                        <outlet property="fortyLoading" destination="z6z-4H-dqj" id="JK2-E1-BQp"/>
                         <outlet property="fortyMinutesButton" destination="OfT-K9-lCg" id="QLx-HU-Xes"/>
                         <outlet property="resizableBottomConstraint" destination="IXc-LS-7yB" id="U9V-Bb-Flj"/>
                         <outlet property="resizableView" destination="SRM-8n-LH0" id="wXb-Ay-Z6T"/>
                         <outlet property="resumoView" destination="E4b-9s-7TE" id="xxi-JW-IAI"/>
-                        <outlet property="tenLoading" destination="Kaa-sD-pJV" id="sC2-oo-L8D"/>
+                        <outlet property="tenLoading" destination="Kaa-sD-pJV" id="8Iu-ka-bMJ"/>
                         <outlet property="tenMinutesButton" destination="WNu-sE-Eme" id="21f-Iu-5bi"/>
                         <outlet property="textView" destination="FAJ-zW-hRi" id="4Mq-T9-GfA"/>
                         <segue destination="TTd-qY-eSi" kind="show" identifier="goto_leitura" id="nSc-ba-thA"/>

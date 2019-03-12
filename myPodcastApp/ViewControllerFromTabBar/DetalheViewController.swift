@@ -85,14 +85,17 @@ class DetalheViewController: InheritanceViewController {
         else {
             resumoView.isHidden = false
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.fortyLoading.stopAnimating()
+        //TODO check why isHidden from interfaceBuilder is being overwritten
+        if self.fortyLoading.isHidden {
+            print("SI HIDEN")
+        }
+        else {
+            print("NOT HIDEN")
+        }
         self.fortyLoading.isHidden = true
-        
-        self.tenLoading.stopAnimating()
         self.tenLoading.isHidden = true
     }
     
@@ -112,8 +115,15 @@ class DetalheViewController: InheritanceViewController {
     }
     
     func checkAvaliableLinks() {
-        if selectedResumo?.url_podcast_40_f == nil || selectedResumo?.url_podcast_40_f == "" {
-            fortyMinutesButton.isEnabled = false
+        let userIsPremium = false
+        if userIsPremium {
+            if selectedResumo?.url_podcast_40_p == nil || selectedResumo?.url_podcast_40_p == "" {
+                fortyMinutesButton.isEnabled = false
+            }
+            else if selectedResumo?.url_podcast_40_f == nil || selectedResumo?.url_podcast_40_f == "" {
+                fortyMinutesButton.isEnabled = false
+            }
+
         }
         
         if selectedResumo?.url_podcast_10 == nil || selectedResumo?.url_podcast_10 == "" {
@@ -140,6 +150,7 @@ class DetalheViewController: InheritanceViewController {
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
             mEpisodeType = episodeType.ten
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
+            self.tenMinutesButton.isHidden = true
             self.tenLoading.isHidden = false
             self.tenLoading.startAnimating()
         }
@@ -165,6 +176,10 @@ class DetalheViewController: InheritanceViewController {
                 mEpisodeType = episodeType.fortyFree
                 episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
             }
+            if (self.fortyLoading.isHidden) {
+                print("OI")
+            }
+            self.fortyMinutesButton.isHidden = true
             self.fortyLoading.isHidden = false
             self.fortyLoading.startAnimating()
         }
@@ -290,7 +305,14 @@ class DetalheViewController: InheritanceViewController {
         AppService.util.dowanloadAudio(urlSring: (self.selectedResumo?.url_podcast_40_f)!)
         AppService.util.dowanloadAudio(urlSring: (self.selectedResumo?.url_podcast_10)!)
 
+    }
+    
+    func stopAnimations() {
+        self.fortyLoading.stopAnimating()
+        self.fortyLoading.isHidden = true
         
+        self.tenLoading.stopAnimating()
+        self.tenLoading.isHidden = true
     }
 }
 

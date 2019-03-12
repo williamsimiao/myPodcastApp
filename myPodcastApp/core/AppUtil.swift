@@ -462,7 +462,21 @@ open class AppUtil {
     }
     
     func VisitasLimitReached() -> Bool {
-        let resumosIniciados = realm.objects(ResumoEntity.self).filter("progressSeconds > 0.0")
+        var resumosIniciados = [Resumo]()
+        
+        let startedResumo10 = realm.objects(ResumoEntity.self).filter("progressResumo10 > 0.0")
+        let startedPodcast_10 = realm.objects(ResumoEntity.self).filter("progressPodcast_40_f > 0.0")
+        
+        //TODO: exchange the code bellow for caling resultsToResumosArray
+        for resumoEntity in startedResumo10 {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            resumosIniciados.append(resumo)
+        }
+        for resumoEntity in startedPodcast_10 {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            resumosIniciados.append(resumo)
+        }
+
         if resumosIniciados.count >= maxVisitas {
             return true
         }
