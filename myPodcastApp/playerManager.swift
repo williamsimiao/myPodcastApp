@@ -22,7 +22,6 @@ class playerManager {
     
     var player : AVPlayer?
     var isSet = false
-    var timeObserverToken: Any?
     let skip_time = 10
     let interfaceUpdateInterval = 0.5
     let recordCurrentPositionInterval = 5.0
@@ -30,6 +29,7 @@ class playerManager {
     var currentEpisode : Resumo?
     var currentEpisodeType: episodeType!
     var sliderTimeObserver: Any?
+    var progressTimeObserver: Any?
     static let shared = playerManager()
     
     private init() {}
@@ -127,11 +127,13 @@ class playerManager {
     
     //MARK Mudando de Episodio
     func episodeSelected(episode: Resumo, episodeLink: URL, episodeType: episodeType) -> Bool {
+        removePeriodicTimeObserver(timeObserver: self.sliderTimeObserver!)
+        removePeriodicTimeObserver(timeObserver: self.progressTimeObserver!)
+        
         if !AppService.util.checkIfVisitanteIsAbleToPlay(resumo: episode) {
             return false
         }
 
-        
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
         let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
         
@@ -148,8 +150,9 @@ class playerManager {
             self.isSet = true
             self.player = AVPlayer(playerItem: newEpisodeAVItem)
             NotificationCenter.default.post(name: .playerIsSetUp, object: self, userInfo: nil)
-            addPeriodicTimeObserverToUpdateSlider()
         }
+        addPeriodicTimeObserverToUpdateSlider()
+        addTimeObserverToRecordProgress()
         self.currentEpisode = episode
         self.currentEpisodeType = episodeType
         changeUIForEpisode()
