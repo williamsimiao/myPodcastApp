@@ -166,6 +166,7 @@ class playerManager {
         self.currentEpisode = episode
         self.currentEpisodeType = episodeType
         changeUIForEpisode()
+        goToCurrentProgress()
         playPause(shouldPlay: true)
         return true
     }
@@ -243,6 +244,26 @@ class playerManager {
                 theResumo?.progressPodcast_40_f = self.getEpisodeCurrentTimeInSeconds()
             }
         }
+    }
+    
+    func goToCurrentProgress() {
+        let currentResumo = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
+        
+        if self.currentEpisodeType == episodeType.ten {
+            let currentProgress = currentResumo?.progressPodcast_10
+            jumpTo(seconds: currentProgress!)
+        }
+        else if self.currentEpisodeType == episodeType.fortyPremium {
+            let currentProgress = currentResumo?.progressPodcast_40_p
+            jumpTo(seconds: currentProgress!)
+        }
+        //FORTY FREE
+        else {
+            let currentProgress = currentResumo?.progressPodcast_40_f
+            jumpTo(seconds: currentProgress!)
+        }
+        
+
     }
     
     //MARK - Queue management
