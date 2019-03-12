@@ -243,9 +243,9 @@ class DetalheViewController: InheritanceViewController {
             let joinedNames =  Util.joinAuthorsNames(authorsList: authorsList!)
             
             leituraVC.author = joinedNames
-            
             leituraVC.episodeTitle = self.selectedResumo?.titulo
             leituraVC.resumoText = textView.text
+            leituraVC.currentResumo = self.selectedResumo
         }
         
     }

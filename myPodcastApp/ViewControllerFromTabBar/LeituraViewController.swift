@@ -30,7 +30,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var tamanhoLabel: UILabel!
     
     var realm = AppService.realm()
-    
+    let positionCheckerInterval = 5.0
     
     let primaryDuration = Double(0.3)
     let maxFontSize = Float(30)
@@ -45,6 +45,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     var lightModeButton : UIBarButtonItem?
     var darkModeButton : UIBarButtonItem?
     var starArray: [UIButton]?
+    var currentResumo: Resumo?
     
     var textSettingsIsActive = false
     var lightModeIsOn = false
@@ -73,6 +74,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         //        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
         //            item.tintColor = .black
         //        }
+        goToCurrentProgress()
     }
     
     func setUpNavBarMenu() {
@@ -239,6 +241,29 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: "BaseViewController")
         self.present(vc, animated: true, completion: nil)
         
+    }
+    
+    func addTimeObserverToRecordProgress(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        let timer = Timer.scheduledTimer(timeInterval: positionCheckerInterval, target: self, selector: #selector(self.recordCurrentProgress), userInfo: nil, repeats: true)
+    }
+    
+    @objc func recordCurrentProgress(){
+        let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo).first
+        try! AppService.realm().write {
+            theResumo!.progressResumo10
+        }
+    }
+    
+    func goToCurrentProgress() {
+        let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo).first
+
+        let contentHeight = Double(self.contentView.frame.height)
+        let newHeightOffset = contentHeight / (theResumo?.progressResumo10)!
+        
+        let xPosition = Double(self.scrollView.contentOffset.x)
+        let newPoint = CGPoint(x: xPosition, y: newHeightOffset)
+        self.scrollView.contentOffset = newPoint
     }
     
     

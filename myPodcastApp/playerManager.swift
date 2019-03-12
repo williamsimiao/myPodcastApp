@@ -24,7 +24,7 @@ class playerManager {
     var isSet = false
     let skip_time = 10
     let interfaceUpdateInterval = 0.5
-    let recordCurrentPositionInterval = 5.0
+    let positionCheckerInterval = 5.0
     var episodesQueue = [[String:AnyObject]]()
     var currentEpisode : Resumo?
     var currentEpisodeType: episodeType!
@@ -63,7 +63,7 @@ class playerManager {
     
     func addTimeObserverToRecordProgress() {
         let timeScale = CMTimeScale(NSEC_PER_SEC)
-        let timeInterval = CMTime(seconds: recordCurrentPositionInterval, preferredTimescale: timeScale)
+        let timeInterval = CMTime(seconds: positionCheckerInterval, preferredTimescale: timeScale)
         self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
             if self!.getIsPlaying() {
                 self?.recordCurrentProgress()
