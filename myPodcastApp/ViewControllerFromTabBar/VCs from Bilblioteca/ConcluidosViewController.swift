@@ -33,26 +33,18 @@ class ConcluidosViewController: InheritanceViewController {
     }
     
     func setupUI() {
-        // buscar resumos favoritos
-        let concluido_podcast_10 = realm.objects(ResumoEntity.self).filter("concluido_podcast_10 = 1")
-        let concluido_podcast_40_p = realm.objects(ResumoEntity.self).filter("concluido_podcast_40_p = 1")
-        let concluido_podcast_40_f = realm.objects(ResumoEntity.self).filter("concluido_podcast_40_f = 1")
+        
+        let concluido_podcast_40 = realm.objects(ResumoEntity.self).filter("concluido_podcast_40 = 1")
         let concluido_resumo_10 = realm.objects(ResumoEntity.self).filter("concluido_resumo_10 = 1")
-//        resultsToResumosArray(resumosEntityList: concluido_podcast_10)
-//        resultsToResumosArray(resumosEntityList: concluido_resumo_10)
-//        resultsToResumosArray(resumosEntityList: concluido_podcast_40_f)
-//        resultsToResumosArray(resumosEntityList: concluido_podcast_40_p)
+        let concluido_podcast_10 = realm.objects(ResumoEntity.self).filter("concluido_podcast_10 = 1")
+
         
         //TODO: exchange the code bellow for caling resultsToResumosArray
         for resumoEntity in concluido_podcast_10 {
             let resumo = Resumo(resumoEntity: resumoEntity)
             self.resumoArray.append(resumo)
         }
-        for resumoEntity in concluido_podcast_40_p {
-            let resumo = Resumo(resumoEntity: resumoEntity)
-            self.resumoArray.append(resumo)
-        }
-        for resumoEntity in concluido_podcast_40_f {
+        for resumoEntity in concluido_podcast_40 {
             let resumo = Resumo(resumoEntity: resumoEntity)
             self.resumoArray.append(resumo)
         }
