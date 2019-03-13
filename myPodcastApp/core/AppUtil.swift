@@ -247,6 +247,70 @@ open class AppUtil {
         
     }
     
+    func load_image_autor(_ link:String, cod_autor:String, imageview:UIImageView) {
+        
+        // verificar se image jah existe
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
+        
+        let filePath = documentsPath + "/autor_" + cod_autor + "_200";
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: filePath) {
+            
+            do {
+                
+                imageview.image = UIImage(contentsOfFile: filePath)
+                
+            }
+            
+        } else {
+            
+            let url_foto:String = link //AppConfig.urlBaseThumb + "src=/images/posts/" + cod_post + "/" + link + "&w=600&zc=1"
+            
+            print("link " + url_foto)
+            
+            let url:URL = URL(string: url_foto)!
+            let session = URLSession.shared
+            
+            var request = URLRequest(url: url)
+            
+            request.timeoutInterval = 10
+            
+            
+            let task = session.dataTask(with: request, completionHandler: {
+                (
+                data, response, error) in
+                
+                guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                    return
+                }
+                
+                
+                if let image = UIImage(data: data!) {
+                    
+                    // salvar no disco
+                    DispatchQueue.main.async(execute: {
+                        try? data?.write(to: URL(fileURLWithPath: filePath), options: [.atomic]);
+                    })
+                    
+                    
+                    DispatchQueue.main.async(execute: {
+                        do {
+                            imageview.image = image
+                        }
+                    })
+                    
+                }
+                
+            })
+            
+            task.resume()
+            
+        }
+        
+    }
+    
     func load_image_resumo(_ link:String, cod_resumo:String, imageview:UIImageView) {
         
         // verificar se image jah existe

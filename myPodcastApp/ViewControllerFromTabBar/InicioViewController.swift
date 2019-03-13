@@ -272,7 +272,7 @@ extension InicioViewController {
             let autorInit = realm.objects(AutorEntity.self).filter("cod_autor = %@", cod_autor).first
             
             if autorInit != nil {
-                print("Autor exists on Realm")
+//                print("Autor exists on Realm")
             }
             
             autorEntity = AutorEntity(autorDictonary: autorDict)!
@@ -282,7 +282,7 @@ extension InicioViewController {
             }
             //Building Model
             let newAutor = Autor(autorEntity: autorEntity)
-            self.autoresArray.append(newAutor)
+            myAutores.append(newAutor)
         }
         return myAutores
     }
@@ -296,7 +296,7 @@ extension InicioViewController {
             let resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
             
             if resumoInit != nil {
-                print("Resumo exists on Realm")
+//                print("Resumo exists on Realm")
             }
             
             var resumoEntity = ResumoEntity()
@@ -315,22 +315,22 @@ extension InicioViewController {
 
 extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.ultimosResumos.count
+        let count = self.autoresArray.count
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! authorCollectionViewCell
-        
-        let resumo = self.ultimosResumos[indexPath.row]
-        let authorsList = resumo.autores
+        let tamanhho = self.autoresArray.count
+        let autor = self.autoresArray[indexPath.row]
 
         
-        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: authorsList)
-        let coverUrl = resumo.url_imagem
+        cell.authorLabel.text = autor.nome
+        let coverUrl = autor.url_imagem
         
-        cell.authorImg.image = UIImage(named: "cover_placeholder")!
+        cell.authorImg.image = UIImage(named: "sem_imagem")!
         if AppService.util.isNotNull(coverUrl as AnyObject?) {
-            AppService.util.load_image_resumo(coverUrl, cod_resumo: resumo.cod_resumo, imageview: cell.authorImg)
+            AppService.util.load_image_autor(coverUrl, cod_autor: autor.cod_autor, imageview: cell.authorImg)
         }
         return cell
     }
