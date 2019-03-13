@@ -458,9 +458,9 @@ open class AppUtil {
         return ""
     }
     
-    func dowanloadAudio(urlSring: String) {
-        print(urlSring)
-        if let audioUrl = URL(string: urlSring) {
+    func downloadAudio(urlString: String, cod_resumo: String) {
+        print(urlString)
+        if let audioUrl = URL(string: urlString) {
             
             // then lets create your document folder url
             let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -473,7 +473,7 @@ open class AppUtil {
             if FileManager.default.fileExists(atPath: destinationUrl.path) {
                 print("The file already exists at path")
                 
-                // if the file doesn't exist
+            // if the file doesn't exist
             } else {
                 
                 // you can use NSURLSession.sharedSession to download the data asynchronously
@@ -483,7 +483,22 @@ open class AppUtil {
                         // after downloading your file you need to move it to your destination url
                         try FileManager.default.moveItem(at: location, to: destinationUrl)
                         print("File moved to documents folder")
+                        
+                        
+                        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+                        guard let resumo = resumos.first else {
+                            //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
+                            //            Delay.short
+                            print("Não foi possivel fazer o download")
+                            return
+                        }
+
+                        try! self.realm.write {
+                            resumo.downloaded = 1
+                            NSLog("downloaded resumo %@", resumo.cod_resumo)
+                        }
                     } catch let error as NSError {
+                        print("Erro no Download")
                         print(error.localizedDescription)
                     }
                 }).resume()

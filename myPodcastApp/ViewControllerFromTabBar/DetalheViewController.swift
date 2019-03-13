@@ -144,7 +144,7 @@ class DetalheViewController: InheritanceViewController {
         //TEN and Downloaded
         if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 1 {
             mEpisodeType = episodeType.ten
-            episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_10)!)!)
+            episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_10)!)!)
         }
         //TEN not downloaded
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
@@ -158,11 +158,11 @@ class DetalheViewController: InheritanceViewController {
         else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
             if userIsPremium {
                 mEpisodeType = episodeType.fortyPremium
-                episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_p)!)!)
+                episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_p)!)!)
             }
             else {
                 mEpisodeType = episodeType.fortyFree
-                episodeLink = getLocalURL(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
+                episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
             }
             
         }
@@ -194,10 +194,9 @@ class DetalheViewController: InheritanceViewController {
         }
     }
     
-    func getLocalURL(sender: Any, serverUrl: URL) -> URL {
+    func chooseLocalURLorServer(sender: Any, serverUrl: URL) -> URL {
         var episodeLink  = serverUrl
         do {
-            
             try episodeLink = AppService.util.getPathFromDownloadedAudio(urlString: (selectedResumo?.url_podcast_40_f)!)
             
         } catch AppError.filePathError {
@@ -285,25 +284,20 @@ class DetalheViewController: InheritanceViewController {
     @IBAction func clickDownload(_ sender: Any) {
         //Marking as downloaded
         let cod_resumo = self.selectedResumo?.cod_resumo
-        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
-        guard let resumo = resumos.first else {
-//            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
-//            Delay.short
-            print("Não foi possivel fazer o download")
-            return
-        }
-        try! self.realm.write {
-            resumo.downloaded = 1
-            
-            NSLog("downloaded resumo %@", resumo.cod_resumo)
-        }
-//        Toast(text: "Download em andamento", duration: 1).show()
+        //        Toast(text: "Download em andamento", duration: 1).show()
         print("Download em andamento")
 
         
         //Saving files
-        AppService.util.dowanloadAudio(urlSring: (self.selectedResumo?.url_podcast_40_f)!)
-        AppService.util.dowanloadAudio(urlSring: (self.selectedResumo?.url_podcast_10)!)
+        let userIsPremium = false
+        if userIsPremium {
+            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
+            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
+        }
+        else {
+            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
+        }
+        
 
     }
     
