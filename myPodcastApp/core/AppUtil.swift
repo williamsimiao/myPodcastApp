@@ -484,19 +484,11 @@ open class AppUtil {
                         try FileManager.default.moveItem(at: location, to: destinationUrl)
                         print("File moved to documents folder")
                         
-                        
-                        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
-                        guard let resumo = resumos.first else {
-                            //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
-                            //            Delay.short
-                            print("Não foi possivel fazer o download")
-                            return
-                        }
+                        DispatchQueue.main.async(execute: {
+                            self.markResumoAsDownloaded(cod_resumo: cod_resumo)
+                        })
 
-                        try! self.realm.write {
-                            resumo.downloaded = 1
-                            NSLog("downloaded resumo %@", resumo.cod_resumo)
-                        }
+                        
                     } catch let error as NSError {
                         print("Erro no Download")
                         print(error.localizedDescription)
@@ -505,6 +497,22 @@ open class AppUtil {
             }
         }
     }
+    
+    func markResumoAsDownloaded(cod_resumo: String) {
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+        guard let resumo = resumos.first else {
+            //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
+            //            Delay.short
+            print("Não foi possivel fazer o download")
+            return
+        }
+        
+        try! self.realm.write {
+            resumo.downloaded = 1
+            NSLog("downloaded resumo %@", resumo.cod_resumo)
+        }
+    }
+
     
     func getPathFromDownloadedAudio(urlString: String) throws -> URL {
         guard let fileURL = URL(string: urlString)  else {
