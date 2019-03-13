@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/core/AppUtil.swift"
-            timestampString = "574197984.578912"
+            timestampString = "574200377.036666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "480"
@@ -26,7 +26,7 @@
                   moduleName = "myPodcastApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/core/AppUtil.swift"
-                  timestampString = "574197984.590252"
+                  timestampString = "574200377.2252361"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "480"
@@ -41,7 +41,7 @@
                   moduleName = "myPodcastApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/core/AppUtil.swift"
-                  timestampString = "574197984.593074"
+                  timestampString = "574200377.227823"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "481"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/core/AppUtil.swift"
-            timestampString = "574197987.65762"
+            timestampString = "574200377.03736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "474"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/core/AppUtil.swift"
-            timestampString = "574198104.781855"
+            timestampString = "574200377.037645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "493"
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
-            timestampString = "574198179.529629"
+            timestampString = "574200377.037903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "clickPlayButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,12 +106,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
-            timestampString = "574198185.383786"
+            timestampString = "574200377.038694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "clickPlayButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/PlayerViewControllers/EpisodePlayControlViewController.swift"
+            timestampString = "574200377.039188"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

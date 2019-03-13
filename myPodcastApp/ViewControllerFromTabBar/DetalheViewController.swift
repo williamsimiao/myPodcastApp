@@ -56,35 +56,7 @@ class DetalheViewController: InheritanceViewController {
         episodeContentView.delegate = self
         setupUI()
         
-        // verificar se eh favorito
-        let cod_resumo = selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(ResumoEntity.self)
-            .filter("cod_resumo = %@", cod_resumo!);
-        
-        if let resumo = resumos.first {
-                
-            if resumo.favoritado == 1 {
-                btnSalvar.image = UIImage(named: "favoritoOrange")!
-                btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
-            } else {
-                btnSalvar.image = UIImage(named: "favoritoWhite")!
-                btnSalvar.tintColor = UIColor.white
-            }
-            
-        }
-        
-        // resumo texto 10
-        let resumo = selectedResumo?.resumo_10
-        
-        textView.text = resumo
-        
-        if resumo == "" {
-            resumoView.isHidden = true
-        }
-        else {
-            resumoView.isHidden = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -229,6 +201,43 @@ class DetalheViewController: InheritanceViewController {
         self.resumoView.layer.cornerRadius = 10
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
         self.textView.textAlignment = NSTextAlignment.justified
+        
+        let cod_resumo = selectedResumo?.cod_resumo
+        
+        let resumos = self.realm.objects(ResumoEntity.self)
+            .filter("cod_resumo = %@", cod_resumo!);
+        if let resumo = resumos.first {
+            
+            // verificar se eh favorito
+            if resumo.favoritado == 1 {
+                btnSalvar.image = UIImage(named: "favoritoOrange")!
+                btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
+            } else {
+                btnSalvar.image = UIImage(named: "favoritoWhite")!
+                btnSalvar.tintColor = UIColor.white
+            }
+            
+            // verificar se eh downloaded
+            if resumo.downloaded == 1 {
+                btnDownload.image = UIImage(named: "downloadOrange")!
+                btnDownload.tintColor = UIColor.init(hex: 0xFF8633)
+            } else {
+                btnDownload.image = UIImage(named: "downloadWhite")!
+                btnDownload.tintColor = UIColor.white
+            }
+        }
+        
+        // resumo texto 10
+        let resumo = selectedResumo?.resumo_10
+        
+        textView.text = resumo
+        
+        if resumo == "" {
+            resumoView.isHidden = true
+        }
+        else {
+            resumoView.isHidden = false
+        }
         
     }
     

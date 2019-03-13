@@ -83,7 +83,6 @@ class EpisodePlayControlViewController: UIViewController {
     
     @IBAction func rewindAction(_ sender: Any) {
         playerManager.shared.rewind()
-        
     }
     
     
@@ -95,7 +94,6 @@ class EpisodePlayControlViewController: UIViewController {
     
     @IBAction func forwardAction(_ sender: Any) {
         playerManager.shared.foward()
-        
     }
     
     
@@ -180,11 +178,16 @@ extension EpisodePlayControlViewController {
         self.episodeTitle.text = title
         self.episodeAuthor.text = playerManager.shared.getEpisodeAuthor()
         
-        let seconds = playerManager.shared.getEpisodeDurationInSeconds()
-        self.remainingLabel.text = Util.convertSecondsToDateString(seconds: seconds)
+        let progressSeconds = playerManager.shared.getEpisodeCurrentTimeInSeconds()
+        let durationSeconds = playerManager.shared.getEpisodeDurationInSeconds()
+
+        let remainingSeconds = durationSeconds - progressSeconds
+        self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingSeconds)
         
-        slider.maximumValue = Float(seconds)
-        slider.value = Float(playerManager.shared.getEpisodeCurrentTimeInSeconds())
+        self.progressLabel.text = Util.convertSecondsToDateString(seconds: progressSeconds)
+        
+        slider.maximumValue = Float(durationSeconds)
+        slider.value = Float(progressSeconds)
     }
 }
 
