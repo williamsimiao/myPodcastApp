@@ -26,8 +26,8 @@
 		3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38682F2211AEE900E89FF4 /* AppConfig.swift */; };
 		3D3868332211DBEE00E89FF4 /* resumoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3868322211DBEE00E89FF4 /* resumoEntity.swift */; };
 		3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D3E21FB84A500A8FE31 /* Util.swift */; };
-		3D4E0C652236A1AC007B04E7 /* CustomCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D4E0C642236A1AC007B04E7 /* CustomCollectionCell.xib */; };
-		3D4E0C692236B267007B04E7 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E0C682236B267007B04E7 /* CustomCollectionCell.swift */; };
+		3D4E0C652236A1AC007B04E7 /* authorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D4E0C642236A1AC007B04E7 /* authorCollectionViewCell.xib */; };
+		3D4E0C692236B267007B04E7 /* authorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E0C682236B267007B04E7 /* authorCollectionViewCell.swift */; };
 		3D79641321F79F0700E171DC /* playerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79641221F79F0700E171DC /* playerManager.swift */; };
 		3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */; };
 		3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D891C66220387CD0010E7A9 /* BaseViewController.swift */; };
@@ -89,8 +89,8 @@
 		3D38682F2211AEE900E89FF4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		3D3868322211DBEE00E89FF4 /* resumoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumoEntity.swift; sourceTree = "<group>"; };
 		3D415D3E21FB84A500A8FE31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		3D4E0C642236A1AC007B04E7 /* CustomCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionCell.xib; sourceTree = "<group>"; };
-		3D4E0C682236B267007B04E7 /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
+		3D4E0C642236A1AC007B04E7 /* authorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = authorCollectionViewCell.xib; sourceTree = "<group>"; };
+		3D4E0C682236B267007B04E7 /* authorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authorCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D79641221F79F0700E171DC /* playerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerManager.swift; sourceTree = "<group>"; };
 		3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeituraViewController.swift; sourceTree = "<group>"; };
 		3D891C66220387CD0010E7A9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 				3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */,
 				3D34FD1D221485350062DB7E /* CustomCell.xib */,
 				3D123A142215CC9D009A8E57 /* ColorWeel.swift */,
-				3D4E0C642236A1AC007B04E7 /* CustomCollectionCell.xib */,
+				3D4E0C642236A1AC007B04E7 /* authorCollectionViewCell.xib */,
 				3DF98164221EF7840052EC16 /* SlideView.xib */,
 			);
 			path = Layouts;
@@ -300,7 +300,7 @@
 				3D34FD1B221484EC0062DB7E /* CustomCell.swift */,
 				3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */,
 				3DF98166221EF7AB0052EC16 /* SlideView.swift */,
-				3D4E0C682236B267007B04E7 /* CustomCollectionCell.swift */,
+				3D4E0C682236B267007B04E7 /* authorCollectionViewCell.swift */,
 			);
 			path = "custom with xib";
 			sourceTree = "<group>";
@@ -413,7 +413,7 @@
 				4E7F1BB222287F3F0000F6EB /* banner.png in Resources */,
 				3DF98165221EF7840052EC16 /* SlideView.xib in Resources */,
 				3D34FD1E221485350062DB7E /* CustomCell.xib in Resources */,
-				3D4E0C652236A1AC007B04E7 /* CustomCollectionCell.xib in Resources */,
+				3D4E0C652236A1AC007B04E7 /* authorCollectionViewCell.xib in Resources */,
 				3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */,
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
 				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,
@@ -527,7 +527,7 @@
 				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
 				3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */,
 				3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */,
-				3D4E0C692236B267007B04E7 /* CustomCollectionCell.swift in Sources */,
+				3D4E0C692236B267007B04E7 /* authorCollectionViewCell.swift in Sources */,
 				3D34FD1C221484EC0062DB7E /* CustomCell.swift in Sources */,
 				3D3868282211AE8300E89FF4 /* AppUtil.swift in Sources */,
 				3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */,
