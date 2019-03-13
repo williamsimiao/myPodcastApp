@@ -49,6 +49,7 @@
 		3DD43F36222585E100017B3E /* TermosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F35222585E100017B3E /* TermosViewController.swift */; };
 		3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F372225B26F00017B3E /* RecuperarViewController.swift */; };
 		3DD43F3A2225C26400017B3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F392225C26400017B3E /* LoginTextField.swift */; };
+		3DF45678223949D800F5D056 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF45677223949D800F5D056 /* ContentSizedTableView.swift */; };
 		3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5F681221703E700F6BA33 /* DetalheViewController.swift */; };
 		3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */; };
 		3DF5F6882217275400F6BA33 /* epidodeContentRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */; };
@@ -114,6 +115,7 @@
 		3DD43F35222585E100017B3E /* TermosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermosViewController.swift; sourceTree = "<group>"; };
 		3DD43F372225B26F00017B3E /* RecuperarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperarViewController.swift; sourceTree = "<group>"; };
 		3DD43F392225C26400017B3E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		3DF45677223949D800F5D056 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		3DF5F681221703E700F6BA33 /* DetalheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheViewController.swift; sourceTree = "<group>"; };
 		3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = epidodeContentRight.xib; sourceTree = "<group>"; };
 		3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = epidodeContentRightView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
+				3DF45677223949D800F5D056 /* ContentSizedTableView.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DD43F36222585E100017B3E /* TermosViewController.swift in Sources */,
+				3DF45678223949D800F5D056 /* ContentSizedTableView.swift in Sources */,
 				3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,
 				3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */,

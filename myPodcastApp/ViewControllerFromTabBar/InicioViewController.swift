@@ -28,8 +28,14 @@ class InicioViewController: InheritanceViewController {
 //    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
     var selectedResumoImage : UIImage?
-    var episodesArray :[[String:AnyObject]]?
-    var resumoArray = [Resumo]()
+    
+    var topResumosDictArray :[[String:AnyObject]]?
+    var ultimosResumosDictArray :[[String:AnyObject]]?
+    var autoresDictArray :[[String:AnyObject]]?
+
+    var topResumos = [Resumo]()
+    var ultimosResumos = [Resumo]()
+    var autoresArray = [Autor]()
     
     let realm = AppService.realm()
     
@@ -37,7 +43,6 @@ class InicioViewController: InheritanceViewController {
         super.viewDidLoad()
 //        self.superResizableView = resizableView
 //        self.superBottomConstraint = resizableBottomConstraint
-        
         
         slideShow.layer.cornerRadius = 10
         slideShow.clipsToBounds = true
@@ -83,39 +88,6 @@ class InicioViewController: InheritanceViewController {
         self.authorCollectionView.reloadData()
     }
     
-    /*private func populateDefaultCategories() {
-        
-        if resumos.count == 0 {
-            
-            try! realm.write() {
-                for episode in episodesArray! {
-                    let newResumo = Resumo()
-                    newResumo.cod_resumo = episode["cod_resumo"] as! String
-                    newResumo.titulo = episode["titulo"] as! String
-                    
-                    if (Util.nullToNil(value: episode["url_podcast_10"]) != nil) {
-                        newResumo.url_podcast_10 = episode["url_podcast_10"] as! String
-                    }
-                    if (Util.nullToNil(value: episode["url_podcast_40_f"]) != nil) {
-                        newResumo.url_podcast_40_f = episode["url_podcast_40_f"] as! String
-                    }
-                    if (Util.nullToNil(value: episode["url_podcast_40_p"]) != nil) {
-                        newResumo.url_podcast_40_p = episode["url_podcast_40_p"] as! String
-                    }
-                    
-                    //                    let authorsList = resumoDict["autores"] as! [[String : AnyObject]]
-                    //                    newResumo. = Util.joinStringWithSeparator(authorsList:
-                    
-                    realm.add(newResumo)
-                }
-                resumos = realm.objects(Resumo.self)
-            }
-            
-        }
-        
-    }*/
-    
-    
     func setupUI() {
         let nibTableCell = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
@@ -133,17 +105,13 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let episodesCounter = episodesArray?.count else {
-            return 0
-        }
-        return episodesCounter
-        
+        return self.ultimosResumos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        let resumo = self.resumoArray[indexPath.row]
+        let resumo = self.ultimosResumos[indexPath.row]
         
         let cod_resumo = resumo.cod_resumo
         
@@ -175,7 +143,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
-        self.selectedResumo = self.resumoArray[indexPath.row]
+        self.selectedResumo = self.ultimosResumos[indexPath.row]
         self.selectedResumoImage = cell.coverImg.image
         
         performSegue(withIdentifier: "to_detail", sender: self)
@@ -198,7 +166,7 @@ extension InicioViewController {
         loading.startAnimating()
         
         
-        let link = AppConfig.urlBaseApi + "buscaResumos.php"
+        let link = AppConfig.urlBaseApi + "home.php"
         
         let url:URL = URL(string: link)!
         let session = URLSession.shared
@@ -247,7 +215,10 @@ extension InicioViewController {
                 
                 NSLog("Login SUCCESS");
                 // dados do json
-                self.episodesArray = (json.object(forKey: "resumos") as! Array)
+                self.topResumosDictArray = (json.object(forKey: "top10") as! Array)
+
+                self.ultimosResumosDictArray = (json.object(forKey: "ultimos") as! Array)
+                self.autoresDictArray = (json.object(forKey: "autores") as! Array)
                 
             } else {
                 
@@ -277,30 +248,10 @@ extension InicioViewController {
                 }
             }*/
             
-            
-            for resumoDict in self.episodesArray! {
-                
-                let cod_resumo = resumoDict["cod_resumo"] as! String
-                
-                //
-                var resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
-                
-                if resumoInit == nil {
-                    resumoInit = ResumoEntity()
-                    resumoInit!.cod_resumo = cod_resumo
-                }
-                
-                var resumoEntity = ResumoEntity()
-                try! realm.write {
-                    resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
-                    self.realm.add(resumoEntity, update: true)                    
-                }
-                //Building Model
-                let newResumo = Resumo(resumoEntity: resumoEntity)
-                self.resumoArray.append(newResumo)
-                
-            }
-            
+            self.topResumos = convertDictArrayToResumoArray(dictResumoArray: self.topResumosDictArray!)
+            self.ultimosResumos = convertDictArrayToResumoArray(dictResumoArray: self.ultimosResumosDictArray!)
+            self.autoresArray = convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
+
             self.tableView.reloadData()
             self.authorCollectionView.reloadData()
             
@@ -311,17 +262,66 @@ extension InicioViewController {
         
     }
     
+    func convertDictArrayToAutorArray(dictResumoArray:[[String:AnyObject]]) -> [Autor] {
+        var myAutores = [Autor]()
+        for autorDict in dictResumoArray {
+            var autorEntity = AutorEntity()
+
+            let cod_autor = autorDict["cod_autor"] as! String
+            
+            let autorInit = realm.objects(AutorEntity.self).filter("cod_autor = %@", cod_autor).first
+            
+            if autorInit != nil {
+                print("Autor exists on Realm")
+            }
+            
+            autorEntity = AutorEntity(autorDictonary: autorDict)!
+
+            try! realm.write {
+                self.realm.add(autorEntity, update: true)
+            }
+            //Building Model
+            let newAutor = Autor(autorEntity: autorEntity)
+            self.autoresArray.append(newAutor)
+        }
+        return myAutores
+    }
+    
+    func convertDictArrayToResumoArray(dictResumoArray:[[String:AnyObject]]) -> [Resumo] {
+        var myResumos = [Resumo]()
+        for resumoDict in dictResumoArray {
+            
+            let cod_resumo = resumoDict["cod_resumo"] as! String
+            
+            let resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+            
+            if resumoInit != nil {
+                print("Resumo exists on Realm")
+            }
+            
+            var resumoEntity = ResumoEntity()
+            try! realm.write {
+                resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
+                self.realm.add(resumoEntity, update: true)
+            }
+            //Building Model
+            let newResumo = Resumo(resumoEntity: resumoEntity)
+            myResumos.append(newResumo)
+        }
+        return myResumos
+    }
+    
 }
 
 extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.resumoArray.count
+        return self.ultimosResumos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! authorCollectionViewCell
         
-        let resumo = self.resumoArray[indexPath.row]
+        let resumo = self.ultimosResumos[indexPath.row]
         let authorsList = resumo.autores
 
         

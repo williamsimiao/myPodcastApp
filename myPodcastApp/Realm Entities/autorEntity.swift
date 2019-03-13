@@ -27,23 +27,55 @@ class AutorEntity: Object {
             return
         }
         self.nome = nome as! String
-
-        guard let descricao = autorDictonary["descricao"] else {
-            return
+        
+        if let descricao = autorDictonary["descricao"] {
+            self.descricao = descricao as! String
         }
-        self.descricao = descricao as! String
-
+        
         guard let url_imagem = autorDictonary["url_imagem"] else {
             return
         }
         self.url_imagem = url_imagem as! String
         
-
-        guard let cod_status = autorDictonary["cod_status"] else {
-            return
+        if let cod_status = autorDictonary["cod_status"] {
+            self.cod_status = cod_status as! String
         }
-        self.cod_status = cod_status as! String
     }
+    
+//    public convenience init? (autorDictonary: [String:AnyObject]) {
+//        self.init()
+//        guard let cod_autor = autorDictonary["cod_autor"] else {
+//            return
+//        }
+//        self.cod_autor = cod_autor as! String
+//
+//        guard let nome = autorDictonary["nome"] else {
+//            return
+//        }
+//        self.nome = nome as! String
+//
+//        guard let descricao = autorDictonary["descricao"] else {
+//            return
+//        }
+//        self.descricao = descricao as! String
+//
+//        guard let url_imagem = autorDictonary["url_imagem"] else {
+//            return
+//        }
+//        self.url_imagem = url_imagem as! String
+//
+//
+//        guard let cod_status = autorDictonary["cod_status"] else {
+//            return
+//        }
+//        self.cod_status = cod_status as! String
+//    }
+    
+    
+    override static func primaryKey() -> String? {
+        return "cod_autor"
+    }
+
 
 }
 
