@@ -14,6 +14,7 @@ class authorCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        authorImg.image = UIImage(named: "sem_imagem")!
         authorImg.layer.cornerRadius = 40
         authorImg.clipsToBounds = true
     }

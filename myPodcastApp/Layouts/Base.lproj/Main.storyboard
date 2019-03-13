@@ -116,7 +116,7 @@
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmZ-ce-NeQ" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="689"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRC-k4-k9U" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                                 <rect key="frame" x="16" y="0.0" width="343" height="150"/>
@@ -127,13 +127,19 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-eH-dNC">
-                                                <rect key="frame" x="16" y="158" width="74" height="21"/>
+                                                <rect key="frame" x="16" y="305" width="74" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EM-4A-Bg5">
+                                                <rect key="frame" x="16" y="158" width="51" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="200" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vsC-Lh-quC" customClass="ContentSizedTableView" customModule="myPodcastApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="187" width="375" height="200"/>
+                                                <rect key="frame" x="0.0" y="334" width="375" height="200"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
@@ -158,7 +164,7 @@
                                                 </connections>
                                             </tableView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ndP-jA-lWr">
-                                                <rect key="frame" x="0.0" y="424" width="375" height="110"/>
+                                                <rect key="frame" x="0.0" y="571" width="375" height="110"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="O6w-30-URv"/>
@@ -170,7 +176,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="8I1-dV-N66" customClass="authorCollectionViewCell" customModule="myPodcastApp" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="authorCollectionCell" id="8I1-dV-N66" customClass="authorCollectionViewCell" customModule="myPodcastApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="3" width="104" height="104"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -185,27 +191,60 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPc-kY-1lN">
-                                                <rect key="frame" x="16" y="395" width="60" height="21"/>
+                                                <rect key="frame" x="16" y="542" width="60" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EFL-5f-sJI">
+                                                <rect key="frame" x="0.0" y="187" width="375" height="110"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="110" id="UgN-xL-OGM"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JIF-3E-fYu">
+                                                    <size key="itemSize" width="104" height="104"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resumoCollectionCell" id="LGg-iA-BUa">
+                                                        <rect key="frame" x="4" y="3" width="104" height="104"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </view>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="4Qy-4E-s6P" id="aNV-Wt-heO"/>
+                                                    <outlet property="delegate" destination="4Qy-4E-s6P" id="aty-Cj-oO1"/>
+                                                </connections>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="uXr-eH-dNC" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" constant="16" id="681-Yf-dH0"/>
+                                            <constraint firstItem="3EM-4A-Bg5" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" constant="16" id="79t-jM-Z34"/>
                                             <constraint firstAttribute="trailing" secondItem="ndP-jA-lWr" secondAttribute="trailing" id="8h4-dd-6qu"/>
+                                            <constraint firstItem="EFL-5f-sJI" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" id="8sC-7l-D6m"/>
                                             <constraint firstAttribute="bottom" secondItem="ndP-jA-lWr" secondAttribute="bottom" constant="8" id="A2d-5Z-tLF"/>
                                             <constraint firstItem="vsC-Lh-quC" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" id="BWD-FJ-WFO"/>
+                                            <constraint firstItem="EFL-5f-sJI" firstAttribute="top" secondItem="3EM-4A-Bg5" secondAttribute="bottom" constant="8" id="JvP-qh-dWT"/>
                                             <constraint firstItem="EPc-kY-1lN" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" constant="16" id="Lx6-e1-wXP"/>
                                             <constraint firstAttribute="trailing" secondItem="IRC-k4-k9U" secondAttribute="trailing" constant="16" id="PYX-jD-GVk"/>
                                             <constraint firstItem="ndP-jA-lWr" firstAttribute="top" secondItem="EPc-kY-1lN" secondAttribute="bottom" constant="8" id="QcS-Sz-9vh"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EPc-kY-1lN" secondAttribute="trailing" constant="20" symbolic="YES" id="UCQ-KO-iyR"/>
                                             <constraint firstItem="ndP-jA-lWr" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" id="YAa-aY-f5E"/>
+                                            <constraint firstItem="3EM-4A-Bg5" firstAttribute="top" secondItem="IRC-k4-k9U" secondAttribute="bottom" constant="8" id="bxC-Ys-aky"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3EM-4A-Bg5" secondAttribute="trailing" constant="20" symbolic="YES" id="dM6-aA-EgC"/>
+                                            <constraint firstAttribute="trailing" secondItem="EFL-5f-sJI" secondAttribute="trailing" id="fGa-zn-VL3"/>
                                             <constraint firstItem="IRC-k4-k9U" firstAttribute="top" secondItem="vmZ-ce-NeQ" secondAttribute="top" id="fdJ-6U-Cq6"/>
                                             <constraint firstAttribute="trailing" secondItem="vsC-Lh-quC" secondAttribute="trailing" id="hi7-hF-Qye"/>
                                             <constraint firstItem="EPc-kY-1lN" firstAttribute="top" secondItem="vsC-Lh-quC" secondAttribute="bottom" constant="8" id="izS-0s-fcv"/>
-                                            <constraint firstItem="uXr-eH-dNC" firstAttribute="top" secondItem="IRC-k4-k9U" secondAttribute="bottom" constant="8" id="rt0-yJ-eWq"/>
+                                            <constraint firstItem="uXr-eH-dNC" firstAttribute="top" secondItem="EFL-5f-sJI" secondAttribute="bottom" constant="8" id="qcr-KL-WTG"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uXr-eH-dNC" secondAttribute="trailing" constant="20" symbolic="YES" id="s5G-ua-DNA"/>
                                             <constraint firstItem="vsC-Lh-quC" firstAttribute="top" secondItem="uXr-eH-dNC" secondAttribute="bottom" constant="8" id="wrN-o5-lze"/>
                                             <constraint firstItem="IRC-k4-k9U" firstAttribute="leading" secondItem="vmZ-ce-NeQ" secondAttribute="leading" constant="16" id="ygt-bm-lvm"/>
@@ -238,6 +277,7 @@
                         <outlet property="loading" destination="fH0-y2-Rue" id="tnH-9C-tE1"/>
                         <outlet property="slideShow" destination="IRC-k4-k9U" id="CvG-ML-ZIc"/>
                         <outlet property="tableView" destination="vsC-Lh-quC" id="yfb-1z-y5s"/>
+                        <outlet property="topResumosCollectionView" destination="EFL-5f-sJI" id="C8Z-nL-iGZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
