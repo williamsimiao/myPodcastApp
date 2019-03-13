@@ -363,7 +363,16 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return cell
         }
-        
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.isEqual(self.topResumosCollectionView) {
+            let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
+
+            self.selectedResumo = self.topResumos[indexPath.row]
+            self.selectedResumoImage = cell.coverImg.image
+            
+            performSegue(withIdentifier: "to_detail", sender: self)
+        }
     }
 }
