@@ -8,7 +8,7 @@
 
 import UIKit
 
-class authorCollectionViewCell: UICollectionViewCell {
+class CustomCollectionCell: UICollectionViewCell {
     @IBOutlet weak var authorImg: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     

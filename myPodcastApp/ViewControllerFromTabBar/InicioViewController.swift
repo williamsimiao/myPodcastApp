@@ -92,7 +92,7 @@ class InicioViewController: InheritanceViewController {
         let nibTableCell = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
         
-        let nibCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
+        let nibCollectionCell = UINib(nibName: "CustomCollectionCell", bundle: nil)
         authorCollectionView.register(nibCollectionCell, forCellWithReuseIdentifier: "collectionCell")
     }
     
@@ -320,7 +320,7 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! authorCollectionViewCell
+        let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CustomCollectionCell
         let tamanhho = self.autoresArray.count
         let autor = self.autoresArray[indexPath.row]
 
