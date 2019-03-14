@@ -126,13 +126,13 @@
                                                     <constraint firstAttribute="height" constant="150" id="tFQ-Zb-lxF"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-eH-dNC">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-eH-dNC">
                                                 <rect key="frame" x="16" y="305" width="74" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EM-4A-Bg5">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EM-4A-Bg5">
                                                 <rect key="frame" x="16" y="158" width="51" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -190,7 +190,7 @@
                                                     <outlet property="delegate" destination="4Qy-4E-s6P" id="2Wp-xs-Bmz"/>
                                                 </connections>
                                             </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPc-kY-1lN">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPc-kY-1lN">
                                                 <rect key="frame" x="16" y="542" width="60" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,10 +274,13 @@
                     <navigationItem key="navigationItem" title="Início" id="sH1-tW-FQ6"/>
                     <connections>
                         <outlet property="authorCollectionView" destination="ndP-jA-lWr" id="d41-ml-GF6"/>
+                        <outlet property="autoresLabel" destination="EPc-kY-1lN" id="vjE-Fb-EQW"/>
                         <outlet property="loading" destination="fH0-y2-Rue" id="tnH-9C-tE1"/>
                         <outlet property="slideShow" destination="IRC-k4-k9U" id="CvG-ML-ZIc"/>
                         <outlet property="tableView" destination="vsC-Lh-quC" id="yfb-1z-y5s"/>
+                        <outlet property="top10Label" destination="3EM-4A-Bg5" id="Oun-Sq-BOG"/>
                         <outlet property="topResumosCollectionView" destination="EFL-5f-sJI" id="C8Z-nL-iGZ"/>
+                        <outlet property="ultimosLabel" destination="uXr-eH-dNC" id="YuI-yf-9bQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>

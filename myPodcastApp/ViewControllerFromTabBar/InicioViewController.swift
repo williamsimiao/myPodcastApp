@@ -24,6 +24,9 @@ class InicioViewController: InheritanceViewController {
     
     @IBOutlet weak var topResumosCollectionView: UICollectionView!
     
+    @IBOutlet weak var top10Label: UILabel!
+    @IBOutlet weak var ultimosLabel: UILabel!
+    @IBOutlet weak var autoresLabel: UILabel!
     
     // MARK: - Properties
     var error_msg:String!
@@ -261,6 +264,9 @@ extension InicioViewController {
             self.authorCollectionView.reloadData()
             self.topResumosCollectionView.reloadData()
             
+            self.top10Label.isHidden = false
+            self.ultimosLabel.isHidden = false
+            self.autoresLabel.isHidden = false
         }
         else {
             AppService.util.alert("Erro no Login", message: error_msg!)
