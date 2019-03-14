@@ -106,7 +106,7 @@ class ResumoEntity: Object {
     }
     
     func addDescription(episodeDetailedDictonary: [String:AnyObject]) -> ResumoEntity {
-        if let theDescricao = episodeDetailedDictonary["descricao"] {
+        if let theDescricao = episodeDetailedDictonary["subtitulo"] {
             try! AppService.realm().write {
                 self.descricao = AppService.util.populateString(theDescricao)
             }
