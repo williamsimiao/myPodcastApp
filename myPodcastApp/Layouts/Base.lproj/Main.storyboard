@@ -424,26 +424,26 @@
                                             <constraint firstItem="hqr-3g-cDK" firstAttribute="width" secondItem="V8v-ni-6oF" secondAttribute="width" id="NwU-tH-ZNZ"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-a8-NT5">
-                                        <rect key="frame" x="56.5" y="279.5" width="49" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episódio semanal" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-a8-NT5">
+                                        <rect key="frame" x="37.5" y="279.5" width="86.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-Q8-zTW">
-                                        <rect key="frame" x="164.5" y="279.5" width="46" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ResumoCast 10min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-Q8-zTW">
+                                        <rect key="frame" x="144" y="279.5" width="87" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
-                                        <rect key="frame" x="37.5" y="350" width="300" height="199"/>
+                                        <rect key="frame" x="37.5" y="365.5" width="300" height="183.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="straightLine" translatesAutoresizingMaskIntoConstraints="NO" id="yAx-ki-ZDS">
                                                 <rect key="frame" x="129.5" y="8" width="41" height="3"/>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
-                                                <rect key="frame" x="8" y="60.5" width="284" height="138.5"/>
+                                                <rect key="frame" x="8" y="60.5" width="284" height="123"/>
                                                 <color key="backgroundColor" red="0.19604682922363281" green="0.2000163197517395" blue="0.19604870676994324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -473,8 +473,8 @@
                                             <constraint firstItem="FAJ-zW-hRi" firstAttribute="top" secondItem="uEt-xJ-BhN" secondAttribute="bottom" constant="8" id="wE1-g8-vq4"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r00-f5-sZp">
-                                        <rect key="frame" x="271" y="279.5" width="46" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="texto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r00-f5-sZp">
+                                        <rect key="frame" x="251" y="279.5" width="86.5" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -482,6 +482,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="gab-a8-NT5" firstAttribute="trailing" secondItem="V8v-ni-6oF" secondAttribute="trailing" id="0rr-my-yVw"/>
+                                    <constraint firstItem="gab-a8-NT5" firstAttribute="leading" secondItem="V8v-ni-6oF" secondAttribute="leading" id="3QA-Nt-cxm"/>
+                                    <constraint firstItem="r00-f5-sZp" firstAttribute="trailing" secondItem="aly-0h-Uli" secondAttribute="trailing" id="85q-Xi-FVC"/>
                                     <constraint firstItem="xwQ-6m-mtE" firstAttribute="centerX" secondItem="SRM-8n-LH0" secondAttribute="centerX" id="ADs-pR-1Jw"/>
                                     <constraint firstItem="gab-a8-NT5" firstAttribute="top" secondItem="xwQ-6m-mtE" secondAttribute="bottom" id="Aiw-Vb-Dv0"/>
                                     <constraint firstItem="r00-f5-sZp" firstAttribute="top" secondItem="xwQ-6m-mtE" secondAttribute="bottom" id="L4O-Oz-1BC"/>
@@ -491,11 +494,14 @@
                                     <constraint firstItem="DGl-jd-c3m" firstAttribute="centerX" secondItem="SRM-8n-LH0" secondAttribute="centerX" id="Qsz-eO-OcT"/>
                                     <constraint firstItem="DGl-jd-c3m" firstAttribute="top" secondItem="xGi-DN-kzL" secondAttribute="bottom" constant="19" id="RaY-fg-Q5T"/>
                                     <constraint firstItem="E4b-9s-7TE" firstAttribute="centerX" secondItem="SRM-8n-LH0" secondAttribute="centerX" id="SRd-jm-AsV"/>
+                                    <constraint firstItem="6Mv-Q8-zTW" firstAttribute="trailing" secondItem="hqr-3g-cDK" secondAttribute="trailing" id="Wkd-s4-mrF"/>
                                     <constraint firstItem="xwQ-6m-mtE" firstAttribute="width" secondItem="SRM-8n-LH0" secondAttribute="width" multiplier="0.8" id="YE8-HE-6jG"/>
                                     <constraint firstItem="6Mv-Q8-zTW" firstAttribute="centerX" secondItem="WNu-sE-Eme" secondAttribute="centerX" id="Zrw-RE-ltg"/>
                                     <constraint firstItem="r00-f5-sZp" firstAttribute="centerX" secondItem="aly-0h-Uli" secondAttribute="centerX" id="dRz-Tw-NCm"/>
                                     <constraint firstItem="xGi-DN-kzL" firstAttribute="top" secondItem="SRM-8n-LH0" secondAttribute="top" id="n50-A2-OhV"/>
                                     <constraint firstItem="6Mv-Q8-zTW" firstAttribute="top" secondItem="xwQ-6m-mtE" secondAttribute="bottom" id="ozF-Vl-sSo"/>
+                                    <constraint firstItem="r00-f5-sZp" firstAttribute="leading" secondItem="aly-0h-Uli" secondAttribute="leading" id="tGI-VP-SzG"/>
+                                    <constraint firstItem="6Mv-Q8-zTW" firstAttribute="leading" secondItem="hqr-3g-cDK" secondAttribute="leading" id="xBD-ux-aqR"/>
                                     <constraint firstItem="gab-a8-NT5" firstAttribute="centerX" secondItem="OfT-K9-lCg" secondAttribute="centerX" id="zQb-Rc-El4"/>
                                 </constraints>
                             </view>
