@@ -437,13 +437,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
-                                        <rect key="frame" x="19" y="345.5" width="337.5" height="203.5"/>
+                                        <rect key="frame" x="19" y="345.5" width="337.5" height="218.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="straightLine" translatesAutoresizingMaskIntoConstraints="NO" id="yAx-ki-ZDS">
                                                 <rect key="frame" x="148" y="8" width="41" height="3"/>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
-                                                <rect key="frame" x="8" y="60.5" width="321.5" height="143"/>
+                                                <rect key="frame" x="8" y="60.5" width="321.5" height="148"/>
                                                 <color key="backgroundColor" red="0.19604682922363281" green="0.2000163197517395" blue="0.19604870676994324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -463,7 +463,7 @@
                                         <constraints>
                                             <constraint firstItem="FAJ-zW-hRi" firstAttribute="leading" secondItem="E4b-9s-7TE" secondAttribute="leading" constant="8" id="1r9-Oy-irR"/>
                                             <constraint firstItem="uEt-xJ-BhN" firstAttribute="leading" secondItem="E4b-9s-7TE" secondAttribute="leading" constant="16" id="DCX-fP-xQQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="FAJ-zW-hRi" secondAttribute="bottom" id="IS2-KO-xCd"/>
+                                            <constraint firstAttribute="bottom" secondItem="FAJ-zW-hRi" secondAttribute="bottom" constant="10" id="IS2-KO-xCd"/>
                                             <constraint firstItem="uEt-xJ-BhN" firstAttribute="top" secondItem="yAx-ki-ZDS" secondAttribute="bottom" constant="21" id="LaY-UP-TX0"/>
                                             <constraint firstItem="yAx-ki-ZDS" firstAttribute="centerX" secondItem="E4b-9s-7TE" secondAttribute="centerX" id="LsU-kn-2ba"/>
                                             <constraint firstAttribute="trailing" secondItem="FAJ-zW-hRi" secondAttribute="trailing" constant="8" id="MoC-hR-RCC"/>
@@ -513,7 +513,7 @@
                             <constraint firstItem="SRM-8n-LH0" firstAttribute="leading" secondItem="ZVe-z9-9ge" secondAttribute="leading" id="aRy-Rs-Mnl"/>
                             <constraint firstItem="SRM-8n-LH0" firstAttribute="top" secondItem="ZVe-z9-9ge" secondAttribute="top" id="fmA-Wa-eaP"/>
                             <constraint firstItem="SRM-8n-LH0" firstAttribute="trailing" secondItem="ZVe-z9-9ge" secondAttribute="trailing" id="u2O-a1-iPl"/>
-                            <constraint firstItem="E4b-9s-7TE" firstAttribute="bottom" secondItem="ZVe-z9-9ge" secondAttribute="bottom" constant="-5" id="uwU-Hd-6Gl"/>
+                            <constraint firstItem="E4b-9s-7TE" firstAttribute="bottom" secondItem="ZVe-z9-9ge" secondAttribute="bottom" constant="10" id="uwU-Hd-6Gl"/>
                             <constraint firstItem="xGi-DN-kzL" firstAttribute="leading" secondItem="ZVe-z9-9ge" secondAttribute="leading" id="vE4-Qn-fbg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVe-z9-9ge"/>
