@@ -106,7 +106,6 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detalheVC = segue.destination as? DetalheViewController {
             detalheVC.selectedResumo = self.selectedResumo
-            detalheVC.selectedResumoImage = self.selectedResumoImage
         }
     }
 

@@ -20,6 +20,8 @@ class ResumoEntity: Object {
     @objc dynamic var url_podcast_40_p = ""
     @objc dynamic var url_podcast_40_f = ""
     @objc dynamic var resumo_10 = ""
+    @objc dynamic var descricao = ""
+
     let autores = RealmSwift.List<AutorEntity>()
     
     @objc dynamic var favoritado = 0
@@ -39,7 +41,6 @@ class ResumoEntity: Object {
     @objc dynamic var progressResumo10 = 0.0
     
     @objc dynamic var preferedSpeed = 1.0
-
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
         self.init()
@@ -102,6 +103,15 @@ class ResumoEntity: Object {
             let autorEntity = AutorEntity(autorDictonary: autorDicionary)
             self.autores.append(autorEntity!)
         }
+    }
+    
+    func addDescription(episodeDetailedDictonary: [String:AnyObject]) -> ResumoEntity {
+        if let theDescricao = episodeDetailedDictonary["descricao"] {
+            try! AppService.realm().write {
+                self.descricao = AppService.util.populateString(theDescricao)
+            }
+        }
+        return self
     }
         
     override static func primaryKey() -> String? {

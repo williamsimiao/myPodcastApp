@@ -34,27 +34,9 @@ class RecuperarViewController: UIViewController {
     }
     @IBAction func clickRecuperar(_ sender: Any) {
         let usuarioEmail = edtEmail.text
-        let esqueceuSenhaURL = createURLWithComponents(path: "esqueceuSenha.php", parameters: ["email"], values: [usuarioEmail!])
+        let esqueceuSenhaURL = AppService.util.createURLWithComponents(path: "esqueceuSenha.php", parameters: ["email"], values: [usuarioEmail!])
         print(esqueceuSenhaURL)
         makeResquest(url: esqueceuSenhaURL!)
-    }
-    
-    func createURLWithComponents(path: String, parameters: [String], values: [String]) -> URL? {
-        
-        // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
-        var url = AppConfig.urlBaseApi
-        url += path + "?"
-        // add params
-        var paramValueArray = [String]()
-        let tuples = zip(parameters, values)
-        for (parameter, value) in tuples {
-            let paramValue = parameter + "=" + value
-            paramValueArray.append(paramValue)
-            print("OI")
-        }
-        url += paramValueArray.joined(separator: "&")
-        
-        return URL(string: url)
     }
     
     func makeResquest(url: URL) {

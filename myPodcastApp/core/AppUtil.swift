@@ -593,4 +593,21 @@ open class AppUtil {
         self.currentView().present(vc, animated: true, completion: nil)
     }
     
+    func createURLWithComponents(path: String, parameters: [String], values: [String]) -> URL? {
+        
+        // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
+        var url = AppConfig.urlBaseApi
+        url += path + "?"
+        // add params
+        var paramValueArray = [String]()
+        let tuples = zip(parameters, values)
+        for (parameter, value) in tuples {
+            let paramValue = parameter + "=" + value
+            paramValueArray.append(paramValue)
+        }
+        url += paramValueArray.joined(separator: "&")
+        
+        return URL(string: url)
+    }
+    
 }

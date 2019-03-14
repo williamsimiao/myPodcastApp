@@ -22,6 +22,7 @@ class Resumo {
     var url_podcast_40_p : String
     var url_podcast_40_f : String
     var resumo_10 : String
+    var descricao : String
     var autores = [Autor]()
     
     var favoritado = 0
@@ -62,7 +63,7 @@ class Resumo {
         self.progressPodcast_10 = resumoEntity.progressPodcast_10
         self.progressPodcast_40_p = resumoEntity.progressPodcast_40_p
         self.progressPodcast_40_f = resumoEntity.progressPodcast_40_f
-
+        self.descricao = resumoEntity.descricao
         self.preferedSpeed = resumoEntity.preferedSpeed
     }
     

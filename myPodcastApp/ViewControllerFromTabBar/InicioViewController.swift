@@ -31,7 +31,6 @@ class InicioViewController: InheritanceViewController {
     
 //    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
-    var selectedResumoImage : UIImage?
     
     var topResumosDictArray :[[String:AnyObject]]?
     var ultimosResumosDictArray :[[String:AnyObject]]?
@@ -143,7 +142,6 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detalheVC = segue.destination as? DetalheViewController {
             detalheVC.selectedResumo = self.selectedResumo
-            detalheVC.selectedResumoImage = self.selectedResumoImage
         }
     }
     
@@ -152,7 +150,6 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
         
         self.selectedResumo = self.ultimosResumos[indexPath.row]
-        self.selectedResumoImage = cell.coverImg.image
         
         performSegue(withIdentifier: "to_detail", sender: self)
     }
@@ -370,7 +367,6 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
 
             self.selectedResumo = self.topResumos[indexPath.row]
-            self.selectedResumoImage = cell.coverImg.image
             
             performSegue(withIdentifier: "to_detail", sender: self)
         }

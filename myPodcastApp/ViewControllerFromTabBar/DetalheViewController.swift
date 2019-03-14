@@ -40,11 +40,9 @@ class DetalheViewController: InheritanceViewController {
     
     var realm = AppService.realm()
     
-    
     var selectedResumo : Resumo?
-    var selectedResumoImage : UIImage?
     var success: Bool?
-    var detailsEpisode: [String: AnyObject]?
+    var resumoDetails: [String: AnyObject]?
     var error_msg: String?
     
     override func viewDidLoad() {
@@ -52,6 +50,9 @@ class DetalheViewController: InheritanceViewController {
         
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
+        
+        let detalhesUrl = AppService.util.createURLWithComponents(path: "detalheResumo.php", parameters: ["cod_resumo"], values: [(self.selectedResumo?.cod_resumo)!])
+        makeResquest(url: detalhesUrl!)
         
         episodeContentView.delegate = self
         setupUI()
@@ -62,28 +63,13 @@ class DetalheViewController: InheritanceViewController {
     override func viewWillAppear(_ animated: Bool) {
         //TODO check why isHidden from interfaceBuilder is being overwritten
         if self.fortyLoading.isHidden {
-            print("SI HIDEN")
+            print("IS HIDEN")
         }
         else {
             print("NOT HIDEN")
         }
         self.fortyLoading.isHidden = true
         self.tenLoading.isHidden = true
-    }
-    
-    func createURLWithComponents(cod_resumo: String) -> URL? {
-        
-        // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
-        let urlComponents = NSURLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.resumocast.com.br/ws"
-        urlComponents.path = "/detalheResumo.php"
-        
-        // add params
-        let cod_resumo = NSURLQueryItem(name: "cod_resumo", value: cod_resumo)
-        urlComponents.queryItems = [cod_resumo] as [URLQueryItem]
-        
-        return urlComponents.url
     }
     
     func checkAvaliableLinks() {
@@ -186,7 +172,7 @@ class DetalheViewController: InheritanceViewController {
         let authorsList = self.selectedResumo?.autores
         let joinedNames = Util.joinAuthorsNames(authorsList: authorsList!)
         self.episodeContentView.authorLabel.text = joinedNames
-        self.episodeContentView.coverImg.image = self.selectedResumoImage
+        AppService.util.load_image_resumo((selectedResumo?.url_imagem)!, cod_resumo: (selectedResumo?.cod_resumo)!, imageview:  self.episodeContentView.coverImg!)
         
         self.FortyMinutesView.layer.borderWidth = 1
         self.FortyMinutesView.backgroundColor = .black
@@ -226,19 +212,18 @@ class DetalheViewController: InheritanceViewController {
                 btnDownload.tintColor = UIColor.white
             }
         }
+    }
+    
+    func setUpResumoDescriptionView() {
+        let theDescription = self.selectedResumo?.descricao
+        textView.text = theDescription
         
-        // resumo texto 10
-        let resumo = selectedResumo?.resumo_10
-        
-        textView.text = resumo
-        
-        if resumo == "" {
+        if theDescription == "" {
             resumoView.isHidden = true
         }
         else {
             resumoView.isHidden = false
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -252,7 +237,7 @@ class DetalheViewController: InheritanceViewController {
             
             leituraVC.author = joinedNames
             leituraVC.episodeTitle = self.selectedResumo?.titulo
-            leituraVC.resumoText = textView.text
+            leituraVC.resumoText = self.selectedResumo?.resumo_10
             leituraVC.currentResumo = self.selectedResumo
         }
         
@@ -318,6 +303,92 @@ class DetalheViewController: InheritanceViewController {
         self.tenLoading.isHidden = true
     }
 }
+
+//RESQUEST
+extension DetalheViewController {
+    func makeResquest(url: URL) {
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        
+        request.timeoutInterval = 10
+        request.httpMethod = "GET"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            
+            self.extract_json_data(dataString!)
+            
+        })
+        
+        task.resume()
+    }
+    
+    func extract_json_data(_ data:NSString) {
+        
+        NSLog("json %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do
+        {
+            // converter pra json
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            
+            // verificar success
+            self.success = (json.value(forKey: "success") as! Bool)
+            if (self.success!) {
+                NSLog("Detalhes SUCCESS");
+                self.resumoDetails = (json.object(forKey: "resumo") as! Dictionary)
+                
+            } else {
+                
+                NSLog("Detalhes ERROR");
+                error_msg = (json.value(forKey: "error") as! String)
+            }
+        }
+        catch
+        {
+            print("error")
+            return
+        }
+        DispatchQueue.main.async(execute: onResultReceived)
+    }
+    
+    func onResultReceived() {
+        
+        if self.success! {
+            print("Detalhes recebidos")
+            
+            //Getting the ResumoEntity
+            let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo as Any).first
+            
+            //Saiving description on dataBase
+            let updatedResumoEntity = resumoEntity?.addDescription(episodeDetailedDictonary: self.resumoDetails!)
+            
+            self.selectedResumo = Resumo(resumoEntity: updatedResumoEntity!)
+
+            
+            setUpResumoDescriptionView()
+        }
+        else {
+            AppService.util.alert("Erro encontrar detalhes da resumo", message: error_msg!)
+        }
+        
+    }
+}
+
 
 extension DetalheViewController: contentViewDelegate {
     func viewClicked() {
