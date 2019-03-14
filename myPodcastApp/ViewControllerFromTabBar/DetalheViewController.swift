@@ -27,6 +27,9 @@ class DetalheViewController: InheritanceViewController {
     @IBOutlet weak var tenMinutesButton: UIButton!
     @IBOutlet weak var tenLoading: UIActivityIndicatorView!
     
+    @IBOutlet weak var resumo10View: UIView!
+    @IBOutlet weak var resumo10Btn: UIButton!
+    
     
     @IBOutlet weak var resizableView: UIView!
     
@@ -108,9 +111,9 @@ class DetalheViewController: InheritanceViewController {
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
             mEpisodeType = episodeType.ten
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
-            self.tenMinutesButton.isHidden = true
-            self.tenLoading.isHidden = false
-            self.tenLoading.startAnimating()
+//            self.tenMinutesButton.isHidden = true
+//            self.tenLoading.isHidden = false
+//            self.tenLoading.startAnimating()
         }
         //FORTY downloaded
         else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
@@ -137,9 +140,9 @@ class DetalheViewController: InheritanceViewController {
             if (self.fortyLoading.isHidden) {
                 print("OI")
             }
-            self.fortyMinutesButton.isHidden = true
-            self.fortyLoading.isHidden = false
-            self.fortyLoading.startAnimating()
+//            self.fortyMinutesButton.isHidden = true
+//            self.fortyLoading.isHidden = false
+//            self.fortyLoading.startAnimating()
         }
 
         let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink, episodeType: mEpisodeType)
@@ -181,7 +184,11 @@ class DetalheViewController: InheritanceViewController {
         self.TenMinutesView.layer.borderWidth = 1
         self.TenMinutesView.backgroundColor = .black
         self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
-        
+
+        self.resumo10View.layer.borderWidth = 1
+        self.resumo10View.backgroundColor = .black
+        self.resumo10View.layer.borderColor = UIColor.white.cgColor
+
         checkAvaliableLinks()
         
         self.resumoView.layer.cornerRadius = 10
@@ -242,7 +249,7 @@ class DetalheViewController: InheritanceViewController {
         }
         
     }
-    @IBAction func clickORSwipeUp(_ sender: Any) {
+    @IBAction func clickLeituraBtn(_ sender: Any) {
         
         performSegue(withIdentifier: "goto_leitura", sender: self)
     }
