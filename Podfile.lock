@@ -8,7 +8,6 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - DeckTransition (2.1.0)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -33,6 +32,7 @@ PODS:
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
+  - ReachabilitySwift (4.3.0)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
   - Realm/Headers (2.8.3)
@@ -45,12 +45,12 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (~> 3.5)
-  - DeckTransition (~> 2.0)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
   - HSPopupMenu
   - ImageSlideshow (~> 1.6)
+  - ReachabilitySwift
   - Realm (~> 2.8.1)
   - RealmSwift
   - SwiftyJSON (~> 4.0)
@@ -61,7 +61,6 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
-    - DeckTransition
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -70,6 +69,7 @@ SPEC REPOS:
     - FBSDKShareKit
     - HSPopupMenu
     - ImageSlideshow
+    - ReachabilitySwift
     - Realm
     - RealmSwift
     - SnapKit
@@ -80,7 +80,6 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  DeckTransition: ca707456e3d83928c895fed6f458cbf68c5cac84
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
@@ -89,12 +88,13 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
   HSPopupMenu: ca8c0f872cdbc8fc7d9c8098c2aa6e6a0027d201
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: e2315a73475771a370803837f64a7a2f1f2f5457
+PODFILE CHECKSUM: 533e2f0a7084ae562a02b166a9d055018fffbd1f
 
 COCOAPODS: 1.5.3

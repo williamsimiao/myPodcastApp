@@ -76,19 +76,31 @@ class DetalheViewController: InheritanceViewController {
     }
     
     func checkAvaliableLinks() {
-        let userIsPremium = false
-        if userIsPremium {
-            if selectedResumo?.url_podcast_40_p == nil || selectedResumo?.url_podcast_40_p == "" {
-                fortyMinutesButton.isEnabled = false
-            }
-            else if selectedResumo?.url_podcast_40_f == nil || selectedResumo?.url_podcast_40_f == "" {
-                fortyMinutesButton.isEnabled = false
-            }
-
-        }
+        //TODO change this for checking the user info
+        var userIsPremium = false
         
-        if selectedResumo?.url_podcast_10 == nil || selectedResumo?.url_podcast_10 == "" {
-            tenMinutesButton.isEnabled = false
+        var canUse40 = true
+        var canUse10 = false
+        var canUseResumo = true
+        
+        if userIsPremium {
+            canUse10 = true
+        }
+        if canUse10 {
+            if selectedResumo?.url_podcast_10 != nil && selectedResumo?.url_podcast_10 == "" {
+                tenMinutesButton.isEnabled = true
+            }
+        }
+        if canUse40 {
+            if selectedResumo?.url_podcast_40_f == nil && selectedResumo?.url_podcast_40_f == "" {
+                fortyMinutesButton.isEnabled = true
+            }
+        }
+        if canUseResumo {
+            if selectedResumo?.resumo_10 == nil && selectedResumo?.resumo_10 == "" {
+                let teste = selectedResumo?.resumo_10
+                resumo10Btn.isEnabled = true
+            }
         }
     }
     

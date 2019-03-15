@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import ImageSlideshow
 import RealmSwift
+import Reachability
 
 class InicioViewController: InheritanceViewController {
     
@@ -32,7 +33,6 @@ class InicioViewController: InheritanceViewController {
 //    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
     
-    var topResumosDictArray :[[String:AnyObject]]?
     var ultimosResumosDictArray :[[String:AnyObject]]?
     var autoresDictArray :[[String:AnyObject]]?
 
@@ -42,6 +42,8 @@ class InicioViewController: InheritanceViewController {
     
     let realm = AppService.realm()
     var mySearchController: UISearchController!
+    let reachability = Reachability()!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +79,16 @@ class InicioViewController: InheritanceViewController {
 
         setupUI()
 
-        //getting Data
-        makeResquest()
+        //check Internet
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                self.makeResquest()
+
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            self.useLocalData()
+        }
         
     }
     
@@ -113,12 +123,31 @@ class InicioViewController: InheritanceViewController {
         //if !playerManager.shared.getPlayerIsSet() {
             //self.superBottomConstraint?.constant = 0
         //}
+        
+        //Reachability
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        
         self.mySearchController.searchBar.text = ""
         
         self.mySearchController.dismiss(animated: false, completion: nil)
         
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.connection == .wifi || reachability.connection == .cellular {
+            print("Conected")
+        }
     }
     
     func setupUI() {
@@ -248,55 +277,75 @@ extension InicioViewController {
             self.success = (json.value(forKey: "success") as! Bool)
             if (self.success!) {
                 
-                NSLog("Login SUCCESS");
+                NSLog("Inicio SUCCESS");
                 // dados do json
-                self.topResumosDictArray = (json.object(forKey: "top10") as! Array)
-
                 self.ultimosResumosDictArray = (json.object(forKey: "ultimos") as! Array)
                 self.autoresDictArray = (json.object(forKey: "autores") as! Array)
                 
             } else {
                 
-                NSLog("Login ERROR");
+                NSLog("Inicio ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
             }
         }
         catch
         {
-            print("error")
+            print("error: sem resposta do servidor")
+            useLocalData()
             return
         }
         DispatchQueue.main.async(execute: onResultReceived)
     }
     
     func onResultReceived() {
-        
-        loading.isHidden = true
-        loading.stopAnimating()
-        
+    
         if self.success {
             
-            // zerar dados
-            /*for entity in realm.objects(Resumo.self) {
-                try! realm.write {
-                    self.realm.delete(entity)
-                }
-            }*/
-            
-            self.topResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.topResumosDictArray!)
             self.ultimosResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.ultimosResumosDictArray!)
             self.autoresArray = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
 
-            self.tableView.reloadData()
-            self.authorCollectionView.reloadData()
-            
-            self.ultimosLabel.isHidden = false
-            self.autoresLabel.isHidden = false
+            showContent()
         }
         else {
-            AppService.util.alert("Erro no Login", message: error_msg!)
+            print("onResultReceived error")
+            AppService.util.alert("Erro no Inicio", message: error_msg!)
         }
         
+    }
+    
+    func useLocalData() {
+        //Resumos
+        let resumoEntityList = realm.objects(ResumoEntity.self)
+        var i = 0
+        for resumoEntity in resumoEntityList {
+            if i > 5 {
+                break
+            }
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            self.ultimosResumos.append(resumo)
+        }
+        
+        //Autors
+        let autorEntityList = realm.objects(AutorEntity.self)
+        i = 0
+        for autorEntity in autorEntityList {
+            if i > 5 {
+                break
+            }
+            let autor = Autor(autorEntity: autorEntity)
+            self.autoresArray.append(autor)
+        }
+        showContent()
+    }
+    
+    func showContent() {
+        loading.isHidden = true
+        loading.stopAnimating()
+
+        self.tableView.reloadData()
+        self.authorCollectionView.reloadData()
+        self.ultimosLabel.isHidden = false
+        self.autoresLabel.isHidden = false
     }
 }
 
@@ -309,7 +358,6 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "authorCollectionCell", for: indexPath) as! authorCollectionViewCell
         let autor = self.autoresArray[indexPath.row]
-        
         
         cell.authorLabel.text = autor.nome
         let coverUrl = autor.url_imagem
@@ -338,7 +386,6 @@ extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate,
     
     func didPresentSearchController(_ searchController: UISearchController) {
         print("ACitive")
-
     }
     
     //UISearchBarDelegate

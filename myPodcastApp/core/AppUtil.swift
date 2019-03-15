@@ -618,9 +618,10 @@ open class AppUtil {
             let resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
             
             if resumoInit != nil {
-                //                print("Resumo exists on Realm")
+                print("Resumo exists on Realm, Updating anyway")
             }
             
+            //Updating
             var resumoEntity = ResumoEntity()
             try! realm.write {
                 resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
