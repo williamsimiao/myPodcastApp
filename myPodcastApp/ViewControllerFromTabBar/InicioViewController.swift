@@ -92,7 +92,7 @@ class InicioViewController: InheritanceViewController {
         navigationItem.rightBarButtonItem = searchBarItem
 
         mySearchController = UISearchController(searchResultsController: nil)
-        mySearchController.obscuresBackgroundDuringPresentation = false
+        mySearchController.obscuresBackgroundDuringPresentation = true
         mySearchController.searchBar.tintColor = .white
         mySearchController.searchBar.placeholder = "Pesquisar"
         definesPresentationContext = true
@@ -106,7 +106,6 @@ class InicioViewController: InheritanceViewController {
     }
     
     @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
-//        self.mySearchController.searchBar.becomeFirstResponder()
         
         mySearchController.searchBar.becomeFirstResponder()
     }
@@ -117,6 +116,9 @@ class InicioViewController: InheritanceViewController {
         //if !playerManager.shared.getPlayerIsSet() {
             //self.superBottomConstraint?.constant = 0
         //}
+        self.mySearchController.searchBar.text = ""
+        
+        self.mySearchController.dismiss(animated: false, completion: nil)
         
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
@@ -194,7 +196,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         
         //cell.setHighlightColor()
         
-        cell.goBackToOriginalColors()
+//        cell.goBackToOriginalColors()
     }
 }
 
@@ -384,12 +386,12 @@ extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate,
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+//        print(searchText)
     }
     
     //UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
-        print("Update ME")
+//        print("Update ME")
     }
     
     

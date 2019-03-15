@@ -271,7 +271,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Início" id="sH1-tW-FQ6"/>
+                    <navigationItem key="navigationItem" title="ResumoCast" id="sH1-tW-FQ6"/>
                     <connections>
                         <outlet property="authorCollectionView" destination="ndP-jA-lWr" id="d41-ml-GF6"/>
                         <outlet property="autoresLabel" destination="EPc-kY-1lN" id="vjE-Fb-EQW"/>
@@ -2594,7 +2594,7 @@ concluir essa leitura!</string>
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjF-Q2-sGH">
-                                <rect key="frame" x="16" y="8" width="382" height="31.333333333333329"/>
+                                <rect key="frame" x="16" y="7.9999999999999982" width="382" height="31.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2711,6 +2711,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YRk-1p-Ij2"/>
-        <segue reference="WFL-Wi-MuI"/>
+        <segue reference="XwK-Gc-UPM"/>
     </inferredMetricsTieBreakers>
 </document>

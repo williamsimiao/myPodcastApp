@@ -27,8 +27,11 @@ class SearchResultsViewController: InheritanceViewController {
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
 
         let buscaUrl = AppService.util.createURLWithComponents(path: "buscar.php", parameters: ["texto"], values: [(self.textoBusca)!])
-        print(buscaUrl)
         makeResquest(url: buscaUrl!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 }
 
