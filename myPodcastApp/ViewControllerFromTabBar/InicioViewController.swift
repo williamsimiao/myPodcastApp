@@ -22,9 +22,6 @@ class InicioViewController: InheritanceViewController {
     
     @IBOutlet weak var authorCollectionView: UICollectionView!
     
-    @IBOutlet weak var topResumosCollectionView: UICollectionView!
-    
-    @IBOutlet weak var top10Label: UILabel!
     @IBOutlet weak var ultimosLabel: UILabel!
     @IBOutlet weak var autoresLabel: UILabel!
     
@@ -122,7 +119,6 @@ class InicioViewController: InheritanceViewController {
         
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
-        self.topResumosCollectionView.reloadData()
     }
     
     func setupUI() {
@@ -131,9 +127,6 @@ class InicioViewController: InheritanceViewController {
         
         let nibAuthorCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
         authorCollectionView.register(nibAuthorCollectionCell, forCellWithReuseIdentifier: "authorCollectionCell")
-        
-        let nibResumoCollectionCell = UINib(nibName: "resumoCollectionViewCell", bundle: nil)
-        topResumosCollectionView.register(nibResumoCollectionCell, forCellWithReuseIdentifier: "resumoCollectionCell")
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -296,9 +289,7 @@ extension InicioViewController {
 
             self.tableView.reloadData()
             self.authorCollectionView.reloadData()
-            self.topResumosCollectionView.reloadData()
             
-            self.top10Label.isHidden = false
             self.ultimosLabel.isHidden = false
             self.autoresLabel.isHidden = false
         }
@@ -311,54 +302,31 @@ extension InicioViewController {
 
 extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.isEqual(self.topResumosCollectionView) {
-            let count = self.topResumos.count
-            return count
-        }
-        //case is self.authorCollectionView
-        else {
-            let count = self.autoresArray.count
-            return count
-        }
-
+        let count = self.autoresArray.count
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView.isEqual(self.topResumosCollectionView) {
-            let cell = self.topResumosCollectionView.dequeueReusableCell(withReuseIdentifier: "resumoCollectionCell", for: indexPath) as! resumoCollectionViewCell
-            let resumo = self.topResumos[indexPath.row]
-            
-            cell.titleLabel.text = resumo.titulo
-            let coverUrl = resumo.url_imagem
-            
-            if AppService.util.isNotNull(coverUrl as AnyObject?) {
-                AppService.util.load_image_resumo(coverUrl, cod_resumo: resumo.cod_resumo, imageview: cell.coverImg)
-            }
-            return cell
+        let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "authorCollectionCell", for: indexPath) as! authorCollectionViewCell
+        let autor = self.autoresArray[indexPath.row]
+        
+        
+        cell.authorLabel.text = autor.nome
+        let coverUrl = autor.url_imagem
+        
+        if AppService.util.isNotNull(coverUrl as AnyObject?) {
+            AppService.util.load_image_autor(coverUrl, cod_autor: autor.cod_autor, imageview: cell.authorImg)
         }
-        //case is self.authorCollectionView
-        else {
-            let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "authorCollectionCell", for: indexPath) as! authorCollectionViewCell
-            let autor = self.autoresArray[indexPath.row]
-            
-            
-            cell.authorLabel.text = autor.nome
-            let coverUrl = autor.url_imagem
-            
-            if AppService.util.isNotNull(coverUrl as AnyObject?) {
-                AppService.util.load_image_autor(coverUrl, cod_autor: autor.cod_autor, imageview: cell.authorImg)
-            }
-            return cell
-        }
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.isEqual(self.topResumosCollectionView) {
-            let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
-
-            self.selectedResumo = self.topResumos[indexPath.row]
-            performSegue(withIdentifier: "to_detail", sender: self)
-        }
+//        if collectionView.isEqual(self.topResumosCollectionView) {
+//            let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
+//
+//            self.selectedResumo = self.autoresArray[indexPath.row]
+//            performSegue(withIdentifier: "to_detail", sender: self)
+//        }
     }
 }
 

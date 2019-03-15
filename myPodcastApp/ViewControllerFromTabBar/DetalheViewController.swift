@@ -178,14 +178,17 @@ class DetalheViewController: InheritanceViewController {
         AppService.util.load_image_resumo((selectedResumo?.url_imagem)!, cod_resumo: (selectedResumo?.cod_resumo)!, imageview:  self.episodeContentView.coverImg!)
         
         self.FortyMinutesView.layer.borderWidth = 1
+        self.FortyMinutesView.layer.cornerRadius = 10
         self.FortyMinutesView.backgroundColor = .black
         self.FortyMinutesView.layer.borderColor = UIColor.white.cgColor
         
         self.TenMinutesView.layer.borderWidth = 1
+        self.TenMinutesView.layer.cornerRadius = 10
         self.TenMinutesView.backgroundColor = .black
         self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
 
         self.resumo10View.layer.borderWidth = 1
+        self.resumo10View.layer.cornerRadius = 10
         self.resumo10View.backgroundColor = .black
         self.resumo10View.layer.borderColor = UIColor.white.cgColor
 
