@@ -595,7 +595,6 @@ open class AppUtil {
     
     func createURLWithComponents(path: String, parameters: [String], values: [String]) -> URL? {
         
-        // create "https://api.nasa.gov/planetary/apod" URL using NSURLComponents
         var url = AppConfig.urlBaseApi
         url += path + "?"
         // add params
@@ -608,6 +607,55 @@ open class AppUtil {
         url += paramValueArray.joined(separator: "&")
         
         return URL(string: url)
+    }
+    
+    func convertDictArrayToResumoArray(dictResumoArray:[[String:AnyObject]]) -> [Resumo] {
+        var myResumos = [Resumo]()
+        for resumoDict in dictResumoArray {
+            
+            let cod_resumo = resumoDict["cod_resumo"] as! String
+            
+            let resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+            
+            if resumoInit != nil {
+                //                print("Resumo exists on Realm")
+            }
+            
+            var resumoEntity = ResumoEntity()
+            try! realm.write {
+                resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
+                self.realm.add(resumoEntity, update: true)
+            }
+            //Building Model
+            let newResumo = Resumo(resumoEntity: resumoEntity)
+            myResumos.append(newResumo)
+        }
+        return myResumos
+    }
+    
+    func convertDictArrayToAutorArray(dictResumoArray:[[String:AnyObject]]) -> [Autor] {
+        var myAutores = [Autor]()
+        for autorDict in dictResumoArray {
+            var autorEntity = AutorEntity()
+            
+            let cod_autor = autorDict["cod_autor"] as! String
+            
+            let autorInit = realm.objects(AutorEntity.self).filter("cod_autor = %@", cod_autor).first
+            
+            if autorInit != nil {
+                //                print("Autor exists on Realm")
+            }
+            
+            autorEntity = AutorEntity(autorDictonary: autorDict)!
+            
+            try! realm.write {
+                self.realm.add(autorEntity, update: true)
+            }
+            //Building Model
+            let newAutor = Autor(autorEntity: autorEntity)
+            myAutores.append(newAutor)
+        }
+        return myAutores
     }
     
 }

@@ -39,6 +39,7 @@
 		3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BD022248EE200E20477 /* UITextViewExtension.swift */; };
 		3DB9E70F22397135005A2EDD /* resumoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */; };
 		3DB9E71122397141005A2EDD /* resumoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB9E71022397141005A2EDD /* resumoCollectionViewCell.xib */; };
+		3DB9E713223BF0E5005A2EDD /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9E712223BF0E4005A2EDD /* SearchResultsViewController.swift */; };
 		3DBBD7DE22304E6C00F3DA64 /* resumo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBD7DD22304E6C00F3DA64 /* resumo.swift */; };
 		3DBBD7E022304E7F00F3DA64 /* autor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBD7DF22304E7F00F3DA64 /* autor.swift */; };
 		3DC16F3A222F038D00F4876F /* autorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC16F39222F038D00F4876F /* autorEntity.swift */; };
@@ -107,6 +108,7 @@
 		3D956BD022248EE200E20477 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DB9E71022397141005A2EDD /* resumoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = resumoCollectionViewCell.xib; sourceTree = "<group>"; };
+		3DB9E712223BF0E4005A2EDD /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3DBBD7DD22304E6C00F3DA64 /* resumo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumo.swift; sourceTree = "<group>"; };
 		3DBBD7DF22304E7F00F3DA64 /* autor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autor.swift; sourceTree = "<group>"; };
 		3DC16F39222F038D00F4876F /* autorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autorEntity.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF45677223949D800F5D056 /* ContentSizedTableView.swift */,
+				3DB9E712223BF0E4005A2EDD /* SearchResultsViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D05B5F72202140E0056E7B9 /* Network.swift in Sources */,
+				3DB9E713223BF0E5005A2EDD /* SearchResultsViewController.swift in Sources */,
 				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
 				3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */,

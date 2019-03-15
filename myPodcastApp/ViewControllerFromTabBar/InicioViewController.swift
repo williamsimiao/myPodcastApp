@@ -77,6 +77,7 @@ class InicioViewController: InheritanceViewController {
         slideShow.contentScaleMode = UIView.ContentMode.scaleToFill
         
         createSearchBar()
+
         setupUI()
 
         //getting Data
@@ -85,12 +86,11 @@ class InicioViewController: InheritanceViewController {
     }
     
     func createSearchBar() {
-//        let searchBarController = UISearchBar()
-//        searchBarController.placeholder = "Pesquisar"
-
-        //NAvigation setup
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //Add search button on navigation
+        let searchBarItem = UIBarButtonItem(image: UIImage(named: "searchWhite"),  style: .plain, target: self, action: #selector(InicioViewController.clickSearchNavItem(_:)))
         
+        navigationItem.rightBarButtonItem = searchBarItem
+
         mySearchController = UISearchController(searchResultsController: nil)
         mySearchController.obscuresBackgroundDuringPresentation = false
         mySearchController.searchBar.tintColor = .white
@@ -100,23 +100,15 @@ class InicioViewController: InheritanceViewController {
         mySearchController.searchBar.delegate = self
         mySearchController.delegate = self
         mySearchController.searchResultsUpdater = self
-
         
+        navigationItem.hidesSearchBarWhenScrolling = true
         self.navigationItem.searchController = mySearchController
-        
-        
-        let searchBarItem = UIBarButtonItem(image: UIImage(named: "searchWhite"),  style: .plain, target: self, action: #selector(InicioViewController.clickSearchNavItem(_:)))
-
-        navigationItem.rightBarButtonItem = searchBarItem
     }
     
     @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
-        if (navigationItem.searchController?.isActive)! {
-//            navigationItem.hidesSearchBarWhenScrolling = true
-        }
-        else {
-//            navigationItem.hidesSearchBarWhenScrolling = false
-        }
+//        self.mySearchController.searchBar.becomeFirstResponder()
+        
+        mySearchController.searchBar.becomeFirstResponder()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -182,6 +174,10 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         if let detalheVC = segue.destination as? DetalheViewController {
             detalheVC.selectedResumo = self.selectedResumo
         }
+        else if let serchResultsVC = segue.destination as? SearchResultsViewController {
+            serchResultsVC.textoBusca = self.mySearchController.searchBar.text
+        }
+
     }
     
     
@@ -292,9 +288,9 @@ extension InicioViewController {
                 }
             }*/
             
-            self.topResumos = convertDictArrayToResumoArray(dictResumoArray: self.topResumosDictArray!)
-            self.ultimosResumos = convertDictArrayToResumoArray(dictResumoArray: self.ultimosResumosDictArray!)
-            self.autoresArray = convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
+            self.topResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.topResumosDictArray!)
+            self.ultimosResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.ultimosResumosDictArray!)
+            self.autoresArray = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
 
             self.tableView.reloadData()
             self.authorCollectionView.reloadData()
@@ -309,56 +305,6 @@ extension InicioViewController {
         }
         
     }
-    
-    func convertDictArrayToAutorArray(dictResumoArray:[[String:AnyObject]]) -> [Autor] {
-        var myAutores = [Autor]()
-        for autorDict in dictResumoArray {
-            var autorEntity = AutorEntity()
-
-            let cod_autor = autorDict["cod_autor"] as! String
-            
-            let autorInit = realm.objects(AutorEntity.self).filter("cod_autor = %@", cod_autor).first
-            
-            if autorInit != nil {
-//                print("Autor exists on Realm")
-            }
-            
-            autorEntity = AutorEntity(autorDictonary: autorDict)!
-
-            try! realm.write {
-                self.realm.add(autorEntity, update: true)
-            }
-            //Building Model
-            let newAutor = Autor(autorEntity: autorEntity)
-            myAutores.append(newAutor)
-        }
-        return myAutores
-    }
-    
-    func convertDictArrayToResumoArray(dictResumoArray:[[String:AnyObject]]) -> [Resumo] {
-        var myResumos = [Resumo]()
-        for resumoDict in dictResumoArray {
-            
-            let cod_resumo = resumoDict["cod_resumo"] as! String
-            
-            let resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
-            
-            if resumoInit != nil {
-//                print("Resumo exists on Realm")
-            }
-            
-            var resumoEntity = ResumoEntity()
-            try! realm.write {
-                resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
-                self.realm.add(resumoEntity, update: true)
-            }
-            //Building Model
-            let newResumo = Resumo(resumoEntity: resumoEntity)
-            myResumos.append(newResumo)
-        }
-        return myResumos
-    }
-    
 }
 
 extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -417,19 +363,28 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     //UISearchControllerDelegate
     func willDismissSearchController(_ searchController: UISearchController) {
-        print("Canceled")
+        print("Bye")
     }
     
     func didPresentSearchController(_ searchController: UISearchController) {
         print("ACitive")
-        searchController.searchBar.becomeFirstResponder()
 
     }
     
     //UISearchBarDelegate
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("Canceled")
+
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Search cliked")
+        performSegue(withIdentifier: "goto_searchResults", sender: self)
+
         self.navigationItem.searchController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
     
     //UISearchResultsUpdating
