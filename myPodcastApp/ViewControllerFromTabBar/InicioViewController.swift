@@ -44,7 +44,7 @@ class InicioViewController: InheritanceViewController {
     var autoresArray = [Autor]()
     
     let realm = AppService.realm()
-    var searchController: UISearchController!
+    var mySearchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,17 +91,18 @@ class InicioViewController: InheritanceViewController {
         //NAvigation setup
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.tintColor = .white
-        searchController.searchBar.placeholder = "Pesquisar"
-        
-        searchController.searchBar.delegate = self
-        searchController.delegate = self
-        searchController.searchResultsUpdater = self
+        mySearchController = UISearchController(searchResultsController: nil)
+        mySearchController.obscuresBackgroundDuringPresentation = false
+        mySearchController.searchBar.tintColor = .white
+        mySearchController.searchBar.placeholder = "Pesquisar"
+        definesPresentationContext = true
+
+        mySearchController.searchBar.delegate = self
+        mySearchController.delegate = self
+        mySearchController.searchResultsUpdater = self
 
         
-        self.navigationItem.searchController = searchController
+        self.navigationItem.searchController = mySearchController
         
         
         let searchBarItem = UIBarButtonItem(image: UIImage(named: "searchWhite"),  style: .plain, target: self, action: #selector(InicioViewController.clickSearchNavItem(_:)))
@@ -111,13 +112,10 @@ class InicioViewController: InheritanceViewController {
     
     @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
         if (navigationItem.searchController?.isActive)! {
-            navigationItem.hidesSearchBarWhenScrolling = true
-            DispatchQueue.main.async {
-                self.navigationItem.searchController?.searchBar.becomeFirstResponder()
-            }
+//            navigationItem.hidesSearchBarWhenScrolling = true
         }
         else {
-            navigationItem.hidesSearchBarWhenScrolling = false
+//            navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
 
@@ -420,6 +418,12 @@ extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate,
     //UISearchControllerDelegate
     func willDismissSearchController(_ searchController: UISearchController) {
         print("Canceled")
+    }
+    
+    func didPresentSearchController(_ searchController: UISearchController) {
+        print("ACitive")
+        searchController.searchBar.becomeFirstResponder()
+
     }
     
     //UISearchBarDelegate
