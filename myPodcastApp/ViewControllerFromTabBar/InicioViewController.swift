@@ -29,8 +29,9 @@ class InicioViewController: InheritanceViewController {
     // MARK: - Properties
     var error_msg:String!
     var success:Bool!
+    let maxResumosToShow = 5
+    let maxAutoresToShow = 5
     
-//    var selectedEpisode : [String: AnyObject]?
     var selectedResumo : Resumo?
     
     var ultimosResumosDictArray :[[String:AnyObject]]?
@@ -201,7 +202,6 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         else if let serchResultsVC = segue.destination as? SearchResultsViewController {
             serchResultsVC.textoBusca = self.mySearchController.searchBar.text
         }
-
     }
     
     
@@ -318,22 +318,24 @@ extension InicioViewController {
         let resumoEntityList = realm.objects(ResumoEntity.self)
         var i = 0
         for resumoEntity in resumoEntityList {
-            if i > 5 {
+            if i >= maxResumosToShow {
                 break
             }
             let resumo = Resumo(resumoEntity: resumoEntity)
             self.ultimosResumos.append(resumo)
+            i += 1
         }
         
         //Autors
         let autorEntityList = realm.objects(AutorEntity.self)
         i = 0
         for autorEntity in autorEntityList {
-            if i > 5 {
+            if i >= maxAutoresToShow {
                 break
             }
             let autor = Autor(autorEntity: autorEntity)
             self.autoresArray.append(autor)
+            i += 1
         }
         showContent()
     }

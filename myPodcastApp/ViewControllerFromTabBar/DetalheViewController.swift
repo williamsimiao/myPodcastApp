@@ -54,13 +54,22 @@ class DetalheViewController: InheritanceViewController {
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         
-        let detalhesUrl = AppService.util.createURLWithComponents(path: "detalheResumo.php", parameters: ["cod_resumo"], values: [(self.selectedResumo?.cod_resumo)!])
-        makeResquest(url: detalhesUrl!)
+//        let detalhesUrl = AppService.util.createURLWithComponents(path: "detalheResumo.php", parameters: ["cod_resumo"], values: [(self.selectedResumo?.cod_resumo)!])
+//        makeResquest(url: detalhesUrl!)
         
         episodeContentView.delegate = self
         setupUI()
         
-        
+        //check Internet
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                self.makeResquest()
+                
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            self.useLocalData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +80,6 @@ class DetalheViewController: InheritanceViewController {
         else {
             print("NOT HIDEN")
         }
-        self.fortyLoading.isHidden = true
-        self.tenLoading.isHidden = true
     }
     
     func checkAvaliableLinks() {
@@ -92,12 +99,12 @@ class DetalheViewController: InheritanceViewController {
             }
         }
         if canUse40 {
-            if selectedResumo?.url_podcast_40_f == nil && selectedResumo?.url_podcast_40_f == "" {
+            if selectedResumo?.url_podcast_40_f != nil && selectedResumo?.url_podcast_40_f != "" {
                 fortyMinutesButton.isEnabled = true
             }
         }
         if canUseResumo {
-            if selectedResumo?.resumo_10 == nil && selectedResumo?.resumo_10 == "" {
+            if selectedResumo?.resumo_10 != nil && selectedResumo?.resumo_10 != "" {
                 let teste = selectedResumo?.resumo_10
                 resumo10Btn.isEnabled = true
             }
@@ -233,18 +240,6 @@ class DetalheViewController: InheritanceViewController {
                 btnDownload.image = UIImage(named: "downloadWhite")!
                 btnDownload.tintColor = UIColor.white
             }
-        }
-    }
-    
-    func setUpResumoDescriptionView() {
-        let theDescription = self.selectedResumo?.descricao
-        textView.text = theDescription
-        
-        if theDescription == "" {
-            resumoView.isHidden = true
-        }
-        else {
-            resumoView.isHidden = false
         }
     }
     
@@ -400,9 +395,7 @@ extension DetalheViewController {
             let updatedResumoEntity = resumoEntity?.addDescription(episodeDetailedDictonary: self.resumoDetails!)
             
             self.selectedResumo = Resumo(resumoEntity: updatedResumoEntity!)
-
             
-            setUpResumoDescriptionView()
         }
         else {
             AppService.util.alert("Erro encontrar detalhes da resumo", message: error_msg!)
