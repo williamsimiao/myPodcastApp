@@ -44,6 +44,7 @@ class InicioViewController: InheritanceViewController {
     var autoresArray = [Autor]()
     
     let realm = AppService.realm()
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +76,7 @@ class InicioViewController: InheritanceViewController {
         
         slideShow.contentScaleMode = UIView.ContentMode.scaleToFill
         
-
+        createSearchBar()
         setupUI()
 
         //getting Data
@@ -83,6 +84,43 @@ class InicioViewController: InheritanceViewController {
         
     }
     
+    func createSearchBar() {
+//        let searchBarController = UISearchBar()
+//        searchBarController.placeholder = "Pesquisar"
+
+        //NAvigation setup
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.placeholder = "Pesquisar"
+        
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+
+        
+        self.navigationItem.searchController = searchController
+        
+        
+        let searchBarItem = UIBarButtonItem(image: UIImage(named: "searchWhite"),  style: .plain, target: self, action: #selector(InicioViewController.clickSearchNavItem(_:)))
+
+        navigationItem.rightBarButtonItem = searchBarItem
+    }
+    
+    @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
+        if (navigationItem.searchController?.isActive)! {
+            navigationItem.hidesSearchBarWhenScrolling = true
+            DispatchQueue.main.async {
+                self.navigationItem.searchController?.searchBar.becomeFirstResponder()
+            }
+        }
+        else {
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         //navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -373,8 +411,27 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
 
             self.selectedResumo = self.topResumos[indexPath.row]
-            
             performSegue(withIdentifier: "to_detail", sender: self)
         }
     }
+}
+
+extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+    //UISearchControllerDelegate
+    func willDismissSearchController(_ searchController: UISearchController) {
+        print("Canceled")
+    }
+    
+    //UISearchBarDelegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Search cliked")
+        self.navigationItem.searchController?.dismiss(animated: true, completion: nil)
+    }
+    
+    //UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        print("Update ME")
+    }
+    
+    
 }

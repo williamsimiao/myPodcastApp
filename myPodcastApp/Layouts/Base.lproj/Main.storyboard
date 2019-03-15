@@ -1468,10 +1468,28 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="3S7-g0-Zdb" id="NoS-7A-2Tz"/>
                         <segue destination="4Qy-4E-s6P" kind="relationship" relationship="rootViewController" id="Xve-8R-PmN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWg-3U-Nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="3S7-g0-Zdb">
+                    <connections>
+                        <outlet property="delegate" destination="nFm-Iu-iFG" id="E9E-lK-fPJ"/>
+                        <outlet property="searchBar" destination="DQJ-WN-hdo" id="8Oy-57-TUT"/>
+                        <outlet property="searchContentsController" destination="nFm-Iu-iFG" id="iDJ-fK-MIU"/>
+                        <outlet property="searchResultsDataSource" destination="nFm-Iu-iFG" id="mbn-fG-djU"/>
+                        <outlet property="searchResultsDelegate" destination="nFm-Iu-iFG" id="Nmz-At-hhP"/>
+                    </connections>
+                </searchDisplayController>
+                <searchBar contentMode="redraw" id="DQJ-WN-hdo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="nFm-Iu-iFG" id="hPP-bG-Ps3"/>
+                    </connections>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="6756" y="1012"/>
         </scene>
