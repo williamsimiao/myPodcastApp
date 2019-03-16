@@ -242,8 +242,6 @@ class DetalheViewController: InheritanceViewController {
         self.resumo10View.layer.cornerRadius = 10
         self.resumo10View.backgroundColor = .black
         self.resumo10View.layer.borderColor = UIColor.white.cgColor
-
-        checkAvaliableLinks()
         
         self.resumoView.layer.cornerRadius = 10
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
