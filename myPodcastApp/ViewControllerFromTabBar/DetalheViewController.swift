@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import Reachability
 
 enum episodeType: String {
     case fortyFree = "url_podcast_40_f"
@@ -47,6 +48,7 @@ class DetalheViewController: InheritanceViewController {
     var success: Bool?
     var resumoDetails: [String: AnyObject]?
     var error_msg: String?
+    let reachability = Reachability()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,14 +64,25 @@ class DetalheViewController: InheritanceViewController {
         
         //check Internet
         reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi {
-                self.makeResquest()
-                
+            if reachability.connection == .wifi || reachability.connection == .cellular {
+                self.checkAvaliableLinks()
             }
         }
         reachability.whenUnreachable = { _ in
             self.useLocalData()
         }
+    }
+    
+    func useLocalData() {
+        let cod_resumo = self.selectedResumo?.cod_resumo
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+        if let resumo = resumos.first {
+            if resumo.downloaded == 1 {
+                self.fortyMinutesButton.isEnabled = true
+                self.resumo10Btn.isEnabled = true
+            }
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +92,25 @@ class DetalheViewController: InheritanceViewController {
         }
         else {
             print("NOT HIDEN")
+        }
+        self.fortyLoading.isHidden = true
+        self.tenLoading.isHidden = true
+        //Reachability
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.connection == .wifi || reachability.connection == .cellular {
+            print("Conected")
         }
     }
     
@@ -219,8 +251,7 @@ class DetalheViewController: InheritanceViewController {
         
         let cod_resumo = selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(ResumoEntity.self)
-            .filter("cod_resumo = %@", cod_resumo!);
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo!)
         if let resumo = resumos.first {
             
             // verificar se eh favorito
@@ -269,8 +300,7 @@ class DetalheViewController: InheritanceViewController {
         
         let cod_resumo = self.selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(ResumoEntity.self)
-            .filter("cod_resumo = %@", cod_resumo);
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         
         if let resumo = resumos.first {
             

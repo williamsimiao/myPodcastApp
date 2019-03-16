@@ -82,7 +82,7 @@ class InicioViewController: InheritanceViewController {
 
         //check Internet
         reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi {
+            if reachability.connection == .wifi || reachability.connection == .cellular {
                 self.makeResquest()
 
             }
@@ -131,7 +131,7 @@ class InicioViewController: InheritanceViewController {
         do {
             try reachability.startNotifier()
         } catch {
-            print("Unable to start notifier")
+            print("Unable to start Reachability notifier")
         }
         
         self.mySearchController.searchBar.text = ""
