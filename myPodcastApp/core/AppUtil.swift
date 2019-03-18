@@ -621,18 +621,23 @@ open class AppUtil {
             
             if resumoInit?.cod_resumo == cod_resumo {
                 resumoEntity = resumoInit!
-                print("Resumo exists on Realm, Updating anyway")
+                print("Resumo exists on Realm, Updating")
+                
+                //Updating
+                do {
+                    try resumoEntity.update(episodeDictonary: resumoDict)
+                }
+                catch AppError.dictionaryIncomplete {
+                    print("dictionaryIncomplete")
+                } catch {
+                    print(error)
+                }
+            }
+            else {
+                resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
             }
             
-            //Updating
-            do {
-                try resumoEntity.update(episodeDictonary: resumoDict)
-            }
-            catch AppError.dictionaryIncomplete {
-                print("dictionaryIncomplete")
-            } catch {
-                print(error)
-            }
+            
             
             //Building Model
             let newResumo = Resumo(resumoEntity: resumoEntity)
