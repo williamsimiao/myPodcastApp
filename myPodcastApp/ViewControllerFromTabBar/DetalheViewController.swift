@@ -246,7 +246,11 @@ class DetalheViewController: InheritanceViewController {
         self.resumoView.layer.cornerRadius = 10
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
         self.textView.textAlignment = NSTextAlignment.justified
-        
+        self.textView.text = AppService.util.populateString(selectedResumo?.subtitulo as AnyObject)
+        print(self.textView.text)
+        self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
+        self.textView.textAlignment = NSTextAlignment.justified
+
         let cod_resumo = selectedResumo?.cod_resumo
         
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo!)
@@ -421,9 +425,9 @@ extension DetalheViewController {
             let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo as Any).first
             
             //Saiving description on dataBase
-            let updatedResumoEntity = resumoEntity?.addDescription(episodeDetailedDictonary: self.resumoDetails!)
+//            let updatedResumoEntity = resumoEntity?.addDescription(episodeDetailedDictonary: self.resumoDetails!)
             
-            self.selectedResumo = Resumo(resumoEntity: updatedResumoEntity!)
+//            self.selectedResumo = Resumo(resumoEntity: updatedResumoEntity!)
             
         }
         else {

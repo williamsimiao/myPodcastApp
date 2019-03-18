@@ -97,6 +97,7 @@ class ResumoEntity: Object {
             guard let subtitulo = episodeDictonary["subtitulo"] else {
                 throw AppError.dictionaryIncomplete
             }
+            print(subtitulo as! String)
             self.subtitulo = AppService.util.populateString(subtitulo)
 
             guard let temporada = episodeDictonary["temporada"] else {
@@ -138,15 +139,15 @@ class ResumoEntity: Object {
         }
     }
     
-    func addDescription(episodeDetailedDictonary: [String:AnyObject]) -> ResumoEntity {
-        if let theDescricao = episodeDetailedDictonary["subtitulo"] {
-            try! AppService.realm().write {
-                self.descricao = AppService.util.populateString(theDescricao)
-                AppService.realm().add(self, update: true)
-            }
-        }
-        return self
-    }
+//    func addDescription(episodeDetailedDictonary: [String:AnyObject]) -> ResumoEntity {
+//        if let theDescricao = episodeDetailedDictonary["subtitulo"] {
+//            try! AppService.realm().write {
+//                self.descricao = AppService.util.populateString(theDescricao)
+//                AppService.realm().add(self, update: true)
+//            }
+//        }
+//        return self
+//    }
         
     override static func primaryKey() -> String? {
         return "cod_resumo"
