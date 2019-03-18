@@ -88,14 +88,16 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
     }
 
     func popupMenu(_ popupMenu: HSPopupMenu, didSelectAt index: Int) {
-        //print("selected index is: " + "\(index)")
-        
-        if (index == 2) {
-            
-            logout()
-            
+        switch index {
+            case 0:
+                performSegue(withIdentifier: "goto_editarPerfil", sender: self)
+            case 1:
+                print("Settings")
+            case 2:
+                logout()
+            default:
+                print("None of the above")
         }
-        
     }
     
     func logout() {

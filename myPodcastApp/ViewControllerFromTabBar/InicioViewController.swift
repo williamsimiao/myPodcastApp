@@ -45,6 +45,9 @@ class InicioViewController: InheritanceViewController {
     var mySearchController: UISearchController!
     let reachability = Reachability()!
 
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +56,6 @@ class InicioViewController: InheritanceViewController {
         
         slideShow.layer.cornerRadius = 10
         slideShow.clipsToBounds = true
-        
         
         loading.isHidden = true
         
@@ -158,11 +160,6 @@ class InicioViewController: InheritanceViewController {
         let nibAuthorCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
         authorCollectionView.register(nibAuthorCollectionCell, forCellWithReuseIdentifier: "authorCollectionCell")
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
 }
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     

@@ -48,6 +48,7 @@
 		3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20822020557009080EF /* MiniPlayerViewController.swift */; };
 		3DCA3A7822401B4800A87949 /* InicioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7722401B4800A87949 /* InicioCell.xib */; };
 		3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7922401B7F00A87949 /* InicioCell.swift */; };
+		3DCA3A7C224034D800A87949 /* EditarPerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
 		3DD43F3422257D2B00017B3E /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */; };
@@ -119,6 +120,7 @@
 		3DC1C20822020557009080EF /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		3DCA3A7722401B4800A87949 /* InicioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InicioCell.xib; sourceTree = "<group>"; };
 		3DCA3A7922401B7F00A87949 /* InicioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioCell.swift; sourceTree = "<group>"; };
+		3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarPerfilViewController.swift; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF45677223949D800F5D056 /* ContentSizedTableView.swift */,
 				3DB9E712223BF0E4005A2EDD /* SearchResultsViewController.swift */,
+				3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */,
 			);
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				4E7F1BC0222C34DC0000F6EB /* UISegmentedControlExtension.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
+				3DCA3A7C224034D800A87949 /* EditarPerfilViewController.swift in Sources */,
 				3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */,
 				3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */,
 				3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */,

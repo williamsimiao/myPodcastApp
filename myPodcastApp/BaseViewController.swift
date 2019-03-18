@@ -18,6 +18,12 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var miniContainerBottonConstrain: NSLayoutConstraint!
     
     var miniPlayerController : MiniPlayerViewController?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

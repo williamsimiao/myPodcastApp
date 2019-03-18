@@ -17,9 +17,7 @@ import FacebookCore
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        //UIApplication.shared.statusBarStyle = .lightContent
-        
+                
         let prefs:UserDefaults = UserDefaults.standard
         let isLoggedIn = prefs.integer(forKey: "isLogado") as Int
         let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
@@ -33,7 +31,7 @@ import FacebookCore
             window!.rootViewController = vc
             window!.makeKeyAndVisible()
         }
-        
+
         return true
     }
     
