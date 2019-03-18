@@ -46,6 +46,8 @@
 		3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C1FF2200C175009080EF /* TabBarViewController.swift */; };
 		3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */; };
 		3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1C20822020557009080EF /* MiniPlayerViewController.swift */; };
+		3DCA3A7822401B4800A87949 /* InicioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7722401B4800A87949 /* InicioCell.xib */; };
+		3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7922401B7F00A87949 /* InicioCell.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
 		3DD43F3422257D2B00017B3E /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */; };
@@ -115,6 +117,8 @@
 		3DC1C1FF2200C175009080EF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3DC1C2012201F2C9009080EF /* PlayerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardViewController.swift; sourceTree = "<group>"; };
 		3DC1C20822020557009080EF /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		3DCA3A7722401B4800A87949 /* InicioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InicioCell.xib; sourceTree = "<group>"; };
+		3DCA3A7922401B7F00A87949 /* InicioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioCell.swift; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				3D4E0C642236A1AC007B04E7 /* authorCollectionViewCell.xib */,
 				3DF98164221EF7840052EC16 /* SlideView.xib */,
 				3DB9E71022397141005A2EDD /* resumoCollectionViewCell.xib */,
+				3DCA3A7722401B4800A87949 /* InicioCell.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				3DF98166221EF7AB0052EC16 /* SlideView.swift */,
 				3D4E0C682236B267007B04E7 /* authorCollectionViewCell.swift */,
 				3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */,
+				3DCA3A7922401B7F00A87949 /* InicioCell.swift */,
 			);
 			path = "custom with xib";
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				3D9514C721F5EDA9004960CE /* Assets.xcassets in Resources */,
 				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,
 				3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */,
+				3DCA3A7822401B4800A87949 /* InicioCell.xib in Resources */,
 				3DB9E71122397141005A2EDD /* resumoCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +554,7 @@
 				4E7F1BC0222C34DC0000F6EB /* UISegmentedControlExtension.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
 				3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */,
+				3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */,
 				3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */,
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,

@@ -152,7 +152,7 @@ class InicioViewController: InheritanceViewController {
     }
     
     func setupUI() {
-        let nibTableCell = UINib(nibName: "CustomCell", bundle: nil)
+        let nibTableCell = UINib(nibName: "InicioCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
         
         let nibAuthorCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
@@ -172,13 +172,29 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InicioCell
         
         let resumo = self.ultimosResumos[indexPath.row]
         
         let cod_resumo = resumo.cod_resumo
         
+        cell.delegate = self
         cell.titleLabel.text = resumo.titulo
+        
+        let integer = resumo.favoritado
+        if integer == 0 {
+            cell.favoritoButton.imageView?.image = UIImage(named: "favoritoWhite")!
+            cell.favoritoButton.tintColor = UIColor.white
+
+            cell.favoritado = false
+        }
+        else {
+            cell.favoritoButton.imageView?.image = UIImage(named: "favoritoOrange")!
+            cell.favoritoButton.tintColor = UIColor.init(hex: 0xFF8633)
+
+            cell.favoritado = true
+        }
+        
         let authorsList = resumo.autores
         let joinedNames = Util.joinAuthorsNames(authorsList: authorsList)
         cell.authorLabel.text = joinedNames
@@ -206,7 +222,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
+        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
         
         self.selectedResumo = self.ultimosResumos[indexPath.row]
         
@@ -214,7 +230,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
+        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
         
         //cell.setHighlightColor()
         
@@ -411,6 +427,23 @@ extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate,
     func updateSearchResults(for searchController: UISearchController) {
 //        print("Update ME")
     }
-    
-    
+}
+
+extension InicioViewController: inicioCellDelegate {
+    func changeFavoritoState(cod_resumo: String) {
+        let resumos = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+        guard let resumoEntity = resumos.first else {
+            return
+        }
+        try! self.realm.write {
+            if resumoEntity.favoritado == 0 {
+                resumoEntity.favoritado = 1
+            } else {
+                resumoEntity.favoritado = 0
+            }
+            self.realm.add(resumoEntity, update: true)
+        }
+
+    }
+
 }
