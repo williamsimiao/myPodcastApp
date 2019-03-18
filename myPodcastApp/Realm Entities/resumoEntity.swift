@@ -44,71 +44,34 @@ class ResumoEntity: Object {
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
         self.init()
-        guard let cod_resumo = episodeDictonary["cod_resumo"] else {
-            return nil
+        do {
+            try update(episodeDictonary: episodeDictonary)
         }
-        self.cod_resumo = cod_resumo as! String
-
-        guard let titulo = episodeDictonary["titulo"] else {
-            return nil
-        }
-        self.titulo = AppService.util.populateString(titulo)
-
-        guard let subtitulo = episodeDictonary["subtitulo"] else {
-            return nil
-        }
-        self.subtitulo = AppService.util.populateString(subtitulo)
-
-        guard let temporada = episodeDictonary["temporada"] else {
-            return nil
-        }
-        self.temporada = AppService.util.populateString(temporada)
-
-        guard let episodio = episodeDictonary["episodio"] else {
-            return nil
-        }
-        self.episodio = AppService.util.populateString(episodio)
-
-        guard let url_imagem = episodeDictonary["url_imagem"] else {
-            return nil
-        }
-        self.url_imagem = AppService.util.populateString(url_imagem)
-
-        guard let url_podcast_10 = episodeDictonary["url_podcast_10"] else {
-            return nil
-        }
-        self.url_podcast_10 = AppService.util.populateString(url_podcast_10)
-
-        guard let url_podcast_40_p = episodeDictonary["url_podcast_40_p"] else {
-            return nil
-        }
-        self.url_podcast_40_p = AppService.util.populateString(url_podcast_40_p)
-
-        guard let url_podcast_40_f = episodeDictonary["url_podcast_40_f"] else {
-            return nil
-        }
-        self.url_podcast_40_f = AppService.util.populateString(url_podcast_40_f)
-
-        guard let resumo_10 = episodeDictonary["resumo_10"] else {
-            return nil
-        }
-        self.resumo_10 = AppService.util.populateString(resumo_10)
-
-        //Autores
-        guard let autores = episodeDictonary["autores"] else {
-            return nil
-        }
-        self.autores.removeAll()
-        for autorDicionary in (autores as! [[String: AnyObject]]) {
-            let autorEntity = AutorEntity(autorDictonary: autorDicionary)
-            self.autores.append(autorEntity!)
+        catch AppError.dictionaryIncomplete {
+            
+        } catch {
+            print(error)
         }
     }
     
     func update(episodeDictonary: [String:AnyObject]) throws {
         let my_cod_resumo = episodeDictonary["cod_resumo"] as! String
-        if my_cod_resumo != self.cod_resumo {
+        if self.cod_resumo != ""  && my_cod_resumo != self.cod_resumo {
             return
+        }
+        
+        //Autores
+        guard let autores = episodeDictonary["autores"] else {
+            throw AppError.dictionaryIncomplete
+        }
+        self.autores.removeAll()
+        for autorDicionary in (autores as! [[String: AnyObject]]) {
+            let my_cod_autor = autorDicionary["cod_autor"] as! String
+            var autorEntity = AppService.realm().objects(AutorEntity.self).filter("cod_autor = %@", my_cod_autor).first
+            if autorEntity?.cod_autor != my_cod_autor {
+                autorEntity = AutorEntity(autorDictonary: autorDicionary)
+            }
+            self.autores.append(autorEntity!)
         }
 
         try! AppService.realm().write {
@@ -157,18 +120,7 @@ class ResumoEntity: Object {
             }
             self.resumo_10 = AppService.util.populateString(resumo_10)
 
-            //Autores
-            guard let autores = episodeDictonary["autores"] else {
-                throw AppError.dictionaryIncomplete
-            }
-            self.autores.removeAll()
-            for autorDicionary in (autores as! [[String: AnyObject]]) {
-                let cod_autor = autorDicionary["cod_autor"] as! String
-                let autorEntity = self.realm?.objects(AutorEntity.self).filter("cod_autor = %@", cod_autor).first
-                self.autores.append(autorEntity!)
-            }
-
-            self.realm!.add(self, update: true)
+            AppService.realm().add(self, update: true)
         }
     }
     
@@ -176,7 +128,7 @@ class ResumoEntity: Object {
         if let theDescricao = episodeDetailedDictonary["subtitulo"] {
             try! AppService.realm().write {
                 self.descricao = AppService.util.populateString(theDescricao)
-                self.realm!.add(self, update: true)
+                AppService.realm().add(self, update: true)
             }
         }
         return self

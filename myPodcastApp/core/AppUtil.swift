@@ -661,9 +661,6 @@ open class AppUtil {
             
             autorEntity = AutorEntity(autorDictonary: autorDict)!
             
-            try! realm.write {
-                self.realm.add(autorEntity, update: true)
-            }
             //Building Model
             let newAutor = Autor(autorEntity: autorEntity)
             myAutores.append(newAutor)

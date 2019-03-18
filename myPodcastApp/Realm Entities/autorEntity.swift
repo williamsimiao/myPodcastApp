@@ -18,53 +18,43 @@ class AutorEntity: Object {
     
     public convenience init? (autorDictonary: [String:AnyObject]) {
         self.init()
-        guard let cod_autor = autorDictonary["cod_autor"] else {
+        let my_cod_autor = autorDictonary["cod_autor"] as! String
+        if self.cod_autor != ""  && my_cod_autor != self.cod_autor {
             return
         }
-        self.cod_autor = cod_autor as! String
-        
-        guard let nome = autorDictonary["nome"] else {
-            return
-        }
-        self.nome = nome as! String
-        
-        if let descricao = autorDictonary["descricao"] {
-            self.descricao = descricao as! String
-        }
-        
-        guard let url_imagem = autorDictonary["url_imagem"] else {
-            return
-        }
-        self.url_imagem = url_imagem as! String
-        
-        if let cod_status = autorDictonary["cod_status"] {
-            self.cod_status = cod_status as! String
-        }
+
+        update(autorDictonary: autorDictonary)
     }
     
     func update(autorDictonary: [String:AnyObject]) {
-        guard let cod_autor = autorDictonary["cod_autor"] else {
-            return
+        try! AppService.realm().write {
+            guard let cod_autor = autorDictonary["cod_autor"] else {
+                return
+            }
+            self.cod_autor = cod_autor as! String
+            
+            guard let nome = autorDictonary["nome"] else {
+                return
+            }
+            self.nome = nome as! String
+            
+            if let descricao = autorDictonary["descricao"] {
+                self.descricao = descricao as! String
+            }
+            
+            guard let url_imagem = autorDictonary["url_imagem"] else {
+                return
+            }
+            self.url_imagem = url_imagem as! String
+            
+            if let cod_status = autorDictonary["cod_status"] {
+                self.cod_status = cod_status as! String
+            }
+            
+            AppService.realm().add(self, update: true)
         }
-        self.cod_autor = cod_autor as! String
+
         
-        guard let nome = autorDictonary["nome"] else {
-            return
-        }
-        self.nome = nome as! String
-        
-        if let descricao = autorDictonary["descricao"] {
-            self.descricao = descricao as! String
-        }
-        
-        guard let url_imagem = autorDictonary["url_imagem"] else {
-            return
-        }
-        self.url_imagem = url_imagem as! String
-        
-        if let cod_status = autorDictonary["cod_status"] {
-            self.cod_status = cod_status as! String
-        }
     }
     
     
