@@ -179,20 +179,17 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         let cod_resumo = resumo.cod_resumo
         
         cell.delegate = self
+        cell.cod_resumo = cod_resumo
         cell.titleLabel.text = resumo.titulo
         
-        let integer = resumo.favoritado
-        if integer == 0 {
+        let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+        if resumoEntity!.favoritado == 0 {
             cell.favoritoButton.imageView?.image = UIImage(named: "favoritoWhite")!
             cell.favoritoButton.tintColor = UIColor.white
-
-            cell.favoritado = false
         }
         else {
             cell.favoritoButton.imageView?.image = UIImage(named: "favoritoOrange")!
             cell.favoritoButton.tintColor = UIColor.init(hex: 0xFF8633)
-
-            cell.favoritado = true
         }
         
         let authorsList = resumo.autores
@@ -443,6 +440,8 @@ extension InicioViewController: inicioCellDelegate {
             }
             self.realm.add(resumoEntity, update: true)
         }
+        self.view.layoutIfNeeded()
+
 
     }
 

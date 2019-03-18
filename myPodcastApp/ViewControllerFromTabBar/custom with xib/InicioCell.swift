@@ -23,7 +23,6 @@ class InicioCell: UITableViewCell {
     
     var delegate: inicioCellDelegate?
     var cod_resumo: String?
-    var favoritado: Bool?
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -47,14 +46,16 @@ class InicioCell: UITableViewCell {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        if favoritado! {
+        let resumo = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.cod_resumo).first
+
+        if resumo?.favoritado == 0 {
             favoritoButton.imageView?.image = UIImage(named: "favoritoOrange")!
             favoritoButton.tintColor = UIColor.init(hex: 0xFF8633)
         } else {
             favoritoButton.imageView?.image = UIImage(named: "favoritoWhite")!
             favoritoButton.tintColor = UIColor.white
         }
-        favoritado = !favoritado!
+        delegate?.changeFavoritoState(cod_resumo: self.cod_resumo!)
     }
     
     
