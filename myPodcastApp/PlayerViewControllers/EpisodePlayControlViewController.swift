@@ -49,6 +49,10 @@ class EpisodePlayControlViewController: UIViewController {
                 self.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
+        self.speedBtn.layer.borderWidth = 1
+        self.speedBtn.layer.cornerRadius = 10
+        self.speedBtn.layer.borderColor = UIColor.black.cgColor
+        
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerTimeDidProgress(_:)), name: .playerTimeDidProgress, object: playerManager.shared)
@@ -118,7 +122,8 @@ class EpisodePlayControlViewController: UIViewController {
     
     @IBAction func clickSpeedBtn(_ sender: Any) {
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Personenakte", bundle: nil).instantiateViewController(withIdentifier: "popoverId")
+
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "playerRateViewController")
         
         // set the presentation style
         popController.modalPresentationStyle = UIModalPresentationStyle.popover

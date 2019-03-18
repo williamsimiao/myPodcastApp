@@ -899,6 +899,19 @@
                                                             <action selector="sliderTouchUpInside:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="XyL-Sv-Hf7"/>
                                                         </connections>
                                                     </slider>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diX-jB-DxU">
+                                                        <rect key="frame" x="145" y="26" width="30" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="1x">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <state key="highlighted">
+                                                            <color key="titleColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="clickSpeedBtn:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="rj3-GG-u58"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -907,10 +920,12 @@
                                                     <constraint firstItem="O0w-Fp-1n9" firstAttribute="top" secondItem="NdP-MI-nFz" secondAttribute="bottom" id="NGF-sl-wip"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="top" secondItem="L6F-hZ-jfA" secondAttribute="top" id="QaQ-GN-WJV"/>
                                                     <constraint firstAttribute="height" constant="50" id="U0Y-Tf-5lf"/>
+                                                    <constraint firstItem="diX-jB-DxU" firstAttribute="centerX" secondItem="L6F-hZ-jfA" secondAttribute="centerX" id="Zep-iI-8es"/>
                                                     <constraint firstItem="ccp-7t-57J" firstAttribute="top" secondItem="NdP-MI-nFz" secondAttribute="bottom" id="dT3-Lx-dVM"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="centerX" secondItem="L6F-hZ-jfA" secondAttribute="centerX" id="dod-4a-k40"/>
                                                     <constraint firstAttribute="trailing" secondItem="NdP-MI-nFz" secondAttribute="trailing" constant="25" id="erp-EZ-PkQ"/>
                                                     <constraint firstItem="O0w-Fp-1n9" firstAttribute="centerX" secondItem="NdP-MI-nFz" secondAttribute="leading" id="odE-Pl-n4w"/>
+                                                    <constraint firstItem="NdP-MI-nFz" firstAttribute="top" secondItem="diX-jB-DxU" secondAttribute="bottom" constant="-60" id="tMf-zP-paU"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-yX-3fM" userLabel="download">
@@ -1000,30 +1015,13 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="Sqi-ne-Cz3" userLabel="speed">
-                                        <rect key="frame" x="145" y="194" width="30" height="34"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diX-jB-DxU">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" title="1x">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="clickSpeedBtn:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="rj3-GG-u58"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="pNf-4Y-tEt" firstAttribute="centerX" secondItem="uKB-e1-Cfm" secondAttribute="centerX" id="9vb-WH-h0k"/>
                                     <constraint firstAttribute="height" constant="220" id="IgK-c3-kLf"/>
-                                    <constraint firstItem="Sqi-ne-Cz3" firstAttribute="top" secondItem="pNf-4Y-tEt" secondAttribute="bottom" id="Wbw-Bc-ztL"/>
                                     <constraint firstAttribute="bottom" secondItem="uKB-e1-Cfm" secondAttribute="bottom" constant="104" id="ddq-wP-mwm"/>
                                     <constraint firstItem="pNf-4Y-tEt" firstAttribute="top" secondItem="2yp-DE-ayo" secondAttribute="bottom" constant="4" id="ejo-39-kuQ"/>
-                                    <constraint firstItem="Sqi-ne-Cz3" firstAttribute="centerX" secondItem="5ye-ib-aWJ" secondAttribute="centerX" id="v7d-WU-qbp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1052,6 +1050,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USh-ns-gwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="14205.6" y="1153.2233883058473"/>
+        </scene>
+        <!--Player Rate View Controller-->
+        <scene sceneID="rxF-GG-6D6">
+            <objects>
+                <viewController storyboardIdentifier="playerRateViewController" id="3Ui-UY-nfx" customClass="playerRateViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GH9-yQ-SqX">
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="D5U-aV-ZHj">
+                                <rect key="frame" x="16" y="16" width="258" height="218"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnE-Xt-miD">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="43.5"/>
+                                        <state key="normal" title="1x">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwi-Bv-aKC">
+                                        <rect key="frame" x="0.0" y="43.5" width="258" height="43.5"/>
+                                        <state key="normal" title="1.25x">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twS-3a-djn">
+                                        <rect key="frame" x="0.0" y="87" width="258" height="44"/>
+                                        <state key="normal" title="1.5x">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfQ-rq-WgD">
+                                        <rect key="frame" x="0.0" y="131" width="258" height="43.5"/>
+                                        <state key="normal" title="1.75">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lS-wL-cOp">
+                                        <rect key="frame" x="0.0" y="174.5" width="258" height="43.5"/>
+                                        <state key="normal" title="2x">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D5U-aV-ZHj" firstAttribute="leading" secondItem="Zoi-1h-6pL" secondAttribute="leading" constant="16" id="6Kl-kG-Vmi"/>
+                            <constraint firstItem="Zoi-1h-6pL" firstAttribute="trailing" secondItem="D5U-aV-ZHj" secondAttribute="trailing" constant="16" id="7Yv-iV-4GD"/>
+                            <constraint firstItem="D5U-aV-ZHj" firstAttribute="top" secondItem="Zoi-1h-6pL" secondAttribute="top" constant="16" id="CKQ-Mk-XQX"/>
+                            <constraint firstItem="Zoi-1h-6pL" firstAttribute="bottom" secondItem="D5U-aV-ZHj" secondAttribute="bottom" constant="16" id="Vjh-Is-Li2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zoi-1h-6pL"/>
+                    </view>
+                    <size key="freeformSize" width="290" height="250"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfX-23-jfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14893" y="1187"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="UYm-rR-YE7">
