@@ -44,6 +44,14 @@ class ResumoEntity: Object {
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {
         self.init()
+        guard let cod_resumo = episodeDictonary["cod_resumo"] else {
+            return
+        }
+        try! AppService.realm().write {
+            self.cod_resumo = AppService.util.populateString(cod_resumo)
+            AppService.realm().add(self, update: true)
+        }
+
         do {
             try update(episodeDictonary: episodeDictonary)
         }
@@ -64,14 +72,20 @@ class ResumoEntity: Object {
         guard let autores = episodeDictonary["autores"] else {
             throw AppError.dictionaryIncomplete
         }
-        self.autores.removeAll()
+        try! AppService.realm().write {
+            self.autores.removeAll()
+        }
+
         for autorDicionary in (autores as! [[String: AnyObject]]) {
             let my_cod_autor = autorDicionary["cod_autor"] as! String
             var autorEntity = AppService.realm().objects(AutorEntity.self).filter("cod_autor = %@", my_cod_autor).first
             if autorEntity?.cod_autor != my_cod_autor {
                 autorEntity = AutorEntity(autorDictonary: autorDicionary)
             }
-            self.autores.append(autorEntity!)
+            try! AppService.realm().write {
+                self.autores.append(autorEntity!)
+            }
+
         }
 
         try! AppService.realm().write {
