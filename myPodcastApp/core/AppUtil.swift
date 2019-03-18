@@ -500,7 +500,7 @@ open class AppUtil {
     
     func markResumoAsDownloaded(cod_resumo: String) {
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
-        guard let resumo = resumos.first else {
+        guard let resumoEntity = resumos.first else {
             //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
             //            Delay.short
             print("Não foi possivel fazer o download")
@@ -508,8 +508,9 @@ open class AppUtil {
         }
         
         try! self.realm.write {
-            resumo.downloaded = 1
-            NSLog("downloaded resumo %@", resumo.cod_resumo)
+            resumoEntity.downloaded = 1
+            self.realm.add(resumoEntity, update: true)
+            NSLog("downloaded resumo %@", resumoEntity.cod_resumo)
         }
     }
 
@@ -612,21 +613,27 @@ open class AppUtil {
     func convertDictArrayToResumoArray(dictResumoArray:[[String:AnyObject]]) -> [Resumo] {
         var myResumos = [Resumo]()
         for resumoDict in dictResumoArray {
-            
+            var resumoEntity = ResumoEntity()
+
             let cod_resumo = resumoDict["cod_resumo"] as! String
             
             let resumoInit = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
             
-            if resumoInit != nil {
+            if resumoInit?.cod_resumo == cod_resumo {
+                resumoEntity = resumoInit!
                 print("Resumo exists on Realm, Updating anyway")
             }
             
             //Updating
-            var resumoEntity = ResumoEntity()
-            try! realm.write {
-                resumoEntity = ResumoEntity(episodeDictonary: resumoDict)!
-                self.realm.add(resumoEntity, update: true)
+            do {
+                try resumoEntity.update(episodeDictonary: resumoDict)
             }
+            catch AppError.dictionaryIncomplete {
+                print("dictionaryIncomplete")
+            } catch {
+                print(error)
+            }
+            
             //Building Model
             let newResumo = Resumo(resumoEntity: resumoEntity)
             myResumos.append(newResumo)

@@ -15,4 +15,5 @@ enum AppError: Error {
     case urlKeyError
     //
     case filePathError
+    case dictionaryIncomplete
 }

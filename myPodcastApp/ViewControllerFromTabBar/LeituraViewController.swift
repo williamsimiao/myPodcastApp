@@ -217,12 +217,12 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         let resumos = self.realm.objects(ResumoEntity.self)
             .filter("cod_resumo = %@", self.cod_resumo);
         
-        if let resumo = resumos.first {
+        if let resumoEntity = resumos.first {
             
             try! self.realm.write {
-                resumo.concluido_resumo_10 = 1
-                
-                NSLog("concluido resumo %@", resumo.cod_resumo)
+                resumoEntity.concluido_resumo_10 = 1
+                self.realm.add(resumoEntity, update: true)
+                NSLog("concluido resumo %@", resumoEntity.cod_resumo)
             }
         }
         

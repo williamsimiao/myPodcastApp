@@ -300,21 +300,21 @@ class DetalheViewController: InheritanceViewController {
         
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         
-        if let resumo = resumos.first {
+        if let resumoEntity = resumos.first {
             
             try! self.realm.write {
                 
-                if resumo.favoritado == 0 {
-                    resumo.favoritado = 1
+                if resumoEntity.favoritado == 0 {
+                    resumoEntity.favoritado = 1
                     btnSalvar.image = UIImage(named: "favoritoOrange")!
                     btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
                 } else {
-                    resumo.favoritado = 0
+                    resumoEntity.favoritado = 0
                     btnSalvar.image = UIImage(named: "favoritoWhite")!
                     btnSalvar.tintColor = UIColor.white
                 }
-                
-                NSLog("favorito resumo %@", resumo.cod_resumo)
+                self.realm.add(resumoEntity, update: true)
+                NSLog("favorito resumo %@", resumoEntity.cod_resumo)
             }
         }
         
@@ -336,6 +336,7 @@ class DetalheViewController: InheritanceViewController {
         else {
             AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
         }
+        
         
 
     }
