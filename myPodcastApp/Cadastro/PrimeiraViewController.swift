@@ -33,11 +33,16 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpDefaultConfigs()
         setupLayout()
         
     }
     
+    func setUpDefaultConfigs() {
+        let prefs:UserDefaults = UserDefaults.standard
+        prefs.set(1.0, forKey: "preferedSpeed")
+    }
+
     func setupLayout() {
         loading.isHidden = true
         

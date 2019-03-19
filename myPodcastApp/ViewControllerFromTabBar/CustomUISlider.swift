@@ -34,7 +34,7 @@ class CustomUISlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         
         //keeps original origin and width, changes height, you get the idea
-        let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width, height: 5.0))
+        let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width, height: 3.0))
         super.trackRect(forBounds: customBounds)
         return customBounds
     }
@@ -43,7 +43,7 @@ class CustomUISlider: UISlider {
     override func awakeFromNib() {
         //TODO: change this images
         self.setThumbImage(UIImage(named: "thumbDefault"), for: UIControl.State.normal)
-        self.setThumbImage(UIImage(named: "thumbSelected"), for: UIControl.State.highlighted)
+//        self.setThumbImage(UIImage(named: "thumbSelected"), for: UIControl.State.highlighted)
         super.awakeFromNib()
     }
     

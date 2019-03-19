@@ -12,6 +12,13 @@ protocol updateMiniPlayerDelegate : class {
     func updateMiniPlayer()
 }
 
+enum playerSpeed : String {
+    case speed_1 = "1x"
+    case speed_1_5 = "1.5x"
+    case speed_1_75 = "1.75x"
+    case speed_2 = "2x"
+}
+
 class EpisodePlayControlViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -23,7 +30,10 @@ class EpisodePlayControlViewController: UIViewController {
     @IBOutlet weak var episodeAuthor: UILabel!
     
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var speedBtn: UIButton!
+    @IBOutlet weak var speedEdt: UITextField!
+    
+    var speedPicker: UIPickerView!
+    let speedArray = [playerSpeed.speed_1, playerSpeed.speed_1_5, playerSpeed.speed_1_75, playerSpeed.speed_2]
     
     // MARK: - Properties
     var currentPlayButtonState : playButtonStates?
@@ -49,9 +59,23 @@ class EpisodePlayControlViewController: UIViewController {
                 self.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
-        self.speedBtn.layer.borderWidth = 1
-        self.speedBtn.layer.cornerRadius = 10
-        self.speedBtn.layer.borderColor = UIColor.black.cgColor
+        let prefs:UserDefaults = UserDefaults.standard
+        var preferedSpeed = prefs.float(forKey: "preferedSpeed")
+        if preferedSpeed == 0 {
+            preferedSpeed = 1.0
+            prefs.set(1.0, forKey: "preferedSpeed")
+        }
+        var speedString = String(format: "%.2f", preferedSpeed)
+        speedString += "x"
+        self.speedEdt.text = speedString
+        self.speedEdt.layer.borderWidth = 1
+        self.speedEdt.layer.cornerRadius = 10
+        self.speedEdt.layer.borderColor = UIColor.black.cgColor
+        speedEdt.delegate = self
+        speedPicker = UIPickerView()
+        speedPicker.dataSource = self
+        speedPicker.delegate = self
+        speedEdt.inputView = speedPicker
         
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayingStateDidChange(_:)), name: .playingStateDidChange, object: playerManager.shared)
         
@@ -65,6 +89,8 @@ class EpisodePlayControlViewController: UIViewController {
         self.remainingLabel.text = "-"
         self.episodeAuthor.text = "-"
     }
+    
+    
     
     func changeButtonState(to state:playButtonStates) {
         if state != self.currentPlayButtonState {
@@ -120,23 +146,23 @@ class EpisodePlayControlViewController: UIViewController {
     @IBAction func clickMore(_ sender: Any) {
     }
     
-    @IBAction func clickSpeedBtn(_ sender: Any) {
-        // get a reference to the view controller for the popover
-
-        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "playerRateViewController")
-        
-        // set the presentation style
-        popController.modalPresentationStyle = UIModalPresentationStyle.popover
-        
-        // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.sourceView = sender as! UIView // button
-        popController.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
-        
-        // present the popover
-        self.present(popController, animated: true, completion: nil)
-    }
+//    @IBAction func clickSpeedBtn(_ sender: Any) {
+//        // get a reference to the view controller for the popover
+//
+//        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "playerRateViewController")
+//
+//        // set the presentation style
+//        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+//
+//        // set up the popover presentation controller
+//        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+//        popController.popoverPresentationController?.delegate = self
+//        popController.popoverPresentationController?.sourceView = sender as! UIView // button
+//        popController.popoverPresentationController?.sourceRect = (sender as AnyObject).bounds
+//
+//        // present the popover
+//        self.present(popController, animated: true, completion: nil)
+//    }
     
     
 }
@@ -194,5 +220,45 @@ extension EpisodePlayControlViewController {
         slider.maximumValue = Float(durationSeconds)
         slider.value = Float(progressSeconds)
     }
+}
+
+extension EpisodePlayControlViewController: UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return speedArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return speedArray[row].rawValue
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedSpeed = speedArray[row]
+        let myRate: Float?
+        switch selectedSpeed {
+            case playerSpeed.speed_1:
+                myRate = 1.0
+            
+            case playerSpeed.speed_1_5:
+                myRate = 1.5
+
+            case playerSpeed.speed_1_75:
+                myRate = 1.75
+
+            case playerSpeed.speed_2:
+                myRate = 2.0
+
+        }
+        playerManager.shared.changePlaybackRate(rate: myRate!)
+        let prefs:UserDefaults = UserDefaults.standard
+        prefs.set(myRate, forKey: "preferedSpeed")
+        speedEdt.text = selectedSpeed.rawValue
+        self.view.endEditing(true)
+    }
+    
+    
 }
 

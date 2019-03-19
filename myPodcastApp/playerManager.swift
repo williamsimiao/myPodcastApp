@@ -16,14 +16,6 @@ protocol episodeDataSourceProtocol {
     func episodeDataChangedTo(imageURL:String, title:String)
 }
 
-
-enum playerRate : Int {
-    case rate_1 = 0
-    case rate_1_5 = 1
-    case rate_1_75 = 2
-    case rate_2 = 3
-}
-
 class playerManager {
     //TODO TODO TODO remove this
     var miniContainerFrameHight: CGFloat?
@@ -199,6 +191,9 @@ class playerManager {
     
     func changePlaybackRate(rate: Float) {
         self.player?.rate = rate
+        if !getIsPlaying() {
+            self.player?.pause()
+        }
     }
     
     func playPause(shouldPlay:Bool) {
