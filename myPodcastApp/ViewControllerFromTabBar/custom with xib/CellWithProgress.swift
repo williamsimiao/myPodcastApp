@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol CellWithProgressDelegate {
+    func presentAlertOptions(theResumo: Resumo)
+}
+
+
 class CellWithProgress: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView!
@@ -16,6 +21,9 @@ class CellWithProgress: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
+    var resumo: Resumo?
+    var delegate: CellWithProgressDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -36,5 +44,8 @@ class CellWithProgress: UITableViewCell {
         self.titleLabel.textColor = .white
         self.authorLabel.textColor = .white
         self.coverImg.layer.borderColor = UIColor.white.cgColor
+    }
+    @IBAction func clickMore(_ sender: Any) {
+        self.delegate?.presentAlertOptions(theResumo: self.resumo!)
     }
 }

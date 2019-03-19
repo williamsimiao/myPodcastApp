@@ -485,7 +485,7 @@ open class AppUtil {
                         print("File moved to documents folder")
                         
                         DispatchQueue.main.async(execute: {
-                            self.markResumoAsDownloaded(cod_resumo: cod_resumo)
+                            self.markResumoDownloadField(cod_resumo: cod_resumo, downloaded: true)
                         })
 
                         
@@ -498,7 +498,40 @@ open class AppUtil {
         }
     }
     
-    func markResumoAsDownloaded(cod_resumo: String) {
+    func deleteResumoAudioFile(urlString: String, cod_resumo: String) -> Bool {
+        var sucess = false
+        if let audioUrl = URL(string: urlString) {
+            // then lets create your document folder url
+            let fileManager = FileManager.default
+
+            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            // lets create your destination file url
+            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
+            print(destinationUrl)
+            
+            // to check if it exists before downloading it
+            if FileManager.default.fileExists(atPath: destinationUrl.path) {
+                print("The file exists, so can delete")
+                do {
+                    try fileManager.removeItem(atPath: destinationUrl.path)
+                    markResumoDownloadField(cod_resumo: cod_resumo, downloaded: false)
+                    sucess = true
+                } catch {
+                    sucess = false
+                    print("Não pode deletar arquivo")
+                }                
+            }
+            else {
+                sucess = false
+                print("File not found")
+            }
+        }
+
+        return sucess
+    }
+    
+    func markResumoDownloadField(cod_resumo: String, downloaded: Bool) {
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumoEntity = resumos.first else {
             //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
@@ -508,12 +541,16 @@ open class AppUtil {
         }
         
         try! self.realm.write {
-            resumoEntity.downloaded = 1
+            if downloaded {
+                resumoEntity.downloaded = 1
+            }
+            else {
+                resumoEntity.downloaded = 0
+            }
             self.realm.add(resumoEntity, update: true)
             NSLog("downloaded resumo %@", resumoEntity.cod_resumo)
         }
     }
-
     
     func getPathFromDownloadedAudio(urlString: String) throws -> URL {
         guard let fileURL = URL(string: urlString)  else {

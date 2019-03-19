@@ -84,6 +84,9 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cod_resumo = resumo.cod_resumo
         
+        cell.delegate = self
+        cell.resumo = resumo
+        
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
         
@@ -119,5 +122,35 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
             detalheVC.selectedResumo = self.selectedResumo
         }
     }
+}
+
+extension FavoritosViewController: CellWithProgressDelegate {
+    func presentAlertOptions(theResumo: Resumo) {
+        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
+        
+        let actionDeletar = UIAlertAction(title: "Deletar", style: .destructive) { _ in
+            let episodeUrlString: String
+            let userIsPremium = false
+            if userIsPremium {
+                episodeUrlString = theResumo.url_podcast_40_p
+            }
+            else {
+                episodeUrlString = theResumo.url_podcast_40_f
+            }
+            let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+            if wasDeleted {
+                print("Dismiss with animation")
+            }        }
+        
+        optionMenu.addAction(actionDeletar)
+        
+        self.present(optionMenu, animated: true) {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
+            optionMenu.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+        }
+    }
     
+    @objc func dismissAlertController(){
+        self.dismiss(animated: true, completion: nil)
+    }
 }

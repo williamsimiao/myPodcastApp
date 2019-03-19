@@ -39,19 +39,31 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7MP-y4-u9O">
-                            <rect key="frame" x="98" y="64.5" width="321" height="2"/>
+                            <rect key="frame" x="98" y="64.5" width="281" height="2"/>
                             <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </progressView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmU-qm-cvg">
+                            <rect key="frame" x="396" y="34" width="23" height="22"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="moreWhite">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickMore:" destination="Ric-0u-Giq" eventType="touchUpInside" id="uoL-uy-esv"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="wmU-qm-cvg" firstAttribute="centerY" secondItem="w3f-AW-J0E" secondAttribute="centerY" id="01K-co-Iz4"/>
                         <constraint firstItem="7MP-y4-u9O" firstAttribute="leading" secondItem="j6Y-4Z-bCT" secondAttribute="trailing" constant="8" id="3Ba-oy-Jd1"/>
                         <constraint firstAttribute="trailing" secondItem="aZC-JX-hFp" secondAttribute="trailing" constant="8" id="4l9-yy-7dB"/>
                         <constraint firstItem="aZC-JX-hFp" firstAttribute="top" secondItem="Hx9-Fe-bgB" secondAttribute="bottom" constant="8" id="8NW-lk-Ih7"/>
                         <constraint firstItem="aZC-JX-hFp" firstAttribute="leading" secondItem="j6Y-4Z-bCT" secondAttribute="trailing" constant="8" id="CPZ-Js-lUg"/>
                         <constraint firstItem="Hx9-Fe-bgB" firstAttribute="top" secondItem="j6Y-4Z-bCT" secondAttribute="top" id="JZc-9h-QAu"/>
                         <constraint firstItem="7MP-y4-u9O" firstAttribute="top" secondItem="aZC-JX-hFp" secondAttribute="bottom" constant="8" id="KRH-T1-chC"/>
-                        <constraint firstAttribute="trailing" secondItem="7MP-y4-u9O" secondAttribute="trailing" constant="8" id="XmD-i1-AHc"/>
+                        <constraint firstAttribute="trailing" secondItem="wmU-qm-cvg" secondAttribute="trailing" constant="8" id="S59-DO-NMw"/>
+                        <constraint firstAttribute="trailing" secondItem="7MP-y4-u9O" secondAttribute="trailing" constant="48" id="XmD-i1-AHc"/>
                         <constraint firstAttribute="trailing" secondItem="Hx9-Fe-bgB" secondAttribute="trailing" constant="8" id="hly-SS-Jya"/>
                         <constraint firstItem="j6Y-4Z-bCT" firstAttribute="centerY" secondItem="w3f-AW-J0E" secondAttribute="centerY" id="iHZ-Kz-paf"/>
                         <constraint firstItem="j6Y-4Z-bCT" firstAttribute="leading" secondItem="w3f-AW-J0E" secondAttribute="leading" constant="20" id="isg-wa-b6I"/>
@@ -78,4 +90,7 @@
             <point key="canvasLocation" x="184.80000000000001" y="-73.763118440779621"/>
         </view>
     </objects>
+    <resources>
+        <image name="moreWhite" width="23" height="5"/>
+    </resources>
 </document>
