@@ -245,7 +245,7 @@ class DetalheViewController: InheritanceViewController {
         
         self.resumoView.layer.cornerRadius = 10
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
-        self.textView.textAlignment = NSTextAlignment.justified
+//        self.textView.textAlignment = NSTextAlignment.justified
         self.textView.text = AppService.util.populateString(selectedResumo?.subtitulo as AnyObject)
         print(self.textView.text)
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)

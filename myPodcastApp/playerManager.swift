@@ -190,9 +190,15 @@ class playerManager {
     }
     
     func changePlaybackRate(rate: Float) {
+        var isPaused = false
+        if player?.rate == 0 {
+            isPaused = true
+        }
+        
         self.player?.rate = rate
-        if !getIsPlaying() {
-            self.player?.pause()
+        
+        if isPaused {
+            player?.pause()
         }
     }
     
@@ -269,16 +275,16 @@ class playerManager {
 
     }
     
-    //MARK - Queue management
-    func insert(episode:[String:AnyObject]) {
-        self.episodesQueue.append(episode)
-    }
-    
-    func insertAtQueueBegening(episode:[String:AnyObject]) {
-        self.episodesQueue.insert(episode, at: 0)
-    }
-    
-    func getNextInQueue() -> [String:AnyObject] {
-        return self.episodesQueue.removeFirst()
-    }
+//    //MARK - Queue management
+//    func insert(episode:[String:AnyObject]) {
+//        self.episodesQueue.append(episode)
+//    }
+//
+//    func insertAtQueueBegening(episode:[String:AnyObject]) {
+//        self.episodesQueue.insert(episode, at: 0)
+//    }
+//
+//    func getNextInQueue() -> [String:AnyObject] {
+//        return self.episodesQueue.removeFirst()
+//    }
 }

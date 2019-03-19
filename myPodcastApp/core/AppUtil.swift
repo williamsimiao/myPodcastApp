@@ -11,7 +11,7 @@ import SystemConfiguration
 import UIKit
 
 open class AppUtil {
-    let maxVisitas = 3
+    let maxVisitas = 10
     var realm = AppService.realm()
 
     func currentView() -> UIViewController {
