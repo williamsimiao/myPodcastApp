@@ -58,7 +58,7 @@ class FavoritosViewController: InheritanceViewController {
         }
         
         
-        let nib = UINib(nibName: "CustomCell", bundle: nil)
+        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
         
         tableView.register(nib, forCellReuseIdentifier: "cell")
         
@@ -78,21 +78,23 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellWithProgress
         
-        let resumoDict = self.resumoArray[indexPath.item]
+        let resumo = self.resumoArray[indexPath.item]
         
-        let cod_resumo = resumoDict.cod_resumo
+        let cod_resumo = resumo.cod_resumo
         
-        cell.titleLabel.text = resumoDict.titulo
-        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumoDict.autores)
+        cell.titleLabel.text = resumo.titulo
+        cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
         
-        let coverUrl = resumoDict.url_imagem
+        let coverUrl = resumo.url_imagem
         
         //When return from detailsVC
         cell.goBackToOriginalColors()
         
-        //Network.setCoverImgWithPlaceHolder(imageUrl: coverUrl, theImage: cell.coverImg)
+        let progressRatio = AppService.util.getProgressRatio(cod_resumo: cod_resumo)
+
+        cell.progressView.progress = Float(progressRatio)
         
         cell.coverImg.image = UIImage(named: "cover_placeholder")!
         if AppService.util.isNotNull(coverUrl as AnyObject?) {
@@ -104,7 +106,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)! as! CustomCell
+        let cell = tableView.cellForRow(at: indexPath)! as! CellWithProgress
         
         self.selectedResumo = self.resumoArray[indexPath.row]
         self.selectedResumoImage = cell.coverImg.image

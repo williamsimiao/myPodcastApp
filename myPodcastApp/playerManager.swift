@@ -240,17 +240,22 @@ class playerManager {
     }
     
     func recordCurrentProgress() {
-        let theResumo = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
+        let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
+        let durationSeconds = playerManager.shared.getEpisodeDurationInSeconds()
+
         try! AppService.realm().write {
             if self.currentEpisodeType == episodeType.ten {
-                theResumo?.progressPodcast_10 = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.progressPodcast_10 = self.getEpisodeCurrentTimeInSeconds()
             }
             else if self.currentEpisodeType == episodeType.fortyPremium {
-                theResumo?.progressPodcast_40_p = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.progressPodcast_40_p = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.duration_40_p = durationSeconds
+
             }
             //FORTY FREE
             else {
-                theResumo?.progressPodcast_40_f = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.progressPodcast_40_f = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.duration_40_f = durationSeconds
             }
         }
     }

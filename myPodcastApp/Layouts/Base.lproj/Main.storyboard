@@ -2202,7 +2202,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vDc-CD-cVf" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vDc-CD-cVf" customClass="CellWithProgress" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vDc-CD-cVf" id="yd3-U3-vvI">
@@ -2256,7 +2256,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Huj-IV-5qZ" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Huj-IV-5qZ" customClass="CellWithProgress" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Huj-IV-5qZ" id="8KY-69-em7">
@@ -2615,6 +2615,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEu-Ua-mz1"/>
-        <segue reference="D6H-Or-A9e"/>
+        <segue reference="kYh-qA-jn5"/>
     </inferredMetricsTieBreakers>
 </document>

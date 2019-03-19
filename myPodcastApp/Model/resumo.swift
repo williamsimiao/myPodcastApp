@@ -41,7 +41,8 @@ class Resumo {
     //0 to 1
     var progressResumo10 = 0.0
 
-    var preferedSpeed = 1.0
+    var duration_40_f = 0.0
+    var duration_40_p = 0.0
 
     init(resumoEntity: ResumoEntity) {
         self.cod_resumo = resumoEntity.cod_resumo
@@ -64,7 +65,9 @@ class Resumo {
         self.progressPodcast_40_p = resumoEntity.progressPodcast_40_p
         self.progressPodcast_40_f = resumoEntity.progressPodcast_40_f
         self.descricao = resumoEntity.descricao
-        self.preferedSpeed = resumoEntity.preferedSpeed
+        self.duration_40_f = resumoEntity.duration_40_f
+        self.duration_40_p = resumoEntity.duration_40_p
+
     }
     
 //    init?(resumoDict: [String:AnyObject]) {

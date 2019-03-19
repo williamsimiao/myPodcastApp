@@ -18,7 +18,7 @@ public struct AppService {
     
     static func realm() -> Realm {
         print("REALM CONFIG: \(Realm.Configuration.defaultConfiguration.fileURL)")
-        let config = Realm.Configuration(schemaVersion: 12)
+        let config = Realm.Configuration(schemaVersion: 14)
         let realm = try! Realm(configuration: config)
         return realm
     }
