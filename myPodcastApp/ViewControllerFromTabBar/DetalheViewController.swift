@@ -303,24 +303,15 @@ class DetalheViewController: InheritanceViewController {
         
         let cod_resumo = self.selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+        AppService.util.markResumoFavoritoField(cod_resumo: cod_resumo!)
+        let resumoEntity = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
         
-        if let resumoEntity = resumos.first {
-            
-            try! self.realm.write {
-                
-                if resumoEntity.favoritado == 0 {
-                    resumoEntity.favoritado = 1
-                    btnSalvar.image = UIImage(named: "favoritoOrange")!
-                    btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
-                } else {
-                    resumoEntity.favoritado = 0
-                    btnSalvar.image = UIImage(named: "favoritoWhite")!
-                    btnSalvar.tintColor = UIColor.white
-                }
-                self.realm.add(resumoEntity, update: true)
-                NSLog("favorito resumo %@", resumoEntity.cod_resumo)
-            }
+        if resumoEntity!.favoritado == 1 {
+            btnSalvar.image = UIImage(named: "favoritoOrange")!
+            btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
+        } else {
+            btnSalvar.image = UIImage(named: "favoritoWhite")!
+            btnSalvar.tintColor = UIColor.white
         }
         
     }

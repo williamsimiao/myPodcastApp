@@ -140,7 +140,8 @@ extension FavoritosViewController: CellWithProgressDelegate {
             let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
             if wasDeleted {
                 print("Dismiss with animation")
-            }        }
+            }
+        }
         
         optionMenu.addAction(actionDeletar)
         

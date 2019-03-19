@@ -552,6 +552,24 @@ open class AppUtil {
         }
     }
     
+    func markResumoFavoritoField(cod_resumo: String) {
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+        
+        if let resumoEntity = resumos.first {
+            
+            try! self.realm.write {
+                
+                if resumoEntity.favoritado == 0 {
+                    resumoEntity.favoritado = 1
+                } else {
+                    resumoEntity.favoritado = 0
+                }
+                self.realm.add(resumoEntity, update: true)
+                NSLog("favorito resumo %@", resumoEntity.cod_resumo)
+            }
+        }
+    }
+    
     func getPathFromDownloadedAudio(urlString: String) throws -> URL {
         guard let fileURL = URL(string: urlString)  else {
             throw AppError.filePathError
