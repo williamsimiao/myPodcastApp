@@ -896,12 +896,12 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="ccp-7t-57J" firstAttribute="centerY" secondItem="O0w-Fp-1n9" secondAttribute="centerY" id="2fP-nS-tzC"/>
                                                     <constraint firstItem="ccp-7t-57J" firstAttribute="centerX" secondItem="NdP-MI-nFz" secondAttribute="trailing" id="HBt-MI-iPF"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="leading" secondItem="L6F-hZ-jfA" secondAttribute="leading" constant="25" id="KSo-2L-FAB"/>
                                                     <constraint firstItem="O0w-Fp-1n9" firstAttribute="top" secondItem="NdP-MI-nFz" secondAttribute="bottom" constant="-15" id="NGF-sl-wip"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="top" secondItem="L6F-hZ-jfA" secondAttribute="top" id="QaQ-GN-WJV"/>
                                                     <constraint firstAttribute="height" constant="30" id="U0Y-Tf-5lf"/>
-                                                    <constraint firstItem="ccp-7t-57J" firstAttribute="top" secondItem="NdP-MI-nFz" secondAttribute="bottom" constant="-15" id="dT3-Lx-dVM"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="centerX" secondItem="L6F-hZ-jfA" secondAttribute="centerX" id="dod-4a-k40"/>
                                                     <constraint firstAttribute="trailing" secondItem="NdP-MI-nFz" secondAttribute="trailing" constant="25" id="erp-EZ-PkQ"/>
                                                     <constraint firstItem="O0w-Fp-1n9" firstAttribute="centerX" secondItem="NdP-MI-nFz" secondAttribute="leading" id="odE-Pl-n4w"/>
