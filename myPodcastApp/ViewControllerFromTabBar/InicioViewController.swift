@@ -437,9 +437,6 @@ extension InicioViewController: inicioCellDelegate {
             }
             self.realm.add(resumoEntity, update: true)
         }
-        self.view.layoutIfNeeded()
-
-
     }
 
 }

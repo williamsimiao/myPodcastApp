@@ -46,13 +46,13 @@ class InicioCell: UITableViewCell {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        let resumo = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.cod_resumo).first
+        let resumo = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.cod_resumo as Any).first
 
         if resumo?.favoritado == 0 {
-            favoritoButton.imageView?.image = UIImage(named: "favoritoOrange")!
+            favoritoButton.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
             favoritoButton.tintColor = UIColor.init(hex: 0xFF8633)
         } else {
-            favoritoButton.imageView?.image = UIImage(named: "favoritoWhite")!
+            favoritoButton.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
             favoritoButton.tintColor = UIColor.white
         }
         delegate?.changeFavoritoState(cod_resumo: self.cod_resumo!)

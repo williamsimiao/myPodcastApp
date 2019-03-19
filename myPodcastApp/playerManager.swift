@@ -16,6 +16,7 @@ protocol episodeDataSourceProtocol {
     func episodeDataChangedTo(imageURL:String, title:String)
 }
 
+
 enum playerRate : Int {
     case rate_1 = 0
     case rate_1_5 = 1
