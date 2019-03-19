@@ -50,6 +50,8 @@
 		3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7922401B7F00A87949 /* InicioCell.swift */; };
 		3DCA3A7C224034D800A87949 /* EditarPerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */; };
 		3DCA3A7E2240446D00A87949 /* playerRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7D2240446D00A87949 /* playerRateViewController.swift */; };
+		3DCA3A802241768D00A87949 /* CellWithProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */; };
+		3DCA3A822241774100A87949 /* CellWithProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A812241774100A87949 /* CellWithProgress.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
 		3DD43F3422257D2B00017B3E /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */; };
@@ -123,6 +125,8 @@
 		3DCA3A7922401B7F00A87949 /* InicioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioCell.swift; sourceTree = "<group>"; };
 		3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarPerfilViewController.swift; sourceTree = "<group>"; };
 		3DCA3A7D2240446D00A87949 /* playerRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = playerRateViewController.swift; path = myPodcastApp/ViewControllerFromTabBar/playerRateViewController.swift; sourceTree = SOURCE_ROOT; };
+		3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithProgress.xib; sourceTree = "<group>"; };
+		3DCA3A812241774100A87949 /* CellWithProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithProgress.swift; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				3DF98164221EF7840052EC16 /* SlideView.xib */,
 				3DB9E71022397141005A2EDD /* resumoCollectionViewCell.xib */,
 				3DCA3A7722401B4800A87949 /* InicioCell.xib */,
+				3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				3D4E0C682236B267007B04E7 /* authorCollectionViewCell.swift */,
 				3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */,
 				3DCA3A7922401B7F00A87949 /* InicioCell.swift */,
+				3DCA3A812241774100A87949 /* CellWithProgress.swift */,
 			);
 			path = "custom with xib";
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 				3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */,
 				3D9514C521F5EDA7004960CE /* Main.storyboard in Resources */,
 				3DCA3A7822401B4800A87949 /* InicioCell.xib in Resources */,
+				3DCA3A802241768D00A87949 /* CellWithProgress.xib in Resources */,
 				3DB9E71122397141005A2EDD /* resumoCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +560,7 @@
 				3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */,
 				3D4E0C692236B267007B04E7 /* authorCollectionViewCell.swift in Sources */,
 				3D34FD1C221484EC0062DB7E /* CustomCell.swift in Sources */,
+				3DCA3A822241774100A87949 /* CellWithProgress.swift in Sources */,
 				3D3868282211AE8300E89FF4 /* AppUtil.swift in Sources */,
 				3D2D7B922208C89B000E426A /* BibliotecaViewController.swift in Sources */,
 				3D38682E2211AED600E89FF4 /* AppService.swift in Sources */,

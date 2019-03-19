@@ -244,6 +244,7 @@ class DetalheViewController: InheritanceViewController {
         self.resumo10View.layer.borderColor = UIColor.white.cgColor
         
         self.resumoView.layer.cornerRadius = 10
+        
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
 //        self.textView.textAlignment = NSTextAlignment.justified
         self.textView.text = AppService.util.populateString(selectedResumo?.subtitulo as AnyObject)

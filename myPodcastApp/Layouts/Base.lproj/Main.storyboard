@@ -276,14 +276,14 @@
             <objects>
                 <viewController id="N4r-FG-Rxn" customClass="DetalheViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CQP-9f-KoR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVj-gL-n2T">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="548.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="632"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
@@ -388,14 +388,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
-                                                <rect key="frame" x="8" y="289" width="304" height="251.5"/>
+                                                <rect key="frame" x="8" y="289" width="304" height="335"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
-                                                        <rect key="frame" x="8" y="8" width="288" height="233.5"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
+                                                        <rect key="frame" x="8" y="8" width="288" height="317"/>
                                                         <color key="backgroundColor" red="0.19604682922363281" green="0.2000163197517395" blue="0.19604870676994324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <string key="text">Resiliência é a capacidade que certas pessoas têm de passar por situações de grande stress e não quebrar emocionalmente, transformando sofrimento em competência.
+
+Trata-se de uma habilidade, não é um dom. Ou seja, pode ser aprendida e desenvolvida por qualquer pessoa.
+
+Mas você sabe o que precisa fazer para desenvolver a resiliência em seu dia a dia?
+
+Para te revelar como fazer isso na prática, convidamos o coaching e palestrante Ricardo Piovan e conversamos sobre o seu livro Resiliência  Como Superar Pressões e Adversidades no Trabalho.</string>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -2351,21 +2357,21 @@
             <objects>
                 <viewController id="TTd-qY-eSi" customClass="LeituraViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ppr-fY-uzy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnm-ad-inf">
-                                <rect key="frame" x="16" y="47.5" width="288" height="25.5"/>
+                                <rect key="frame" x="16" y="67.5" width="288" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-ub-FV0">
-                                <rect key="frame" x="52" y="81" width="216" height="2"/>
+                                <rect key="frame" x="52" y="101" width="216" height="2"/>
                                 <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zds-1R-cX4">
-                                <rect key="frame" x="0.0" y="99" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="449"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-97-F79">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="315.5"/>
@@ -2493,7 +2499,7 @@ concluir essa leitura!</string>
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjF-Q2-sGH">
-                                <rect key="frame" x="16" y="8" width="288" height="31.5"/>
+                                <rect key="frame" x="16" y="28" width="288" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2609,6 +2615,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEu-Ua-mz1"/>
-        <segue reference="XwK-Gc-UPM"/>
+        <segue reference="D6H-Or-A9e"/>
     </inferredMetricsTieBreakers>
 </document>
