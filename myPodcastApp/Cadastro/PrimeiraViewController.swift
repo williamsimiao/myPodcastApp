@@ -130,14 +130,14 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
-        //request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request, completionHandler: {
             (
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response  , error == nil else {
-                
+                print("ERRA:\(error)")
                 return
             }
             
@@ -203,7 +203,9 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
             self.performSegue(withIdentifier: "goto_base", sender: self)
             
             let prefs:UserDefaults = UserDefaults.standard
-            prefs.set(false, forKey: "isVisitante")        }
+            prefs.set(false, forKey: "isVisitante")
+
+        }
         else {
             AppService.util.alert("Erro no Login", message: error_msg as String)
         }
