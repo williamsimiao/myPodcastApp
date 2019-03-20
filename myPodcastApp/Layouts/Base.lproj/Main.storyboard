@@ -294,6 +294,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="akv-yl-AM5" id="4Wh-3h-aXO"/>
+                                    <outlet property="delegate" destination="akv-yl-AM5" id="Eu7-KL-Fse"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -310,7 +314,7 @@
                     <connections>
                         <outlet property="loading" destination="m6z-7A-oAc" id="1iA-m7-ZiB"/>
                         <outlet property="tableView" destination="vBq-xU-h6Z" id="RqC-6X-Y6C"/>
-                        <segue destination="N4r-FG-Rxn" kind="show" id="FLk-k2-7c4"/>
+                        <segue destination="N4r-FG-Rxn" kind="show" identifier="to_detail" id="FLk-k2-7c4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMX-TI-tQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
