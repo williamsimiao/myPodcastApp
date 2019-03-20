@@ -254,6 +254,7 @@
                         <outlet property="tableView" destination="vsC-Lh-quC" id="yfb-1z-y5s"/>
                         <outlet property="ultimosLabel" destination="uXr-eH-dNC" id="YuI-yf-9bQ"/>
                         <segue destination="Rvi-Ua-fiZ" kind="show" identifier="goto_searchResults" id="GVd-uD-BFQ"/>
+                        <segue destination="akv-yl-AM5" kind="show" identifier="to_listResumosVC" id="Svb-LB-qWI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,20 +269,53 @@
             </objects>
             <point key="canvasLocation" x="7549.6000000000004" y="1011.544227886057"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ovw-cO-TFe">
+        <!--List Resumos View Controller-->
+        <scene sceneID="PWM-c4-qo3">
             <objects>
-                <viewController storyboardIdentifier="authorVC" id="mmL-8v-9JN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Y57-rJ-d6T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <viewController id="akv-yl-AM5" customClass="ListResumosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DUI-Iq-cAm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="m6z-7A-oAc">
+                                <rect key="frame" x="141.5" y="233.5" width="37" height="37"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-xU-h6Z">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="2jA-mi-Swn" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2jA-mi-Swn" id="aqk-Hs-JGw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="DaK-4C-qsN"/>
+                        <constraints>
+                            <constraint firstItem="vBq-xU-h6Z" firstAttribute="leading" secondItem="11U-1V-evu" secondAttribute="leading" id="2un-PY-pKp"/>
+                            <constraint firstItem="m6z-7A-oAc" firstAttribute="centerX" secondItem="DUI-Iq-cAm" secondAttribute="centerX" id="9D5-Kc-BOA"/>
+                            <constraint firstItem="vBq-xU-h6Z" firstAttribute="top" secondItem="11U-1V-evu" secondAttribute="top" id="bSX-Yn-1XT"/>
+                            <constraint firstItem="11U-1V-evu" firstAttribute="trailing" secondItem="vBq-xU-h6Z" secondAttribute="trailing" id="kkA-Ee-IPu"/>
+                            <constraint firstItem="11U-1V-evu" firstAttribute="bottom" secondItem="vBq-xU-h6Z" secondAttribute="bottom" id="wmy-kN-EbL"/>
+                            <constraint firstItem="m6z-7A-oAc" firstAttribute="centerY" secondItem="DUI-Iq-cAm" secondAttribute="centerY" id="zwE-2z-kfz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="11U-1V-evu"/>
                     </view>
+                    <connections>
+                        <outlet property="loading" destination="m6z-7A-oAc" id="1iA-m7-ZiB"/>
+                        <outlet property="tableView" destination="vBq-xU-h6Z" id="RqC-6X-Y6C"/>
+                        <segue destination="N4r-FG-Rxn" kind="show" id="FLk-k2-7c4"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gRf-8u-zMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMX-TI-tQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11349" y="413"/>
+            <point key="canvasLocation" x="8544" y="1606"/>
         </scene>
         <!--Detalhe View Controller-->
         <scene sceneID="B28-Ha-nEo">
@@ -550,27 +584,12 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8so-zA-uyB">
-                                <rect key="frame" x="70" y="258.5" width="180" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="7AN-QX-CIn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Usuário Premium">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutClick:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="sha-9E-Tw7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="top" secondItem="aEZ-dC-ETE" secondAttribute="bottom" constant="10" id="4XR-We-Zub"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="GQf-W5-h6f" secondAttribute="trailing" constant="20" id="B2d-VS-tzA"/>
                             <constraint firstItem="aEZ-dC-ETE" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="Hyp-jt-cMT"/>
-                            <constraint firstItem="8so-zA-uyB" firstAttribute="top" secondItem="VbC-eZ-WJl" secondAttribute="bottom" constant="20" id="RdL-Sp-mQW"/>
                             <constraint firstItem="obc-0s-96k" firstAttribute="centerX" secondItem="PUH-Ue-gV7" secondAttribute="centerX" id="Rx7-ff-7in"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="VbC-eZ-WJl" secondAttribute="trailing" constant="20" id="YaO-E8-jJq"/>
                             <constraint firstItem="VbC-eZ-WJl" firstAttribute="top" secondItem="GQf-W5-h6f" secondAttribute="bottom" constant="10" id="csz-ps-OgH"/>
@@ -579,7 +598,6 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="jEM-Az-IXO"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="aEZ-dC-ETE" secondAttribute="trailing" constant="20" id="kB4-2w-FBv"/>
                             <constraint firstItem="aEZ-dC-ETE" firstAttribute="top" secondItem="obc-0s-96k" secondAttribute="bottom" constant="10" id="lSl-3Q-rKw"/>
-                            <constraint firstItem="8so-zA-uyB" firstAttribute="centerX" secondItem="PUH-Ue-gV7" secondAttribute="centerX" id="tSq-nJ-OFP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
                     </view>
@@ -593,7 +611,6 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     </navigationItem>
                     <connections>
                         <outlet property="btnMenu" destination="00C-E5-24o" id="yjv-XY-xTf"/>
-                        <outlet property="btnPremium" destination="8so-zA-uyB" id="rn0-KX-TVG"/>
                         <outlet property="imgUsuario" destination="obc-0s-96k" id="c5J-HR-3T4"/>
                         <outlet property="lblData" destination="VbC-eZ-WJl" id="l5A-Hq-2vv"/>
                         <outlet property="lblEmail" destination="GQf-W5-h6f" id="A51-nJ-obD"/>
@@ -613,9 +630,8 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="reE-UP-DhE">
-                                <rect key="frame" x="189" y="386" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="reE-UP-DhE">
+                                <rect key="frame" x="141.5" y="233.5" width="37" height="37"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Q7-OS-gYi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
@@ -638,6 +654,8 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="reE-UP-DhE" firstAttribute="centerY" secondItem="khv-dV-AoP" secondAttribute="centerY" id="E1j-Cr-Ezk"/>
+                            <constraint firstItem="reE-UP-DhE" firstAttribute="centerX" secondItem="khv-dV-AoP" secondAttribute="centerX" id="aNn-2E-jdQ"/>
                             <constraint firstItem="8Q7-OS-gYi" firstAttribute="top" secondItem="hS1-Jp-XlY" secondAttribute="top" id="bOc-NW-IrA"/>
                             <constraint firstItem="hS1-Jp-XlY" firstAttribute="bottom" secondItem="8Q7-OS-gYi" secondAttribute="bottom" id="npr-LL-jXf"/>
                             <constraint firstItem="8Q7-OS-gYi" firstAttribute="leading" secondItem="hS1-Jp-XlY" secondAttribute="leading" id="ydX-ve-brg"/>
@@ -2628,6 +2646,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEu-Ua-mz1"/>
-        <segue reference="XwK-Gc-UPM"/>
+        <segue reference="FLk-k2-7c4"/>
     </inferredMetricsTieBreakers>
 </document>

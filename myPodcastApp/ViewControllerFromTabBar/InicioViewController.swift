@@ -44,6 +44,7 @@ class InicioViewController: InheritanceViewController {
     let realm = AppService.realm()
     var mySearchController: UISearchController!
     let reachability = Reachability()!
+    var pathForListViewController: String?
 
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
@@ -54,6 +55,7 @@ class InicioViewController: InheritanceViewController {
 //        self.superResizableView = resizableView
 //        self.superBottomConstraint = resizableBottomConstraint
         
+        slideShow.backgroundColor = .black
         slideShow.layer.cornerRadius = 10
         slideShow.clipsToBounds = true
         
@@ -61,12 +63,13 @@ class InicioViewController: InheritanceViewController {
         
         
         slideShow.setImageInputs([
-            ImageSource(image: UIImage(named: "banner")!),
-            ImageSource(image: UIImage(named: "banner")!),
-            //AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080"),
-            //KingfisherSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080"),
-            //ParseSource(file: PFFile(name:"image.jpg", data:data))
+            ImageSource(image: UIImage(named: "banner_top10_resumos")!),
+            ImageSource(image: UIImage(named: "banner_top_writer")!),
+            ImageSource(image: UIImage(named: "banner_indique")!)
         ])
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InicioViewController.didTapSlideShow))
+        slideShow.addGestureRecognizer(gestureRecognizer)
         
         
         let pageIndicator = UIPageControl()
@@ -85,7 +88,7 @@ class InicioViewController: InheritanceViewController {
         //check Internet
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi || reachability.connection == .cellular {
-                self.makeResquest()
+                self.makeResquest(path: "home.php")
 
             }
         }
@@ -93,6 +96,26 @@ class InicioViewController: InheritanceViewController {
             self.useLocalData()
         }
         
+    }
+    
+    @objc func didTapSlideShow() {
+        let suitablePath: String
+        switch slideShow.currentPage {
+        case 1:
+            //make request for top10
+            suitablePath = "xx"
+        case 2:
+            //make request for top_writer
+            suitablePath = "xx"
+        case 3:
+            //make request for indique
+            suitablePath = "xx"
+        default:
+            //make request for top10
+            suitablePath = "xx"
+        }
+        pathForListViewController = suitablePath
+        performSegue(withIdentifier: "to_listResumosVC", sender: self)
     }
     
     func createSearchBar() {
@@ -162,6 +185,8 @@ class InicioViewController: InheritanceViewController {
     }
     
     @IBAction func loadMoreEpisodios(_ sender: Any) {
+        pathForListViewController = "xx"
+        performSegue(withIdentifier: "to_listResumosVC", sender: self)
     }
     
 }
@@ -216,6 +241,10 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         else if let serchResultsVC = segue.destination as? SearchResultsViewController {
             serchResultsVC.textoBusca = self.mySearchController.searchBar.text
         }
+            // 4 possible paths for now: 3 banners and 1 for show more episodes
+        else if let listResumosVC = segue.destination as? ListResumosViewController {
+            listResumosVC.path = self.pathForListViewController
+        }
     }
     
     
@@ -240,13 +269,13 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension InicioViewController {
     
-    func makeResquest() {
+    func makeResquest(path: String) {
         
         loading.isHidden = false
         loading.startAnimating()
         
         
-        let link = AppConfig.urlBaseApi + "home.php"
+        let link = AppConfig.urlBaseApi + path
         
         let url:URL = URL(string: link)!
         let session = URLSession.shared
