@@ -26,8 +26,11 @@ class SearchResultsViewController: InheritanceViewController {
         let nibTableCell = UINib(nibName: "CustomCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
 
-        let buscaUrl = AppService.util.createURLWithComponents(path: "buscar.php", parameters: ["texto"], values: [(self.textoBusca)!])
-        makeResquest(url: buscaUrl!)
+        let link = AppConfig.urlBaseApi + "buscar.php"
+        let buscaUrl = URL(string: link)
+        let keys = ["texto"]
+        let values = [self.textoBusca!]
+        makeResquest(url: buscaUrl!, keys: keys, values: values)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,24 +82,44 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension SearchResultsViewController {
     
-    func makeResquest(url: URL) {
+    func makeResquest(url: URL, keys: [String], values: [String]) {
         var request = URLRequest(url: url)
         let session = URLSession.shared
 
         loading.isHidden = false
         loading.startAnimating()
         
+        let tuples = zip(keys, values)
+        var keyValueArray = [String]()
+        for (key, value) in tuples {
+            let paramValue = key + "=" + value
+            keyValueArray.append(paramValue)
+        }
+        let joinedData = keyValueArray.joined(separator: "&")
+        
+//        let postData:Data = joinedData.data(using: String.Encoding(rawValue: String.Encoding.ascii.rawValue))!
+//        let postLength:NSString = String( postData.count ) as NSString
+        
+        let post = joinedData as NSString
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        let postLength:NSString = String( postData.count ) as NSString
+        
         request.timeoutInterval = 10
         request.httpMethod = "POST"
+        request.httpBody = postData
+        
+//        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        print("REQUEST: \(request)")
         
         let task = session.dataTask(with: request, completionHandler: {
             (
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response  , error == nil else {
-                
+                print(error)
                 return
             }
             
@@ -126,12 +149,12 @@ extension SearchResultsViewController {
             self.success = (json.value(forKey: "success") as! Bool)
             if (self.success!) {
                 
-                NSLog("Login SUCCESS");
+                NSLog("Buscar SUCCESS");
                 // dados do json
                 self.resumosDictArray = (json.object(forKey: "resumos") as! Array)
             } else {
                 
-                NSLog("Login ERROR");
+                NSLog("Buscar ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
             }
         }
@@ -162,7 +185,7 @@ extension SearchResultsViewController {
             self.tableView.reloadData()
         }
         else {
-            AppService.util.alert("Erro no Login", message: error_msg!)
+            AppService.util.alert("Erro no Buscar", message: error_msg!)
         }
         
     }
