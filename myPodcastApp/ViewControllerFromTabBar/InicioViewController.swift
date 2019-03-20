@@ -160,6 +160,10 @@ class InicioViewController: InheritanceViewController {
         let nibAuthorCollectionCell = UINib(nibName: "authorCollectionViewCell", bundle: nil)
         authorCollectionView.register(nibAuthorCollectionCell, forCellWithReuseIdentifier: "authorCollectionCell")
     }
+    
+    @IBAction func loadMoreEpisodios(_ sender: Any) {
+    }
+    
 }
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -230,6 +234,8 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         
 //        cell.goBackToOriginalColors()
     }
+    
+    
 }
 
 extension InicioViewController {

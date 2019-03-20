@@ -45,7 +45,6 @@ class CellWithProgress: UITableViewCell {
         self.authorLabel.textColor = .white
         self.coverImg.layer.borderColor = UIColor.white.cgColor
     }
-    @IBAction func clickMore(_ sender: Any) {
-        self.delegate?.presentAlertOptions(theResumo: self.resumo!)
+    @IBAction func clickMore(_ sender: Any) {        self.delegate?.presentAlertOptions(theResumo: self.resumo!)
     }
 }

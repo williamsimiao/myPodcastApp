@@ -97,6 +97,8 @@ class DetalheViewController: InheritanceViewController {
         self.tenLoading.isHidden = true
         //Reachability
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(onFullPlayerShouldAppear(_:)), name: .fullPlayerShouldAppear, object: nil)
+
         
         do {
             try reachability.startNotifier()
@@ -114,9 +116,20 @@ class DetalheViewController: InheritanceViewController {
         }
     }
     
+    @objc func onFullPlayerShouldAppear(_ notification: Notification) {
+        self.fortyMinutesButton.isHidden = false
+        self.fortyLoading.isHidden = true
+        self.fortyLoading.stopAnimating()
+        
+        self.tenMinutesButton.isHidden = false
+        self.tenLoading.isHidden = true
+        self.tenLoading.stopAnimating()
+
+    }
+    
     func checkAvaliableLinks() {
         //TODO change this for checking the user info
-        var userIsPremium = false
+        var userIsPremium = true
         
         var canUse40 = true
         var canUse10 = false
@@ -126,7 +139,7 @@ class DetalheViewController: InheritanceViewController {
             canUse10 = true
         }
         if canUse10 {
-            if selectedResumo?.url_podcast_10 != nil && selectedResumo?.url_podcast_10 == "" {
+            if selectedResumo?.url_podcast_10 != nil && selectedResumo?.url_podcast_10 != "" {
                 tenMinutesButton.isEnabled = true
             }
         }
@@ -162,9 +175,14 @@ class DetalheViewController: InheritanceViewController {
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
             mEpisodeType = episodeType.ten
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
-//            self.tenMinutesButton.isHidden = true
-//            self.tenLoading.isHidden = false
-//            self.tenLoading.startAnimating()
+            self.tenMinutesButton.isHidden = true
+            self.tenLoading.isHidden = false
+            self.tenLoading.startAnimating()
+            
+            //Case the user click the other buttom while waiting for the firt to load
+            self.fortyMinutesButton.isHidden = false
+            self.fortyLoading.isHidden = true
+            self.fortyLoading.stopAnimating()
         }
         //FORTY downloaded
         else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
@@ -191,9 +209,14 @@ class DetalheViewController: InheritanceViewController {
             if (self.fortyLoading.isHidden) {
                 print("OI")
             }
-//            self.fortyMinutesButton.isHidden = true
-//            self.fortyLoading.isHidden = false
-//            self.fortyLoading.startAnimating()
+            self.fortyMinutesButton.isHidden = true
+            self.fortyLoading.isHidden = false
+            self.fortyLoading.startAnimating()
+            
+            //Case the user click the other buttom while waiting for the firt to load
+            self.tenMinutesButton.isHidden = false
+            self.tenLoading.isHidden = true
+            self.tenLoading.stopAnimating()
         }
 
         let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink, episodeType: mEpisodeType)

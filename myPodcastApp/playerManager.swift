@@ -182,10 +182,8 @@ class playerManager: NSObject {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("HELLO")
         if self.player!.currentItem?.status == AVPlayerItem.Status.readyToPlay {
             NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
-            print("a")
         }
 
     }
