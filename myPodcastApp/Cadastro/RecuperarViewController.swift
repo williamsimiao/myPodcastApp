@@ -111,9 +111,8 @@ class RecuperarViewController: UIViewController {
         
         if self.success {
             print("Verifique seu email")
-
-            self.dismiss(animated: true) {
-                self.parent?.view.makeToast("Verifique seu email", duration: 3.0)
+            self.view.makeToast("Verifique seu email", duration: 2.0) { _ in
+                self.dismiss(animated: true, completion: nil)
             }
         }
         else {
