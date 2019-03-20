@@ -198,10 +198,7 @@ class DetalheViewController: InheritanceViewController {
 
         let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink, episodeType: mEpisodeType)
         
-        if userIsAllowedToPlay {            
-            NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
-        }
-        else {
+        if !userIsAllowedToPlay {
             AppService.util.handleNotAllowed()
         }
     }

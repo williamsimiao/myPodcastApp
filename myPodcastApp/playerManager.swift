@@ -16,7 +16,7 @@ protocol episodeDataSourceProtocol {
     func episodeDataChangedTo(imageURL:String, title:String)
 }
 
-class playerManager {
+class playerManager: NSObject {
     //TODO TODO TODO remove this
     var miniContainerFrameHight: CGFloat?
     
@@ -30,9 +30,11 @@ class playerManager {
     var currentEpisodeType: episodeType!
     var sliderTimeObserver: Any?
     var progressTimeObserver: Any?
+    var observer: NSKeyValueObservation?
+
     static let shared = playerManager()
     
-    private init() {}
+    private override init() {}
     
     func addPeriodicTimeObserverToUpdateSlider() {
         // Notify every half second
@@ -144,6 +146,11 @@ class playerManager {
 
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
         let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
+        // Register as an observer of the player item's status property
+        newEpisodeAVItem.addObserver(self,
+                               forKeyPath: #keyPath(AVPlayerItem.status),
+                               options: [.old, .new],
+                               context: nil)
         
         if playerManager.shared.getPlayerIsSet() {
             removePeriodicSliderTimeObserver()
@@ -154,6 +161,7 @@ class playerManager {
             
             if (currentEpisodeId != newEpisodeId) || (self.currentEpisodeType != episodeType) {
                 self.player?.pause()
+//                self.player?.currentItem?.removeObserver(self, forKeyPath: "status")
                 self.player?.replaceCurrentItem(with: newEpisodeAVItem)
             }
         }
@@ -161,6 +169,8 @@ class playerManager {
             self.player = AVPlayer(playerItem: newEpisodeAVItem)
             NotificationCenter.default.post(name: .playerIsSetUp, object: self, userInfo: nil)
         }
+        
+        self.player!.currentItem!.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(), context: nil)
         addPeriodicTimeObserverToUpdateSlider()
         addTimeObserverToRecordProgress()
         self.currentEpisode = episode
@@ -171,6 +181,15 @@ class playerManager {
         return true
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("HELLO")
+        if self.player!.currentItem?.status == AVPlayerItem.Status.readyToPlay {
+            NotificationCenter.default.post(name: .fullPlayerShouldAppear, object: self, userInfo: nil)
+            print("a")
+        }
+
+    }
+
     func changeUIForEpisode() {
         //To change UI
         NotificationCenter.default.post(name: .episodeDidChange, object: self, userInfo: nil)
