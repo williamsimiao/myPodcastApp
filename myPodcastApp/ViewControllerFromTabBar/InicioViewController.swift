@@ -99,23 +99,24 @@ class InicioViewController: InheritanceViewController {
     }
     
     @objc func didTapSlideShow() {
-        let suitablePath: String
         switch slideShow.currentPage {
-        case 1:
+        case 0:
             //make request for top10
-            suitablePath = "xx"
-        case 2:
+            pathForListViewController = "buscaTopResumos.php"
+            performSegue(withIdentifier: "to_listResumosVC", sender: self)
+
+        case 1:
             //make request for top_writer
-            suitablePath = "xx"
-        case 3:
+            pathForListViewController = "buscaTopAutores.php"
+//            performSegue(withIdentifier: "to_listResumosVC", sender: self)
+        case 2:
             //make request for indique
-            suitablePath = "xx"
+            print("Indique livro")
         default:
             //make request for top10
-            suitablePath = "xx"
+            pathForListViewController = "buscaTopResumos.php"
+            performSegue(withIdentifier: "to_listResumosVC", sender: self)
         }
-        pathForListViewController = suitablePath
-        performSegue(withIdentifier: "to_listResumosVC", sender: self)
     }
     
     func createSearchBar() {
@@ -185,7 +186,7 @@ class InicioViewController: InheritanceViewController {
     }
     
     @IBAction func loadMoreEpisodios(_ sender: Any) {
-        pathForListViewController = "xx"
+        pathForListViewController = "buscaResumos.php"
         performSegue(withIdentifier: "to_listResumosVC", sender: self)
     }
     

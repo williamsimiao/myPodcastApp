@@ -17,6 +17,7 @@ class ListResumosViewController: UIViewController {
     var success:Bool!
     var resumosDictArray :[[String:AnyObject]]?
     var resumos = [Resumo]()
+
     var selectedResumo: Resumo?
     let realm = AppService.realm()
     
@@ -30,6 +31,7 @@ class ListResumosViewController: UIViewController {
 
         let link = AppConfig.urlBaseApi + path!
         let buscaUrl = URL(string: link)
+        makeResquest(path: path!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +43,12 @@ extension ListResumosViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Total:\(resumos.count)")
         return resumos.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        
         let resumo = resumos[indexPath.row]
         
         let cod_resumo = resumo.cod_resumo
@@ -58,7 +62,7 @@ extension ListResumosViewController: UITableViewDelegate, UITableViewDataSource 
         //When return from detailsVC
         cell.goBackToOriginalColors()
         
-        cell.coverImg.image = UIImage(named: "cover_placeholder")!
+        cell.coverImg.image = UIImage(named: "sem_imagem")!
         if AppService.util.isNotNull(coverUrl as AnyObject?) {
             AppService.util.load_image_resumo(coverUrl, cod_resumo: cod_resumo, imageview: cell.coverImg)
         }
@@ -136,7 +140,8 @@ extension ListResumosViewController {
                 
                 NSLog("Banner SUCCESS");
                 // dados do json
-                self.resumosDictArray = (json.object(forKey: "ultimos") as! Array)
+                self.resumosDictArray = (json.object(forKey: "resumos") as! Array)
+
                 
             } else {
                 
@@ -160,6 +165,7 @@ extension ListResumosViewController {
         if self.success {
             
             self.resumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.resumosDictArray!)
+
             
             self.tableView.reloadData()
         }
