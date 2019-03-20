@@ -38,7 +38,7 @@ class epidodeContentRightView: UIView {
         contentView.addGestureRecognizer(touchTest)
 
         contentView.frame  = self.bounds
-        coverImg.backgroundColor = .orange
+//        coverImg.backgroundColor = .orange
         coverImg.layer.cornerRadius = 10
         coverImg.clipsToBounds = true
         coverImg.layer.borderWidth = 1

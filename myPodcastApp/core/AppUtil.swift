@@ -11,7 +11,7 @@ import SystemConfiguration
 import UIKit
 
 open class AppUtil {
-    let maxVisitas = 10
+    let maxVisitas = 3
     var realm = AppService.realm()
 
     func currentView() -> UIViewController {
@@ -593,7 +593,7 @@ open class AppUtil {
         let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
 
         if isVisitante {
-            let episodeWasPlayed = resumo.progressPodcast_10 > 0.0 && resumo.progressPodcast_40_f > 0.0 && resumo.progressPodcast_40_p > 0.0
+            let episodeWasPlayed = resumo.progressPodcast_10 > 0.0 || resumo.progressPodcast_40_f > 0.0 || resumo.progressPodcast_40_p > 0.0
             if episodeWasPlayed {
                 return true
             }
@@ -619,8 +619,8 @@ open class AppUtil {
             let resumo = Resumo(resumoEntity: resumoEntity)
             resumosIniciados.append(resumo)
         }
-
-        if resumosIniciados.count >= maxVisitas {
+        let consumidos = resumosIniciados.count
+        if consumidos >= maxVisitas {
             return true
         }
         return false
