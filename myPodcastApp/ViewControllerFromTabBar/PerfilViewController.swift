@@ -121,5 +121,20 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         
     }
     
-
+    ///////
+    
+    
+    @IBAction func clickConfig(_ sender: Any) {
+        
+    }
+    @IBAction func clickEditarPerfil(_ sender: Any) {
+        performSegue(withIdentifier: "goto_editarPerfil", sender: self)
+    }
+    
+    @IBAction func clickPag(_ sender: Any) {
+    }
+    
+    @IBAction func clickLogout(_ sender: Any) {
+        logout()
+    }
 }
