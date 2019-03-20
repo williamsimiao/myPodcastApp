@@ -124,7 +124,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         var request = URLRequest(url: url)
         
-        request.timeoutInterval = 10
+        request.timeoutInterval = 20
         request.httpMethod = "POST"
         request.httpBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
@@ -137,7 +137,6 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
             data, response, error) in
             
             guard let _:Data = data, let _:URLResponse = response  , error == nil else {
-                print("ERRA:\(error)")
                 return
             }
             

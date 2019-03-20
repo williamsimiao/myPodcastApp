@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/VCs from Bilblioteca/DownloadViewController.swift"
-            timestampString = "574782789.9636199"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/PerfilViewController.swift"
+            timestampString = "574792434.0877661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "presentAlertOptions(theResumo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/VCs from Bilblioteca/DownloadViewController.swift"
-            timestampString = "574782789.9639241"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "presentAlertOptions(theResumo:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "logout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myPodcastApp/core/AppUtil.swift"
-            timestampString = "574782789.9639831"
+            timestampString = "574790179.4824311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "deleteResumoAudioFile(urlString:cod_resumo:)"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "load_image_resumo(_:cod_resumo:imageview:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,77 +41,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/SearchResultsViewController.swift"
-            timestampString = "574782789.964173"
+            filePath = "myPodcastApp/core/AppUtil.swift"
+            timestampString = "574790179.483707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "load_image_resumo(_:cod_resumo:imageview:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/Cadastro/PrimeiraViewController.swift"
+            timestampString = "574792434.088142"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "onResultReceived()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/Cadastro/PrimeiraViewController.swift"
+            timestampString = "574792434.088748"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "extract_json_data(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/SearchResultsViewController.swift"
-            timestampString = "574782789.964887"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "makeResquest(url:keys:values:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "myPodcastApp.SearchResultsViewController.makeResquest(url: Foundation.URL, keys: Swift.Array&lt;Swift.String&gt;, values: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "myPodcastApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/SearchResultsViewController.swift"
-                  timestampString = "574782697.523967"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "3495">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in myPodcastApp.SearchResultsViewController.makeResquest(url: Foundation.URL, keys: Swift.Array&lt;Swift.String&gt;, values: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "myPodcastApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/SearchResultsViewController.swift"
-                  timestampString = "574782697.5263259"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "61">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/SearchResultsViewController.swift"
-            timestampString = "574782789.965156"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "makeResquest(url:keys:values:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
