@@ -240,6 +240,9 @@ class playerManager {
     }
     
     func recordCurrentProgress() {
+        guard let _ = currentEpisode else {
+            return
+        }
         let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
         let durationSeconds = playerManager.shared.getEpisodeDurationInSeconds()
 
