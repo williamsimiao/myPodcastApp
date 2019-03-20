@@ -128,19 +128,8 @@ extension FavoritosViewController: CellWithProgressDelegate {
     func presentAlertOptions(theResumo: Resumo) {
         let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
         
-        let actionDeletar = UIAlertAction(title: "Deletar", style: .destructive) { _ in
-            let episodeUrlString: String
-            let userIsPremium = false
-            if userIsPremium {
-                episodeUrlString = theResumo.url_podcast_40_p
-            }
-            else {
-                episodeUrlString = theResumo.url_podcast_40_f
-            }
-            let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
-            if wasDeleted {
-                print("Dismiss with animation")
-            }
+        let actionDeletar = UIAlertAction(title: "Desfavoritar", style: .destructive) { _ in
+            AppService.util.markResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
         }
         
         optionMenu.addAction(actionDeletar)
