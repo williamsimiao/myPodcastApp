@@ -255,6 +255,7 @@
                         <outlet property="ultimosLabel" destination="uXr-eH-dNC" id="YuI-yf-9bQ"/>
                         <segue destination="Rvi-Ua-fiZ" kind="show" identifier="goto_searchResults" id="GVd-uD-BFQ"/>
                         <segue destination="akv-yl-AM5" kind="show" identifier="to_listResumosVC" id="Svb-LB-qWI"/>
+                        <segue destination="FFF-EP-19c" kind="show" identifier="to_listAutoresVC" id="i4I-Js-vCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -319,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMX-TI-tQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8544" y="1606"/>
+            <point key="canvasLocation" x="9339" y="1394"/>
         </scene>
         <!--Detalhe View Controller-->
         <scene sceneID="B28-Ha-nEo">
@@ -733,7 +734,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DY5-6k-dAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8772" y="285"/>
+            <point key="canvasLocation" x="9338" y="649"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
@@ -1745,6 +1746,47 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gx-uY-2bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8790" y="-586"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0ng-cS-1g5">
+            <objects>
+                <viewController id="FFF-EP-19c" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UIJ-z4-CO0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-0r-7oi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="joM-ef-4jR">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="joM-ef-4jR" id="gO9-9s-brb">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FFF-EP-19c" id="pGy-bB-Csh"/>
+                                    <outlet property="delegate" destination="FFF-EP-19c" id="QKD-Tn-rHq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pAS-za-Klb" firstAttribute="trailing" secondItem="KZB-0r-7oi" secondAttribute="trailing" id="JqW-Fz-sAf"/>
+                            <constraint firstItem="KZB-0r-7oi" firstAttribute="top" secondItem="pAS-za-Klb" secondAttribute="top" id="KcQ-qM-Cam"/>
+                            <constraint firstItem="KZB-0r-7oi" firstAttribute="leading" secondItem="pAS-za-Klb" secondAttribute="leading" id="VFi-Wv-w5s"/>
+                            <constraint firstItem="pAS-za-Klb" firstAttribute="bottom" secondItem="KZB-0r-7oi" secondAttribute="bottom" id="n3F-ef-J3v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pAS-za-Klb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKL-Ht-Akm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10130" y="-167"/>
         </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="oUU-Fj-7c1">

@@ -50,7 +50,6 @@
 		3DCA3A7822401B4800A87949 /* InicioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7722401B4800A87949 /* InicioCell.xib */; };
 		3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7922401B7F00A87949 /* InicioCell.swift */; };
 		3DCA3A7C224034D800A87949 /* EditarPerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */; };
-		3DCA3A7E2240446D00A87949 /* playerRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7D2240446D00A87949 /* playerRateViewController.swift */; };
 		3DCA3A802241768D00A87949 /* CellWithProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */; };
 		3DCA3A822241774100A87949 /* CellWithProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A812241774100A87949 /* CellWithProgress.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
@@ -126,7 +125,6 @@
 		3DCA3A7722401B4800A87949 /* InicioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InicioCell.xib; sourceTree = "<group>"; };
 		3DCA3A7922401B7F00A87949 /* InicioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioCell.swift; sourceTree = "<group>"; };
 		3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarPerfilViewController.swift; sourceTree = "<group>"; };
-		3DCA3A7D2240446D00A87949 /* playerRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = playerRateViewController.swift; path = myPodcastApp/ViewControllerFromTabBar/playerRateViewController.swift; sourceTree = SOURCE_ROOT; };
 		3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithProgress.xib; sourceTree = "<group>"; };
 		3DCA3A812241774100A87949 /* CellWithProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithProgress.swift; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
@@ -140,7 +138,7 @@
 		3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = epidodeContentRight.xib; sourceTree = "<group>"; };
 		3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = epidodeContentRightView.swift; sourceTree = "<group>"; };
 		3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISlider.swift; sourceTree = "<group>"; };
-		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/Cadastro/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3DF98164221EF7840052EC16 /* SlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
 		3DF98166221EF7AB0052EC16 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		4E7F1BB122287F3E0000F6EB /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
@@ -173,24 +171,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */ = {
+		3D2D7B8C2208B645000E426A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3DF5F6892217275E00F6BA33 /* custom with xib */,
+				3DED12D82243D54D00908F70 /* FromTabBar */,
 				4E7F1BB6222C28C90000F6EB /* VCs from Bilblioteca */,
 				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
-				3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */,
-				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
-				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
-				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
+				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
+				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
 				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
-				3DF5F6892217275E00F6BA33 /* custom with xib */,
 				3DF45677223949D800F5D056 /* ContentSizedTableView.swift */,
 				3DB9E712223BF0E4005A2EDD /* SearchResultsViewController.swift */,
 				3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */,
 				3DB6573A2242D79B005A8E92 /* ListResumosViewController.swift */,
 			);
+			name = ViewController;
 			path = ViewControllerFromTabBar;
 			sourceTree = "<group>";
 		};
@@ -226,6 +224,7 @@
 		3D3868312211B4BA00E89FF4 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
+				3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */,
 				3D34FD072213244F0062DB7E /* PrimeiraViewController.swift */,
 				3D38682222119FDF00E89FF4 /* CadastroViewController.swift */,
 				3D3868242211A00E00E89FF4 /* LoginViewController.swift */,
@@ -261,15 +260,12 @@
 				3DC1C207220200BE009080EF /* Realm Entities */,
 				3DBBD7E122304E9700F3DA64 /* Model */,
 				3D3868262211AE5C00E89FF4 /* core */,
-				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
-				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
-				3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */,
 				3D3868312211B4BA00E89FF4 /* Cadastro */,
 				3DE481342209C770000431E0 /* PlayerViewControllers */,
 				3D2D7B902208BA66000E426A /* Layouts */,
-				3D2D7B8C2208B645000E426A /* ViewControllerFromTabBar */,
+				3D2D7B8C2208B645000E426A /* ViewController */,
 				3DD2346B22049FE3003C940F /* Helpers */,
 				3D9514C621F5EDA9004960CE /* Assets.xcassets */,
 				3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */,
@@ -320,6 +316,17 @@
 			path = PlayerViewControllers;
 			sourceTree = "<group>";
 		};
+		3DED12D82243D54D00908F70 /* FromTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				3D2D7B912208C89B000E426A /* BibliotecaViewController.swift */,
+				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
+				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
+				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
+			);
+			path = FromTabBar;
+			sourceTree = "<group>";
+		};
 		3DF5F6892217275E00F6BA33 /* custom with xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +365,6 @@
 				4E7F1BB7222C28D90000F6EB /* ConcluidosViewController.swift */,
 				4E7F1BB8222C28D90000F6EB /* DownloadViewController.swift */,
 				4E7F1BB9222C28D90000F6EB /* FavoritosViewController.swift */,
-				3DCA3A7D2240446D00A87949 /* playerRateViewController.swift */,
 			);
 			path = "VCs from Bilblioteca";
 			sourceTree = "<group>";
@@ -570,7 +576,6 @@
 				3D891C67220387CD0010E7A9 /* BaseViewController.swift in Sources */,
 				4E7F1BC0222C34DC0000F6EB /* UISegmentedControlExtension.swift in Sources */,
 				3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */,
-				3DCA3A7E2240446D00A87949 /* playerRateViewController.swift in Sources */,
 				3DCA3A7C224034D800A87949 /* EditarPerfilViewController.swift in Sources */,
 				3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */,
 				3DCA3A7A22401B7F00A87949 /* InicioCell.swift in Sources */,
