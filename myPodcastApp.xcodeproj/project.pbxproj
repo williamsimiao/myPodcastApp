@@ -138,7 +138,7 @@
 		3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = epidodeContentRight.xib; sourceTree = "<group>"; };
 		3DF5F6872217275400F6BA33 /* epidodeContentRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = epidodeContentRightView.swift; sourceTree = "<group>"; };
 		3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISlider.swift; sourceTree = "<group>"; };
-		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/Cadastro/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/ViewControllerFromTabBar/Cadastro/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3DF98164221EF7840052EC16 /* SlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
 		3DF98166221EF7AB0052EC16 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		4E7F1BB122287F3E0000F6EB /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
@@ -174,14 +174,14 @@
 		3D2D7B8C2208B645000E426A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3DF5F6892217275E00F6BA33 /* custom with xib */,
+				3D3868312211B4BA00E89FF4 /* Cadastro */,
+				3DF5F6892217275E00F6BA33 /* custom */,
 				3DED12D82243D54D00908F70 /* FromTabBar */,
 				4E7F1BB6222C28C90000F6EB /* VCs from Bilblioteca */,
 				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
-				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 				3D7B9A202225DA5D0028A4FF /* LeituraViewController.swift */,
 				3DF45677223949D800F5D056 /* ContentSizedTableView.swift */,
 				3DB9E712223BF0E4005A2EDD /* SearchResultsViewController.swift */,
@@ -257,12 +257,11 @@
 		3D9514BE21F5EDA7004960CE /* myPodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				3D79641221F79F0700E171DC /* playerManager.swift */,
+				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C207220200BE009080EF /* Realm Entities */,
 				3DBBD7E122304E9700F3DA64 /* Model */,
 				3D3868262211AE5C00E89FF4 /* core */,
-				3D79641221F79F0700E171DC /* playerManager.swift */,
-				3D05B5F62202140E0056E7B9 /* Network.swift */,
-				3D3868312211B4BA00E89FF4 /* Cadastro */,
 				3DE481342209C770000431E0 /* PlayerViewControllers */,
 				3D2D7B902208BA66000E426A /* Layouts */,
 				3D2D7B8C2208B645000E426A /* ViewController */,
@@ -327,7 +326,7 @@
 			path = FromTabBar;
 			sourceTree = "<group>";
 		};
-		3DF5F6892217275E00F6BA33 /* custom with xib */ = {
+		3DF5F6892217275E00F6BA33 /* custom */ = {
 			isa = PBXGroup;
 			children = (
 				3D34FD1B221484EC0062DB7E /* CustomCell.swift */,
@@ -337,8 +336,9 @@
 				3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */,
 				3DCA3A7922401B7F00A87949 /* InicioCell.swift */,
 				3DCA3A812241774100A87949 /* CellWithProgress.swift */,
+				3DF98160221DF7CA0052EC16 /* CustomUISlider.swift */,
 			);
-			path = "custom with xib";
+			path = custom;
 			sourceTree = "<group>";
 		};
 		4E7F1BB022287F310000F6EB /* images */ = {
