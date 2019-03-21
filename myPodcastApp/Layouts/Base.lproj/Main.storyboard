@@ -285,6 +285,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-xU-h6Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="2jA-mi-Swn" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
@@ -699,6 +700,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Q7-OS-gYi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ySy-iB-SWt" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
@@ -1747,23 +1749,27 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             </objects>
             <point key="canvasLocation" x="8790" y="-586"/>
         </scene>
-        <!--View Controller-->
+        <!--List Autores View Controller-->
         <scene sceneID="0ng-cS-1g5">
             <objects>
-                <viewController id="FFF-EP-19c" sceneMemberID="viewController">
+                <viewController id="FFF-EP-19c" customClass="ListAutoresViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIJ-z4-CO0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-0r-7oi">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-9t-n5e">
+                                <rect key="frame" x="141.5" y="233.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-0r-7oi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="joM-ef-4jR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="joM-ef-4jR" customClass="AutorTableCell" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="joM-ef-4jR" id="gO9-9s-brb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1776,13 +1782,19 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Yeg-9t-n5e" firstAttribute="centerX" secondItem="UIJ-z4-CO0" secondAttribute="centerX" id="JKD-Jo-B7y"/>
                             <constraint firstItem="pAS-za-Klb" firstAttribute="trailing" secondItem="KZB-0r-7oi" secondAttribute="trailing" id="JqW-Fz-sAf"/>
                             <constraint firstItem="KZB-0r-7oi" firstAttribute="top" secondItem="pAS-za-Klb" secondAttribute="top" id="KcQ-qM-Cam"/>
                             <constraint firstItem="KZB-0r-7oi" firstAttribute="leading" secondItem="pAS-za-Klb" secondAttribute="leading" id="VFi-Wv-w5s"/>
+                            <constraint firstItem="Yeg-9t-n5e" firstAttribute="centerY" secondItem="UIJ-z4-CO0" secondAttribute="centerY" id="ifk-wM-QpZ"/>
                             <constraint firstItem="pAS-za-Klb" firstAttribute="bottom" secondItem="KZB-0r-7oi" secondAttribute="bottom" id="n3F-ef-J3v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pAS-za-Klb"/>
                     </view>
+                    <connections>
+                        <outlet property="loading" destination="Yeg-9t-n5e" id="SP7-Nu-iag"/>
+                        <outlet property="tableView" destination="KZB-0r-7oi" id="Ggs-qh-mfw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKL-Ht-Akm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2754,6 +2766,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEu-Ua-mz1"/>
-        <segue reference="XwK-Gc-UPM"/>
+        <segue reference="FLk-k2-7c4"/>
     </inferredMetricsTieBreakers>
 </document>

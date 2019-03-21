@@ -1,87 +1,80 @@
 //
-//  ListResumosViewController.swift
+//  ListAutoresViewController.swift
 //  myPodcastApp
 //
-//  Created by William on 20/03/19.
+//  Created by William on 21/03/19.
 //  Copyright © 2019 William. All rights reserved.
 //
 
 import UIKit
 
-class ListResumosViewController: UIViewController {
+class ListAutoresViewController: UIViewController {
 
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     var error_msg:String!
     var success:Bool!
-    var resumosDictArray :[[String:AnyObject]]?
-    var resumos = [Resumo]()
-
-    var selectedResumo: Resumo?
+    var autoresDictArray :[[String:AnyObject]]?
+    var autores = [Autor]()
+    
+    var selectedAutor: Autor?
     let realm = AppService.realm()
     
     //path for server
     var path: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nibTableCell = UINib(nibName: "CustomCell", bundle: nil)
+        
+        let nibTableCell = UINib(nibName: "AutorTableCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
-
+        
         makeResquest(path: path!)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
 }
 
-extension ListResumosViewController: UITableViewDelegate, UITableViewDataSource {
+extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Total:\(resumos.count)")
-        return resumos.count
-
+        print("Total:\(autores.count)")
+        return autores.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AutorTableCell
         
-        let resumo = resumos[indexPath.row]
+        let autor = autores[indexPath.row]
         
-        let cod_resumo = resumo.cod_resumo
+        let cod_autor = autor.cod_autor
         
-        cell.titleLabel.text = resumo.titulo
-        let authorsList = resumo.autores
-        let joinedNames = Util.joinAuthorsNames(authorsList: authorsList)
-        cell.authorLabel.text = joinedNames
-        let coverUrl = resumo.url_imagem
+        cell.nameLabel.text = autor.nome
+        let photoUrl = autor.url_imagem
         
         //When return from detailsVC
         cell.goBackToOriginalColors()
         
-        cell.coverImg.image = UIImage(named: "sem_imagem")!
-        if AppService.util.isNotNull(coverUrl as AnyObject?) {
-            AppService.util.load_image_resumo(coverUrl, cod_resumo: cod_resumo, imageview: cell.coverImg)
+        cell.photoImg.image = UIImage(named: "sem_imagem")!
+        if AppService.util.isNotNull(photoUrl as AnyObject?) {
+            AppService.util.load_image_autor(photoUrl, cod_autor: cod_autor, imageview: cell.photoImg)
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedResumo = resumos[indexPath.row]
-        performSegue(withIdentifier: "to_detail", sender: self)
+        selectedAutor = autores[indexPath.row]
+//        performSegue(withIdentifier: "to_detail", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detalheVC = segue.destination as? DetalheViewController {
-            detalheVC.selectedResumo = self.selectedResumo
-        }
+//        if let detalheVC = segue.destination as? DetalheViewController {
+//            detalheVC.selectedResumo = self.selectedAutor
+//        }
         
     }
 }
 
-extension ListResumosViewController {
+extension ListAutoresViewController {
     
     func makeResquest(path: String) {
         
@@ -136,14 +129,14 @@ extension ListResumosViewController {
             self.success = (json.value(forKey: "success") as! Bool)
             if (self.success!) {
                 
-                NSLog("Banner SUCCESS");
+                NSLog("AutorList SUCCESS");
                 // dados do json
-                self.resumosDictArray = (json.object(forKey: "resumos") as! Array)
-
+                self.autoresDictArray = (json.object(forKey: "autores") as! Array)
+                
                 
             } else {
                 
-                NSLog("Banner ERROR");
+                NSLog("AutorList ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
             }
         }
@@ -158,19 +151,20 @@ extension ListResumosViewController {
     func onResultReceived() {
         loading.isHidden = true
         loading.stopAnimating()
-
+        
         
         if self.success {
             
-            self.resumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.resumosDictArray!)
-
+            self.autores = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
             
             self.tableView.reloadData()
         }
         else {
             print("onResultReceived error")
-            AppService.util.alert("Erro no Banner", message: error_msg!)
+            AppService.util.alert("Erro no AutorList", message: error_msg!)
         }
         
     }
 }
+
+

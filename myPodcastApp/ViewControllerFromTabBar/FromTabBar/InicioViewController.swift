@@ -29,6 +29,8 @@ class InicioViewController: InheritanceViewController {
     // MARK: - Properties
     var error_msg:String!
     var success:Bool!
+    
+    //In case Local data is used
     let maxResumosToShow = 5
     let maxAutoresToShow = 5
     
@@ -108,7 +110,7 @@ class InicioViewController: InheritanceViewController {
         case 1:
             //make request for top_writer
             pathForListViewController = "buscaTopAutores.php"
-//            performSegue(withIdentifier: "to_listResumosVC", sender: self)
+            performSegue(withIdentifier: "to_listAutoresVC", sender: self)
         case 2:
             //make request for indique
             print("Indique livro")
@@ -242,10 +244,13 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         else if let serchResultsVC = segue.destination as? SearchResultsViewController {
             serchResultsVC.textoBusca = self.mySearchController.searchBar.text
         }
-            // 4 possible paths for now: 3 banners and 1 for show more episodes
         else if let listResumosVC = segue.destination as? ListResumosViewController {
             listResumosVC.path = self.pathForListViewController
         }
+        else if let listAutoresVC = segue.destination as? ListAutoresViewController {
+            listAutoresVC.path = self.pathForListViewController
+        }
+
     }
     
     
