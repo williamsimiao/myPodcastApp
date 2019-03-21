@@ -66,6 +66,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         
         
         print(textView.contentSize.height)
+        addTimeObserverToRecordProgress()
         
         //heightConstraint.constant = textView.contentSize.height + 300
     }
@@ -250,9 +251,14 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func recordCurrentProgress(){
+        print("OLA")
         let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo).first
         try! AppService.realm().write {
-            theResumo!.progressResumo10
+            let yPosition = Double(self.scrollView.contentOffset.y)
+            
+            let contentHeight = Double(self.contentView.frame.height)
+            let rate = yPosition / contentHeight
+            theResumo!.progressResumo10 = rate
         }
     }
     
@@ -260,7 +266,8 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo).first
 
         let contentHeight = Double(self.contentView.frame.height)
-        let newHeightOffset = contentHeight / (theResumo?.progressResumo10)!
+        let lastProgress = (theResumo?.progressResumo10)!
+        let newHeightOffset = contentHeight * lastProgress
         
         let xPosition = Double(self.scrollView.contentOffset.x)
         let newPoint = CGPoint(x: xPosition, y: newHeightOffset)

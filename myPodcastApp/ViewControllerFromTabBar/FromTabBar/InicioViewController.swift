@@ -271,12 +271,11 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        animateSearchBar(appearing: false)
-//        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
-//        
-//        self.selectedResumo = self.ultimosResumos[indexPath.row]
-//        
-//        performSegue(withIdentifier: "to_detail", sender: self)
+        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
+        
+        self.selectedResumo = self.ultimosResumos[indexPath.row]
+        
+        performSegue(withIdentifier: "to_detail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
