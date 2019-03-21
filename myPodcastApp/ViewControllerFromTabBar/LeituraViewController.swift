@@ -32,7 +32,7 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     var realm = AppService.realm()
     let positionCheckerInterval = 5.0
     
-    let primaryDuration = Double(0.3)
+    let primaryDuration = Double(0.25)
     let maxFontSize = Float(30)
     let minFontSize = Float(10)
     let topMenuHeight = CGFloat(100)
@@ -197,9 +197,10 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func animateTopMenuIn(presenting: Bool) {
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: primaryDuration, delay: 0.0, options: [], animations: {
             
-            self.navigationController?.navigationBar.barTintColor = ColorWeel().darkNavBar
+            
+            self.navigationController?.navigationBar.barTintColor = presenting ? ColorWeel().darkNavBar : .black
             self.topMenuView.isHidden = presenting ? false : true
             self.topMenuHeightConstraint.constant = presenting ? self.topMenuHeight : -self.topMenuHeight
             self.view.layoutIfNeeded() //IMPORTANT!

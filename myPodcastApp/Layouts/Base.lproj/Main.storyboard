@@ -108,6 +108,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Pesquisar" translatesAutoresizingMaskIntoConstraints="NO" id="b6p-jq-8QO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="lZi-7x-zzB"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="4Qy-4E-s6P" id="mKA-TI-gZm"/>
+                                </connections>
+                            </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-uA-wbL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <subviews>
@@ -190,7 +204,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewe-c9-vxI">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewe-c9-vxI">
                                                 <rect key="frame" x="242" y="401" width="70" height="27"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <state key="normal" title="+ episódios">
@@ -236,20 +250,30 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="R2W-Yw-eQI" firstAttribute="bottom" secondItem="Ob1-uA-wbL" secondAttribute="bottom" id="AvG-CM-RzH"/>
+                            <constraint firstItem="b6p-jq-8QO" firstAttribute="trailing" secondItem="R2W-Yw-eQI" secondAttribute="trailing" id="B9J-ak-zCj"/>
                             <constraint firstItem="Ob1-uA-wbL" firstAttribute="leading" secondItem="R2W-Yw-eQI" secondAttribute="leading" id="JTS-ue-X1N"/>
                             <constraint firstItem="R2W-Yw-eQI" firstAttribute="trailing" secondItem="Ob1-uA-wbL" secondAttribute="trailing" id="cdl-Bl-gI4"/>
-                            <constraint firstItem="Ob1-uA-wbL" firstAttribute="top" secondItem="R2W-Yw-eQI" secondAttribute="top" id="eff-tb-ve7"/>
+                            <constraint firstItem="Ob1-uA-wbL" firstAttribute="top" secondItem="b6p-jq-8QO" secondAttribute="bottom" id="plW-K3-vBh"/>
+                            <constraint firstItem="b6p-jq-8QO" firstAttribute="leading" secondItem="R2W-Yw-eQI" secondAttribute="leading" id="qi0-R4-CrW"/>
+                            <constraint firstItem="b6p-jq-8QO" firstAttribute="top" secondItem="R2W-Yw-eQI" secondAttribute="top" id="xxT-YW-vb2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kth-S4-1Hi" appends="YES" id="ezy-KL-8gW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="ResumoCast" id="sH1-tW-FQ6"/>
                     <connections>
                         <outlet property="authorCollectionView" destination="ndP-jA-lWr" id="d41-ml-GF6"/>
                         <outlet property="autoresLabel" destination="EPc-kY-1lN" id="vjE-Fb-EQW"/>
                         <outlet property="loading" destination="fH0-y2-Rue" id="tnH-9C-tE1"/>
-                        <outlet property="searchDisplayController" destination="jCN-RT-eix" id="Ci1-Eb-uQE"/>
+                        <outlet property="maisEpisodiosLabel" destination="ewe-c9-vxI" id="61w-Zc-Xxu"/>
+                        <outlet property="searchBar" destination="b6p-jq-8QO" id="wrl-Vf-vA9"/>
+                        <outlet property="searchBarHeightConstraint" destination="lZi-7x-zzB" id="ooq-I6-C8R"/>
+                        <outlet property="searchDisplayController" destination="kzV-tb-soX" id="dLB-xj-fXf"/>
                         <outlet property="slideShow" destination="IRC-k4-k9U" id="CvG-ML-ZIc"/>
                         <outlet property="tableView" destination="vsC-Lh-quC" id="yfb-1z-y5s"/>
                         <outlet property="ultimosLabel" destination="uXr-eH-dNC" id="YuI-yf-9bQ"/>
@@ -267,8 +291,21 @@
                         <outlet property="searchResultsDelegate" destination="4Qy-4E-s6P" id="kCS-Hb-hOv"/>
                     </connections>
                 </searchDisplayController>
+                <searchDisplayController id="kzV-tb-soX">
+                    <connections>
+                        <outlet property="delegate" destination="4Qy-4E-s6P" id="qli-M0-dbU"/>
+                        <outlet property="searchContentsController" destination="4Qy-4E-s6P" id="7RE-bF-BTI"/>
+                        <outlet property="searchResultsDataSource" destination="4Qy-4E-s6P" id="m2l-c8-HoF"/>
+                        <outlet property="searchResultsDelegate" destination="4Qy-4E-s6P" id="WKf-42-9xW"/>
+                    </connections>
+                </searchDisplayController>
+                <tapGestureRecognizer id="kth-S4-1Hi">
+                    <connections>
+                        <action selector="tapView:" destination="4Qy-4E-s6P" id="XxD-k5-6pL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="9988" y="1054"/>
+            <point key="canvasLocation" x="9986.25" y="1053.1690140845071"/>
         </scene>
         <!--List Resumos View Controller-->
         <scene sceneID="PWM-c4-qo3">
@@ -1397,6 +1434,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <outlet property="constraintContentHeight" destination="DGI-2s-d6L" id="XA2-Yo-x0h"/>
                         <outlet property="contentView" destination="rCR-5C-kdW" id="6HI-v1-jF4"/>
                         <outlet property="scrollView" destination="llc-s4-Izh" id="h0m-xP-AZO"/>
+                        <outlet property="searchDisplayController" destination="D8o-SP-exA" id="54W-YT-0sj"/>
                         <outlet property="txtEmail" destination="65r-na-Iz2" id="kHU-05-gIO"/>
                         <outlet property="txtSenha" destination="Auz-G6-7RD" id="Sea-Za-0su"/>
                         <segue destination="o0g-nU-naZ" kind="show" identifier="goto_recuperar" id="JfO-l2-Onr"/>
@@ -1404,6 +1442,14 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJ5-Y9-Jy0" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="D8o-SP-exA">
+                    <connections>
+                        <outlet property="delegate" destination="lzb-Rf-PBa" id="V3c-i1-dnd"/>
+                        <outlet property="searchContentsController" destination="lzb-Rf-PBa" id="ub3-fD-tYq"/>
+                        <outlet property="searchResultsDataSource" destination="lzb-Rf-PBa" id="5KZ-zT-23X"/>
+                        <outlet property="searchResultsDelegate" destination="lzb-Rf-PBa" id="mlC-s7-ws6"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2698" y="1439"/>
         </scene>
@@ -2895,6 +2941,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YRk-1p-Ij2"/>
-        <segue reference="WFL-Wi-MuI"/>
+        <segue reference="XwK-Gc-UPM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,6 +15,7 @@ import Reachability
 
 class InicioViewController: InheritanceViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var slideShow: ImageSlideshow!
@@ -25,6 +26,8 @@ class InicioViewController: InheritanceViewController {
     
     @IBOutlet weak var ultimosLabel: UILabel!
     @IBOutlet weak var autoresLabel: UILabel!
+    @IBOutlet weak var maisEpisodiosLabel: UIButton!
+    @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     var error_msg:String!
@@ -33,7 +36,9 @@ class InicioViewController: InheritanceViewController {
     //In case Local data is used
     let maxResumosToShow = 5
     let maxAutoresToShow = 5
-    
+    let primaryDuration = Double(0.25)
+    let searchBarDefaultHeight = CGFloat(56.0)
+
     var selectedResumo : Resumo?
     
     var ultimosResumosDictArray :[[String:AnyObject]]?
@@ -44,7 +49,6 @@ class InicioViewController: InheritanceViewController {
     var autoresArray = [Autor]()
     
     let realm = AppService.realm()
-    var mySearchController: UISearchController!
     let reachability = Reachability()!
     var pathForListViewController: String?
 
@@ -97,7 +101,6 @@ class InicioViewController: InheritanceViewController {
         reachability.whenUnreachable = { _ in
             self.useLocalData()
         }
-        
     }
     
     @objc func didTapSlideShow() {
@@ -128,35 +131,16 @@ class InicioViewController: InheritanceViewController {
     func createSearchBar() {
         //Add search button on navigation
         let searchBarItem = UIBarButtonItem(image: UIImage(named: "searchWhite"),  style: .plain, target: self, action: #selector(InicioViewController.clickSearchNavItem(_:)))
-        
         navigationItem.rightBarButtonItem = searchBarItem
-
-        mySearchController = UISearchController(searchResultsController: nil)
-        mySearchController.obscuresBackgroundDuringPresentation = true
-        mySearchController.searchBar.tintColor = .white
-        mySearchController.searchBar.placeholder = "Pesquisar"
-        definesPresentationContext = true
-
-        mySearchController.searchBar.delegate = self
-        mySearchController.delegate = self
-        mySearchController.searchResultsUpdater = self
-        
-        navigationItem.hidesSearchBarWhenScrolling = true
-        self.navigationItem.searchController = mySearchController
     }
     
     @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
-        
-        mySearchController.searchBar.becomeFirstResponder()
+
+        self.searchBar.becomeFirstResponder()
+        animateSearchBar(appearing: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        //navigationController?.navigationBar.prefersLargeTitles = true
-        
-        //if !playerManager.shared.getPlayerIsSet() {
-            //self.superBottomConstraint?.constant = 0
-        //}
-        
         //Reachability
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         
@@ -166,12 +150,35 @@ class InicioViewController: InheritanceViewController {
             print("Unable to start Reachability notifier")
         }
         
-        self.mySearchController.searchBar.text = ""
+        searchBar.text = ""
         
-        self.mySearchController.dismiss(animated: false, completion: nil)
+        self.searchBarHeightConstraint.constant = 0
         
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
+        view.endEditing(true)
+    }
+    
+    func animateSearchBar(appearing: Bool) {
+        if appearing {
+            self.searchBar.becomeFirstResponder()
+            UIView.animate(withDuration: primaryDuration) {
+                
+                self.searchBarHeightConstraint.constant =  self.searchBarDefaultHeight
+                self.view.layoutIfNeeded() //IMPORTANT!
+                
+            }
+        }
+        else {
+            UIView.animate(withDuration: primaryDuration) {
+                
+                self.searchBarHeightConstraint.constant = CGFloat(0.0)
+                self.view.layoutIfNeeded() //IMPORTANT!
+                
+            }
+            self.searchBar.resignFirstResponder()
+        }
+        
     }
     
     @objc func reachabilityChanged(note: Notification) {
@@ -195,6 +202,11 @@ class InicioViewController: InheritanceViewController {
         pathForListViewController = "buscaResumos.php"
         performSegue(withIdentifier: "to_listResumosVC", sender: self)
     }
+    
+    @IBAction func tapView(_ sender: Any) {
+        animateSearchBar(appearing: false)
+    }
+    
     
 }
 extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
@@ -246,7 +258,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
             detalheVC.selectedResumo = self.selectedResumo
         }
         else if let serchResultsVC = segue.destination as? SearchResultsViewController {
-            serchResultsVC.textoBusca = self.mySearchController.searchBar.text
+            serchResultsVC.textoBusca = searchBar.text
         }
         else if let listResumosVC = segue.destination as? ListResumosViewController {
             listResumosVC.path = self.pathForListViewController
@@ -259,11 +271,12 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
-        
-        self.selectedResumo = self.ultimosResumos[indexPath.row]
-        
-        performSegue(withIdentifier: "to_detail", sender: self)
+        animateSearchBar(appearing: false)
+//        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
+//        
+//        self.selectedResumo = self.ultimosResumos[indexPath.row]
+//        
+//        performSegue(withIdentifier: "to_detail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -404,6 +417,7 @@ extension InicioViewController {
         self.authorCollectionView.reloadData()
         self.ultimosLabel.isHidden = false
         self.autoresLabel.isHidden = false
+        self.maisEpisodiosLabel.isHidden = false
     }
 }
 
@@ -436,35 +450,21 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension InicioViewController: UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
-    //UISearchControllerDelegate
-    func willDismissSearchController(_ searchController: UISearchController) {
-        print("Bye")
-    }
-    
-    func didPresentSearchController(_ searchController: UISearchController) {
-        print("ACitive")
-    }
+extension InicioViewController: UISearchBarDelegate {
     
     //UISearchBarDelegate
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("Canceled")
+        
+        animateSearchBar(appearing: false)
 
     }
+    //SearchButton from keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search cliked")
+        searchBar.resignFirstResponder()
+        view.endEditing(true)
         performSegue(withIdentifier: "goto_searchResults", sender: self)
 
-        self.navigationItem.searchController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        print(searchText)
-    }
-    
-    //UISearchResultsUpdating
-    func updateSearchResults(for searchController: UISearchController) {
-//        print("Update ME")
+        //TODO volta contrain para 0
     }
 }
 
