@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZC-y7-rqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5577" y="-829"/>
+            <point key="canvasLocation" x="6756" y="-1631"/>
         </scene>
         <!--inicio-->
         <scene sceneID="lYR-DL-i7O">
@@ -268,7 +268,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="7549.6000000000004" y="1011.544227886057"/>
+            <point key="canvasLocation" x="9988" y="1054"/>
         </scene>
         <!--List Resumos View Controller-->
         <scene sceneID="PWM-c4-qo3">
@@ -321,18 +321,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMX-TI-tQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9339" y="1394"/>
+            <point key="canvasLocation" x="10939" y="1568"/>
         </scene>
         <!--Detalhe View Controller-->
         <scene sceneID="B28-Ha-nEo">
             <objects>
                 <viewController id="N4r-FG-Rxn" customClass="DetalheViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CQP-9f-KoR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVj-gL-n2T">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="632"/>
@@ -555,7 +555,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRb-yi-Dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11393" y="1154"/>
+            <point key="canvasLocation" x="12893" y="1149"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="zcR-Rh-SC6">
@@ -684,7 +684,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvi-JN-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7456.875" y="151.05633802816902"/>
+            <point key="canvasLocation" x="7639" y="94"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="9yp-Z8-5oH">
@@ -736,7 +736,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DY5-6k-dAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9338" y="649"/>
+            <point key="canvasLocation" x="10939" y="2530"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
@@ -947,7 +947,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec8-08-gS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13417" y="1160"/>
+            <point key="canvasLocation" x="15090" y="1150"/>
         </scene>
         <!--Episode Play Control View Controller-->
         <scene sceneID="2KS-9E-MRT">
@@ -1135,7 +1135,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USh-ns-gwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14205" y="1152.4647887323945"/>
+            <point key="canvasLocation" x="15879" y="1143"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="UYm-rR-YE7">
@@ -1747,7 +1747,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gx-uY-2bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8790" y="-586"/>
+            <point key="canvasLocation" x="8631" y="94"/>
         </scene>
         <!--List Autores View Controller-->
         <scene sceneID="0ng-cS-1g5">
@@ -1798,7 +1798,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKL-Ht-Akm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10130" y="-167"/>
+            <point key="canvasLocation" x="10939" y="560"/>
         </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="oUU-Fj-7c1">
@@ -2191,7 +2191,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blr-ew-odZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6575" y="152"/>
+            <point key="canvasLocation" x="6756" y="94"/>
         </scene>
         <!--Notificações-->
         <scene sceneID="kf4-ER-aMW">
@@ -2220,7 +2220,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTY-dJ-OAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5577" y="116"/>
+            <point key="canvasLocation" x="6756" y="-687"/>
         </scene>
         <!--Biblioteca-->
         <scene sceneID="dTs-xx-hdD">
@@ -2389,7 +2389,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSW-qR-aEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10590" y="1986"/>
+            <point key="canvasLocation" x="12079" y="2530"/>
         </scene>
         <!--Downloads-->
         <scene sceneID="qXT-5u-e1E">
@@ -2443,7 +2443,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3T-6t-EjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11406" y="1986"/>
+            <point key="canvasLocation" x="13009" y="2530"/>
         </scene>
         <!--concluidos-->
         <scene sceneID="slt-Tq-uBK">
@@ -2497,28 +2497,28 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vf2-NF-joG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12193" y="1986"/>
+            <point key="canvasLocation" x="13793" y="2530"/>
         </scene>
         <!--Leitura View Controller-->
         <scene sceneID="RWX-PM-1tq">
             <objects>
                 <viewController id="TTd-qY-eSi" customClass="LeituraViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ppr-fY-uzy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnm-ad-inf">
-                                <rect key="frame" x="16" y="47.5" width="288" height="25.5"/>
+                                <rect key="frame" x="16" y="67.5" width="288" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-ub-FV0">
-                                <rect key="frame" x="52" y="81" width="216" height="2"/>
+                                <rect key="frame" x="52" y="101" width="216" height="2"/>
                                 <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zds-1R-cX4">
-                                <rect key="frame" x="0.0" y="99" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="449"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-97-F79">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="315.5"/>
@@ -2646,7 +2646,7 @@ concluir essa leitura!</string>
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjF-Q2-sGH">
-                                <rect key="frame" x="16" y="8" width="288" height="31.5"/>
+                                <rect key="frame" x="16" y="28" width="288" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2726,7 +2726,7 @@ concluir essa leitura!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fB-IO-sf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12161" y="1151"/>
+            <point key="canvasLocation" x="13883" y="1149"/>
         </scene>
     </scenes>
     <resources>
@@ -2766,6 +2766,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEu-Ua-mz1"/>
-        <segue reference="FLk-k2-7c4"/>
+        <segue reference="CRf-lU-hgc"/>
     </inferredMetricsTieBreakers>
 </document>
