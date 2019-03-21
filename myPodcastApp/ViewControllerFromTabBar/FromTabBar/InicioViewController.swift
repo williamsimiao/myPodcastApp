@@ -113,7 +113,11 @@ class InicioViewController: InheritanceViewController {
             performSegue(withIdentifier: "to_listAutoresVC", sender: self)
         case 2:
             //make request for indique
-            print("Indique livro")
+            let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let sugerirVC = sb.instantiateViewController(withIdentifier: "sugerirVC")
+            sugerirVC.modalTransitionStyle = .coverVertical
+            present(sugerirVC, animated: true)
+
         default:
             //make request for top10
             pathForListViewController = "buscaTopResumos.php"

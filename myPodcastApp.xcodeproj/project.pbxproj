@@ -61,6 +61,7 @@
 		3DED12DA2243DD5E00908F70 /* ListAutoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */; };
 		3DED12DE2243DECE00908F70 /* AutorTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED12DD2243DECE00908F70 /* AutorTableCell.xib */; };
 		3DED12E12243DFC100908F70 /* AutorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED12E02243DFC100908F70 /* AutorTableCell.swift */; };
+		3DED12E32243FDCA00908F70 /* SugerirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED12E22243FDCA00908F70 /* SugerirViewController.swift */; };
 		3DF45678223949D800F5D056 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF45677223949D800F5D056 /* ContentSizedTableView.swift */; };
 		3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5F681221703E700F6BA33 /* DetalheViewController.swift */; };
 		3DF5F686221722A700F6BA33 /* epidodeContentRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */; };
@@ -139,6 +140,7 @@
 		3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAutoresViewController.swift; sourceTree = "<group>"; };
 		3DED12DD2243DECE00908F70 /* AutorTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutorTableCell.xib; sourceTree = "<group>"; };
 		3DED12E02243DFC100908F70 /* AutorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorTableCell.swift; sourceTree = "<group>"; };
+		3DED12E22243FDCA00908F70 /* SugerirViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugerirViewController.swift; sourceTree = "<group>"; };
 		3DF45677223949D800F5D056 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		3DF5F681221703E700F6BA33 /* DetalheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheViewController.swift; sourceTree = "<group>"; };
 		3DF5F685221722A700F6BA33 /* epidodeContentRight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = epidodeContentRight.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				3DED12D82243D54D00908F70 /* FromTabBar */,
 				4E7F1BB6222C28C90000F6EB /* VCs from Bilblioteca */,
 				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
+				3DED12E22243FDCA00908F70 /* SugerirViewController.swift */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
 				3DC1C1FF2200C175009080EF /* TabBarViewController.swift */,
@@ -584,6 +587,7 @@
 				3D38682A2211AEAA00E89FF4 /* AppError.swift in Sources */,
 				4E7F1BBE222C34A20000F6EB /* UIImageExtension.swift in Sources */,
 				3D3868252211A00E00E89FF4 /* LoginViewController.swift in Sources */,
+				3DED12E32243FDCA00908F70 /* SugerirViewController.swift in Sources */,
 				3D38682C2211AEC000E89FF4 /* AppServer.swift in Sources */,
 				3D7B9A212225DA5D0028A4FF /* LeituraViewController.swift in Sources */,
 				3D4E0C692236B267007B04E7 /* authorCollectionViewCell.swift in Sources */,
