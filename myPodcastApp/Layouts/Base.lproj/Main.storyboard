@@ -619,13 +619,19 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWt-QP-4qx">
-                                <rect key="frame" x="8" y="271" width="170" height="24"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdq-9x-28p" userLabel="fullDivisor">
+                                <rect key="frame" x="0.0" y="247" width="375" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="JYH-pC-Ijg"/>
+                                    <constraint firstAttribute="height" constant="1" id="oJf-Rw-qvK"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWt-QP-4qx">
+                                <rect key="frame" x="8" y="264" width="170" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="JYH-pC-Ijg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Configurações" image="settings_white">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -634,12 +640,18 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <action selector="clickConfig:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="Opp-ui-mgf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VK-A9-ZT4">
-                                <rect key="frame" x="8" y="303" width="170" height="24"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfT-9x-yGJ" userLabel="divisor1">
+                                <rect key="frame" x="16" y="296" width="343" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="kuP-is-wvm"/>
+                                    <constraint firstAttribute="height" constant="1" id="BJJ-fZ-Lli"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VK-A9-ZT4">
+                                <rect key="frame" x="8" y="305" width="170" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="kuP-is-wvm"/>
+                                </constraints>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Editar Perfil" image="account_white">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -648,12 +660,18 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <action selector="clickEditarPerfil:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="rFI-dL-dc5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAW-eI-Zkp">
-                                <rect key="frame" x="8" y="335" width="170" height="24"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TI0-fc-rnA" userLabel="divisor2">
+                                <rect key="frame" x="16" y="337" width="343" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="Y1W-UD-96E"/>
+                                    <constraint firstAttribute="height" constant="1" id="q1V-aS-pX4"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAW-eI-Zkp">
+                                <rect key="frame" x="8" y="346" width="170" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="Y1W-UD-96E"/>
+                                </constraints>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Pagamentos" image="payment_white">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -662,12 +680,18 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <action selector="clickPag:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="JU2-0p-wIf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-G8-iaV">
-                                <rect key="frame" x="8" y="367" width="170" height="24"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoj-ds-a8d" userLabel="divisor3">
+                                <rect key="frame" x="16" y="378" width="343" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="DZD-QD-qPD"/>
+                                    <constraint firstAttribute="height" constant="1" id="Oo0-3C-8EL"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-G8-iaV">
+                                <rect key="frame" x="8" y="387" width="170" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="DZD-QD-qPD"/>
+                                </constraints>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Logout" image="exit_white">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -679,25 +703,41 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hdq-9x-28p" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" id="2ck-KI-q1l"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="leading" secondItem="xfT-9x-yGJ" secondAttribute="leading" constant="-16" id="38e-bE-UbF"/>
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="top" secondItem="aEZ-dC-ETE" secondAttribute="bottom" constant="10" id="4XR-We-Zub"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6VK-A9-ZT4" secondAttribute="trailing" symbolic="YES" id="Ayg-Dd-upC"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="GQf-W5-h6f" secondAttribute="trailing" constant="20" id="B2d-VS-tzA"/>
-                            <constraint firstItem="hbc-G8-iaV" firstAttribute="top" secondItem="kAW-eI-Zkp" secondAttribute="bottom" constant="8" id="Bnj-TV-2Ij"/>
+                            <constraint firstItem="Zoj-ds-a8d" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="BBS-fJ-oPI"/>
                             <constraint firstItem="kAW-eI-Zkp" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="EUs-hG-bw8"/>
-                            <constraint firstItem="6VK-A9-ZT4" firstAttribute="top" secondItem="WWt-QP-4qx" secondAttribute="bottom" constant="8" id="EcU-bf-Yna"/>
                             <constraint firstItem="aEZ-dC-ETE" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="Hyp-jt-cMT"/>
+                            <constraint firstItem="xfT-9x-yGJ" firstAttribute="top" secondItem="WWt-QP-4qx" secondAttribute="bottom" constant="8" id="NGM-A3-1eN"/>
                             <constraint firstItem="6VK-A9-ZT4" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="NPP-qf-B73"/>
-                            <constraint firstItem="kAW-eI-Zkp" firstAttribute="top" secondItem="6VK-A9-ZT4" secondAttribute="bottom" constant="8" id="Oan-J6-3CO"/>
-                            <constraint firstItem="WWt-QP-4qx" firstAttribute="top" secondItem="VbC-eZ-WJl" secondAttribute="bottom" constant="32" id="QOG-wG-zQ2"/>
                             <constraint firstItem="obc-0s-96k" firstAttribute="centerX" secondItem="PUH-Ue-gV7" secondAttribute="centerX" id="Rx7-ff-7in"/>
+                            <constraint firstItem="hdq-9x-28p" firstAttribute="top" secondItem="VbC-eZ-WJl" secondAttribute="bottom" constant="8" id="Sr9-HS-uvQ"/>
+                            <constraint firstItem="6VK-A9-ZT4" firstAttribute="top" secondItem="xfT-9x-yGJ" secondAttribute="bottom" constant="8" id="VVm-m9-Fk4"/>
+                            <constraint firstItem="WWt-QP-4qx" firstAttribute="top" secondItem="hdq-9x-28p" secondAttribute="bottom" constant="16" id="W64-ZL-n0t"/>
+                            <constraint firstItem="hbc-G8-iaV" firstAttribute="top" secondItem="Zoj-ds-a8d" secondAttribute="bottom" constant="8" id="Xg9-5U-tOB"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="VbC-eZ-WJl" secondAttribute="trailing" constant="20" id="YaO-E8-jJq"/>
                             <constraint firstItem="hbc-G8-iaV" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="Ymn-5D-WFT"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="hdq-9x-28p" secondAttribute="trailing" id="a5Z-jh-P7C"/>
+                            <constraint firstItem="kAW-eI-Zkp" firstAttribute="top" secondItem="TI0-fc-rnA" secondAttribute="bottom" constant="8" id="c5z-w5-fT6"/>
+                            <constraint firstItem="xfT-9x-yGJ" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="ceP-B8-JtM"/>
                             <constraint firstItem="VbC-eZ-WJl" firstAttribute="top" secondItem="GQf-W5-h6f" secondAttribute="bottom" constant="10" id="csz-ps-OgH"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hbc-G8-iaV" secondAttribute="trailing" symbolic="YES" id="ec5-CA-70d"/>
                             <constraint firstItem="obc-0s-96k" firstAttribute="top" secondItem="gT2-lJ-n9a" secondAttribute="top" constant="40" id="fG9-aN-9Fz"/>
                             <constraint firstItem="WWt-QP-4qx" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="g3i-QF-aQt"/>
                             <constraint firstItem="VbC-eZ-WJl" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="gog-zT-iDg"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kAW-eI-Zkp" secondAttribute="trailing" symbolic="YES" id="hUc-lW-9J7"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WWt-QP-4qx" secondAttribute="trailing" symbolic="YES" id="iMV-F2-CND"/>
+                            <constraint firstItem="TI0-fc-rnA" firstAttribute="top" secondItem="6VK-A9-ZT4" secondAttribute="bottom" constant="8" id="iXv-we-Wcz"/>
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="jEM-Az-IXO"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="aEZ-dC-ETE" secondAttribute="trailing" constant="20" id="kB4-2w-FBv"/>
                             <constraint firstItem="aEZ-dC-ETE" firstAttribute="top" secondItem="obc-0s-96k" secondAttribute="bottom" constant="10" id="lSl-3Q-rKw"/>
+                            <constraint firstItem="TI0-fc-rnA" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="lgF-Mz-UF5"/>
+                            <constraint firstItem="Zoj-ds-a8d" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="16" id="lqs-ag-3cO"/>
+                            <constraint firstItem="TI0-fc-rnA" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="16" id="myw-Yf-CX6"/>
+                            <constraint firstItem="Zoj-ds-a8d" firstAttribute="top" secondItem="kAW-eI-Zkp" secondAttribute="bottom" constant="8" id="xvN-Rh-PZv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
                     </view>
@@ -713,7 +753,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvi-JN-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7639" y="94"/>
+            <point key="canvasLocation" x="7637.6000000000004" y="93.842364532019715"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="9yp-Z8-5oH">
