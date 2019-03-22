@@ -30,19 +30,11 @@ class DownloadViewController: InheritanceViewController {
     }
     
     func setupUI() {
+        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
         
-        // buscar resumos favoritos
-        let resumos = realm.objects(ResumoEntity.self).filter("downloaded = 1")
-        //.sorted(byKeyPath: "dt_lib", ascending: false);
-        
-        
-        print("qtd " + String(resumos.count))
-        
-        resumoArray.removeAll()
-        for resumoEntity in resumos {
-            let resumo = Resumo(resumoEntity: resumoEntity)
-            resumoArray.append(resumo)
-        }
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+
+        fetchResumosFromRealm()
         
         if resumoArray.count == 0 {
             lblNenhum.isHidden = false
@@ -50,12 +42,25 @@ class DownloadViewController: InheritanceViewController {
             lblNenhum.isHidden = true
         }
         
+    }
+    
+    func fetchResumosFromRealm() {
+        // buscar resumos favoritos
+        let resumos = realm.objects(ResumoEntity.self).filter("downloaded = 1")
         
-        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
+        //.sorted(byKeyPath: "dt_lib", ascending: false);
         
-        tableView.register(nib, forCellReuseIdentifier: "cell")
         
+        print("qtd " + String(resumos.count))
+        
+        
+        resumoArray.removeAll()
+        for resumoEntity in resumos {
+            let resumo = Resumo(resumoEntity: resumoEntity)
+            resumoArray.append(resumo)
+        }
         tableView.reloadData()
+
     }
     
 }
@@ -79,6 +84,27 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
+        
+        let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+        //FavoritoBtn
+        if resumoEntity!.favoritado == 0 {
+            cell.favoritoBtn.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.white
+        }
+        else {
+            cell.favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+        }
+        
+        //DowanloadBtn
+        if resumoEntity!.downloaded == 0 {
+            cell.downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.white
+        }
+        else {
+            cell.downloadBtn.setImage(UIImage(named: "downloadOrange")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+        }
         
         let coverUrl = resumo.url_imagem
         
@@ -115,34 +141,28 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DownloadViewController: CellWithProgressDelegate {
-    func presentAlertOptions(theResumo: Resumo) {
-        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
-        
-        let actionDeletar = UIAlertAction(title: "Deletar", style: .destructive) { _ in
-            let episodeUrlString: String
-            let userIsPremium = false
-            if userIsPremium {
-                episodeUrlString = theResumo.url_podcast_40_p
-            }
-            else {
-                episodeUrlString = theResumo.url_podcast_40_f
-            }
-            let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
-            if wasDeleted {
-                print("Dismiss with animation")
-            }
+    func clickDownload(theResumo: Resumo) {
+        let episodeUrlString: String
+        let userIsPremium = false
+        if userIsPremium {
+            episodeUrlString = theResumo.url_podcast_40_p
+        }
+        else {
+            episodeUrlString = theResumo.url_podcast_40_f
         }
         
-        optionMenu.addAction(actionDeletar)
-        
-        self.present(optionMenu, animated: true) {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
-            optionMenu.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+        let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+        if wasDeleted {
+            print("Dismiss with animation")
         }
     }
     
-    @objc func dismissAlertController(){
-        self.dismiss(animated: true, completion: nil)
+    func clickFavorito(theResumo: Resumo) {
+        AppService.util.markResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
+        fetchResumosFromRealm()
+        
     }
+    
+    
 
 }

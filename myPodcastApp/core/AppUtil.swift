@@ -531,6 +531,7 @@ open class AppUtil {
         return sucess
     }
     
+    //Ja eh chamado pela func que deleta e pela que baixa
     func markResumoDownloadField(cod_resumo: String, downloaded: Bool) {
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumoEntity = resumos.first else {

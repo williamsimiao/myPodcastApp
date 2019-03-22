@@ -9,9 +9,9 @@
 import UIKit
 
 protocol CellWithProgressDelegate {
-    func presentAlertOptions(theResumo: Resumo)
+    func clickDownload(theResumo: Resumo)
+    func clickFavorito(theResumo: Resumo)
 }
-
 
 class CellWithProgress: UITableViewCell {
     
@@ -20,6 +20,8 @@ class CellWithProgress: UITableViewCell {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var downloadBtn: UIButton!
+    @IBOutlet weak var favoritoBtn: UIButton!
     
     var resumo: Resumo?
     var delegate: CellWithProgressDelegate?
@@ -45,6 +47,29 @@ class CellWithProgress: UITableViewCell {
         self.authorLabel.textColor = .white
         self.coverImg.layer.borderColor = UIColor.white.cgColor
     }
-    @IBAction func clickMore(_ sender: Any) {        self.delegate?.presentAlertOptions(theResumo: self.resumo!)
+    
+    @IBAction func clickFavorito(_ sender: Any) {
+        if resumo?.favoritado == 0 {
+            favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
+            favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+        } else {
+            favoritoBtn.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
+            favoritoBtn.tintColor = UIColor.white
+        }
+        
+        self.delegate?.clickFavorito(theResumo: self.resumo!)
+    }
+    
+    @IBAction func clickDownload(_ sender: Any) {
+        
+//        if resumo?.downloaded == 0 {
+//            downloadBtn.imageView?.image = UIImage(named: "downloadWhite")!
+//            favoritoBtn.tintColor = UIColor.white
+//        }
+//        else {
+//            favoritoBtn.imageView?.image = UIImage(named: "downloadOrange")!
+//            favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+//        }
+        self.delegate?.clickDownload(theResumo: self.resumo!)
     }
 }

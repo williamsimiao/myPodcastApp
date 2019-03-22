@@ -35,10 +35,24 @@ class FavoritosViewController: InheritanceViewController {
     }
     
     func setupUI() {
+        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
         
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+        
+        fetchResumosFromRealm()
+        
+        if resumoArray.count == 0 {
+            lblNenhum.isHidden = false
+        } else {
+            lblNenhum.isHidden = true
+        }
+        
+    }
+    
+    func fetchResumosFromRealm() {
         // buscar resumos favoritos
         let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1")
-
+        
         //.sorted(byKeyPath: "dt_lib", ascending: false);
         
         
@@ -50,19 +64,8 @@ class FavoritosViewController: InheritanceViewController {
             let resumo = Resumo(resumoEntity: resumoEntity)
             resumoArray.append(resumo)
         }
-        
-        if resumoArray.count == 0 {
-            lblNenhum.isHidden = false
-        } else {
-            lblNenhum.isHidden = true
-        }
-        
-        
-        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
-        
-        tableView.register(nib, forCellReuseIdentifier: "cell")
-        
         tableView.reloadData()
+
     }
     
 }
@@ -89,6 +92,28 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
+        
+        let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+        //FavoritoBtn
+        if resumoEntity!.favoritado == 0 {
+            cell.favoritoBtn.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.white
+        }
+        else {
+            cell.favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+        }
+        
+        //DowanloadBtn
+        if resumoEntity!.downloaded == 0 {
+            cell.downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.white
+        }
+        else {
+            cell.downloadBtn.setImage(UIImage(named: "downloadOrange")!, for: .normal)
+            cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+        }
+
         
         let coverUrl = resumo.url_imagem
         
@@ -125,22 +150,34 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FavoritosViewController: CellWithProgressDelegate {
-    func presentAlertOptions(theResumo: Resumo) {
-        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
-        
-        let actionDeletar = UIAlertAction(title: "Desfavoritar", style: .destructive) { _ in
-            AppService.util.markResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
+    func clickDownload(theResumo: Resumo) {
+        let episodeUrlString: String
+        let userIsPremium = false
+        if userIsPremium {
+            episodeUrlString = theResumo.url_podcast_40_p
+        }
+        else {
+            episodeUrlString = theResumo.url_podcast_40_f
         }
         
-        optionMenu.addAction(actionDeletar)
-        
-        self.present(optionMenu, animated: true) {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
-            optionMenu.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+        if theResumo.downloaded == 1 {
+            let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+            if wasDeleted {
+                self.tableView.reloadData()
+//                self.view.makeToast("Download removido")
+            }
+        }
+        else {
+            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+            self.view.makeToast("Download em andamento")
         }
     }
     
-    @objc func dismissAlertController(){
-        self.dismiss(animated: true, completion: nil)
+    func clickFavorito(theResumo: Resumo) {
+        AppService.util.markResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
+        fetchResumosFromRealm()
+
     }
+    
+    
 }

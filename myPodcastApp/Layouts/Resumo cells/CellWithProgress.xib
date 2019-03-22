@@ -33,23 +33,39 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZC-JX-hFp" userLabel="Author Label">
-                            <rect key="frame" x="98" y="38.5" width="321" height="18"/>
+                            <rect key="frame" x="98" y="38.5" width="37.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7MP-y4-u9O">
-                            <rect key="frame" x="98" y="64.5" width="281" height="2"/>
+                            <rect key="frame" x="98" y="64.5" width="235" height="2"/>
                             <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </progressView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmU-qm-cvg">
-                            <rect key="frame" x="396" y="34" width="23" height="22"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmU-qm-cvg" userLabel="downloadBtn">
+                            <rect key="frame" x="375" y="23" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="NVu-2F-thA"/>
+                                <constraint firstAttribute="height" constant="44" id="nlH-C0-ZVa"/>
+                            </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="moreWhite">
+                            <state key="normal" image="downloadWhite">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="clickMore:" destination="Ric-0u-Giq" eventType="touchUpInside" id="uoL-uy-esv"/>
+                                <action selector="clickDownload:" destination="Ric-0u-Giq" eventType="touchUpInside" id="IvT-Sj-Ift"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAL-sV-znc">
+                            <rect key="frame" x="331" y="23" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="3Eq-QP-zXk"/>
+                                <constraint firstAttribute="height" constant="44" id="z08-ZR-5zK"/>
+                            </constraints>
+                            <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="favoritoWhite"/>
+                            <connections>
+                                <action selector="clickFavorito:" destination="Ric-0u-Giq" eventType="touchUpInside" id="yf8-kf-HfC"/>
                             </connections>
                         </button>
                     </subviews>
@@ -57,16 +73,18 @@
                     <constraints>
                         <constraint firstItem="wmU-qm-cvg" firstAttribute="centerY" secondItem="w3f-AW-J0E" secondAttribute="centerY" id="01K-co-Iz4"/>
                         <constraint firstItem="7MP-y4-u9O" firstAttribute="leading" secondItem="j6Y-4Z-bCT" secondAttribute="trailing" constant="8" id="3Ba-oy-Jd1"/>
-                        <constraint firstAttribute="trailing" secondItem="aZC-JX-hFp" secondAttribute="trailing" constant="8" id="4l9-yy-7dB"/>
                         <constraint firstItem="aZC-JX-hFp" firstAttribute="top" secondItem="Hx9-Fe-bgB" secondAttribute="bottom" constant="8" id="8NW-lk-Ih7"/>
                         <constraint firstItem="aZC-JX-hFp" firstAttribute="leading" secondItem="j6Y-4Z-bCT" secondAttribute="trailing" constant="8" id="CPZ-Js-lUg"/>
+                        <constraint firstItem="OAL-sV-znc" firstAttribute="centerY" secondItem="wmU-qm-cvg" secondAttribute="centerY" id="GYS-2p-dqd"/>
                         <constraint firstItem="Hx9-Fe-bgB" firstAttribute="top" secondItem="j6Y-4Z-bCT" secondAttribute="top" id="JZc-9h-QAu"/>
                         <constraint firstItem="7MP-y4-u9O" firstAttribute="top" secondItem="aZC-JX-hFp" secondAttribute="bottom" constant="8" id="KRH-T1-chC"/>
+                        <constraint firstItem="wmU-qm-cvg" firstAttribute="leading" secondItem="OAL-sV-znc" secondAttribute="trailing" id="O4R-7H-AYK"/>
                         <constraint firstAttribute="trailing" secondItem="wmU-qm-cvg" secondAttribute="trailing" constant="8" id="S59-DO-NMw"/>
-                        <constraint firstAttribute="trailing" secondItem="7MP-y4-u9O" secondAttribute="trailing" constant="48" id="XmD-i1-AHc"/>
+                        <constraint firstItem="OAL-sV-znc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aZC-JX-hFp" secondAttribute="trailing" constant="8" id="S9k-bs-TT8"/>
                         <constraint firstAttribute="trailing" secondItem="Hx9-Fe-bgB" secondAttribute="trailing" constant="8" id="hly-SS-Jya"/>
                         <constraint firstItem="j6Y-4Z-bCT" firstAttribute="centerY" secondItem="w3f-AW-J0E" secondAttribute="centerY" id="iHZ-Kz-paf"/>
                         <constraint firstItem="j6Y-4Z-bCT" firstAttribute="leading" secondItem="w3f-AW-J0E" secondAttribute="leading" constant="20" id="isg-wa-b6I"/>
+                        <constraint firstItem="OAL-sV-znc" firstAttribute="leading" secondItem="7MP-y4-u9O" secondAttribute="trailing" constant="-2" id="kn6-go-c85"/>
                         <constraint firstItem="Hx9-Fe-bgB" firstAttribute="leading" secondItem="j6Y-4Z-bCT" secondAttribute="trailing" constant="8" id="tWz-i6-2up"/>
                     </constraints>
                 </view>
@@ -84,6 +102,8 @@
                 <outlet property="authorLabel" destination="aZC-JX-hFp" id="I0g-TF-kL0"/>
                 <outlet property="containerView" destination="w3f-AW-J0E" id="jwk-dH-4gp"/>
                 <outlet property="coverImg" destination="j6Y-4Z-bCT" id="5HR-CO-zRB"/>
+                <outlet property="downloadBtn" destination="wmU-qm-cvg" id="AK6-hv-kXy"/>
+                <outlet property="favoritoBtn" destination="OAL-sV-znc" id="mbL-rh-Qpd"/>
                 <outlet property="progressView" destination="7MP-y4-u9O" id="c2W-dN-gbZ"/>
                 <outlet property="titleLabel" destination="Hx9-Fe-bgB" id="tvg-Ah-hFi"/>
             </connections>
@@ -91,6 +111,7 @@
         </view>
     </objects>
     <resources>
-        <image name="moreWhite" width="23" height="5"/>
+        <image name="downloadWhite" width="21.5" height="22"/>
+        <image name="favoritoWhite" width="20" height="25.5"/>
     </resources>
 </document>
