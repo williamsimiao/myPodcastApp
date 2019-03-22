@@ -50,6 +50,8 @@ class InicioViewController: InheritanceViewController {
     
     let realm = AppService.realm()
     let reachability = Reachability()!
+    var isUsingLocalData = true
+    
     var pathForListViewController: String?
 
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -97,9 +99,15 @@ class InicioViewController: InheritanceViewController {
                 self.makeResquest(path: "home.php")
 
             }
+            else {
+                print("neither wifi nor LTE")
+            }
         }
         reachability.whenUnreachable = { _ in
-            self.useLocalData()
+            if self.isUsingLocalData {
+                self.isUsingLocalData = true
+                self.useLocalData()
+            }
         }
     }
     
@@ -142,7 +150,7 @@ class InicioViewController: InheritanceViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         //Reachability
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+//        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         
         do {
             try reachability.startNotifier()
@@ -181,14 +189,14 @@ class InicioViewController: InheritanceViewController {
         
     }
     
-    @objc func reachabilityChanged(note: Notification) {
-        
-        let reachability = note.object as! Reachability
-        
-        if reachability.connection == .wifi || reachability.connection == .cellular {
-            print("Conected")
-        }
-    }
+//    @objc func reachabilityChanged(note: Notification) {
+//
+//        let reachability = note.object as! Reachability
+//
+//        if reachability.connection == .wifi || reachability.connection == .cellular {
+//            print("Conected")
+//        }
+//    }
     
     func setupUI() {
         let nibTableCell = UINib(nibName: "InicioCell", bundle: nil)
@@ -372,6 +380,8 @@ extension InicioViewController {
 
             self.ultimosResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.ultimosResumosDictArray!)
 
+            self.isUsingLocalData = false
+
             showContent()
         }
         else {
@@ -397,14 +407,16 @@ extension InicioViewController {
         //Autors
         let autorEntityList = realm.objects(AutorEntity.self)
         i = 0
+        var auxAutoresArray = [Autor]()
         for autorEntity in autorEntityList {
             if i >= maxAutoresToShow {
                 break
             }
             let autor = Autor(autorEntity: autorEntity)
-            self.autoresArray.append(autor)
+            auxAutoresArray.append(autor)
             i += 1
         }
+        self.autoresArray = auxAutoresArray
         showContent()
     }
     
