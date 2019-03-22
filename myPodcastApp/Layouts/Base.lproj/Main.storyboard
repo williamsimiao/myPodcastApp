@@ -753,12 +753,20 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <outlet property="delegate" destination="Rvi-Ua-fiZ" id="Oey-pW-Y4c"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhum Resumo encontrado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-SA-A35">
+                                <rect key="frame" x="48.5" y="241.5" width="223.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="reE-UP-DhE" firstAttribute="centerY" secondItem="khv-dV-AoP" secondAttribute="centerY" id="E1j-Cr-Ezk"/>
+                            <constraint firstItem="5aM-SA-A35" firstAttribute="centerY" secondItem="khv-dV-AoP" secondAttribute="centerY" id="Lwc-RP-m15"/>
                             <constraint firstItem="reE-UP-DhE" firstAttribute="centerX" secondItem="khv-dV-AoP" secondAttribute="centerX" id="aNn-2E-jdQ"/>
                             <constraint firstItem="8Q7-OS-gYi" firstAttribute="top" secondItem="hS1-Jp-XlY" secondAttribute="top" id="bOc-NW-IrA"/>
+                            <constraint firstItem="5aM-SA-A35" firstAttribute="centerX" secondItem="khv-dV-AoP" secondAttribute="centerX" id="eZX-Ll-tg3"/>
                             <constraint firstItem="hS1-Jp-XlY" firstAttribute="bottom" secondItem="8Q7-OS-gYi" secondAttribute="bottom" id="npr-LL-jXf"/>
                             <constraint firstItem="8Q7-OS-gYi" firstAttribute="leading" secondItem="hS1-Jp-XlY" secondAttribute="leading" id="ydX-ve-brg"/>
                             <constraint firstItem="hS1-Jp-XlY" firstAttribute="trailing" secondItem="8Q7-OS-gYi" secondAttribute="trailing" id="yz1-Q7-p9q"/>
@@ -767,6 +775,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     </view>
                     <connections>
                         <outlet property="loading" destination="reE-UP-DhE" id="WrD-Qq-Suq"/>
+                        <outlet property="noResultLabel" destination="5aM-SA-A35" id="4Yx-X6-nTe"/>
                         <outlet property="tableView" destination="8Q7-OS-gYi" id="iY2-lp-XwY"/>
                         <segue destination="N4r-FG-Rxn" kind="show" identifier="to_detail" id="WFL-Wi-MuI"/>
                     </connections>
@@ -2942,6 +2951,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YRk-1p-Ij2"/>
-        <segue reference="XwK-Gc-UPM"/>
+        <segue reference="WFL-Wi-MuI"/>
     </inferredMetricsTieBreakers>
 </document>

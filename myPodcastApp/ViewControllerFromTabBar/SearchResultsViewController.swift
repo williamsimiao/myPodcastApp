@@ -12,6 +12,7 @@ class SearchResultsViewController: InheritanceViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var noResultLabel: UILabel!
     
     var textoBusca: String?
     var error_msg:String!
@@ -35,6 +36,10 @@ class SearchResultsViewController: InheritanceViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        noResultLabel.isHidden = true
     }
 }
 
@@ -182,7 +187,7 @@ extension SearchResultsViewController {
             
             self.resumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.resumosDictArray!)
             if resumos.count <= 0 {
-                self.view.makeToast("Nenhum Resumo encontrado", duration: 2.0, position: .center)
+                noResultLabel.isHidden = false
             }
             
             self.tableView.reloadData()
