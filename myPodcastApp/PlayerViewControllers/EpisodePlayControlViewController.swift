@@ -209,7 +209,6 @@ class EpisodePlayControlViewController: UIViewController {
 // MARK: - Player dataSource
 extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
-        print(sliderIsInUse)
         if self.sliderIsInUse == false {
             if let data = notification.userInfo as? [String: Double] {
                 for (_, value) in data {
