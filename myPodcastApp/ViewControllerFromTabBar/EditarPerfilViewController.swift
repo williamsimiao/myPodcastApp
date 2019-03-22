@@ -31,6 +31,10 @@ class EditarPerfilViewController: UIViewController {
         
     }
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+
     @IBAction func clickAtualizar(_ sender: Any) {
         self.dismiss(animated: true) {
             print("Salvando alterações")

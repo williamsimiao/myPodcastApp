@@ -57,6 +57,10 @@ class PlayerCardViewController: UIViewController {
     @IBOutlet weak var bottomSectionLowerConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomSectionImageView: UIImageView!
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
