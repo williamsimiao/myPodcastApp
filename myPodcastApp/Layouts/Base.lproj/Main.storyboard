@@ -2696,17 +2696,17 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <rect key="frame" x="0.0" y="99" width="320" height="356"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-97-F79">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="315.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="313"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="textao" textAlignment="justified" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjN-vB-iye">
-                                                <rect key="frame" x="16" y="0.0" width="288" height="35.5"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="textao" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjN-vB-iye">
+                                                <rect key="frame" x="16" y="0.0" width="288" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRq-QY-QHb">
-                                                <rect key="frame" x="0.0" y="55.5" width="320" height="240"/>
+                                                <rect key="frame" x="0.0" y="53" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJq-PV-b9e">
                                                         <rect key="frame" x="50" y="0.0" width="220" height="51"/>
@@ -2832,6 +2832,7 @@ concluir essa leitura!</string>
                                     <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="CVP-0I-4zS" customClass="CustomUISlider" customModule="myPodcastApp" customModuleProvider="target">
                                         <rect key="frame" x="108" y="25.5" width="198" height="31"/>
                                         <connections>
+                                            <action selector="SliderEditingDidEnd:" destination="TTd-qY-eSi" eventType="editingDidEnd" id="f2b-0X-nSa"/>
                                             <action selector="sliderChangedValue:" destination="TTd-qY-eSi" eventType="valueChanged" id="ISY-r1-qef"/>
                                         </connections>
                                     </slider>

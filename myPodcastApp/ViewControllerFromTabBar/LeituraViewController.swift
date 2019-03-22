@@ -63,7 +63,11 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         
         textView.text = resumoText
         textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
-        textView.textAlignment = NSTextAlignment.justified
+        
+        let prefs:UserDefaults = UserDefaults.standard
+        let lastFontSize = prefs.float(forKey: "leituraLastFontSize")
+        textView.changeFontSize(newSize: lastFontSize)
+
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
@@ -226,6 +230,14 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         let fontSize = fontSizeSlider.value
         textView.changeFontSize(newSize: fontSize)
     }
+    
+    @IBAction func SliderEditingDidEnd(_ sender: Any) {
+        let fontSize = fontSizeSlider.value
+
+        let prefs:UserDefaults = UserDefaults.standard
+        prefs.set(fontSize, forKey: "leituraLastFontSize")
+    }
+    
     
     func animateTopMenuIn(presenting: Bool) {
         UIView.animate(withDuration: primaryDuration, delay: 0.0, options: [], animations: {
