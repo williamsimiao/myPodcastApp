@@ -261,9 +261,6 @@
                             <constraint firstItem="b6p-jq-8QO" firstAttribute="top" secondItem="R2W-Yw-eQI" secondAttribute="top" id="xxT-YW-vb2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R2W-Yw-eQI"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="kth-S4-1Hi" appends="YES" id="ezy-KL-8gW"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="ResumoCast" id="sH1-tW-FQ6"/>
                     <connections>
@@ -299,11 +296,6 @@
                         <outlet property="searchResultsDelegate" destination="4Qy-4E-s6P" id="WKf-42-9xW"/>
                     </connections>
                 </searchDisplayController>
-                <tapGestureRecognizer id="kth-S4-1Hi">
-                    <connections>
-                        <action selector="tapView:" destination="4Qy-4E-s6P" id="XxD-k5-6pL"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="9986.25" y="1053.1690140845071"/>
         </scene>
@@ -2954,6 +2946,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YRk-1p-Ij2"/>
-        <segue reference="WFL-Wi-MuI"/>
+        <segue reference="XwK-Gc-UPM"/>
     </inferredMetricsTieBreakers>
 </document>

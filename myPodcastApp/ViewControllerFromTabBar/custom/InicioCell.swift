@@ -34,12 +34,14 @@ class InicioCell: UITableViewCell {
     }
     
     func setHighlightColor() {
+        self.containerView.backgroundColor = .white
         self.titleLabel.textColor = .black
         self.authorLabel.textColor = .black
         self.coverImg.layer.borderColor = UIColor.black.cgColor
         
     }
     func goBackToOriginalColors() {
+        self.containerView.backgroundColor = .black
         self.titleLabel.textColor = .white
         self.authorLabel.textColor = .white
         self.coverImg.layer.borderColor = UIColor.white.cgColor

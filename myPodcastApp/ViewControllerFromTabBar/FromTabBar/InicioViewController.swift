@@ -51,6 +51,7 @@ class InicioViewController: InheritanceViewController {
     let realm = AppService.realm()
     let reachability = Reachability()!
     var isUsingLocalData = true
+    var searchBarIsActive = false
     
     var pathForListViewController: String?
 
@@ -90,6 +91,11 @@ class InicioViewController: InheritanceViewController {
         slideShow.contentScaleMode = UIView.ContentMode.scaleToFill
         
         createSearchBar()
+        
+        let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(InicioViewController.tapView))
+        viewTapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(viewTapGesture)
+
 
         setupUI()
 
@@ -161,6 +167,7 @@ class InicioViewController: InheritanceViewController {
         searchBar.text = ""
         
         self.searchBarHeightConstraint.constant = 0
+        self.searchBarIsActive = false
         
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
@@ -170,19 +177,21 @@ class InicioViewController: InheritanceViewController {
     func animateSearchBar(appearing: Bool) {
         if appearing {
             self.searchBar.becomeFirstResponder()
-            UIView.animate(withDuration: primaryDuration) {
-                
+            UIView.animate(withDuration: primaryDuration, animations: {
                 self.searchBarHeightConstraint.constant =  self.searchBarDefaultHeight
                 self.view.layoutIfNeeded() //IMPORTANT!
                 
+            }) { (_) in
+                self.searchBarIsActive = true
             }
         }
         else {
-            UIView.animate(withDuration: primaryDuration) {
-                
+            UIView.animate(withDuration: primaryDuration, animations: {
                 self.searchBarHeightConstraint.constant = CGFloat(0.0)
                 self.view.layoutIfNeeded() //IMPORTANT!
-                
+
+            }) { (_) in
+                self.searchBarIsActive = false
             }
             self.searchBar.resignFirstResponder()
         }
@@ -211,7 +220,7 @@ class InicioViewController: InheritanceViewController {
         performSegue(withIdentifier: "to_listResumosVC", sender: self)
     }
     
-    @IBAction func tapView(_ sender: Any) {
+    @objc func tapView(_ sender: Any) {
         animateSearchBar(appearing: false)
     }
     
@@ -226,7 +235,8 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InicioCell
-        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+
         let resumo = self.ultimosResumos[indexPath.row]
         
         let cod_resumo = resumo.cod_resumo
@@ -279,11 +289,18 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
-        
-        self.selectedResumo = self.ultimosResumos[indexPath.row]
-        
-        performSegue(withIdentifier: "to_detail", sender: self)
+        //Only if the searchBar is not beeing used
+
+
+        if !searchBarIsActive {
+            let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
+            cell.setHighlightColor()
+            
+            self.selectedResumo = self.ultimosResumos[indexPath.row]
+            
+            performSegue(withIdentifier: "to_detail", sender: self)
+
+        }
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
