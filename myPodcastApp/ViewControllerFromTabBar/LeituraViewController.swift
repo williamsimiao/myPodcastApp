@@ -66,6 +66,10 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         
         let prefs:UserDefaults = UserDefaults.standard
         let lastFontSize = prefs.float(forKey: "leituraLastFontSize")
+        if lastFontSize < minFontSize && lastFontSize > maxFontSize {
+            let prefs:UserDefaults = UserDefaults.standard
+            prefs.set(14.0, forKey: "leituraLastFontSize")
+        }
         textView.changeFontSize(newSize: lastFontSize)
 
         
