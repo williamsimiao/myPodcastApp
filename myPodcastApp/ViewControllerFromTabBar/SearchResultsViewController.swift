@@ -181,6 +181,9 @@ extension SearchResultsViewController {
              }*/
             
             self.resumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.resumosDictArray!)
+            if resumos.count <= 0 {
+                self.view.makeToast("Nenhum Resumo encontrado", duration: 2.0, position: .center)
+            }
             
             self.tableView.reloadData()
         }

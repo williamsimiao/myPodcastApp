@@ -137,6 +137,7 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func clickSugerir(_ sender: Any) {
+        //TODO
         //makeResquest()
         //OnResult receved : success or NOT :
         dismiss(animated: true, completion: nil)
