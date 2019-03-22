@@ -30,7 +30,8 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var tamanhoLabel: UILabel!
     
     var realm = AppService.realm()
-    let positionCheckerInterval = 5.0
+    var timer: Timer?
+    let positionCheckerInterval = 10.0
     
     let primaryDuration = Double(0.25)
     let maxFontSize = Float(30)
@@ -64,18 +65,47 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
         textView.textAlignment = NSTextAlignment.justified
         
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
         
         print(textView.contentSize.height)
-        addTimeObserverToRecordProgress()
         
         //heightConstraint.constant = textView.contentSize.height + 300
     }
+    
+    @objc func appMovedToBackground() {
+        leaveLeituraVC()
+        print("App moved to background!")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: positionCheckerInterval, target: self, selector: #selector(self.recordCurrentProgress), userInfo: nil, repeats: true)
+        }
+
         resetNavBarMenu()
         //        for item in (navigationController?.navigationItem.rightBarButtonItems)! {
         //            item.tintColor = .black
         //        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         goToCurrentProgress()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        leaveLeituraVC()
+    }
+    
+    func leaveLeituraVC() {
+        recordCurrentProgress()
+        
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
     }
     
     func setUpNavBarMenu() {
@@ -245,11 +275,6 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func addTimeObserverToRecordProgress(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        let timer = Timer.scheduledTimer(timeInterval: positionCheckerInterval, target: self, selector: #selector(self.recordCurrentProgress), userInfo: nil, repeats: true)
-    }
-    
     @objc func recordCurrentProgress(){
         print("OLA")
         let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo).first
@@ -263,15 +288,15 @@ class LeituraViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func goToCurrentProgress() {
-        let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo).first
+        let theResumo = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.currentResumo?.cod_resumo as Any).first
 
-        let contentHeight = Double(self.contentView.frame.height)
+        let contentHeight = Double(self.scrollView.contentSize.height)
         let lastProgress = (theResumo?.progressResumo10)!
         let newHeightOffset = contentHeight * lastProgress
         
         let xPosition = Double(self.scrollView.contentOffset.x)
         let newPoint = CGPoint(x: xPosition, y: newHeightOffset)
-        self.scrollView.contentOffset = newPoint
+        self.scrollView.setContentOffset(newPoint, animated: true)
     }
     
     
