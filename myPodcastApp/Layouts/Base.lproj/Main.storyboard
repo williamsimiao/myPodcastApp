@@ -1154,7 +1154,10 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                             <constraint firstAttribute="height" constant="30" id="RLO-T3-6rQ"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="sliderTouchUpInside:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="XyL-Sv-Hf7"/>
+                                                            <action selector="sliderTouchDown:" destination="CQN-Zn-ASG" eventType="touchDown" id="iBr-Su-6ob"/>
+                                                            <action selector="sliderTouchUpInside:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="Gi7-Wd-8qZ"/>
+                                                            <action selector="sliderTouchUpOutSide:" destination="CQN-Zn-ASG" eventType="touchUpOutside" id="gNY-hc-Z1i"/>
+                                                            <action selector="sliderValueChanged:" destination="CQN-Zn-ASG" eventType="valueChanged" id="rnJ-gX-jjq"/>
                                                         </connections>
                                                     </slider>
                                                 </subviews>

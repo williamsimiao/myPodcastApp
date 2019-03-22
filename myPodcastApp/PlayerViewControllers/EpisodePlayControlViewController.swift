@@ -32,7 +32,7 @@ class EpisodePlayControlViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var speedBtn: UIButton!
     
-    var speedPicker: UIPickerView!
+    var sliderIsInUse = false
     let speedArray = [playerSpeed.speed_1, playerSpeed.speed_1_5, playerSpeed.speed_1_75, playerSpeed.speed_2]
     
     // MARK: - Properties
@@ -110,12 +110,33 @@ class EpisodePlayControlViewController: UIViewController {
         playerManager.shared.rewind()
     }
     
+    @IBAction func sliderTouchDown(_ sender: Any) {
+        self.sliderIsInUse = true
+    }
+    
+    
     
     @IBAction func sliderTouchUpInside(_ sender: Any) {
+        changeAudioPositionAndUI()
+    }
+    
+    @IBAction func sliderTouchUpOutSide(_ sender: Any) {
+        changeAudioPositionAndUI()
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        
+        let remainingTime = Double(self.slider.maximumValue) - Double(slider.value)
+        self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingTime)
+        
+        self.progressLabel.text = Util.convertSecondsToDateString(seconds: Float64(slider!.value))
+    }
+    
+    func changeAudioPositionAndUI() {
+        self.sliderIsInUse = false
         let jump = self.slider.value
         playerManager.shared.jumpTo(seconds: Double(jump))
     }
-    
     
     @IBAction func forwardAction(_ sender: Any) {
         playerManager.shared.foward()
@@ -188,15 +209,18 @@ class EpisodePlayControlViewController: UIViewController {
 // MARK: - Player dataSource
 extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Double] {
-            for (_, value) in data {
-                self.slider.maximumValue = Float(playerManager.shared.getEpisodeDurationInSeconds())
-                let remainingTime = Double(self.slider.maximumValue) - value
-                self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingTime)
-                
-                self.progressLabel.text = Util.convertSecondsToDateString(seconds: value)
-                
-                self.slider.value = Float(value)
+        print(sliderIsInUse)
+        if self.sliderIsInUse == false {
+            if let data = notification.userInfo as? [String: Double] {
+                for (_, value) in data {
+                    self.slider.maximumValue = Float(playerManager.shared.getEpisodeDurationInSeconds())
+                    let remainingTime = Double(self.slider.maximumValue) - value
+                    self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingTime)
+                    
+                    self.progressLabel.text = Util.convertSecondsToDateString(seconds: value)
+                    
+                    self.slider.value = Float(value)
+                }
             }
         }
     }
