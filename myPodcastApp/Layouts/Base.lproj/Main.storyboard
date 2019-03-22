@@ -404,7 +404,7 @@
                                                                 <rect key="frame" x="34.333333333333329" y="16.666666666666686" width="37" height="37"/>
                                                             </activityIndicatorView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="z6z-4H-dqj" firstAttribute="centerX" secondItem="V8v-ni-6oF" secondAttribute="centerX" id="Pn2-tp-COz"/>
                                                             <constraint firstItem="OfT-K9-lCg" firstAttribute="top" secondItem="V8v-ni-6oF" secondAttribute="top" id="S2X-ne-lHC"/>
@@ -419,7 +419,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNu-sE-Eme">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105.66666666666667" height="70"/>
-                                                                <state key="normal" image="orangePlay"/>
+                                                                <state key="normal" image="playSimpleBlack"/>
                                                                 <connections>
                                                                     <action selector="clickPlayButton:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="Ya2-Tj-aGe"/>
                                                                 </connections>
@@ -428,7 +428,7 @@
                                                                 <rect key="frame" x="34.333333333333343" y="16.666666666666686" width="37" height="37"/>
                                                             </activityIndicatorView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="Kaa-sD-pJV" firstAttribute="centerX" secondItem="hqr-3g-cDK" secondAttribute="centerX" id="4qB-VV-ohv"/>
                                                             <constraint firstAttribute="trailing" secondItem="WNu-sE-Eme" secondAttribute="trailing" id="BeD-7I-qQu"/>
@@ -443,13 +443,13 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4k-GF-aJf">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="70"/>
-                                                                <state key="normal" image="bookOrange"/>
+                                                                <state key="normal" image="bookBlack"/>
                                                                 <connections>
                                                                     <action selector="clickLeituraBtn:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="okh-lG-85e"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="c4k-GF-aJf" firstAttribute="leading" secondItem="aly-0h-Uli" secondAttribute="leading" id="0G5-A1-1CT"/>
                                                             <constraint firstAttribute="bottom" secondItem="c4k-GF-aJf" secondAttribute="bottom" id="3zM-bB-2b3"/>
@@ -2920,7 +2920,7 @@ concluir essa leitura!</string>
         <image name="Rectangle 3" width="164.33332824707031" height="55"/>
         <image name="account_white" width="24" height="24"/>
         <image name="biblioteca" width="31.666666030883789" height="26"/>
-        <image name="bookOrange" width="23.666666030883789" height="18"/>
+        <image name="bookBlack" width="23.666666030883789" height="18"/>
         <image name="checkWhite" width="28.333333969116211" height="19.666666030883789"/>
         <image name="chevron" width="19" height="11.333333015441895"/>
         <image name="close" width="20" height="20"/>
@@ -2939,6 +2939,7 @@ concluir essa leitura!</string>
         <image name="orangePlay" width="17" height="22.666666030883789"/>
         <image name="pause" width="70" height="70"/>
         <image name="payment_white" width="24" height="24"/>
+        <image name="playSimpleBlack" width="17" height="22.666666030883789"/>
         <image name="rewind_10" width="26" height="26"/>
         <image name="sem_imagem" width="160" height="160"/>
         <image name="settings_white" width="24" height="24"/>

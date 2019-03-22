@@ -250,18 +250,16 @@ class DetalheViewController: InheritanceViewController {
         
         self.FortyMinutesView.layer.borderWidth = 1
         self.FortyMinutesView.layer.cornerRadius = 10
-        self.FortyMinutesView.backgroundColor = .black
+        self.resumo10View.layer.borderColor = UIColor.white.cgColor
         self.FortyMinutesView.layer.borderColor = UIColor.white.cgColor
         
         self.TenMinutesView.layer.borderWidth = 1
         self.TenMinutesView.layer.cornerRadius = 10
-        self.TenMinutesView.backgroundColor = .black
-        self.TenMinutesView.layer.borderColor = UIColor.white.cgColor
+        self.TenMinutesView.layer.borderColor = UIColor.init(hex: 0xA25520).cgColor
 
         self.resumo10View.layer.borderWidth = 1
         self.resumo10View.layer.cornerRadius = 10
-        self.resumo10View.backgroundColor = .black
-        self.resumo10View.layer.borderColor = UIColor.white.cgColor
+        self.resumo10View.layer.borderColor = UIColor.init(hex: 0xA25520).cgColor
         
         self.resumoView.layer.cornerRadius = 10
         
