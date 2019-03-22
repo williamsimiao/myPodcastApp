@@ -27,23 +27,24 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WD-BS-tH3">
-                            <rect key="frame" x="98" y="10" width="277" height="20.5"/>
+                            <rect key="frame" x="98" y="10" width="261" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8y-sG-ijc" userLabel="Author Label">
-                            <rect key="frame" x="98" y="38.5" width="277" height="18"/>
+                            <rect key="frame" x="98" y="38.5" width="261" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf4-VS-5ae">
-                            <rect key="frame" x="383" y="32.5" width="20" height="25"/>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf4-VS-5ae">
+                            <rect key="frame" x="367" y="23" width="44" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="20" id="NjJ-Qh-5vN"/>
-                                <constraint firstAttribute="height" constant="25" id="j9e-hZ-67O"/>
+                                <constraint firstAttribute="width" constant="44" id="NjJ-Qh-5vN"/>
+                                <constraint firstAttribute="height" constant="44" id="j9e-hZ-67O"/>
                             </constraints>
+                            <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="favoritoWhite">
                                 <color key="titleColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -62,7 +63,7 @@
                         <constraint firstItem="a8y-sG-ijc" firstAttribute="top" secondItem="8WD-BS-tH3" secondAttribute="bottom" constant="8" id="Ycu-W7-vh4"/>
                         <constraint firstItem="Kf4-VS-5ae" firstAttribute="centerY" secondItem="CGG-BD-P6V" secondAttribute="centerY" id="a8R-or-Hzw"/>
                         <constraint firstItem="Kf4-VS-5ae" firstAttribute="leading" secondItem="8WD-BS-tH3" secondAttribute="trailing" constant="8" id="cFL-Ve-Ak3"/>
-                        <constraint firstAttribute="trailing" secondItem="Kf4-VS-5ae" secondAttribute="trailing" constant="24" id="jvv-RE-GMy"/>
+                        <constraint firstAttribute="trailing" secondItem="Kf4-VS-5ae" secondAttribute="trailing" constant="16" id="jvv-RE-GMy"/>
                         <constraint firstItem="Kf4-VS-5ae" firstAttribute="leading" secondItem="a8y-sG-ijc" secondAttribute="trailing" constant="8" id="miA-sa-nuz"/>
                     </constraints>
                 </view>
