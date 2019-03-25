@@ -16,4 +16,6 @@ enum AppError: Error {
     //
     case filePathError
     case dictionaryIncomplete
+    //
+    case noRealmResult
 }

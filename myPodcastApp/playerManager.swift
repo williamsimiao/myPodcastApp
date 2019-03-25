@@ -21,8 +21,10 @@ class playerManager: NSObject {
     var miniContainerFrameHight: CGFloat?
     
     var player : AVPlayer?
+    var autoPlayNext: Bool?
     var isSet = false
     let skip_time = 10
+    let concluidoLimit = 30.0
     let interfaceUpdateInterval = 0.5
     let positionCheckerInterval = 5.0
     var episodesQueue = [[String:AnyObject]]()
@@ -262,20 +264,61 @@ class playerManager: NSObject {
         }
         let resumoEntity = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
         let durationSeconds = playerManager.shared.getEpisodeDurationInSeconds()
+        let progressInseconds = self.getEpisodeCurrentTimeInSeconds()
 
         try! AppService.realm().write {
             if self.currentEpisodeType == episodeType.ten {
-                resumoEntity?.progressPodcast_10 = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.progressPodcast_10 = progressInseconds
             }
             else if self.currentEpisodeType == episodeType.fortyPremium {
-                resumoEntity?.progressPodcast_40_p = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.progressPodcast_40_p = progressInseconds
                 resumoEntity?.duration_40_p = durationSeconds
 
             }
             //FORTY FREE
             else {
-                resumoEntity?.progressPodcast_40_f = self.getEpisodeCurrentTimeInSeconds()
+                resumoEntity?.progressPodcast_40_f = progressInseconds
                 resumoEntity?.duration_40_f = durationSeconds
+            }
+        }
+        
+        let remainingSeconds = durationSeconds - progressInseconds
+        if remainingSeconds < concluidoLimit && durationSeconds > 0 {
+            print("Ta acabando")
+            try! AppService.realm().write {
+                if self.currentEpisodeType == episodeType.ten {
+                    resumoEntity?.concluido_podcast_10 = 1
+                }
+                //FORTY FREE or PREMIUM
+                else {
+                    resumoEntity?.concluido_podcast_40 = 1
+                }
+            }
+            //AutoPlay
+            var userIsAllowedToPlay: Bool?
+            do {
+                let nextResumo = try getNextResumo(currentResumo: self.currentEpisode!)
+                
+                if self.currentEpisodeType == episodeType.fortyFree {
+                    let url = URL(string: (resumoEntity?.url_podcast_40_f)!)
+                    userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyFree)
+                }
+                else if self.currentEpisodeType == episodeType.fortyPremium {
+                    let url = URL(string: (resumoEntity?.url_podcast_40_p)!)
+                    userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyPremium)
+                }
+                else  {
+                    let url = URL(string: (resumoEntity?.url_podcast_10)!)
+                    userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.ten)
+                }
+                
+                if userIsAllowedToPlay! == false {
+                    AppService.util.handleNotAllowed()
+                }
+            } catch AppError.noRealmResult {
+                print("ERROR noRealmResult")
+            } catch {
+                print("unknown ERROR")
             }
         }
     }
@@ -296,8 +339,36 @@ class playerManager: NSObject {
             let currentProgress = currentResumo?.progressPodcast_40_f
             jumpTo(seconds: currentProgress!)
         }
+    }
+    
+    func getNextResumo(currentResumo: Resumo) throws -> Resumo {
         
+        //get the Resumos posted after the currently playing, from the oldest to the latest
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+//        let dateString = dateFormatter.string(from: currentResumo.pubDate!)
+        
+        let nextResumo = AppService.util.realm.objects(ResumoEntity.self).filter("pubDate > %@", currentResumo.pubDate!).sorted(byKeyPath: "pubDate", ascending: true).first
+        guard nextResumo != nil else {
+            throw AppError.noRealmResult
+        }
+        let resumo = Resumo(resumoEntity: nextResumo!)
+        return resumo
+    }
+    
+    func getPreviusResumo(currentResumo: Resumo) throws -> Resumo {
+        //get the Resumos posted before the currently playing, from the latest to the oldest
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        let dateString = dateFormatter.string(from: currentResumo.pubDate!)
 
+        let previusResumo = AppService.util.realm.objects(ResumoEntity.self).filter("pubDate < \(dateString) ").sorted(byKeyPath: "pubDate", ascending: false).first
+        guard previusResumo != nil else {
+            throw AppError.noRealmResult
+        }
+        print("cod: \(String(describing: previusResumo?.cod_resumo)) nome: \(String(describing: previusResumo?.titulo))")
+        let resumo = Resumo(resumoEntity: previusResumo!)
+        return resumo
     }
     
 //    //MARK - Queue management
