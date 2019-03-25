@@ -21,7 +21,7 @@ class playerManager: NSObject {
     var miniContainerFrameHight: CGFloat?
     
     var player : AVPlayer?
-    var autoPlayNext: Bool?
+    var autoPlayNext = true
     var isSet = false
     let skip_time = 10
     let concluidoLimit = 30.0
@@ -295,31 +295,10 @@ class playerManager: NSObject {
                 }
             }
             //AutoPlay
-            var userIsAllowedToPlay: Bool?
-            do {
-                let nextResumo = try getNextResumo(currentResumo: self.currentEpisode!)
-                
-                if self.currentEpisodeType == episodeType.fortyFree {
-                    let url = URL(string: (resumoEntity?.url_podcast_40_f)!)
-                    userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyFree)
-                }
-                else if self.currentEpisodeType == episodeType.fortyPremium {
-                    let url = URL(string: (resumoEntity?.url_podcast_40_p)!)
-                    userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyPremium)
-                }
-                else  {
-                    let url = URL(string: (resumoEntity?.url_podcast_10)!)
-                    userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.ten)
-                }
-                
-                if userIsAllowedToPlay! == false {
-                    AppService.util.handleNotAllowed()
-                }
-            } catch AppError.noRealmResult {
-                print("ERROR noRealmResult")
-            } catch {
-                print("unknown ERROR")
+            if autoPlayNext {
+                playNext()
             }
+            
         }
     }
     
@@ -341,13 +320,37 @@ class playerManager: NSObject {
         }
     }
     
+    func playNext() {
+        var userIsAllowedToPlay: Bool?
+        do {
+            let nextResumo = try getNextResumo(currentResumo: self.currentEpisode!)
+            
+            if self.currentEpisodeType == episodeType.fortyFree {
+                let url = URL(string: (resumoEntity?.url_podcast_40_f)!)
+                userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyFree)
+            }
+            else if self.currentEpisodeType == episodeType.fortyPremium {
+                let url = URL(string: (resumoEntity?.url_podcast_40_p)!)
+                userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyPremium)
+            }
+            else  {
+                let url = URL(string: (resumoEntity?.url_podcast_10)!)
+                userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.ten)
+            }
+            
+            if userIsAllowedToPlay! == false {
+                AppService.util.handleNotAllowed()
+            }
+        } catch AppError.noRealmResult {
+            print("ERROR noRealmResult")
+        } catch {
+            print("unknown ERROR")
+        }
+    }
+    
     func getNextResumo(currentResumo: Resumo) throws -> Resumo {
         
         //get the Resumos posted after the currently playing, from the oldest to the latest
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-//        let dateString = dateFormatter.string(from: currentResumo.pubDate!)
-        
         let nextResumo = AppService.util.realm.objects(ResumoEntity.self).filter("pubDate > %@", currentResumo.pubDate!).sorted(byKeyPath: "pubDate", ascending: true).first
         guard nextResumo != nil else {
             throw AppError.noRealmResult
