@@ -410,7 +410,7 @@ extension InicioViewController {
     
     func useLocalData() {
         //Resumos
-        let resumoEntityList = realm.objects(ResumoEntity.self)
+        let resumoEntityList = realm.objects(ResumoEntity.self).sorted(byKeyPath: "pubDate")
         var i = 0
         for resumoEntity in resumoEntityList {
             if i >= maxResumosToShow {

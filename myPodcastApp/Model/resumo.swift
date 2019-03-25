@@ -24,6 +24,7 @@ class Resumo {
     var resumo_10 : String
     var descricao : String
     var autores = [Autor]()
+    var pubDate: Date?
     
     var favoritado = 0
     var downloaded = 0
@@ -67,7 +68,7 @@ class Resumo {
         self.descricao = resumoEntity.descricao
         self.duration_40_f = resumoEntity.duration_40_f
         self.duration_40_p = resumoEntity.duration_40_p
-
+        self.pubDate = resumoEntity.pubDate
     }
     
 //    init?(resumoDict: [String:AnyObject]) {

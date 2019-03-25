@@ -21,6 +21,7 @@ class ResumoEntity: Object {
     @objc dynamic var url_podcast_40_f = ""
     @objc dynamic var resumo_10 = ""
     @objc dynamic var descricao = ""
+    @objc dynamic var pubDate: Date?
 
     let autores = RealmSwift.List<AutorEntity>()
     
@@ -136,6 +137,17 @@ class ResumoEntity: Object {
                 throw AppError.dictionaryIncomplete
             }
             self.resumo_10 = AppService.util.populateString(resumo_10)
+            
+            guard let pubDate = episodeDictonary["pubDate"] else {
+                throw AppError.dictionaryIncomplete
+            }
+            let dateString = pubDate as! String
+            print(dateString)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            let theDate = dateFormatter.date(from: dateString)
+            print(theDate)
+            self.pubDate = theDate
 
             AppService.realm().add(self, update: true)
         }
