@@ -211,15 +211,26 @@ extension EpisodePlayControlViewController {
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
         if self.sliderIsInUse == false {
             if let data = notification.userInfo as? [String: Double] {
-                for (_, value) in data {
-                    self.slider.maximumValue = Float(playerManager.shared.getEpisodeDurationInSeconds())
-                    let remainingTime = Double(self.slider.maximumValue) - value
-                    self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingTime)
-                    
-                    self.progressLabel.text = Util.convertSecondsToDateString(seconds: value)
-                    
-                    self.slider.value = Float(value)
+                var durationSeconds = 0.0
+                var currentSeconds = 0.0
+                for (key, value) in data {
+                    if key == "currentTime" {
+                        currentSeconds = value
+                    }
+                    if key == "duration" {
+                        durationSeconds = value
+                    }
                 }
+                self.slider.maximumValue = Float(durationSeconds)
+                var remainingSeconds = durationSeconds - currentSeconds
+                
+                if remainingSeconds <= 0.0 {
+                    remainingSeconds = 0.0
+                    currentSeconds = durationSeconds
+                }
+                self.remainingLabel.text = Util.convertSecondsToDateString(seconds: remainingSeconds)
+                self.progressLabel.text = Util.convertSecondsToDateString(seconds: currentSeconds)
+                self.slider.value = Float(currentSeconds)
             }
         }
     }

@@ -123,10 +123,20 @@ extension MiniPlayerViewController {
     }
     
     @objc func onPlayerTimeDidProgress(_ notification: Notification) {
-        let duration = playerManager.shared.getEpisodeDurationInSeconds()
-        let currentTime = playerManager.shared.getEpisodeCurrentTimeInSeconds()
-        let razao = currentTime/duration
-        self.progressBar.progress = Float(razao)
+        if let data = notification.userInfo as? [String: Double] {
+            var durationSeconds = 0.0
+            var currentSeconds = 0.0
+            for (key, value) in data {
+                if key == "currentTime" {
+                    currentSeconds = value
+                }
+                if key == "duration" {
+                    durationSeconds = value
+                }
+            }
+            let razao = currentSeconds/durationSeconds
+            self.progressBar.progress = Float(razao)
+        }
     }
     
     @objc func onFullPlayerShouldAppear(_ notification: Notification) {

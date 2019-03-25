@@ -24,7 +24,7 @@ class playerManager: NSObject {
     var autoPlayNext = true
     var isSet = false
     let skip_time = 10
-    let concluidoLimit = 30.0
+    let concluidoLimit = 0.0
     let interfaceUpdateInterval = 0.5
     let positionCheckerInterval = 1.0
     var episodesQueue = [[String:AnyObject]]()
@@ -45,8 +45,9 @@ class playerManager: NSObject {
         self.player!.addPeriodicTimeObserver(forInterval: timeInterval, queue: .main) { [weak self] time in
             if self!.getIsPlaying() {
                 let currentTime = self!.getEpisodeCurrentTimeInSeconds()
-                
-                NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime])
+                let duration = self!.getEpisodeDurationInSeconds()
+
+                NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime, "duration": duration])
             }
         }
     }
@@ -284,30 +285,26 @@ class playerManager: NSObject {
         let remainingSeconds = durationSeconds - progressInseconds
         if remainingSeconds <= 0.0 {
             playPause(shouldPlay: false)
-            
-//            let currentTime = self.getEpisodeDurationInSeconds()
-//            let duration = self.getEpisodeDurationInSeconds()
             print("Acabou")
-//            NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime, "duration": duration])
         }
         
-        if remainingSeconds < concluidoLimit && durationSeconds > 0 {
-            print("Ta acabando")
-            try! AppService.realm().write {
-                if self.currentEpisodeType == episodeType.ten {
-                    resumoEntity?.concluido_podcast_10 = 1
-                }
-                //FORTY FREE or PREMIUM
-                else {
-                    resumoEntity?.concluido_podcast_40 = 1
-                }
-            }
-            //AutoPlay
-            if autoPlayNext {
-                playNext()
-            }
-            
-        }
+//        if remainingSeconds < concluidoLimit && durationSeconds > 0 {
+//            print("Ta acabando")
+//            try! AppService.realm().write {
+//                if self.currentEpisodeType == episodeType.ten {
+//                    resumoEntity?.concluido_podcast_10 = 1
+//                }
+//                //FORTY FREE or PREMIUM
+//                else {
+//                    resumoEntity?.concluido_podcast_40 = 1
+//                }
+//            }
+//            //AutoPlay
+//            if autoPlayNext {
+//                playNext()
+//            }
+//            
+//        }
     }
     
     func goToCurrentProgress() {
