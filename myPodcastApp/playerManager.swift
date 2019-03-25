@@ -322,6 +322,8 @@ class playerManager: NSObject {
     
     func playNext() {
         var userIsAllowedToPlay: Bool?
+        let resumoEntity = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
+
         do {
             let nextResumo = try getNextResumo(currentResumo: self.currentEpisode!)
             
