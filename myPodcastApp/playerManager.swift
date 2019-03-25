@@ -26,7 +26,7 @@ class playerManager: NSObject {
     let skip_time = 10
     let concluidoLimit = 30.0
     let interfaceUpdateInterval = 0.5
-    let positionCheckerInterval = 5.0
+    let positionCheckerInterval = 1.0
     var episodesQueue = [[String:AnyObject]]()
     var currentEpisode : Resumo?
     var currentEpisodeType: episodeType!
@@ -229,7 +229,6 @@ class playerManager: NSObject {
         else {
             self.player?.pause()
         }
-        recordCurrentProgress()
         NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": shouldPlay])
         
     }
@@ -283,6 +282,15 @@ class playerManager: NSObject {
         }
         
         let remainingSeconds = durationSeconds - progressInseconds
+        if remainingSeconds <= 0.0 {
+            playPause(shouldPlay: false)
+            
+//            let currentTime = self.getEpisodeDurationInSeconds()
+//            let duration = self.getEpisodeDurationInSeconds()
+            print("Acabou")
+//            NotificationCenter.default.post(name: .playerTimeDidProgress, object: self, userInfo: ["currentTime": currentTime, "duration": duration])
+        }
+        
         if remainingSeconds < concluidoLimit && durationSeconds > 0 {
             print("Ta acabando")
             try! AppService.realm().write {
