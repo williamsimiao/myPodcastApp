@@ -38,7 +38,7 @@ class ConcluidosViewController: InheritanceViewController {
         let concluido_resumo_10 = realm.objects(ResumoEntity.self).filter("concluido_resumo_10 = 1")
         let concluido_podcast_10 = realm.objects(ResumoEntity.self).filter("concluido_podcast_10 = 1")
 
-        
+        self.resumoArray.removeAll()
         //TODO: exchange the code bellow for caling resultsToResumosArray
         for resumoEntity in concluido_podcast_10 {
             let resumo = Resumo(resumoEntity: resumoEntity)
