@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import FacebookCore
 @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,14 @@ import FacebookCore
             vc.modalTransitionStyle = .crossDissolve
             window!.rootViewController = vc
             window!.makeKeyAndVisible()
+        }
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        }
+        catch {
+            
         }
 
         return true
