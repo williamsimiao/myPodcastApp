@@ -327,6 +327,8 @@ class playerManager: NSObject {
                         if userIsAllowedToPlay == false {
                             AppService.util.handleNotAllowed()
                         }
+                        self.nextAvitem = nil
+                        self.nextResumo = nil
                     } catch AppError.urlError {
                         print("URL ERROR")
                     } catch {
