@@ -24,7 +24,8 @@ class playerManager: NSObject {
     var autoPlayEnabled = true
     var isSet = false
     let skip_time = 10
-    let playbackEndingLimit = 15.0
+    let prepareNextResumoLimit = 15.0
+    let playbackEndingLimit = 0.0
     let interfaceUpdateInterval = 0.5
     let positionCheckerInterval = 1.0
     var episodesQueue = [[String:AnyObject]]()
@@ -284,7 +285,7 @@ class playerManager: NSObject {
         }
         
         let remainingSeconds = durationSeconds - progressInseconds
-        if remainingSeconds <= 0.0 {
+        if remainingSeconds <= playbackEndingLimit {
             playPause(shouldPlay: false)
             print("Acabou")
             
@@ -299,7 +300,7 @@ class playerManager: NSObject {
             }
         }
         
-        if remainingSeconds < playbackEndingLimit && durationSeconds > 0 {
+        if remainingSeconds < prepareNextResumoLimit && durationSeconds > 0 {
             print("Ta acabando")
             
             //prepare for next resumo
