@@ -150,11 +150,6 @@ class playerManager: NSObject {
 
         //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
         let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
-        // Register as an observer of the player item's status property
-        newEpisodeAVItem.addObserver(self,
-                               forKeyPath: #keyPath(AVPlayerItem.status),
-                               options: [.old, .new],
-                               context: nil)
         
         if playerManager.shared.getPlayerIsSet() {
             removePeriodicSliderTimeObserver()
