@@ -216,12 +216,25 @@ class playerManager: NSObject {
         NotificationCenter.default.post(name: .episodeDidChange, object: self, userInfo: nil)
         
         //Seting ControlCenter UI
-        let artworkProperty = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
-            return Network.getUIImageFor(imageUrl: self.currentEpisode!.url_imagem)
-            //return AppService.util.get_image_resumo(cod_resumo: self.currentEpisodeDict["cod_resumo"] as! String)
-        }
+        setNowPlayingInfo()
+    }
+    
+    func setNowPlayingInfo()
+    {
+        let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+        var nowPlayingInfo = nowPlayingInfoCenter.nowPlayingInfo ?? [String: Any]()
         
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle : "DOIDO", MPMediaItemPropertyArtist : "ResumoCast", MPMediaItemPropertyArtwork : artworkProperty, MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(value: 1), MPMediaItemPropertyPlaybackDuration : CMTimeGetSeconds((player!.currentItem?.duration)!)]
+        
+        let artwork = MPMediaItemArtwork(boundsSize: CGSize(width: 40, height: 40)) { (cgsize) -> UIImage in
+            return Network.getUIImageFor(imageUrl: self.currentEpisode!.url_imagem)
+        }
+
+        nowPlayingInfo[MPMediaItemPropertyTitle] = currentEpisode?.titulo
+        let authorNamesJoined = Util.joinAuthorsNames(authorsList: (currentEpisode?.autores)!)
+        nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = authorNamesJoined
+        nowPlayingInfo[MPMediaItemPropertyArtwork] = artwork
+        
+        nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
     }
     
     //MARK - MODIFICADORES de tempo
