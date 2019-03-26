@@ -24,7 +24,7 @@ class playerManager: NSObject {
     var autoPlayEnabled = true
     var isSet = false
     let skip_time = 10
-    let prepareNextResumoLimit = 15.0
+    let prepareNextResumoLimit = 15
     let playbackEndingLimit = 0.0
     let interfaceUpdateInterval = 0.5
     let positionCheckerInterval = 1.0
@@ -34,6 +34,8 @@ class playerManager: NSObject {
     var sliderTimeObserver: Any?
     var progressTimeObserver: Any?
     var observer: NSKeyValueObservation?
+    var nextAvitem: AVPlayerItem?
+    var nextResumo:Resumo?
 
     static let shared = playerManager()
     
@@ -147,16 +149,19 @@ class playerManager: NSObject {
     }
     
     //MARK Mudando de Episodio
-    func episodeSelected(episode: Resumo, episodeLink: URL, episodeType: episodeType, preLoadedAVItem: AVPlayerItem?) -> Bool {
+    func episodeSelected(episode: Resumo, episodeLink: URL?, episodeType: episodeType, preLoadedAVItem: AVPlayerItem?) throws -> Bool {
         var newEpisodeAVItem: AVPlayerItem
+        guard preLoadedAVItem != nil || episodeLink != nil  else {
+            throw AppError.urlError
+        }
         
         if preLoadedAVItem == nil {
-            newEpisodeAVItem = prepareAvItem(episodeLink: episodeLink)
+            newEpisodeAVItem = prepareAvItem(episodeLink: episodeLink!)
+
         }
         else {
             newEpisodeAVItem = preLoadedAVItem!
         }
-        
         
         if !AppService.util.checkIfVisitanteIsAbleToPlay(resumo: episode) {
             return false
@@ -290,6 +295,16 @@ class playerManager: NSObject {
         }
         
         let remainingSeconds = durationSeconds - progressInseconds
+        
+        if Int(remainingSeconds) == prepareNextResumoLimit && durationSeconds > 0 {
+            print("Ta acabando")
+            
+            //prepare for next resumo
+            if autoPlayEnabled {
+                playNext()
+            }
+        }
+        
         if remainingSeconds <= playbackEndingLimit {
             playPause(shouldPlay: false)
             print("Acabou")
@@ -303,16 +318,22 @@ class playerManager: NSObject {
                     resumoEntity?.concluido_podcast_40 = 1
                 }
             }
-        }
-        
-        if remainingSeconds < prepareNextResumoLimit && durationSeconds > 0 {
-            print("Ta acabando")
             
-            //prepare for next resumo
             if autoPlayEnabled {
-                playNext()
+                if let _ = self.nextAvitem {
+                    do {
+                        let userIsAllowedToPlay = try self.episodeSelected(episode: self.nextResumo!, episodeLink: nil, episodeType: self.currentEpisodeType , preLoadedAVItem: self.nextAvitem)
+                        
+                        if userIsAllowedToPlay == false {
+                            AppService.util.handleNotAllowed()
+                        }
+                    } catch AppError.urlError {
+                        print("URL ERROR")
+                    } catch {
+                        print("episodeSelected ERROR unknown")
+                    }
+                }
             }
-
         }
     }
     
@@ -344,36 +365,24 @@ class playerManager: NSObject {
     }
     
     func playNext() {
-        var userIsAllowedToPlay: Bool?
-        let resumoEntity = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
-
         do {
             let nextResumo = try getNextResumo(currentResumo: self.currentEpisode!)
-            let theType: episodeType
+//            let theType: episodeType
             let avItem: AVPlayerItem
             let url: URL?
             if self.currentEpisodeType == episodeType.fortyFree {
-                url = URL(string: (resumoEntity?.url_podcast_40_f)!)
-                theType = episodeType.fortyFree
-                avItem = prepareAvItem(episodeLink: url!)
+                url = URL(string: nextResumo.url_podcast_40_f)
             }
             else if self.currentEpisodeType == episodeType.fortyPremium {
-                url = URL(string: (resumoEntity?.url_podcast_40_p)!)
-                theType = episodeType.fortyPremium
-                avItem = prepareAvItem(episodeLink: url!)
+                url = URL(string: nextResumo.url_podcast_40_p)
             }
             else  {
-                url = URL(string: (resumoEntity?.url_podcast_10)!)
-                theType = episodeType.ten
-                avItem = prepareAvItem(episodeLink: url!)
+                url = URL(string: nextResumo.url_podcast_10)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + prepareNextResumoLimit) {
-                userIsAllowedToPlay = self.episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: theType, preLoadedAVItem: avItem)
-                
-                if userIsAllowedToPlay! == false {
-                    AppService.util.handleNotAllowed()
-                }
-            }
+            avItem = prepareAvItem(episodeLink: url!)
+            self.nextAvitem = avItem
+            self.nextResumo = nextResumo
+            
         } catch AppError.noRealmResult {
             print("ERROR noRealmResult")
         } catch {

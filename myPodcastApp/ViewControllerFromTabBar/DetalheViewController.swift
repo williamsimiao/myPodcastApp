@@ -219,10 +219,17 @@ class DetalheViewController: InheritanceViewController {
             self.tenLoading.stopAnimating()
         }
 
-        let userIsAllowedToPlay = playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink, episodeType: mEpisodeType, preLoadedAVItem: nil)
-        
-        if !userIsAllowedToPlay {
-            AppService.util.handleNotAllowed()
+        do {
+            let userIsAllowedToPlay = try playerManager.shared.episodeSelected(episode: selectedResumo!, episodeLink: episodeLink, episodeType: mEpisodeType, preLoadedAVItem: nil)
+            
+            if !userIsAllowedToPlay {
+                AppService.util.handleNotAllowed()
+            }
+            
+        } catch AppError.urlError {
+            print("URL ERROR")
+        } catch {
+            print("episodeSelected ERROR unknown")
         }
     }
     
