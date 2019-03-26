@@ -269,6 +269,7 @@ class playerManager: NSObject {
         try! AppService.realm().write {
             if self.currentEpisodeType == episodeType.ten {
                 resumoEntity?.progressPodcast_10 = progressInseconds
+                resumoEntity?.durationPodcast_10 = durationSeconds
             }
             else if self.currentEpisodeType == episodeType.fortyPremium {
                 resumoEntity?.progressPodcast_40_p = progressInseconds
@@ -311,23 +312,25 @@ class playerManager: NSObject {
     
     func goToCurrentProgress() {
         var currentProgress: Double
-        var isConcluido = 1
+        var duration: Double
         let currentResumo = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
 
         if self.currentEpisodeType == episodeType.ten {
             currentProgress = (currentResumo?.progressPodcast_10)!
-            isConcluido = (currentResumo?.concluido_podcast_10)!
+            duration = (currentResumo?.durationPodcast_10)!
         }
         else if self.currentEpisodeType == episodeType.fortyPremium {
             currentProgress = (currentResumo?.progressPodcast_40_p)!
-            isConcluido = (currentResumo?.concluido_podcast_40)!
+            duration = (currentResumo?.duration_40_p)!
         }
         //FORTY FREE
         else {
             currentProgress = (currentResumo?.progressPodcast_40_f)!
+            duration = (currentResumo?.duration_40_f)!
         }
         //if was concluided the start fro the begining
-        if isConcluido == 1 {
+        let remainingSeconds = duration - currentProgress
+        if remainingSeconds <= 0.0 {
             currentProgress = 0.0
         }
         print("progress:\(currentProgress)")

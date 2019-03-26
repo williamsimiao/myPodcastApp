@@ -44,6 +44,8 @@ class Resumo {
 
     var duration_40_f = 0.0
     var duration_40_p = 0.0
+    var durationPodcast_10 = 0.0
+
 
     init(resumoEntity: ResumoEntity) {
         self.cod_resumo = resumoEntity.cod_resumo
@@ -68,6 +70,7 @@ class Resumo {
         self.descricao = resumoEntity.descricao
         self.duration_40_f = resumoEntity.duration_40_f
         self.duration_40_p = resumoEntity.duration_40_p
+        self.durationPodcast_10 = resumoEntity.durationPodcast_10
         self.pubDate = resumoEntity.pubDate
     }
     
