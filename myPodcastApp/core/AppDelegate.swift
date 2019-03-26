@@ -38,7 +38,7 @@ import FacebookCore
             try AVAudioSession.sharedInstance().setActive(true)
         }
         catch {
-            
+            print("AudioSession ERROR")
         }
 
         return true

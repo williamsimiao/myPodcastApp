@@ -1039,7 +1039,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         <rect key="frame" x="0.0" y="25" width="375" height="422"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMh-JJ-08h">
-                                                <rect key="frame" x="178" y="4" width="19" height="22"/>
+                                                <rect key="frame" x="178" y="4" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="6RI-UV-mlR"/>
+                                                    <constraint firstAttribute="height" constant="44" id="IEH-lf-X8i"/>
+                                                </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="chevron"/>
                                                 <connections>
@@ -1062,7 +1066,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="CMh-JJ-08h" firstAttribute="centerX" secondItem="k2R-DF-ZPB" secondAttribute="centerX" id="CJ3-XO-SAD"/>
+                                            <constraint firstItem="CMh-JJ-08h" firstAttribute="centerX" secondItem="k2R-DF-ZPB" secondAttribute="centerX" constant="12.5" id="CJ3-XO-SAD"/>
                                             <constraint firstAttribute="bottom" secondItem="GOm-di-zJ0" secondAttribute="bottom" constant="88" id="J2X-ZJ-Ciz"/>
                                             <constraint firstItem="CMh-JJ-08h" firstAttribute="top" secondItem="k2R-DF-ZPB" secondAttribute="top" constant="4" id="YeV-bF-9pW"/>
                                             <constraint firstItem="GOm-di-zJ0" firstAttribute="leading" secondItem="k2R-DF-ZPB" secondAttribute="leading" constant="12" id="kI4-21-hVK"/>

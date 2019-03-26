@@ -50,6 +50,47 @@ class playerManager: NSObject {
     
     private override init() {}
     
+    func setupRemoteCommandCenter(enable: Bool) {
+        
+        let remoteCommandCenter = MPRemoteCommandCenter.shared()
+        
+        if enable {
+            //PAUSE
+            remoteCommandCenter.pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                self.player?.play()
+                NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": true])
+
+                return .success
+            }
+            //PLAY
+            remoteCommandCenter.playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                self.player?.play()
+                NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": true])
+
+                return .success
+            }
+            //STOP
+            remoteCommandCenter.stopCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                self.stopPlayer()
+                NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": true])
+                return .success
+            }
+            //TOGGLE_PLAY_PAUSE
+            remoteCommandCenter.togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                //Update your button here for the pause command
+                return .success
+            }
+
+        }
+        else {
+            remoteCommandCenter.pauseCommand.isEnabled = enable
+            remoteCommandCenter.playCommand.isEnabled = enable
+            remoteCommandCenter.stopCommand.isEnabled = enable
+            remoteCommandCenter.togglePlayPauseCommand.isEnabled = enable
+
+        }
+    }
+    
     func addPeriodicTimeObserverToUpdateSlider() {
         // Notify every half second
         let timeScale = CMTimeScale(NSEC_PER_SEC)
@@ -156,7 +197,7 @@ class playerManager: NSObject {
     func prepareAvItem(episodeLink: URL) -> AVPlayerItem {
         return AVPlayerItem(url: episodeLink)
     }
-    
+
     //MARK Mudando de Episodio
     func episodeSelected(episode: Resumo, episodeLink: URL?, episodeType: episodeType, preLoadedAVItem: AVPlayerItem?) throws -> Bool {
         var newEpisodeAVItem: AVPlayerItem
@@ -196,6 +237,10 @@ class playerManager: NSObject {
         self.player!.currentItem!.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(), context: nil)
         addPeriodicTimeObserverToUpdateSlider()
         addTimeObserverToRecordProgress()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        setupRemoteCommandCenter(enable: true)
+
+        
         self.currentEpisode = episode
         self.currentEpisodeType = episodeType
         changeUIForEpisode()
@@ -284,8 +329,11 @@ class playerManager: NSObject {
     }
     
     func stopPlayer() {
+        
         removePeriodicProgressTimeObserver()
         removePeriodicSliderTimeObserver()
+        setupRemoteCommandCenter(enable: false)
+
         
         self.player = nil
     }
@@ -461,4 +509,26 @@ class playerManager: NSObject {
 //    func getNextInQueue() -> [String:AnyObject] {
 //        return self.episodesQueue.removeFirst()
 //    }
+}
+
+extension playerManager {
+    @objc func remoteCommandCenterPauseCommandHandler() {
+        player?.pause()
+    }
+    
+    @objc func remoteCommandCenterPlayCommandHandler() {
+        player?.play()
+    }
+    
+    @objc func remoteCommandCenterStopCommandHandler() {
+        player?.pause()
+    }
+    
+    @objc func remoteCommandCenterPlayPauseCommandHandler() {
+        if player?.rate == 0.0 {
+            player?.play()
+        } else {
+            player?.pause()
+        }
+    }
 }

@@ -630,10 +630,10 @@ open class AppUtil {
     func handleNotAllowed() {
         let alert = UIAlertController(
             title: "Faça o login",
-            message: "Você já consumiu o limite de conteúdo para visitantes. Realize o login para continuar usando o aplicativo",
+            message: "Você já consumiu o limite de conteúdo para visitantes. Entre com uma conta para continuar usando o aplicativo",
             preferredStyle: UIAlertController.Style.alert
         )
-        alert.addAction(UIAlertAction(title: "Login", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "Entrar", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
             AppService.util.logout()
         }))
         
