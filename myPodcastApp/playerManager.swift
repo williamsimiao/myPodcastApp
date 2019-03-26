@@ -139,18 +139,28 @@ class playerManager: NSObject {
             return 0
         }
         return CMTimeGetSeconds(currentTime)
+
+    }
+    
+    func prepareAvItem(episodeLink: URL) -> AVPlayerItem {
+        return AVPlayerItem(url: episodeLink)
     }
     
     //MARK Mudando de Episodio
-    func episodeSelected(episode: Resumo, episodeLink: URL, episodeType: episodeType) -> Bool {
+    func episodeSelected(episode: Resumo, episodeLink: URL, episodeType: episodeType, preLoadedAVItem: AVPlayerItem?) -> Bool {
+        var newEpisodeAVItem: AVPlayerItem
+        
+        if preLoadedAVItem == nil {
+            newEpisodeAVItem = prepareAvItem(episodeLink: episodeLink)
+        }
+        else {
+            newEpisodeAVItem = preLoadedAVItem!
+        }
+        
         
         if !AppService.util.checkIfVisitanteIsAbleToPlay(resumo: episode) {
             return false
         }
-
-        //TODO: the bad side of this design is the avitem is set even if the episode selected is the same as the current
-        let newEpisodeAVItem = AVPlayerItem(url: episodeLink)
-        
         if playerManager.shared.getPlayerIsSet() {
             removePeriodicSliderTimeObserver()
             removePeriodicProgressTimeObserver()
@@ -339,22 +349,30 @@ class playerManager: NSObject {
 
         do {
             let nextResumo = try getNextResumo(currentResumo: self.currentEpisode!)
-            
+            let theType: episodeType
+            let avItem: AVPlayerItem
+            let url: URL?
             if self.currentEpisodeType == episodeType.fortyFree {
-                let url = URL(string: (resumoEntity?.url_podcast_40_f)!)
-                userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyFree)
+                url = URL(string: (resumoEntity?.url_podcast_40_f)!)
+                theType = episodeType.fortyFree
+                avItem = prepareAvItem(episodeLink: url!)
             }
             else if self.currentEpisodeType == episodeType.fortyPremium {
-                let url = URL(string: (resumoEntity?.url_podcast_40_p)!)
-                userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.fortyPremium)
+                url = URL(string: (resumoEntity?.url_podcast_40_p)!)
+                theType = episodeType.fortyPremium
+                avItem = prepareAvItem(episodeLink: url!)
             }
             else  {
-                let url = URL(string: (resumoEntity?.url_podcast_10)!)
-                userIsAllowedToPlay = episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: episodeType.ten)
+                url = URL(string: (resumoEntity?.url_podcast_10)!)
+                theType = episodeType.ten
+                avItem = prepareAvItem(episodeLink: url!)
             }
-            
-            if userIsAllowedToPlay! == false {
-                AppService.util.handleNotAllowed()
+            DispatchQueue.main.asyncAfter(deadline: .now() + prepareNextResumoLimit) {
+                userIsAllowedToPlay = self.episodeSelected(episode: nextResumo, episodeLink: url!, episodeType: theType, preLoadedAVItem: avItem)
+                
+                if userIsAllowedToPlay! == false {
+                    AppService.util.handleNotAllowed()
+                }
             }
         } catch AppError.noRealmResult {
             print("ERROR noRealmResult")
