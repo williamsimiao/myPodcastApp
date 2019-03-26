@@ -21,10 +21,10 @@ class playerManager: NSObject {
     var miniContainerFrameHight: CGFloat?
     
     var player : AVPlayer?
-    var autoPlayNext = true
+    var autoPlayEnabled = true
     var isSet = false
     let skip_time = 10
-    let concluidoLimit = 0.0
+    let playbackEndingLimit = 15.0
     let interfaceUpdateInterval = 0.5
     let positionCheckerInterval = 1.0
     var episodesQueue = [[String:AnyObject]]()
@@ -179,8 +179,8 @@ class playerManager: NSObject {
         self.currentEpisode = episode
         self.currentEpisodeType = episodeType
         changeUIForEpisode()
-        goToCurrentProgress()
         playPause(shouldPlay: true)
+        goToCurrentProgress()
         return true
     }
     
@@ -286,43 +286,52 @@ class playerManager: NSObject {
         if remainingSeconds <= 0.0 {
             playPause(shouldPlay: false)
             print("Acabou")
+            
+            try! AppService.realm().write {
+                if self.currentEpisodeType == episodeType.ten {
+                    resumoEntity?.concluido_podcast_10 = 1
+                }
+                    //FORTY FREE or PREMIUM
+                else {
+                    resumoEntity?.concluido_podcast_40 = 1
+                }
+            }
         }
         
-//        if remainingSeconds < concluidoLimit && durationSeconds > 0 {
-//            print("Ta acabando")
-//            try! AppService.realm().write {
-//                if self.currentEpisodeType == episodeType.ten {
-//                    resumoEntity?.concluido_podcast_10 = 1
-//                }
-//                //FORTY FREE or PREMIUM
-//                else {
-//                    resumoEntity?.concluido_podcast_40 = 1
-//                }
-//            }
-//            //AutoPlay
-//            if autoPlayNext {
-//                playNext()
-//            }
-//            
-//        }
+        if remainingSeconds < playbackEndingLimit && durationSeconds > 0 {
+            print("Ta acabando")
+            
+            //prepare for next resumo
+            if autoPlayEnabled {
+                playNext()
+            }
+
+        }
     }
     
     func goToCurrentProgress() {
+        var currentProgress: Double
+        var isConcluido = 1
         let currentResumo = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", currentEpisode?.cod_resumo).first
-        
+
         if self.currentEpisodeType == episodeType.ten {
-            let currentProgress = currentResumo?.progressPodcast_10
-            jumpTo(seconds: currentProgress!)
+            currentProgress = (currentResumo?.progressPodcast_10)!
+            isConcluido = (currentResumo?.concluido_podcast_10)!
         }
         else if self.currentEpisodeType == episodeType.fortyPremium {
-            let currentProgress = currentResumo?.progressPodcast_40_p
-            jumpTo(seconds: currentProgress!)
+            currentProgress = (currentResumo?.progressPodcast_40_p)!
+            isConcluido = (currentResumo?.concluido_podcast_40)!
         }
         //FORTY FREE
         else {
-            let currentProgress = currentResumo?.progressPodcast_40_f
-            jumpTo(seconds: currentProgress!)
+            currentProgress = (currentResumo?.progressPodcast_40_f)!
         }
+        //if was concluided the start fro the begining
+        if isConcluido == 1 {
+            currentProgress = 0.0
+        }
+        print("progress:\(currentProgress)")
+        jumpTo(seconds: currentProgress)
     }
     
     func playNext() {
