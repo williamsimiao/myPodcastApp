@@ -77,6 +77,8 @@ class PlayerCardViewController: UIViewController {
         coverImageContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         NotificationCenter.default.addObserver(self, selector: #selector(onEpisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerShouldClose(_:)), name: .playerShouldClose, object: playerManager.shared)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,8 +117,6 @@ class PlayerCardViewController: UIViewController {
             destination.currentPlayButtonState = self.currentPlayButtonState
         }
     }
-    
-    
 }
 
 // MARK: - IBActions
@@ -320,6 +320,10 @@ extension PlayerCardViewController {
 extension PlayerCardViewController  {
     @objc func onEpisodeDidChange(_ notification: Notification) {
         Network.setCoverImgWithPlaceHolder(imageUrl: playerManager.shared.getEpisodeCoverImgUrl(), theImage: self.coverArtImage)
+    }
+    
+    @objc func onPlayerShouldClose(_ notification: Notification) {
+        self.dismissAction(self)
     }
 }
 

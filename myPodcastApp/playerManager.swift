@@ -11,6 +11,15 @@ import MediaPlayer
 import UIKit
 import RealmSwift
 
+extension Notification.Name {
+    static let playingStateDidChange = Notification.Name("playingStateDidChange")
+    static let episodeDidChange = Notification.Name("episodeDidChange")
+    static let playerTimeDidProgress = Notification.Name("playerTimeDidProgress")
+    static let fullPlayerShouldAppear = Notification.Name("fullPlayerShouldAppear")
+    static let playerIsSetUp = Notification.Name("playerIsSetUp")
+    static let playerShouldClose = Notification.Name("playerShouldClose")
+}
+
 protocol episodeDataSourceProtocol {
     //TODO colocar uma classe da model
     func episodeDataChangedTo(imageURL:String, title:String)
@@ -264,7 +273,6 @@ class playerManager: NSObject {
     func stopPlayer() {
         removePeriodicProgressTimeObserver()
         removePeriodicSliderTimeObserver()
-        recordCurrentProgress()
         
         self.player = nil
     }
@@ -318,7 +326,7 @@ class playerManager: NSObject {
                     resumoEntity?.concluido_podcast_40 = 1
                 }
             }
-            
+            var shouldClosePlayer = false
             if autoPlayEnabled {
                 if let _ = self.nextAvitem {
                     do {
@@ -335,6 +343,16 @@ class playerManager: NSObject {
                         print("episodeSelected ERROR unknown")
                     }
                 }
+                //Resumo is over and there is no up next
+                else {
+                    shouldClosePlayer = true
+                }
+            }
+            else {
+                shouldClosePlayer = true
+            }
+            if shouldClosePlayer {
+                NotificationCenter.default.post(name: .playerShouldClose, object: self, userInfo: nil)
             }
         }
     }
