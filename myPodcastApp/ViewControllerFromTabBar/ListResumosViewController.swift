@@ -60,7 +60,7 @@ extension ListResumosViewController: UITableViewDelegate, UITableViewDataSource 
         //When return from detailsVC
         cell.goBackToOriginalColors()
         
-        cell.coverImg.image = UIImage(named: "sem_imagem")!
+        cell.coverImg.image = UIImage(named: "cover_placeholder")!
         if AppService.util.isNotNull(coverUrl as AnyObject?) {
             AppService.util.load_image_resumo(coverUrl, cod_resumo: cod_resumo, imageview: cell.coverImg)
         }

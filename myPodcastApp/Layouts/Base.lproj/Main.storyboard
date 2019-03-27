@@ -687,8 +687,18 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <constraint firstAttribute="height" constant="1" id="Oo0-3C-8EL"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-ug-Rph" userLabel="sugerir">
+                                <rect key="frame" x="8" y="387" width="264" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="dJh-LC-z9X"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Sugerir livro" image="comment">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-G8-iaV">
-                                <rect key="frame" x="8" y="387" width="170" height="24"/>
+                                <rect key="frame" x="8" y="428" width="170" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="DZD-QD-qPD"/>
                                 </constraints>
@@ -700,24 +710,35 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <action selector="clickLogout:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="HFo-d7-azD"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvR-7h-sZ2" userLabel="divisor4">
+                                <rect key="frame" x="16" y="419" width="343" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="0XS-Yk-dWz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Yae-ug-Rph" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="1Db-dq-dCy"/>
+                            <constraint firstAttribute="trailing" secondItem="fvR-7h-sZ2" secondAttribute="trailing" constant="16" id="1s9-Io-D3U"/>
                             <constraint firstItem="hdq-9x-28p" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" id="2ck-KI-q1l"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="leading" secondItem="xfT-9x-yGJ" secondAttribute="leading" constant="-16" id="38e-bE-UbF"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="Yae-ug-Rph" secondAttribute="trailing" constant="103" id="4VC-kz-aQ2"/>
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="top" secondItem="aEZ-dC-ETE" secondAttribute="bottom" constant="10" id="4XR-We-Zub"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6VK-A9-ZT4" secondAttribute="trailing" symbolic="YES" id="Ayg-Dd-upC"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="GQf-W5-h6f" secondAttribute="trailing" constant="20" id="B2d-VS-tzA"/>
                             <constraint firstItem="Zoj-ds-a8d" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="BBS-fJ-oPI"/>
+                            <constraint firstItem="fvR-7h-sZ2" firstAttribute="top" secondItem="Yae-ug-Rph" secondAttribute="bottom" constant="8" id="DQ3-9X-sCS"/>
                             <constraint firstItem="kAW-eI-Zkp" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="EUs-hG-bw8"/>
                             <constraint firstItem="aEZ-dC-ETE" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="Hyp-jt-cMT"/>
+                            <constraint firstItem="hbc-G8-iaV" firstAttribute="top" secondItem="fvR-7h-sZ2" secondAttribute="bottom" constant="8" id="KBz-qm-NLv"/>
                             <constraint firstItem="xfT-9x-yGJ" firstAttribute="top" secondItem="WWt-QP-4qx" secondAttribute="bottom" constant="8" id="NGM-A3-1eN"/>
                             <constraint firstItem="6VK-A9-ZT4" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="NPP-qf-B73"/>
                             <constraint firstItem="obc-0s-96k" firstAttribute="centerX" secondItem="PUH-Ue-gV7" secondAttribute="centerX" id="Rx7-ff-7in"/>
                             <constraint firstItem="hdq-9x-28p" firstAttribute="top" secondItem="VbC-eZ-WJl" secondAttribute="bottom" constant="8" id="Sr9-HS-uvQ"/>
                             <constraint firstItem="6VK-A9-ZT4" firstAttribute="top" secondItem="xfT-9x-yGJ" secondAttribute="bottom" constant="8" id="VVm-m9-Fk4"/>
                             <constraint firstItem="WWt-QP-4qx" firstAttribute="top" secondItem="hdq-9x-28p" secondAttribute="bottom" constant="16" id="W64-ZL-n0t"/>
-                            <constraint firstItem="hbc-G8-iaV" firstAttribute="top" secondItem="Zoj-ds-a8d" secondAttribute="bottom" constant="8" id="Xg9-5U-tOB"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="VbC-eZ-WJl" secondAttribute="trailing" constant="20" id="YaO-E8-jJq"/>
                             <constraint firstItem="hbc-G8-iaV" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="Ymn-5D-WFT"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="hdq-9x-28p" secondAttribute="trailing" id="a5Z-jh-P7C"/>
@@ -737,6 +758,8 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                             <constraint firstItem="TI0-fc-rnA" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="lgF-Mz-UF5"/>
                             <constraint firstItem="Zoj-ds-a8d" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="16" id="lqs-ag-3cO"/>
                             <constraint firstItem="TI0-fc-rnA" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="16" id="myw-Yf-CX6"/>
+                            <constraint firstItem="fvR-7h-sZ2" firstAttribute="leading" secondItem="PUH-Ue-gV7" secondAttribute="leading" constant="16" id="qyD-EH-26G"/>
+                            <constraint firstItem="Yae-ug-Rph" firstAttribute="top" secondItem="Zoj-ds-a8d" secondAttribute="bottom" constant="8" id="rWL-z5-6We"/>
                             <constraint firstItem="Zoj-ds-a8d" firstAttribute="top" secondItem="kAW-eI-Zkp" secondAttribute="bottom" constant="8" id="xvN-Rh-PZv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gT2-lJ-n9a"/>
@@ -831,8 +854,47 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="748"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ola-30-4rl">
-                                                <rect key="frame" x="20" y="160" width="335" height="230"/>
+                                                <rect key="frame" x="20" y="160" width="335" height="262"/>
                                                 <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LmK-9i-DOR">
+                                                        <rect key="frame" x="16" y="54" width="303" height="136"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U87-9A-10s" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="303" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Autor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-tD-sat" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="48" width="303" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comentário (opcional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3t-4v-lEq" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="96" width="303" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="136" id="2zv-fA-HZ0"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpl-sS-sBH">
+                                                        <rect key="frame" x="16" y="214" width="303" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="RE1-Xf-lTP"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Sugerir">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="clickRecuperar:" destination="o0g-nU-naZ" eventType="touchUpInside" id="lDe-7P-aww"/>
+                                                            <action selector="clickSugerir:" destination="4dx-PL-jWP" eventType="touchUpInside" id="u6a-qL-RBQ"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yc6-WE-7dA" userLabel="close">
                                                         <rect key="frame" x="297" y="16" width="22" height="22"/>
                                                         <constraints>
@@ -844,61 +906,18 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                             <action selector="clickClose:" destination="o0g-nU-naZ" eventType="touchUpInside" id="bbK-Fd-Q4d"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KD5-87-EbD">
-                                                        <rect key="frame" x="0.0" y="54" width="335" height="0.0"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U87-9A-10s" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="62" width="303" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="8NQ-Wx-9Ci"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpl-sS-sBH">
-                                                        <rect key="frame" x="16" y="180" width="303" height="40"/>
-                                                        <state key="normal" title="Sugerir">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="clickRecuperar:" destination="o0g-nU-naZ" eventType="touchUpInside" id="lDe-7P-aww"/>
-                                                            <action selector="clickSugerir:" destination="4dx-PL-jWP" eventType="touchUpInside" id="u6a-qL-RBQ"/>
-                                                        </connections>
-                                                    </button>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Autor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-tD-sat" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="110" width="303" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="9CL-ZJ-Ivr"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="yc6-WE-7dA" firstAttribute="top" secondItem="ola-30-4rl" secondAttribute="top" constant="16" id="3SU-hx-8dn"/>
-                                                    <constraint firstItem="0ge-tD-sat" firstAttribute="leading" secondItem="ola-30-4rl" secondAttribute="leading" constant="16" id="78I-W9-HfU"/>
-                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="top" secondItem="0ge-tD-sat" secondAttribute="bottom" constant="30" id="8Eg-cV-itr"/>
-                                                    <constraint firstItem="U87-9A-10s" firstAttribute="centerX" secondItem="ola-30-4rl" secondAttribute="centerX" id="GjI-6M-5Zb"/>
-                                                    <constraint firstItem="KD5-87-EbD" firstAttribute="top" secondItem="yc6-WE-7dA" secondAttribute="bottom" constant="16" id="HEm-GU-Bvd"/>
-                                                    <constraint firstItem="U87-9A-10s" firstAttribute="top" secondItem="KD5-87-EbD" secondAttribute="bottom" constant="8" id="MB4-MF-fSo"/>
-                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="centerX" secondItem="ola-30-4rl" secondAttribute="centerX" id="Miy-YG-n30"/>
-                                                    <constraint firstAttribute="height" constant="230" id="Nza-ge-MYh"/>
-                                                    <constraint firstItem="0ge-tD-sat" firstAttribute="top" secondItem="U87-9A-10s" secondAttribute="bottom" constant="8" id="a7Q-Ri-eCW"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KD5-87-EbD" secondAttribute="trailing" id="exw-Fg-yV2"/>
-                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="height" secondItem="U87-9A-10s" secondAttribute="height" id="mdp-Yk-r8j"/>
-                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="width" secondItem="U87-9A-10s" secondAttribute="width" id="qY9-l4-Loy"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="U87-9A-10s" secondAttribute="trailing" id="r9K-dW-kiS"/>
-                                                    <constraint firstItem="KD5-87-EbD" firstAttribute="centerX" secondItem="ola-30-4rl" secondAttribute="centerX" id="uym-GY-F1b"/>
+                                                    <constraint firstItem="LmK-9i-DOR" firstAttribute="top" secondItem="yc6-WE-7dA" secondAttribute="bottom" constant="16" id="AQN-Fd-38v"/>
+                                                    <constraint firstAttribute="height" constant="262" id="Nza-ge-MYh"/>
+                                                    <constraint firstItem="LmK-9i-DOR" firstAttribute="leading" secondItem="ola-30-4rl" secondAttribute="leading" constant="16" id="S4K-vv-So4"/>
+                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="top" secondItem="LmK-9i-DOR" secondAttribute="bottom" constant="24" id="Uzg-pU-S9l"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LmK-9i-DOR" secondAttribute="trailing" constant="16" id="ZfG-6E-GOb"/>
                                                     <constraint firstAttribute="trailing" secondItem="yc6-WE-7dA" secondAttribute="trailing" constant="16" id="vCq-Iv-C90"/>
-                                                    <constraint firstItem="U87-9A-10s" firstAttribute="leading" secondItem="ola-30-4rl" secondAttribute="leading" constant="16" id="wh9-06-jqP"/>
-                                                    <constraint firstItem="KD5-87-EbD" firstAttribute="leading" secondItem="ola-30-4rl" secondAttribute="leading" id="xTw-Gv-Wng"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0ge-tD-sat" secondAttribute="trailing" constant="16" id="zJe-MW-DIx"/>
+                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="centerX" secondItem="ola-30-4rl" secondAttribute="centerX" id="z3J-ad-11h"/>
+                                                    <constraint firstItem="Jpl-sS-sBH" firstAttribute="width" secondItem="LmK-9i-DOR" secondAttribute="width" id="zVa-Ck-aXp"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -934,6 +953,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     <connections>
                         <outlet property="autorEdt" destination="0ge-tD-sat" id="YbM-Q7-Sif"/>
                         <outlet property="blackBox" destination="ola-30-4rl" id="Ob7-Y1-Gkg"/>
+                        <outlet property="comentarioEdt" destination="h3t-4v-lEq" id="Lv5-sO-cuB"/>
                         <outlet property="constraintContentHeight" destination="j2d-QY-i4f" id="W6Q-Mp-vnQ"/>
                         <outlet property="contentView" destination="EeX-0Q-PMB" id="93O-sB-zEW"/>
                         <outlet property="scrollView" destination="yjg-UX-RUz" id="KcZ-4b-ggj"/>
@@ -1692,7 +1712,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ih5-1P-tsv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Entrar como visitante">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2973,6 +2993,7 @@ concluir essa leitura!</string>
         <image name="checkWhite" width="28.333333969116211" height="19.666666030883789"/>
         <image name="chevron" width="19" height="11.333333015441895"/>
         <image name="close" width="20" height="20"/>
+        <image name="comment" width="24" height="24"/>
         <image name="downloadBlack" width="21.333333969116211" height="21.666666030883789"/>
         <image name="downloadWhite" width="21.333333969116211" height="21.666666030883789"/>
         <image name="exit_white" width="24" height="24"/>

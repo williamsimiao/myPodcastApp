@@ -13,6 +13,7 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var comentarioEdt: LoginTextField!
     @IBOutlet weak var tituloEdt: LoginTextField!
     @IBOutlet weak var autorEdt: LoginTextField!
     @IBOutlet weak var sugerirBtn: UIButton!

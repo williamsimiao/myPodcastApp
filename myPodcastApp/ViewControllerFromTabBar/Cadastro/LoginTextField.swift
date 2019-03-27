@@ -20,7 +20,7 @@ class LoginTextField: UITextField {
         self.backgroundColor = .white
         self.textColor = .black
         self.tintColor = .black
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+//        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
