@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import UICircularProgressRing
 
 protocol CellWithProgressDelegate {
     func clickDownload(theResumo: Resumo)
     func clickFavorito(theResumo: Resumo)
 }
 
-class CellWithProgress: UITableViewCell {
+class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     
+    @IBOutlet weak var downloadProgress: UICircularProgressRing!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var coverImg: UIImageView!
@@ -28,6 +30,17 @@ class CellWithProgress: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        downloadProgress.delegate = self
+        downloadProgress.maxValue = 100
+        downloadProgress.value = 0
+        downloadProgress.innerRingWidth = 2
+        downloadProgress.innerRingSpacing = 0
+        downloadProgress.innerRingColor = ColorWeel().orangeColor
+        downloadProgress.outerRingColor = .gray
+        downloadProgress.outerRingWidth = 2
+        downloadProgress.shouldShowValueText = false
+        downloadProgress.isHidden = true
         
         coverImg.layer.cornerRadius = 10
         coverImg.clipsToBounds = true
