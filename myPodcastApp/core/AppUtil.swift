@@ -458,7 +458,7 @@ open class AppUtil {
         return ""
     }
     
-    func downloadAudio(delegate: UIViewController, urlString: String, cod_resumo: String) {
+    func downloadAudio(urlString: String, cod_resumo: String) {
         print(urlString)
         if let audioUrl = URL(string: urlString) {
             

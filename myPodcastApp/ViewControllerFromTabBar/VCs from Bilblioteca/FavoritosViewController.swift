@@ -169,7 +169,9 @@ extension FavoritosViewController: CellWithProgressDelegate {
         }
         else {
             let resumoURL = URL(string: episodeUrlString)!
-            AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
+            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+
+//            AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
             self.view.makeToast("Download em andamento")
         }
     }
