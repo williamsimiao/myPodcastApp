@@ -1,5 +1,5 @@
 //
-//  InicioVC+URLSessionDelegates.swift
+//  BibliotecaVC+URLSessionDelegate.swift
 //  myPodcastApp
 //
 //  Created by William on 27/03/19.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension InicioViewController: URLSessionDownloadDelegate {
+extension BibliotecaViewController: URLSessionDownloadDelegate {
     // Stores downloaded file
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
@@ -31,7 +31,7 @@ extension InicioViewController: URLSessionDownloadDelegate {
                 print("Resumo not found")
                 return
             }
-            try! self.realm.write {
+            try! AppService.realm().write {
                 resumoEntity.downloaded = 1
             }
         } catch AppError.writeError {
@@ -72,7 +72,7 @@ extension InicioViewController: URLSessionDownloadDelegate {
     }
 }
 
-extension InicioViewController: URLSessionDelegate {
+extension BibliotecaViewController: URLSessionDelegate {
     // Standard background session handler
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
         DispatchQueue.main.async {
