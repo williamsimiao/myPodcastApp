@@ -41,6 +41,7 @@ PODS:
   - SnapKit (4.0.1)
   - SwiftyJSON (4.2.0)
   - Toast-Swift (4.0.1)
+  - UICircularProgressRing (4.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - RealmSwift
   - SwiftyJSON (~> 4.0)
   - Toast-Swift (~> 4.0.0)
+  - UICircularProgressRing
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -75,6 +77,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftyJSON
     - Toast-Swift
+    - UICircularProgressRing
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -94,7 +97,8 @@ SPEC CHECKSUMS:
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
+  UICircularProgressRing: 5a32c01f54474571b1e66e8fa050c0f83d6d981b
 
-PODFILE CHECKSUM: 533e2f0a7084ae562a02b166a9d055018fffbd1f
+PODFILE CHECKSUM: c9e772b47a5d8a70a0ed01822c9925b4dd7356d7
 
 COCOAPODS: 1.5.3

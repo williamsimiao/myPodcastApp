@@ -10,9 +10,9 @@ target 'myPodcastApp' do
     pod 'FacebookShare'
     pod 'ImageSlideshow', '~> 1.6'
     pod 'HSPopupMenu'
-    
     pod 'ReachabilitySwift'
     pod 'Toast-Swift', '~> 4.0.0'
     pod 'Realm', '~> 2.8.1'
     pod 'RealmSwift'
+    pod 'UICircularProgressRing'
 end
