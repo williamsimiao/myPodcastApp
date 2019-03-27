@@ -1601,49 +1601,20 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                     <constraint firstAttribute="width" constant="200" id="deq-jb-3JV"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-MM-Cbh">
-                                <rect key="frame" x="37.666666666666657" y="264" width="300" height="45"/>
-                                <color key="backgroundColor" red="0.2784313725" green="0.34901960780000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="2mh-y9-55O"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Entrar com o Facebook" image="facebookLogo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickFacebook:" destination="PIR-rI-FoS" eventType="touchUpInside" id="ow2-Ol-aHH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="center" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5me-5z-Fud">
-                                <rect key="frame" x="37.666666666666657" y="317" width="300" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Entrar com o Google" image="googleLogo">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Jf-eLx" userLabel="OUView">
-                                <rect key="frame" x="37.666666666666657" y="370" width="300" height="31"/>
+                                <rect key="frame" x="10.333333333333343" y="386" width="354.33333333333326" height="31"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-pc-MyG">
-                                        <rect key="frame" x="8" y="8" width="128" height="15"/>
+                                        <rect key="frame" x="8" y="8" width="155" height="15"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-JG-Cgb">
-                                        <rect key="frame" x="163.66666666666669" y="8" width="128.33333333333331" height="15"/>
+                                        <rect key="frame" x="191.33333333333331" y="8" width="155" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="ABm-T3-vji"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ou" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4z-c3-ZgQ">
-                                        <rect key="frame" x="139.33333333333334" y="5" width="21" height="21"/>
+                                        <rect key="frame" x="166.66666666666666" y="5" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="AHp-nY-PHP"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="csU-Uv-UJw"/>
@@ -1669,7 +1640,10 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-cM-6Su" userLabel="emailButton">
-                                <rect key="frame" x="37.666666666666657" y="409" width="300" height="45"/>
+                                <rect key="frame" x="37.666666666666657" y="425" width="300" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="7gw-gZ-UfD"/>
+                                </constraints>
                                 <state key="normal" title="Entrar com email">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1678,10 +1652,10 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-Pz-t3e" userLabel="criarContaView">
-                                <rect key="frame" x="97.666666666666686" y="462" width="180" height="30"/>
+                                <rect key="frame" x="97.666666666666686" y="478" width="180" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCP-Al-dZY">
-                                        <rect key="frame" x="132" y="0.0" width="44" height="30"/>
+                                        <rect key="frame" x="131.66666666666669" y="0.0" width="44" height="30"/>
                                         <state key="normal" title="CRIAR">
                                             <color key="titleColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1690,7 +1664,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Não tem conta?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hB-ib-KcV">
-                                        <rect key="frame" x="0.0" y="4.6666666666666856" width="121" height="21"/>
+                                        <rect key="frame" x="0.0" y="5" width="120.66666666666667" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1712,40 +1686,73 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="TI0-W9-T6g">
                                 <rect key="frame" x="177.66666666666666" y="234" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJI-kv-Peb" userLabel="emailButton">
-                                <rect key="frame" x="114.66666666666669" y="508" width="146" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJI-kv-Peb" userLabel="visitanteButton">
+                                <rect key="frame" x="37.666666666666657" y="264" width="300" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ih5-1P-tsv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Entrar como visitante">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="clickEntrarVisitante:" destination="PIR-rI-FoS" eventType="touchUpInside" id="uKA-Of-qC0"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ndH-Yf-GmT">
+                                <rect key="frame" x="37.666666666666657" y="325" width="300" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dB-MM-Cbh">
+                                        <rect key="frame" x="0.0" y="0.0" width="142" height="45"/>
+                                        <color key="backgroundColor" red="0.2784313725" green="0.34901960780000002" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="facebookLogo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickFacebook:" destination="PIR-rI-FoS" eventType="touchUpInside" id="ow2-Ol-aHH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5me-5z-Fud">
+                                        <rect key="frame" x="158" y="0.0" width="142" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="googleLogo">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0ZP-Tk-uqa"/>
+                                    <constraint firstItem="5me-5z-Fud" firstAttribute="width" secondItem="6dB-MM-Cbh" secondAttribute="width" id="1Gm-IX-5Bm"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="8dY-cM-6Su" firstAttribute="width" secondItem="5me-5z-Fud" secondAttribute="width" id="09c-f5-42v"/>
-                            <constraint firstItem="5me-5z-Fud" firstAttribute="height" secondItem="6dB-MM-Cbh" secondAttribute="height" id="1Zc-X0-8hD"/>
                             <constraint firstItem="PRa-Pz-t3e" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="4aX-OK-HPl"/>
-                            <constraint firstItem="6dB-MM-Cbh" firstAttribute="width" secondItem="T1o-kt-84b" secondAttribute="width" multiplier="0.8" id="5Vo-iL-njI"/>
-                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="width" secondItem="5me-5z-Fud" secondAttribute="width" id="5hf-Yh-iQ2"/>
                             <constraint firstItem="PRa-Pz-t3e" firstAttribute="top" secondItem="8dY-cM-6Su" secondAttribute="bottom" constant="8" id="7kc-B6-gpN"/>
-                            <constraint firstItem="5me-5z-Fud" firstAttribute="width" secondItem="6dB-MM-Cbh" secondAttribute="width" id="7qq-V4-AU5"/>
                             <constraint firstItem="rJF-n6-0Nq" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="8kU-Jd-Km3"/>
                             <constraint firstItem="TI0-W9-T6g" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="Egj-Rj-wzi"/>
-                            <constraint firstItem="6dB-MM-Cbh" firstAttribute="top" secondItem="rJF-n6-0Nq" secondAttribute="bottom" id="MwM-5h-qdp"/>
+                            <constraint firstItem="RJI-kv-Peb" firstAttribute="width" secondItem="RJI-il-pfb" secondAttribute="width" multiplier="0.8" id="M5E-Aj-mrp"/>
+                            <constraint firstItem="ndH-Yf-GmT" firstAttribute="width" secondItem="RJI-il-pfb" secondAttribute="width" multiplier="0.8" id="SEX-lb-O4w"/>
                             <constraint firstItem="rJF-n6-0Nq" firstAttribute="top" secondItem="T1o-kt-84b" secondAttribute="top" constant="20" id="SSK-6v-o1R"/>
-                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="top" secondItem="5me-5z-Fud" secondAttribute="bottom" constant="8" id="VSs-fq-26Z"/>
-                            <constraint firstItem="8dY-cM-6Su" firstAttribute="height" secondItem="5me-5z-Fud" secondAttribute="height" id="WGk-02-Osq"/>
-                            <constraint firstItem="RJI-kv-Peb" firstAttribute="top" secondItem="PRa-Pz-t3e" secondAttribute="bottom" constant="16" id="Xbn-Uq-6Lb"/>
-                            <constraint firstItem="6dB-MM-Cbh" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="afe-Ib-aP9"/>
+                            <constraint firstItem="lXJ-Jf-eLx" firstAttribute="top" secondItem="ndH-Yf-GmT" secondAttribute="bottom" constant="16" id="TNT-OC-CEL"/>
+                            <constraint firstItem="RJI-kv-Peb" firstAttribute="top" secondItem="rJF-n6-0Nq" secondAttribute="bottom" id="YxT-kn-AXw"/>
                             <constraint firstItem="TI0-W9-T6g" firstAttribute="bottom" secondItem="rJF-n6-0Nq" secondAttribute="bottom" constant="-10" id="aoi-Yv-SoX"/>
+                            <constraint firstItem="8dY-cM-6Su" firstAttribute="width" secondItem="RJI-il-pfb" secondAttribute="width" multiplier="0.8" id="bri-nk-vLm"/>
                             <constraint firstItem="lXJ-Jf-eLx" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="ec0-b9-qo6"/>
+                            <constraint firstItem="ndH-Yf-GmT" firstAttribute="top" secondItem="RJI-kv-Peb" secondAttribute="bottom" constant="16" id="fIb-YW-jD8"/>
                             <constraint firstItem="8dY-cM-6Su" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="jAl-Dl-E2Q"/>
-                            <constraint firstItem="5me-5z-Fud" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="l1a-mj-MLV"/>
                             <constraint firstItem="8dY-cM-6Su" firstAttribute="top" secondItem="lXJ-Jf-eLx" secondAttribute="bottom" constant="8" id="pqq-TO-GeC"/>
                             <constraint firstItem="RJI-kv-Peb" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="tbx-Xg-hBd"/>
-                            <constraint firstItem="5me-5z-Fud" firstAttribute="top" secondItem="6dB-MM-Cbh" secondAttribute="bottom" constant="8" id="uNx-LQ-bzd"/>
+                            <constraint firstItem="ndH-Yf-GmT" firstAttribute="centerX" secondItem="RJI-il-pfb" secondAttribute="centerX" id="yrO-e4-Ywf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T1o-kt-84b"/>
                     </view>
@@ -1755,6 +1762,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <outlet property="btnFacebook" destination="6dB-MM-Cbh" id="7WW-d9-FSu"/>
                         <outlet property="btnGoogle" destination="5me-5z-Fud" id="Ydn-FY-LmR"/>
                         <outlet property="loading" destination="TI0-W9-T6g" id="hEk-jj-DGb"/>
+                        <outlet property="visitanteBtn" destination="RJI-kv-Peb" id="cA5-Ja-UWF"/>
                         <segue destination="lzb-Rf-PBa" kind="presentation" identifier="goto_login" id="nvL-Xg-I1S"/>
                         <segue destination="KbZ-Y2-w5F" kind="show" identifier="goto_base" id="BEu-Ua-mz1"/>
                         <segue destination="lNs-Fr-eWm" kind="presentation" identifier="goto_cadastro" id="B1u-DA-Ebh"/>
@@ -1762,7 +1770,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkH-Ob-XkW" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2124.375" y="649.64788732394368"/>
+            <point key="canvasLocation" x="2124" y="649.50738916256159"/>
         </scene>
         <!--Início-->
         <scene sceneID="dZ9-2h-lea">
@@ -2994,7 +3002,7 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YRk-1p-Ij2"/>
+        <segue reference="BEu-Ua-mz1"/>
         <segue reference="FLk-k2-7c4"/>
     </inferredMetricsTieBreakers>
 </document>

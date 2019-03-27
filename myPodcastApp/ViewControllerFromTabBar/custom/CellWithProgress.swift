@@ -73,11 +73,11 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         self.delegate?.clickFavorito(theResumo: self.resumo!)
     }
     
-    func changeDownalodStateToPaused() {
+    func changeDownlodStateToPaused() {
         downloadBtn.setImage(UIImage(named: "miniPlay")!, for: .normal)
     }
     
-    func changeDownalodStateToInProgress() {
+    func changeDownlodStateToInProgress() {
         downloadBtn.setImage(UIImage(named: "miniPause")!, for: .normal)
     }
     

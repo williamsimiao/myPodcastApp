@@ -17,6 +17,7 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet var loading: UIActivityIndicatorView!
     @IBOutlet weak var btnGoogle: UIButton!
     @IBOutlet weak var btnCriar: UIButton!
+    @IBOutlet weak var visitanteBtn: UIButton!
     
     var id_facebook:String!
     var name:String!
@@ -49,6 +50,12 @@ class PrimeiraViewController: UIViewController, FBSDKLoginButtonDelegate {
         let radius = CGFloat(22.5)
         btnFacebook.layer.cornerRadius = radius
         btnFacebook.clipsToBounds = true
+        
+        visitanteBtn.layer.cornerRadius = radius
+        visitanteBtn.clipsToBounds = true
+        visitanteBtn.layer.borderWidth = 1
+        visitanteBtn.layer.borderColor = ColorWeel().orangeColor.cgColor
+
         
         btnEntrar.layer.cornerRadius = radius
         btnEntrar.clipsToBounds = true
