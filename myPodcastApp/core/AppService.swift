@@ -14,6 +14,7 @@ public struct AppService {
     static let server   = AppServer()
     //static let user     = AppUser()
     static let util     = AppUtil()
+    static let downloadService = DownloadService()
     //static let template = AppTemplate()
     
     static func realm() -> Realm {

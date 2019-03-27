@@ -18,4 +18,5 @@ enum AppError: Error {
     case dictionaryIncomplete
     //
     case noRealmResult
+    case writeError
 }

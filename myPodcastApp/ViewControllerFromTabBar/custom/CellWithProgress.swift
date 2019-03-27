@@ -27,12 +27,12 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     
     var resumo: Resumo?
     var delegate: CellWithProgressDelegate?
-
+    var downloadBtnState: playButtonStates?
     override func awakeFromNib() {
         super.awakeFromNib()
         
         downloadProgress.delegate = self
-        downloadProgress.maxValue = 100
+        downloadProgress.maxValue = 1
         downloadProgress.value = 0
         downloadProgress.innerRingWidth = 2
         downloadProgress.innerRingSpacing = 0
@@ -73,16 +73,20 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         self.delegate?.clickFavorito(theResumo: self.resumo!)
     }
     
+    func changeDownalodStateToPaused() {
+        downloadBtn.setImage(UIImage(named: "miniPlay")!, for: .normal)
+    }
+    
+    func changeDownalodStateToInProgress() {
+        downloadBtn.setImage(UIImage(named: "miniPause")!, for: .normal)
+    }
+    
+    func update(progress: Float) {
+        downloadProgress.value = CGFloat(progress)
+    }
+
+    
     @IBAction func clickDownload(_ sender: Any) {
-        
-//        if resumo?.downloaded == 0 {
-//            downloadBtn.imageView?.image = UIImage(named: "downloadWhite")!
-//            favoritoBtn.tintColor = UIColor.white
-//        }
-//        else {
-//            favoritoBtn.imageView?.image = UIImage(named: "downloadOrange")!
-//            favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
-//        }
         self.delegate?.clickDownload(theResumo: self.resumo!)
     }
 }

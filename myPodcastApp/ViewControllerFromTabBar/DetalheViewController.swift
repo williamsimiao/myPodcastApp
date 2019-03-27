@@ -349,15 +349,16 @@ class DetalheViewController: InheritanceViewController {
         //Saving files
         let userIsPremium = false
         if userIsPremium {
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
+            var resumoURL = URL(string: (selectedResumo?.url_podcast_40_p)!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
+            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
         }
         else {
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
-        }
-        
-        
+            var resumoURL = URL(string: (selectedResumo?.url_podcast_40_f)!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
 
+        }
     }
     
     func stopAnimations() {

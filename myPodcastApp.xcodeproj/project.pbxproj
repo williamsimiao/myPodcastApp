@@ -52,6 +52,9 @@
 		3DCA3A7C224034D800A87949 /* EditarPerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */; };
 		3DCA3A802241768D00A87949 /* CellWithProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */; };
 		3DCA3A822241774100A87949 /* CellWithProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA3A812241774100A87949 /* CellWithProgress.swift */; };
+		3DCB1369224BE71C0093C8CB /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB1368224BE71C0093C8CB /* Download.swift */; };
+		3DCB136B224BE9E70093C8CB /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB136A224BE9E70093C8CB /* DownloadService.swift */; };
+		3DCB1371224C010E0093C8CB /* InicioVC+URLSessionDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB1370224C010E0093C8CB /* InicioVC+URLSessionDelegates.swift */; };
 		3DD23468220470B1003C940F /* EpisodePlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */; };
 		3DD2346A22049FB1003C940F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2346922049FB1003C940F /* UIViewExtension.swift */; };
 		3DD43F3422257D2B00017B3E /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */; };
@@ -131,6 +134,9 @@
 		3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarPerfilViewController.swift; sourceTree = "<group>"; };
 		3DCA3A7F2241768D00A87949 /* CellWithProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithProgress.xib; sourceTree = "<group>"; };
 		3DCA3A812241774100A87949 /* CellWithProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithProgress.swift; sourceTree = "<group>"; };
+		3DCB1368224BE71C0093C8CB /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		3DCB136A224BE9E70093C8CB /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		3DCB1370224C010E0093C8CB /* InicioVC+URLSessionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InicioVC+URLSessionDelegates.swift"; sourceTree = "<group>"; };
 		3DD23467220470B0003C940F /* EpisodePlayControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayControlViewController.swift; sourceTree = "<group>"; };
 		3DD2346922049FB1003C940F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
@@ -281,6 +287,7 @@
 				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
 				4E7F1BB3222885900000F6EB /* extension */,
 				4E7F1BB022287F310000F6EB /* images */,
+				3DCB136A224BE9E70093C8CB /* DownloadService.swift */,
 			);
 			path = myPodcastApp;
 			sourceTree = "<group>";
@@ -288,6 +295,7 @@
 		3DBBD7E122304E9700F3DA64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3DCB1368224BE71C0093C8CB /* Download.swift */,
 				3DBBD7DD22304E6C00F3DA64 /* resumo.swift */,
 				3DBBD7DF22304E7F00F3DA64 /* autor.swift */,
 			);
@@ -331,6 +339,7 @@
 				3D2D7B932208C8BA000E426A /* PerfilViewController.swift */,
 				3D34FCFB22131FDA0062DB7E /* NotificacoesViewController.swift */,
 				3D34FD092213251E0062DB7E /* InicioViewController.swift */,
+				3DCB1370224C010E0093C8CB /* InicioVC+URLSessionDelegates.swift */,
 			);
 			path = FromTabBar;
 			sourceTree = "<group>";
@@ -571,8 +580,11 @@
 			files = (
 				3DED12E12243DFC100908F70 /* AutorTableCell.swift in Sources */,
 				3D05B5F72202140E0056E7B9 /* Network.swift in Sources */,
+				3DCB1369224BE71C0093C8CB /* Download.swift in Sources */,
 				3DB9E713223BF0E5005A2EDD /* SearchResultsViewController.swift in Sources */,
 				3D3868302211AEE900E89FF4 /* AppConfig.swift in Sources */,
+				3DCB1371224C010E0093C8CB /* InicioVC+URLSessionDelegates.swift in Sources */,
+				3DCB136B224BE9E70093C8CB /* DownloadService.swift in Sources */,
 				3DC1C2002200C175009080EF /* TabBarViewController.swift in Sources */,
 				3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */,
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,

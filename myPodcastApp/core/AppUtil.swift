@@ -458,7 +458,7 @@ open class AppUtil {
         return ""
     }
     
-    func downloadAudio(urlString: String, cod_resumo: String) {
+    func downloadAudio(delegate: UIViewController, urlString: String, cod_resumo: String) {
         print(urlString)
         if let audioUrl = URL(string: urlString) {
             
@@ -476,9 +476,7 @@ open class AppUtil {
             // if the file doesn't exist
             } else {
                 
-//                let configuration = URLSessionConfiguration.default
-//                let urlSession = URLSession(configuration: configuration, delegate: , delegateQueue: <#T##OperationQueue?#>)
-                // you can use NSURLSession.sharedSession to download the data asynchronously
+//                 you can use NSURLSession.sharedSession to download the data asynchronously
                 URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
                     guard let location = location, error == nil else { return }
                     do {
