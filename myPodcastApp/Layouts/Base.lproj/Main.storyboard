@@ -627,7 +627,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWt-QP-4qx">
-                                <rect key="frame" x="8" y="264" width="170" height="24"/>
+                                <rect key="frame" x="8" y="264" width="359" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="JYH-pC-Ijg"/>
                                 </constraints>
@@ -648,7 +648,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VK-A9-ZT4">
-                                <rect key="frame" x="8" y="305" width="170" height="24"/>
+                                <rect key="frame" x="8" y="305" width="359" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="kuP-is-wvm"/>
                                 </constraints>
@@ -668,7 +668,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAW-eI-Zkp">
-                                <rect key="frame" x="8" y="346" width="170" height="24"/>
+                                <rect key="frame" x="8" y="346" width="359" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="Y1W-UD-96E"/>
                                 </constraints>
@@ -688,7 +688,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-ug-Rph" userLabel="sugerir">
-                                <rect key="frame" x="8" y="387" width="264" height="24"/>
+                                <rect key="frame" x="8" y="387" width="359" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="dJh-LC-z9X"/>
                                 </constraints>
@@ -701,7 +701,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-G8-iaV">
-                                <rect key="frame" x="8" y="428" width="170" height="24"/>
+                                <rect key="frame" x="8" y="428" width="359" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="DZD-QD-qPD"/>
                                 </constraints>
@@ -727,9 +727,9 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                             <constraint firstAttribute="trailing" secondItem="fvR-7h-sZ2" secondAttribute="trailing" constant="16" id="1s9-Io-D3U"/>
                             <constraint firstItem="hdq-9x-28p" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" id="2ck-KI-q1l"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="leading" secondItem="xfT-9x-yGJ" secondAttribute="leading" constant="-16" id="38e-bE-UbF"/>
-                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="Yae-ug-Rph" secondAttribute="trailing" constant="103" id="4VC-kz-aQ2"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="Yae-ug-Rph" secondAttribute="trailing" constant="8" id="4VC-kz-aQ2"/>
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="top" secondItem="aEZ-dC-ETE" secondAttribute="bottom" constant="10" id="4XR-We-Zub"/>
-                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6VK-A9-ZT4" secondAttribute="trailing" symbolic="YES" id="Ayg-Dd-upC"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="6VK-A9-ZT4" secondAttribute="trailing" constant="8" id="Ayg-Dd-upC"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="GQf-W5-h6f" secondAttribute="trailing" constant="20" id="B2d-VS-tzA"/>
                             <constraint firstItem="Zoj-ds-a8d" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="BBS-fJ-oPI"/>
                             <constraint firstItem="fvR-7h-sZ2" firstAttribute="top" secondItem="Yae-ug-Rph" secondAttribute="bottom" constant="8" id="DQ3-9X-sCS"/>
@@ -748,12 +748,12 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                             <constraint firstItem="kAW-eI-Zkp" firstAttribute="top" secondItem="TI0-fc-rnA" secondAttribute="bottom" constant="8" id="c5z-w5-fT6"/>
                             <constraint firstItem="xfT-9x-yGJ" firstAttribute="trailing" secondItem="gT2-lJ-n9a" secondAttribute="trailing" constant="-16" id="ceP-B8-JtM"/>
                             <constraint firstItem="VbC-eZ-WJl" firstAttribute="top" secondItem="GQf-W5-h6f" secondAttribute="bottom" constant="10" id="csz-ps-OgH"/>
-                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hbc-G8-iaV" secondAttribute="trailing" symbolic="YES" id="ec5-CA-70d"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="hbc-G8-iaV" secondAttribute="trailing" constant="8" id="ec5-CA-70d"/>
                             <constraint firstItem="obc-0s-96k" firstAttribute="top" secondItem="gT2-lJ-n9a" secondAttribute="top" constant="40" id="fG9-aN-9Fz"/>
                             <constraint firstItem="WWt-QP-4qx" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="8" id="g3i-QF-aQt"/>
                             <constraint firstItem="VbC-eZ-WJl" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="gog-zT-iDg"/>
-                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kAW-eI-Zkp" secondAttribute="trailing" symbolic="YES" id="hUc-lW-9J7"/>
-                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WWt-QP-4qx" secondAttribute="trailing" symbolic="YES" id="iMV-F2-CND"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="kAW-eI-Zkp" secondAttribute="trailing" constant="8" id="hUc-lW-9J7"/>
+                            <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="WWt-QP-4qx" secondAttribute="trailing" constant="8" id="iMV-F2-CND"/>
                             <constraint firstItem="TI0-fc-rnA" firstAttribute="top" secondItem="6VK-A9-ZT4" secondAttribute="bottom" constant="8" id="iXv-we-Wcz"/>
                             <constraint firstItem="GQf-W5-h6f" firstAttribute="leading" secondItem="gT2-lJ-n9a" secondAttribute="leading" constant="20" id="jEM-Az-IXO"/>
                             <constraint firstItem="gT2-lJ-n9a" firstAttribute="trailing" secondItem="aEZ-dC-ETE" secondAttribute="trailing" constant="20" id="kB4-2w-FBv"/>
