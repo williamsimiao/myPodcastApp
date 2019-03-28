@@ -747,4 +747,11 @@ open class AppUtil {
 
     }
     
+    func isValidString(aString: String?) -> Bool {
+        if aString != "" && aString != nil {
+            return true
+        }
+        return false
+    }
+    
 }

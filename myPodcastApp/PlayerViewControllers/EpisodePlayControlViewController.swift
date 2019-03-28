@@ -160,6 +160,9 @@ class EpisodePlayControlViewController: UIViewController {
     }
     
     @IBAction func clickMore(_ sender: Any) {
+        let resumoLink = playerManager.shared.getResumoLink()
+        let vc = UIActivityViewController(activityItems: [resumoLink], applicationActivities: [])
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func dismissAlertController(){

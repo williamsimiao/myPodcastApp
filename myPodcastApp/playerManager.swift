@@ -135,6 +135,15 @@ class playerManager: NSObject {
         return self.currentEpisode!.cod_resumo
     }
     
+    func getResumoLink() -> URL {
+        if currentEpisodeType == episodeType.fortyFree || currentEpisodeType == episodeType.fortyPremium {
+            return URL(string: (currentEpisode?.url_podcast_40_f)!)!
+        }
+        else {
+            return URL(string: (currentEpisode?.url_podcast_10)!)!
+        }
+    }
+    
     func getEpisodeTitle() -> String {
         return self.currentEpisode!.titulo
     }

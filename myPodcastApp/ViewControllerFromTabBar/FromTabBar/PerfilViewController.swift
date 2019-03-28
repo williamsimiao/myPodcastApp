@@ -115,26 +115,29 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         AppService.util.logout()
     }
     
-    @IBAction func clickMenu(_ sender: Any) {
-        
-        popMenu1()
-        
-    }
+//    @IBAction func clickMenu(_ sender: Any) {
+//
+//        popMenu1()
+//
+//    }
     
     ///////
-    
     
     @IBAction func clickConfig(_ sender: Any) {
         
     }
     @IBAction func clickEditarPerfil(_ sender: Any) {
-        performSegue(withIdentifier: "goto_editarPerfil", sender: self)
+        performSegue(withIdentifier: "to_editarPerfil", sender: self)
     }
     
     @IBAction func clickPag(_ sender: Any) {
     }
     
+    @IBAction func clickSugerir(_ sender: Any) {
+        performSegue(withIdentifier: "to_sugerir", sender: self)
+    }
     @IBAction func clickLogout(_ sender: Any) {
         logout()
     }
+    
 }

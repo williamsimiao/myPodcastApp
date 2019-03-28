@@ -696,6 +696,9 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <state key="normal" title="Sugerir livro" image="comment">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickSugerir:" destination="Vb9-J2-kNe" eventType="touchUpInside" id="Obg-no-w3d"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-G8-iaV">
                                 <rect key="frame" x="8" y="428" width="170" height="24"/>
@@ -771,7 +774,8 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <outlet property="lblData" destination="VbC-eZ-WJl" id="l5A-Hq-2vv"/>
                         <outlet property="lblEmail" destination="GQf-W5-h6f" id="A51-nJ-obD"/>
                         <outlet property="lblNome" destination="aEZ-dC-ETE" id="kq5-FQ-Dv7"/>
-                        <segue destination="5Y3-qG-VEH" kind="presentation" identifier="goto_editarPerfil" id="KjN-9y-Nmn"/>
+                        <segue destination="5Y3-qG-VEH" kind="presentation" identifier="to_editarPerfil" id="KjN-9y-Nmn"/>
+                        <segue destination="4dx-PL-jWP" kind="presentation" identifier="to_sugerir" id="Hit-Vu-XC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvi-JN-JUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -863,19 +867,19 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                                 <rect key="frame" x="0.0" y="0.0" width="303" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Autor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-tD-sat" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="48" width="303" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comentário (opcional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3t-4v-lEq" customClass="LoginTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="96" width="303" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -920,7 +924,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                     <constraint firstItem="Jpl-sS-sBH" firstAttribute="width" secondItem="LmK-9i-DOR" secondAttribute="width" id="zVa-Ck-aXp"/>
                                                 </constraints>
                                             </view>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vUw-MK-fvB">
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vUw-MK-fvB">
                                                 <rect key="frame" x="169" y="438" width="37" height="37"/>
                                             </activityIndicatorView>
                                         </subviews>
@@ -969,7 +973,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZo-U6-Vr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15878" y="1909"/>
+            <point key="canvasLocation" x="9758" y="95"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="W3i-UT-Zx1">
@@ -1422,7 +1426,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         <rect key="frame" x="16" y="143" width="303" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-Kx-0Xf">
                                                         <rect key="frame" x="16" y="213" width="303" height="40"/>
@@ -1440,7 +1444,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuF-Qx-ZWe">
                                                         <rect key="frame" x="95" y="261" width="145" height="30"/>
@@ -1879,13 +1883,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                                 <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-AL-kVv" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                                 <rect key="frame" x="175.66666666666663" y="0.0" width="167.33333333333337" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -1893,13 +1897,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         <rect key="frame" x="0.0" y="56" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert" textContentType="tel"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZ3-XD-b0l" userLabel="data" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="112" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                     </textField>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E8Y-wv-lJ0">
                                                         <rect key="frame" x="0.0" y="168" width="343" height="40"/>
@@ -1908,13 +1912,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                                 <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escolaridade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpI-oi-hkZ" userLabel="escolaridade" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                                 <rect key="frame" x="175.66666666666663" y="0.0" width="167.33333333333337" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -1922,13 +1926,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         <rect key="frame" x="0.0" y="224" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" textContentType="email"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8n-vF-enc" userLabel="senha" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="280" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -1979,8 +1983,21 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <constraint firstAttribute="height" constant="710" id="qvm-0h-OQZ"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbD-ia-Kqc" userLabel="close">
+                                        <rect key="frame" x="337" y="16" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mbD-ia-Kqc" secondAttribute="height" multiplier="1:1" id="DGt-j9-Tkk"/>
+                                        </constraints>
+                                        <state key="normal" image="xForClose"/>
+                                        <connections>
+                                            <action selector="clickClose:" destination="5Y3-qG-VEH" eventType="touchUpInside" id="hQ1-tw-HJc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="mbD-ia-Kqc" firstAttribute="top" secondItem="bgT-CH-9R6" secondAttribute="top" constant="16" id="0me-Er-Esj"/>
+                                    <constraint firstAttribute="trailing" secondItem="mbD-ia-Kqc" secondAttribute="trailing" constant="16" id="868-1M-OCd"/>
+                                    <constraint firstItem="mbD-ia-Kqc" firstAttribute="width" secondItem="mbD-ia-Kqc" secondAttribute="height" multiplier="1:1" id="9e7-xV-ES9"/>
                                     <constraint firstAttribute="trailing" secondItem="qDI-L0-0pg" secondAttribute="trailing" id="CZ1-VF-C9c"/>
                                     <constraint firstItem="qDI-L0-0pg" firstAttribute="leading" secondItem="bgT-CH-9R6" secondAttribute="leading" id="MbC-Zo-Mcj"/>
                                     <constraint firstItem="qDI-L0-0pg" firstAttribute="width" secondItem="bgT-CH-9R6" secondAttribute="width" id="VYF-8B-XbG"/>
@@ -2013,7 +2030,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gx-uY-2bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8589" y="93"/>
+            <point key="canvasLocation" x="8670" y="-241"/>
         </scene>
         <!--List Autores View Controller-->
         <scene sceneID="0ng-cS-1g5">
@@ -2101,13 +2118,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                                 <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="40.333333333333336"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSl-Ke-k9H" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                                 <rect key="frame" x="175.66666666666663" y="0.0" width="167.33333333333337" height="40.333333333333336"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -2115,13 +2132,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         <rect key="frame" x="0.0" y="56.333333333333314" width="343" height="40.333333333333343"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" textContentType="email"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-Ys-xm4" userLabel="senha" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="112.66666666666667" width="343" height="40.333333333333329"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -3034,7 +3051,7 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BEu-Ua-mz1"/>
+        <segue reference="YRk-1p-Ij2"/>
         <segue reference="FLk-k2-7c4"/>
     </inferredMetricsTieBreakers>
 </document>

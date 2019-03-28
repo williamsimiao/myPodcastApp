@@ -29,8 +29,6 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     var keyboardHeight: CGFloat!
     var radius = CGFloat(20)
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         blackBox.layer.cornerRadius = radius
@@ -41,7 +39,12 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
         sugerirBtn.layer.borderColor = ColorWeel().orangeColor.cgColor
         
         tituloEdt.delegate = self
+        tituloEdt.tag = 0
         autorEdt.delegate = self
+        autorEdt.tag = 1
+        comentarioEdt.delegate = self
+        comentarioEdt.tag = 2
+
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SugerirViewController.returnTextView(gesture:))))
@@ -49,8 +52,8 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("viewWillAppear")
+        success = false
+        error_msg = ""
         
         NotificationCenter.default.addObserver(self, selector: #selector(SugerirViewController.keyboardWillShow(notification:)), name: UIWindow.keyboardWillShowNotification, object: nil)
         
@@ -60,7 +63,7 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        loading.isHidden = true
         print("viewWillDisappear")
         
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
@@ -83,8 +86,15 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        activeField?.resignFirstResponder()
-        activeField = nil
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? LoginTextField {
+            nextField.becomeFirstResponder()
+            activeField = nextField
+        } else {
+            // Not found, so remove keyboard.
+            activeField?.resignFirstResponder()
+            activeField = nil
+        }
+
         return true
     }
     
@@ -142,25 +152,33 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func clickSugerir(_ sender: Any) {
+        self.view.endEditing(true)
+
         let prefs:UserDefaults = UserDefaults.standard
-        
-        let cod_usuario = prefs.string(forKey: "cod_usuario")!
+        var cod_usuario = prefs.string(forKey: "cod_usuario")
         let titulo = tituloEdt.text
         let autor = autorEdt.text
         let comentario = comentarioEdt.text
         
-//        guard let _ = cod_usuario, let _ = titulo, let _ = autor else {
-//            <#statements#>
-//        }
-//
-//        let link = AppConfig.urlBaseApi + "indiqueLivro.php"
-//        let buscaUrl = URL(string: link)
-//        let keys = ["cod_usuario", "titulo", "autor", "comentarios"]
-//        let values = []
-//        makeResquest(url: buscaUrl!, keys: keys, values: values)
-//
-        //OnResult receved : success or NOT :
-        dismiss(animated: true, completion: nil)
+        if AppService.util.isValidString(aString: cod_usuario) == false {
+            cod_usuario = "0"
+        }
+        
+        if AppService.util.isValidString(aString: titulo) == false ||
+           AppService.util.isValidString(aString: autor) == false {
+            
+            AppService.util.alert("Erro nos dados", message: "Preencha os campos obrigatórios")
+            return
+        }
+
+        let link = AppConfig.urlBaseApi + "indiqueLivro.php"
+        let buscaUrl = URL(string: link)
+        var keys = ["cod_usuario", "titulo", "autor", "comentarios"]
+        let values = [cod_usuario!, titulo!, autor!]
+        if AppService.util.isValidString(aString: comentario) {
+            keys.append(comentario!)
+        }
+        makeResquest(url: buscaUrl!, keys: keys, values: values)
     }
     
 }
@@ -173,7 +191,7 @@ extension SugerirViewController {
         
         loading.isHidden = false
         loading.startAnimating()
-        
+
         let tuples = zip(keys, values)
         var keyValueArray = [String]()
         for (key, value) in tuples {
@@ -245,7 +263,7 @@ extension SugerirViewController {
         }
         catch
         {
-            print("error")
+            print("error SugerirVC")
             return
         }
         DispatchQueue.main.async(execute: onResultReceived)
@@ -256,6 +274,8 @@ extension SugerirViewController {
         
         loading.isHidden = true
         loading.stopAnimating()
+        dismiss(animated: true, completion: nil)
+
         
         if self.success {
             print("success na SugerirVC")
