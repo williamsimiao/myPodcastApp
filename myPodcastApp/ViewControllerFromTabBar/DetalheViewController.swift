@@ -351,18 +351,18 @@ class DetalheViewController: InheritanceViewController {
         if userIsPremium {
             var resumoURL = URL(string: (selectedResumo?.url_podcast_40_p)!)
             
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
+//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
+//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
 
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
-//            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
+            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
         }
         else {
             var resumoURL = URL(string: (selectedResumo?.url_podcast_40_f)!)
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
+//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
 
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
 
         }
     }
