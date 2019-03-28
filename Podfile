@@ -15,4 +15,5 @@ target 'myPodcastApp' do
     pod 'Realm', '~> 2.8.1'
     pod 'RealmSwift'
     pod 'UICircularProgressRing'
+    pod 'MarqueeLabel'
 end

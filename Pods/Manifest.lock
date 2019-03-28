@@ -32,6 +32,9 @@ PODS:
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
+  - MarqueeLabel (3.2.0):
+    - MarqueeLabel/ObjC (= 3.2.0)
+  - MarqueeLabel/ObjC (3.2.0)
   - ReachabilitySwift (4.3.0)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
@@ -51,6 +54,7 @@ DEPENDENCIES:
   - FacebookShare
   - HSPopupMenu
   - ImageSlideshow (~> 1.6)
+  - MarqueeLabel
   - ReachabilitySwift
   - Realm (~> 2.8.1)
   - RealmSwift
@@ -71,6 +75,7 @@ SPEC REPOS:
     - FBSDKShareKit
     - HSPopupMenu
     - ImageSlideshow
+    - MarqueeLabel
     - ReachabilitySwift
     - Realm
     - RealmSwift
@@ -91,6 +96,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
   HSPopupMenu: ca8c0f872cdbc8fc7d9c8098c2aa6e6a0027d201
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
@@ -99,6 +105,6 @@ SPEC CHECKSUMS:
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   UICircularProgressRing: 5a32c01f54474571b1e66e8fa050c0f83d6d981b
 
-PODFILE CHECKSUM: c9e772b47a5d8a70a0ed01822c9925b4dd7356d7
+PODFILE CHECKSUM: 3a5e86f451a6e478ec9815faebbe5f186207f451
 
 COCOAPODS: 1.5.3
