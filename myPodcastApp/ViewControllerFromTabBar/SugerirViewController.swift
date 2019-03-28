@@ -19,13 +19,17 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sugerirBtn: UIButton!
     @IBOutlet weak var blackBox: UIView!
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
-    var success:Bool = false
-    var error_msg:String = ""
+    var error_msg:String!
+    var success:Bool!
+    
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
     var radius = CGFloat(20)
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,11 +142,127 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func clickSugerir(_ sender: Any) {
-        //TODO
-        //makeResquest()
+        let prefs:UserDefaults = UserDefaults.standard
+        
+        let cod_usuario = prefs.string(forKey: "cod_usuario")!
+        let titulo = tituloEdt.text
+        let autor = autorEdt.text
+        let comentario = comentarioEdt.text
+        
+//        guard let _ = cod_usuario, let _ = titulo, let _ = autor else {
+//            <#statements#>
+//        }
+//
+//        let link = AppConfig.urlBaseApi + "indiqueLivro.php"
+//        let buscaUrl = URL(string: link)
+//        let keys = ["cod_usuario", "titulo", "autor", "comentarios"]
+//        let values = []
+//        makeResquest(url: buscaUrl!, keys: keys, values: values)
+//
         //OnResult receved : success or NOT :
         dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension SugerirViewController {
+    
+    func makeResquest(url: URL, keys: [String], values: [String]) {
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        
+        loading.isHidden = false
+        loading.startAnimating()
+        
+        let tuples = zip(keys, values)
+        var keyValueArray = [String]()
+        for (key, value) in tuples {
+            let paramValue = key + "=" + value
+            keyValueArray.append(paramValue)
+        }
+        let joinedData = keyValueArray.joined(separator: "&")
+        
+        //        let postData:Data = joinedData.data(using: String.Encoding(rawValue: String.Encoding.ascii.rawValue))!
+        //        let postLength:NSString = String( postData.count ) as NSString
+        
+        let post = joinedData as NSString
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        let postLength:NSString = String( postData.count ) as NSString
+        
+        request.timeoutInterval = 10
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        //        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        print("REQUEST: \(request)")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                print(error)
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            
+            self.extract_json_data(dataString!)
+            
+        })
+        
+        task.resume()
+    }
+    
+    func extract_json_data(_ data:NSString) {
+        
+        NSLog("json %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do
+        {
+            // converter pra json
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            
+            // verificar success
+            self.success = (json.value(forKey: "success") as! Bool)
+            if (self.success!) {
+                
+                NSLog("SugerirVC SUCCESS");
+            } else {
+                
+                NSLog("SugerirVC ERROR");
+                error_msg = (json.value(forKey: "error") as! String)
+                AppService.util.alert("Erro no SugerirVC", message: error_msg!)
+
+            }
+        }
+        catch
+        {
+            print("error")
+            return
+        }
+        DispatchQueue.main.async(execute: onResultReceived)
 
     }
     
+    func onResultReceived() {
+        
+        loading.isHidden = true
+        loading.stopAnimating()
+        
+        if self.success {
+            print("success na SugerirVC")
+        }
+        else {
+            print("Erro noa SugerirVC")
+        }
+        
+    }
 }

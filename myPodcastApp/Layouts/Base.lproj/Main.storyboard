@@ -920,12 +920,17 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                     <constraint firstItem="Jpl-sS-sBH" firstAttribute="width" secondItem="LmK-9i-DOR" secondAttribute="width" id="zVa-Ck-aXp"/>
                                                 </constraints>
                                             </view>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vUw-MK-fvB">
+                                                <rect key="frame" x="169" y="438" width="37" height="37"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="ola-30-4rl" firstAttribute="centerX" secondItem="EeX-0Q-PMB" secondAttribute="centerX" id="2hG-rY-jlm"/>
                                             <constraint firstAttribute="trailing" secondItem="ola-30-4rl" secondAttribute="trailing" constant="20" id="9h7-lc-7Qe"/>
+                                            <constraint firstItem="vUw-MK-fvB" firstAttribute="centerX" secondItem="EeX-0Q-PMB" secondAttribute="centerX" id="Mc8-Xa-CMV"/>
                                             <constraint firstItem="ola-30-4rl" firstAttribute="top" secondItem="EeX-0Q-PMB" secondAttribute="top" constant="160" id="P83-qf-J0R"/>
+                                            <constraint firstItem="vUw-MK-fvB" firstAttribute="top" secondItem="ola-30-4rl" secondAttribute="bottom" constant="16" id="Z9x-6V-ov4"/>
                                             <constraint firstItem="ola-30-4rl" firstAttribute="leading" secondItem="EeX-0Q-PMB" secondAttribute="leading" constant="20" id="eak-oa-R1C"/>
                                             <constraint firstAttribute="height" constant="748" id="j2d-QY-i4f"/>
                                         </constraints>
@@ -956,6 +961,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <outlet property="comentarioEdt" destination="h3t-4v-lEq" id="Lv5-sO-cuB"/>
                         <outlet property="constraintContentHeight" destination="j2d-QY-i4f" id="W6Q-Mp-vnQ"/>
                         <outlet property="contentView" destination="EeX-0Q-PMB" id="93O-sB-zEW"/>
+                        <outlet property="loading" destination="vUw-MK-fvB" id="TTS-Bu-izq"/>
                         <outlet property="scrollView" destination="yjg-UX-RUz" id="KcZ-4b-ggj"/>
                         <outlet property="sugerirBtn" destination="Jpl-sS-sBH" id="mdi-My-9oW"/>
                         <outlet property="tituloEdt" destination="U87-9A-10s" id="x6b-hO-wDo"/>
