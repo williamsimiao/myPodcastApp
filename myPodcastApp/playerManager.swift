@@ -57,7 +57,7 @@ class playerManager: NSObject {
         if enable {
             //PAUSE
             remoteCommandCenter.pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                self.player?.play()
+                self.player?.pause()
                 NotificationCenter.default.post(name: .playingStateDidChange, object: self, userInfo: ["isPlaying": true])
 
                 return .success
