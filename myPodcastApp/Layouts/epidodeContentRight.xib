@@ -53,7 +53,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="Vx5-vP-hoC">
                                     <rect key="frame" x="61.5" y="1.5" width="15.5" height="15"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starHalf" translatesAutoresizingMaskIntoConstraints="NO" id="YzK-Xr-4KS">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="YzK-Xr-4KS" userLabel="star">
                                     <rect key="frame" x="82" y="1.5" width="15.5" height="15"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwV-xb-mXD">
@@ -97,6 +97,5 @@
     </objects>
     <resources>
         <image name="star" width="15.5" height="15"/>
-        <image name="starHalf" width="15.5" height="15"/>
     </resources>
 </document>

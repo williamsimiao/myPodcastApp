@@ -374,6 +374,7 @@ class playerManager: NSObject {
         
         let remainingSeconds = durationSeconds - progressInseconds
         
+        print("remainig: \(remainingSeconds)")
         if Int(remainingSeconds) == prepareNextResumoLimit && durationSeconds > 0 {
             print("Ta acabando")
             
@@ -518,26 +519,4 @@ class playerManager: NSObject {
 //    func getNextInQueue() -> [String:AnyObject] {
 //        return self.episodesQueue.removeFirst()
 //    }
-}
-
-extension playerManager {
-    @objc func remoteCommandCenterPauseCommandHandler() {
-        player?.pause()
-    }
-    
-    @objc func remoteCommandCenterPlayCommandHandler() {
-        player?.play()
-    }
-    
-    @objc func remoteCommandCenterStopCommandHandler() {
-        player?.pause()
-    }
-    
-    @objc func remoteCommandCenterPlayPauseCommandHandler() {
-        if player?.rate == 0.0 {
-            player?.play()
-        } else {
-            player?.pause()
-        }
-    }
 }
