@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIR-rI-FoS">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="BibliotecaViewController" title="Bibliteca" id="gIU-ch-xKk" customClass="BibliotecaViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xn0-Eg-8Ao" userLabel="resizable">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qcX-C1-sIp">
                                         <rect key="frame" x="24" y="20" width="327" height="29"/>
@@ -34,7 +34,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcy-EW-kel">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="585"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="498"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -76,11 +76,11 @@
             <objects>
                 <viewController id="9jR-tl-iak" customClass="NotificacoesViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FNG-Jb-j9m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhuma notificação!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaq-SH-Fl4">
-                                <rect key="frame" x="103.66666666666669" y="351.66666666666669" width="168" height="21"/>
+                                <rect key="frame" x="103.5" y="291" width="168" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@
             <objects>
                 <viewController title="inicio" id="4Qy-4E-s6P" customClass="InicioViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mX1-0s-hWh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Pesquisar" translatesAutoresizingMaskIntoConstraints="NO" id="b6p-jq-8QO">
@@ -123,7 +123,7 @@
                                 </connections>
                             </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob1-uA-wbL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fH0-y2-Rue">
                                         <rect key="frame" x="169" y="45" width="37" height="37"/>
@@ -141,7 +141,7 @@
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Últimos Episódios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXr-eH-dNC">
-                                                <rect key="frame" x="16" y="166" width="136.66666666666666" height="21"/>
+                                                <rect key="frame" x="16" y="166" width="136.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -304,15 +304,15 @@
             <objects>
                 <viewController id="akv-yl-AM5" customClass="ListResumosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DUI-Iq-cAm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="m6z-7A-oAc">
-                                <rect key="frame" x="169" y="343.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-xU-h6Z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -357,14 +357,14 @@
             <objects>
                 <viewController id="N4r-FG-Rxn" customClass="DetalheViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CQP-9f-KoR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVj-gL-n2T">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="615.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="615.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
@@ -374,26 +374,26 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGl-jd-c3m">
-                                                <rect key="frame" x="187.66666666666666" y="153" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="187.5" y="153" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xwQ-6m-mtE">
-                                                <rect key="frame" x="9.3333333333333428" y="169" width="356.33333333333326" height="70"/>
+                                                <rect key="frame" x="9.5" y="169" width="356" height="70"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8v-ni-6oF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="105.5" height="70"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfT-K9-lCg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="70"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="105.5" height="70"/>
                                                                 <state key="normal" image="orangePlay"/>
                                                                 <connections>
                                                                     <action selector="clickPlayButton:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="5Z7-eU-b9H"/>
                                                                 </connections>
                                                             </button>
                                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="z6z-4H-dqj">
-                                                                <rect key="frame" x="34.333333333333329" y="16.666666666666686" width="37" height="37"/>
+                                                                <rect key="frame" x="34" y="16.5" width="37" height="37"/>
                                                             </activityIndicatorView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -407,17 +407,17 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-3g-cDK">
-                                                        <rect key="frame" x="125.33333333333331" y="0.0" width="105.66666666666669" height="70"/>
+                                                        <rect key="frame" x="125.5" y="0.0" width="105" height="70"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNu-sE-Eme">
-                                                                <rect key="frame" x="0.0" y="0.0" width="105.66666666666667" height="70"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="105" height="70"/>
                                                                 <state key="normal" image="playSimpleBlack"/>
                                                                 <connections>
                                                                     <action selector="clickPlayButton:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="Ya2-Tj-aGe"/>
                                                                 </connections>
                                                             </button>
                                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kaa-sD-pJV">
-                                                                <rect key="frame" x="34.333333333333343" y="16.666666666666686" width="37" height="37"/>
+                                                                <rect key="frame" x="34" y="16.5" width="37" height="37"/>
                                                             </activityIndicatorView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -431,10 +431,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aly-0h-Uli" userLabel="resumo10">
-                                                        <rect key="frame" x="250.99999999999997" y="0.0" width="105.33333333333334" height="70"/>
+                                                        <rect key="frame" x="250.5" y="0.0" width="105.5" height="70"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4k-GF-aJf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="70"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="105.5" height="70"/>
                                                                 <state key="normal" image="bookBlack"/>
                                                                 <connections>
                                                                     <action selector="clickLeituraBtn:" destination="N4r-FG-Rxn" eventType="touchUpInside" id="okh-lG-85e"/>
@@ -457,22 +457,22 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episódio completo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-a8-NT5">
-                                                <rect key="frame" x="9.3333333333333357" y="239" width="105.33333333333331" height="36"/>
+                                                <rect key="frame" x="9.5" y="239" width="105.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resumo 10min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-Q8-zTW">
-                                                <rect key="frame" x="134.66666666666666" y="239" width="105.66666666666666" height="18"/>
+                                                <rect key="frame" x="135" y="239" width="105" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
-                                                <rect key="frame" x="9.3333333333333428" y="289" width="356.33333333333326" height="318.33333333333326"/>
+                                                <rect key="frame" x="9.5" y="289" width="356" height="318.5"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
-                                                        <rect key="frame" x="8" y="8" width="340.33333333333331" height="300.33333333333331"/>
+                                                        <rect key="frame" x="8" y="8" width="340" height="300.5"/>
                                                         <color key="backgroundColor" red="0.19604682922363281" green="0.2000163197517395" blue="0.19604870676994324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <string key="text">Resiliência é a capacidade que certas pessoas têm de passar por situações de grande stress e não quebrar emocionalmente, transformando sofrimento em competência.
 
@@ -497,7 +497,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r00-f5-sZp">
-                                                <rect key="frame" x="260.33333333333331" y="239" width="105.33333333333331" height="20.333333333333314"/>
+                                                <rect key="frame" x="260" y="239" width="105.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -591,11 +591,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="PerfilViewController" title="Perfil" id="Vb9-J2-kNe" customClass="PerfilViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PUH-Ue-gV7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sem_imagem" translatesAutoresizingMaskIntoConstraints="NO" id="obc-0s-96k">
-                                <rect key="frame" x="137.66666666666666" y="40" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="40" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="GmA-ls-smY"/>
                                     <constraint firstAttribute="width" constant="100" id="dBT-WV-0of"/>
@@ -787,14 +787,14 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController id="Rvi-Ua-fiZ" customClass="SearchResultsViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="khv-dV-AoP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="reE-UP-DhE">
-                                <rect key="frame" x="169" y="343.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Q7-OS-gYi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -813,7 +813,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhum Resumo encontrado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-SA-A35">
-                                <rect key="frame" x="76" y="351.66666666666669" width="223" height="21"/>
+                                <rect key="frame" x="76" y="291" width="223" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -848,11 +848,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="sugerirVC" id="4dx-PL-jWP" customClass="SugerirViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fC4-Rk-Edz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjg-UX-RUz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EeX-0Q-PMB" userLabel="content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="748"/>
@@ -980,18 +980,18 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="BaseViewController" id="KbZ-Y2-w5F" customClass="BaseViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SA9-pc-NTe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-3U-ikf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="86v-Ve-x0Q" kind="embed" id="OCp-D3-hdn"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMj-aK-uqp">
-                                <rect key="frame" x="0.0" y="846.66666666666663" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="735.5" width="375" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="tiP-4H-HL7"/>
                                 </constraints>
@@ -1052,26 +1052,27 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="PlayerCardViewController" id="Flz-en-kHC" customClass="PlayerCardViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xsy-6D-Y6D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kXs-5e-zPz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0S-D9-Xvn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umU-Ql-7aD">
-                                <rect key="frame" x="0.0" y="15" width="375" height="797"/>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umU-Ql-7aD">
+                                <rect key="frame" x="0.0" y="15" width="375" height="652"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2R-DF-ZPB">
                                         <rect key="frame" x="0.0" y="25" width="375" height="422"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMh-JJ-08h">
-                                                <rect key="frame" x="178" y="4" width="44" height="44"/>
+                                                <rect key="frame" x="170" y="4" width="60" height="44"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="6RI-UV-mlR"/>
+                                                    <constraint firstAttribute="width" constant="60" id="6RI-UV-mlR"/>
                                                     <constraint firstAttribute="height" constant="44" id="IEH-lf-X8i"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1104,14 +1105,14 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juM-Nu-SOs">
-                                        <rect key="frame" x="0.0" y="447" width="375" height="415"/>
+                                        <rect key="frame" x="0.0" y="447" width="375" height="290"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-wO-0SW">
-                                        <rect key="frame" x="0.0" y="462" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="462" width="375" height="275"/>
                                         <color key="backgroundColor" red="1" green="0.57134115340000002" blue="0.50363855079999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="400" id="rbd-tc-rjp"/>
+                                            <constraint firstAttribute="height" constant="275" id="rbd-tc-rjp"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="CQN-Zn-ASG" kind="embed" id="mbY-l4-nAD"/>
@@ -1137,7 +1138,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fum-T4-s4l">
-                                <rect key="frame" x="0.0" y="684" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="539" width="375" height="128"/>
                                 <color key="backgroundColor" red="0.34394160689999997" green="1" blue="0.3541033086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="QUs-S2-bSi"/>
@@ -1147,7 +1148,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="umU-Ql-7aD" secondAttribute="bottom" id="5Oq-OC-rQC"/>
+                            <constraint firstItem="umU-Ql-7aD" firstAttribute="bottom" secondItem="Ot3-Nz-exe" secondAttribute="bottom" id="6ua-aJ-Aps"/>
                             <constraint firstItem="kXs-5e-zPz" firstAttribute="leading" secondItem="Ot3-Nz-exe" secondAttribute="leading" id="8zl-1s-ap4"/>
                             <constraint firstAttribute="top" secondItem="o0S-D9-Xvn" secondAttribute="top" id="Bya-VE-wAA"/>
                             <constraint firstItem="kXs-5e-zPz" firstAttribute="top" secondItem="Xsy-6D-Y6D" secondAttribute="top" id="I6y-fR-lP9"/>
@@ -1197,26 +1198,26 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="EpisodePlayControlViewController" id="CQN-Zn-ASG" customClass="EpisodePlayControlViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5UM-G1-Rtv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ye-ib-aWJ" userLabel="container">
-                                <rect key="frame" x="0.0" y="44" width="375" height="270"/>
+                                <rect key="frame" x="0.0" y="-30" width="375" height="318"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKB-e1-Cfm" userLabel="top">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="30" width="375" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6F-hZ-jfA" userLabel="group">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:59" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-7t-57J" userLabel="remaining">
-                                                        <rect key="frame" x="330.66666666666669" y="15" width="39" height="17"/>
+                                                        <rect key="frame" x="330.5" y="20" width="39" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0w-Fp-1n9" userLabel="progress">
-                                                        <rect key="frame" x="9.9999999999999982" y="15" width="30.333333333333329" height="17"/>
+                                                        <rect key="frame" x="10" y="20" width="30.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1240,7 +1241,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                     <constraint firstItem="ccp-7t-57J" firstAttribute="centerY" secondItem="O0w-Fp-1n9" secondAttribute="centerY" id="2fP-nS-tzC"/>
                                                     <constraint firstItem="ccp-7t-57J" firstAttribute="centerX" secondItem="NdP-MI-nFz" secondAttribute="trailing" id="HBt-MI-iPF"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="leading" secondItem="L6F-hZ-jfA" secondAttribute="leading" constant="25" id="KSo-2L-FAB"/>
-                                                    <constraint firstItem="O0w-Fp-1n9" firstAttribute="top" secondItem="NdP-MI-nFz" secondAttribute="bottom" constant="-15" id="NGF-sl-wip"/>
+                                                    <constraint firstItem="O0w-Fp-1n9" firstAttribute="top" secondItem="NdP-MI-nFz" secondAttribute="bottom" constant="-10" id="NGF-sl-wip"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="top" secondItem="L6F-hZ-jfA" secondAttribute="top" id="QaQ-GN-WJV"/>
                                                     <constraint firstAttribute="height" constant="30" id="U0Y-Tf-5lf"/>
                                                     <constraint firstItem="NdP-MI-nFz" firstAttribute="centerX" secondItem="L6F-hZ-jfA" secondAttribute="centerX" id="dod-4a-k40"/>
@@ -1249,16 +1250,21 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-DE-ayo" userLabel="titles">
-                                                <rect key="frame" x="16" y="30" width="343" height="70"/>
+                                                <rect key="frame" x="16" y="38" width="343" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marketing 4.0 a quarta vez eh o charme" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJz-bk-xig" userLabel="episode title">
-                                                        <rect key="frame" x="40" y="0.0" width="263" height="48"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marketing 4.0 a quarta vez eh o charme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJz-bk-xig" userLabel="episode title" customClass="MarqueeLabel" customModule="MarqueeLabelSwift">
+                                                        <rect key="frame" x="40" y="0.0" width="263" height="24"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="holdScrolling" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Philip Kotler" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB3-mC-LUR" userLabel="author">
-                                                        <rect key="frame" x="0.0" y="52" width="343" height="19.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="28" width="343" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1282,14 +1288,14 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <constraint firstItem="2yp-DE-ayo" firstAttribute="centerX" secondItem="uKB-e1-Cfm" secondAttribute="centerX" id="T8O-MT-YaI"/>
                                             <constraint firstAttribute="height" constant="100" id="Uyq-kx-Zm6"/>
                                             <constraint firstAttribute="trailing" secondItem="2yp-DE-ayo" secondAttribute="trailing" constant="16" id="i5O-rw-tjn"/>
-                                            <constraint firstItem="2yp-DE-ayo" firstAttribute="top" secondItem="L6F-hZ-jfA" secondAttribute="bottom" id="qSj-hZ-vSc"/>
+                                            <constraint firstItem="2yp-DE-ayo" firstAttribute="top" secondItem="O0w-Fp-1n9" secondAttribute="bottom" constant="1" id="kFi-Qi-ABf"/>
                                             <constraint firstItem="2yp-DE-ayo" firstAttribute="leading" secondItem="uKB-e1-Cfm" secondAttribute="leading" constant="16" id="s8M-gA-BH7"/>
                                             <constraint firstItem="L6F-hZ-jfA" firstAttribute="top" secondItem="uKB-e1-Cfm" secondAttribute="top" id="wfV-Qa-qor"/>
                                             <constraint firstItem="L6F-hZ-jfA" firstAttribute="leading" secondItem="uKB-e1-Cfm" secondAttribute="leading" id="wvN-Rs-HjU"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C50-1i-chJ" userLabel="midle">
-                                        <rect key="frame" x="16" y="103.33333333333334" width="343" height="22"/>
+                                        <rect key="frame" x="16" y="117.5" width="343" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-yX-3fM" userLabel="download">
                                                 <rect key="frame" x="0.0" y="0.0" width="21" height="22"/>
@@ -1308,7 +1314,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pNf-4Y-tEt" userLabel="controles">
-                                        <rect key="frame" x="96.666666666666686" y="129.33333333333334" width="182" height="70"/>
+                                        <rect key="frame" x="96.5" y="143.5" width="182" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbf-gk-ZK9" userLabel="rewind">
                                                 <rect key="frame" x="0.0" y="0.0" width="26" height="70"/>
@@ -1318,7 +1324,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrm-o1-zvg" userLabel="play">
-                                                <rect key="frame" x="55.999999999999986" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="56" y="0.0" width="70" height="70"/>
                                                 <state key="normal" image="pause"/>
                                                 <connections>
                                                     <action selector="playAction:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="mCZ-S1-hfB"/>
@@ -1334,9 +1340,9 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsf-dy-eWI">
-                                        <rect key="frame" x="165" y="231.33333333333331" width="45" height="30"/>
+                                        <rect key="frame" x="165" y="237.5" width="45" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="x3Z-kl-GpH"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="x3Z-kl-GpH"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="1.95x">
@@ -1351,10 +1357,9 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <constraints>
                                     <constraint firstItem="pNf-4Y-tEt" firstAttribute="centerX" secondItem="uKB-e1-Cfm" secondAttribute="centerX" id="9vb-WH-h0k"/>
                                     <constraint firstItem="C50-1i-chJ" firstAttribute="top" secondItem="fB3-mC-LUR" secondAttribute="bottom" constant="2" id="Dyl-uU-PM5"/>
-                                    <constraint firstAttribute="height" constant="270" id="IgK-c3-kLf"/>
                                     <constraint firstAttribute="trailing" secondItem="C50-1i-chJ" secondAttribute="trailing" constant="16" id="Tfd-C1-0eq"/>
                                     <constraint firstItem="Rsf-dy-eWI" firstAttribute="centerX" secondItem="5ye-ib-aWJ" secondAttribute="centerX" id="VaS-5B-QLX"/>
-                                    <constraint firstItem="Rsf-dy-eWI" firstAttribute="top" secondItem="pNf-4Y-tEt" secondAttribute="bottom" constant="32" id="XGc-sZ-HL7"/>
+                                    <constraint firstItem="Rsf-dy-eWI" firstAttribute="top" secondItem="pNf-4Y-tEt" secondAttribute="bottom" constant="24" id="XGc-sZ-HL7"/>
                                     <constraint firstItem="C50-1i-chJ" firstAttribute="leading" secondItem="5ye-ib-aWJ" secondAttribute="leading" constant="16" id="nr6-eo-Eh4"/>
                                     <constraint firstItem="pNf-4Y-tEt" firstAttribute="top" secondItem="C50-1i-chJ" secondAttribute="bottom" constant="4" id="yo5-Nf-DUt"/>
                                 </constraints>
@@ -1363,10 +1368,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uKB-e1-Cfm" firstAttribute="top" secondItem="6o0-MF-tlj" secondAttribute="top" id="B3x-U8-lqH"/>
+                            <constraint firstItem="5ye-ib-aWJ" firstAttribute="bottom" secondItem="6o0-MF-tlj" secondAttribute="bottom" constant="13" id="DkA-hS-W3N"/>
                             <constraint firstItem="uKB-e1-Cfm" firstAttribute="leading" secondItem="6o0-MF-tlj" secondAttribute="leading" id="XTA-FN-CSA"/>
                             <constraint firstItem="uKB-e1-Cfm" firstAttribute="trailing" secondItem="6o0-MF-tlj" secondAttribute="trailing" id="ZWC-mI-2oM"/>
                             <constraint firstItem="5ye-ib-aWJ" firstAttribute="leading" secondItem="6o0-MF-tlj" secondAttribute="leading" id="aDY-8I-iRF"/>
-                            <constraint firstItem="5ye-ib-aWJ" firstAttribute="top" secondItem="6o0-MF-tlj" secondAttribute="top" id="avc-bm-cL1"/>
+                            <constraint firstItem="5ye-ib-aWJ" firstAttribute="top" secondItem="6o0-MF-tlj" secondAttribute="top" constant="-30" id="avc-bm-cL1"/>
                             <constraint firstItem="5ye-ib-aWJ" firstAttribute="trailing" secondItem="6o0-MF-tlj" secondAttribute="trailing" id="fiK-pM-DwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6o0-MF-tlj"/>
@@ -1394,11 +1400,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <viewControllerLayoutGuide type="bottom" id="kgo-7C-YFc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fpI-nG-BiO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llc-s4-Izh">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCR-5C-kdW" userLabel="content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="748"/>
@@ -1540,21 +1546,21 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="WelcomeViewController" id="lMJ-6l-Pgj" customClass="WelcomeViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ElU-CJ-oSI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTb-dy-4i6">
-                                <rect key="frame" x="0.0" y="44" width="375" height="587.33333333333337"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="517.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLa-Kb-ioM" userLabel="bottomContainer">
-                                <rect key="frame" x="0.0" y="631.33333333333337" width="375" height="146.66666666666663"/>
+                                <rect key="frame" x="0.0" y="537.5" width="375" height="129.5"/>
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="5sV-Ng-RSL">
                                         <rect key="frame" x="160" y="0.0" width="55" height="37"/>
                                     </pageControl>
                                     <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-uR-Wvr">
-                                        <rect key="frame" x="105.66666666666669" y="67.333333333333258" width="164" height="55"/>
+                                        <rect key="frame" x="105.5" y="53" width="164" height="55"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Começar já" backgroundImage="Rectangle 3">
@@ -1565,7 +1571,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </connections>
                                     </button>
                                     <button hidden="YES" autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="cd2-xN-vNW">
-                                        <rect key="frame" x="85" y="67.333333333333258" width="205" height="55"/>
+                                        <rect key="frame" x="85" y="53" width="205" height="55"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="Bar-eH-qb2"/>
@@ -1621,21 +1627,21 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="PrimeiraVC" id="PIR-rI-FoS" customClass="PrimeiraViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJI-il-pfb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-n6-0Nq">
-                                <rect key="frame" x="87.666666666666686" y="64" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="YQr-pK-567"/>
                                     <constraint firstAttribute="width" constant="200" id="deq-jb-3JV"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="TI0-W9-T6g">
-                                <rect key="frame" x="177.66666666666666" y="234" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="210" width="20" height="20"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cZl-tx-Qfo">
-                                <rect key="frame" x="37.666666666666657" y="264" width="300" height="275"/>
+                                <rect key="frame" x="37.5" y="240" width="300" height="275"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJI-kv-Peb" userLabel="visitanteButton">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
@@ -1669,16 +1675,16 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         <rect key="frame" x="0.0" y="122" width="300" height="31"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-pc-MyG">
-                                                <rect key="frame" x="8" y="8" width="128" height="15"/>
+                                                <rect key="frame" x="8" y="8" width="128.5" height="15"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="horizontalLine" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-JG-Cgb">
-                                                <rect key="frame" x="163.66666666666669" y="8" width="128.33333333333331" height="15"/>
+                                                <rect key="frame" x="163.5" y="8" width="128.5" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="ABm-T3-vji"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ou" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4z-c3-ZgQ">
-                                                <rect key="frame" x="139.33333333333334" y="5" width="21" height="21"/>
+                                                <rect key="frame" x="139.5" y="5" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="AHp-nY-PHP"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="csU-Uv-UJw"/>
@@ -1738,7 +1744,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         <rect key="frame" x="0.0" y="230" width="300" height="45"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-Pz-t3e" userLabel="criarContaView">
-                                                <rect key="frame" x="62" y="7.6666666666666856" width="176" height="30"/>
+                                                <rect key="frame" x="62" y="7.5" width="176" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCP-Al-dZY">
                                                         <rect key="frame" x="132" y="0.0" width="44" height="30"/>
@@ -1750,7 +1756,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Não tem conta?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hB-ib-KcV">
-                                                        <rect key="frame" x="0.3333333333333286" y="4.6666666666666288" width="120.66666666666667" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.5" y="5" width="120.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1814,7 +1820,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     <tabBarItem key="tabBarItem" title="Início" image="tab_icon_inicio" selectedImage="tab_icon_selected_inicio" id="waN-wZ-nNA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="pUU-rG-Ndz">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -1857,17 +1863,17 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="speedModal" title="Editar Perfil" id="5Y3-qG-VEH" customClass="EditarPerfilViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q7I-dd-L9W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgT-CH-9R6">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-L0-0pg">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sem_imagem" translatesAutoresizingMaskIntoConstraints="NO" id="b7R-g0-C5A">
-                                                <rect key="frame" x="87.666666666666686" y="40" width="200" height="200"/>
+                                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="QoW-hQ-ek2"/>
                                                     <constraint firstAttribute="height" constant="200" id="vap-Hw-uN4"/>
@@ -1880,13 +1886,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wU-19-as2" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-AL-kVv" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="175.66666666666663" y="0.0" width="167.33333333333337" height="40"/>
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
@@ -1909,13 +1915,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         <rect key="frame" x="0.0" y="168" width="343" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sexo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4He-ec-seX" userLabel="sexo" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escolaridade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpI-oi-hkZ" userLabel="escolaridade" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="175.66666666666663" y="0.0" width="167.33333333333337" height="40"/>
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
@@ -2037,14 +2043,14 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController id="FFF-EP-19c" customClass="ListAutoresViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIJ-z4-CO0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-9t-n5e">
-                                <rect key="frame" x="169" y="343.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-0r-7oi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -2092,17 +2098,17 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <viewControllerLayoutGuide type="bottom" id="12u-Qx-RPZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4HX-DE-1vY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-of-CbL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-38-5dv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="808"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="gm6-We-aFC">
-                                                <rect key="frame" x="87.666666666666686" y="40" width="200" height="200"/>
+                                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="vNn-mz-BT1"/>
                                                     <constraint firstAttribute="width" constant="200" id="vwg-1r-Oyl"/>
@@ -2112,16 +2118,16 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 <rect key="frame" x="16" y="260" width="343" height="153"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TtN-Ne-9cU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40.5"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-7k-W50" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="40.333333333333336"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="40.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSl-Ke-k9H" userLabel="Sobrenome" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                                <rect key="frame" x="175.66666666666663" y="0.0" width="167.33333333333337" height="40.333333333333336"/>
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="40.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
@@ -2129,13 +2135,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         </subviews>
                                                     </stackView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xhq-Es-vq0" userLabel="email" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="56.333333333333314" width="343" height="40.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="56.5" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" textContentType="email"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-Ys-xm4" userLabel="senha" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="112.66666666666667" width="343" height="40.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="112.5" width="343" height="40.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
@@ -2209,7 +2215,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </scrollView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ytg-Dv-VO6">
-                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -2261,17 +2267,17 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <viewControllerLayoutGuide type="bottom" id="1bz-U0-kcT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zoe-cf-Wa1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqG-Ih-Zsw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOi-Qz-I8b">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="808"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_200" translatesAutoresizingMaskIntoConstraints="NO" id="NmZ-mG-XGB">
-                                                <rect key="frame" x="87.666666666666686" y="40" width="200" height="200"/>
+                                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="X7h-cj-ix1"/>
                                                     <constraint firstAttribute="height" constant="200" id="xua-wG-Zbu"/>
@@ -2337,11 +2343,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <viewControllerLayoutGuide type="bottom" id="F9c-vf-7wT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jGa-gJ-IVI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvF-Nc-VBb">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mS7-pL-Dnl" userLabel="content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="748"/>
@@ -2456,7 +2462,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     <tabBarItem key="tabBarItem" title="Perfil" image="tab_icon_perfil" selectedImage="tab_item_selected_perfil" id="CUL-hg-sh0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="xfi-pk-cBk">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -2485,7 +2491,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="f2S-R2-Uor">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -2512,7 +2518,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     <tabBarItem key="tabBarItem" title="Biblioteca" image="tab_icon_biblioteca" selectedImage="tab_item_selected_biblioteca" id="5dO-Zd-fIV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="QEr-5Z-Yja">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -2552,7 +2558,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Na-u7-iuF">
-                                <rect key="frame" x="63" y="14.666666666666664" width="42" height="20"/>
+                                <rect key="frame" x="63" y="14.5" width="42" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2569,7 +2575,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9h-t9-Io5" userLabel="close">
-                                <rect key="frame" x="329" y="9.6666666666666643" width="30" height="30"/>
+                                <rect key="frame" x="329" y="9.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="DLM-yg-Sbq"/>
                                     <constraint firstAttribute="height" constant="30" id="l88-FL-Xfk"/>
@@ -2625,11 +2631,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="FavoritosViewController" title="Favoritos" id="iyi-DC-AvE" customClass="FavoritosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0YB-Cb-Uxa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qds-UC-7C2">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vDc-CD-cVf" customClass="CellWithProgress" customModule="myPodcastApp" customModuleProvider="target">
@@ -2647,7 +2653,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua lista ainda está vazia!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cK-L4-Dkg">
-                                <rect key="frame" x="89.666666666666686" y="395.66666666666669" width="196" height="21"/>
+                                <rect key="frame" x="89.5" y="323" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2679,11 +2685,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="DownloadViewController" title="Downloads" id="7rt-Cz-4cX" customClass="DownloadViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlR-wZ-djr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ABm-1W-fa3">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Huj-IV-5qZ" customClass="CellWithProgress" customModule="myPodcastApp" customModuleProvider="target">
@@ -2701,7 +2707,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua lista ainda está vazia!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evc-Zh-mX7">
-                                <rect key="frame" x="89.666666666666686" y="395.66666666666669" width="196" height="21"/>
+                                <rect key="frame" x="89.5" y="323" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2733,11 +2739,11 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController storyboardIdentifier="ConcluidosViewController" title="concluidos" id="6bE-mP-sxY" customClass="ConcluidosViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eAd-gM-aZn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-KF-mtr">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0gU-fd-ofx" customClass="CustomCell" customModule="myPodcastApp" customModuleProvider="target">
@@ -2755,7 +2761,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua lista ainda está vazia!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYR-pb-l9q">
-                                <rect key="frame" x="89.666666666666686" y="395.66666666666669" width="196" height="21"/>
+                                <rect key="frame" x="89.5" y="323" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2787,21 +2793,21 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             <objects>
                 <viewController id="TTd-qY-eSi" customClass="LeituraViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ppr-fY-uzy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnm-ad-inf">
-                                <rect key="frame" x="16" y="47.333333333333343" width="343" height="25.333333333333329"/>
+                                <rect key="frame" x="16" y="47.5" width="343" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-ub-FV0">
-                                <rect key="frame" x="52" y="80.666666666666657" width="271" height="2"/>
+                                <rect key="frame" x="52" y="81" width="271" height="2"/>
                                 <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zds-1R-cX4">
-                                <rect key="frame" x="0.0" y="98.666666666666686" width="375" height="542.33333333333326"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="455"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-97-F79">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="313"/>
@@ -2817,7 +2823,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 <rect key="frame" x="0.0" y="53" width="375" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJq-PV-b9e">
-                                                        <rect key="frame" x="77.666666666666686" y="0.0" width="220" height="51"/>
+                                                        <rect key="frame" x="77.5" y="0.0" width="220" height="51"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="220" id="S6R-LV-mgi"/>
                                                             <constraint firstAttribute="height" constant="51" id="m0q-5W-p1N"/>
@@ -2829,7 +2835,7 @@ concluir essa leitura!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Que tal nos ajudar avaliando esse resumo?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nui-xb-WWa">
-                                                        <rect key="frame" x="77.666666666666686" y="71.000000000000028" width="220" height="40.666666666666657"/>
+                                                        <rect key="frame" x="77.5" y="71" width="220" height="41"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="220" id="DBx-5z-TYh"/>
                                                         </constraints>
@@ -2838,7 +2844,7 @@ concluir essa leitura!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B3f-fb-g2a">
-                                                        <rect key="frame" x="89" y="131.66666666666666" width="197" height="31"/>
+                                                        <rect key="frame" x="89" y="132" width="197" height="31"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-tJ-Uhv">
                                                                 <rect key="frame" x="0.0" y="0.0" width="33" height="31"/>
@@ -2881,7 +2887,7 @@ concluir essa leitura!</string>
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-cI-ckf">
-                                                        <rect key="frame" x="77.666666666666686" y="192.66666666666666" width="220" height="30"/>
+                                                        <rect key="frame" x="77.5" y="193" width="220" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="220" id="qhF-Yb-92J"/>
@@ -2929,7 +2935,7 @@ concluir essa leitura!</string>
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjF-Q2-sGH">
-                                <rect key="frame" x="16" y="7.9999999999999982" width="343" height="31.333333333333329"/>
+                                <rect key="frame" x="16" y="8" width="343" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2938,14 +2944,14 @@ concluir essa leitura!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                 <subviews>
                                     <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="CVP-0I-4zS" customClass="CustomUISlider" customModule="myPodcastApp" customModuleProvider="target">
-                                        <rect key="frame" x="108" y="25.333333333333329" width="253" height="31"/>
+                                        <rect key="frame" x="108" y="25.5" width="253" height="31"/>
                                         <connections>
                                             <action selector="SliderEditingDidEnd:" destination="TTd-qY-eSi" eventType="editingDidEnd" id="f2b-0X-nSa"/>
                                             <action selector="sliderChangedValue:" destination="TTd-qY-eSi" eventType="valueChanged" id="ISY-r1-qef"/>
                                         </connections>
                                     </slider>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tamanho" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A05-6S-0I9">
-                                        <rect key="frame" x="24" y="30" width="70" height="20.333333333333329"/>
+                                        <rect key="frame" x="24" y="30" width="70" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="gyX-Qj-JcY"/>
                                         </constraints>
@@ -3014,38 +3020,38 @@ concluir essa leitura!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Rectangle 3" width="164.33332824707031" height="55"/>
+        <image name="Rectangle 3" width="164.5" height="55"/>
         <image name="account_white" width="24" height="24"/>
-        <image name="biblioteca" width="31.666666030883789" height="26"/>
-        <image name="bookBlack" width="23.666666030883789" height="18"/>
-        <image name="checkWhite" width="28.333333969116211" height="19.666666030883789"/>
-        <image name="chevron" width="19" height="11.333333015441895"/>
+        <image name="biblioteca" width="32" height="26"/>
+        <image name="bookBlack" width="23.5" height="18"/>
+        <image name="checkWhite" width="28.5" height="20"/>
+        <image name="chevron" width="19" height="11.5"/>
         <image name="close" width="20" height="20"/>
         <image name="comment" width="24" height="24"/>
-        <image name="downloadBlack" width="21.333333969116211" height="21.666666030883789"/>
-        <image name="downloadWhite" width="21.333333969116211" height="21.666666030883789"/>
+        <image name="downloadBlack" width="21.5" height="22"/>
+        <image name="downloadWhite" width="21.5" height="22"/>
         <image name="exit_white" width="24" height="24"/>
-        <image name="facebookLogo" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="favoritoWhite" width="20" height="25.333333969116211"/>
+        <image name="facebookLogo" width="33.5" height="33.5"/>
+        <image name="favoritoWhite" width="20" height="25.5"/>
         <image name="forward_10" width="26" height="26"/>
-        <image name="googleLogo" width="32.666667938232422" height="32.666667938232422"/>
+        <image name="googleLogo" width="32.5" height="32.5"/>
         <image name="horizontalLine" width="155" height="1"/>
         <image name="logo_200" width="200" height="200"/>
-        <image name="miniPlay" width="25.666666030883789" height="25.666666030883789"/>
+        <image name="miniPlay" width="25.5" height="25.5"/>
         <image name="moreBlack" width="23" height="5"/>
-        <image name="notificacoes" width="33.333332061767578" height="33.666667938232422"/>
-        <image name="orangePlay" width="17" height="22.666666030883789"/>
+        <image name="notificacoes" width="33.5" height="33.5"/>
+        <image name="orangePlay" width="17" height="23"/>
         <image name="pause" width="70" height="70"/>
         <image name="payment_white" width="24" height="24"/>
-        <image name="playSimpleBlack" width="17" height="22.666666030883789"/>
+        <image name="playSimpleBlack" width="17" height="23"/>
         <image name="rewind_10" width="26" height="26"/>
         <image name="sem_imagem" width="160" height="160"/>
         <image name="settings_white" width="24" height="24"/>
-        <image name="starBigBlanck" width="33" height="31.333333969116211"/>
+        <image name="starBigBlanck" width="33" height="31.5"/>
         <image name="tab_icon_biblioteca" width="36" height="26"/>
-        <image name="tab_icon_inicio" width="30" height="28.333333969116211"/>
+        <image name="tab_icon_inicio" width="30" height="28.5"/>
         <image name="tab_icon_perfil" width="26" height="26"/>
-        <image name="tab_icon_selected_inicio" width="30" height="28.333333969116211"/>
+        <image name="tab_icon_selected_inicio" width="30" height="28.5"/>
         <image name="tab_item_selected_biblioteca" width="36" height="26"/>
         <image name="tab_item_selected_perfil" width="26" height="26"/>
         <image name="xForClose" width="20" height="20"/>

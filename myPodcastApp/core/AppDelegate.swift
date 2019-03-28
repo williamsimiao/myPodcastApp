@@ -19,27 +19,27 @@ import FacebookCore
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
                 
-//        let prefs:UserDefaults = UserDefaults.standard
-//        let isLoggedIn = prefs.integer(forKey: "isLogado") as Int
-//        let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
-//        
-//        if (isLoggedIn == 1 || isVisitante) {
-//            let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
-//            let vc = sb.instantiateViewController(withIdentifier: "BaseViewController")
-////            let vc = sb.instantiateViewController(withIdentifier: "WelcomeViewController")
-//            
-//            vc.modalTransitionStyle = .crossDissolve
-//            window!.rootViewController = vc
-//            window!.makeKeyAndVisible()
-//        }
-//        let audioSession = AVAudioSession.sharedInstance()
-//        do {
-//            try audioSession.setCategory(AVAudioSession.Category.playback, mode: .default)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//        }
-//        catch {
-//            print("AudioSession ERROR")
-//        }
+        let prefs:UserDefaults = UserDefaults.standard
+        let isLoggedIn = prefs.integer(forKey: "isLogado") as Int
+        let isVisitante = prefs.bool(forKey: "isVisitante") as Bool
+        
+        if (isLoggedIn == 1 || isVisitante) {
+            let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = sb.instantiateViewController(withIdentifier: "BaseViewController")
+//            let vc = sb.instantiateViewController(withIdentifier: "WelcomeViewController")
+            
+            vc.modalTransitionStyle = .crossDissolve
+            window!.rootViewController = vc
+            window!.makeKeyAndVisible()
+        }
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        }
+        catch {
+            print("AudioSession ERROR")
+        }
 
         return true
     }
