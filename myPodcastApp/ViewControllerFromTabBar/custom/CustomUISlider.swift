@@ -31,6 +31,13 @@ class CustomUISlider: UISlider {
     func commonInit() {
     }
     
+    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
+        
+        let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width + 5, height: bounds.size.height + 5))
+        super.thumbRect(forBounds: customBounds, trackRect: rect, value: value)
+        return customBounds
+    }
+    
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         
         //keeps original origin and width, changes height, you get the idea
