@@ -579,7 +579,7 @@ extension InicioViewController {
             
             let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
             
-            self.extract_json_data(dataString!)
+            self.extract_json_dataFav(dataString!)
             
         })
         
@@ -603,10 +603,10 @@ extension InicioViewController {
             self.success = (json.value(forKey: "success") as! Bool)
             if (self.success!) {
                 
-                NSLog("SugerirVC Fav");
+                NSLog("Sucesso Fav");
             } else {
                 
-                NSLog("SugerirVC Fav");
+                NSLog("erro Fav");
                 error_msg = (json.value(forKey: "error") as! String)
                 
             }
@@ -616,7 +616,7 @@ extension InicioViewController {
             print("error Fav")
             return
         }
-        DispatchQueue.main.async(execute: onResultReceived)
+        DispatchQueue.main.async(execute: onResultReceivedFav)
         
     }
     
