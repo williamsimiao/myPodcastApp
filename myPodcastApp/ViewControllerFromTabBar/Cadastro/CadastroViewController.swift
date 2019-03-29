@@ -20,7 +20,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnCadastrar: UIButton!
     
     @IBOutlet weak var btnDone: UIBarButtonItem!
-    @IBOutlet weak var btnEmpreende: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     
@@ -307,6 +306,7 @@ class CadastroViewController: UIViewController, UITextFieldDelegate {
     @objc func viewTapped(gestureReconizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
     
     @IBAction func clickCadastrar(_ sender: Any) {
         cadastrar()

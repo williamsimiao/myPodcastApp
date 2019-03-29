@@ -2132,19 +2132,6 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                     <constraint firstAttribute="height" constant="153" id="FiU-MC-NXE"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UkL-bT-516" userLabel="empreende">
-                                                <rect key="frame" x="16" y="429" width="343" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="JQb-i5-Gzz"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Já Empreende ?" image="checkWhite"/>
-                                                <connections>
-                                                    <action selector="clickBtnEmpreende:" destination="lNs-Fr-eWm" eventType="touchUpInside" id="aeO-83-koP"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoN-Hx-gUX">
                                                 <rect key="frame" x="16" y="495" width="343" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2174,16 +2161,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <constraint firstAttribute="height" constant="600" id="6aZ-rF-oc3"/>
                                             <constraint firstItem="i1c-pj-ZOP" firstAttribute="top" secondItem="JoN-Hx-gUX" secondAttribute="bottom" constant="24" id="9Wj-ge-DdG"/>
                                             <constraint firstItem="gm6-We-aFC" firstAttribute="top" secondItem="dc3-38-5dv" secondAttribute="top" constant="40" id="EKB-aK-g4K"/>
-                                            <constraint firstAttribute="trailing" secondItem="UkL-bT-516" secondAttribute="trailing" constant="16" id="R0w-iZ-COq"/>
                                             <constraint firstAttribute="trailing" secondItem="JoN-Hx-gUX" secondAttribute="trailing" constant="16" id="SGM-oB-pro"/>
-                                            <constraint firstItem="UkL-bT-516" firstAttribute="top" secondItem="v0h-De-W0K" secondAttribute="bottom" constant="16" id="TAF-yU-QI8"/>
+                                            <constraint firstItem="JoN-Hx-gUX" firstAttribute="top" secondItem="aYy-Ys-xm4" secondAttribute="bottom" constant="82" id="WA9-Hg-fm5"/>
                                             <constraint firstAttribute="trailing" secondItem="v0h-De-W0K" secondAttribute="trailing" constant="16" id="Zg3-Bn-b7I"/>
                                             <constraint firstItem="v0h-De-W0K" firstAttribute="top" secondItem="gm6-We-aFC" secondAttribute="bottom" constant="20" id="bW1-bc-SoL"/>
                                             <constraint firstItem="v0h-De-W0K" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="eOn-fn-ZJb"/>
                                             <constraint firstItem="JoN-Hx-gUX" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="euU-9I-zd9"/>
                                             <constraint firstItem="gm6-We-aFC" firstAttribute="centerX" secondItem="dc3-38-5dv" secondAttribute="centerX" id="jdQ-H7-nAq"/>
-                                            <constraint firstItem="UkL-bT-516" firstAttribute="leading" secondItem="dc3-38-5dv" secondAttribute="leading" constant="16" id="kti-C8-Anx"/>
-                                            <constraint firstItem="JoN-Hx-gUX" firstAttribute="top" secondItem="UkL-bT-516" secondAttribute="bottom" constant="16" id="xBR-Yu-46N"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2223,7 +2207,6 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     <connections>
                         <outlet property="btnCadastrar" destination="JoN-Hx-gUX" id="8aZ-iS-x9X"/>
                         <outlet property="btnDone" destination="RAM-T7-3bD" id="9hV-rw-UOH"/>
-                        <outlet property="btnEmpreende" destination="UkL-bT-516" id="qCZ-VU-xwE"/>
                         <outlet property="constraintContentHeight" destination="6aZ-rF-oc3" id="J4V-HO-3tu"/>
                         <outlet property="contentView" destination="dc3-38-5dv" id="Weg-lT-qcX"/>
                         <outlet property="edtEmail" destination="Xhq-Es-vq0" id="XQ5-mM-M2X"/>
