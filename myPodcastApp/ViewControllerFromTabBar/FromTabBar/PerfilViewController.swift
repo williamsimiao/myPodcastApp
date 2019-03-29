@@ -26,21 +26,25 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+//        let menu1 = HSMenu(icon: nil, title: "Editar")
+//        let menu2 = HSMenu(icon: nil, title: "Configurações")
+//        let menu3 = HSMenu(icon: nil, title: "Sair")
+//
+//        menuArray = [menu1, menu2, menu3]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let prefs:UserDefaults = UserDefaults.standard
         isVisitante = prefs.bool(forKey: "isVisitante") as Bool
-
+        
         if isVisitante {
             setUIforVisitante()
         }
         else {
             setUIForUser()
         }
-        
-        let menu1 = HSMenu(icon: nil, title: "Editar")
-        let menu2 = HSMenu(icon: nil, title: "Configurações")
-        let menu3 = HSMenu(icon: nil, title: "Sair")
-        
-        menuArray = [menu1, menu2, menu3]
     }
     
     func setUIforVisitante() {

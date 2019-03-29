@@ -82,7 +82,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bO-kq-gSQ">
                                 <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conteúdo Premium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMa-LF-pEa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMa-LF-pEa">
                                         <rect key="frame" x="24" y="16" width="252" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,8 +102,8 @@
                                             <action selector="clickOK:" destination="zjJ-f2-HZa" eventType="touchUpInside" id="CC6-T0-ij5"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Em breve disponivel." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPJ-QF-KyY">
-                                        <rect key="frame" x="71" y="61" width="158" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A área premium estará disponivel em breve." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPJ-QF-KyY">
+                                        <rect key="frame" x="16" y="61" width="268" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -114,11 +114,13 @@
                                     <constraint firstItem="YMa-LF-pEa" firstAttribute="leading" secondItem="5bO-kq-gSQ" secondAttribute="leading" constant="24" id="7zh-kt-mTn"/>
                                     <constraint firstItem="YMa-LF-pEa" firstAttribute="top" secondItem="5bO-kq-gSQ" secondAttribute="top" constant="16" id="LqX-E7-mkF"/>
                                     <constraint firstAttribute="height" constant="200" id="OqI-wI-8Qn"/>
+                                    <constraint firstItem="lPJ-QF-KyY" firstAttribute="leading" secondItem="5bO-kq-gSQ" secondAttribute="leading" constant="16" id="R3g-eQ-X9t"/>
                                     <constraint firstAttribute="trailing" secondItem="YMa-LF-pEa" secondAttribute="trailing" constant="24" id="YtJ-cS-pXU"/>
                                     <constraint firstAttribute="bottom" secondItem="Cwv-9R-96j" secondAttribute="bottom" constant="8" id="eKU-cN-I4L"/>
                                     <constraint firstItem="lPJ-QF-KyY" firstAttribute="centerX" secondItem="5bO-kq-gSQ" secondAttribute="centerX" id="fYW-p9-bYr"/>
                                     <constraint firstItem="Cwv-9R-96j" firstAttribute="centerX" secondItem="5bO-kq-gSQ" secondAttribute="centerX" id="k1h-4A-lwV"/>
                                     <constraint firstItem="lPJ-QF-KyY" firstAttribute="top" secondItem="YMa-LF-pEa" secondAttribute="bottom" constant="24" id="mmh-26-Rrp"/>
+                                    <constraint firstAttribute="trailing" secondItem="lPJ-QF-KyY" secondAttribute="trailing" constant="16" id="sTQ-Vx-ASV"/>
                                 </constraints>
                             </view>
                         </subviews>

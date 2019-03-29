@@ -114,7 +114,7 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         vc.sourceType = .photoLibrary
         vc.allowsEditing = true
         vc.delegate = self
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
             AppService.util.alert("Biblioteca de Fotos indisponível", message: "Não foi possivel acessar a Biblioteca de Fotos")
             return
         }
@@ -130,6 +130,7 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
             return
         }
         profilePicBtn.setImage(image, for: .normal)
+        
     }
     
     @IBAction func clickCamera(_ sender: Any) {
@@ -137,7 +138,7 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         vc.sourceType = .camera
         vc.allowsEditing = true
         vc.delegate = self
-        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             AppService.util.alert("Camera indisponível", message: "Não foi possivel acessar a camera do dispositivo")
             return
         }
@@ -151,6 +152,9 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
             return
         }
         validateFields()
+        
+        AppService.util.putuserDataOnUserDefaults(usuario: <#T##NSDictionary#>)
+
         let url = URL(string: "salvarDados.php")
         makeResquest(url: url!, keys: keysArray, values: fieldsArray)
     }
