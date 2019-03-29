@@ -10,21 +10,20 @@ import UIKit
 
 class PremiumViewController: UIViewController {
 
+    @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var blackBox: UIView!
+    
+    let radius:CGFloat = 20.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        okBtn.layer.cornerRadius = radius
+        blackBox.layer.cornerRadius = radius
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func clickOK(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
-
+    
 }

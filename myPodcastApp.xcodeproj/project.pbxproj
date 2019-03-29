@@ -61,6 +61,7 @@
 		3DD43F36222585E100017B3E /* TermosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F35222585E100017B3E /* TermosViewController.swift */; };
 		3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F372225B26F00017B3E /* RecuperarViewController.swift */; };
 		3DD43F3A2225C26400017B3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F392225C26400017B3E /* LoginTextField.swift */; };
+		3DEBDF11224EB7470000721F /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBDF10224EB7470000721F /* PremiumViewController.swift */; };
 		3DED12DA2243DD5E00908F70 /* ListAutoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */; };
 		3DED12DE2243DECE00908F70 /* AutorTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED12DD2243DECE00908F70 /* AutorTableCell.xib */; };
 		3DED12E12243DFC100908F70 /* AutorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED12E02243DFC100908F70 /* AutorTableCell.swift */; };
@@ -143,6 +144,7 @@
 		3DD43F35222585E100017B3E /* TermosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermosViewController.swift; sourceTree = "<group>"; };
 		3DD43F372225B26F00017B3E /* RecuperarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperarViewController.swift; sourceTree = "<group>"; };
 		3DD43F392225C26400017B3E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		3DEBDF10224EB7470000721F /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAutoresViewController.swift; sourceTree = "<group>"; };
 		3DED12DD2243DECE00908F70 /* AutorTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutorTableCell.xib; sourceTree = "<group>"; };
 		3DED12E02243DFC100908F70 /* AutorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorTableCell.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				3DED12D82243D54D00908F70 /* FromTabBar */,
 				4E7F1BB6222C28C90000F6EB /* VCs from Bilblioteca */,
 				3D2D7B8A2208A7E4000E426A /* InheritanceViewController.swift */,
+				3DEBDF10224EB7470000721F /* PremiumViewController.swift */,
 				3DED12E22243FDCA00908F70 /* SugerirViewController.swift */,
 				3DF5F681221703E700F6BA33 /* DetalheViewController.swift */,
 				3D891C66220387CD0010E7A9 /* BaseViewController.swift */,
@@ -592,6 +595,7 @@
 				3D2D7B8B2208A7E4000E426A /* InheritanceViewController.swift in Sources */,
 				3D415D3F21FB84A500A8FE31 /* Util.swift in Sources */,
 				3DD43F36222585E100017B3E /* TermosViewController.swift in Sources */,
+				3DEBDF11224EB7470000721F /* PremiumViewController.swift in Sources */,
 				3DF45678223949D800F5D056 /* ContentSizedTableView.swift in Sources */,
 				3D34FD0A2213251E0062DB7E /* InicioViewController.swift in Sources */,
 				3DC1C20922020557009080EF /* MiniPlayerViewController.swift in Sources */,

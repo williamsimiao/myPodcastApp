@@ -166,8 +166,21 @@ class DetalheViewController: InheritanceViewController {
         let resumo = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo as Any).first
         let senderObject = sender as AnyObject
         
+        //TODO: remove on 2.0
+        if senderObject.isEqual(self.tenMinutesButton) {
+            
+            guard let premiumVC = storyboard?.instantiateViewController(
+                withIdentifier: "PremiumViewController")
+                as? PremiumViewController else {
+                    assertionFailure("No view controller ID PremiumViewController in storyboard")
+                    return
+            }
+            present(premiumVC, animated: true, completion: nil)
+            return
+        }
+        
         //TEN and Downloaded
-        if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 1 {
+        if senderObject.isEqual(self.tenMinutesButton) && resumo?.downloaded == 1 {
             mEpisodeType = episodeType.ten
             episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_10)!)!)
         }
@@ -317,8 +330,16 @@ class DetalheViewController: InheritanceViewController {
         
     }
     @IBAction func clickLeituraBtn(_ sender: Any) {
+        //TODO: remove on 2.0
+        guard let premiumVC = storyboard?.instantiateViewController(
+            withIdentifier: "PremiumViewController")
+            as? PremiumViewController else {
+                assertionFailure("No view controller ID PremiumViewController in storyboard")
+                return
+        }
+        present(premiumVC, animated: true, completion: nil)
         
-        performSegue(withIdentifier: "goto_leitura", sender: self)
+//        performSegue(withIdentifier: "goto_leitura", sender: self)
     }
     
     
