@@ -258,7 +258,6 @@ extension SugerirViewController {
                 
                 NSLog("SugerirVC ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
-                AppService.util.alert("Erro no SugerirVC", message: error_msg!)
 
             }
         }

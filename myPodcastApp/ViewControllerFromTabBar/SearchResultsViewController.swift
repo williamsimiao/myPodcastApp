@@ -207,7 +207,6 @@ extension SearchResultsViewController {
             self.tableView.reloadData()
         }
         else {
-            AppService.util.alert("Erro no Buscar", message: error_msg!)
         }
         
     }

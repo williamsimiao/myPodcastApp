@@ -285,7 +285,7 @@ class DetalheViewController: InheritanceViewController {
         
         let prefs:UserDefaults = UserDefaults.standard
         var cod_usuario = prefs.string(forKey: "cod_usuario")
-        if cod_usuario != nil || cod_usuario != "" {
+        if cod_usuario == nil || cod_usuario == "" {
             cod_usuario = "0"
         }
         
@@ -526,7 +526,7 @@ extension DetalheViewController {
             
         }
         else {
-            AppService.util.alert("Erro encontrar detalhes da resumo", message: error_msg!)
+            AppService.util.alert("Erro ao encontrar detalhes da resumo", message: error_msg!)
         }
         
     }
@@ -604,7 +604,6 @@ extension DetalheViewController {
                 
                 NSLog("SugerirVC ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
-                AppService.util.alert("Erro no SugerirVC", message: error_msgPing!)
                 
             }
         }

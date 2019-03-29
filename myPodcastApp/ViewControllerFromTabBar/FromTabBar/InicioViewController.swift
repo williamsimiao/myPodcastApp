@@ -403,7 +403,6 @@ extension InicioViewController {
         }
         else {
             print("onResultReceived error")
-            AppService.util.alert("Erro no Inicio", message: error_msg!)
         }
         
     }
@@ -502,14 +501,135 @@ extension InicioViewController: inicioCellDelegate {
         guard let resumoEntity = resumos.first else {
             return
         }
+        let resumo = Resumo(resumoEntity: resumoEntity)
         try! self.realm.write {
             if resumoEntity.favoritado == 0 {
                 resumoEntity.favoritado = 1
+                prepareFav(salvar: "1", cod_resumo: resumo.cod_resumo)
             } else {
                 resumoEntity.favoritado = 0
+                prepareFav(salvar: "0", cod_resumo: resumo.cod_resumo)
             }
             self.realm.add(resumoEntity, update: true)
         }
     }
 
 }
+
+extension InicioViewController {
+    func prepareFav(salvar: String, cod_resumo: String) {
+        let link = AppConfig.urlBaseApi + "salvarResumo.php"
+        let url = URL(string: link)
+        let keys = ["cod_usuario", "cod_resumo", "salvar"]
+        
+        
+        let prefs:UserDefaults = UserDefaults.standard
+        var cod_usuario = prefs.string(forKey: "cod_usuario")
+        if cod_usuario == nil || cod_usuario == "" {
+            return
+        }
+        
+        var values = [String]()
+        values.append(cod_usuario!)
+        values.append(cod_resumo)
+        values.append(salvar)
+        makeResquestFav(url: url!, keys: keys, values: values)
+    }
+    
+    func makeResquestFav(url: URL, keys: [String], values: [String]) {
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        
+        loading.isHidden = false
+        loading.startAnimating()
+        
+        let tuples = zip(keys, values)
+        var keyValueArray = [String]()
+        for (key, value) in tuples {
+            let paramValue = key + "=" + value
+            keyValueArray.append(paramValue)
+        }
+        let joinedData = keyValueArray.joined(separator: "&")
+        
+        //        let postData:Data = joinedData.data(using: String.Encoding(rawValue: String.Encoding.ascii.rawValue))!
+        //        let postLength:NSString = String( postData.count ) as NSString
+        
+        let post = joinedData as NSString
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        let postLength:NSString = String( postData.count ) as NSString
+        
+        request.timeoutInterval = 10
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        //        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        print("REQUEST: \(request)")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                print(error)
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            
+            self.extract_json_data(dataString!)
+            
+        })
+        
+        task.resume()
+    }
+    
+    func extract_json_dataFav(_ data:NSString) {
+        
+        NSLog("json %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do
+        {
+            // converter pra json
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            
+            // verificar success
+            self.success = (json.value(forKey: "success") as! Bool)
+            if (self.success!) {
+                
+                NSLog("SugerirVC Fav");
+            } else {
+                
+                NSLog("SugerirVC Fav");
+                error_msg = (json.value(forKey: "error") as! String)
+                
+            }
+        }
+        catch
+        {
+            print("error Fav")
+            return
+        }
+        DispatchQueue.main.async(execute: onResultReceived)
+        
+    }
+    
+    func onResultReceivedFav() {
+        
+        
+        if self.success {
+            print("success na Fav")
+        }
+        else {
+            print("Erro noa Fav")
+        }
+        
+    }
+}
+
