@@ -52,6 +52,7 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loading.isHidden = true
         success = false
         error_msg = ""
         

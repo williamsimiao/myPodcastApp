@@ -31,12 +31,12 @@ class CustomUISlider: UISlider {
     func commonInit() {
     }
     
-    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
-        
-        let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width, height: bounds.size.height))
-        super.thumbRect(forBounds: customBounds, trackRect: rect, value: value)
-        return customBounds
-    }
+//    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
+//
+//        let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: 16, height: 16))
+//        super.thumbRect(forBounds: customBounds, trackRect: rect, value: value)
+//        return customBounds
+//    }
     
     
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
@@ -50,7 +50,9 @@ class CustomUISlider: UISlider {
     //while we are here, why not change the image here as well? (bonus material)
     override func awakeFromNib() {
         //TODO: change this images
-        thumbTintColor = ColorWeel().orangeColor
+        let box = AppService.util.drawRect(width: 30, height: 30)
+        setThumbImage(box, for: .normal)
+//        thumbTintColor = ColorWeel().orangeColor
 //        self.setThumbImage(UIImage(named: "thumbDefault"), for: UIControl.State.normal)
 //        self.setThumbImage(UIImage(named: "thumbSelected"), for: UIControl.State.highlighted)
         super.awakeFromNib()

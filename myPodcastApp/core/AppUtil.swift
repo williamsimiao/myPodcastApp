@@ -754,4 +754,18 @@ open class AppUtil {
         return false
     }
     
+    func drawRect(width: CGFloat, height: CGFloat) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
+        let img = renderer.image { ctx in
+            ctx.cgContext.setFillColor(UIColor.red.cgColor)
+            ctx.cgContext.setStrokeColor(UIColor.green.cgColor)
+            ctx.cgContext.setLineWidth(1)
+            
+            let rectangle = CGRect(x: 0, y: 0, width: width, height: height)
+            ctx.cgContext.addRect(rectangle)
+            ctx.cgContext.drawPath(using: .fillStroke)
+        }
+        return img
+    }
+    
 }

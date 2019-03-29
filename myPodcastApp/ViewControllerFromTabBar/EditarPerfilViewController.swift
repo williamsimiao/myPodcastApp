@@ -146,9 +146,13 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func clickAtualizar(_ sender: Any) {
         
-        self.view.makeToast("Verifique seu email", duration: 2.0) { _ in
-            self.dismiss(animated: true, completion: nil)
+        guard AppService.util.isConnectedToNetwork() else {
+            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+            return
         }
+        validateFields()
+        let url = URL(string: "salvarDados.php")
+        makeResquest(url: url!, keys: keysArray, values: fieldsArray)
     }
     
     @IBAction func clickBtnEmpreende(_ sender: Any) {
@@ -345,14 +349,15 @@ extension EditarPerfilViewController {
         
         loading.isHidden = true
         loading.stopAnimating()
-        dismiss(animated: true, completion: nil)
         
         
         if self.success {
-            print("success na EditarPerfil")
+            self.view.makeToast("Perfil Atualizado", duration: 2.0) { _ in
+                self.dismiss(animated: true, completion: nil)
+            }
         }
         else {
-            print("Erro noa EditarPerfil")
+            AppService.util.alert("Erro", message: "Não foi possivel enviar os dados")
         }
         
     }

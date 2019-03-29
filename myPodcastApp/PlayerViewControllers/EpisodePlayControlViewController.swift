@@ -22,7 +22,7 @@ enum playerSpeed : String {
 class EpisodePlayControlViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var slider: CustomUISlider!
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var remainingLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     
