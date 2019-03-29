@@ -15,7 +15,6 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
     @IBOutlet weak var imgUsuario: UIImageView!
     @IBOutlet weak var lblNome: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
-    @IBOutlet weak var lblData: UILabel!
     @IBOutlet weak var btnPremium: UIButton!
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     
@@ -49,7 +48,6 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         
         imgUsuario.layer.cornerRadius = 50
         imgUsuario.clipsToBounds = true
-        lblData.text = "Usuário desde: Mar 2019"
 
     }
     
@@ -64,15 +62,11 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         
         lblNome.text = nome
         lblEmail.text = email
-        lblData.text = "Usuário desde: Mar 2019"
         
         
         // image rounded
         imgUsuario.layer.cornerRadius = 50
         imgUsuario.clipsToBounds = true
-        
-        
-        print(foto)
         
         // carregar foto do usuario
         //imgUsuario.image = UIImage(named: "sem_img.png")

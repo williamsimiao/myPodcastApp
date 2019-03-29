@@ -8,19 +8,12 @@
 
 import UIKit
 
-class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class CadastroViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var edtNome: UITextField!
     @IBOutlet weak var edtSobrenome: UITextField!
-    
-    @IBOutlet weak var edtFone: CadastroTextField!
-    @IBOutlet weak var edtDataNascimento: CadastroTextField!
-    
-    @IBOutlet weak var edtSexo: CadastroTextField!
-    @IBOutlet weak var edtEscolaridade: CadastroTextField!
-    
     
     @IBOutlet weak var edtEmail: UITextField!
     @IBOutlet weak var edtSenha: UITextField!
@@ -56,38 +49,13 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         edtNome.delegate = self
         edtSobrenome.delegate = self
         
-        edtFone.delegate = self
-        
-        edtDataNascimento.delegate = self
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
-        datePicker?.addTarget(self, action: #selector(CadastroViewController.dateChanged(datePicker:)), for: .valueChanged )
-        edtDataNascimento.inputView = datePicker
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(CadastroViewController.viewTapped(gestureReconizer:)))
         view.addGestureRecognizer(tapGestureReconizer)
-        
-        edtSexo.delegate = self
-        sexoPicker = UIPickerView()
-        sexoPicker.dataSource = self
-        sexoPicker.delegate = self
-        edtSexo.inputView = sexoPicker
-        
-        edtEscolaridade.delegate = self
-        escolaridadePicker = UIPickerView()
-        escolaridadePicker.dataSource = self
-        escolaridadePicker.delegate = self
-        edtEscolaridade.inputView = escolaridadePicker
         
         edtEmail.delegate = self
         edtSenha.delegate = self
         
         btnCadastrar.layer.cornerRadius = radius
-        
-//        btnEmpreende.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
-        btnEmpreende.imageView?.layer.cornerRadius = 5
-        btnEmpreende.imageView?.layer.borderWidth = 1
-        btnEmpreende.imageView?.layer.borderColor = ColorWeel().orangeColor.cgColor
-
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
@@ -334,38 +302,15 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
     }
     
-    @objc func dateChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        edtDataNascimento.text = dateFormatter.string(from: datePicker.date)
-//        view.endEditing(true )
-    }
+    
     
     @objc func viewTapped(gestureReconizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    
-    @IBAction func clickBtnEmpreende(_ sender: Any) {
-        if self.empreendeButtonHasMark {
-            self.btnEmpreende.setImage(UIImage(named:
-                "downloadBlack"), for: UIControl.State.normal)
-            
-            self.empreendeButtonHasMark = false
-
-        }
-        else {
-            self.btnEmpreende.setImage(UIImage(named:
-                "checkWhite"), for: UIControl.State.normal)
-            self.empreendeButtonHasMark = true
-        }
-    }
-    
-    
     @IBAction func clickCadastrar(_ sender: Any) {
         cadastrar()
     }
-    
     
     @IBAction func clickVoltar(_ sender: Any) {
         
@@ -384,51 +329,6 @@ class CadastroViewController: UIViewController, UITextFieldDelegate, UIPickerVie
 
 //        self.scrollView.contentOffset.y = self.scrollView.contentSize.height - textField.bounds.origin.y - textField.bounds.size.height
 //        self.scrollView.contentOffset.y = textField.bounds.origin.y
-    }
-    
-    //MARK - pickerView dataSource and Delegate
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == sexoPicker {
-            return sexoArray.count
-        }
-        else if pickerView == escolaridadePicker {
-            return escolaridadeAray.count
-        }
-        else {
-            print("DOIDO")
-            return 2
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == sexoPicker {
-            return sexoArray[row]
-        }
-        else if pickerView == escolaridadePicker {
-            return escolaridadeAray[row]
-        }
-        else {
-            return escolaridadeAray[row]
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == sexoPicker {
-            edtSexo.text = sexoArray[row]
-        }
-        else if pickerView == escolaridadePicker {
-            edtEscolaridade.text = escolaridadeAray[row]
-        }
-        else {
-            edtEscolaridade.text = escolaridadeAray[row]
-        }
-        self.view.endEditing(true)
-        btnDone.isHidden = true
     }
     
     
