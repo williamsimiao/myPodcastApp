@@ -16,6 +16,13 @@ enum episodeType: String {
     case ten = "url_podcast_10"
 }
 
+enum enum_cod_tipo_consumo: String {
+    case fortyFree = "1"
+    case fortyPremium = "2"
+    case tenPodcast = "3"
+    case tenTexto = "4"
+}
+
 
 class DetalheViewController: InheritanceViewController {
     
@@ -50,6 +57,14 @@ class DetalheViewController: InheritanceViewController {
     var error_msg: String?
     let reachability = Reachability()!
     
+    var error_msgPing:String?
+    var successPing:Bool?
+
+    
+    //TODO Trocar isso
+    var cod_tipo_consumo: String?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +74,7 @@ class DetalheViewController: InheritanceViewController {
 //        let detalhesUrl = AppService.util.createURLWithComponents(path: "detalheResumo.php", parameters: ["cod_resumo"], values: [(self.selectedResumo?.cod_resumo)!])
 //        makeResquest(url: detalhesUrl!)
         
-        episodeContentView.delegate = self
+//        episodeContentView.delegate = self
         setupUI()
         
         //check Internet
@@ -159,7 +174,7 @@ class DetalheViewController: InheritanceViewController {
     @IBAction func clickPlayButton(_ sender: Any) {
         //TODO: trocar essa variavel por acesso a API
         let userIsPremium = false
-        
+
         let episodeLink : URL
         let mEpisodeType: episodeType
         
@@ -168,7 +183,6 @@ class DetalheViewController: InheritanceViewController {
         
         //TODO: remove on 2.0
         if senderObject.isEqual(self.tenMinutesButton) {
-            
             guard let premiumVC = storyboard?.instantiateViewController(
                 withIdentifier: "PremiumViewController")
                 as? PremiumViewController else {
@@ -186,11 +200,15 @@ class DetalheViewController: InheritanceViewController {
         
         //TEN and Downloaded
         if senderObject.isEqual(self.tenMinutesButton) && resumo?.downloaded == 1 {
+            cod_tipo_consumo = enum_cod_tipo_consumo.tenPodcast.rawValue
+
             mEpisodeType = episodeType.ten
             episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_10)!)!)
         }
         //TEN not downloaded
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
+            cod_tipo_consumo = enum_cod_tipo_consumo.tenPodcast.rawValue
+
             mEpisodeType = episodeType.ten
             episodeLink = URL(string: (self.selectedResumo?.url_podcast_10)!)!
             self.tenMinutesButton.isHidden = true
@@ -205,10 +223,14 @@ class DetalheViewController: InheritanceViewController {
         //FORTY downloaded
         else if senderObject.isEqual(self.fortyMinutesButton) &&  resumo?.downloaded == 1 {
             if userIsPremium {
+                cod_tipo_consumo = enum_cod_tipo_consumo.fortyPremium.rawValue
+
                 mEpisodeType = episodeType.fortyPremium
                 episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_p)!)!)
             }
             else {
+                cod_tipo_consumo = enum_cod_tipo_consumo.fortyFree.rawValue
+
                 mEpisodeType = episodeType.fortyFree
                 episodeLink = chooseLocalURLorServer(sender: sender, serverUrl: URL(string: (self.selectedResumo?.url_podcast_40_f)!)!)
             }
@@ -217,10 +239,13 @@ class DetalheViewController: InheritanceViewController {
         //FORTY not downloaded
         else {
             if userIsPremium {
+                cod_tipo_consumo = enum_cod_tipo_consumo.fortyPremium.rawValue
+
                 mEpisodeType = episodeType.fortyPremium
                 episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_p)!)!
             }
             else {
+                cod_tipo_consumo = enum_cod_tipo_consumo.fortyFree.rawValue
                 mEpisodeType = episodeType.fortyFree
                 episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
             }
@@ -241,12 +266,34 @@ class DetalheViewController: InheritanceViewController {
             if !userIsAllowedToPlay {
                 AppService.util.handleNotAllowed()
             }
+            else {
+                preparePing(cod_resumo: (selectedResumo?.cod_resumo)!, cod_tipo_consumo: self.cod_tipo_consumo!)
+            }
             
         } catch AppError.urlError {
             print("URL ERROR")
         } catch {
             print("episodeSelected ERROR unknown")
         }
+    }
+    
+    func preparePing(cod_resumo: String, cod_tipo_consumo: String) {
+        let link = AppConfig.urlBaseApi + "consumirResumo.php"
+        let url = URL(string: link)
+        let keys = ["cod_usuario", "cod_resumo", "cod_tipo_consumo"]
+        
+        
+        let prefs:UserDefaults = UserDefaults.standard
+        var cod_usuario = prefs.string(forKey: "cod_usuario")
+        if cod_usuario != nil || cod_usuario != "" {
+            cod_usuario = "0"
+        }
+        
+        var values = [String]()
+        values.append(cod_usuario!)
+        values.append(cod_resumo)
+        values.append(self.cod_tipo_consumo!)
+        makeResquestPing(url: url!, keys: keys, values: values)
     }
     
     func chooseLocalURLorServer(sender: Any, serverUrl: URL) -> URL {
@@ -340,6 +387,8 @@ class DetalheViewController: InheritanceViewController {
                 assertionFailure("No view controller ID PremiumViewController in storyboard")
                 return
         }
+        cod_tipo_consumo = enum_cod_tipo_consumo.tenTexto.rawValue
+        preparePing(cod_resumo: (self.selectedResumo?.cod_resumo)!, cod_tipo_consumo: self.cod_tipo_consumo!)
         present(premiumVC, animated: true, completion: nil)
         
 //        performSegue(withIdentifier: "goto_leitura", sender: self)
@@ -483,9 +532,105 @@ extension DetalheViewController {
     }
 }
 
-
-extension DetalheViewController: contentViewDelegate {
-    func viewClicked() {
+//PING
+extension DetalheViewController {
+    
+    func makeResquestPing(url: URL, keys: [String], values: [String]) {
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        
+        let tuples = zip(keys, values)
+        var keyValueArray = [String]()
+        for (key, value) in tuples {
+            let paramValue = key + "=" + value
+            keyValueArray.append(paramValue)
+        }
+        let joinedData = keyValueArray.joined(separator: "&")
+        
+        //        let postData:Data = joinedData.data(using: String.Encoding(rawValue: String.Encoding.ascii.rawValue))!
+        //        let postLength:NSString = String( postData.count ) as NSString
+        
+        let post = joinedData as NSString
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        let postLength:NSString = String( postData.count ) as NSString
+        
+        request.timeoutInterval = 10
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        //        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        print("REQUEST: \(request)")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                print(error)
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            
+            self.extract_json_dataPing(dataString!)
+            
+        })
+        
+        task.resume()
+    }
+    
+    func extract_json_dataPing(_ data:NSString) {
+        
+        NSLog("json %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do
+        {
+            // converter pra json
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            
+            // verificar success
+            self.successPing = (json.value(forKey: "success") as! Bool)
+            if (self.successPing!) {
+                
+                NSLog("SugerirVC SUCCESS");
+            } else {
+                
+                NSLog("SugerirVC ERROR");
+                error_msg = (json.value(forKey: "error") as! String)
+                AppService.util.alert("Erro no SugerirVC", message: error_msgPing!)
+                
+            }
+        }
+        catch
+        {
+            print("error SugerirVC")
+            return
+        }
+        DispatchQueue.main.async(execute: onResultReceivedPing)
+        
+    }
+    
+    func onResultReceivedPing() {
+        
+        if self.successPing! {
+            print("success no Ping")
+        }
+        else {
+            print("Erro no Ping")
+        }
         
     }
 }
+
+//extension DetalheViewController: contentViewDelegate {
+//    func viewClicked() {
+//
+//    }
+//}
