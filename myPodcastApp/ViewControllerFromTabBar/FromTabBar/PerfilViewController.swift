@@ -19,12 +19,13 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     
     var cod_usuario:String!
-    
+    var maxVisitas = 3
     var menuArray: [HSMenu] = []
     var isVisitante = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let prefs:UserDefaults = UserDefaults.standard
         isVisitante = prefs.bool(forKey: "isVisitante") as Bool
 
@@ -48,6 +49,29 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         
         imgUsuario.layer.cornerRadius = 50
         imgUsuario.clipsToBounds = true
+        
+        self.view.isUserInteractionEnabled = false
+        self.view.alpha = 0.5
+        let alert = UIAlertController(
+            title: "Faça o login",
+            message: "Entre com uma conta para personalizar o aplicativo",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        alert.addAction(UIAlertAction(title: "Entrar", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
+            AppService.util.logout()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
+            guard let baseVC = self.storyboard?.instantiateViewController(
+                withIdentifier: "BaseViewController")
+                as? BaseViewController else {
+                    assertionFailure("No view controller ID BaseViewController in storyboard")
+                    return
+            }
+            self.present(baseVC, animated: true, completion: nil)
+
+        }))
+        present(alert, animated: true, completion: nil)
+
 
     }
     
