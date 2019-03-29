@@ -460,6 +460,10 @@ open class AppUtil {
     
     func downloadAudio(urlString: String, cod_resumo: String) {
         print(urlString)
+        if AppService.util.isConnectedToNetwork() == false {
+            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+            return
+        }
         if let audioUrl = URL(string: urlString) {
             
             // then lets create your document folder url

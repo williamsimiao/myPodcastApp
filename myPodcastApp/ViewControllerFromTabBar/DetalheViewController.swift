@@ -179,6 +179,11 @@ class DetalheViewController: InheritanceViewController {
             return
         }
         
+        if AppService.util.isConnectedToNetwork() == false {
+            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+            return
+        }
+        
         //TEN and Downloaded
         if senderObject.isEqual(self.tenMinutesButton) && resumo?.downloaded == 1 {
             mEpisodeType = episodeType.ten
@@ -219,9 +224,7 @@ class DetalheViewController: InheritanceViewController {
                 mEpisodeType = episodeType.fortyFree
                 episodeLink = URL(string: (self.selectedResumo?.url_podcast_40_f)!)!
             }
-            if (self.fortyLoading.isHidden) {
-                print("OI")
-            }
+            
             self.fortyMinutesButton.isHidden = true
             self.fortyLoading.isHidden = false
             self.fortyLoading.startAnimating()

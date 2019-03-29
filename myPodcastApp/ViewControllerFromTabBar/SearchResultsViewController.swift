@@ -31,6 +31,20 @@ class SearchResultsViewController: InheritanceViewController {
         let buscaUrl = URL(string: link)
         let keys = ["texto"]
         let values = [self.textoBusca!]
+        
+        if AppService.util.isConnectedToNetwork() == false {
+            let alert = UIAlertController(
+                title: "Sem Internet",
+                message: "Sem conexão com a internet!",
+                preferredStyle: UIAlertController.Style.alert
+            )
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler:{(ACTION :UIAlertAction) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         makeResquest(url: buscaUrl!, keys: keys, values: values)
     }
     
