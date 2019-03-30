@@ -198,11 +198,6 @@ class DetalheViewController: InheritanceViewController {
             return
         }
         
-        if AppService.util.isConnectedToNetwork() == false {
-            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
-            return
-        }
-        
         //TEN and Downloaded
         if senderObject.isEqual(self.tenMinutesButton) && resumo?.downloaded == 1 {
             cod_tipo_consumo = enum_cod_tipo_consumo.tenPodcast.rawValue
@@ -212,6 +207,12 @@ class DetalheViewController: InheritanceViewController {
         }
         //TEN not downloaded
         else if senderObject.isEqual(self.tenMinutesButton) &&  resumo?.downloaded == 0 {
+            
+            if AppService.util.isConnectedToNetwork() == false {
+                AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+                return
+            }
+            
             cod_tipo_consumo = enum_cod_tipo_consumo.tenPodcast.rawValue
 
             mEpisodeType = episodeType.ten
@@ -243,6 +244,10 @@ class DetalheViewController: InheritanceViewController {
         }
         //FORTY not downloaded
         else {
+            if AppService.util.isConnectedToNetwork() == false {
+                AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+                return
+            }
             if userIsPremium {
                 cod_tipo_consumo = enum_cod_tipo_consumo.fortyPremium.rawValue
 

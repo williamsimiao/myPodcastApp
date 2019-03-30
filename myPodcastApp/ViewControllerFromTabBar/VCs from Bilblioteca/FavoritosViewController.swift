@@ -8,10 +8,19 @@
 
 import UIKit
 
+enum DownlodState : Int {
+    case none = 0
+    case baixando = 1
+    case baixado = 2
+}
+
+
 class FavoritosViewController: InheritanceViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
+    
+
     
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
@@ -91,7 +100,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         
         let download = Download(resumo: resumo)
         download.tableViewIndex = indexPath.row
-        download.isDownloading = true
         cell.download = download
         
         cell.titleLabel.text = resumo.titulo
@@ -109,14 +117,14 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        if cell.download?.isDownloading == false {
+        if cell.download?.isDownloading == false || cell.download?.isDownloading == nil {
             if resumoEntity!.downloaded == 0 {
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
-                cell.favoritoBtn.tintColor = UIColor.white
+                cell.downloadBtn.tintColor = UIColor.white
             }
             else {
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-                cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+                cell.downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
             }
         }
         //DowanloadBtn
@@ -179,12 +187,22 @@ extension FavoritosViewController: CellWithProgressDelegate {
             }
         }
         else {
-            var resumoURL = URL(string: episodeUrlString)!
-            //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
-            AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
-            
             let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
-            cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
+
+            var resumoURL = URL(string: episodeUrlString)!
+            
+            if aDownload.isDownloading == nil {
+                aDownload.isDownloading = true
+                //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
+                
+                cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
+            }
+
+            if aDownload.isDownloading == false {
+                AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
+                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+            }
 
             //downalod TEN podcast
 //            if theResumo.url_podcast_10 != nil {
