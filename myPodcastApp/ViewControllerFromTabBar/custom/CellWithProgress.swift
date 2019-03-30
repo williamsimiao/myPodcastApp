@@ -52,7 +52,6 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     
     func updateDisplay(progress: Float, totalSize : String) {
         downloadProgress.value = CGFloat(progress)
-        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
     }
     
     func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {

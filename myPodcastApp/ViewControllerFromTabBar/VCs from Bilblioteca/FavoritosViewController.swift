@@ -29,10 +29,9 @@ class FavoritosViewController: InheritanceViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        setupUI()
         print("favoritos")
         
-        setupUI()
     }
     
     func setupUI() {
@@ -92,6 +91,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         
         let download = Download(resumo: resumo)
         download.tableViewIndex = indexPath.row
+        download.isDownloading = true
         cell.download = download
         
         cell.titleLabel.text = resumo.titulo
@@ -108,15 +108,18 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
             cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
         }
         
+        
+        if cell.download?.isDownloading == false {
+            if resumoEntity!.downloaded == 0 {
+                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+                cell.favoritoBtn.tintColor = UIColor.white
+            }
+            else {
+                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
+                cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+            }
+        }
         //DowanloadBtn
-        if resumoEntity!.downloaded == 0 {
-            cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
-            cell.favoritoBtn.tintColor = UIColor.white
-        }
-        else {
-            cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-            cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
-        }
 
         
         let coverUrl = resumo.url_imagem
@@ -181,7 +184,7 @@ extension FavoritosViewController: CellWithProgressDelegate {
             AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
             
             let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
-            cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
+            cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
 
             //downalod TEN podcast
 //            if theResumo.url_podcast_10 != nil {
@@ -255,6 +258,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
             if download.tableViewIndex! > 0 {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: download.tableViewIndex!,
                     section: 0)) as? CellWithProgress {
+                    cell.download?.isDownloading = false
                     cell.updateDisplay(progress: download.progress, totalSize: totalSize)
                 }
             }

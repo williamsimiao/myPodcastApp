@@ -55,11 +55,11 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cly-Ui-9Bk" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
-                            <rect key="frame" x="375" y="23" width="44" height="44"/>
+                            <rect key="frame" x="382" y="29" width="30" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="Dz5-Br-18U"/>
-                                <constraint firstAttribute="width" constant="44" id="gMH-zq-dWP"/>
+                                <constraint firstAttribute="height" constant="30" id="Dz5-Br-18U"/>
+                                <constraint firstAttribute="width" constant="30" id="gMH-zq-dWP"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shouldShowValueText" value="NO"/>
@@ -106,7 +106,7 @@
                         <constraint firstItem="j6Y-4Z-bCT" firstAttribute="centerY" secondItem="w3f-AW-J0E" secondAttribute="centerY" id="iHZ-Kz-paf"/>
                         <constraint firstItem="j6Y-4Z-bCT" firstAttribute="leading" secondItem="w3f-AW-J0E" secondAttribute="leading" constant="20" id="isg-wa-b6I"/>
                         <constraint firstItem="OAL-sV-znc" firstAttribute="leading" secondItem="7MP-y4-u9O" secondAttribute="trailing" constant="-2" id="kn6-go-c85"/>
-                        <constraint firstItem="cly-Ui-9Bk" firstAttribute="centerY" secondItem="wmU-qm-cvg" secondAttribute="centerY" id="qMa-La-voD"/>
+                        <constraint firstItem="cly-Ui-9Bk" firstAttribute="centerY" secondItem="wmU-qm-cvg" secondAttribute="centerY" constant="-1" id="qMa-La-voD"/>
                         <constraint firstItem="Hx9-Fe-bgB" firstAttribute="leading" secondItem="j6Y-4Z-bCT" secondAttribute="trailing" constant="8" id="tWz-i6-2up"/>
                     </constraints>
                 </view>
@@ -134,7 +134,7 @@
         </view>
     </objects>
     <resources>
-        <image name="downloadWhite" width="21.5" height="22"/>
-        <image name="favoritoWhite" width="20" height="25.5"/>
+        <image name="downloadWhite" width="23.5" height="19.5"/>
+        <image name="favoritoWhite" width="19" height="24.5"/>
     </resources>
 </document>
