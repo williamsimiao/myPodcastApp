@@ -10,7 +10,7 @@ import UIKit
 import UICircularProgressRing
 
 protocol CellWithProgressDelegate {
-    func clickDownload(theResumo: Resumo)
+    func clickDownload(aDownload: Download)
     func clickFavorito(theResumo: Resumo)
 }
 
@@ -25,7 +25,8 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     @IBOutlet weak var downloadBtn: UIButton!
     @IBOutlet weak var favoritoBtn: UIButton!
     
-    var resumo: Resumo?
+//    var resumo: Resumo?
+    var download: Download?
     var delegate: CellWithProgressDelegate?
     var downloadBtnState: playButtonStates?
     override func awakeFromNib() {
@@ -49,12 +50,34 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         coverImg.backgroundColor = .orange
     }
     
+    func updateDisplay(progress: Float, totalSize : String) {
+        downloadProgress.value = CGFloat(progress)
+        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
+    }
+    
+    func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {
+        if isDownloading {
+            downloadProgress.isHidden = false
+            downloadBtn.setImage(UIImage(named: "stop"), for: .normal)
+        }
+        else {
+            downloadProgress.isHidden = true
+            if isDownloaded {
+                downloadBtn.setImage(UIImage(named: "downloadOrange"), for: .normal)
+            }
+            else {
+                downloadBtn.setImage(UIImage(named: "downloadWhite"), for: .normal)
+            }
+        }
+    }
+    
     func setHighlightColor() {
         self.titleLabel.textColor = .black
         self.authorLabel.textColor = .black
         self.coverImg.layer.borderColor = UIColor.black.cgColor
         
     }
+    
     func goBackToOriginalColors() {
         self.titleLabel.textColor = .white
         self.authorLabel.textColor = .white
@@ -62,7 +85,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        if resumo?.favoritado == 0 {
+        if self.download!.resumo.favoritado == 0 {
             favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
             favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
         } else {
@@ -70,7 +93,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
             favoritoBtn.tintColor = UIColor.white
         }
         
-        self.delegate?.clickFavorito(theResumo: self.resumo!)
+        self.delegate?.clickFavorito(theResumo: self.download!.resumo)
     }
     
     func changeDownlodStateToPaused() {
@@ -85,8 +108,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         downloadProgress.value = CGFloat(progress)
     }
 
-    
     @IBAction func clickDownload(_ sender: Any) {
-        self.delegate?.clickDownload(theResumo: self.resumo!)
+        self.delegate?.clickDownload(aDownload: self.download!)
     }
 }

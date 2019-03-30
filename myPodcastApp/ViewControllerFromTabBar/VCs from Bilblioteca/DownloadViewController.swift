@@ -80,8 +80,11 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         let cod_resumo = resumo.cod_resumo
         
         cell.delegate = self
-        cell.resumo = resumo
-        
+
+        let download = Download(resumo: resumo)
+        download.tableViewIndex = indexPath.row
+        cell.download = download
+
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
         
@@ -141,9 +144,11 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DownloadViewController: CellWithProgressDelegate {
-    func clickDownload(theResumo: Resumo) {
+    func clickDownload(aDownload: Download) {
         let episodeUrlString: String
         let userIsPremium = false
+        let theResumo = aDownload.resumo
+
         if userIsPremium {
             episodeUrlString = theResumo.url_podcast_40_p
         }

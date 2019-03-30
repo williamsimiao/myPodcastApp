@@ -16,6 +16,6 @@ class Download {
     }
     var task: URLSessionDownloadTask?
     var isDownloading = false
-    var resumeData: Data?
     var progress: Float = 0
+    var tableViewIndex: Int?
 }

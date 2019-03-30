@@ -59,15 +59,20 @@ class DetalheViewController: InheritanceViewController {
     
     var error_msgPing:String?
     var successPing:Bool?
+    lazy var downloadsSession: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+    }()
 
     
-    //TODO Trocar isso
+    //TODO Trocar isso que ta ai
     var cod_tipo_consumo: String?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        AppService.downloadService.downloadsSession = downloadsSession
+
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         
@@ -414,8 +419,8 @@ class DetalheViewController: InheritanceViewController {
     
     @IBAction func clickDownload(_ sender: Any) {
         //Marking as downloaded
-        let cod_resumo = self.selectedResumo?.cod_resumo
-        //        Toast(text: "Download em andamento", duration: 1).show()
+//        let cod_resumo = self.selectedResumo?.cod_resumo
+        self.view.makeToast("Download em andamento", duration: 2.0)
         print("Download em andamento")
 
         
@@ -424,18 +429,18 @@ class DetalheViewController: InheritanceViewController {
         if userIsPremium {
             var resumoURL = URL(string: (selectedResumo?.url_podcast_40_p)!)
             
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
+//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
+//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
 
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
-//            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
+            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
         }
         else {
             var resumoURL = URL(string: (selectedResumo?.url_podcast_40_f)!)
-            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
+//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
 
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!)
+            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
 
         }
     }
@@ -627,6 +632,28 @@ extension DetalheViewController {
         
     }
 }
+
+extension DetalheViewController: URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
+        print("CONCLUIDO download pela detalhe")
+        btnDownload.image = UIImage(named: "downloadOrange")!
+        btnDownload.tintColor = UIColor.init(hex: 0xFF8633)
+        
+        guard let sourceURL = downloadTask.originalRequest?.url else { return }
+        let download = AppService.downloadService.activeDownloads[sourceURL]
+        let cod_resumo = download?.resumo.cod_resumo
+        
+        DispatchQueue.main.async {
+            AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
+            print("Marcado no realm")
+            self.view.makeToast("Download Concluido", duration: 2.0)
+        }
+    }
+    
+    
+}
+
 
 //extension DetalheViewController: contentViewDelegate {
 //    func viewClicked() {
