@@ -119,6 +119,41 @@ open class AppUtil {
         return (isReachable && !needsConnection)
     }
     
+    func writeUserImg(image: UIImage, cod_usuario: String) {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
+        
+        let filePath = documentsPath + "/usuario_200_" + cod_usuario;
+
+        let fileManager = FileManager.default
+        
+        if let data = image.jpegData(compressionQuality:  1.0) {
+            do {
+                // writes the image data to disk
+                try data.write(to: URL(string: filePath)!)
+                print("file saved")
+            } catch {
+                print("error saving file:", error)
+            }
+        }
+
+    }
+    
+    func get_image_usuario(_ link:String, cod_usuario:String) -> UIImage? {
+        // verificar se image jah existe
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
+        
+        let filePath = documentsPath + "/usuario_200_" + cod_usuario;
+        
+        let fileManager = FileManager.default
+        
+        var pic: UIImage?
+        if fileManager.fileExists(atPath: filePath) {
+            pic = UIImage(contentsOfFile: filePath)!
+        }
+        return pic
+    }
+
+    
     func load_image_usuario(_ link:String, cod_usuario:String, imageview:UIImageView) {
         
         // verificar se image jah existe
@@ -413,10 +448,16 @@ open class AppUtil {
         prefs.removeObject(forKey: "celular")
         prefs.removeObject(forKey: "dat_nascimento")
         prefs.removeObject(forKey: "validado_celular")
-        prefs.removeObject(forKey: "dat_nascimento")
         prefs.set(0, forKey: "isLogado")
 
         prefs.synchronize()
+    }
+    
+    func changeUserField(key: String, value: String) {
+        let prefs:UserDefaults = UserDefaults.standard
+        
+        prefs.set(value, forKey: key)
+
     }
     
     func putuserDataOnUserDefaults(usuario:NSDictionary) {

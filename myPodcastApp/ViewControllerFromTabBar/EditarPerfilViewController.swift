@@ -23,7 +23,7 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBOutlet weak var edtEscolaridade: CadastroTextField!
     @IBOutlet weak var edtEmail: CadastroTextField!
-    @IBOutlet weak var btnEmpreende: UIButton!
+//    @IBOutlet weak var btnEmpreende: UIButton!
     @IBOutlet weak var btnAtualizar: UIButton!
     
     var activeField: UITextField?
@@ -35,6 +35,7 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     
     var fieldsArray = [String]()
     var keysArray = [String]()
+    
     
     var success:Bool = false
     var error_msg:String = ""
@@ -83,15 +84,36 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         
         btnAtualizar.layer.cornerRadius = radius
         
-        btnEmpreende.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
-        btnEmpreende.imageView?.layer.cornerRadius = 5
-        btnEmpreende.imageView?.layer.borderWidth = 1
-        btnEmpreende.imageView?.layer.borderColor = ColorWeel().orangeColor.cgColor
-        
-        
-        // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
         
+        populateFields()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        keysArray.removeAll()
+        fieldsArray.removeAll()
+    }
+    
+    func populateFields() {
+        let prefs:UserDefaults = UserDefaults.standard
+        let fullName = prefs.string(forKey: "nome")
+        let items = fullName!.components(separatedBy: " ")
+        edtNome.text = items[0]
+        edtSobrenome.text = items[1]
+        edtEmail.text = prefs.string(forKey: "email")
+        edtSexo.text = prefs.string(forKey: "sexo")
+        edtFone.text = prefs.string(forKey: "celular")
+        edtDataNascimento.text = prefs.string(forKey: "dat_nascimento")
+        
+        let cod_usuario = prefs.string(forKey: "cod_usuario")
+
+        let foto = prefs.string(forKey: "foto")!
+        guard let pic = AppService.util.get_image_usuario(foto, cod_usuario: cod_usuario!) else {
+            return
+        }
+        profilePicBtn.setImage(pic, for: .normal)
+  
     }
     
     func setUpUI() {
@@ -110,16 +132,18 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func clickProfilePic(_ sender: Any) {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.allowsEditing = true
-        vc.delegate = self
+        let imgPicker = UIImagePickerController()
+        imgPicker.sourceType = .photoLibrary
+        imgPicker.allowsEditing = true
+        imgPicker.delegate = self
+        imgPicker.allowsEditing = true
+
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
             AppService.util.alert("Biblioteca de Fotos indisponível", message: "Não foi possivel acessar a Biblioteca de Fotos")
             return
         }
 
-        present(vc, animated: true)
+        present(imgPicker, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -134,15 +158,17 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func clickCamera(_ sender: Any) {
-        let vc = UIImagePickerController()
-        vc.sourceType = .camera
-        vc.allowsEditing = true
-        vc.delegate = self
+        let imgPicker = UIImagePickerController()
+        imgPicker.sourceType = .camera
+        imgPicker.allowsEditing = true
+        imgPicker.delegate = self
+        imgPicker.allowsEditing = true
+
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             AppService.util.alert("Camera indisponível", message: "Não foi possivel acessar a camera do dispositivo")
             return
         }
-        present(vc, animated: true)
+        present(imgPicker, animated: true)
     }
     
     @IBAction func clickAtualizar(_ sender: Any) {
@@ -151,28 +177,44 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
             AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
             return
         }
+      
         validateFields()
         
-        AppService.util.putuserDataOnUserDefaults(usuario: <#T##NSDictionary#>)
+        let nome = edtNome.text! + " " + edtSobrenome.text!
+        AppService.util.changeUserField(key: "nome", value: nome)
+        AppService.util.changeUserField(key: "email", value: edtEmail.text!)
+        AppService.util.changeUserField(key: "sexo", value: edtSexo.text!)
+        AppService.util.changeUserField(key: "celular", value: edtFone.text!)
+        AppService.util.changeUserField(key: "dat_nascimento", value: edtDataNascimento.text!)
+        
+        let fotoString = profilePicBtn.imageView?.image!.toBase64()
+        AppService.util.changeUserField(key: "image", value: fotoString!)
 
-        let url = URL(string: "salvarDados.php")
+        let link = AppConfig.urlBaseApi + "salvarDados.php"
+        let url = URL(string: link)
+        
+        let prefs:UserDefaults = UserDefaults.standard
+        let cod_usuario = prefs.string(forKey: "cod_usuario")
+        
+        AppService.util.writeUserImg(image: (profilePicBtn.imageView?.image)!, cod_usuario: cod_usuario!)
+
         makeResquest(url: url!, keys: keysArray, values: fieldsArray)
     }
     
-    @IBAction func clickBtnEmpreende(_ sender: Any) {
-        if self.empreendeButtonHasMark {
-            self.btnEmpreende.setImage(UIImage(named:
-                "downloadBlack"), for: UIControl.State.normal)
-            
-            self.empreendeButtonHasMark = false
-            
-        }
-        else {
-            self.btnEmpreende.setImage(UIImage(named:
-                "checkWhite"), for: UIControl.State.normal)
-            self.empreendeButtonHasMark = true
-        }
-    }
+//    @IBAction func clickBtnEmpreende(_ sender: Any) {
+//        if self.empreendeButtonHasMark {
+//            self.btnEmpreende.setImage(UIImage(named:
+//                "downloadBlack"), for: UIControl.State.normal)
+//
+//            self.empreendeButtonHasMark = false
+//
+//        }
+//        else {
+//            self.btnEmpreende.setImage(UIImage(named:
+//                "checkWhite"), for: UIControl.State.normal)
+//            self.empreendeButtonHasMark = true
+//        }
+//    }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
@@ -227,7 +269,7 @@ extension EditarPerfilViewController {
             AppService.util.alert("Erro nos dados", message: "Informe o email!")
             return
         }
-        
+        keysArray.append("cod_usuario")
         keysArray.append("nom_usuario")
         keysArray.append("dsc_email")
 
@@ -235,11 +277,6 @@ extension EditarPerfilViewController {
         fieldsArray.append(nomeCompleto)
         fieldsArray.append(pemail)
         
-        // checa se existe nascimento
-        if ( pnascimento != "" ) {
-            keysArray.append("dat_nascimento")
-            fieldsArray.append(pnascimento)
-        }
         
         // checa se existe fone
         if ( pfone != "" ) {
@@ -247,10 +284,17 @@ extension EditarPerfilViewController {
             fieldsArray.append(pfone)
         }
         
+        
         // checa se existe sexo
         if ( pnascimento != "" ) {
             keysArray.append("dsc_sexo")
             fieldsArray.append(psexo)
+        }
+        
+        // checa se existe nascimento
+        if ( pnascimento != "" ) {
+            keysArray.append("dat_nascimento")
+            fieldsArray.append(pnascimento)
         }
         
 //        // checa se existe escolaridade
@@ -259,8 +303,9 @@ extension EditarPerfilViewController {
 //            fieldsArray.append(pescolaridade)
 //        }
         
+        keysArray.append("image")
+
         if profilePicBtn.imageView?.image != nil {
-            keysArray.append("image")
 //            fieldsArray.append()
         }
         

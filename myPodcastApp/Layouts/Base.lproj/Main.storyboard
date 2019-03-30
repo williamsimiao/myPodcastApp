@@ -664,10 +664,12 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sem_imagem" translatesAutoresizingMaskIntoConstraints="NO" id="obc-0s-96k">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sem_imagem" translatesAutoresizingMaskIntoConstraints="NO" id="obc-0s-96k">
                                 <rect key="frame" x="137.5" y="40" width="100" height="100"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="C06-JC-UTJ"/>
                                     <constraint firstAttribute="height" constant="100" id="GmA-ls-smY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="PGd-rZ-0Mn"/>
                                     <constraint firstAttribute="width" constant="100" id="dBT-WV-0of"/>
                                 </constraints>
                             </imageView>
@@ -1905,7 +1907,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-L0-0pg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="r4k-DJ-Qon" userLabel="primeira Stack View">
                                                 <rect key="frame" x="16" y="260" width="343" height="264"/>
@@ -1967,21 +1969,8 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                     <constraint firstAttribute="height" constant="264" id="Lq6-ZZ-MRX"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5D-M5-N1W" userLabel="empreende">
-                                                <rect key="frame" x="16" y="540" width="343" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="Duv-pB-cAH"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Já Empreende ?" image="checkWhite"/>
-                                                <connections>
-                                                    <action selector="clickBtnEmpreende:" destination="5Y3-qG-VEH" eventType="touchUpInside" id="f0m-1K-TFQ"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziI-VQ-si9">
-                                                <rect key="frame" x="16" y="606" width="343" height="40"/>
+                                                <rect key="frame" x="16" y="554" width="343" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="2fb-rK-5Lx"/>
@@ -1993,8 +1982,12 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                     <action selector="clickAtualizar:" destination="5Y3-qG-VEH" eventType="touchUpInside" id="11G-WU-Ju9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32I-C3-G8U">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32I-C3-G8U">
                                                 <rect key="frame" x="107.5" y="51" width="160" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="160" id="FCH-1U-Zzz"/>
+                                                    <constraint firstAttribute="width" constant="160" id="Rbm-lR-myw"/>
+                                                </constraints>
                                                 <state key="normal" image="sem_imagem"/>
                                                 <connections>
                                                     <action selector="clickProfilePic:" destination="5Y3-qG-VEH" eventType="touchUpInside" id="rPf-py-iQE"/>
@@ -2014,7 +2007,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nv7-0j-APl">
-                                                <rect key="frame" x="169" y="336.5" width="37" height="37"/>
+                                                <rect key="frame" x="169" y="286.5" width="37" height="37"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2024,16 +2017,13 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <constraint firstAttribute="trailing" secondItem="ziI-VQ-si9" secondAttribute="trailing" constant="16" id="7wL-Vq-Uu4"/>
                                             <constraint firstItem="r4k-DJ-Qon" firstAttribute="leading" secondItem="qDI-L0-0pg" secondAttribute="leading" constant="16" id="8W5-rK-BqF"/>
                                             <constraint firstItem="nv7-0j-APl" firstAttribute="centerX" secondItem="qDI-L0-0pg" secondAttribute="centerX" id="Bpg-QK-9mf"/>
+                                            <constraint firstItem="ziI-VQ-si9" firstAttribute="top" secondItem="A6e-TQ-kzp" secondAttribute="bottom" constant="30" id="Lq3-kX-SyJ"/>
                                             <constraint firstItem="ziI-VQ-si9" firstAttribute="leading" secondItem="qDI-L0-0pg" secondAttribute="leading" constant="16" id="NS6-Xf-e4h"/>
-                                            <constraint firstItem="ziI-VQ-si9" firstAttribute="top" secondItem="P5D-M5-N1W" secondAttribute="bottom" constant="16" id="QhP-Uc-KEt"/>
                                             <constraint firstItem="r4k-DJ-Qon" firstAttribute="top" secondItem="32I-C3-G8U" secondAttribute="bottom" constant="49" id="VcZ-xs-hVJ"/>
                                             <constraint firstItem="6JB-Mc-gzh" firstAttribute="trailing" secondItem="32I-C3-G8U" secondAttribute="trailing" constant="-15" id="WeD-pH-93y"/>
-                                            <constraint firstItem="P5D-M5-N1W" firstAttribute="top" secondItem="r4k-DJ-Qon" secondAttribute="bottom" constant="16" id="XYV-7a-rId"/>
-                                            <constraint firstAttribute="trailing" secondItem="P5D-M5-N1W" secondAttribute="trailing" constant="16" id="XdU-qq-qIj"/>
-                                            <constraint firstItem="P5D-M5-N1W" firstAttribute="leading" secondItem="qDI-L0-0pg" secondAttribute="leading" constant="16" id="hg4-G7-MjU"/>
                                             <constraint firstItem="nv7-0j-APl" firstAttribute="centerY" secondItem="qDI-L0-0pg" secondAttribute="centerY" id="jFI-az-GXK"/>
                                             <constraint firstItem="6JB-Mc-gzh" firstAttribute="top" secondItem="32I-C3-G8U" secondAttribute="bottom" constant="-40" id="pxh-Zm-xBj"/>
-                                            <constraint firstAttribute="height" constant="710" id="qvm-0h-OQZ"/>
+                                            <constraint firstAttribute="height" constant="610" id="qvm-0h-OQZ"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbD-ia-Kqc" userLabel="close">
@@ -2071,7 +2061,6 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     </view>
                     <connections>
                         <outlet property="btnAtualizar" destination="ziI-VQ-si9" id="jht-vm-yvT"/>
-                        <outlet property="btnEmpreende" destination="P5D-M5-N1W" id="5Qo-CA-R8F"/>
                         <outlet property="cameraBtn" destination="6JB-Mc-gzh" id="2jn-HN-Hm7"/>
                         <outlet property="contentView" destination="qDI-L0-0pg" id="gBP-KN-Yk8"/>
                         <outlet property="edtDataNascimento" destination="hZ3-XD-b0l" id="EQJ-Ou-CBE"/>
@@ -3059,7 +3048,6 @@ concluir essa leitura!</string>
         <image name="biblioteca" width="32" height="26"/>
         <image name="bookBlack" width="23.5" height="18"/>
         <image name="camera_white" width="36" height="36"/>
-        <image name="checkWhite" width="28.5" height="20"/>
         <image name="chevron" width="19" height="11.5"/>
         <image name="close" width="20" height="20"/>
         <image name="comment" width="24" height="24"/>

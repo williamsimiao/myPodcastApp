@@ -21,6 +21,11 @@ public extension UIImage {
             .withRenderingMode(.alwaysTemplate)
     }
     
+    func toBase64() -> String? {
+        guard let imageData = self.pngData() else { return nil }
+        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+    }
+    
     static func make(size: CGSize, color: UIColor = .white) -> UIImage? {
         return render(size: size) {
             color.setFill()
