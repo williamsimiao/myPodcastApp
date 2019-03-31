@@ -158,7 +158,7 @@ extension DownloadViewController: CellWithProgressDelegate {
         
         let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
         if wasDeleted {
-            print("Dismiss with animation")
+            self.tableView.reloadData()
         }
     }
     

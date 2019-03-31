@@ -275,6 +275,7 @@
 		3D9514BE21F5EDA7004960CE /* myPodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DCB136A224BE9E70093C8CB /* DownloadService.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C207220200BE009080EF /* Realm Entities */,
@@ -290,7 +291,6 @@
 				3D956BCF2224573200E20477 /* myPodcastApp.entitlements */,
 				4E7F1BB3222885900000F6EB /* extension */,
 				4E7F1BB022287F310000F6EB /* images */,
-				3DCB136A224BE9E70093C8CB /* DownloadService.swift */,
 			);
 			path = myPodcastApp;
 			sourceTree = "<group>";

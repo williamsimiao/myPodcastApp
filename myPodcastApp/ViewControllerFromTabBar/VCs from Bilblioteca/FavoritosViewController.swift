@@ -201,8 +201,13 @@ extension FavoritosViewController: CellWithProgressDelegate {
             }
             else {
                 if aDownload.downloadState == DownlodState.none {
+                    if AppService.util.isConnectedToNetwork() == false {
+                        AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+                        return
+                    }
                     aDownload.downloadState = DownlodState.baixando
                     //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+                    
                     AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
                     
                     cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)

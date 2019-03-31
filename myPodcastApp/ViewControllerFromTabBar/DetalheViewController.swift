@@ -425,6 +425,10 @@ class DetalheViewController: InheritanceViewController {
     @IBAction func clickDownload(_ sender: Any) {
         //Marking as downloaded
 //        let cod_resumo = self.selectedResumo?.cod_resumo
+        if AppService.util.isConnectedToNetwork() == false {
+            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+            return
+        }
         self.view.makeToast("Download em andamento", duration: 2.0)
         print("Download em andamento")
 
@@ -436,7 +440,7 @@ class DetalheViewController: InheritanceViewController {
             
 //            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
 //            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
-
+            
             AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
             resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
             AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
