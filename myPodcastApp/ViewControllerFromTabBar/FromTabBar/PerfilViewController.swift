@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import HSPopupMenu
 
 class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
-
+    
     @IBOutlet weak var imgUsuario: UIImageView!
     @IBOutlet weak var lblNome: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
@@ -25,14 +25,14 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         
-//        let menu1 = HSMenu(icon: nil, title: "Editar")
-//        let menu2 = HSMenu(icon: nil, title: "Configurações")
-//        let menu3 = HSMenu(icon: nil, title: "Sair")
-//
-//        menuArray = [menu1, menu2, menu3]
+        
+        //        let menu1 = HSMenu(icon: nil, title: "Editar")
+        //        let menu2 = HSMenu(icon: nil, title: "Configurações")
+        //        let menu3 = HSMenu(icon: nil, title: "Sair")
+        //
+        //        menuArray = [menu1, menu2, menu3]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +53,8 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         
         imgUsuario.layer.cornerRadius = 50
         imgUsuario.clipsToBounds = true
+        imgUsuario.layer.borderWidth = 2
+        imgUsuario.layer.borderColor = UIColor.white.cgColor
         
         self.view.isUserInteractionEnabled = false
         self.view.alpha = 0.5
@@ -72,11 +74,11 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
                     return
             }
             self.present(baseVC, animated: true, completion: nil)
-
+            
         }))
         present(alert, animated: true, completion: nil)
-
-
+        
+        
     }
     
     func setUIForUser() {
@@ -91,13 +93,17 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         lblNome.text = nome
         lblEmail.text = email
         
+        NSLog("foto %@", foto)
+        
         
         // image rounded
         imgUsuario.layer.cornerRadius = 50
         imgUsuario.clipsToBounds = true
+        imgUsuario.layer.borderWidth = 2
+        imgUsuario.layer.borderColor = UIColor.white.cgColor
         
         // carregar foto do usuario
-        //imgUsuario.image = UIImage(named: "sem_img.png")
+        imgUsuario.image = UIImage(named: "sem_img.png")
         if AppService.util.isNotNull(foto as AnyObject?) {
             AppService.util.load_image_usuario(foto, cod_usuario: cod_usuario, imageview: imgUsuario)
         }
@@ -108,17 +114,17 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         popupMenu.popUp()
         popupMenu.delegate = self
     }
-
+    
     func popupMenu(_ popupMenu: HSPopupMenu, didSelectAt index: Int) {
         switch index {
-            case 0:
-                performSegue(withIdentifier: "goto_editarPerfil", sender: self)
-            case 1:
-                print("Settings")
-            case 2:
-                logout()
-            default:
-                print("None of the above")
+        case 0:
+            performSegue(withIdentifier: "goto_editarPerfil", sender: self)
+        case 1:
+            print("Settings")
+        case 2:
+            logout()
+        default:
+            print("None of the above")
         }
     }
     
@@ -137,17 +143,18 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
         AppService.util.logout()
     }
     
-//    @IBAction func clickMenu(_ sender: Any) {
-//
-//        popMenu1()
-//
-//    }
+    //    @IBAction func clickMenu(_ sender: Any) {
+    //
+    //        popMenu1()
+    //
+    //    }
     
     ///////
     
     @IBAction func clickConfig(_ sender: Any) {
         
     }
+    
     @IBAction func clickEditarPerfil(_ sender: Any) {
         performSegue(withIdentifier: "to_editarPerfil", sender: self)
     }
@@ -158,8 +165,25 @@ class PerfilViewController: InheritanceViewController, HSPopupMenuDelegate {
     @IBAction func clickSugerir(_ sender: Any) {
         performSegue(withIdentifier: "to_sugerir", sender: self)
     }
+    
     @IBAction func clickLogout(_ sender: Any) {
-        logout()
+        
+        let refreshAlert = UIAlertController(title: "Sair do ResumoCast", message: "Deseja realmente sair?", preferredStyle: .alert)
+        
+        
+        refreshAlert.addAction(UIAlertAction(title: "Não", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        
+        refreshAlert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { (action: UIAlertAction!) in
+            
+            self.logout()
+            
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+        
     }
     
 }

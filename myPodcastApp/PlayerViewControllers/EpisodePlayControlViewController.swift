@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UICircularProgressRing
 
 protocol updateMiniPlayerDelegate : class {
     func updateMiniPlayer()
@@ -19,7 +20,7 @@ enum playerSpeed : String {
     case speed_2 = "2x"
 }
 
-class EpisodePlayControlViewController: UIViewController {
+class EpisodePlayControlViewController: UIViewController, UICircularProgressRingDelegate {
     
     // MARK: - IBOutlets
     @IBOutlet weak var slider: UISlider!
@@ -32,6 +33,12 @@ class EpisodePlayControlViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var speedBtn: UIButton!
     
+    @IBOutlet weak var downloadBtn: UIButton!
+    @IBOutlet weak var downloadProgress: UICircularProgressRing!
+    
+    @IBOutlet weak var shareBtn: UIButton!
+    
+    
     var sliderIsInUse = false
     let speedArray = [playerSpeed.speed_1, playerSpeed.speed_1_5, playerSpeed.speed_1_75, playerSpeed.speed_2]
     
@@ -42,12 +49,30 @@ class EpisodePlayControlViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        downloadBtn.isHidden = true
+        shareBtn.isHidden = true
+        
+        downloadProgress.delegate = self
+        downloadProgress.maxValue = 1
+        downloadProgress.value = 0
+        downloadProgress.innerRingWidth = 2
+        downloadProgress.innerRingSpacing = 0
+        downloadProgress.innerRingColor = ColorWeel().orangeColor
+        downloadProgress.outerRingColor = .gray
+        downloadProgress.outerRingWidth = 2
+        downloadProgress.shouldShowValueText = false
+        downloadProgress.isHidden = true
+        
+        
         if playerManager.shared.getPlayerIsSet() {
             configureFields()
         }
         else {
             //            setFieldsBlank()
         }
+        
+        
         //Config button initial state
         if self.currentPlayButtonState == .pause {
             if let pauseImg = UIImage(named: "pause") {
@@ -59,6 +84,7 @@ class EpisodePlayControlViewController: UIViewController {
                 self.playButton.setImage(playImg, for: UIControl.State.normal)
             }
         }
+        
         let prefs:UserDefaults = UserDefaults.standard
         var preferedSpeed = prefs.float(forKey: "preferedSpeed")
         if preferedSpeed == 0 {
@@ -81,6 +107,39 @@ class EpisodePlayControlViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onEpisodeDidChange(_:)), name: .episodeDidChange, object: playerManager.shared)
     }
     
+    func changeDownlodStateToPaused() {
+        downloadBtn.setImage(UIImage(named: "miniPlay")!, for: .normal)
+    }
+    
+    func changeDownlodStateToInProgress() {
+        downloadBtn.setImage(UIImage(named: "miniPause")!, for: .normal)
+    }
+    
+    func update(progress: Float) {
+        downloadProgress.value = CGFloat(progress)
+    }
+    
+    func didFinishProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didPauseProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didContinueProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
+        
+    }
+    
+    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
+        
+    }
+    
+    
     func setFieldsBlank() {
         self.episodeTitle.text = "-"
         self.remainingLabel.text = "-"
@@ -102,6 +161,84 @@ class EpisodePlayControlViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    func clickDownload() {
+        
+        let episodeUrlString: String
+        let userIsPremium = false
+        let theResumo = playerManager.shared.currentEpisode //aDownload.resumo
+        
+        if userIsPremium {
+            episodeUrlString = theResumo!.url_podcast_40_p
+        }
+        else {
+            episodeUrlString = theResumo!.url_podcast_40_f
+        }
+        
+        
+        let aDownload = Download(resumo: theResumo!)
+        aDownload.tableViewIndex = 0
+        
+        
+        let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo!.cod_resumo).first
+        
+        if resumoEntity!.downloaded == 1 {
+            
+            var wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo!.cod_resumo)
+            
+            if theResumo!.url_podcast_10 != nil {
+                wasDeleted = AppService.util.deleteResumoAudioFile(urlString: theResumo!.url_podcast_10, cod_resumo: theResumo!.cod_resumo)
+            }
+            
+            if wasDeleted {
+                //self.tableView.reloadData()
+            }
+            
+        }
+        else {
+            
+            downloadBtn.isHidden = true
+            downloadProgress.isHidden = false
+            
+            //let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
+            
+            var resumoURL = URL(string: episodeUrlString)!
+            
+            if aDownload.downloadState == DownlodState.baixando {
+                AppService.downloadService.cancelDownload(theResumo!, resumoUrl: resumoURL)
+                
+                //cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+                
+                aDownload.downloadState = .none
+            }
+            else {
+                
+                if aDownload.downloadState == DownlodState.none {
+                    if AppService.util.isConnectedToNetwork() == false {
+                        AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+                        return
+                    }
+                    aDownload.downloadState = DownlodState.baixando
+                    //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+                    
+                    AppService.downloadService.startDownload(theResumo!, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
+                    
+                    //cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
+                }
+                
+            }
+            
+            
+            
+            //downalod TEN podcast
+            //            if theResumo.url_podcast_10 != nil {
+            //                resumoURL = URL(string: theResumo.url_podcast_10)!
+            //                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
+            //            }
+        }
+        
     }
     
     // MARK: - IBActions
@@ -157,6 +294,11 @@ class EpisodePlayControlViewController: UIViewController {
     }
     
     @IBAction func clickDownload(_ sender: Any) {
+        
+        //self.delegate?.clickDownload(aDownload: self.download!)
+        
+        clickDownload()
+        
     }
     
     @IBAction func clickMore(_ sender: Any) {

@@ -75,6 +75,7 @@
 		3DF98165221EF7840052EC16 /* SlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF98164221EF7840052EC16 /* SlideView.xib */; };
 		3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF98166221EF7AB0052EC16 /* SlideView.swift */; };
 		4450D30E17F99F8A8EDE0AE6 /* Pods_myPodcastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40ECBDE007A7782E85F010 /* Pods_myPodcastApp.framework */; };
+		4E508C272250F65000582A0F /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E508C262250F65000582A0F /* CameraHandler.swift */; };
 		4E7F1BB222287F3F0000F6EB /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB122287F3E0000F6EB /* banner.png */; };
 		4E7F1BB5222885EF0000F6EB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB4222885EF0000F6EB /* UIColorExtension.swift */; };
 		4E7F1BBA222C28D90000F6EB /* ConcluidosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F1BB7222C28D90000F6EB /* ConcluidosViewController.swift */; };
@@ -157,6 +158,7 @@
 		3DF98162221EF07D0052EC16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = myPodcastApp/ViewControllerFromTabBar/Cadastro/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		3DF98164221EF7840052EC16 /* SlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
 		3DF98166221EF7AB0052EC16 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
+		4E508C262250F65000582A0F /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		4E7F1BB122287F3E0000F6EB /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		4E7F1BB4222885EF0000F6EB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		4E7F1BB7222C28D90000F6EB /* ConcluidosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcluidosViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				3DD2346922049FB1003C940F /* UIViewExtension.swift */,
 				3D956BD022248EE200E20477 /* UITextViewExtension.swift */,
 				3DD43F3322257D2B00017B3E /* UIBarButtonItemExtension.swift */,
+				4E508C262250F65000582A0F /* CameraHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -526,7 +529,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
@@ -573,7 +576,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myPodcastApp/Pods-myPodcastApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -625,6 +628,7 @@
 				3DB6573B2242D79B005A8E92 /* ListResumosViewController.swift in Sources */,
 				3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */,
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
+				4E508C272250F65000582A0F /* CameraHandler.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				4E7F1BB5222885EF0000F6EB /* UIColorExtension.swift in Sources */,
 				3DB9E70F22397135005A2EDD /* resumoCollectionViewCell.swift in Sources */,

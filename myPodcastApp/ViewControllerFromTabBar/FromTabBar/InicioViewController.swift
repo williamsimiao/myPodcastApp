@@ -29,6 +29,9 @@ class InicioViewController: InheritanceViewController {
     @IBOutlet weak var maisEpisodiosLabel: UIButton!
     @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var loadingMais: UIActivityIndicatorView!
+    
+    
     // MARK: - Properties
     var error_msg:String!
     var success:Bool!
@@ -43,6 +46,8 @@ class InicioViewController: InheritanceViewController {
     
     var ultimosResumosDictArray :[[String:AnyObject]]?
     var autoresDictArray :[[String:AnyObject]]?
+    
+    var maisResumosDictArray :[[String:AnyObject]]?
 
     var topResumos = [Resumo]()
     var ultimosResumos = [Resumo]()
@@ -52,6 +57,8 @@ class InicioViewController: InheritanceViewController {
     let reachability = Reachability()!
     var isUsingLocalData = true
     var searchBarIsActive = false
+    
+    var page:Int = 1
     
     var pathForListViewController: String?
 
@@ -69,6 +76,7 @@ class InicioViewController: InheritanceViewController {
         slideShow.clipsToBounds = true
         
         loading.isHidden = true
+        loadingMais.isHidden = true
         
         
         slideShow.setImageInputs([
@@ -140,6 +148,7 @@ class InicioViewController: InheritanceViewController {
             pathForListViewController = "buscaTopResumos.php"
             performSegue(withIdentifier: "to_listResumosVC", sender: self)
         }
+        
     }
     
     func createSearchBar() {
@@ -172,6 +181,9 @@ class InicioViewController: InheritanceViewController {
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
         view.endEditing(true)
+        
+        
+        self.navigationController?.navigationBar.topItem?.title = "ResumoCast"
     }
     
     func animateSearchBar(appearing: Bool) {
@@ -216,8 +228,15 @@ class InicioViewController: InheritanceViewController {
     }
     
     @IBAction func loadMoreEpisodios(_ sender: Any) {
-        pathForListViewController = "buscaResumos.php"
-        performSegue(withIdentifier: "to_listResumosVC", sender: self)
+        //pathForListViewController = "buscaResumos.php"
+        //performSegue(withIdentifier: "to_listResumosVC", sender: self)
+        
+        if !AppService.util.isConnectedToNetwork() {
+            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+            return
+        }
+        
+        buscarMais()
     }
     
     @objc func tapView(_ sender: Any) {
@@ -285,6 +304,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
             listAutoresVC.path = self.pathForListViewController
         }
 
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
     
     
@@ -540,8 +560,6 @@ extension InicioViewController {
         var request = URLRequest(url: url)
         let session = URLSession.shared
         
-        loading.isHidden = false
-        loading.startAnimating()
         
         let tuples = zip(keys, values)
         var keyValueArray = [String]()
@@ -631,5 +649,129 @@ extension InicioViewController {
         }
         
     }
+}
+
+
+
+// buscar mais (paginando)
+extension InicioViewController {
+    
+    func buscarMais() {
+        
+        loadingMais.isHidden = false
+        loadingMais.startAnimating()
+        
+        page = page + 1
+        
+        
+        let post:NSString = "page=\(page)" as NSString
+        
+        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        
+        let postLength:NSString = String( postData.count ) as NSString
+        
+        
+        let link = AppConfig.urlBaseApi + "maisResumos.php?"
+        
+        let url:URL = URL(string: link)!
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        
+        request.timeoutInterval = 30
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(AppConfig.authenticationKey, forHTTPHeaderField: "Authorization")
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (
+            data, response, error) in
+            
+            guard let _:Data = data, let _:URLResponse = response  , error == nil else {
+                
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            
+            self.extract_json_mais(dataString!)
+            
+        })
+        
+        task.resume()
+    }
+    
+    func extract_json_mais(_ data:NSString) {
+        
+        NSLog("json %@", data)
+        
+        let jsonData:Data = data.data(using: String.Encoding.ascii.rawValue)!
+        
+        
+        do
+        {
+            // converter pra json
+            let json:NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options:JSONSerialization.ReadingOptions.mutableContainers ) as! NSDictionary
+            
+            
+            // verificar success
+            self.success = (json.value(forKey: "success") as! Bool)
+            if (self.success!) {
+                
+                NSLog("Inicio SUCCESS");
+                
+                // dados do json
+                self.maisResumosDictArray = (json.object(forKey: "resumos") as! Array)
+                
+            } else {
+                
+                NSLog("Inicio ERROR");
+                error_msg = (json.value(forKey: "error") as! String)
+            }
+        }
+        catch
+        {
+            print("error: sem resposta do servidor")
+            useLocalData()
+            return
+        }
+        DispatchQueue.main.async(execute: onResultMais)
+    }
+    
+    func onResultMais() {
+        
+        loadingMais.isHidden = true
+        loadingMais.stopAnimating()
+        
+        
+        if self.success {
+            
+            var maisResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.maisResumosDictArray!)
+            
+            for presumo in maisResumos {
+                
+                self.ultimosResumos.append(presumo)
+            }
+            
+            self.tableView.reloadData()
+        }
+        else {
+            print("onResultReceived error")
+        }
+        
+    }
+    
+    /*func showContent() {
+        loading.isHidden = true
+        loading.stopAnimating()
+        
+        self.tableView.reloadData()
+        self.authorCollectionView.reloadData()
+        self.ultimosLabel.isHidden = false
+        self.autoresLabel.isHidden = false
+        self.maisEpisodiosLabel.isHidden = false
+    }*/
 }
 

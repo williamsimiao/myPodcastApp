@@ -110,6 +110,26 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     func update(progress: Float) {
         downloadProgress.value = CGFloat(progress)
     }
+    
+    func didFinishProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didPauseProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didContinueProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
+        
+    }
+    
+    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
+        
+    }
 
     @IBAction func clickDownload(_ sender: Any) {
         self.delegate?.clickDownload(aDownload: self.download!)

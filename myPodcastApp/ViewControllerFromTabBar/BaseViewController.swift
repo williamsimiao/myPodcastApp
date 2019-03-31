@@ -93,6 +93,8 @@ extension BaseViewController : MiniPlayerDelegate {
         
         //Epidosode Data
         
+        
+        
         //Chamar delegate para a tabviewController fazer a animacao de sumir a tab
         //        if let tabBar = tabBarController?.tabBar {
         //            playerCardVC.tabBarImage = tabBar.makeSnapshot()

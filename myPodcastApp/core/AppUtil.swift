@@ -348,10 +348,12 @@ open class AppUtil {
     
     func load_image_resumo(_ link:String, cod_resumo:String, imageview:UIImageView) {
         
+        NSLog("link %@", link)
+        
         // verificar se image jah existe
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
         
-        let filePath = documentsPath + "/resumo_" + cod_resumo + "_70";
+        let filePath = documentsPath + "/resumo_" + cod_resumo + "_100";
         
         let fileManager = FileManager.default
         
@@ -417,7 +419,7 @@ open class AppUtil {
         // verificar se image jah existe
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
         
-        let filePath = documentsPath + "/resumo_" + cod_resumo + "_70";
+        let filePath = documentsPath + "/resumo_" + cod_resumo + "_100";
         
         let fileManager = FileManager.default
         

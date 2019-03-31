@@ -71,6 +71,7 @@ class PlayerCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         backingImageView.image = backingImage
         scrollView.contentInsetAdjustmentBehavior = .never //dont let Safe Area insets affect the scroll view
         coverImageContainer.layer.cornerRadius = cardCornerRadius
@@ -98,16 +99,17 @@ class PlayerCardViewController: UIViewController {
         configureCoverImageInStartPosition()
         stretchySkirt.backgroundColor = .white
         configureLowerModuleInStartPosition()
-        configureBottomSection()
+        //configureBottomSection()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         animateBackingImageIn()
         animateImageLayerIn()
         animateCoverImageIn()
         animateLowerModuleIn()
-        animateBottomSectionOut()
+        //animateBottomSectionOut()
     }
     
     // MARK: - Navigation
@@ -137,31 +139,58 @@ extension PlayerCardViewController {
 extension PlayerCardViewController {
     
     func configureBottomSection() {
-        if let image = tabBarImage {
+        
+        print("configureBottomSection")
+        
+        /*if let image = tabBarImage {
             bottomSectionHeight.constant = image.size.height
             bottomSectionImageView.image = image
         } else {
             bottomSectionHeight.constant = 0
-        }
-        view.layoutIfNeeded()
+        }*/
+        
+        
+        //bottomSectionHeight.constant = 100
+        /*bottomSectionImageView.image = UIImage.make(size: bottomSectionImageView.frame.size, color: UIColor.white)
+        
+        view.layoutIfNeeded()*/
+        
+        
+        bottomSectionHeight.constant = 0
+        self.view.layoutIfNeeded()
     }
     
     func animateBottomSectionOut() {
-        if let image = tabBarImage {
+        
+        print("animateBottomSectionOut")
+        
+        /*if let image = tabBarImage {
             UIView.animate(withDuration: primaryDuration / 2.0) {
                 self.bottomSectionLowerConstraint.constant = -image.size.height
                 self.view.layoutIfNeeded()
             }
-        }
+        }*/
+        
+        
+        self.bottomSectionLowerConstraint.constant = -100
+        self.view.layoutIfNeeded()
+        
     }
     
     func animateBottomSectionIn() {
-        if tabBarImage != nil {
+        
+        print("animateBottomSectionIn")
+        
+        /*if tabBarImage != nil {
             UIView.animate(withDuration: primaryDuration / 2.0) {
                 self.bottomSectionLowerConstraint.constant = 0
                 self.view.layoutIfNeeded()
             }
-        }
+        }*/
+        
+        
+        self.bottomSectionLowerConstraint.constant = 0
+        self.view.layoutIfNeeded()
     }
 }
 
