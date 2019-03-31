@@ -117,7 +117,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        if cell.download?.isDownloading == false || cell.download?.isDownloading == nil {
+        if cell.download?.downloadState == DownlodState.none {
             if resumoEntity!.downloaded == 0 {
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
                 cell.downloadBtn.tintColor = UIColor.white
@@ -176,8 +176,9 @@ extension FavoritosViewController: CellWithProgressDelegate {
         else {
             episodeUrlString = theResumo.url_podcast_40_f
         }
-        
-        if theResumo.downloaded == 1 {
+        let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo).first
+
+        if resumoEntity!.downloaded == 1 {
             var wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
             if theResumo.url_podcast_10 != nil {
                 wasDeleted = AppService.util.deleteResumoAudioFile(urlString: theResumo.url_podcast_10, cod_resumo: theResumo.cod_resumo)
@@ -191,19 +192,26 @@ extension FavoritosViewController: CellWithProgressDelegate {
 
             var resumoURL = URL(string: episodeUrlString)!
             
-            if aDownload.isDownloading == nil {
-                aDownload.isDownloading = true
-                //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
-                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
-                
-                cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
-            }
-
-            if aDownload.isDownloading == false {
+            
+            
+            if aDownload.downloadState == DownlodState.baixando {
                 AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+                aDownload.downloadState = .none
+            }
+            else {
+                if aDownload.downloadState == DownlodState.none {
+                    aDownload.downloadState = DownlodState.baixando
+                    //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
+                    AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
+                    
+                    cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
+                }
+
             }
 
+            
+            
             //downalod TEN podcast
 //            if theResumo.url_podcast_10 != nil {
 //                resumoURL = URL(string: theResumo.url_podcast_10)!
@@ -250,6 +258,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
             DispatchQueue.main.async {
                 print("realoading table")
                 let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CellWithProgress
+                cell.download?.downloadState = DownlodState.baixado
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
 
                 
@@ -276,7 +285,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
             if download.tableViewIndex! > 0 {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: download.tableViewIndex!,
                     section: 0)) as? CellWithProgress {
-                    cell.download?.isDownloading = false
+//                    cell.download?.downloadState = DownlodState.baixando
                     cell.updateDisplay(progress: download.progress, totalSize: totalSize)
                 }
             }

@@ -15,7 +15,7 @@ class Download {
         self.resumo = resumo
     }
     var task: URLSessionDownloadTask?
-    var isDownloading: Bool?
+    var downloadState = DownlodState.none
     var progress: Float = 0
     var tableViewIndex: Int?
 }

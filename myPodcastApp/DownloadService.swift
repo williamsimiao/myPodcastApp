@@ -13,7 +13,7 @@ class DownloadService {
         if tableIndex < 0 {
             print("Download não foi iniciado de uma tableview")
         }
-        download.isDownloading = true
+        download.downloadState = DownlodState.baixando
         activeDownloads[resumoUrl] = download
     }
     

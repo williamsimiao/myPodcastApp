@@ -68,6 +68,8 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
             }
             else {
                 downloadBtn.setImage(UIImage(named: "downloadWhite"), for: .normal)
+                download?.progress = 0
+                downloadProgress.value = 0
             }
         }
     }

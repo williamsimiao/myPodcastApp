@@ -3056,7 +3056,7 @@ concluir essa leitura!</string>
         <image name="bookBlack" width="23.5" height="18"/>
         <image name="camera_white" width="36" height="36"/>
         <image name="chevron" width="19" height="11.5"/>
-        <image name="close" width="20" height="20"/>
+        <image name="close" width="18.5" height="18.5"/>
         <image name="comment" width="24" height="24"/>
         <image name="downloadBlack" width="21.5" height="22"/>
         <image name="downloadWhite" width="23.5" height="19.5"/>
