@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UICircularProgressRing
 
 protocol contentViewDelegate : class {
     func viewClicked()
@@ -22,6 +23,7 @@ class epidodeContentRightView: UIView {
     
     @IBOutlet weak var favoritoBtn: UIButton!
     @IBOutlet weak var downloadBtn: UIButton!
+    @IBOutlet weak var downloadProgress: UICircularProgressRing!
     
     
     var delegate : contentViewDelegate?
@@ -52,6 +54,12 @@ class epidodeContentRightView: UIView {
         coverImg.layer.borderColor = UIColor.white.cgColor
         contentView.fixInView(self)
     }
+    
+    func updateDisplay(progress: Float, totalSize : String) {
+        downloadProgress.value = CGFloat(progress)
+        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
+    }
+
     
     func changeFavIcon(isFavoritado: Bool) {
         if isFavoritado {

@@ -21,7 +21,7 @@ class FavoritosViewController: InheritanceViewController {
     @IBOutlet weak var lblNenhum: UILabel!
     
 
-    
+    var download: Download?
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
     var selectedResumoImage: UIImage?
@@ -253,12 +253,6 @@ extension FavoritosViewController: CellWithProgressDelegate {
 
 extension FavoritosViewController: URLSessionDownloadDelegate {
     
-    func localFilePath(for url: URL) -> URL {
-        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documentsPath.appendingPathComponent(url.lastPathComponent)
-    }
-
-    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL) {
         print("Finished downloading to \(location).")
@@ -267,7 +261,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
         let download = AppService.downloadService.activeDownloads[sourceURL]
         AppService.downloadService.activeDownloads[sourceURL] = nil
         // 2
-        let destinationURL = localFilePath(for: sourceURL)
+        let destinationURL = AppService.util.localFilePath(for: sourceURL)
         print(destinationURL)
         // 3
         let fileManager = FileManager.default

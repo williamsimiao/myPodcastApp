@@ -597,9 +597,9 @@ extension DetalheViewController {
 
 extension DetalheViewController: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
+
         print("CONCLUIDO download pela detalhe")
-        
+
         guard let sourceURL = downloadTask.originalRequest?.url else { return }
         let download = AppService.downloadService.activeDownloads[sourceURL]
         let cod_resumo = download?.resumo.cod_resumo
@@ -609,7 +609,27 @@ extension DetalheViewController: URLSessionDownloadDelegate {
             self.view.makeToast("Download Concluido", duration: 2.0)
         }
     }
+
     
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
+                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
+                    totalBytesExpectedToWrite: Int64) {
+        
+        
+        
+        
+        // 1
+        guard let url = downloadTask.originalRequest?.url,
+            let download = AppService.downloadService.activeDownloads[url]  else { return }
+        // 2
+        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        // 3
+        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+        // 4
+        DispatchQueue.main.async {
+            self.episodeContentView.updateDisplay(progress: download.progress, totalSize: totalSize)
+        }
+    }
     
 }
 

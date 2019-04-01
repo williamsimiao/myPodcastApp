@@ -16,6 +16,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="PmL-hx-aaW"/>
                 <outlet property="coverImg" destination="i5g-ky-luP" id="xqc-lB-kTE"/>
                 <outlet property="downloadBtn" destination="mz6-c2-lSG" id="NvU-tT-Omq"/>
+                <outlet property="downloadProgress" destination="kGj-Dy-lAN" id="8sT-cP-jhL"/>
                 <outlet property="favoritoBtn" destination="LaW-eO-ab2" id="dzH-4d-0Jj"/>
                 <outlet property="titleLabel" destination="SFL-gI-DI2" id="BKd-k3-Q2L"/>
             </connections>
@@ -67,21 +68,45 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="uS1-vg-4dh">
-                            <rect key="frame" x="0.0" y="100.5" width="74" height="25.5"/>
+                            <rect key="frame" x="0.0" y="100.5" width="80" height="25.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaW-eO-ab2" userLabel="favorito">
-                                    <rect key="frame" x="0.0" y="1" width="19" height="24"/>
+                                    <rect key="frame" x="0.0" y="1" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="cn5-Sq-UNM"/>
+                                        <constraint firstAttribute="height" constant="24" id="jNJ-HU-1pQ"/>
+                                    </constraints>
                                     <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" image="favoritoWhite"/>
                                     <connections>
                                         <action selector="clickFavorito:" destination="-1" eventType="touchUpInside" id="Qos-5z-a5Y"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-c2-lSG" userLabel="download">
-                                    <rect key="frame" x="51" y="2" width="23" height="22"/>
-                                    <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" image="downloadWhite"/>
-                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlY-Eq-4ie">
+                                    <rect key="frame" x="56" y="1" width="24" height="24"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGj-Dy-lAN" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                            <rect key="frame" x="0.5" y="1" width="23" height="22"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-c2-lSG" userLabel="download">
+                                            <rect key="frame" x="0.5" y="1" width="23" height="22"/>
+                                            <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" image="downloadWhite"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="L7n-67-j3I"/>
+                                        <constraint firstItem="mz6-c2-lSG" firstAttribute="centerY" secondItem="BlY-Eq-4ie" secondAttribute="centerY" id="N8U-DZ-xGa"/>
+                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="centerX" secondItem="mz6-c2-lSG" secondAttribute="centerX" id="NMq-6d-xVn"/>
+                                        <constraint firstItem="mz6-c2-lSG" firstAttribute="centerX" secondItem="BlY-Eq-4ie" secondAttribute="centerX" id="Xxu-c5-cD2"/>
+                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="height" secondItem="mz6-c2-lSG" secondAttribute="height" id="Z51-qe-OjK"/>
+                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="width" secondItem="mz6-c2-lSG" secondAttribute="width" id="bYF-nt-VgX"/>
+                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="centerY" secondItem="mz6-c2-lSG" secondAttribute="centerY" id="e46-fR-l4z"/>
+                                        <constraint firstAttribute="height" constant="24" id="u31-If-Dy3"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>

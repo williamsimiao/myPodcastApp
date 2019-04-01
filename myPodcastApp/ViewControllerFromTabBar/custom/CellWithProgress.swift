@@ -28,7 +28,6 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
 //    var resumo: Resumo?
     var download: Download?
     var delegate: CellWithProgressDelegate?
-    var downloadBtnState: playButtonStates?
     override func awakeFromNib() {
         super.awakeFromNib()
         
