@@ -13,7 +13,6 @@
         <!--Bibliteca-->
         <scene sceneID="vG7-vg-0aV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9lD-1e-Xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="BibliotecaViewController" title="Bibliteca" id="gIU-ch-xKk" customClass="BibliotecaViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAz-WZ-NcM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -68,6 +67,7 @@
                         <outlet property="segmentControl" destination="qcX-C1-sIp" id="5UE-LH-Sgn"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9lD-1e-Xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5577" y="2708"/>
         </scene>
@@ -441,23 +441,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-8n-LH0" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="615.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="630.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGi-DN-kzL" customClass="epidodeContentRightView" customModule="myPodcastApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="134" id="H0Y-dv-KOU"/>
+                                                    <constraint firstAttribute="height" constant="160" id="H0Y-dv-KOU"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGl-jd-c3m">
-                                                <rect key="frame" x="187.5" y="153" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="187.5" y="168" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xwQ-6m-mtE">
-                                                <rect key="frame" x="9.5" y="169" width="356" height="70"/>
+                                                <rect key="frame" x="9.5" y="184" width="356" height="70"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8v-ni-6oF">
                                                         <rect key="frame" x="0.0" y="0.0" width="105.5" height="70"/>
@@ -534,19 +534,19 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episódio completo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gab-a8-NT5">
-                                                <rect key="frame" x="9.5" y="239" width="105.5" height="36"/>
+                                                <rect key="frame" x="9.5" y="254" width="105.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resumo 10min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-Q8-zTW">
-                                                <rect key="frame" x="135" y="239" width="105" height="18"/>
+                                                <rect key="frame" x="135" y="254" width="105" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-9s-7TE" userLabel="resumoView">
-                                                <rect key="frame" x="9.5" y="289" width="356" height="318.5"/>
+                                                <rect key="frame" x="9.5" y="304" width="356" height="318.5"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAJ-zW-hRi">
                                                         <rect key="frame" x="8" y="8" width="340" height="300.5"/>
@@ -574,7 +574,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r00-f5-sZp">
-                                                <rect key="frame" x="260" y="239" width="105.5" height="20.5"/>
+                                                <rect key="frame" x="260" y="254" width="105.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -592,7 +592,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <constraint firstItem="E4b-9s-7TE" firstAttribute="width" secondItem="xwQ-6m-mtE" secondAttribute="width" id="NB9-kL-6oW"/>
                                             <constraint firstAttribute="bottom" secondItem="E4b-9s-7TE" secondAttribute="bottom" constant="8" id="P3o-zl-qqV"/>
                                             <constraint firstItem="DGl-jd-c3m" firstAttribute="centerX" secondItem="SRM-8n-LH0" secondAttribute="centerX" id="Qsz-eO-OcT"/>
-                                            <constraint firstItem="DGl-jd-c3m" firstAttribute="top" secondItem="xGi-DN-kzL" secondAttribute="bottom" constant="19" id="RaY-fg-Q5T"/>
+                                            <constraint firstItem="DGl-jd-c3m" firstAttribute="top" secondItem="xGi-DN-kzL" secondAttribute="bottom" constant="8" id="RaY-fg-Q5T"/>
                                             <constraint firstItem="E4b-9s-7TE" firstAttribute="centerX" secondItem="SRM-8n-LH0" secondAttribute="centerX" id="SRd-jm-AsV"/>
                                             <constraint firstItem="6Mv-Q8-zTW" firstAttribute="trailing" secondItem="hqr-3g-cDK" secondAttribute="trailing" id="Wkd-s4-mrF"/>
                                             <constraint firstItem="xwQ-6m-mtE" firstAttribute="width" secondItem="SRM-8n-LH0" secondAttribute="width" multiplier="0.95" id="YE8-HE-6jG"/>
@@ -627,25 +627,10 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVe-z9-9ge"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BlV-u6-ApY">
-                        <rightBarButtonItems>
-                            <barButtonItem image="downloadWhite" id="fBu-T8-7kb">
-                                <connections>
-                                    <action selector="clickDownload:" destination="N4r-FG-Rxn" id="0tK-ne-c8G"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="favoritoWhite" id="RIl-hY-YRy">
-                                <connections>
-                                    <action selector="clickSalvar:" destination="N4r-FG-Rxn" id="Yqc-IG-LoS"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="BlV-u6-ApY"/>
                     <connections>
                         <outlet property="FortyMinutesView" destination="V8v-ni-6oF" id="caf-kQ-PJw"/>
                         <outlet property="TenMinutesView" destination="hqr-3g-cDK" id="m3a-Bj-3eD"/>
-                        <outlet property="btnDownload" destination="fBu-T8-7kb" id="grs-2D-amt"/>
-                        <outlet property="btnSalvar" destination="RIl-hY-YRy" id="qyz-cT-6UU"/>
                         <outlet property="episodeContentView" destination="xGi-DN-kzL" id="s2u-Ss-vyV"/>
                         <outlet property="fortyLoading" destination="z6z-4H-dqj" id="JK2-E1-BQp"/>
                         <outlet property="fortyMinutesButton" destination="OfT-K9-lCg" id="QLx-HU-Xes"/>
@@ -2522,7 +2507,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o8c-fe-JvL"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Hp0-XJ-CMe"/>
+                    <navigationItem key="navigationItem" title="Biblioteca" id="Hp0-XJ-CMe"/>
                     <connections>
                         <outlet property="lblNenhum" destination="3cK-L4-Dkg" id="bEX-Oh-w77"/>
                         <outlet property="tableView" destination="qds-UC-7C2" id="plT-U1-KtK"/>
@@ -3025,6 +3010,7 @@ concluir essa leitura!</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="PDe-tu-zMp">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
@@ -3053,10 +3039,8 @@ concluir essa leitura!</string>
         <image name="close" width="18.5" height="18.5"/>
         <image name="comment" width="24" height="24"/>
         <image name="downloadBlack" width="23.5" height="19.5"/>
-        <image name="downloadWhite" width="23.5" height="19.5"/>
         <image name="exit_white" width="24" height="24"/>
         <image name="facebookLogo" width="33.5" height="33.5"/>
-        <image name="favoritoWhite" width="19" height="24.5"/>
         <image name="forward_10" width="26" height="26"/>
         <image name="googleLogo" width="32.5" height="32.5"/>
         <image name="horizontalLine" width="155" height="1"/>
@@ -3081,6 +3065,6 @@ concluir essa leitura!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YRk-1p-Ij2"/>
-        <segue reference="CRf-lU-hgc"/>
+        <segue reference="XwK-Gc-UPM"/>
     </inferredMetricsTieBreakers>
 </document>

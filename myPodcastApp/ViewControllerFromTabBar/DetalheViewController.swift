@@ -45,9 +45,10 @@ class DetalheViewController: InheritanceViewController {
     @IBOutlet weak var resumoView: UIView!
     @IBOutlet weak var textView: UITextView!
     
-    @IBOutlet weak var btnDownload: UIBarButtonItem!
     
-    @IBOutlet weak var btnSalvar: UIBarButtonItem!
+    
+    //New buttons
+    
     
     var realm = AppService.realm()
     
@@ -76,10 +77,8 @@ class DetalheViewController: InheritanceViewController {
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
         
-//        let detalhesUrl = AppService.util.createURLWithComponents(path: "detalheResumo.php", parameters: ["cod_resumo"], values: [(self.selectedResumo?.cod_resumo)!])
-//        makeResquest(url: detalhesUrl!)
+        episodeContentView.delegate = self
         
-//        episodeContentView.delegate = self
         setupUI()
         
         //check Internet
@@ -90,6 +89,31 @@ class DetalheViewController: InheritanceViewController {
         }
         reachability.whenUnreachable = { _ in
             self.useLocalData()
+        }
+    }
+    
+    func setupActionButtons() {
+        let cod_resumo = selectedResumo?.cod_resumo
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo!)
+        if let resumo = resumos.first {
+            
+            // verificar se eh favorito
+            if resumo.favoritado == 1 {
+                episodeContentView.favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
+                episodeContentView.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+            } else {
+                episodeContentView.favoritoBtn.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
+                episodeContentView.favoritoBtn.tintColor = UIColor.white
+            }
+            
+            // verificar se eh downloaded
+            if resumo.downloaded == 1 {
+                episodeContentView.downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
+                episodeContentView.downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
+            } else {
+                episodeContentView.downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
+                episodeContentView.downloadBtn.tintColor = UIColor.white
+            }
         }
     }
     
@@ -347,30 +371,8 @@ class DetalheViewController: InheritanceViewController {
         self.textView.text = AppService.util.populateString(selectedResumo?.subtitulo as AnyObject)
         print(self.textView.text)
         self.textView.makeOutLine(oulineColor: .gray, foregroundColor: .white)
-
-        let cod_resumo = selectedResumo?.cod_resumo
         
-        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo!)
-        if let resumo = resumos.first {
-            
-            // verificar se eh favorito
-            if resumo.favoritado == 1 {
-                btnSalvar.image = UIImage(named: "favoritoOrange")!
-                btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
-            } else {
-                btnSalvar.image = UIImage(named: "favoritoWhite")!
-                btnSalvar.tintColor = UIColor.white
-            }
-            
-            // verificar se eh downloaded
-            if resumo.downloaded == 1 {
-                btnDownload.image = UIImage(named: "downloadOrange")!
-                btnDownload.tintColor = UIColor.init(hex: 0xFF8633)
-            } else {
-                btnDownload.image = UIImage(named: "downloadWhite")!
-                btnDownload.tintColor = UIColor.white
-            }
-        }
+        setupActionButtons()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -404,55 +406,6 @@ class DetalheViewController: InheritanceViewController {
 //        performSegue(withIdentifier: "goto_leitura", sender: self)
     }
     
-    
-    @IBAction func clickSalvar(_ sender: Any) {
-        
-        let cod_resumo = self.selectedResumo?.cod_resumo
-        
-        AppService.util.markResumoFavoritoField(cod_resumo: cod_resumo!)
-        let resumoEntity = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
-        
-        if resumoEntity!.favoritado == 1 {
-            btnSalvar.image = UIImage(named: "favoritoOrange")!
-            btnSalvar.tintColor = UIColor.init(hex: 0xFF8633)
-        } else {
-            btnSalvar.image = UIImage(named: "favoritoWhite")!
-            btnSalvar.tintColor = UIColor.white
-        }
-        
-    }
-    
-    @IBAction func clickDownload(_ sender: Any) {
-        //Marking as downloaded
-//        let cod_resumo = self.selectedResumo?.cod_resumo
-        if AppService.util.isConnectedToNetwork() == false {
-            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
-            return
-        }
-        self.view.makeToast("Download em andamento", duration: 2.0)
-        print("Download em andamento")
-
-        
-        //Saving files
-        let userIsPremium = false
-        if userIsPremium {
-            var resumoURL = URL(string: (selectedResumo?.url_podcast_40_p)!)
-            
-//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
-//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
-            
-            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
-            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
-            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
-        }
-        else {
-            var resumoURL = URL(string: (selectedResumo?.url_podcast_40_f)!)
-//            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
-
-            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
-
-        }
-    }
     
     func stopAnimations() {
         self.fortyLoading.stopAnimating()
@@ -646,13 +599,10 @@ extension DetalheViewController: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
         print("CONCLUIDO download pela detalhe")
-        btnDownload.image = UIImage(named: "downloadOrange")!
-        btnDownload.tintColor = UIColor.init(hex: 0xFF8633)
         
         guard let sourceURL = downloadTask.originalRequest?.url else { return }
         let download = AppService.downloadService.activeDownloads[sourceURL]
         let cod_resumo = download?.resumo.cod_resumo
-        
         DispatchQueue.main.async {
             AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
             print("Marcado no realm")
@@ -664,8 +614,24 @@ extension DetalheViewController: URLSessionDownloadDelegate {
 }
 
 
-//extension DetalheViewController: contentViewDelegate {
-//    func viewClicked() {
-//
-//    }
-//}
+extension DetalheViewController: contentViewDelegate {
+    func favClicked() {
+        let cod_resumo = self.selectedResumo?.cod_resumo
+        
+        AppService.util.markResumoFavoritoField(cod_resumo: cod_resumo!)
+        let resumoEntity = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+        
+        if resumoEntity!.favoritado == 1 {
+            episodeContentView.changeFavIcon(isFavoritado: true)
+        } else {
+            episodeContentView.changeFavIcon(isFavoritado: false)
+        }
+    }
+    
+    func downloadClicked(state: DownlodState) {
+        
+    }
+    
+    func viewClicked() {
+    }
+}
