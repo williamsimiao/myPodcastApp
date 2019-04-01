@@ -39,8 +39,6 @@ class FavoritosViewController: InheritanceViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
-        print("favoritos")
-        
     }
     
     func setupUI() {
@@ -60,13 +58,7 @@ class FavoritosViewController: InheritanceViewController {
     
     func fetchResumosFromRealm() {
         // buscar resumos favoritos
-        let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1")
-        
-        //.sorted(byKeyPath: "dt_lib", ascending: false);
-        
-        
-        print("qtd " + String(resumos.count))
-        
+        let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1 OR downloaded = 1")
         
         resumoArray.removeAll()
         for resumoEntity in resumos {

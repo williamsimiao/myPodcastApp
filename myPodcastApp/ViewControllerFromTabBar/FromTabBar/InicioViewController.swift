@@ -183,7 +183,7 @@ class InicioViewController: InheritanceViewController {
         view.endEditing(true)
         
         
-        self.navigationController?.navigationBar.topItem?.title = "ResumoCast"
+//        self.navigationController?.navigationBar.topItem?.title = "ResumoCast"
     }
     
     func animateSearchBar(appearing: Bool) {
