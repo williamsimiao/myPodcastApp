@@ -1,6 +1,6 @@
 PODS:
-  - Alamofire (4.8.2)
-  - AlamofireImage (3.5.2):
+  - Alamofire (4.8.1)
+  - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
@@ -21,21 +21,21 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.42.0):
+  - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.42.0):
+  - FBSDKLoginKit (4.39.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.42.0):
+  - FBSDKShareKit (4.39.1):
     - FBSDKCoreKit
   - HSPopupMenu (0.1.1):
     - SnapKit (~> 4.0.0)
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
-  - MarqueeLabel (3.2.1):
-    - MarqueeLabel/ObjC (= 3.2.1)
-  - MarqueeLabel/ObjC (3.2.1)
-  - ReachabilitySwift (4.3.1)
+  - MarqueeLabel (3.2.0):
+    - MarqueeLabel/ObjC (= 3.2.0)
+  - MarqueeLabel/ObjC (3.2.0)
+  - ReachabilitySwift (4.3.0)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
   - Realm/Headers (2.8.3)
@@ -44,7 +44,7 @@ PODS:
   - SnapKit (4.0.1)
   - SwiftyJSON (4.2.0)
   - Toast-Swift (4.0.1)
-  - UICircularProgressRing (6.1.0)
+  - UICircularProgressRing (4.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -85,26 +85,26 @@ SPEC REPOS:
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
-  FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
-  FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
+  FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
   HSPopupMenu: ca8c0f872cdbc8fc7d9c8098c2aa6e6a0027d201
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
-  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
-  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
-  UICircularProgressRing: b3eba859a515e4d9d38503eec913f09c28450785
+  UICircularProgressRing: 5a32c01f54474571b1e66e8fa050c0f83d6d981b
 
 PODFILE CHECKSUM: 3a5e86f451a6e478ec9815faebbe5f186207f451
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1
