@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIR-rI-FoS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIR-rI-FoS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1112,7 +1112,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         <rect key="frame" x="0.0" y="25" width="375" height="422"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMh-JJ-08h">
-                                                <rect key="frame" x="170" y="4" width="60" height="44"/>
+                                                <rect key="frame" x="157.5" y="4" width="60" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="6RI-UV-mlR"/>
@@ -1140,7 +1140,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="CMh-JJ-08h" firstAttribute="centerX" secondItem="k2R-DF-ZPB" secondAttribute="centerX" constant="12.5" id="CJ3-XO-SAD"/>
+                                            <constraint firstItem="CMh-JJ-08h" firstAttribute="centerX" secondItem="k2R-DF-ZPB" secondAttribute="centerX" id="CJ3-XO-SAD"/>
                                             <constraint firstAttribute="bottom" secondItem="GOm-di-zJ0" secondAttribute="bottom" constant="88" id="J2X-ZJ-Ciz"/>
                                             <constraint firstItem="CMh-JJ-08h" firstAttribute="top" secondItem="k2R-DF-ZPB" secondAttribute="top" constant="4" id="YeV-bF-9pW"/>
                                             <constraint firstItem="GOm-di-zJ0" firstAttribute="leading" secondItem="k2R-DF-ZPB" secondAttribute="leading" constant="12" id="kI4-21-hVK"/>
@@ -1338,48 +1338,28 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <constraint firstItem="L6F-hZ-jfA" firstAttribute="leading" secondItem="uKB-e1-Cfm" secondAttribute="leading" id="wvN-Rs-HjU"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C50-1i-chJ" userLabel="midle">
-                                        <rect key="frame" x="16" y="127.5" width="343" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-yX-3fM" userLabel="download">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="9TD-bK-eoe"/>
-                                                    <constraint firstAttribute="height" constant="40" id="OaF-eJ-b9R"/>
-                                                </constraints>
-                                                <state key="normal" image="downloadBlack"/>
-                                                <connections>
-                                                    <action selector="clickDownload:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="c8M-aM-qje"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8p-TL-jdo" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
-                                                <rect key="frame" x="154.5" y="0.0" width="34" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="8vU-kC-RhA"/>
-                                                    <constraint firstAttribute="height" constant="34" id="Ase-vt-mPa"/>
-                                                </constraints>
-                                                <viewLayoutGuide key="safeArea" id="Z5W-2l-k0L"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldShowValueText" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibRingStyle">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zy-su-MTj" userLabel="more">
-                                                <rect key="frame" x="303" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="3oM-l0-jmY"/>
-                                                    <constraint firstAttribute="width" constant="40" id="KpD-T8-njX"/>
-                                                </constraints>
-                                                <state key="normal" image="share"/>
-                                                <connections>
-                                                    <action selector="clickMore:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="yDZ-Oh-lga"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-yX-3fM" userLabel="download">
+                                        <rect key="frame" x="16" y="127.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="9TD-bK-eoe"/>
+                                            <constraint firstAttribute="height" constant="40" id="OaF-eJ-b9R"/>
+                                        </constraints>
+                                        <state key="normal" image="downloadBlack"/>
+                                        <connections>
+                                            <action selector="clickDownload:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="c8M-aM-qje"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zy-su-MTj" userLabel="share">
+                                        <rect key="frame" x="319" y="127.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3oM-l0-jmY"/>
+                                            <constraint firstAttribute="width" constant="40" id="KpD-T8-njX"/>
+                                        </constraints>
+                                        <state key="normal" image="share"/>
+                                        <connections>
+                                            <action selector="clickMore:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="yDZ-Oh-lga"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrm-o1-zvg" userLabel="play">
                                         <rect key="frame" x="152.5" y="171.5" width="70" height="70"/>
                                         <state key="normal" image="pause"/>
@@ -1422,17 +1402,35 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             <action selector="rewindAction:" destination="CQN-Zn-ASG" eventType="touchUpInside" id="BJI-6b-qBz"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8p-TL-jdo" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                        <rect key="frame" x="21" y="132.5" width="30" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="7HB-aU-NRN"/>
+                                            <constraint firstAttribute="height" constant="30" id="wWH-oF-Vq6"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="Z5W-2l-k0L"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldShowValueText" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibRingStyle">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="W8p-TL-jdo" firstAttribute="centerX" secondItem="K5t-yX-3fM" secondAttribute="centerX" id="2h2-GX-C2k"/>
                                     <constraint firstItem="Nrm-o1-zvg" firstAttribute="centerX" secondItem="5ye-ib-aWJ" secondAttribute="centerX" id="7oO-7N-uzu"/>
-                                    <constraint firstItem="C50-1i-chJ" firstAttribute="top" secondItem="fB3-mC-LUR" secondAttribute="bottom" constant="2" id="Dyl-uU-PM5"/>
+                                    <constraint firstItem="K5t-yX-3fM" firstAttribute="leading" secondItem="5ye-ib-aWJ" secondAttribute="leading" constant="16" id="K6a-dP-Qan"/>
+                                    <constraint firstItem="K5t-yX-3fM" firstAttribute="top" secondItem="fB3-mC-LUR" secondAttribute="bottom" constant="2" id="Mgm-aB-O50"/>
                                     <constraint firstItem="Nrm-o1-zvg" firstAttribute="leading" secondItem="Pbf-gk-ZK9" secondAttribute="trailing" constant="45" id="OeM-Zr-Eog"/>
-                                    <constraint firstAttribute="trailing" secondItem="C50-1i-chJ" secondAttribute="trailing" constant="16" id="Tfd-C1-0eq"/>
+                                    <constraint firstItem="5Zy-su-MTj" firstAttribute="centerY" secondItem="K5t-yX-3fM" secondAttribute="centerY" id="RlR-xh-vz1"/>
                                     <constraint firstItem="Rsf-dy-eWI" firstAttribute="centerX" secondItem="5ye-ib-aWJ" secondAttribute="centerX" id="VaS-5B-QLX"/>
-                                    <constraint firstItem="Nrm-o1-zvg" firstAttribute="top" secondItem="C50-1i-chJ" secondAttribute="bottom" constant="4" id="YCc-kl-eSV"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Zy-su-MTj" secondAttribute="trailing" constant="16" id="Wqp-6q-J0P"/>
+                                    <constraint firstItem="W8p-TL-jdo" firstAttribute="centerY" secondItem="K5t-yX-3fM" secondAttribute="centerY" id="c5H-ZG-fo5"/>
                                     <constraint firstItem="FTM-n2-H1n" firstAttribute="centerY" secondItem="Nrm-o1-zvg" secondAttribute="centerY" id="cN1-8g-adx"/>
-                                    <constraint firstItem="C50-1i-chJ" firstAttribute="leading" secondItem="5ye-ib-aWJ" secondAttribute="leading" constant="16" id="nr6-eo-Eh4"/>
+                                    <constraint firstItem="Nrm-o1-zvg" firstAttribute="top" secondItem="K5t-yX-3fM" secondAttribute="bottom" constant="4" id="d73-6b-Coy"/>
                                     <constraint firstItem="FTM-n2-H1n" firstAttribute="leading" secondItem="Nrm-o1-zvg" secondAttribute="trailing" constant="45" id="sHa-OI-IiH"/>
                                     <constraint firstItem="Rsf-dy-eWI" firstAttribute="top" secondItem="Nrm-o1-zvg" secondAttribute="bottom" constant="24" id="wUA-dg-RsD"/>
                                     <constraint firstItem="Pbf-gk-ZK9" firstAttribute="centerY" secondItem="Nrm-o1-zvg" secondAttribute="centerY" id="x4J-ku-4Gz"/>
@@ -2725,38 +2723,38 @@ concluir essa leitura!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B3f-fb-g2a">
-                                                        <rect key="frame" x="89" y="132" width="197" height="31.5"/>
+                                                        <rect key="frame" x="89" y="132" width="197" height="31"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-tJ-Uhv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="LBK-a6-c52"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOE-tm-5Ak">
-                                                                <rect key="frame" x="41" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="41" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="x4r-s1-G0G"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uw-Ze-Jyo">
-                                                                <rect key="frame" x="82" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="82" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="Eln-md-RHJ"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15B-Ta-QVI">
-                                                                <rect key="frame" x="123" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="123" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="P4T-GO-XUR"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIo-9k-Wds">
-                                                                <rect key="frame" x="164" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="164" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="t1k-z8-XVd"/>
@@ -2768,7 +2766,7 @@ concluir essa leitura!</string>
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-cI-ckf">
-                                                        <rect key="frame" x="77.5" y="193.5" width="220" height="30"/>
+                                                        <rect key="frame" x="77.5" y="193" width="220" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="220" id="qhF-Yb-92J"/>
@@ -3047,7 +3045,7 @@ concluir essa leitura!</string>
     </scenes>
     <resources>
         <image name="Rectangle 3" width="164.5" height="55"/>
-        <image name="SalvarPerfilIcon" width="22" height="22"/>
+        <image name="SalvarPerfilIcon" width="44" height="44"/>
         <image name="account_white" width="24" height="24"/>
         <image name="biblioteca" width="32" height="26"/>
         <image name="bookBlack" width="23.5" height="18"/>
