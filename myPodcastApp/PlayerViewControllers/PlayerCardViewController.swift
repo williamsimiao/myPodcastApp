@@ -109,7 +109,7 @@ class PlayerCardViewController: UIViewController {
         animateImageLayerIn()
         animateCoverImageIn()
         animateLowerModuleIn()
-        //animateBottomSectionOut()
+//        animateBottomSectionOut()
     }
     
     // MARK: - Navigation
