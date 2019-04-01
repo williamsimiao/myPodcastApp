@@ -98,38 +98,6 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         
         self.delegate?.clickFavorito(theResumo: self.download!.resumo)
     }
-    
-    func changeDownlodStateToPaused() {
-        downloadBtn.setImage(UIImage(named: "miniPlay")!, for: .normal)
-    }
-    
-    func changeDownlodStateToInProgress() {
-        downloadBtn.setImage(UIImage(named: "miniPause")!, for: .normal)
-    }
-    
-    func update(progress: Float) {
-        downloadProgress.value = CGFloat(progress)
-    }
-    
-    func didFinishProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didPauseProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didContinueProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
-        
-    }
-    
-    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
-        
-    }
 
     @IBAction func clickDownload(_ sender: Any) {
         self.delegate?.clickDownload(aDownload: self.download!)

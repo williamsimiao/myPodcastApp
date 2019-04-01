@@ -90,9 +90,19 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.delegate = self
         
-        let download = Download(resumo: resumo)
-        download.tableViewIndex = indexPath.row
-        cell.download = download
+        //TODO check what is the type of resumo
+        let dicit = AppService.downloadService.activeDownloads
+        let url = URL(string: resumo.url_podcast_40_f)!
+        if let down = AppService.downloadService.activeDownloads[url] {
+            cell.download = down
+        }
+        else {
+            let download = Download(resumo: resumo)
+            download.tableViewIndex = indexPath.row
+            cell.download = download
+
+        }
+        
         
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
@@ -109,6 +119,22 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         
+        if cod_resumo == "159" {
+            if cell.download?.downloadState == DownlodState.none {
+                if resumoEntity!.downloaded == 0 {
+                    cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+                    cell.downloadBtn.tintColor = UIColor.white
+                }
+                else {
+                    cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
+                    cell.downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
+                }
+            }
+            else if cell.download?.downloadState == .baixando {
+                cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
+            }
+        }
+        
         if cell.download?.downloadState == DownlodState.none {
             if resumoEntity!.downloaded == 0 {
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
@@ -118,6 +144,9 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
                 cell.downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
             }
+        }
+        else if cell.download?.downloadState == .baixando {
+            cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
         }
         //DowanloadBtn
 
@@ -183,8 +212,6 @@ extension FavoritosViewController: CellWithProgressDelegate {
             let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
 
             var resumoURL = URL(string: episodeUrlString)!
-            
-            
             
             if aDownload.downloadState == DownlodState.baixando {
                 AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
@@ -282,7 +309,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
             if download.tableViewIndex! > 0 {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: download.tableViewIndex!,
                     section: 0)) as? CellWithProgress {
-//                    cell.download?.downloadState = DownlodState.baixando
+                    cell.download?.downloadState = DownlodState.baixando
                     cell.updateDisplay(progress: download.progress, totalSize: totalSize)
                 }
             }
