@@ -86,6 +86,26 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         self.coverImg.layer.borderColor = UIColor.white.cgColor
     }
     
+    func didFinishProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didPauseProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didContinueProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
+        
+    }
+    
+    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
+        
+    }
+    
     @IBAction func clickFavorito(_ sender: Any) {
         if self.download!.resumo.favoritado == 0 {
             favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)

@@ -108,7 +108,7 @@ class DetalheViewController: InheritanceViewController {
             
             // verificar se eh downloaded
             if resumo.downloaded == 1 {
-                episodeContentView.downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
+                episodeContentView.downloadBtn.setImage(UIImage(named: "downloadOrange")!, for: .normal)
                 episodeContentView.downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
             } else {
                 episodeContentView.downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
