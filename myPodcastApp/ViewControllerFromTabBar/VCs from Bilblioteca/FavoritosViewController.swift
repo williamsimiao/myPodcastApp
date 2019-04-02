@@ -236,7 +236,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
                     totalBytesExpectedToWrite: Int64) {
         guard let url = downloadTask.originalRequest?.url,
             let download = AppService.downloadService.activeDownloads[url]  else { return }
-        
+//        download.resumo
         download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
         
         let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)

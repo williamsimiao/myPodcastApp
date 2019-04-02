@@ -149,6 +149,24 @@ class DetalheViewController: InheritanceViewController {
         } catch {
             print("Unable to start Reachability notifier")
         }
+        
+        let userIsPremium = false
+        var urlString: String?
+        if userIsPremium {
+            urlString = selectedResumo?.url_podcast_40_p
+        }
+        else {
+            urlString = selectedResumo?.url_podcast_40_f
+        }
+        let url = URL(string: urlString!)
+        
+        if let down = AppService.downloadService.activeDownloads[url!] {
+            episodeContentView.download = down
+            episodeContentView.download?.tableViewIndex = -1
+        }
+        else {
+            episodeContentView.download = Download(resumo: selectedResumo!)
+        }
     }
     
     @objc func reachabilityChanged(note: Notification) {
@@ -613,27 +631,56 @@ extension DetalheViewController: URLSessionDownloadDelegate {
     }
 
     
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
-                    totalBytesExpectedToWrite: Int64) {
-
-        guard let url = downloadTask.originalRequest?.url,
-            let download = AppService.downloadService.activeDownloads[url]  else { return }
-        
-        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-        
-        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-        DispatchQueue.main.async {
-            self.episodeContentView.updateDisplay(progress: download.progress, totalSize: totalSize)
-            
-        }
-    }
+//    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
+//                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
+//                    totalBytesExpectedToWrite: Int64) {
+//
+//        guard let url = downloadTask.originalRequest?.url,
+//            let download = AppService.downloadService.activeDownloads[url]  else { return }
+//
+//        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+//
+//        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+//        DispatchQueue.main.async {
+//            self.episodeContentView.updateDisplay(progress: download.progress, totalSize: totalSize)
+//
+//        }
+//    }
     
 }
 
 
 extension DetalheViewController: contentViewDelegate {
-    func favClicked() {
+    func clickDownload() {
+        self.view.makeToast("Download iniciado", duration: 2.0)
+    }
+    
+    
+    func confirmDownloadDeletion(urlString: String) {
+        func confirmDownloadDeletion(cell: CellWithProgress, urlString: String) {
+            let theResumo = cell.download?.resumo
+            let alert = UIAlertController(
+                title: "Remover Resumo",
+                message: "Deseja remover o download do resumo ?",
+                preferredStyle: UIAlertController.Style.alert
+            )
+            alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
+                let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
+                
+                if wasDeleted {
+                    self.episodeContentView.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+
+    }
+
+    func clickFavorito() {
         let cod_resumo = self.selectedResumo?.cod_resumo
         
         AppService.util.changeMarkResumoFavoritoField(cod_resumo: cod_resumo!)
@@ -644,39 +691,5 @@ extension DetalheViewController: contentViewDelegate {
         } else {
             episodeContentView.changeFavIcon(isFavoritado: false)
         }
-    }
-    
-    func downloadClicked(state: DownlodState) {
-//        //Marking as downloaded
-//        //        let cod_resumo = self.selectedResumo?.cod_resumo
-//        if AppService.util.isConnectedToNetwork() == false {
-//            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
-//            return
-//        }
-//        self.view.makeToast("Download em andamento", duration: 2.0)
-//        print("Download em andamento")
-//
-//
-//        //Saving files
-//        let userIsPremium = false
-//        if userIsPremium {
-//            var resumoURL = URL(string: (selectedResumo?.url_podcast_40_p)!)
-//
-//            //            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_p)!, cod_resumo: cod_resumo!)
-//            //            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_10)!, cod_resumo: cod_resumo!)
-//
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
-//            resumoURL = URL(string: (selectedResumo?.url_podcast_10)!)
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
-//        }
-//        else {
-//            var resumoURL = URL(string: (selectedResumo?.url_podcast_40_f)!)
-//            //            AppService.util.downloadAudio(urlString: (self.selectedResumo?.url_podcast_40_f)!, cod_resumo: cod_resumo!)
-//            AppService.downloadService.startDownload(selectedResumo!, resumoUrl: resumoURL!, tableIndex: -1)
-//
-//        }
-    }
-    
-    func viewClicked() {
     }
 }

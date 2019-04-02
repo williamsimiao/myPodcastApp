@@ -10,9 +10,9 @@ import UIKit
 import UICircularProgressRing
 
 protocol contentViewDelegate : class {
-    func viewClicked()
-    func favClicked()
-    func downloadClicked(state: DownlodState)
+    func clickFavorito()
+    func clickDownload()
+    func confirmDownloadDeletion(urlString: String)
 }
 
 class epidodeContentRightView: UIView {
@@ -27,8 +27,8 @@ class epidodeContentRightView: UIView {
     
     
     var delegate : contentViewDelegate?
-    var downloadState: DownlodState?
-    
+    var download: Download?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commomInit()
@@ -57,18 +57,18 @@ class epidodeContentRightView: UIView {
     
     func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {
         if isDownloading {
-//            downloadProgress.isHidden = false
+            downloadProgress.isHidden = false
             downloadBtn.setImage(UIImage(named: "stop"), for: .normal)
         }
         else {
             
-//            downloadProgress.isHidden = true
+            downloadProgress.isHidden = true
             if isDownloaded {
                 downloadBtn.setImage(UIImage(named: "downloadOrange"), for: .normal)
             }
             else {
                 downloadBtn.setImage(UIImage(named: "downloadWhite"), for: .normal)
-//                download?.progress = 0
+                download?.progress = 0
                 downloadProgress.value = 0
             }
         }
@@ -108,17 +108,68 @@ class epidodeContentRightView: UIView {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        delegate?.favClicked()
+        delegate?.clickFavorito()
     }
     
     @IBAction func clickDownload(_ sender: Any) {
+        let episodeUrlString: String
+        let userIsPremium = false
+        let theResumo = self.download!.resumo
         
-        delegate?.downloadClicked(state: DownlodState.none)
+        
+        if userIsPremium {
+            episodeUrlString = theResumo.url_podcast_40_p
+        }
+        else {
+            episodeUrlString = theResumo.url_podcast_40_f
+        }
+        
+        var resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        guard let resumoEntity = resumos.first else {
+            return
+        }
+        
+        //DELETE DOWNLOAD
+        if resumoEntity.downloaded == 1 {
+            delegate!.confirmDownloadDeletion(urlString: episodeUrlString)
+        }
+        else {
+            let resumoURL = URL(string: episodeUrlString)!
+            
+            //CANCEL DOWNLOAD
+            if resumoEntity.downloading == 1 {
+                AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
+                
+                //Mark downloading as 0 on Realm
+//                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+            }
+                
+                //START DOWNLOAD
+            else {
+                if AppService.util.isConnectedToNetwork() == false {
+                    AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+                    return
+                }
+                //Mark downloading as 1 on Realm
+//                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+                
+                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
+            }
+        }
+        
+        //UPdating self.download?.resumo
+        resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        guard let finalResumoEntity = resumos.first else {
+            return
+        }
+        self.download?.resumo = Resumo(resumoEntity: finalResumoEntity)
+        
+        delegate?.clickDownload()
     }
     
     
     @objc func testTap() {
-        self.delegate?.viewClicked()
+//        self.delegate?.viewClicked()
     }
     
     
