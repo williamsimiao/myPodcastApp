@@ -10,8 +10,9 @@ import UIKit
 import UICircularProgressRing
 
 protocol CellWithProgressDelegate {
-    func clickDownload(aDownload: Download)
-    func clickFavorito(theResumo: Resumo)
+    func clickDownload()
+    func clickFavorito(cell: CellWithProgress, theResumo: Resumo)
+    func confirmDownloadDeletion(cell: CellWithProgress, urlString: String)
 }
 
 class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
@@ -51,6 +52,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     
     func updateDisplay(progress: Float, totalSize : String) {
         downloadProgress.value = CGFloat(progress)
+        downloadProgress.isHidden = false
         let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
     }
     
@@ -58,15 +60,19 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         if isDownloading {
             downloadProgress.isHidden = false
             downloadBtn.setImage(UIImage(named: "stop"), for: .normal)
+            downloadBtn.tintColor = .white
         }
         else {
             
             downloadProgress.isHidden = true
             if isDownloaded {
                 downloadBtn.setImage(UIImage(named: "downloadOrange"), for: .normal)
+                downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
+
             }
             else {
                 downloadBtn.setImage(UIImage(named: "downloadWhite"), for: .normal)
+                downloadBtn.tintColor = .white
                 download?.progress = 0
                 downloadProgress.value = 0
             }
@@ -86,39 +92,73 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         self.coverImg.layer.borderColor = UIColor.white.cgColor
     }
     
-    func didFinishProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didPauseProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didContinueProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
-        
-    }
-    
-    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
-        
-    }
-    
-    @IBAction func clickFavorito(_ sender: Any) {
-        if self.download!.resumo.favoritado == 0 {
+    func setFavoritoBtn(favoritado: Bool) {
+        if favoritado {
             favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
             favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
         } else {
             favoritoBtn.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
             favoritoBtn.tintColor = UIColor.white
         }
-        
-        self.delegate?.clickFavorito(theResumo: self.download!.resumo)
+    }
+    
+    @IBAction func clickFavorito(_ sender: Any) {
+        self.delegate?.clickFavorito(cell: self, theResumo: self.download!.resumo)
     }
 
     @IBAction func clickDownload(_ sender: Any) {
-        self.delegate?.clickDownload(aDownload: self.download!)
+        let episodeUrlString: String
+        let userIsPremium = false
+        let theResumo = self.download!.resumo
+        
+        
+        if userIsPremium {
+            episodeUrlString = theResumo.url_podcast_40_p
+        }
+        else {
+            episodeUrlString = theResumo.url_podcast_40_f
+        }
+        
+        var resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        guard let resumoEntity = resumos.first else {
+            return
+        }
+        
+        //DELETE DOWNLOAD
+        if resumoEntity.downloaded == 1 {
+            delegate!.confirmDownloadDeletion(cell: self, urlString: episodeUrlString)
+        }
+        else {
+            let resumoURL = URL(string: episodeUrlString)!
+            
+            //CANCEL DOWNLOAD
+            if resumoEntity.downloading == 1 {
+                AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
+                
+                //Mark downloading as 0 on Realm
+                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+            }
+            
+            //START DOWNLOAD
+            else {
+                if AppService.util.isConnectedToNetwork() == false {
+                    AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+                    return
+                }
+                //Mark downloading as 1 on Realm
+                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+
+                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
+            }
+        }
+        
+        //UPdating self.download?.resumo
+        resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        guard let finalResumoEntity = resumos.first else {
+            return
+        }
+        self.download?.resumo = Resumo(resumoEntity: finalResumoEntity)
+        
+        delegate?.clickDownload()
     }
 }

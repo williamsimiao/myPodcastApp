@@ -587,7 +587,6 @@ open class AppUtil {
             print("Não foi possivel fazer o download")
             return
         }
-        
         try! self.realm.write {
             if downloaded {
                 resumoEntity.downloaded = 1
@@ -600,22 +599,56 @@ open class AppUtil {
         }
     }
     
-    func markResumoFavoritoField(cod_resumo: String) {
+    func changeMarkResumoDownloading(cod_resumo: String) -> Bool {
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
-        
+        guard let resumoEntity = resumos.first else {
+            //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
+            //            Delay.short
+            print("Não foi possivel fazer o download")
+            return false
+        }
+        var newValue: Bool?
+        try! self.realm.write {
+            if resumoEntity.downloading == 1 {
+                resumoEntity.downloading = 0
+                newValue = false
+                print("downloading marcado como false")
+            }
+            else {
+                resumoEntity.downloading = 1
+                newValue = true
+                print("downloading marcado como true")
+            }
+            self.realm.add(resumoEntity, update: true)
+        }
+        guard let value = newValue else {
+            return false
+        }
+        return newValue!
+
+
+    }
+    
+    func changeMarkResumoFavoritoField(cod_resumo: String) -> Bool {
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+
         if let resumoEntity = resumos.first {
-            
+            var newValue: Bool?
             try! self.realm.write {
                 
                 if resumoEntity.favoritado == 0 {
+                    newValue = true
                     resumoEntity.favoritado = 1
                 } else {
+                    newValue = false
                     resumoEntity.favoritado = 0
                 }
                 self.realm.add(resumoEntity, update: true)
                 NSLog("favorito resumo %@", resumoEntity.cod_resumo)
             }
+            return newValue!
         }
+        return false
     }
     
     func getPathFromDownloadedAudio(urlString: String) throws -> URL {

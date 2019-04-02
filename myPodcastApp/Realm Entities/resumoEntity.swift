@@ -27,6 +27,8 @@ class ResumoEntity: Object {
     
     @objc dynamic var favoritado = 0
     @objc dynamic var downloaded = 0
+    @objc dynamic var downloading = 0
+
     
     //Concluido field suits both free and premium types
     @objc dynamic var concluido_podcast_40 = 0

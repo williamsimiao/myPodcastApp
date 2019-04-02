@@ -223,7 +223,7 @@ class EpisodePlayControlViewController: UIViewController, UICircularProgressRing
                     aDownload.downloadState = DownlodState.baixando
                     //            AppService.util.downloadAudio(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
                     
-                    AppService.downloadService.startDownload(theResumo!, resumoUrl: resumoURL, tableIndex: aDownload.tableViewIndex!)
+                    AppService.downloadService.startDownload(theResumo!, resumoUrl: resumoURL)
                     
                     //cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
                 }

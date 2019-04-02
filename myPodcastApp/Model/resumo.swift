@@ -28,6 +28,8 @@ class Resumo {
     
     var favoritado = 0
     var downloaded = 0
+    var downloading = 0
+
     
     //Concluido field suits both free and premium types
     var concluido_podcast_40 = 0
@@ -72,6 +74,10 @@ class Resumo {
         self.duration_40_p = resumoEntity.duration_40_p
         self.durationPodcast_10 = resumoEntity.durationPodcast_10
         self.pubDate = resumoEntity.pubDate
+        
+        self.favoritado = resumoEntity.favoritado
+        self.downloaded = resumoEntity.downloaded
+        self.downloading = resumoEntity.downloaded
     }
     
 //    init?(resumoDict: [String:AnyObject]) {
