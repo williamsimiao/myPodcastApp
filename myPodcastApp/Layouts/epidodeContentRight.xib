@@ -86,28 +86,36 @@
                                     <rect key="frame" x="56" y="1" width="24" height="24"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGj-Dy-lAN" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
-                                            <rect key="frame" x="0.5" y="1" width="23" height="22"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="-5" y="-5" width="34" height="34"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-c2-lSG" userLabel="download">
-                                            <rect key="frame" x="0.5" y="1" width="23" height="22"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" image="downloadWhite"/>
+                                            <connections>
+                                                <action selector="clickDownload:" destination="-1" eventType="touchUpInside" id="azu-yE-xl0"/>
+                                            </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="L7n-67-j3I"/>
                                         <constraint firstItem="mz6-c2-lSG" firstAttribute="centerY" secondItem="BlY-Eq-4ie" secondAttribute="centerY" id="N8U-DZ-xGa"/>
                                         <constraint firstItem="kGj-Dy-lAN" firstAttribute="centerX" secondItem="mz6-c2-lSG" secondAttribute="centerX" id="NMq-6d-xVn"/>
                                         <constraint firstItem="mz6-c2-lSG" firstAttribute="centerX" secondItem="BlY-Eq-4ie" secondAttribute="centerX" id="Xxu-c5-cD2"/>
-                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="height" secondItem="mz6-c2-lSG" secondAttribute="height" id="Z51-qe-OjK"/>
-                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="width" secondItem="mz6-c2-lSG" secondAttribute="width" id="bYF-nt-VgX"/>
+                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="height" secondItem="mz6-c2-lSG" secondAttribute="height" constant="10" id="Z51-qe-OjK"/>
+                                        <constraint firstItem="kGj-Dy-lAN" firstAttribute="width" secondItem="mz6-c2-lSG" secondAttribute="width" constant="10" id="bYF-nt-VgX"/>
                                         <constraint firstItem="kGj-Dy-lAN" firstAttribute="centerY" secondItem="mz6-c2-lSG" secondAttribute="centerY" id="e46-fR-l4z"/>
                                         <constraint firstAttribute="height" constant="24" id="u31-If-Dy3"/>
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="mz6-c2-lSG" firstAttribute="height" secondItem="LaW-eO-ab2" secondAttribute="height" id="e3T-WC-TEs"/>
+                                <constraint firstItem="mz6-c2-lSG" firstAttribute="width" secondItem="LaW-eO-ab2" secondAttribute="width" id="hF9-Bu-ni3"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <constraints>
@@ -141,7 +149,7 @@
     </objects>
     <resources>
         <image name="downloadWhite" width="23.5" height="19.5"/>
-        <image name="favoritoWhite" width="19" height="24.5"/>
+        <image name="favoritoWhite" width="16.5" height="21"/>
         <image name="star" width="15.5" height="15"/>
     </resources>
 </document>

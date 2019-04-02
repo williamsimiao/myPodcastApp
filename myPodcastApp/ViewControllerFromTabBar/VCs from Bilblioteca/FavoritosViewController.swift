@@ -20,7 +20,7 @@ class FavoritosViewController: InheritanceViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     
-
+    
     var download: Download?
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
@@ -29,7 +29,7 @@ class FavoritosViewController: InheritanceViewController {
         let configuration = URLSessionConfiguration.default
         return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }()
-
+    
     let realm = AppService.realm()
     
     override func viewDidLoad() {
@@ -66,7 +66,7 @@ class FavoritosViewController: InheritanceViewController {
             resumoArray.append(resumo)
         }
         tableView.reloadData()
-
+        
     }
     
 }
@@ -100,7 +100,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
             let download = Download(resumo: resumo)
             download.tableViewIndex = indexPath.row
             cell.download = download
-
+            
         }
         
         
@@ -118,23 +118,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
             cell.favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
         }
         
-        
-        if cod_resumo == "159" {
-            if cell.download?.downloadState == DownlodState.none {
-                if resumoEntity!.downloaded == 0 {
-                    cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
-                    cell.downloadBtn.tintColor = UIColor.white
-                }
-                else {
-                    cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-                    cell.downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
-                }
-            }
-            else if cell.download?.downloadState == .baixando {
-                cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
-            }
-        }
-        
         if cell.download?.downloadState == DownlodState.none {
             if resumoEntity!.downloaded == 0 {
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
@@ -149,7 +132,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
             cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
         }
         //DowanloadBtn
-
+        
         
         let coverUrl = resumo.url_imagem
         
@@ -157,7 +140,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         cell.goBackToOriginalColors()
         
         let progressRatio = AppService.util.getProgressRatio(cod_resumo: cod_resumo)
-
+        
         cell.progressView.progress = Float(progressRatio)
         
         cell.coverImg.image = UIImage(named: "cover_placeholder")!
@@ -190,7 +173,7 @@ extension FavoritosViewController: CellWithProgressDelegate {
         let episodeUrlString: String
         let userIsPremium = false
         let theResumo = aDownload.resumo
-
+        
         if userIsPremium {
             episodeUrlString = theResumo.url_podcast_40_p
         }
@@ -198,6 +181,8 @@ extension FavoritosViewController: CellWithProgressDelegate {
             episodeUrlString = theResumo.url_podcast_40_f
         }
         let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo).first
+        
+        let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
 
         if resumoEntity!.downloaded == 1 {
             var wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
@@ -206,11 +191,12 @@ extension FavoritosViewController: CellWithProgressDelegate {
             }
             if wasDeleted {
                 self.tableView.reloadData()
+                cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
+
             }
         }
         else {
-            let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
-
+            
             var resumoURL = URL(string: episodeUrlString)!
             
             if aDownload.downloadState == DownlodState.baixando {
@@ -231,23 +217,23 @@ extension FavoritosViewController: CellWithProgressDelegate {
                     
                     cell.changeDownloadButtonLook(isDownloading: true, isDownloaded: false)
                 }
-
+                
             }
-
+            
             
             
             //downalod TEN podcast
-//            if theResumo.url_podcast_10 != nil {
-//                resumoURL = URL(string: theResumo.url_podcast_10)!
-//                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
-//            }
+            //            if theResumo.url_podcast_10 != nil {
+            //                resumoURL = URL(string: theResumo.url_podcast_10)!
+            //                AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
+            //            }
         }
     }
     
     func clickFavorito(theResumo: Resumo) {
         AppService.util.markResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
         fetchResumosFromRealm()
-
+        
     }
 }
 
@@ -278,12 +264,12 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
                 let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CellWithProgress
                 cell.download?.downloadState = DownlodState.baixado
                 cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-
+                
                 
                 let cod_resumo = download?.resumo.cod_resumo
                 AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
                 print("Marcado no realm")
-
+                
             }
         }
     }
@@ -302,7 +288,7 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
         DispatchQueue.main.async {
             if download.tableViewIndex! > 0 {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: download.tableViewIndex!,
-                    section: 0)) as? CellWithProgress {
+                                                                      section: 0)) as? CellWithProgress {
                     cell.download?.downloadState = DownlodState.baixando
                     cell.updateDisplay(progress: download.progress, totalSize: totalSize)
                 }
@@ -310,5 +296,5 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
             
         }
     }
-
+    
 }

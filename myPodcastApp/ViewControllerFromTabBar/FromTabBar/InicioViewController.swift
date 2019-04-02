@@ -41,14 +41,14 @@ class InicioViewController: InheritanceViewController {
     let maxAutoresToShow = 5
     let primaryDuration = Double(0.25)
     let searchBarDefaultHeight = CGFloat(56.0)
-
+    
     var selectedResumo : Resumo?
     
     var ultimosResumosDictArray :[[String:AnyObject]]?
     var autoresDictArray :[[String:AnyObject]]?
     
     var maisResumosDictArray :[[String:AnyObject]]?
-
+    
     var topResumos = [Resumo]()
     var ultimosResumos = [Resumo]()
     var autoresArray = [Autor]()
@@ -61,15 +61,15 @@ class InicioViewController: InheritanceViewController {
     var page:Int = 1
     
     var pathForListViewController: String?
-
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.superResizableView = resizableView
-//        self.superBottomConstraint = resizableBottomConstraint
+        //        self.superResizableView = resizableView
+        //        self.superBottomConstraint = resizableBottomConstraint
         
         slideShow.backgroundColor = .black
         slideShow.layer.cornerRadius = 10
@@ -83,7 +83,7 @@ class InicioViewController: InheritanceViewController {
             ImageSource(image: UIImage(named: "banner_top10_resumos")!),
             ImageSource(image: UIImage(named: "banner_top_writer")!),
             ImageSource(image: UIImage(named: "banner_indique")!)
-        ])
+            ])
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InicioViewController.didTapSlideShow))
         slideShow.addGestureRecognizer(gestureRecognizer)
@@ -103,15 +103,15 @@ class InicioViewController: InheritanceViewController {
         let viewTapGesture = UITapGestureRecognizer(target: self, action: #selector(InicioViewController.tapView))
         viewTapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(viewTapGesture)
-
-
+        
+        
         setupUI()
-
+        
         //check Internet
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi || reachability.connection == .cellular {
                 self.makeResquest(path: "home.php")
-
+                
             }
             else {
                 print("neither wifi nor LTE")
@@ -131,7 +131,7 @@ class InicioViewController: InheritanceViewController {
             //make request for top10
             pathForListViewController = "buscaTopResumos.php"
             performSegue(withIdentifier: "to_listResumosVC", sender: self)
-
+            
         case 1:
             //make request for top_writer
             pathForListViewController = "buscaTopAutores.php"
@@ -142,7 +142,7 @@ class InicioViewController: InheritanceViewController {
             let sugerirVC = sb.instantiateViewController(withIdentifier: "sugerirVC")
             sugerirVC.modalTransitionStyle = .coverVertical
             present(sugerirVC, animated: true)
-
+            
         default:
             //make request for top10
             pathForListViewController = "buscaTopResumos.php"
@@ -158,14 +158,14 @@ class InicioViewController: InheritanceViewController {
     }
     
     @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
-
+        
         self.searchBar.becomeFirstResponder()
         animateSearchBar(appearing: true)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         //Reachability
-//        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         
         do {
             try reachability.startNotifier()
@@ -183,7 +183,7 @@ class InicioViewController: InheritanceViewController {
         view.endEditing(true)
         
         
-//        self.navigationController?.navigationBar.topItem?.title = "ResumoCast"
+        //        self.navigationController?.navigationBar.topItem?.title = "ResumoCast"
     }
     
     func animateSearchBar(appearing: Bool) {
@@ -201,7 +201,7 @@ class InicioViewController: InheritanceViewController {
             UIView.animate(withDuration: primaryDuration, animations: {
                 self.searchBarHeightConstraint.constant = CGFloat(0.0)
                 self.view.layoutIfNeeded() //IMPORTANT!
-
+                
             }) { (_) in
                 self.searchBarIsActive = false
             }
@@ -210,14 +210,14 @@ class InicioViewController: InheritanceViewController {
         
     }
     
-//    @objc func reachabilityChanged(note: Notification) {
-//
-//        let reachability = note.object as! Reachability
-//
-//        if reachability.connection == .wifi || reachability.connection == .cellular {
-//            print("Conected")
-//        }
-//    }
+    //    @objc func reachabilityChanged(note: Notification) {
+    //
+    //        let reachability = note.object as! Reachability
+    //
+    //        if reachability.connection == .wifi || reachability.connection == .cellular {
+    //            print("Conected")
+    //        }
+    //    }
     
     func setupUI() {
         let nibTableCell = UINib(nibName: "InicioCell", bundle: nil)
@@ -255,7 +255,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InicioCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-
+        
         let resumo = self.ultimosResumos[indexPath.row]
         
         let cod_resumo = resumo.cod_resumo
@@ -266,11 +266,11 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         
         let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
         if resumoEntity!.favoritado == 0 {
-            cell.favoritoButton.imageView?.image = UIImage(named: "favoritoWhite")!
+            cell.favoritoButton.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
             cell.favoritoButton.tintColor = UIColor.white
         }
         else {
-            cell.favoritoButton.imageView?.image = UIImage(named: "favoritoOrange")!
+            cell.favoritoButton.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
             cell.favoritoButton.tintColor = UIColor.init(hex: 0xFF8633)
         }
         
@@ -303,15 +303,15 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         else if let listAutoresVC = segue.destination as? ListAutoresViewController {
             listAutoresVC.path = self.pathForListViewController
         }
-
+        
         self.navigationController?.navigationBar.topItem?.title = ""
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Only if the searchBar is not beeing used
-
-
+        
+        
         if !searchBarIsActive {
             let cell = tableView.cellForRow(at: indexPath)! as! InicioCell
             cell.setHighlightColor()
@@ -319,7 +319,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
             self.selectedResumo = self.ultimosResumos[indexPath.row]
             
             performSegue(withIdentifier: "to_detail", sender: self)
-
+            
         }
     }
     
@@ -328,7 +328,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         
         //cell.setHighlightColor()
         
-//        cell.goBackToOriginalColors()
+        //        cell.goBackToOriginalColors()
     }
     
     
@@ -410,15 +410,15 @@ extension InicioViewController {
     }
     
     func onResultReceived() {
-    
+        
         if self.success {
             
             self.autoresArray = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
-
+            
             self.ultimosResumos = AppService.util.convertDictArrayToResumoArray(dictResumoArray: self.ultimosResumosDictArray!)
-
+            
             self.isUsingLocalData = false
-
+            
             showContent()
         }
         else {
@@ -459,7 +459,7 @@ extension InicioViewController {
     func showContent() {
         loading.isHidden = true
         loading.stopAnimating()
-
+        
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
         self.ultimosLabel.isHidden = false
@@ -488,12 +488,12 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if collectionView.isEqual(self.topResumosCollectionView) {
-//            let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
-//
-//            self.selectedResumo = self.autoresArray[indexPath.row]
-//            performSegue(withIdentifier: "to_detail", sender: self)
-//        }
+        //        if collectionView.isEqual(self.topResumosCollectionView) {
+        //            let cell = topResumosCollectionView.cellForItem(at: indexPath) as! resumoCollectionViewCell
+        //
+        //            self.selectedResumo = self.autoresArray[indexPath.row]
+        //            performSegue(withIdentifier: "to_detail", sender: self)
+        //        }
     }
 }
 
@@ -503,14 +503,14 @@ extension InicioViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         animateSearchBar(appearing: false)
-
+        
     }
     //SearchButton from keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         view.endEditing(true)
         performSegue(withIdentifier: "goto_searchResults", sender: self)
-
+        
         //TODO volta contrain para 0
     }
 }
@@ -533,7 +533,7 @@ extension InicioViewController: inicioCellDelegate {
             self.realm.add(resumoEntity, update: true)
         }
     }
-
+    
 }
 
 extension InicioViewController {
@@ -764,14 +764,14 @@ extension InicioViewController {
     }
     
     /*func showContent() {
-        loading.isHidden = true
-        loading.stopAnimating()
-        
-        self.tableView.reloadData()
-        self.authorCollectionView.reloadData()
-        self.ultimosLabel.isHidden = false
-        self.autoresLabel.isHidden = false
-        self.maisEpisodiosLabel.isHidden = false
-    }*/
+     loading.isHidden = true
+     loading.stopAnimating()
+     
+     self.tableView.reloadData()
+     self.authorCollectionView.reloadData()
+     self.ultimosLabel.isHidden = false
+     self.autoresLabel.isHidden = false
+     self.maisEpisodiosLabel.isHidden = false
+     }*/
 }
 
