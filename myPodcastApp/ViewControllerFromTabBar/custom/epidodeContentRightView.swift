@@ -55,6 +55,26 @@ class epidodeContentRightView: UIView {
         contentView.fixInView(self)
     }
     
+    func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {
+        if isDownloading {
+//            downloadProgress.isHidden = false
+            downloadBtn.setImage(UIImage(named: "stop"), for: .normal)
+        }
+        else {
+            
+//            downloadProgress.isHidden = true
+            if isDownloaded {
+                downloadBtn.setImage(UIImage(named: "downloadOrange"), for: .normal)
+            }
+            else {
+                downloadBtn.setImage(UIImage(named: "downloadWhite"), for: .normal)
+//                download?.progress = 0
+                downloadProgress.value = 0
+            }
+        }
+    }
+
+    
     func updateDisplay(progress: Float, totalSize : String) {
         downloadProgress.value = CGFloat(progress)
         let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
@@ -93,7 +113,7 @@ class epidodeContentRightView: UIView {
     
     @IBAction func clickDownload(_ sender: Any) {
         
-//        delegate?.downloadClicked(state: self.downloadState)
+        delegate?.downloadClicked(state: DownlodState.none)
     }
     
     

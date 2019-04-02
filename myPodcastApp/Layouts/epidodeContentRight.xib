@@ -85,7 +85,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlY-Eq-4ie">
                                     <rect key="frame" x="56" y="1" width="24" height="24"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGj-Dy-lAN" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGj-Dy-lAN" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
                                             <rect key="frame" x="-5" y="-5" width="34" height="34"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
