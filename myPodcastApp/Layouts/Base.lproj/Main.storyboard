@@ -353,7 +353,6 @@
                         <segue destination="Rvi-Ua-fiZ" kind="show" identifier="goto_searchResults" id="GVd-uD-BFQ"/>
                         <segue destination="akv-yl-AM5" kind="show" identifier="to_listResumosVC" id="Svb-LB-qWI"/>
                         <segue destination="FFF-EP-19c" kind="show" identifier="to_listAutoresVC" id="i4I-Js-vCM"/>
-                        <segue destination="Y18-sa-96s" kind="show" identifier="to_detalhe_autor" id="y5t-5e-M9i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-Lf-hPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1965,26 +1964,26 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                     <connections>
                         <outlet property="loading" destination="Yeg-9t-n5e" id="SP7-Nu-iag"/>
                         <outlet property="tableView" destination="KZB-0r-7oi" id="Ggs-qh-mfw"/>
-                        <segue destination="Y18-sa-96s" kind="show" identifier="to_detalhe_autor" id="mhH-s6-P0b"/>
+                        <segue destination="AIQ-Ro-Uvr" kind="show" id="I7X-yv-dEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKL-Ht-Akm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11023" y="233"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="wvk-nm-Z25">
+        <!--Autor Detalhe View Controller-->
+        <scene sceneID="eXe-x1-f2l">
             <objects>
-                <viewController id="Y18-sa-96s" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ps1-UX-wZx">
+                <viewController id="AIQ-Ro-Uvr" customClass="AutorDetalheViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EFJ-98-edH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9Q-yq-SHX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxq-cz-u6a">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBX-zb-EUY" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wov-yC-hdH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kb4-5s-2Tb">
                                                 <rect key="frame" x="131.5" y="24" width="112.5" height="112.5"/>
@@ -2000,7 +1999,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Kgd-ht-UHN">
                                                 <rect key="frame" x="16" y="189.5" width="343" height="200"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="tmr-OV-1SC"/>
                                                 </constraints>
@@ -2009,8 +2008,8 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-vc-xpv">
-                                                <rect key="frame" x="0.0" y="405.5" width="375" height="197.5"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-vc-xpv" customClass="ContentSizedTableView" customModule="myPodcastApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="405.5" width="375" height="148.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Jic-Vs-Abn" customClass="InicioCell" customModule="myPodcastApp" customModuleProvider="target">
@@ -2022,54 +2021,55 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="Y18-sa-96s" id="VSR-rV-TiG"/>
-                                                    <outlet property="delegate" destination="Y18-sa-96s" id="PPj-pO-Vgj"/>
-                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="XSh-vc-xpv" secondAttribute="bottom" id="0ts-jo-YD4"/>
-                                            <constraint firstItem="Kgd-ht-UHN" firstAttribute="top" secondItem="aD0-8a-pYn" secondAttribute="bottom" constant="16" id="7LW-4u-CD0"/>
-                                            <constraint firstAttribute="trailing" secondItem="XSh-vc-xpv" secondAttribute="trailing" id="8cu-C9-Q4s"/>
-                                            <constraint firstItem="Kgd-ht-UHN" firstAttribute="leading" secondItem="NBX-zb-EUY" secondAttribute="leading" constant="16" id="AVw-2o-lh2"/>
-                                            <constraint firstItem="Kb4-5s-2Tb" firstAttribute="top" secondItem="NBX-zb-EUY" secondAttribute="top" constant="24" id="CIE-V1-dlX"/>
-                                            <constraint firstItem="Kb4-5s-2Tb" firstAttribute="width" secondItem="NBX-zb-EUY" secondAttribute="width" multiplier="0.3" id="CZP-eW-YsK"/>
-                                            <constraint firstAttribute="trailing" secondItem="Kgd-ht-UHN" secondAttribute="trailing" constant="16" id="D18-KJ-7ez"/>
-                                            <constraint firstItem="Kgd-ht-UHN" firstAttribute="centerX" secondItem="NBX-zb-EUY" secondAttribute="centerX" id="K4h-do-hCE"/>
-                                            <constraint firstItem="XSh-vc-xpv" firstAttribute="leading" secondItem="NBX-zb-EUY" secondAttribute="leading" id="OvI-MC-Jzl"/>
-                                            <constraint firstItem="Kb4-5s-2Tb" firstAttribute="centerX" secondItem="NBX-zb-EUY" secondAttribute="centerX" id="Yqb-NG-kUg"/>
-                                            <constraint firstItem="XSh-vc-xpv" firstAttribute="top" secondItem="Kgd-ht-UHN" secondAttribute="bottom" constant="16" id="YyZ-Rl-gek"/>
-                                            <constraint firstItem="aD0-8a-pYn" firstAttribute="top" secondItem="Kb4-5s-2Tb" secondAttribute="bottom" constant="16" id="fKS-eT-XUy"/>
-                                            <constraint firstItem="aD0-8a-pYn" firstAttribute="centerX" secondItem="NBX-zb-EUY" secondAttribute="centerX" id="yyG-PZ-pEO"/>
+                                            <constraint firstItem="Kgd-ht-UHN" firstAttribute="centerX" secondItem="wov-yC-hdH" secondAttribute="centerX" id="81u-gs-dtI"/>
+                                            <constraint firstItem="Kgd-ht-UHN" firstAttribute="top" secondItem="aD0-8a-pYn" secondAttribute="bottom" constant="16" id="8fz-fq-e2L"/>
+                                            <constraint firstAttribute="bottom" secondItem="XSh-vc-xpv" secondAttribute="bottom" id="Q8X-V9-xk7"/>
+                                            <constraint firstAttribute="trailing" secondItem="XSh-vc-xpv" secondAttribute="trailing" id="Sd4-7H-xDm"/>
+                                            <constraint firstItem="XSh-vc-xpv" firstAttribute="top" secondItem="Kgd-ht-UHN" secondAttribute="bottom" constant="16" id="TmR-pj-pR2"/>
+                                            <constraint firstItem="XSh-vc-xpv" firstAttribute="leading" secondItem="wov-yC-hdH" secondAttribute="leading" id="gK2-79-fXR"/>
+                                            <constraint firstItem="Kb4-5s-2Tb" firstAttribute="centerX" secondItem="wov-yC-hdH" secondAttribute="centerX" id="h91-jm-rbj"/>
+                                            <constraint firstItem="Kb4-5s-2Tb" firstAttribute="top" secondItem="wov-yC-hdH" secondAttribute="top" constant="24" id="oTk-RO-U8G"/>
+                                            <constraint firstItem="Kgd-ht-UHN" firstAttribute="leading" secondItem="wov-yC-hdH" secondAttribute="leading" constant="16" id="oU5-Pv-fkA"/>
+                                            <constraint firstAttribute="trailing" secondItem="Kgd-ht-UHN" secondAttribute="trailing" constant="16" id="ojX-AJ-N8g"/>
+                                            <constraint firstItem="aD0-8a-pYn" firstAttribute="centerX" secondItem="wov-yC-hdH" secondAttribute="centerX" id="rkn-nm-enO"/>
+                                            <constraint firstItem="aD0-8a-pYn" firstAttribute="top" secondItem="Kb4-5s-2Tb" secondAttribute="bottom" constant="16" id="tzl-SH-4iH"/>
+                                            <constraint firstItem="Kb4-5s-2Tb" firstAttribute="width" secondItem="wov-yC-hdH" secondAttribute="width" multiplier="0.3" id="zvk-pu-Yr6"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="NBX-zb-EUY" firstAttribute="centerX" secondItem="i9Q-yq-SHX" secondAttribute="centerX" id="5rk-hR-a1Y"/>
-                                    <constraint firstItem="NBX-zb-EUY" firstAttribute="centerY" secondItem="i9Q-yq-SHX" secondAttribute="centerY" id="Ixi-26-yWc"/>
-                                    <constraint firstAttribute="trailing" secondItem="NBX-zb-EUY" secondAttribute="trailing" id="aAv-Zd-KJt"/>
-                                    <constraint firstAttribute="bottom" secondItem="NBX-zb-EUY" secondAttribute="bottom" id="oEq-FM-THV"/>
-                                    <constraint firstItem="NBX-zb-EUY" firstAttribute="leading" secondItem="i9Q-yq-SHX" secondAttribute="leading" id="qx4-ks-PvA"/>
-                                    <constraint firstItem="NBX-zb-EUY" firstAttribute="top" secondItem="i9Q-yq-SHX" secondAttribute="top" id="vIc-Pb-hVk"/>
+                                    <constraint firstItem="wov-yC-hdH" firstAttribute="centerX" secondItem="dxq-cz-u6a" secondAttribute="centerX" id="5DI-E0-9Mn"/>
+                                    <constraint firstItem="wov-yC-hdH" firstAttribute="top" secondItem="dxq-cz-u6a" secondAttribute="top" id="6lu-Jm-eNd"/>
+                                    <constraint firstItem="wov-yC-hdH" firstAttribute="centerY" secondItem="dxq-cz-u6a" secondAttribute="centerY" id="J4d-h5-frL"/>
+                                    <constraint firstAttribute="trailing" secondItem="wov-yC-hdH" secondAttribute="trailing" id="RXo-fl-1GM"/>
+                                    <constraint firstAttribute="bottom" secondItem="wov-yC-hdH" secondAttribute="bottom" id="WRX-aV-V0d"/>
+                                    <constraint firstItem="wov-yC-hdH" firstAttribute="leading" secondItem="dxq-cz-u6a" secondAttribute="leading" id="gzG-96-WcC"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="i9Q-yq-SHX" firstAttribute="top" secondItem="b9v-0a-kCD" secondAttribute="top" id="GAY-RT-kO5"/>
-                            <constraint firstItem="i9Q-yq-SHX" firstAttribute="leading" secondItem="b9v-0a-kCD" secondAttribute="leading" id="Hny-rk-3XX"/>
-                            <constraint firstItem="i9Q-yq-SHX" firstAttribute="centerY" secondItem="ps1-UX-wZx" secondAttribute="centerY" id="IKP-MR-nQG"/>
-                            <constraint firstItem="b9v-0a-kCD" firstAttribute="trailing" secondItem="i9Q-yq-SHX" secondAttribute="trailing" id="hBK-gq-iX2"/>
-                            <constraint firstItem="i9Q-yq-SHX" firstAttribute="centerX" secondItem="ps1-UX-wZx" secondAttribute="centerX" id="i19-gg-igy"/>
+                            <constraint firstItem="aNP-D8-Igq" firstAttribute="bottom" secondItem="dxq-cz-u6a" secondAttribute="bottom" id="4An-1u-qPu"/>
+                            <constraint firstItem="dxq-cz-u6a" firstAttribute="top" secondItem="aNP-D8-Igq" secondAttribute="top" id="chl-ho-Wec"/>
+                            <constraint firstItem="aNP-D8-Igq" firstAttribute="trailing" secondItem="dxq-cz-u6a" secondAttribute="trailing" id="iwH-5d-6Z0"/>
+                            <constraint firstItem="dxq-cz-u6a" firstAttribute="leading" secondItem="aNP-D8-Igq" secondAttribute="leading" id="q6d-qp-buY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="b9v-0a-kCD"/>
+                        <viewLayoutGuide key="safeArea" id="aNP-D8-Igq"/>
                     </view>
+                    <connections>
+                        <outlet property="autorImage" destination="Kb4-5s-2Tb" id="Ko9-rm-30N"/>
+                        <outlet property="autorTitle" destination="aD0-8a-pYn" id="coZ-gN-YV7"/>
+                        <outlet property="tableView" destination="XSh-vc-xpv" id="YZl-Jz-KMr"/>
+                        <outlet property="textView" destination="Kgd-ht-UHN" id="Ru6-Qe-sdv"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MSg-dA-VbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGL-Ts-rgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12208.799999999999" y="222.63868065967017"/>
+            <point key="canvasLocation" x="12134" y="218"/>
         </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="oUU-Fj-7c1">
@@ -3165,7 +3165,6 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y5t-5e-M9i"/>
         <segue reference="YRk-1p-Ij2"/>
         <segue reference="XwK-Gc-UPM"/>
     </inferredMetricsTieBreakers>
