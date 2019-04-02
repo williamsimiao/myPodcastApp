@@ -182,7 +182,12 @@ extension FavoritosViewController: CellWithProgressDelegate {
         }
         let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo).first
         
-        let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as! CellWithProgress
+        
+        
+        guard let cell = self.tableView.cellForRow(at: IndexPath(row: aDownload.tableViewIndex!, section: 0)) as? CellWithProgress else {
+            
+            return
+        }
 
         if resumoEntity!.downloaded == 1 {
             var wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
