@@ -168,8 +168,10 @@ extension FavoritosViewController: CellWithProgressDelegate {
             let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
             
             if wasDeleted {
-                self.tableView.reloadData()
-                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
+                self.updateResumoList()
+
+//                self.tableView.reloadData()
+//                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
             }
         }))
         
@@ -221,8 +223,10 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
                 
                 let cod_resumo = download?.resumo.cod_resumo
                 AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
-                print("Marcado no realm")
                 
+                //Mark downloading as 0 on Realm
+                let boelano = AppService.util.changeMarkResumoDownloading(cod_resumo: cod_resumo!)
+//                print("\(boelano)")
             }
         }
     }
