@@ -24,16 +24,16 @@ class FavoritosViewController: InheritanceViewController {
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
     var selectedResumoImage: UIImage?
-    lazy var downloadsSession: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-    }()
+//    lazy var downloadsSession: URLSession = {
+//        let configuration = URLSessionConfiguration.default
+//        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+//    }()
     
     let realm = AppService.realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppService.downloadService.downloadsSession = downloadsSession
+//        AppService.downloadService.downloadsSession = downloadsSession
 
     }
     

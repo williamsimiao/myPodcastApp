@@ -18,34 +18,15 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var miniContainerBottonConstrain: NSLayoutConstraint!
     
     var miniPlayerController : MiniPlayerViewController?
-    
+    let downDelegate = downloadDelegate()
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//        } catch {
-//            print(error)
-//        }
-//        let showId = "2885428"
-//        let episodesUrl = "https://api.spreaker.com/v2/shows/" + showId + "/episodes"
-//        
-//        //TODO: tirar isso daqui
-//        
-//        Alamofire.request(episodesUrl).responseJSON { (responseData) -> Void in
-//            if((responseData.result.value) != nil) {
-//                let swiftyJsonVar = JSON(responseData.result.value!)
-//                if let episodesData = swiftyJsonVar["response"]["items"].arrayObject {
-//                    let arrEpisodes = episodesData as! [[String:AnyObject]]
-//                }
-//            }
-//        }        
+        self.downDelegate.setSession()
     }
     
     override func viewWillAppear(_ animated: Bool) {

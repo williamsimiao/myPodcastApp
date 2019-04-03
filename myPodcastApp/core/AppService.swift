@@ -15,8 +15,8 @@ public struct AppService {
     //static let user     = AppUser()
     static let util     = AppUtil()
     static let downloadService = DownloadService()
-    //static let template = AppTemplate()
     
+
     static func realm() -> Realm {
         print("REALM CONFIG: \(Realm.Configuration.defaultConfiguration.fileURL)")
         let config = Realm.Configuration(schemaVersion: 22)

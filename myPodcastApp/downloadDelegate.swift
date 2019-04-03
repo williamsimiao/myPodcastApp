@@ -15,18 +15,17 @@ class downloadDelegate: NSObject, URLSessionDownloadDelegate {
         return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }()
     
-    override init() {
-//        AppService.downloadService.downloadsSession = downloadsSession
+    func setSession() {
+        AppService.downloadService.downloadsSession = downloadsSession
     }
     
-    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
+        print("Concluido isso")
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
                     totalBytesExpectedToWrite: Int64) {
-        
+        print("progredindo")
     }
 }
