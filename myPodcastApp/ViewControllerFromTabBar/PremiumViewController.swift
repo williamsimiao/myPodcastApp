@@ -21,7 +21,6 @@ class PremiumViewController: UIViewController {
 
     }
     
-
     @IBAction func clickOK(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

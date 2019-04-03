@@ -501,49 +501,49 @@ open class AppUtil {
         return ""
     }
     
-    func downloadAudio(urlString: String, cod_resumo: String) {
-        print(urlString)
-        if AppService.util.isConnectedToNetwork() == false {
-            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
-            return
-        }
-        if let audioUrl = URL(string: urlString) {
-            
-            // then lets create your document folder url
-            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            
-            // lets create your destination file url
-            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
-            print(destinationUrl)
-            
-            // to check if it exists before downloading it
-            if FileManager.default.fileExists(atPath: destinationUrl.path) {
-                print("The file already exists at path")
-                
-            // if the file doesn't exist
-            } else {
-                
-//                 you can use NSURLSession.sharedSession to download the data asynchronously
-                URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
-                    guard let location = location, error == nil else { return }
-                    do {
-                        // after downloading your file you need to move it to your destination url
-                        try FileManager.default.moveItem(at: location, to: destinationUrl)
-                        print("File moved to documents folder")
-                        
-                        DispatchQueue.main.async(execute: {
-                            self.markResumoDownloadField(cod_resumo: cod_resumo, downloaded: true)
-                        })
-
-                        
-                    } catch let error as NSError {
-                        print("Erro no Download")
-                        print(error.localizedDescription)
-                    }
-                }).resume()
-            }
-        }
-    }
+//    func downloadAudio(urlString: String, cod_resumo: String) {
+//        print(urlString)
+//        if AppService.util.isConnectedToNetwork() == false {
+//            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
+//            return
+//        }
+//        if let audioUrl = URL(string: urlString) {
+//
+//            // then lets create your document folder url
+//            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//
+//            // lets create your destination file url
+//            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
+//            print(destinationUrl)
+//
+//            // to check if it exists before downloading it
+//            if FileManager.default.fileExists(atPath: destinationUrl.path) {
+//                print("The file already exists at path")
+//
+//            // if the file doesn't exist
+//            } else {
+//
+////                 you can use NSURLSession.sharedSession to download the data asynchronously
+//                URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
+//                    guard let location = location, error == nil else { return }
+//                    do {
+//                        // after downloading your file you need to move it to your destination url
+//                        try FileManager.default.moveItem(at: location, to: destinationUrl)
+//                        print("File moved to documents folder")
+//
+//                        DispatchQueue.main.async(execute: {
+//                            self.markResumoDownloadField(cod_resumo: cod_resumo, downloaded: true)
+//                        })
+//
+//
+//                    } catch let error as NSError {
+//                        print("Erro no Download")
+//                        print(error.localizedDescription)
+//                    }
+//                }).resume()
+//            }
+//        }
+//    }
     
     func deleteResumoAudioFile(urlString: String, cod_resumo: String) -> Bool {
         
@@ -565,7 +565,6 @@ open class AppUtil {
                 print("The file exists, so can delete")
                 do {
                     try fileManager.removeItem(atPath: destinationUrl.path)
-                    //markResumoDownloadField(cod_resumo: cod_resumo, downloaded: false)
                     //sucess = true
                 } catch {
                     //sucess = false
@@ -588,6 +587,7 @@ open class AppUtil {
     
     //Ja eh chamado pela func que deleta e pela que baixa
     func markResumoDownloadField(cod_resumo: String, downloaded: Bool) {
+        self.realm = AppService.realm()
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumoEntity = resumos.first else {
             //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
@@ -612,6 +612,7 @@ open class AppUtil {
     }
     
     func changeMarkResumoDownloading(cod_resumo: String) -> Bool {
+        self.realm = AppService.realm()
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumoEntity = resumos.first else {
             //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
@@ -644,6 +645,7 @@ open class AppUtil {
     }
     
     func changeMarkResumoFavoritoField(cod_resumo: String) -> Bool {
+        self.realm = AppService.realm()
         let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
 
         if let resumoEntity = resumos.first {

@@ -48,7 +48,7 @@ class ResumoEntity: Object {
     @objc dynamic var durationPodcast_10 = 0.0
     
     // progress dowload
-    @objc dynamic var progressDownload = 0
+    @objc dynamic var progressDownload: Float = 0.0
     
 
     

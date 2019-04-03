@@ -50,10 +50,14 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         coverImg.backgroundColor = .orange
     }
     
-    func updateDisplay(progress: Float, totalSize : String) {
+//    func updateDisplay(progress: Float, totalSize : String) {
+//        downloadProgress.value = CGFloat(progress)
+//        downloadProgress.isHidden = false
+//        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
+//    }
+
+    func updateDisplay(progress: Float) {
         downloadProgress.value = CGFloat(progress)
-        downloadProgress.isHidden = false
-        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
     }
     
     func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {
@@ -106,6 +110,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
+        AppService.util.changeMarkResumoFavoritoField(cod_resumo: self.download!.resumo.cod_resumo)
         self.delegate?.clickFavorito(cell: self, theResumo: self.download!.resumo)
     }
 
@@ -163,28 +168,6 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         self.download?.resumo = Resumo(resumoEntity: finalResumoEntity)
         
         delegate?.clickDownload()
-    }
-    
-    
-    
-    func didFinishProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didPauseProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didContinueProgress(for ring: UICircularProgressRing) {
-        
-    }
-    
-    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
-        
-    }
-    
-    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
-        
     }
     
 }

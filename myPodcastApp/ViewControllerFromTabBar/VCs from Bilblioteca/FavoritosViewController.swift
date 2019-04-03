@@ -98,7 +98,8 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
             cell.download = Download(resumo: resumo)
         }
         
-        //Cell UI
+        
+        //Labels
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
         
@@ -111,18 +112,23 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             cell.setFavoritoBtn(favoritado: false)
         }
+        
         //DownaloadBtn
         var isDownaloded = false
         var isDownloading = false
+        
         if resumoEntity?.downloaded == 1 {
             isDownaloded = true
         }
         if resumoEntity?.downloading == 1 {
             isDownloading = true
         }
-        cell.changeDownloadButtonLook(isDownloading: isDownloading, isDownloaded: isDownaloded)
-
         
+        cell.changeDownloadButtonLook(isDownloading: isDownloading, isDownloaded: isDownaloded)
+        if let progress = resumoEntity?.progressDownload {
+            cell.updateDisplay(progress: Float(progress))
+        }
+
         //COVER_IMG
         let coverUrl = resumo.url_imagem
         cell.coverImg.image = UIImage(named: "cover_placeholder")!
@@ -169,14 +175,7 @@ extension FavoritosViewController: CellWithProgressDelegate {
         
         alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
             
-            let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
-            
-            if wasDeleted {
-                self.updateResumoList()
-
-//                self.tableView.reloadData()
-//                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
-            }
+            AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
             
         }))
         
@@ -187,13 +186,12 @@ extension FavoritosViewController: CellWithProgressDelegate {
     }
     
     func clickDownload() {
-        updateResumoList()
+//        updateResumoList()
     }
     
     func clickFavorito(cell: CellWithProgress, theResumo: Resumo) {
-        let favoritadoBool = AppService.util.changeMarkResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
-        cell.setFavoritoBtn(favoritado: favoritadoBool)
-        updateResumoList()
+//        cell.setFavoritoBtn(favoritado: favoritadoBool)
+//        updateResumoList()
     }
 }
 
@@ -201,78 +199,40 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL) {
-        print("Finished downloading to \(location).")
         
-        guard let sourceURL = downloadTask.originalRequest?.url else { return }
-        let download = AppService.downloadService.activeDownloads[sourceURL]
-        AppService.downloadService.activeDownloads[sourceURL] = nil
-        // 2
-        let destinationURL = AppService.util.localFilePath(for: sourceURL)
-        print(destinationURL)
-        // 3
-        let fileManager = FileManager.default
-        try? fileManager.removeItem(at: destinationURL)
-        do {
-            try fileManager.copyItem(at: location, to: destinationURL)
-        } catch let error {
-            print("Could not copy file to disk: \(error.localizedDescription)")
-        }
         // 4
-        if let index = download?.tableViewIndex {
-            DispatchQueue.main.async {
-                print("realoading table")
-                let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CellWithProgress
-                cell.download?.downloadState = DownlodState.baixado
-                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-                
-                
-                let cod_resumo = download?.resumo.cod_resumo
-                AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
-                
-                //Mark downloading as 0 on Realm
-                let boelano = AppService.util.changeMarkResumoDownloading(cod_resumo: cod_resumo!)
-//                print("\(boelano)")
-            }
-        }
+//        if let index = download?.tableViewIndex {
+//            DispatchQueue.main.async {
+//                print("realoading table")
+//                let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CellWithProgress
+//                cell.download?.downloadState = DownlodState.baixado
+//                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
+//
+//
+//            }
+//        }
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
                     totalBytesExpectedToWrite: Int64) {
         
-        guard let url = downloadTask.originalRequest?.url,
-            let download = AppService.downloadService.activeDownloads[url]  else { return }
-        
-//        download.resumo
-        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-        
-        
-        // marcar progress no BD
-        let resumoUpdate = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", download.resumo.cod_resumo).first
-        
-        try! AppService.realm().write {
-            
-            resumoUpdate?.progressDownload = Int(download.progress)
-            
-            AppService.realm().add((resumoUpdate)!, update: true)
-            
-            NSLog("progress resumo %@", resumoUpdate!.cod_resumo as String)
-        }
         
         
         
-        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-        DispatchQueue.main.async {
-            if let index = download.tableViewIndex {
-                if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CellWithProgress {
-                    cell.updateDisplay(progress: download.progress, totalSize: totalSize)
-                }
-            }
-            else {
-                print("Nenhum index encontrado")
-            }
-
-        }
+        
+//        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+//        DispatchQueue.main.async {
+//            if let index = download.tableViewIndex {
+//                if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CellWithProgress {
+//                    cell.updateDisplay(progress: download.progress, totalSize: totalSize)
+//                }
+//            }
+//            else {
+//                print("Nenhum index encontrado")
+//            }
+//
+//        }
     }
     
 }
