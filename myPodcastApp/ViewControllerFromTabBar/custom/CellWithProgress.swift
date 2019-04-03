@@ -11,8 +11,9 @@ import UICircularProgressRing
 
 protocol CellWithProgressDelegate {
     func clickDownload()
-    func clickFavorito(cell: CellWithProgress, theResumo: Resumo)
+    func clickFavorito()
     func confirmDownloadDeletion(cell: CellWithProgress, urlString: String)
+    func downloadCanceled()
 }
 
 class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
@@ -29,6 +30,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
 //    var resumo: Resumo?
     var download: Download?
     var delegate: CellWithProgressDelegate?
+    var realm = AppService.realm()
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -99,6 +101,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         self.coverImg.layer.borderColor = UIColor.white.cgColor
     }
     
+//    changeDownloadButtonLook
     func setFavoritoBtn(favoritado: Bool) {
         if favoritado {
             favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
@@ -110,15 +113,21 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        AppService.util.changeMarkResumoFavoritoField(cod_resumo: self.download!.resumo.cod_resumo)
-        self.delegate?.clickFavorito(cell: self, theResumo: self.download!.resumo)
+        let current = AppService.util.changeMarkResumoFavoritoField(cod_resumo: self.download!.resumo.cod_resumo)
+        if current {
+            setFavoritoBtn(favoritado: true)
+        }
+        else {
+            setFavoritoBtn(favoritado: false)
+        }
+        self.delegate?.clickFavorito()
     }
 
     @IBAction func clickDownload(_ sender: Any) {
         let episodeUrlString: String
         let userIsPremium = false
         let theResumo = self.download!.resumo
-        
+        self.realm = AppService.realm()
         
         if userIsPremium {
             episodeUrlString = theResumo.url_podcast_40_p
@@ -127,7 +136,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
             episodeUrlString = theResumo.url_podcast_40_f
         }
         
-        var resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        var resumos = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
         guard let resumoEntity = resumos.first else {
             return
         }
@@ -144,7 +153,8 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
                 AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
                 
                 //Mark downloading as 0 on Realm
-                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo, isDownloading: false)
+                delegate?.downloadCanceled()
             }
             
             //START DOWNLOAD
@@ -154,8 +164,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
                     return
                 }
                 //Mark downloading as 1 on Realm
-                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
-
+                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo, isDownloading: true)
                 AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
             }
         }

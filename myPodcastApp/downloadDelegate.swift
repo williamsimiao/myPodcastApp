@@ -39,7 +39,9 @@ class downloadDelegate: NSObject, URLSessionDownloadDelegate {
         let cod_resumo = download?.resumo.cod_resumo
         //Mark downloading as 0 and downloaded as 1
         AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
-        AppService.util.changeMarkResumoDownloading(cod_resumo: cod_resumo!)    }
+        AppService.util.changeMarkResumoDownloading(cod_resumo: cod_resumo!, isDownloading: false)
+        
+    }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didWriteData bytesWritten: Int64, totalBytesWritten: Int64,

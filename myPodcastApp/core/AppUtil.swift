@@ -501,50 +501,6 @@ open class AppUtil {
         return ""
     }
     
-//    func downloadAudio(urlString: String, cod_resumo: String) {
-//        print(urlString)
-//        if AppService.util.isConnectedToNetwork() == false {
-//            AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
-//            return
-//        }
-//        if let audioUrl = URL(string: urlString) {
-//
-//            // then lets create your document folder url
-//            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//
-//            // lets create your destination file url
-//            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
-//            print(destinationUrl)
-//
-//            // to check if it exists before downloading it
-//            if FileManager.default.fileExists(atPath: destinationUrl.path) {
-//                print("The file already exists at path")
-//
-//            // if the file doesn't exist
-//            } else {
-//
-////                 you can use NSURLSession.sharedSession to download the data asynchronously
-//                URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
-//                    guard let location = location, error == nil else { return }
-//                    do {
-//                        // after downloading your file you need to move it to your destination url
-//                        try FileManager.default.moveItem(at: location, to: destinationUrl)
-//                        print("File moved to documents folder")
-//
-//                        DispatchQueue.main.async(execute: {
-//                            self.markResumoDownloadField(cod_resumo: cod_resumo, downloaded: true)
-//                        })
-//
-//
-//                    } catch let error as NSError {
-//                        print("Erro no Download")
-//                        print(error.localizedDescription)
-//                    }
-//                }).resume()
-//            }
-//        }
-//    }
-    
     func deleteResumoAudioFile(urlString: String, cod_resumo: String) -> Bool {
         
         var sucess = false
@@ -587,8 +543,8 @@ open class AppUtil {
     
     //Ja eh chamado pela func que deleta e pela que baixa
     func markResumoDownloadField(cod_resumo: String, downloaded: Bool) {
-        self.realm = AppService.realm()
-        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+//        self.realm = AppService.realm()
+        let resumos = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumoEntity = resumos.first else {
             //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
             //            Delay.short
@@ -596,7 +552,7 @@ open class AppUtil {
             return
         }
         
-        try! self.realm.write {
+        try! AppService.realm().write {
             if downloaded {
                 resumoEntity.downloaded = 1
                 resumoEntity.progressDownload = 0
@@ -606,42 +562,35 @@ open class AppUtil {
                 resumoEntity.progressDownload = 0
             }
             
-            self.realm.add(resumoEntity, update: true)
+            AppService.realm().add(resumoEntity, update: true)
             NSLog("downloaded resumo %@", resumoEntity.cod_resumo)
         }
     }
     
-    func changeMarkResumoDownloading(cod_resumo: String) -> Bool {
-        self.realm = AppService.realm()
-        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
+    func changeMarkResumoDownloading(cod_resumo: String, isDownloading: Bool) {
+//        self.realm = AppService.realm()
+        let resumos = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo)
         guard let resumoEntity = resumos.first else {
             //            Toast(text: "Não foi possivel fazer o download", duration: 1).show()
             //            Delay.short
             print("Não foi possivel fazer o download")
-            return false
+            return
         }
-        var newValue: Bool?
-        try! self.realm.write {
-            if resumoEntity.downloading == 1 {
-                resumoEntity.downloading = 0
-                resumoEntity.progressDownload = 0
-                newValue = false
-                print("downloading marcado como false")
-            }
-            else {
+        try! AppService.realm().write {
+            
+            if isDownloading {
                 resumoEntity.downloading = 1
                 resumoEntity.progressDownload = 0
-                newValue = true
                 print("downloading marcado como true")
             }
-            self.realm.add(resumoEntity, update: true)
+            else {
+                resumoEntity.downloading = 0
+                resumoEntity.progressDownload = 0
+                print("downloading marcado como false")
+            }
+            
+            AppService.realm().add(resumoEntity, update: true)
         }
-        guard let value = newValue else {
-            return false
-        }
-        return newValue!
-
-
     }
     
     func changeMarkResumoFavoritoField(cod_resumo: String) -> Bool {

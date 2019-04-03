@@ -141,7 +141,7 @@ class epidodeContentRightView: UIView {
                 AppService.downloadService.cancelDownload(theResumo, resumoUrl: resumoURL)
                 
                 //Mark downloading as 0 on Realm
-//                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo, isDownloading: false)
             }
                 
                 //START DOWNLOAD
@@ -151,7 +151,7 @@ class epidodeContentRightView: UIView {
                     return
                 }
                 //Mark downloading as 1 on Realm
-//                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo)
+                AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo, isDownloading: true)
                 
                 AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
             }

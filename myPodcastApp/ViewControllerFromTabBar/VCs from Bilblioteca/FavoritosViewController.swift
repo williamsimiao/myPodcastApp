@@ -20,39 +20,48 @@ class FavoritosViewController: InheritanceViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     
+    let updateInterval = 0.5
     var download: Download?
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
     var selectedResumoImage: UIImage?
-//    lazy var downloadsSession: URLSession = {
-//        let configuration = URLSessionConfiguration.default
-//        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-//    }()
-    
-    let realm = AppService.realm()
+    var timer: Timer?
+    var realm = AppService.realm()
+    var needsUpdate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        AppService.downloadService.downloadsSession = downloadsSession
-
+        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.updateResumoList), userInfo: nil, repeats: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let nib = UINib(nibName: "CellWithProgress", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
-
         updateResumoList()
+        showContent()
     }
     
-    func updateResumoList() {
+    @objc func updateResumoList() {
         // buscar resumos favoritos
-        let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1 OR downloaded = 1 OR downloading  = 1")
-        
+        self.realm = AppService.realm()
+        let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1 OR downloaded = 1 OR downloading = 1")
         resumoArray.removeAll()
         for resumoEntity in resumos {
             let resumo = Resumo(resumoEntity: resumoEntity)
             resumoArray.append(resumo)
+            if resumo.downloading == 1 {
+                self.needsUpdate = true
+            }
         }
+        if self.needsUpdate {
+            showContent()
+        }
+        self.needsUpdate = false
+    }
+    
+    func showContent() {
         tableView.reloadData()
         
         if resumoArray.count == 0 {
@@ -74,6 +83,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.realm = AppService.realm()
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellWithProgress
         
         let resumo = self.resumoArray[indexPath.row]
@@ -81,7 +91,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.delegate = self
         
-        let dicit = AppService.downloadService.activeDownloads
         var url: URL?
         let userIsPremium = false
         if userIsPremium {
@@ -102,7 +111,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         //Labels
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
-        
         let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
         
         //FavoritoBtn
@@ -164,7 +172,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FavoritosViewController: CellWithProgressDelegate {
-    
     func confirmDownloadDeletion(cell: CellWithProgress, urlString: String) {
         let theResumo = cell.download?.resumo
         let alert = UIAlertController(
@@ -174,7 +181,7 @@ extension FavoritosViewController: CellWithProgressDelegate {
         )
         
         alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
-            
+            self.needsUpdate = true
             AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
             
         }))
@@ -188,51 +195,14 @@ extension FavoritosViewController: CellWithProgressDelegate {
     func clickDownload() {
 //        updateResumoList()
     }
-    
-    func clickFavorito(cell: CellWithProgress, theResumo: Resumo) {
-//        cell.setFavoritoBtn(favoritado: favoritadoBool)
-//        updateResumoList()
-    }
-}
 
-extension FavoritosViewController: URLSessionDownloadDelegate {
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                    didFinishDownloadingTo location: URL) {
-        
-        // 4
-//        if let index = download?.tableViewIndex {
-//            DispatchQueue.main.async {
-//                print("realoading table")
-//                let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CellWithProgress
-//                cell.download?.downloadState = DownlodState.baixado
-//                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-//
-//
-//            }
-//        }
+    func downloadCanceled() {
+        needsUpdate = true
     }
     
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
-                    totalBytesExpectedToWrite: Int64) {
-        
-        
-        
-        
-        
-//        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-//        DispatchQueue.main.async {
-//            if let index = download.tableViewIndex {
-//                if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CellWithProgress {
-//                    cell.updateDisplay(progress: download.progress, totalSize: totalSize)
-//                }
-//            }
-//            else {
-//                print("Nenhum index encontrado")
-//            }
-//
-//        }
+    func clickFavorito() {
+        needsUpdate = true
     }
-    
+
+
 }
