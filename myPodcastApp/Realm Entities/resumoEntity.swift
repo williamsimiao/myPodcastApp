@@ -46,7 +46,10 @@ class ResumoEntity: Object {
     @objc dynamic var duration_40_f = 0.0
     @objc dynamic var duration_40_p = 0.0
     @objc dynamic var durationPodcast_10 = 0.0
-
+    
+    // progress dowload
+    @objc dynamic var progressDownload = 0
+    
 
     
     public convenience init? (episodeDictonary: [String:AnyObject]) {

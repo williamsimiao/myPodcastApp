@@ -57,8 +57,10 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     }
     
     func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {
+        
         if isDownloading {
             downloadProgress.isHidden = false
+            //downloadProgress.value =
             downloadBtn.setImage(UIImage(named: "stop"), for: .normal)
             downloadBtn.tintColor = .white
         }
@@ -77,6 +79,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
                 downloadProgress.value = 0
             }
         }
+        
     }
     
     func setHighlightColor() {
@@ -161,4 +164,27 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         
         delegate?.clickDownload()
     }
+    
+    
+    
+    func didFinishProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didPauseProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didContinueProgress(for ring: UICircularProgressRing) {
+        
+    }
+    
+    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat) {
+        
+    }
+    
+    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
+        
+    }
+    
 }

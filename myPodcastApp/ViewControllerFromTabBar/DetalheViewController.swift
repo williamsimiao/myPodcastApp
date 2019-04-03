@@ -60,10 +60,10 @@ class DetalheViewController: InheritanceViewController {
     
     var error_msgPing:String?
     var successPing:Bool?
-    lazy var downloadsSession: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-    }()
+//    lazy var downloadsSession: URLSession = {
+//        let configuration = URLSessionConfiguration.default
+//        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+//    }()
 
     
     //TODO Trocar isso que ta ai
@@ -72,7 +72,7 @@ class DetalheViewController: InheritanceViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppService.downloadService.downloadsSession = downloadsSession
+//        AppService.downloadService.downloadsSession = downloadsSession
 
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint

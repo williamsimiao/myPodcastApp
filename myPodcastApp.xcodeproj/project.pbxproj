@@ -37,6 +37,7 @@
 		3D9514CA21F5EDA9004960CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9514C821F5EDA9004960CE /* LaunchScreen.storyboard */; };
 		3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BCD2224443C00E20477 /* CadastroTextField.swift */; };
 		3D956BD122248EE200E20477 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D956BD022248EE200E20477 /* UITextViewExtension.swift */; };
+		3DA73B852254F74400656FE5 /* downloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA73B842254F74400656FE5 /* downloadDelegate.swift */; };
 		3DB6573B2242D79B005A8E92 /* ListResumosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6573A2242D79B005A8E92 /* ListResumosViewController.swift */; };
 		3DB9E70F22397135005A2EDD /* resumoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */; };
 		3DB9E71122397141005A2EDD /* resumoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB9E71022397141005A2EDD /* resumoCollectionViewCell.xib */; };
@@ -122,6 +123,7 @@
 		3D956BCD2224443C00E20477 /* CadastroTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroTextField.swift; sourceTree = "<group>"; };
 		3D956BCF2224573200E20477 /* myPodcastApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myPodcastApp.entitlements; sourceTree = "<group>"; };
 		3D956BD022248EE200E20477 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		3DA73B842254F74400656FE5 /* downloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadDelegate.swift; sourceTree = "<group>"; };
 		3DB6573A2242D79B005A8E92 /* ListResumosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResumosViewController.swift; sourceTree = "<group>"; };
 		3DB9E70E22397135005A2EDD /* resumoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resumoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DB9E71022397141005A2EDD /* resumoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = resumoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				3DCB136A224BE9E70093C8CB /* DownloadService.swift */,
+				3DA73B842254F74400656FE5 /* downloadDelegate.swift */,
 				3D79641221F79F0700E171DC /* playerManager.swift */,
 				3D05B5F62202140E0056E7B9 /* Network.swift */,
 				3DC1C207220200BE009080EF /* Realm Entities */,
@@ -633,6 +636,7 @@
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				4E508C272250F65000582A0F /* CameraHandler.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
+				3DA73B852254F74400656FE5 /* downloadDelegate.swift in Sources */,
 				4E7F1BB5222885EF0000F6EB /* UIColorExtension.swift in Sources */,
 				3DB9E70F22397135005A2EDD /* resumoCollectionViewCell.swift in Sources */,
 				3DF98167221EF7AB0052EC16 /* SlideView.swift in Sources */,

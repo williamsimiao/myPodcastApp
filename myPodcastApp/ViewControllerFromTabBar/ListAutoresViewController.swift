@@ -31,6 +31,10 @@ class ListAutoresViewController: UIViewController {
         
         makeResquest(path: path!)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 }
 
 extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource {
@@ -62,14 +66,17 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedAutor = autores[indexPath.row]
-//        performSegue(withIdentifier: "to_detail", sender: self)
+        
+        self.selectedAutor = autores[indexPath.row]
+        
+        performSegue(withIdentifier: "to_detalhe_autor", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let detalheVC = segue.destination as? DetalheViewController {
-//            detalheVC.selectedResumo = self.selectedAutor
-//        }
+        
+        if let detalheVC = segue.destination as? AutorDetalheViewController {
+           detalheVC.selectedAutor = self.selectedAutor
+        }
         
     }
 }

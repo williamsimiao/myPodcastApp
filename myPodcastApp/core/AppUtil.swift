@@ -546,8 +546,11 @@ open class AppUtil {
     }
     
     func deleteResumoAudioFile(urlString: String, cod_resumo: String) -> Bool {
+        
         var sucess = false
+        
         if let audioUrl = URL(string: urlString) {
+            
             // then lets create your document folder url
             let fileManager = FileManager.default
 
@@ -562,18 +565,23 @@ open class AppUtil {
                 print("The file exists, so can delete")
                 do {
                     try fileManager.removeItem(atPath: destinationUrl.path)
-                    markResumoDownloadField(cod_resumo: cod_resumo, downloaded: false)
-                    sucess = true
+                    //markResumoDownloadField(cod_resumo: cod_resumo, downloaded: false)
+                    //sucess = true
                 } catch {
-                    sucess = false
+                    //sucess = false
                     print("Não pode deletar arquivo")
                 }                
             }
             else {
-                sucess = false
+                //sucess = false
                 print("File not found")
             }
         }
+        
+        
+        // marcar resumo como removido
+        markResumoDownloadField(cod_resumo: cod_resumo, downloaded: false)
+        sucess = true
 
         return sucess
     }
@@ -587,13 +595,17 @@ open class AppUtil {
             print("Não foi possivel fazer o download")
             return
         }
+        
         try! self.realm.write {
             if downloaded {
                 resumoEntity.downloaded = 1
+                resumoEntity.progressDownload = 0
             }
             else {
                 resumoEntity.downloaded = 0
+                resumoEntity.progressDownload = 0
             }
+            
             self.realm.add(resumoEntity, update: true)
             NSLog("downloaded resumo %@", resumoEntity.cod_resumo)
         }
@@ -611,11 +623,13 @@ open class AppUtil {
         try! self.realm.write {
             if resumoEntity.downloading == 1 {
                 resumoEntity.downloading = 0
+                resumoEntity.progressDownload = 0
                 newValue = false
                 print("downloading marcado como false")
             }
             else {
                 resumoEntity.downloading = 1
+                resumoEntity.progressDownload = 0
                 newValue = true
                 print("downloading marcado como true")
             }

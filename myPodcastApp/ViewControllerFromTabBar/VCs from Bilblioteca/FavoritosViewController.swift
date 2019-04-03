@@ -20,7 +20,6 @@ class FavoritosViewController: InheritanceViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNenhum: UILabel!
     
-    
     var download: Download?
     var resumoArray = [Resumo]()
     var selectedResumo:Resumo!
@@ -35,7 +34,7 @@ class FavoritosViewController: InheritanceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         AppService.downloadService.downloadsSession = downloadsSession
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,8 +75,10 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellWithProgress
+        
         let resumo = self.resumoArray[indexPath.row]
         let cod_resumo = resumo.cod_resumo
+        
         cell.delegate = self
         
         let dicit = AppService.downloadService.activeDownloads
@@ -157,6 +158,7 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FavoritosViewController: CellWithProgressDelegate {
+    
     func confirmDownloadDeletion(cell: CellWithProgress, urlString: String) {
         let theResumo = cell.download?.resumo
         let alert = UIAlertController(
@@ -164,7 +166,9 @@ extension FavoritosViewController: CellWithProgressDelegate {
             message: "Deseja remover o download do resumo ?",
             preferredStyle: UIAlertController.Style.alert
         )
+        
         alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
+            
             let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
             
             if wasDeleted {
@@ -173,6 +177,7 @@ extension FavoritosViewController: CellWithProgressDelegate {
 //                self.tableView.reloadData()
 //                cell.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
             }
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
@@ -234,10 +239,27 @@ extension FavoritosViewController: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
                     didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
                     totalBytesExpectedToWrite: Int64) {
+        
         guard let url = downloadTask.originalRequest?.url,
             let download = AppService.downloadService.activeDownloads[url]  else { return }
+        
 //        download.resumo
         download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        
+        
+        // marcar progress no BD
+        let resumoUpdate = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", download.resumo.cod_resumo).first
+        
+        try! AppService.realm().write {
+            
+            resumoUpdate?.progressDownload = Int(download.progress)
+            
+            AppService.realm().add((resumoUpdate)!, update: true)
+            
+            NSLog("progress resumo %@", resumoUpdate!.cod_resumo as String)
+        }
+        
+        
         
         let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
         DispatchQueue.main.async {

@@ -43,6 +43,7 @@ class InicioViewController: InheritanceViewController {
     let searchBarDefaultHeight = CGFloat(56.0)
     
     var selectedResumo : Resumo?
+    var selectedAutor : Autor?
     
     var ultimosResumosDictArray :[[String:AnyObject]]?
     var autoresDictArray :[[String:AnyObject]]?
@@ -291,8 +292,12 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let detalheVC = segue.destination as? DetalheViewController {
             detalheVC.selectedResumo = self.selectedResumo
+        }
+        else if let detalheVC = segue.destination as? AutorDetalheViewController {
+            detalheVC.selectedAutor = self.selectedAutor
         }
         else if let serchResultsVC = segue.destination as? SearchResultsViewController {
             serchResultsVC.textoBusca = searchBar.text
@@ -476,6 +481,7 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "authorCollectionCell", for: indexPath) as! authorCollectionViewCell
+        
         let autor = self.autoresArray[indexPath.row]
         
         cell.authorLabel.text = autor.nome
@@ -494,6 +500,11 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
         //            self.selectedResumo = self.autoresArray[indexPath.row]
         //            performSegue(withIdentifier: "to_detail", sender: self)
         //        }
+        
+        self.selectedAutor = autoresArray[indexPath.row]
+        
+        performSegue(withIdentifier: "to_detalhe_autor", sender: self)
+        
     }
 }
 
