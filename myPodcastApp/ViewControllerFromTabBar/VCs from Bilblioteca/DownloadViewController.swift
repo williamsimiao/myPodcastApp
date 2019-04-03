@@ -142,32 +142,3 @@ extension DownloadViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-//extension DownloadViewController: CellWithProgressDelegate {
-//    func clickDownload(aDownload: Download) {
-//        let episodeUrlString: String
-//        let userIsPremium = false
-//        let theResumo = aDownload.resumo
-//
-//        if userIsPremium {
-//            episodeUrlString = theResumo.url_podcast_40_p
-//        }
-//        else {
-//            episodeUrlString = theResumo.url_podcast_40_f
-//        }
-//        
-//        let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: episodeUrlString, cod_resumo: theResumo.cod_resumo)
-//        if wasDeleted {
-//            self.tableView.reloadData()
-//        }
-//    }
-//    
-//    func clickFavorito(theResumo: Resumo) {
-//        AppService.util.changeMarkResumoFavoritoField(cod_resumo: theResumo.cod_resumo)
-//        fetchResumosFromRealm()
-//        
-//    }
-//    
-//    
-//
-//}

@@ -9,10 +9,10 @@
 import UIKit
 import UICircularProgressRing
 
-protocol CellWithProgressDelegate {
+protocol downloadFavoritoDelegate {
     func clickDownload()
     func clickFavorito()
-    func confirmDownloadDeletion(cell: CellWithProgress, urlString: String)
+    func confirmDownloadDeletion(resumo: Resumo?, urlString: String)
     func downloadCanceled()
 }
 
@@ -29,7 +29,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
     
 //    var resumo: Resumo?
     var download: Download?
-    var delegate: CellWithProgressDelegate?
+    var delegate: downloadFavoritoDelegate?
     var realm = AppService.realm()
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -143,7 +143,7 @@ class CellWithProgress: UITableViewCell, UICircularProgressRingDelegate {
         
         //DELETE DOWNLOAD
         if resumoEntity.downloaded == 1 {
-            delegate!.confirmDownloadDeletion(cell: self, urlString: episodeUrlString)
+            delegate!.confirmDownloadDeletion(resumo: download?.resumo, urlString: episodeUrlString)
         }
         else {
             let resumoURL = URL(string: episodeUrlString)!

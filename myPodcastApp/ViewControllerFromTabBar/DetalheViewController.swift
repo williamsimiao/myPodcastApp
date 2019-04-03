@@ -49,9 +49,6 @@ class DetalheViewController: InheritanceViewController {
     
     //New buttons
     
-    
-    var realm = AppService.realm()
-    
     var selectedResumo : Resumo?
     var success: Bool?
     var resumoDetails: [String: AnyObject]?
@@ -69,6 +66,11 @@ class DetalheViewController: InheritanceViewController {
     //TODO Trocar isso que ta ai
     var cod_tipo_consumo: String?
 
+    let updateInterval = 0.5
+    var timer: Timer?
+    var realm = AppService.realm()
+    var needsUpdate = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +78,6 @@ class DetalheViewController: InheritanceViewController {
 
         self.superResizableView = resizableView
         self.superBottomConstraint = resizableBottomConstraint
-        
-        episodeContentView.delegate = self
         
         setupUI()
         
@@ -89,6 +89,60 @@ class DetalheViewController: InheritanceViewController {
         }
         reachability.whenUnreachable = { _ in
             self.useLocalData()
+        }
+        
+        episodeContentView.delegate = self
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.getDataFromRealm), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func getDataFromRealm() {
+        // buscar resumos favoritos
+        self.realm = AppService.realm()
+        
+        let resumos = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", selectedResumo?.cod_resumo)
+        guard let resumo = resumos.first else {
+            print("ERRO ao achar resumo")
+            return
+        }
+        
+        if resumo.downloading == 1 {
+            self.needsUpdate = true
+        }
+        
+        if self.needsUpdate {
+            updateContent()
+        }
+        self.needsUpdate = false
+    }
+    
+    func updateContent() {
+        self.realm = AppService.realm()
+        let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo).first
+        
+        //FavoritoBtn
+        if resumoEntity!.favoritado == 1 {
+            episodeContentView.setFavoritoBtn(favoritado: true)
+        }
+        else {
+            episodeContentView.setFavoritoBtn(favoritado: false)
+        }
+        
+        //DownaloadBtn
+        var isDownaloded = false
+        var isDownloading = false
+        
+        if resumoEntity?.downloaded == 1 {
+            isDownaloded = true
+        }
+        if resumoEntity?.downloading == 1 {
+            isDownloading = true
+        }
+        
+        episodeContentView.changeDownloadButtonLook(isDownloading: isDownloading, isDownloaded: isDownaloded)
+        if let progress = resumoEntity?.progressDownload {
+            episodeContentView.updateDisplay(progress: Float(progress))
         }
     }
     
@@ -150,6 +204,7 @@ class DetalheViewController: InheritanceViewController {
             print("Unable to start Reachability notifier")
         }
         
+        //////////////////////////DOWNALOD/////////
         let userIsPremium = false
         var urlString: String?
         if userIsPremium {
@@ -613,83 +668,43 @@ extension DetalheViewController {
     }
 }
 
-extension DetalheViewController: URLSessionDownloadDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+extension DetalheViewController: downloadFavoritoDelegate {
+    func confirmDownloadDeletion(resumo: Resumo?, urlString: String) {
+        let alert = UIAlertController(
+            title: "Remover Resumo",
+            message: "Deseja remover o download do resumo ?",
+            preferredStyle: UIAlertController.Style.alert
+        )
         
-        print("CONCLUIDO download pela detalhe")
+        alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
+            self.needsUpdate = true
+            
+            guard let _ = resumo else {
+                return
+            }
+            
+            AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: resumo!.cod_resumo)
+            
+        }))
         
-        guard let sourceURL = downloadTask.originalRequest?.url else { return }
-        let download = AppService.downloadService.activeDownloads[sourceURL]
-        let cod_resumo = download?.resumo.cod_resumo
-        DispatchQueue.main.async {
-            AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
-            print("Marcado no realm")
-            self.view.makeToast("Download Concluido", duration: 2.0)
-        }
-        self.episodeContentView.changeDownloadButtonLook(isDownloading: false, isDownloaded: true)
-
+        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
-
     
-//    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-//                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
-//                    totalBytesExpectedToWrite: Int64) {
-//
-//        guard let url = downloadTask.originalRequest?.url,
-//            let download = AppService.downloadService.activeDownloads[url]  else { return }
-//
-//        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-//
-//        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-//        DispatchQueue.main.async {
-//            self.episodeContentView.updateDisplay(progress: download.progress, totalSize: totalSize)
-//
-//        }
-//    }
-    
-}
-
-
-extension DetalheViewController: contentViewDelegate {
     func clickDownload() {
-        self.view.makeToast("Download iniciado", duration: 2.0)
+        //        getDataFromRealm()
     }
     
-    
-    func confirmDownloadDeletion(urlString: String) {
-        func confirmDownloadDeletion(cell: CellWithProgress, urlString: String) {
-            let theResumo = cell.download?.resumo
-            let alert = UIAlertController(
-                title: "Remover Resumo",
-                message: "Deseja remover o download do resumo ?",
-                preferredStyle: UIAlertController.Style.alert
-            )
-            alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
-                let wasDeleted = AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
-                
-                if wasDeleted {
-                    self.episodeContentView.changeDownloadButtonLook(isDownloading: false, isDownloaded: false)
-                }
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler:{(ACTION :UIAlertAction) in
-            }))
-            
-            present(alert, animated: true, completion: nil)
-        }
-
+    func downloadCanceled() {
+        needsUpdate = true
     }
-
+    
     func clickFavorito() {
-        let cod_resumo = self.selectedResumo?.cod_resumo
-        
-        AppService.util.changeMarkResumoFavoritoField(cod_resumo: cod_resumo!)
-        let resumoEntity = self.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
-        
-        if resumoEntity!.favoritado == 1 {
-            episodeContentView.changeFavIcon(isFavoritado: true)
-        } else {
-            episodeContentView.changeFavIcon(isFavoritado: false)
-        }
+        needsUpdate = true
     }
+    
+    
 }
+

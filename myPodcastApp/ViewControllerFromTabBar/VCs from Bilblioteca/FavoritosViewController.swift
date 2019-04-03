@@ -34,16 +34,16 @@ class FavoritosViewController: InheritanceViewController {
         let nib = UINib(nibName: "CellWithProgress", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
         if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.updateResumoList), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.getDataFromRealm), userInfo: nil, repeats: true)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateResumoList()
+        getDataFromRealm()
         showContent()
     }
     
-    @objc func updateResumoList() {
+    @objc func getDataFromRealm() {
         // buscar resumos favoritos
         self.realm = AppService.realm()
         let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1 OR downloaded = 1 OR downloading = 1")
@@ -171,9 +171,8 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension FavoritosViewController: CellWithProgressDelegate {
-    func confirmDownloadDeletion(cell: CellWithProgress, urlString: String) {
-        let theResumo = cell.download?.resumo
+extension FavoritosViewController: downloadFavoritoDelegate {
+    func confirmDownloadDeletion(resumo: Resumo?, urlString: String) {
         let alert = UIAlertController(
             title: "Remover Resumo",
             message: "Deseja remover o download do resumo ?",
@@ -182,7 +181,12 @@ extension FavoritosViewController: CellWithProgressDelegate {
         
         alert.addAction(UIAlertAction(title: "Remover", style: UIAlertAction.Style.destructive, handler:{(ACTION :UIAlertAction) in
             self.needsUpdate = true
-            AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: theResumo!.cod_resumo)
+            
+            guard let _ = resumo else {
+                return
+            }
+            
+            AppService.util.deleteResumoAudioFile(urlString: urlString, cod_resumo: resumo!.cod_resumo)
             
         }))
         
@@ -193,7 +197,7 @@ extension FavoritosViewController: CellWithProgressDelegate {
     }
     
     func clickDownload() {
-//        updateResumoList()
+//        getDataFromRealm()
     }
 
     func downloadCanceled() {

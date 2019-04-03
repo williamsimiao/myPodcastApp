@@ -9,12 +9,6 @@
 import UIKit
 import UICircularProgressRing
 
-protocol contentViewDelegate : class {
-    func clickFavorito()
-    func clickDownload()
-    func confirmDownloadDeletion(urlString: String)
-}
-
 class epidodeContentRightView: UIView {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,9 +20,9 @@ class epidodeContentRightView: UIView {
     @IBOutlet weak var downloadProgress: UICircularProgressRing!
     
     
-    var delegate : contentViewDelegate?
+    var delegate : downloadFavoritoDelegate?
     var download: Download?
-
+    var realm = AppService.realm()
     override init(frame: CGRect) {
         super.init(frame: frame)
         commomInit()
@@ -58,16 +52,21 @@ class epidodeContentRightView: UIView {
     func changeDownloadButtonLook(isDownloading: Bool, isDownloaded: Bool) {
         if isDownloading {
             downloadProgress.isHidden = false
+            //downloadProgress.value =
             downloadBtn.setImage(UIImage(named: "stop"), for: .normal)
+            downloadBtn.tintColor = .white
         }
         else {
             
             downloadProgress.isHidden = true
             if isDownloaded {
                 downloadBtn.setImage(UIImage(named: "downloadOrange"), for: .normal)
+                downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
+                
             }
             else {
                 downloadBtn.setImage(UIImage(named: "downloadWhite"), for: .normal)
+                downloadBtn.tintColor = .white
                 download?.progress = 0
                 downloadProgress.value = 0
             }
@@ -75,11 +74,14 @@ class epidodeContentRightView: UIView {
     }
 
     
-    func updateDisplay(progress: Float, totalSize : String) {
-        downloadProgress.value = CGFloat(progress)
-        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
-    }
+//    func updateDisplay(progress: Float, totalSize : String) {
+//        downloadProgress.value = CGFloat(progress)
+//        let porCento = String(format: "%.1f%% of %@", progress * 100, totalSize)
+//    }
 
+    func updateDisplay(progress: Float) {
+        downloadProgress.value = CGFloat(progress)
+    }
     
     func changeFavIcon(isFavoritado: Bool) {
         if isFavoritado {
@@ -91,31 +93,32 @@ class epidodeContentRightView: UIView {
         }
     }
     
-    func changeDownaloadStateTo(newState: DownlodState) {
-        switch newState {
-        case .baixado:
-            downloadBtn.setImage(UIImage(named: "downloadOrange")!, for: .normal)
-            downloadBtn.tintColor = UIColor.init(hex: 0xFF8633)
-
-        case .baixando:
-            downloadBtn.setImage(UIImage(named: "stop")!, for: .normal)
-            downloadBtn.tintColor = .white
-
-        case .none:
-            downloadBtn.setImage(UIImage(named: "downloadWhite")!, for: .normal)
-            downloadBtn.tintColor = .white
+    func setFavoritoBtn(favoritado: Bool) {
+        if favoritado {
+            favoritoBtn.setImage(UIImage(named: "favoritoOrange")!, for: .normal)
+            favoritoBtn.tintColor = UIColor.init(hex: 0xFF8633)
+        } else {
+            favoritoBtn.setImage(UIImage(named: "favoritoWhite")!, for: .normal)
+            favoritoBtn.tintColor = UIColor.white
         }
     }
     
     @IBAction func clickFavorito(_ sender: Any) {
-        delegate?.clickFavorito()
+        let current = AppService.util.changeMarkResumoFavoritoField(cod_resumo: self.download!.resumo.cod_resumo)
+        if current {
+            setFavoritoBtn(favoritado: true)
+        }
+        else {
+            setFavoritoBtn(favoritado: false)
+        }
+        self.delegate?.clickFavorito()
     }
     
     @IBAction func clickDownload(_ sender: Any) {
         let episodeUrlString: String
         let userIsPremium = false
         let theResumo = self.download!.resumo
-        
+        self.realm = AppService.realm()
         
         if userIsPremium {
             episodeUrlString = theResumo.url_podcast_40_p
@@ -124,14 +127,14 @@ class epidodeContentRightView: UIView {
             episodeUrlString = theResumo.url_podcast_40_f
         }
         
-        var resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        var resumos = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
         guard let resumoEntity = resumos.first else {
             return
         }
         
         //DELETE DOWNLOAD
         if resumoEntity.downloaded == 1 {
-            delegate!.confirmDownloadDeletion(urlString: episodeUrlString)
+            delegate!.confirmDownloadDeletion(resumo: download?.resumo, urlString: episodeUrlString)
         }
         else {
             let resumoURL = URL(string: episodeUrlString)!
@@ -142,6 +145,7 @@ class epidodeContentRightView: UIView {
                 
                 //Mark downloading as 0 on Realm
                 AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo, isDownloading: false)
+                delegate?.downloadCanceled()
             }
                 
                 //START DOWNLOAD
@@ -152,7 +156,6 @@ class epidodeContentRightView: UIView {
                 }
                 //Mark downloading as 1 on Realm
                 AppService.util.changeMarkResumoDownloading(cod_resumo: theResumo.cod_resumo, isDownloading: true)
-                
                 AppService.downloadService.startDownload(theResumo, resumoUrl: resumoURL)
             }
         }
@@ -169,7 +172,7 @@ class epidodeContentRightView: UIView {
     
     
     @objc func testTap() {
-//        self.delegate?.viewClicked()
+        
     }
     
     
