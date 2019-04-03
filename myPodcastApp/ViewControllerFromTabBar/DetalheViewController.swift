@@ -106,7 +106,21 @@ class DetalheViewController: InheritanceViewController {
             print("ERRO ao achar resumo")
             return
         }
-        
+        var url: URL?
+        let userIsPremium = false
+        if userIsPremium {
+            url = URL(string: resumo.url_podcast_40_p)!
+        }
+        else {
+            url = URL(string: resumo.url_podcast_40_f)!
+        }
+        if AppService.downloadService.downloadIsActive(resumoUrl: url!) == false {
+            let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", resumo.cod_resumo).first
+            
+            try! AppService.realm().write {
+                resumoEntity?.downloading = 0
+            }
+        }
         if resumo.downloading == 1 {
             self.needsUpdate = true
         }

@@ -9,7 +9,7 @@
 import UIKit
 import UICircularProgressRing
 
-class epidodeContentRightView: UIView {
+class epidodeContentRightView: UIView, UICircularProgressRingDelegate {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -39,6 +39,17 @@ class epidodeContentRightView: UIView {
         let touchTest = UITapGestureRecognizer(target: self, action: #selector(self.testTap))
         contentView.isUserInteractionEnabled = true
         contentView.addGestureRecognizer(touchTest)
+        
+        downloadProgress.delegate = self
+        downloadProgress.maxValue = 1
+        downloadProgress.value = 0
+        downloadProgress.innerRingWidth = 2
+        downloadProgress.innerRingSpacing = 0
+        downloadProgress.innerRingColor = ColorWeel().orangeColor
+        downloadProgress.outerRingColor = .gray
+        downloadProgress.outerRingWidth = 2
+        downloadProgress.shouldShowValueText = false
+        downloadProgress.isHidden = true
 
         contentView.frame  = self.bounds
 //        coverImg.backgroundColor = .orange

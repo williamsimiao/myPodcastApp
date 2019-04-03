@@ -19,4 +19,13 @@ class DownloadService {
             activeDownloads[resumoUrl] = nil
         }
     }
+    
+    func downloadIsActive(resumoUrl: URL) -> Bool {
+        if activeDownloads[resumoUrl] != nil {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }
