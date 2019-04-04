@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIR-rI-FoS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIR-rI-FoS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2802,38 +2802,38 @@ concluir essa leitura!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B3f-fb-g2a">
-                                                        <rect key="frame" x="89" y="132" width="197" height="31.5"/>
+                                                        <rect key="frame" x="89" y="132" width="197" height="31"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-tJ-Uhv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="LBK-a6-c52"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOE-tm-5Ak">
-                                                                <rect key="frame" x="41" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="41" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="x4r-s1-G0G"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uw-Ze-Jyo">
-                                                                <rect key="frame" x="82" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="82" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="Eln-md-RHJ"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15B-Ta-QVI">
-                                                                <rect key="frame" x="123" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="123" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="P4T-GO-XUR"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIo-9k-Wds">
-                                                                <rect key="frame" x="164" y="0.0" width="33" height="31.5"/>
+                                                                <rect key="frame" x="164" y="0.0" width="33" height="31"/>
                                                                 <state key="normal" image="starBigBlanck"/>
                                                                 <connections>
                                                                     <action selector="tapStar:" destination="TTd-qY-eSi" eventType="touchUpInside" id="t1k-z8-XVd"/>
@@ -2845,7 +2845,7 @@ concluir essa leitura!</string>
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-cI-ckf">
-                                                        <rect key="frame" x="77.5" y="193.5" width="220" height="30"/>
+                                                        <rect key="frame" x="77.5" y="193" width="220" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.52549019610000003" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="220" id="qhF-Yb-92J"/>
@@ -3150,7 +3150,7 @@ concluir essa leitura!</string>
     </scenes>
     <resources>
         <image name="Rectangle 3" width="164.5" height="55"/>
-        <image name="SalvarPerfilIcon" width="22" height="22"/>
+        <image name="SalvarPerfilIcon" width="44" height="44"/>
         <image name="account_white" width="24" height="24"/>
         <image name="biblioteca" width="32" height="26"/>
         <image name="bookBlack" width="23.5" height="18"/>

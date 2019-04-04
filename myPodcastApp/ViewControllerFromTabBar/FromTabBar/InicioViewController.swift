@@ -307,6 +307,11 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
         else if let listAutoresVC = segue.destination as? ListAutoresViewController {
             listAutoresVC.path = self.pathForListViewController
         }
+        //MAIS AUTORES
+        else if let listAutoresVC = segue.destination as? ListAutoresViewController {
+            listAutoresVC.path = "buscaAutores.php"
+        }
+
         
         self.navigationController?.navigationBar.topItem?.title = ""
     }
@@ -772,16 +777,5 @@ extension InicioViewController {
         }
         
     }
-    
-    /*func showContent() {
-     loading.isHidden = true
-     loading.stopAnimating()
-     
-     self.tableView.reloadData()
-     self.authorCollectionView.reloadData()
-     self.ultimosLabel.isHidden = false
-     self.autoresLabel.isHidden = false
-     self.maisEpisodiosLabel.isHidden = false
-     }*/
 }
 

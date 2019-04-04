@@ -20,12 +20,12 @@ class ListAutoresViewController: UIViewController {
     
     var selectedAutor: Autor?
     let realm = AppService.realm()
-    
+    var page:Int = 1
+
     //path for server
     var path: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let nibTableCell = UINib(nibName: "AutorTableCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
         
@@ -91,8 +91,12 @@ extension ListAutoresViewController {
         
         let link = AppConfig.urlBaseApi + path
         
-        let url:URL = URL(string: link)!
+        var url:URL = URL(string: link)!
         let session = URLSession.shared
+        
+        if path == "buscaAutores.php" {
+            url = AppService.util.createURLWithComponents(path: "buscaAutores.php", parameters: ["page"], values: [String(self.page)])!
+        }
         
         var request = URLRequest(url: url)
         
@@ -159,12 +163,12 @@ extension ListAutoresViewController {
         loading.isHidden = true
         loading.stopAnimating()
         
-        
         if self.success {
             
             self.autores = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
             
             self.tableView.reloadData()
+            page = page + 1
         }
         else {
             print("onResultReceived error")
