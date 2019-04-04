@@ -138,22 +138,6 @@ open class AppUtil {
 
     }
     
-    func get_image_usuario(_ link:String, cod_usuario:String) -> UIImage? {
-        // verificar se image jah existe
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
-        
-        let filePath = documentsPath + "/usuario_200_" + cod_usuario;
-        
-        let fileManager = FileManager.default
-        
-        var pic: UIImage?
-        if fileManager.fileExists(atPath: filePath) {
-            pic = UIImage(contentsOfFile: filePath)!
-        }
-        return pic
-    }
-
-    
     func load_image_usuario(_ link:String, cod_usuario:String, imageview:UIImageView) {
         
         // verificar se image jah existe
@@ -176,70 +160,6 @@ open class AppUtil {
             let url_foto:String = link
             
             print(url_foto)
-            
-            let url:URL = URL(string: url_foto)!
-            let session = URLSession.shared
-            
-            var request = URLRequest(url: url)
-            
-            request.timeoutInterval = 10
-            
-            
-            let task = session.dataTask(with: request, completionHandler: {
-                (
-                data, response, error) in
-                
-                guard let _:Data = data, let _:URLResponse = response  , error == nil else {
-                    return
-                }
-                
-                
-                if let image = UIImage(data: data!) {
-                    
-                    // salvar no disco
-                    DispatchQueue.main.async(execute: {
-                        try? data?.write(to: URL(fileURLWithPath: filePath), options: [.atomic]);
-                    })
-                    
-                    
-                    DispatchQueue.main.async(execute: {
-                        do {
-                            imageview.image = image
-                        }
-                    })
-                    
-                }
-                
-            })
-            
-            task.resume()
-            
-        }
-        
-    }
-    
-    func load_image_oferta(_ link:String, cod_oferta:String, imageview:UIImageView) {
-        
-        // verificar se image jah existe
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
-        
-        let filePath = documentsPath + "/oferta_" + cod_oferta + "_150";
-        
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: filePath) {
-            
-            do {
-                
-                imageview.image = UIImage(contentsOfFile: filePath)
-                
-            }
-            
-        } else {
-            
-            let url_foto:String = link //AppConfig.urlBaseThumb + "src=/images/posts/" + cod_post + "/" + link + "&w=600&zc=1"
-            
-            print("link " + url_foto)
             
             let url:URL = URL(string: url_foto)!
             let session = URLSession.shared
@@ -410,34 +330,6 @@ open class AppUtil {
             
         }
         
-    }
-    
-    func get_image_resumo(cod_resumo:String) -> UIImage {
-        
-        var image:UIImage!
-        
-        // verificar se image jah existe
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
-        
-        let filePath = documentsPath + "/resumo_" + cod_resumo + "_100";
-        
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: filePath) {
-            
-            do {
-                
-                image = UIImage(contentsOfFile: filePath)
-                
-            }
-            
-        } else {
-            
-            image = UIImage(named: "cover_placeholder")!
-            
-        }
-        
-        return image
     }
     
     func removeUserDataFromUserDefaults() {
