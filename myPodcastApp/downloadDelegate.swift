@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class downloadDelegate: NSObject, URLSessionDownloadDelegate {
     
     lazy var downloadsSession: URLSession = {
@@ -40,7 +42,7 @@ class downloadDelegate: NSObject, URLSessionDownloadDelegate {
         //Mark downloading as 0 and downloaded as 1
         AppService.util.markResumoDownloadField(cod_resumo: cod_resumo!, downloaded: true)
         AppService.util.changeMarkResumoDownloading(cod_resumo: cod_resumo!, isDownloading: false)
-        
+        NotificationCenter.default.post(name: .downloadDidComplete, object: self, userInfo: nil)
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,

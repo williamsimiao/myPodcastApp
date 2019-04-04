@@ -770,7 +770,8 @@ open class AppUtil {
     }
     
     func getProgressRatio(cod_resumo: String) -> Double {
-        let resumoEntity = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
+        self.realm = AppService.realm()
+        let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
         let userIsPremium = false
         var duration: Double
         var theProgress: Double

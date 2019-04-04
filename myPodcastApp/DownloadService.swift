@@ -33,7 +33,7 @@ class DownloadService {
                 url = URL(string: resumoEntity.url_podcast_40_f)!
             }
             if AppService.downloadService.downloadIsActive(resumoUrl: url!)  == false {
-                try! realm.write {
+                try! AppService.realm().write {
                     resumoEntity.downloading = 0
                     realm.add(resumoEntity, update: true)
                 }

@@ -95,9 +95,13 @@ class DetalheViewController: InheritanceViewController {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.getDataFromRealm), userInfo: nil, repeats: true)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsUpdate(_:)), name: .downloadDidComplete, object: playerManager.shared)
+
     }
     
-    
+    @objc func setNeedsUpdate(_ notification: Notification) {
+        self.needsUpdate = true
+    }
     
     @objc func getDataFromRealm() {
         AppService.downloadService.fixDownloadingOnRealm()

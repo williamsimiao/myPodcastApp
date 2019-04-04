@@ -36,6 +36,15 @@ class FavoritosViewController: InheritanceViewController {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.getDataFromRealm), userInfo: nil, repeats: true)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsUpdate(_:)), name: .downloadDidComplete, object: nil)
+
+    }
+    
+    @objc func setNeedsUpdate(_ notification: Notification) {
+        print("ENTROU AQUI")
+        getDataFromRealm()
+        showContent()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,15 +71,15 @@ class FavoritosViewController: InheritanceViewController {
         self.needsUpdate = false
     }
     
-    
-    
     func showContent() {
-        tableView.reloadData()
-        
-        if resumoArray.count == 0 {
-            lblNenhum.isHidden = false
-        } else {
-            lblNenhum.isHidden = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            
+            if self.resumoArray.count == 0 {
+                self.lblNenhum.isHidden = false
+            } else {
+                self.lblNenhum.isHidden = true
+            }
         }
     }
 }

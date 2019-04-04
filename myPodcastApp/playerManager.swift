@@ -18,6 +18,9 @@ extension Notification.Name {
     static let fullPlayerShouldAppear = Notification.Name("fullPlayerShouldAppear")
     static let playerIsSetUp = Notification.Name("playerIsSetUp")
     static let playerShouldClose = Notification.Name("playerShouldClose")
+    
+    //
+    static let downloadDidComplete = Notification.Name("downloadDidComplete")
 }
 
 protocol episodeDataSourceProtocol {
