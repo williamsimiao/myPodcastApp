@@ -95,6 +95,9 @@ class DetalheViewController: InheritanceViewController {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.getDataFromRealm), userInfo: nil, repeats: true)
         }
+        getDataFromRealm()
+        updateContent()
+
         NotificationCenter.default.addObserver(self, selector: #selector(setNeedsUpdate(_:)), name: .downloadDidComplete, object: nil)
 
     }
