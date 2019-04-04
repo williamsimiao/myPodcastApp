@@ -29,6 +29,7 @@ class Resumo {
     var favoritado = 0
     var downloaded = 0
     var downloading = 0
+    var progressDownload: Float = 0
 
     
     //Concluido field suits both free and premium types
@@ -77,7 +78,8 @@ class Resumo {
         
         self.favoritado = resumoEntity.favoritado
         self.downloaded = resumoEntity.downloaded
-        self.downloading = resumoEntity.downloaded
+        self.downloading = resumoEntity.downloading
+        self.progressDownload = resumoEntity.progressDownload
     }
     
 //    init?(resumoDict: [String:AnyObject]) {

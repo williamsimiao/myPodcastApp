@@ -20,12 +20,33 @@ class DownloadService {
         }
     }
     
+    func fixDownloadingOnRealm() {
+        let realm = AppService.realm()
+        let resumos = realm.objects(ResumoEntity.self).filter("downloading = 1")
+        for resumoEntity in resumos {
+            var url: URL?
+            let userIsPremium = false
+            if userIsPremium {
+                url = URL(string: resumoEntity.url_podcast_40_p)!
+            }
+            else {
+                url = URL(string: resumoEntity.url_podcast_40_f)!
+            }
+            if AppService.downloadService.downloadIsActive(resumoUrl: url!)  == false {
+                try! realm.write {
+                    resumoEntity.downloading = 0
+                    realm.add(resumoEntity, update: true)
+                }
+            }
+        }
+    }
+    
     func downloadIsActive(resumoUrl: URL) -> Bool {
-        if activeDownloads[resumoUrl] != nil {
-            return true
+        if activeDownloads[resumoUrl] == nil {
+            return false
         }
         else {
-            return false
+            return true
         }
     }
 }

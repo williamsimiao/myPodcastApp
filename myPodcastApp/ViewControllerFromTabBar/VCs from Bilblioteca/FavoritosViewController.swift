@@ -44,39 +44,25 @@ class FavoritosViewController: InheritanceViewController {
     }
     
     @objc func getDataFromRealm() {
-        // buscar resumos favoritos
-        self.realm = AppService.realm()
-        let resumos = realm.objects(ResumoEntity.self).filter("favoritado = 1 OR downloaded = 1 OR downloading = 1")
+        AppService.downloadService.fixDownloadingOnRealm()
         resumoArray.removeAll()
+
+        let resumos = AppService.realm().objects(ResumoEntity.self).filter("favoritado = 1 OR downloaded = 1 OR downloading = 1")
         for resumoEntity in resumos {
             let resumo = Resumo(resumoEntity: resumoEntity)
             resumoArray.append(resumo)
-            
-            var url: URL?
-            let userIsPremium = false
-            if userIsPremium {
-                url = URL(string: resumo.url_podcast_40_p)!
-            }
-            else {
-                url = URL(string: resumo.url_podcast_40_f)!
-            }
-            if AppService.downloadService.downloadIsActive(resumoUrl: url!) == false {
-                let resumoEntity = AppService.realm().objects(ResumoEntity.self).filter("cod_resumo = %@", resumo.cod_resumo).first
 
-                try! AppService.realm().write {
-                    resumoEntity?.downloading = 0
-                }
-            }
             if resumo.downloading == 1 {
                 self.needsUpdate = true
             }
-            
         }
         if self.needsUpdate {
             showContent()
         }
         self.needsUpdate = false
     }
+    
+    
     
     func showContent() {
         tableView.reloadData()
@@ -100,7 +86,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        self.realm = AppService.realm()
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellWithProgress
         
         let resumo = self.resumoArray[indexPath.row]
@@ -128,10 +113,9 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         //Labels
         cell.titleLabel.text = resumo.titulo
         cell.authorLabel.text = Util.joinAuthorsNames(authorsList: resumo.autores)
-        let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", cod_resumo).first
         
         //FavoritoBtn
-        if resumoEntity!.favoritado == 1 {
+        if resumo.favoritado == 1 {
             cell.setFavoritoBtn(favoritado: true)
         }
         else {
@@ -142,17 +126,16 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
         var isDownaloded = false
         var isDownloading = false
         
-        if resumoEntity?.downloaded == 1 {
+        if resumo.downloaded == 1 {
             isDownaloded = true
         }
-        if resumoEntity?.downloading == 1 {
+        if resumo.downloading == 1 {
             isDownloading = true
         }
         
         cell.changeDownloadButtonLook(isDownloading: isDownloading, isDownloaded: isDownaloded)
-        if let progress = resumoEntity?.progressDownload {
-            cell.updateDisplay(progress: Float(progress))
-        }
+        let progress = resumo.progressDownload
+        cell.updateDisplay(progress: progress)
 
         //COVER_IMG
         let coverUrl = resumo.url_imagem
