@@ -172,7 +172,8 @@ class epidodeContentRightView: UIView, UICircularProgressRingDelegate {
         }
         
         //UPdating self.download?.resumo
-        resumos = AppService.util.realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
+        realm = AppService.realm()
+        resumos = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", theResumo.cod_resumo)
         guard let finalResumoEntity = resumos.first else {
             return
         }

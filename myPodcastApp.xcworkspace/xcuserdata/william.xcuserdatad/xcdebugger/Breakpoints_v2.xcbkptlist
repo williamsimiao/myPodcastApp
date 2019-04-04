@@ -9,61 +9,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/VCs from Bilblioteca/FavoritosViewController.swift"
-            timestampString = "576090808.654053"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "576093464.2053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "setNeedsUpdate(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/downloadDelegate.swift"
-            timestampString = "576090808.655542"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "576093464.2062531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "urlSession(_:downloadTask:didFinishDownloadingTo:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "updateContent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/VCs from Bilblioteca/FavoritosViewController.swift"
-            timestampString = "576090808.656821"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "576093464.20724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "updateContent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myPodcastApp.DetalheViewController.updateContent() -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "576093464.539921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "1475">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[2] = Value Promoted from Box, Arg[3] = Value Promoted from Box&gt; of closure #1 () -&gt; () in myPodcastApp.DetalheViewController.updateContent() -&gt; ()"
+                  moduleName = "myPodcastApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/william/Documents/projetos/projetos%20ios/myPodcastApp/myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+                  timestampString = "576093464.542219"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "576093464.2084661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "updateContent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myPodcastApp/ViewControllerFromTabBar/VCs from Bilblioteca/FavoritosViewController.swift"
-            timestampString = "576090808.65815"
+            filePath = "myPodcastApp/ViewControllerFromTabBar/DetalheViewController.swift"
+            timestampString = "576093464.20886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "getDataFromRealm()"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "updateContent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

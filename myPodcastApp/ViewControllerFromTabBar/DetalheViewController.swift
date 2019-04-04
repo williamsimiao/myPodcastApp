@@ -95,12 +95,13 @@ class DetalheViewController: InheritanceViewController {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(self.getDataFromRealm), userInfo: nil, repeats: true)
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsUpdate(_:)), name: .downloadDidComplete, object: playerManager.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(setNeedsUpdate(_:)), name: .downloadDidComplete, object: nil)
 
     }
     
     @objc func setNeedsUpdate(_ notification: Notification) {
-        self.needsUpdate = true
+        getDataFromRealm()
+        updateContent()
     }
     
     @objc func getDataFromRealm() {
@@ -127,15 +128,6 @@ class DetalheViewController: InheritanceViewController {
         self.realm = AppService.realm()
         let resumoEntity = realm.objects(ResumoEntity.self).filter("cod_resumo = %@", self.selectedResumo?.cod_resumo).first
         
-        //FavoritoBtn
-        if resumoEntity!.favoritado == 1 {
-            episodeContentView.setFavoritoBtn(favoritado: true)
-        }
-        else {
-            episodeContentView.setFavoritoBtn(favoritado: false)
-        }
-        
-        //DownaloadBtn
         var isDownaloded = false
         var isDownloading = false
         
@@ -145,10 +137,21 @@ class DetalheViewController: InheritanceViewController {
         if resumoEntity?.downloading == 1 {
             isDownloading = true
         }
-        
-        episodeContentView.changeDownloadButtonLook(isDownloading: isDownloading, isDownloaded: isDownaloded)
-        if let progress = resumoEntity?.progressDownload {
-            episodeContentView.updateDisplay(progress: Float(progress))
+        let resumo = Resumo(resumoEntity: resumoEntity!)
+        DispatchQueue.main.async {
+            //FavoritoBtn
+            if resumo.favoritado == 1 {
+                self.episodeContentView.setFavoritoBtn(favoritado: true)
+            }
+            else {
+                self.episodeContentView.setFavoritoBtn(favoritado: false)
+            }
+            
+            //DownaloadBtn
+            let progress = resumo.progressDownload
+            self.episodeContentView.updateDisplay(progress: progress)
+
+            self.episodeContentView.changeDownloadButtonLook(isDownloading: isDownloading, isDownloaded: isDownaloded)
         }
     }
     
