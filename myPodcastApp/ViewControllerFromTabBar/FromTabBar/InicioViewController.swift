@@ -159,9 +159,8 @@ class InicioViewController: InheritanceViewController {
     }
     
     @objc func clickSearchNavItem(_ sender: UIBarButtonItem) {
-        
-        self.searchBar.becomeFirstResponder()
         animateSearchBar(appearing: true)
+        self.searchBar.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -133,7 +133,7 @@ extension SearchResultsViewController {
 //        let postLength:NSString = String( postData.count ) as NSString
         
         let post = joinedData as NSString
-        let postData:Data = post.data(using: String.Encoding.ascii.rawValue)!
+        let postData:Data = post.data(using: String.Encoding.utf8.rawValue)!
         let postLength:NSString = String( postData.count ) as NSString
         
         request.timeoutInterval = 10
