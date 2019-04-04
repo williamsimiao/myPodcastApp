@@ -1,24 +1,23 @@
 //
-//  SugerirViewController.swift
+//  FaleConoscoViewController.swift
 //  myPodcastApp
 //
-//  Created by William on 21/03/19.
+//  Created by William on 04/04/19.
 //  Copyright © 2019 William. All rights reserved.
 //
 
 import UIKit
 
-class SugerirViewController: UIViewController, UITextFieldDelegate {
+class FaleConoscoViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
-    
-    @IBOutlet weak var comentarioEdt: LoginTextField!
-    @IBOutlet weak var tituloEdt: LoginTextField!
-    @IBOutlet weak var autorEdt: LoginTextField!
-    @IBOutlet weak var sugerirBtn: UIButton!
-    @IBOutlet weak var blackBox: UIView!
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var blackBox: UIView!
+    @IBOutlet weak var assuntoEdt: LoginTextField!
+    @IBOutlet weak var mensagemEdt: LoginTextField!
+    @IBOutlet weak var enviarBtn: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var error_msg:String!
@@ -28,30 +27,27 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
     var radius = CGFloat(20)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         blackBox.layer.cornerRadius = radius
         
-        sugerirBtn.layer.cornerRadius = 20
-        sugerirBtn.clipsToBounds = true
-        sugerirBtn.layer.borderWidth = 1
-        sugerirBtn.layer.borderColor = ColorWeel().orangeColor.cgColor
+        enviarBtn.layer.cornerRadius = 20
+        enviarBtn.clipsToBounds = true
+        enviarBtn.layer.borderWidth = 1
+        enviarBtn.layer.borderColor = ColorWeel().orangeColor.cgColor
         
-        tituloEdt.delegate = self
-        tituloEdt.tag = 0
-        autorEdt.delegate = self
-        autorEdt.tag = 1
-        comentarioEdt.delegate = self
-        comentarioEdt.tag = 2
-
+        assuntoEdt.delegate = self
+        assuntoEdt.tag = 0
+        mensagemEdt.delegate = self
+        mensagemEdt.tag = 1
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SugerirViewController.returnTextView(gesture:))))
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loading.isHidden = true
         success = false
         error_msg = ""
@@ -59,7 +55,6 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(SugerirViewController.keyboardWillShow(notification:)), name: UIWindow.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(SugerirViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,6 +66,31 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
+    @IBAction func clickEnviar(_ sender: Any) {
+        let prefs:UserDefaults = UserDefaults.standard
+        let cod_usuario = prefs.string(forKey: "cod_usuario")
+        let assunto = assuntoEdt.text
+        let mensagem = mensagemEdt.text
+        
+        if AppService.util.isValidString(aString: assunto) == false ||
+            AppService.util.isValidString(aString: mensagem) == false {
+            
+            AppService.util.alert("Erro nos dados", message: "Preencha os campos obrigatórios")
+            return
+        }
+        
+        let link = AppConfig.urlBaseApi + "contato.php"
+        let buscaUrl = URL(string: link)
+        let keys = ["cod_usuario", "assunto", "mensagem"]
+        let values = [cod_usuario!, assunto!, mensagem!]
+        makeResquest(url: buscaUrl!, keys: keys, values: values)
+    }
+    
+    @IBAction func clickClose(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    ///////
     @objc func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
@@ -95,7 +115,7 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
             activeField?.resignFirstResponder()
             activeField = nil
         }
-
+        
         return true
     }
     
@@ -145,47 +165,11 @@ class SugerirViewController: UIViewController, UITextFieldDelegate {
         
         keyboardHeight = nil
     }
-    
-    
-    
-    @IBAction func clickClose(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func clickSugerir(_ sender: Any) {
-        self.view.endEditing(true)
+    ///////
 
-        let prefs:UserDefaults = UserDefaults.standard
-        var cod_usuario = prefs.string(forKey: "cod_usuario")
-        let titulo = tituloEdt.text
-        let autor = autorEdt.text
-        let comentario = comentarioEdt.text
-        
-        //TODO this is not allowed
-        if AppService.util.isValidString(aString: cod_usuario) == false {
-            cod_usuario = "0"
-        }
-        
-        if AppService.util.isValidString(aString: titulo) == false ||
-           AppService.util.isValidString(aString: autor) == false {
-            
-            AppService.util.alert("Erro nos dados", message: "Preencha os campos obrigatórios")
-            return
-        }
-
-        let link = AppConfig.urlBaseApi + "indiqueLivro.php"
-        let buscaUrl = URL(string: link)
-        var keys = ["cod_usuario", "titulo", "autor", "comentarios"]
-        let values = [cod_usuario!, titulo!, autor!]
-        if AppService.util.isValidString(aString: comentario) {
-            keys.append(comentario!)
-        }
-        makeResquest(url: buscaUrl!, keys: keys, values: values)
-    }
-    
 }
 
-extension SugerirViewController {
+extension FaleConoscoViewController {
     
     func makeResquest(url: URL, keys: [String], values: [String]) {
         var request = URLRequest(url: url)
@@ -193,7 +177,7 @@ extension SugerirViewController {
         
         loading.isHidden = false
         loading.startAnimating()
-
+        
         let tuples = zip(keys, values)
         var keyValueArray = [String]()
         for (key, value) in tuples {
@@ -254,21 +238,21 @@ extension SugerirViewController {
             self.success = (json.value(forKey: "success") as! Bool)
             if (self.success!) {
                 
-                NSLog("SugerirVC SUCCESS");
+                NSLog("FaleConoscoVC SUCCESS");
             } else {
                 
-                NSLog("SugerirVC ERROR");
+                NSLog("FaleConoscoVC ERROR");
                 error_msg = (json.value(forKey: "error") as! String)
-
+                
             }
         }
         catch
         {
-            print("error SugerirVC")
+            print("error FaleConoscoVC")
             return
         }
         DispatchQueue.main.async(execute: onResultReceived)
-
+        
     }
     
     func onResultReceived() {
@@ -276,13 +260,13 @@ extension SugerirViewController {
         loading.isHidden = true
         loading.stopAnimating()
         dismiss(animated: true, completion: nil)
-
+        
         
         if self.success {
-            print("success na SugerirVC")
+            print("success na FaleConoscoVC")
         }
         else {
-            print("Erro noa SugerirVC")
+            print("Erro noa FaleConoscoVC")
         }
         
     }

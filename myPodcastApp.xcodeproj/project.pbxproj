@@ -63,6 +63,7 @@
 		3DD43F382225B26F00017B3E /* RecuperarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F372225B26F00017B3E /* RecuperarViewController.swift */; };
 		3DD43F3A2225C26400017B3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD43F392225C26400017B3E /* LoginTextField.swift */; };
 		3DDCC6792253976500D0D383 /* AutorDetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCC6782253976500D0D383 /* AutorDetalheViewController.swift */; };
+		3DE072152256A39C005D997B /* FaleConoscoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE072142256A39C005D997B /* FaleConoscoViewController.swift */; };
 		3DEBDF11224EB7470000721F /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBDF10224EB7470000721F /* PremiumViewController.swift */; };
 		3DED12DA2243DD5E00908F70 /* ListAutoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */; };
 		3DED12DE2243DECE00908F70 /* AutorTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DED12DD2243DECE00908F70 /* AutorTableCell.xib */; };
@@ -149,6 +150,7 @@
 		3DD43F372225B26F00017B3E /* RecuperarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecuperarViewController.swift; sourceTree = "<group>"; };
 		3DD43F392225C26400017B3E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		3DDCC6782253976500D0D383 /* AutorDetalheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorDetalheViewController.swift; sourceTree = "<group>"; };
+		3DE072142256A39C005D997B /* FaleConoscoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaleConoscoViewController.swift; sourceTree = "<group>"; };
 		3DEBDF10224EB7470000721F /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAutoresViewController.swift; sourceTree = "<group>"; };
 		3DED12DD2243DECE00908F70 /* AutorTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutorTableCell.xib; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				3DCA3A7B224034D800A87949 /* EditarPerfilViewController.swift */,
 				3DB6573A2242D79B005A8E92 /* ListResumosViewController.swift */,
 				3DED12D92243DD5E00908F70 /* ListAutoresViewController.swift */,
+				3DE072142256A39C005D997B /* FaleConoscoViewController.swift */,
 				3DDCC6782253976500D0D383 /* AutorDetalheViewController.swift */,
 			);
 			name = ViewController;
@@ -635,6 +638,7 @@
 				3D956BCE2224443C00E20477 /* CadastroTextField.swift in Sources */,
 				3DF5F682221703E700F6BA33 /* DetalheViewController.swift in Sources */,
 				4E508C272250F65000582A0F /* CameraHandler.swift in Sources */,
+				3DE072152256A39C005D997B /* FaleConoscoViewController.swift in Sources */,
 				3DC1C2022201F2C9009080EF /* PlayerCardViewController.swift in Sources */,
 				3DA73B852254F74400656FE5 /* downloadDelegate.swift in Sources */,
 				4E7F1BB5222885EF0000F6EB /* UIColorExtension.swift in Sources */,
