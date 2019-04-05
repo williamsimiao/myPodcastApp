@@ -55,6 +55,15 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let tableIndex = indexPath.row
+        let lastIndex = autores.count - 1
+        if tableIndex == lastIndex {
+            print("Reached bottom")
+            loadMore()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AutorTableCell
         
@@ -71,13 +80,6 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
         cell.photoImg.image = UIImage(named: "sem_imagem")!
         if AppService.util.isNotNull(photoUrl as AnyObject?) {
             AppService.util.load_image_autor(photoUrl, cod_autor: cod_autor, imageview: cell.photoImg)
-        }
-        
-        let tableIndex = indexPath.row
-        let lastIndex = autores.count - 1
-        if tableIndex == lastIndex {
-            print("Reached bottom")
-            loadMore()
         }
         
         return cell

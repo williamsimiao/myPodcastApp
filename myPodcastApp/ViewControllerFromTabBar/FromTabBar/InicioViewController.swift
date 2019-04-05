@@ -180,6 +180,8 @@ class InicioViewController: InheritanceViewController {
         
         self.tableView.reloadData()
         self.authorCollectionView.reloadData()
+        
+        //to dismiss searchBar
         view.endEditing(true)
         
         
