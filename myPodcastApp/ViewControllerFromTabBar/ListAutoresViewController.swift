@@ -35,6 +35,9 @@ class ListAutoresViewController: UIViewController {
         else if path == "buscaTopAutores.php" {
             navigationItem.title = "Top 10 Autores"
         }
+        loading.isHidden = false
+        loading.startAnimating()
+
         makeResquest(path: path!)
     }
     
@@ -105,8 +108,8 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
 extension ListAutoresViewController {
     
     func makeResquest(path: String) {
-        loading.isHidden = false
-        loading.startAnimating()
+//        loading.isHidden = false
+//        loading.startAnimating()
         
         
         let link = AppConfig.urlBaseApi + path
