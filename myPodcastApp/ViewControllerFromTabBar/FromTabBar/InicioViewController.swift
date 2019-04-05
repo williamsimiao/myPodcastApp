@@ -228,8 +228,6 @@ class InicioViewController: InheritanceViewController {
     }
     
     @IBAction func loadMoreEpisodios(_ sender: Any) {
-        //pathForListViewController = "buscaResumos.php"
-        //performSegue(withIdentifier: "to_listResumosVC", sender: self)
         
         if !AppService.util.isConnectedToNetwork() {
             AppService.util.alert("Sem Internet", message: "Sem conexão com a internet!")
@@ -308,9 +306,9 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
             listAutoresVC.path = self.pathForListViewController
         }
         //MAIS AUTORES
-        else if let listAutoresVC = segue.destination as? ListAutoresViewController {
-            listAutoresVC.path = "buscaAutores.php"
-        }
+//        else if let listAutoresVC = segue.destination as? ListAutoresViewController {
+//            listAutoresVC.path = "buscaAutores.php"
+//        }
 
         
         self.navigationController?.navigationBar.topItem?.title = ""
@@ -346,7 +344,7 @@ extension InicioViewController: UITableViewDataSource, UITableViewDelegate {
 extension InicioViewController {
     
     func makeResquest(path: String) {
-        
+        authorCollectionView.isHidden = true
         loading.isHidden = false
         loading.startAnimating()
         
@@ -467,6 +465,7 @@ extension InicioViewController {
     
     func showContent() {
         loading.isHidden = true
+        authorCollectionView.isHidden = false
         loading.stopAnimating()
         
         self.tableView.reloadData()
@@ -480,19 +479,32 @@ extension InicioViewController {
 extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.autoresArray.count
-        return count
+        return count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.authorCollectionView.dequeueReusableCell(withReuseIdentifier: "authorCollectionCell", for: indexPath) as! authorCollectionViewCell
         
-        let autor = self.autoresArray[indexPath.row]
+        let itemIndex = indexPath.item
+        let endIndex = self.autoresArray.count
+        let outroIndex = indexPath.endIndex
+
         
-        cell.authorLabel.text = autor.nome
-        let coverUrl = autor.url_imagem
-        
-        if AppService.util.isNotNull(coverUrl as AnyObject?) {
-            AppService.util.load_image_autor(coverUrl, cod_autor: autor.cod_autor, imageview: cell.authorImg)
+        if itemIndex != endIndex {
+            let autor = self.autoresArray[indexPath.item]
+            cell.vejaMaisLabel.isHidden = true
+            cell.authorLabel.text = autor.nome
+            let coverUrl = autor.url_imagem
+            
+            if AppService.util.isNotNull(coverUrl as AnyObject?) {
+                AppService.util.load_image_autor(coverUrl, cod_autor: autor.cod_autor, imageview: cell.authorImg)
+            }
+        }
+        else {
+            cell.authorImg.image = nil
+            cell.authorImg.backgroundColor = ColorWeel().orangeColor
+            cell.vejaMaisLabel.isHidden = false
+            cell.authorLabel.isHidden = true
         }
         return cell
     }
@@ -504,11 +516,19 @@ extension InicioViewController: UICollectionViewDelegate, UICollectionViewDataSo
         //            self.selectedResumo = self.autoresArray[indexPath.row]
         //            performSegue(withIdentifier: "to_detail", sender: self)
         //        }
-        
-        self.selectedAutor = autoresArray[indexPath.row]
-        
-        performSegue(withIdentifier: "to_detalhe_autor", sender: self)
-        
+        let itemIndex = indexPath.item
+        let endIndex = self.autoresArray.count
+
+        //Go to Autor detail
+        if itemIndex != endIndex {
+            self.selectedAutor = autoresArray[indexPath.item]
+            performSegue(withIdentifier: "to_detalhe_autor", sender: self)
+        }
+        //Go to list of Autor
+        else {
+            self.pathForListViewController = "buscaAutores.php"
+            performSegue(withIdentifier: "to_listAutoresVC", sender: self)
+        }
     }
 }
 

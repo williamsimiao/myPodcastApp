@@ -29,6 +29,12 @@ class ListAutoresViewController: UIViewController {
         let nibTableCell = UINib(nibName: "AutorTableCell", bundle: nil)
         tableView.register(nibTableCell, forCellReuseIdentifier: "cell")
         
+        if path == "buscaAutores.php" {
+            navigationItem.title = "Autores"
+        }
+        else if path == "buscaTopAutores.php" {
+            navigationItem.title = "Top 10 Autores"
+        }
         makeResquest(path: path!)
     }
     
@@ -38,6 +44,11 @@ class ListAutoresViewController: UIViewController {
 }
 
 extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource {
+    func loadMore() {
+        page = page + 1
+        makeResquest(path: path!)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Total:\(autores.count)")
         return autores.count
@@ -62,6 +73,13 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
             AppService.util.load_image_autor(photoUrl, cod_autor: cod_autor, imageview: cell.photoImg)
         }
         
+        let tableIndex = indexPath.row
+        let lastIndex = autores.count - 1
+        if tableIndex == lastIndex {
+            print("Reached bottom")
+            loadMore()
+        }
+        
         return cell
     }
     
@@ -84,7 +102,6 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
 extension ListAutoresViewController {
     
     func makeResquest(path: String) {
-        
         loading.isHidden = false
         loading.startAnimating()
         
@@ -165,10 +182,10 @@ extension ListAutoresViewController {
         
         if self.success {
             
-            self.autores = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
+            let autoresArray = AppService.util.convertDictArrayToAutorArray(dictResumoArray: self.autoresDictArray!)
+            self.autores.append(contentsOf: autoresArray)
             
             self.tableView.reloadData()
-            page = page + 1
         }
         else {
             print("onResultReceived error")

@@ -29,11 +29,19 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veja mais" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDg-my-V27">
+                    <rect key="frame" x="15.5" y="30.5" width="73" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="QDg-my-V27" firstAttribute="centerY" secondItem="2de-80-Gv5" secondAttribute="centerY" id="2x0-qb-2Es"/>
                 <constraint firstItem="pbO-XK-V0O" firstAttribute="leading" secondItem="srm-vc-G1N" secondAttribute="leading" id="6b0-QT-1NI"/>
                 <constraint firstItem="pbO-XK-V0O" firstAttribute="trailing" secondItem="srm-vc-G1N" secondAttribute="trailing" id="RK4-bD-Z1L"/>
+                <constraint firstItem="QDg-my-V27" firstAttribute="centerX" secondItem="2de-80-Gv5" secondAttribute="centerX" id="Z2W-bx-hIy"/>
+                <constraint firstItem="QDg-my-V27" firstAttribute="width" secondItem="2de-80-Gv5" secondAttribute="width" constant="-7" id="d44-NQ-ZZH"/>
                 <constraint firstItem="pbO-XK-V0O" firstAttribute="top" secondItem="2de-80-Gv5" secondAttribute="bottom" constant="8" id="jih-jJ-5oa"/>
                 <constraint firstItem="2de-80-Gv5" firstAttribute="top" secondItem="srm-vc-G1N" secondAttribute="top" id="vTW-Yv-O8W"/>
                 <constraint firstItem="2de-80-Gv5" firstAttribute="centerX" secondItem="ogD-hx-9Bj" secondAttribute="centerX" id="yxl-qm-dm7"/>
@@ -43,6 +51,7 @@
             <connections>
                 <outlet property="authorImg" destination="2de-80-Gv5" id="U4m-R0-gDw"/>
                 <outlet property="authorLabel" destination="pbO-XK-V0O" id="YbA-PG-QJ4"/>
+                <outlet property="vejaMaisLabel" destination="QDg-my-V27" id="ayt-Zo-IMe"/>
             </connections>
             <point key="canvasLocation" x="-384.80000000000001" y="-263.56821589205401"/>
         </view>

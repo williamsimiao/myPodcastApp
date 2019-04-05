@@ -250,7 +250,7 @@
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="6jW-qr-3X7">
                                                 <rect key="frame" x="269" y="405" width="20" height="20"/>
                                             </activityIndicatorView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ndP-jA-lWr">
+                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ndP-jA-lWr">
                                                 <rect key="frame" x="0.0" y="466" width="375" height="110"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2044,7 +2044,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
             </objects>
             <point key="canvasLocation" x="6756" y="1012"/>
         </scene>
-        <!--Top 10-->
+        <!--List Autores View Controller-->
         <scene sceneID="0ng-cS-1g5">
             <objects>
                 <viewController id="FFF-EP-19c" customClass="ListAutoresViewController" customModule="myPodcastApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2086,7 +2086,7 @@ Para te revelar como fazer isso na prática, convidamos o coaching e palestrante
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pAS-za-Klb"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Top 10" id="jxk-ly-bRC"/>
+                    <navigationItem key="navigationItem" id="jxk-ly-bRC"/>
                     <connections>
                         <outlet property="loading" destination="Yeg-9t-n5e" id="SP7-Nu-iag"/>
                         <outlet property="tableView" destination="KZB-0r-7oi" id="Ggs-qh-mfw"/>
@@ -3309,8 +3309,8 @@ concluir essa leitura!</string>
         <image name="xForClose" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HTX-pI-jxM"/>
+        <segue reference="I7X-yv-dEw"/>
         <segue reference="BEu-Ua-mz1"/>
-        <segue reference="XwK-Gc-UPM"/>
+        <segue reference="FLk-k2-7c4"/>
     </inferredMetricsTieBreakers>
 </document>
