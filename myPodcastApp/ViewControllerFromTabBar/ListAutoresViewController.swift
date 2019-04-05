@@ -51,7 +51,8 @@ extension ListAutoresViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Total:\(autores.count)")
-        return autores.count
+        let count = autores.count
+        return count
         
     }
     
