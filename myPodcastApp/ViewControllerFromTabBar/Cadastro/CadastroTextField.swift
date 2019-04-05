@@ -26,6 +26,7 @@ class CadastroTextField: UITextField {
         self.clipsToBounds = true
         self.layer.borderWidth = 1
         self.layer.borderColor = ColorWeel().orangeColor.cgColor
+        self.alpha = 1.0
     }
     
     func makeItWhite() {

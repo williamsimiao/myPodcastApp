@@ -281,7 +281,8 @@ open class AppUtil {
             
             do {
                 
-                imageview.image = UIImage(contentsOfFile: filePath)
+                let image = UIImage(contentsOfFile: filePath)
+                imageview.image = image
                 
             }
             

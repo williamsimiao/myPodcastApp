@@ -3156,26 +3156,61 @@ concluir essa leitura!</string>
                                                             <outlet property="delegate" destination="aWq-xl-XtZ" id="svB-1X-ztb"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sexo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gk-uX-hrl" userLabel="sexo" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWq-dA-h35">
                                                         <rect key="frame" x="0.0" y="112" width="343" height="40"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjP-yz-d6R" userLabel="data" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sexo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-vS-Bft" userLabel="sexo" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                                            </textField>
+                                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7r-Bb-RsY">
+                                                                <rect key="frame" x="307" y="9" width="20" height="22"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="arrowTextField"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="3BL-vS-Bft" firstAttribute="leading" secondItem="uWq-dA-h35" secondAttribute="leading" id="3ki-O8-KoW"/>
+                                                            <constraint firstItem="Q7r-Bb-RsY" firstAttribute="centerY" secondItem="uWq-dA-h35" secondAttribute="centerY" id="Cmq-Tu-Ytc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Q7r-Bb-RsY" secondAttribute="trailing" constant="16" id="Hvl-0T-4eF"/>
+                                                            <constraint firstItem="3BL-vS-Bft" firstAttribute="top" secondItem="uWq-dA-h35" secondAttribute="top" id="WWv-b1-211"/>
+                                                            <constraint firstAttribute="trailing" secondItem="3BL-vS-Bft" secondAttribute="trailing" id="ZA1-bi-d1y"/>
+                                                            <constraint firstAttribute="bottom" secondItem="3BL-vS-Bft" secondAttribute="bottom" id="fEK-NX-TIO"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-cL-Raw">
                                                         <rect key="frame" x="0.0" y="168" width="343" height="40"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
-                                                    </textField>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pzw-V6-21z" userLabel="data" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                                            </textField>
+                                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrK-RX-LFp">
+                                                                <rect key="frame" x="307" y="9" width="20" height="22"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="arrowTextField"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="pzw-V6-21z" firstAttribute="leading" secondItem="CQE-cL-Raw" secondAttribute="leading" id="GrZ-pD-My8"/>
+                                                            <constraint firstItem="pzw-V6-21z" firstAttribute="top" secondItem="CQE-cL-Raw" secondAttribute="top" id="PgB-tf-0L9"/>
+                                                            <constraint firstAttribute="trailing" secondItem="TrK-RX-LFp" secondAttribute="trailing" constant="16" id="inQ-RW-zhY"/>
+                                                            <constraint firstAttribute="trailing" secondItem="pzw-V6-21z" secondAttribute="trailing" id="jJt-0j-4VY"/>
+                                                            <constraint firstAttribute="bottom" secondItem="pzw-V6-21z" secondAttribute="bottom" id="mEM-Hm-MRD"/>
+                                                            <constraint firstItem="TrK-RX-LFp" firstAttribute="centerY" secondItem="CQE-cL-Raw" secondAttribute="centerY" id="mej-S7-98b"/>
+                                                        </constraints>
+                                                    </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Celular" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9e2-Y4-dDm" userLabel="telefone" customClass="CadastroTextField" customModule="myPodcastApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="224" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="aWq-xl-XtZ" id="Bcw-LR-MFs"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -3233,11 +3268,11 @@ concluir essa leitura!</string>
                         <outlet property="btnSalvar" destination="Q1M-pd-3Ng" id="H7G-6j-w6x"/>
                         <outlet property="cameraBtn" destination="4WO-c2-Vvm" id="GQ6-Ge-awj"/>
                         <outlet property="contentView" destination="9kO-Vq-Lrw" id="Smh-Kg-iwg"/>
-                        <outlet property="edtDataNascimento" destination="EjP-yz-d6R" id="G2H-wf-vDT"/>
+                        <outlet property="edtDataNascimento" destination="pzw-V6-21z" id="ElY-0e-cVQ"/>
                         <outlet property="edtEmail" destination="jZi-DY-C4t" id="X0p-xe-cpq"/>
                         <outlet property="edtFone" destination="9e2-Y4-dDm" id="meW-5h-oVl"/>
                         <outlet property="edtNome" destination="sSo-bP-Ynp" id="Edj-Yz-9Tb"/>
-                        <outlet property="edtSexo" destination="0gk-uX-hrl" id="enQ-5u-BMP"/>
+                        <outlet property="edtSexo" destination="3BL-vS-Bft" id="oa3-LV-Gqe"/>
                         <outlet property="imgUsuario" destination="nB7-XG-XW6" id="KWm-gg-SN7"/>
                         <outlet property="loading" destination="QUw-iQ-eU7" id="eHj-uo-o4c"/>
                     </connections>
@@ -3277,6 +3312,7 @@ concluir essa leitura!</string>
         <image name="Rectangle 3" width="164.5" height="55"/>
         <image name="SalvarPerfilIcon" width="44" height="44"/>
         <image name="account_white" width="24" height="24"/>
+        <image name="arrowTextField" width="20.5" height="11.5"/>
         <image name="biblioteca" width="32" height="26"/>
         <image name="book" width="24" height="24"/>
         <image name="bookBlack" width="23.5" height="18"/>

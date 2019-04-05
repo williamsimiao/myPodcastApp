@@ -78,6 +78,8 @@ class EditarPerfilViewController: UIViewController, UIImagePickerControllerDeleg
         sexoPicker.delegate = self
         edtSexo.inputView = sexoPicker
         
+        edtFone.delegate = self
+        
         /*edtEscolaridade.delegate = self
          escolaridadePicker = UIPickerView()
          escolaridadePicker.dataSource = self
